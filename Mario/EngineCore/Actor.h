@@ -9,9 +9,7 @@ class ULevel;
 class UActorComponent;
 class UImageRenderer;
 
-// 설명 : A가 붙은 오브젝트는 화면에 위치가 존재해야한다.
-// Level->SpawnActor를 통해서 만들면
-// 레벨이 자연스럽게 자신의 관리하에 두고 언제나 Tick을 실행해준다.
+// 설명 : 
 class AActor : public UNameObject, public UTickObject
 {
 	friend ULevel;
@@ -42,11 +40,6 @@ public:
 		Transform.AddPosition(_Value);
 	}
 
-	void SetActorScale(FVector _Value)
-	{
-		Transform.SetScale(_Value);
-	}
-
 	FTransform GetTransform()
 	{
 		return Transform;
@@ -63,6 +56,7 @@ public:
 	void DestroyUpdate(float _DeltaTime) override;
 
 protected:
+	void Tick(float _DeltaTime) override;
 
 private:
 	std::list<UImageRenderer*> Renderers;

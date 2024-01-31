@@ -3,7 +3,7 @@
 #include "PlayLevel.h"
 
 ContentsCore::ContentsCore()
-	: EngineCore()
+	: UEngineCore()
 {
 }
 
@@ -11,9 +11,12 @@ ContentsCore::~ContentsCore()
 {
 }
 
-// 게임시작
+// 프로그램 시작
 void ContentsCore::BeginPlay()
 {
+	// 마리오용 윈도우 크기 설정
+	MainWindow.SetWindowScale({ 800, 600 });
+	
 	CreateLevel<UTitleLevel>("TitleLevel");
 	CreateLevel<UPlayLevel>("PlayLevel");
 
@@ -22,7 +25,7 @@ void ContentsCore::BeginPlay()
 
 void ContentsCore::Tick(float _DeltaTime)
 {
-	// 플레이어 움직여야 한다.
+
 }
 
 void ContentsCore::End()
