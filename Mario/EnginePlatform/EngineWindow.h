@@ -1,6 +1,7 @@
 #pragma once
 #include <Windows.h>
 #include <string>
+#include <EngineBase\EngineMath.h>
 
 class UWindowImage;
 // Ό³Έν :
@@ -27,10 +28,16 @@ public:
 		return WindowImage;
 	}
 
-	//HDC GetWindowDC()
-	//{
-	//	return WindowImage->GetImageDC();
-	//}
+	UWindowImage* GetBackBufferImage()
+	{
+		return BackBufferImage;
+	}
+
+	void SetWindowPosition(const FVector& _Pos);
+	void SetWindowScale(const FVector& _Scale);
+
+	void ScreenClear();
+	void ScreenUpdate();
 
 protected:
 
@@ -40,7 +47,12 @@ private:
 	static LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 
 	HWND hWnd = nullptr;
-	// HDC hDC = nullptr;
+
 	UWindowImage* WindowImage = nullptr;
+
+	UWindowImage* BackBufferImage = nullptr;
+
+	FVector Scale;
+
 };
 

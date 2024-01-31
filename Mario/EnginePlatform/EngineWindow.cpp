@@ -19,7 +19,6 @@ LRESULT CALLBACK UEngineWindow::WndProc(HWND hWnd, UINT message, WPARAM wParam, 
 	break;
 	case WM_DESTROY:
 		WindowLive = false;
-		// PostQuitMessage(123213);
 		break;
 	default:
 		return DefWindowProc(hWnd, message, wParam, lParam);
@@ -39,6 +38,12 @@ UEngineWindow::UEngineWindow()
 
 UEngineWindow::~UEngineWindow()
 {
+	if (nullptr != BackBufferImage)
+	{
+		delete BackBufferImage;
+		BackBufferImage = nullptr;
+	}
+
 	if (nullptr != WindowImage)
 	{
 		delete WindowImage;
@@ -49,9 +54,6 @@ UEngineWindow::~UEngineWindow()
 
 void UEngineWindow::Open(std::string_view _Title /*= "Title"*/)
 {
-	// 간혹가다가 앞쪽이이나 뒤쪽에 W가 붙거나 A가 붙어있는 함수들을 보게 될겁니다.
-	// A가 붙어있으면 멀티바이트 함수
-	// W가 붙어있으면 와이드 바이트 함수
 	WNDCLASSEXA wcex;
 
 	wcex.cbSize = sizeof(WNDCLASSEX);
@@ -70,14 +72,16 @@ void UEngineWindow::Open(std::string_view _Title /*= "Title"*/)
 
 	RegisterClassExA(&wcex);
 
-	// const std::string& = 내부에 뭘들고 있다고 생각하라고 했나요?
-	// std::vector<char> 들고 있다고 생각하라고 했다.
-	// _Title[0] = char&를 리턴해준 것과 같다.
-	// _Title.c_str(); => 자연스럽게 내부에서 
-	// const char* Test = &_Title[0]
-	// return Test;
 
-	hWnd = CreateWindowA("DefaultWindow", _Title.data(), WS_OVERLAPPEDWINDOW,
+	int Style = WS_OVERLAPPED |
+		WS_CAPTION |
+		WS_SYSMENU |
+		WS_THICKFRAME |
+		WS_MINIMIZEBOX |
+		WS_MAXIMIZEBOX;
+
+
+	hWnd = CreateWindowA("DefaultWindow", _Title.data(), Style,
 		CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
 
 	if (!hWnd)
@@ -106,15 +110,12 @@ unsigned __int64 UEngineWindow::WindowMessageLoop(void(*_Update)(), void(*_End)(
 
 	while (WindowLive)
 	{
-		// 기본 메시지 루프입니다:
-		// 10개가 들어있을 
 		if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
 		{
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
 		}
 
-		// 메세지 루프의 데드타임이라는 곳에서 실행됩니다.
 		if (nullptr != _Update)
 		{
 			_Update();
@@ -130,3 +131,44 @@ unsigned __int64 UEngineWindow::WindowMessageLoop(void(*_Update)(), void(*_End)(
 }
 
 
+
+
+void UEngineWindow::SetWindowPosition(const FVector& _Pos)
+{
+
+}
+
+void UEngineWindow::SetWindowScale(const FVector& _Scale)
+{
+	Scale = _Scale;
+
+	if (nullptr != BackBufferImage)
+	{
+		delete BackBufferImage;
+		BackBufferImage = nullptr;
+	}
+
+	BackBufferImage = new UWindowImage();
+	BackBufferImage->Create(WindowImage, Scale);
+
+	RECT Rc = { 0, 0, _Scale.iX(), _Scale.iY() };
+
+	AdjustWindowRect(&Rc, WS_OVERLAPPEDWINDOW, FALSE);
+
+	::SetWindowPos(hWnd, nullptr, 0, 0, Rc.right - Rc.left, Rc.bottom - Rc.top, SWP_NOZORDER | SWP_NOMOVE);
+}
+
+void UEngineWindow::ScreenClear()
+{
+	Rectangle(BackBufferImage->ImageDC, -1, -1, Scale.iX() + 1, Scale.iY() + 1);
+
+}
+
+void UEngineWindow::ScreenUpdate()
+{
+	FTransform CopyTrans;
+	CopyTrans.SetPosition({ Scale.ihX(), Scale.ihY() });
+	CopyTrans.SetScale({ Scale.iX(), Scale.iY() });
+
+	WindowImage->BitCopy(BackBufferImage, CopyTrans);
+}
