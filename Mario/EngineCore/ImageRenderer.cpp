@@ -39,7 +39,7 @@ void UImageRenderer::Render(float _DeltaTime)
 
 	RendererTrans.AddPosition(ActorTrans.GetPosition());
 
-	GEngine->MainWindow.GetBackBufferImage()->TransCopy(Image, RendererTrans, ImageCuttingTransform);
+	GEngine->MainWindow.GetBackBufferImage()->TransCopy(Image, RendererTrans, InfoIndex);
 
 }
 
@@ -48,7 +48,7 @@ void UImageRenderer::BeginPlay()
 	USceneComponent::BeginPlay();
 }
 
-void UImageRenderer::SetImage(std::string_view _Name)
+void UImageRenderer::SetImage(std::string_view _Name, int _InfoIndex)
 {
 	Image = UEngineResourcesManager::GetInst().FindImg(_Name);
 
@@ -57,4 +57,6 @@ void UImageRenderer::SetImage(std::string_view _Name)
 		MsgBoxAssert(std::string(_Name) + "이미지가 존재하지 않습니다.");
 		return;
 	}
+
+	InfoIndex = _InfoIndex;
 }
