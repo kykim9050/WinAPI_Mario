@@ -16,13 +16,15 @@ public:
 
 	bool IsExists();
 
-	std::string GetFileName();
-	std::string GetExtension();
+	std::string GetFileName() const;
+	std::string GetExtension() const;
 
 	void MoveParent();
 	void Move(std::string_view _Path);
 
-	std::string GetFullPath()
+	std::string AppendPath(std::string_view _Path);
+
+	std::string GetFullPath() const
 	{
 		return Path.string();
 	}
