@@ -33,13 +33,13 @@ void UImageRenderer::Render(float _DeltaTime)
 		MsgBoxAssert("이미지가 존재하지 않는 랜더러 입니다");
 	}
 
-	FTransform ThisTrans = GetTransform();
+	FTransform RendererTrans = GetTransform();
 
-	FTransform OwnerTrans = GetOwner()->GetTransform();
+	FTransform ActorTrans = GetOwner()->GetTransform();
 
-	ThisTrans.AddPosition(OwnerTrans.GetPosition());
+	RendererTrans.AddPosition(ActorTrans.GetPosition());
 
-	GEngine->MainWindow.GetBackBufferImage()->TransCopy(Image, ThisTrans, ImageCuttingTransform);
+	GEngine->MainWindow.GetBackBufferImage()->TransCopy(Image, RendererTrans, ImageCuttingTransform);
 
 }
 
