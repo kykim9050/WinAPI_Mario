@@ -1,6 +1,23 @@
 #pragma once
 #include "SceneComponent.h"
 #include <EnginePlatform\WindowImage.h>
+#include <map>
+
+class UAnimationInfo
+{
+public:
+	// 애니메이션을 구성할때 이미지는 1장
+	UWindowImage* Image = nullptr;
+	int Start = -1;
+	int End = -1;
+	int CurFrame = 0;
+	float CurTime = 0.0f;
+	bool Loop = false;
+	std::vector<float> Times;
+	std::vector<int> Indexs;
+
+	int Update(float _DeltaTime);
+};
 
 class UWindowImage;
 // 설명 :
@@ -37,6 +54,19 @@ public:
 		ImageCuttingTransform = _Value;
 	}
 
+	void CreateAnimation(
+		std::string_view _AnimationName,
+		std::string_view _ImageName,
+		int _Start,
+		int _End,
+		float _Inter,
+		bool Loop = true
+	);
+
+	void ChangeAnimation(std::string_view _AnimationName);
+	void AnimationReset();
+
+
 protected:
 	void BeginPlay() override;
 
@@ -44,5 +74,8 @@ private:
 	int InfoIndex = 0;
 	UWindowImage* Image;
 	FTransform ImageCuttingTransform;
+
+	std::map<std::string, UAnimationInfo> AnimationInfos;
+	UAnimationInfo* CurAnimation = nullptr;
 };
 

@@ -134,6 +134,7 @@ bool UWindowImage::LoadFolder(UWindowImage* _Image)
 	UEngineDirectory Dir = EnginePath;
 
 	std::list<UEngineFile> NewList = Dir.AllFile({ ".png", ".bmp" }, false);
+	Infos.reserve(NewList.size());
 
 	for (UEngineFile& File : NewList)
 	{
