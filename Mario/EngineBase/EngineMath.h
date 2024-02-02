@@ -68,6 +68,11 @@ public:
 
 
 public:
+	float4 Half2D()
+	{
+		return { hX(), hY() };
+	}
+
 	int iX() const
 	{
 		return static_cast<int>(X);
@@ -198,6 +203,15 @@ public:
 		unsigned char Arr1D[4] = { 0,0,0,255 };
 		unsigned int Color;
 	};
+
+	/// <summary>
+	/// Color8Bit 인자중 unsigned char A(Alpha)값 0으로 지정
+	/// </summary>
+	/// <returns>Color8Bit</returns>
+	Color8Bit ZeroAlphaColor() const
+	{
+		return Color8Bit{ R,G,B,0 };
+	}
 };
 
 // 설명 :
