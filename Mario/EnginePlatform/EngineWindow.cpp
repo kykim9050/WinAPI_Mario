@@ -130,8 +130,14 @@ unsigned __int64 UEngineWindow::WindowMessageLoop(void(*_Update)(), void(*_End)(
 	return msg.wParam;
 }
 
+FVector UEngineWindow::GetMousePosition()
+{
+	POINT MousePoint;
+	GetCursorPos(&MousePoint);
+	ScreenToClient(hWnd, &MousePoint);
 
-
+	return FVector(MousePoint.x, MousePoint.y);
+}
 
 void UEngineWindow::SetWindowPosition(const FVector& _Pos)
 {
