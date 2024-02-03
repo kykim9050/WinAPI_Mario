@@ -53,7 +53,9 @@ public:
 
 	void BitCopy(UWindowImage* _CopyImage, const FTransform& _Trans);
 
-	void TransCopy(UWindowImage* _CopyImage, const FTransform& _CopyTrans, int _Index, Color8Bit _Color = Color8Bit::Black);
+	void TransCopy(UWindowImage* _CopyImage, const FTransform& _Trans, int _Index, Color8Bit _Color = Color8Bit::Black);
+
+	void AlphaCopy(UWindowImage* _CopyImage, const FTransform& _Trans, int _Index, Color8Bit _Color = Color8Bit::Black);
 
 	bool Create(UWindowImage* _Image, const FVector& _Scale);
 
