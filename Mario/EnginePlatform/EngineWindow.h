@@ -60,6 +60,6 @@ private:
 	UWindowImage* BackBufferImage = nullptr;
 
 	FVector Scale;
-
+	FVector Position;
 };
 
