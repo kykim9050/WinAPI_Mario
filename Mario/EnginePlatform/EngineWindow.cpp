@@ -141,7 +141,9 @@ FVector UEngineWindow::GetMousePosition()
 
 void UEngineWindow::SetWindowPosition(const FVector& _Pos)
 {
+	Position = _Pos;
 
+	::SetWindowPos(hWnd, nullptr, Position.iX(), Position.iY(), 0, 0, SWP_NOZORDER | SWP_NOSIZE);
 }
 
 void UEngineWindow::SetWindowScale(const FVector& _Scale)
