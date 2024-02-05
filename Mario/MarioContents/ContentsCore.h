@@ -15,6 +15,8 @@ public:
 	ContentsCore& operator=(const ContentsCore& _Other) = delete;
 	ContentsCore& operator=(ContentsCore&& _Other) noexcept = delete;
 
+	static const int WindowSizeMulValue;
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;

@@ -5,6 +5,9 @@
 #include <EngineBase/EngineFile.h>
 #include <EngineCore/EngineResourcesManager.h>
 
+// 윈도우 크기 배율
+const int ContentsCore::WindowSizeMulValue = 3;
+
 ContentsCore::ContentsCore()
 	: UEngineCore()
 {
@@ -19,18 +22,16 @@ void ContentsCore::BeginPlay()
 {
 	UEngineCore::BeginPlay();
 
-	// 윈도우 크기 배율
-	int WindowSizeMulValue = 1;
 
 	// 마리오용 윈도우 크기 설정
 	MainWindow.SetWindowScale({ 256 * WindowSizeMulValue, 240 * WindowSizeMulValue });
-	
+
 
 	UEngineDirectory ResourcesDir = UEngineDirectory();
 	ResourcesDir.MoveParent();
 	ResourcesDir.Move("Resources");
 
-	std::list<UEngineFile> ResourcesList = ResourcesDir.AllFile({ ".png", "bmp" }, true);
+	std::list<UEngineFile> ResourcesList = ResourcesDir.AllFile({ ".png" }, true);
 
 	for (UEngineFile& CurFIle : ResourcesList)
 	{
