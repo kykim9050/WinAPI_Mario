@@ -178,6 +178,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="TitleBackGround.h" />
     <ClInclude Include="TitleLevel.h">
       <SubType>
       </SubType>
@@ -196,6 +197,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="TitleBackGround.cpp" />
     <ClCompile Include="TitleLevel.cpp">
       <SubType>
       </SubType>
