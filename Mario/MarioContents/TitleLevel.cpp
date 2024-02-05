@@ -1,5 +1,7 @@
 ﻿#include "TitleLevel.h"
-#include "EngineCore\EngineCore.h"
+#include <EngineCore\EngineCore.h>
+#include "TitleBackGround.h"
+
 
 UTitleLevel::UTitleLevel()
 {
@@ -13,6 +15,7 @@ void UTitleLevel::BeginPlay()
 {
 	ULevel::BeginPlay();
 
+	UTitleBackGround* Background = SpawnActor< UTitleBackGround>();
 
 }
 
