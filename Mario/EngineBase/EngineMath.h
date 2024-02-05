@@ -210,6 +210,28 @@ public:
 		unsigned int Color;
 	};
 
+	Color8Bit()
+	{
+
+	}
+
+	Color8Bit(
+		unsigned char _R,
+		unsigned char _G,
+		unsigned char _B,
+		unsigned char _A
+	)
+		:R(_R), G(_G), B(_B), A(_A)
+	{
+
+	}
+
+
+	bool operator==(Color8Bit _Color)
+	{
+		return Color == _Color.Color;
+	}
+
 	/// <summary>
 	/// Color8Bit 인자중 unsigned char A(Alpha)값 0으로 지정
 	/// </summary>
