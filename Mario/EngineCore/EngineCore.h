@@ -66,6 +66,7 @@ private:
 	bool EngineInit = false;
 	std::map<std::string, ULevel*> AllLevel;
 	ULevel* CurLevel = nullptr;
+	ULevel* NextLevel = nullptr;
 
 	static void EngineTick();
 	void CoreTick();

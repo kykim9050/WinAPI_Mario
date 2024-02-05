@@ -35,6 +35,18 @@ void UEngineCore::CoreTick()
 
 	EngineInput::KeyCheckTick(DeltaTime);
 
+	if (nullptr != NextLevel)
+	{
+		if (nullptr != CurLevel)
+		{
+			CurLevel->LevelEnd(NextLevel);
+		}
+
+		NextLevel->LevelStart(CurLevel);
+		CurLevel = NextLevel;
+		NextLevel = nullptr;
+	}
+
 	if (nullptr == CurLevel)
 	{
 		MsgBoxAssert("엔진을 시작할 레벨이 지정되지 않았습니다 치명적인 오류입니다");
@@ -125,7 +137,7 @@ void UEngineCore::ChangeLevel(std::string_view _Name)
 		MsgBoxAssert(std::string(_Name) + "라는 존재하지 않는 레벨로 체인지 하려고 했습니다");
 	}
 
-	CurLevel = AllLevel[UpperName];
+	NextLevel = AllLevel[UpperName];
 }
 
 void UEngineCore::LevelInit(ULevel* _Level)
