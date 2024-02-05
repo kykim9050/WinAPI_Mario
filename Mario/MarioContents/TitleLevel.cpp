@@ -13,3 +13,8 @@ void UTitleLevel::BeginPlay()
 {
 
 }
+
+void UTitleLevel::Tick(float _DeltaTime)
+{
+
+}
