@@ -23,6 +23,12 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MarioContents", "MarioConte
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "App", "App\App.vcxproj", "{EDD97005-6BE3-4F6F-A4B1-6A8C6997C616}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Player", "Player", "{CD7B7FD7-FFB4-4F1F-96A2-061A0A285151}"
+	ProjectSection(SolutionItems) = preProject
+		MarioContents\Player.cpp = MarioContents\Player.cpp
+		MarioContents\Player.h = MarioContents\Player.h
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -81,6 +87,7 @@ Global
 		{0E23E3BB-7F91-4C4B-8D59-31E8F880CC0B} = {5AF4D329-78D4-4D3C-B451-E08CF54E58BB}
 		{094CCDB0-217F-4834-B6FE-EEA31E835243} = {A1668B0B-48A5-44D7-BD67-B30054B803D3}
 		{EDD97005-6BE3-4F6F-A4B1-6A8C6997C616} = {A9D969E8-81BB-4CB3-82F2-93ADC122F5B0}
+		{CD7B7FD7-FFB4-4F1F-96A2-061A0A285151} = {A1668B0B-48A5-44D7-BD67-B30054B803D3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3CD62612-6A02-4B34-9BE7-48D8645AC086}

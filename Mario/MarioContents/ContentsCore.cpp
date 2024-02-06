@@ -1,6 +1,6 @@
 ﻿#include "ContentsCore.h"
 #include "TitleLevel.h"
-#include "PlayLevel.h"
+#include "1_1StageLevel.h"
 #include <EngineBase/EngineDirectory.h>
 #include <EngineBase/EngineFile.h>
 #include <EngineCore/EngineResourcesManager.h>
@@ -41,7 +41,7 @@ void ContentsCore::BeginPlay()
 	UEngineResourcesManager::GetInst().CuttingImage("TitleCoin.png", 5, 1);
 
 	CreateLevel<UTitleLevel>("TitleLevel");
-	//CreateLevel<UPlayLevel>("PlayLevel");
+	CreateLevel<U1_1StageLevel>("1_1StageLevel");
 
 	ChangeLevel("TitleLevel");
 }

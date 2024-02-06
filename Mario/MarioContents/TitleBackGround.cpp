@@ -25,5 +25,4 @@ void ATitleBackGround::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
 
-
 }

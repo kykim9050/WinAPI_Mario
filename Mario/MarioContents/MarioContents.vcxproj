@@ -174,7 +174,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="PlayLevel.h">
+    <ClInclude Include="1_1StageLevel.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -197,7 +197,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="PlayLevel.cpp">
+    <ClCompile Include="1_1StageLevel.cpp">
       <SubType>
       </SubType>
     </ClCompile>
