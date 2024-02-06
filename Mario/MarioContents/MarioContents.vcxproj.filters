@@ -2,7 +2,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClInclude Include="ContentsCore.h" />
-    <ClInclude Include="Player.h" />
     <ClInclude Include="TitleLevel.h">
       <Filter>Title</Filter>
     </ClInclude>
@@ -15,10 +14,15 @@
     <ClInclude Include="1_1StageLevel.h">
       <Filter>Stage1-1</Filter>
     </ClInclude>
+    <ClInclude Include="PlayerMario.h">
+      <Filter>Player</Filter>
+    </ClInclude>
+    <ClInclude Include="BackGroundMap.h">
+      <Filter>Stage1-1\Actor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp" />
-    <ClCompile Include="Player.cpp" />
     <ClCompile Include="TitleLevel.cpp">
       <Filter>Title</Filter>
     </ClCompile>
@@ -30,6 +34,12 @@
     </ClCompile>
     <ClCompile Include="1_1StageLevel.cpp">
       <Filter>Stage1-1</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerMario.cpp">
+      <Filter>Player</Filter>
+    </ClCompile>
+    <ClCompile Include="BackGroundMap.cpp">
+      <Filter>Stage1-1\Actor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -44,6 +54,9 @@
     </Filter>
     <Filter Include="Stage1-1\Actor">
       <UniqueIdentifier>{ba34b179-ef07-4e81-b013-93d5f5f33181}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Player">
+      <UniqueIdentifier>{4f380fdc-c820-4e41-88eb-56a5f726ff9b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
