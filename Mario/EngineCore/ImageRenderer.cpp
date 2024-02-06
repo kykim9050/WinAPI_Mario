@@ -97,7 +97,7 @@ void UImageRenderer::Render(float _DeltaTime)
 	ULevel* World = Actor->GetWorld();
 	FVector CameraPos = World->GetCameraPos();
 
-	RendererTrans.AddPosition(ActorTrans.GetPosition());
+	RendererTrans.AddPosition(-CameraPos);
 
 	EWIndowImageType ImageType = Image->GetImageType();
 
