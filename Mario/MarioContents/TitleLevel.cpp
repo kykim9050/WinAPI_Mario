@@ -1,7 +1,7 @@
 ﻿#include "TitleLevel.h"
 #include <EngineCore\EngineCore.h>
 #include "TitleBackGround.h"
-
+#include "TitleCoin.h"
 
 UTitleLevel::UTitleLevel()
 {
@@ -15,8 +15,8 @@ void UTitleLevel::BeginPlay()
 {
 	ULevel::BeginPlay();
 
-	UTitleBackGround* Background = SpawnActor< UTitleBackGround>();
-
+	ATitleBackGround* Background = SpawnActor< ATitleBackGround>();
+	ATitleCoin* Coin = SpawnActor<ATitleCoin>();
 }
 
 void UTitleLevel::Tick(float _DeltaTime)

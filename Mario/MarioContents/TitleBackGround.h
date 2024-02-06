@@ -3,18 +3,18 @@
 
 
 // Ό³Έν :
-class UTitleBackGround : public AActor
+class ATitleBackGround : public AActor
 {
 public:
 	// constrcuter destructer
-	UTitleBackGround();
-	~UTitleBackGround();
+	ATitleBackGround();
+	~ATitleBackGround();
 
 	// delete Function
-	UTitleBackGround(const UTitleBackGround& _Other) = delete;
-	UTitleBackGround(UTitleBackGround&& _Other) noexcept = delete;
-	UTitleBackGround& operator=(const UTitleBackGround& _Other) = delete;
-	UTitleBackGround& operator=(UTitleBackGround&& _Other) noexcept = delete;
+	ATitleBackGround(const ATitleBackGround& _Other) = delete;
+	ATitleBackGround(ATitleBackGround&& _Other) noexcept = delete;
+	ATitleBackGround& operator=(const ATitleBackGround& _Other) = delete;
+	ATitleBackGround& operator=(ATitleBackGround&& _Other) noexcept = delete;
 
 protected:
 	void BeginPlay() override;

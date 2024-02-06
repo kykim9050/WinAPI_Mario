@@ -2,16 +2,38 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClInclude Include="ContentsCore.h" />
-    <ClInclude Include="TitleLevel.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayLevel.h" />
-    <ClInclude Include="TitleBackGround.h" />
+    <ClInclude Include="TitleLevel.h">
+      <Filter>Title</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleBackGround.h">
+      <Filter>Title\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleCoin.h">
+      <Filter>Title\Actor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp" />
-    <ClCompile Include="TitleLevel.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayLevel.cpp" />
-    <ClCompile Include="TitleBackGround.cpp" />
+    <ClCompile Include="TitleLevel.cpp">
+      <Filter>Title</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleBackGround.cpp">
+      <Filter>Title\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleCoin.cpp">
+      <Filter>Title\Actor</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Title">
+      <UniqueIdentifier>{b2b49b77-6b9c-4b7f-9f81-9cc5ad6646ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Title\Actor">
+      <UniqueIdentifier>{5bb86687-b42e-48c0-bafb-fdb5c9aae956}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>
