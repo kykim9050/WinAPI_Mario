@@ -38,7 +38,7 @@ void ContentsCore::BeginPlay()
 		UEngineResourcesManager::GetInst().LoadImg(CurFIle.GetFullPath());
 	}
 
-	UEngineResourcesManager::GetInst().CuttingImage("TitleCoin.png", 5, 1);
+	UEngineResourcesManager::GetInst().CuttingImage("TitleCoin.png", 6, 1);
 
 
 	CreateLevel<UTitleLevel>("TitleLevel");
