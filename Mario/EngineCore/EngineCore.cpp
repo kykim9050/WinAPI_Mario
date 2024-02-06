@@ -33,6 +33,11 @@ void UEngineCore::CoreTick()
 		DeltaTime = FrameTime;
 	}
 
+	if (1.0f / 60.0f <= DeltaTime)
+	{
+		DeltaTime = 1.0f / 60.0f;
+	}
+
 	EngineInput::KeyCheckTick(DeltaTime);
 
 	if (nullptr != NextLevel)
