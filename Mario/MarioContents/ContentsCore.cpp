@@ -48,9 +48,11 @@ void ContentsCore::BeginPlay()
 
 void ContentsCore::Tick(float _DeltaTime)
 {
+	UEngineCore::Tick(_DeltaTime);
 
 }
 
 void ContentsCore::End()
 {
+	UEngineCore::End();
 }

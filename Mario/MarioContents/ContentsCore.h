@@ -15,7 +15,6 @@ public:
 	ContentsCore& operator=(const ContentsCore& _Other) = delete;
 	ContentsCore& operator=(ContentsCore&& _Other) noexcept = delete;
 
-	static const int WindowSizeMulValue;
 
 protected:
 	void BeginPlay() override;
@@ -23,6 +22,7 @@ protected:
 	void End() override;
 
 private:
+	static const int WindowSizeMulValue;
 
 };
 
