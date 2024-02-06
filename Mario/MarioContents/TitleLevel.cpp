@@ -22,4 +22,9 @@ void UTitleLevel::BeginPlay()
 void UTitleLevel::Tick(float _DeltaTime)
 {
 	ULevel::Tick(_DeltaTime);
+
+	if (EngineInput::IsDown(VK_RETURN))
+	{
+		GEngine->ChangeLevel("1_1StageLevel");
+	}
 }

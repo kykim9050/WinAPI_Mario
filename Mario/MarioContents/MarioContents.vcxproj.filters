@@ -3,7 +3,6 @@
   <ItemGroup>
     <ClInclude Include="ContentsCore.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="PlayLevel.h" />
     <ClInclude Include="TitleLevel.h">
       <Filter>Title</Filter>
     </ClInclude>
@@ -13,11 +12,13 @@
     <ClInclude Include="TitleCoin.h">
       <Filter>Title\Actor</Filter>
     </ClInclude>
+    <ClInclude Include="1_1StageLevel.h">
+      <Filter>Stage1-1</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="PlayLevel.cpp" />
     <ClCompile Include="TitleLevel.cpp">
       <Filter>Title</Filter>
     </ClCompile>
@@ -27,6 +28,9 @@
     <ClCompile Include="TitleCoin.cpp">
       <Filter>Title\Actor</Filter>
     </ClCompile>
+    <ClCompile Include="1_1StageLevel.cpp">
+      <Filter>Stage1-1</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Title">
@@ -34,6 +38,12 @@
     </Filter>
     <Filter Include="Title\Actor">
       <UniqueIdentifier>{5bb86687-b42e-48c0-bafb-fdb5c9aae956}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Stage1-1">
+      <UniqueIdentifier>{c44e7e1c-7d68-496d-b02f-fd49445bbe07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Stage1-1\Actor">
+      <UniqueIdentifier>{ba34b179-ef07-4e81-b013-93d5f5f33181}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
