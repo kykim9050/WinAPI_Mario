@@ -1,14 +1,14 @@
 #include "TitleBackGround.h"
 
-UTitleBackGround::UTitleBackGround()
+ATitleBackGround::ATitleBackGround()
 {
 }
 
-UTitleBackGround::~UTitleBackGround()
+ATitleBackGround::~ATitleBackGround()
 {
 }
 
-void UTitleBackGround::BeginPlay()
+void ATitleBackGround::BeginPlay()
 {
 	AActor::BeginPlay();
 
@@ -20,7 +20,7 @@ void UTitleBackGround::BeginPlay()
 	TitleBackGroundRenderer->SetTransform({ { 128 * 3, 120 * 3 }, { 256 * 3,240 * 3 } });
 }
 
-void UTitleBackGround::Tick(float _DeltaTime)
+void ATitleBackGround::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
 
