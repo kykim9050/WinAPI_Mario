@@ -20,6 +20,7 @@
     <ClInclude Include="BackGroundMap.h">
       <Filter>Stage1-1\Actor</Filter>
     </ClInclude>
+    <ClInclude Include="EnumClass.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp" />

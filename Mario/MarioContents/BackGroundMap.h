@@ -2,18 +2,18 @@
 #include <EngineCore/Actor.h>
 
 // Ό³Έν :
-class BackGroundMap : public AActor
+class ABackGroundMap : public AActor
 {
 public:
 	// constrcuter destructer
-	BackGroundMap();
-	~BackGroundMap();
+	ABackGroundMap();
+	~ABackGroundMap();
 
 	// delete Function
-	BackGroundMap(const BackGroundMap& _Other) = delete;
-	BackGroundMap(BackGroundMap&& _Other) noexcept = delete;
-	BackGroundMap& operator=(const BackGroundMap& _Other) = delete;
-	BackGroundMap& operator=(BackGroundMap&& _Other) noexcept = delete;
+	ABackGroundMap(const ABackGroundMap& _Other) = delete;
+	ABackGroundMap(ABackGroundMap&& _Other) noexcept = delete;
+	ABackGroundMap& operator=(const ABackGroundMap& _Other) = delete;
+	ABackGroundMap& operator=(ABackGroundMap&& _Other) noexcept = delete;
 
 protected:
 	void BeginPlay() override;

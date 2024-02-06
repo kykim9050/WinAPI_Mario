@@ -1,5 +1,6 @@
 ﻿#include "1_1StageLevel.h"
 #include "BackGroundMap.h"
+#include "PlayerMario.h"
 
 U1_1StageLevel::U1_1StageLevel()
 {
@@ -13,7 +14,8 @@ void U1_1StageLevel::BeginPlay()
 {
 	ULevel::BeginPlay();
 
-	BackGroundMap* Stage1_1Map = SpawnActor< BackGroundMap>();
+	ABackGroundMap* Stage1_1Map = SpawnActor< ABackGroundMap>();
+	APlayerMario* Mario = SpawnActor< APlayerMario>();
 }
 
 void U1_1StageLevel::Tick(float _DeltaTime)

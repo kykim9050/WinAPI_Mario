@@ -1,5 +1,6 @@
 #include "TitleBackGround.h"
 #include "ContentsCore.h"
+#include "EnumClass.h"
 
 ATitleBackGround::ATitleBackGround()
 {
@@ -13,7 +14,7 @@ void ATitleBackGround::BeginPlay()
 {
 	AActor::BeginPlay();
 
-	UImageRenderer* TitleBackGroundRenderer = CreateImageRenderer();
+	UImageRenderer* TitleBackGroundRenderer = CreateImageRenderer(static_cast<int>(TitleRenderOrder::BackGroundMap));
 
 	TitleBackGroundRenderer->SetImage("Mario_Title_Background.png");
 
