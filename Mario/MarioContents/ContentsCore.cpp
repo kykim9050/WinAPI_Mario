@@ -40,6 +40,7 @@ void ContentsCore::BeginPlay()
 
 	UEngineResourcesManager::GetInst().CuttingImage("TitleCoin.png", 5, 1);
 
+
 	CreateLevel<UTitleLevel>("TitleLevel");
 	CreateLevel<U1_1StageLevel>("1_1StageLevel");
 
