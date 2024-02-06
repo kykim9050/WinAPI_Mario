@@ -178,6 +178,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="EnumClass.h" />
     <ClInclude Include="PlayerMario.h">
       <SubType>
       </SubType>

@@ -1,20 +1,20 @@
 ﻿#include "BackGroundMap.h"
 #include "EngineCore/EngineCore.h"
+#include "EnumClass.h"
 
-
-BackGroundMap::BackGroundMap()
+ABackGroundMap::ABackGroundMap()
 {
 }
 
-BackGroundMap::~BackGroundMap()
+ABackGroundMap::~ABackGroundMap()
 {
 }
 
-void BackGroundMap::BeginPlay()
+void ABackGroundMap::BeginPlay()
 {
 	AActor::BeginPlay();
 
-	UImageRenderer* Stage1_1BackGroundRenderer = CreateImageRenderer();
+	UImageRenderer* Stage1_1BackGroundRenderer = CreateImageRenderer(static_cast<int>(StageRenderOrder::BackGroundMap));
 
 	Stage1_1BackGroundRenderer->SetImage("1_1StageBackGroundMap.png");
 
@@ -25,7 +25,7 @@ void BackGroundMap::BeginPlay()
 }
 
 
-void BackGroundMap::Tick(float _DeltaTime)
+void ABackGroundMap::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
 

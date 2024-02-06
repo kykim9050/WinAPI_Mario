@@ -1,5 +1,6 @@
 ﻿#include "TitleCoin.h"
 #include "ContentsCore.h"
+#include "EnumClass.h"
 
 ATitleCoin::ATitleCoin()
 {
@@ -14,7 +15,7 @@ void ATitleCoin::BeginPlay()
 	AActor::BeginPlay();
 
 	// Title전용 RendererOrder Enum class만들어야 함
-	UImageRenderer* TitleCoinRenderer = CreateImageRenderer(1);
+	UImageRenderer* TitleCoinRenderer = CreateImageRenderer(static_cast<int>(TitleRenderOrder::Coin));
 	TitleCoinRenderer->SetImage("TitleCoin.png");
 	// 윈도우 사이즈 받아올 수 있도록 수정 필요
 
