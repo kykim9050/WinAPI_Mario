@@ -28,7 +28,20 @@ public:
 	virtual void BeginPlay() {};
 	virtual void Tick(float _DeltaTime) {};
 
+	/// <summary>
+	/// 레벨이 바뀌어서 처음으로 시작해야 하는 코드들을 나열
+	/// 리소스 로드, 액터 초기화등 가능
+	/// ULevel 클래스를 상속받으면 override로 사용 가능
+	/// </summary>
+	/// <param name="_PrevLevel"></param>
 	virtual void LevelStart(ULevel* _PrevLevel) {};
+
+	/// <summary>
+	/// 현재 레벨이 끝나는 순간 실행되어야 하는 코드들을 나열
+	/// 생성한 액터, 리스소 반환 등 가능
+	/// ULevel 클래스를 상속받으면 override로 사용 가능
+	/// </summary>
+	/// <param name="_NextLevel"></param>
 	virtual void LevelEnd(ULevel* _NextLevel) {};
 
 	template<typename ActorType>
@@ -40,17 +53,28 @@ public:
 		return NewActor;
 	}
 
+	/// <summary>
+	/// 카메라 위치좌표를 지정하는 함수
+	/// </summary>
+	/// <param name="_CameraPos"></param>
 	void SetCameraPos(FVector _CameraPos)
 	{
 		CameraPos = _CameraPos;
 	}
 
-
+	/// <summary>
+	/// 카메라의 위치에 인자로받은 위치좌표값을 더하는 함수
+	/// </summary>
+	/// <param name="_CameraPos"></param>
 	void AddCameraPos(FVector _CameraPos)
 	{
 		CameraPos += _CameraPos;
 	}
 
+	/// <summary>
+	/// 카메라의 위치 데이터를 받아오는 함수
+	/// </summary>
+	/// <returns></returns>
 	FVector GetCameraPos()
 	{
 		return CameraPos;
@@ -69,6 +93,12 @@ private:
 
 	std::map<int, std::list<UImageRenderer*>> Renderers;
 
+	/// <summary>
+	/// 카메라 좌표 관련 맴버변수
+	/// 특정 액터의 Pos가 변할때 함께 같은 값으로 변하면 해당 액터에 초점을 유지할 수 있다.
+	/// ImageRenderer의 Render 함수에서 모든 Renderer의 좌표에서 카메라의 좌표를 빼고 있다.
+	/// (좌표값이 이동하지 않는 Renderer들은 전부 camera만큼만 역으로 이동한다)
+	/// </summary>
 	FVector CameraPos = FVector::Zero;
 };
 

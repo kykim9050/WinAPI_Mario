@@ -97,6 +97,8 @@ void UImageRenderer::Render(float _DeltaTime)
 	ULevel* World = Actor->GetWorld();
 	FVector CameraPos = World->GetCameraPos();
 
+	// 모든 랜더링에서 카메라의 위치만큼 빼주는 것
+	// 카메라가 이동할때 배경이미지들이 이동하는 듯한 기능을 수행
 	RendererTrans.AddPosition(-CameraPos);
 
 	EWIndowImageType ImageType = Image->GetImageType();
