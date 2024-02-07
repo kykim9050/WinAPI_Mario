@@ -68,6 +68,14 @@ public:
 
 	void Cutting(int _X, int _Y);
 
+	/// <summary>
+	/// 특정 이미지에서 인자로 받은 _X, _Y의 위치의 색정보를 ColorBit(R,G,B,A) 자료형으로 받아온다.
+	/// 이미지 사이즈를 초과하는 _X, _Y좌표를 입력하면 세번째 인자인 _DefaultColor를 반환한다.
+	/// </summary>
+	/// <param name="_X"></param>
+	/// <param name="_Y"></param>
+	/// <param name="_DefaultColor"></param>
+	/// <returns></returns>
 	Color8Bit GetColor(int _X, int _Y, Color8Bit _DefaultColor);
 
 	EWIndowImageType GetImageType()
