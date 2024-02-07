@@ -1,5 +1,6 @@
 ﻿#include "PlayerMario.h"
 #include "EnumClass.h"
+#include <EnginePlatform/EngineInput.h>
 
 APlayerMario::APlayerMario()
 {
@@ -23,5 +24,25 @@ void APlayerMario::BeginPlay()
 void APlayerMario::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
+
+	if (EngineInput::IsPress(VK_LEFT))
+	{
+
+	}
+
+	if (EngineInput::IsPress(VK_RIGHT))
+	{
+
+	}
+
+	if (EngineInput::IsPress(VK_UP))
+	{
+	
+	}
+
+	if (EngineInput::IsPress(VK_DOWN))
+	{
+	
+	}
 
 }
