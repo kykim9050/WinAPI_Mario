@@ -44,6 +44,10 @@ public:
 		return Scale;
 	}
 
+	/// <summary>
+	/// 윈도우 창을 기준으로 마우스의 좌표를 받아오는 함수
+	/// </summary>
+	/// <returns></returns>
 	FVector GetMousePosition();
 
 protected:
