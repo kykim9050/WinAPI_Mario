@@ -55,6 +55,13 @@ public:
 
 	void TransCopy(UWindowImage* _CopyImage, const FTransform& _Trans, int _Index, Color8Bit _Color = Color8Bit::Black);
 
+	/// <summary>
+	/// 특정 이미지(PNG)를 랜더링 하되 Alpha값(투명도) 처리 가능
+	/// </summary>
+	/// <param name="_CopyImage"></param>
+	/// <param name="_Trans"></param>
+	/// <param name="_Index"></param>
+	/// <param name="_Color"></param>
 	void AlphaCopy(UWindowImage* _CopyImage, const FTransform& _Trans, int _Index, Color8Bit _Color = Color8Bit::Black);
 
 	bool Create(UWindowImage* _Image, const FVector& _Scale);
