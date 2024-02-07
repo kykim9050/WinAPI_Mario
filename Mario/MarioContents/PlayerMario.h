@@ -21,5 +21,7 @@ protected:
 
 private:
 
+	float PVelocity = 500.0f;
+
 };
 
