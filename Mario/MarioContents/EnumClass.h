@@ -11,6 +11,7 @@ enum class EndingRenderOrder
 	BackGroundMap,
 	UI,
 	Message,
+	MessageHide,
 };
 
 enum class StageRenderOrder

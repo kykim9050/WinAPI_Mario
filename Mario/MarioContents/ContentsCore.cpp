@@ -40,8 +40,7 @@ void UContentsCore::BeginPlay()
 	}
 
 	UEngineResourcesManager::GetInst().CuttingImage("TitleCoin.png", 6, 1);
-	UEngineResourcesManager::GetInst().CuttingImage("Mario_Ending_BackGround_Message.png", 1, 5);
-
+	//UEngineResourcesManager::GetInst().CuttingImage("Mario_Ending_BackGround_Message.png", 1, 5);
 
 	CreateLevel<UTitleLevel>("TitleLevel");
 	CreateLevel<U1_1StageLevel>("1_1StageLevel");
