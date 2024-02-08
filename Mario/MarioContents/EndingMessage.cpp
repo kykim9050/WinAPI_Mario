@@ -18,7 +18,7 @@ void AEndingMessage::BeginPlay()
 	FVector ImageScale = MessageRenderer->GetImage()->GetScale();
 	MessageRenderer->SetTransform({ {ImageScale.ihX(), ImageScale.ihY()},{ImageScale} });
 
-	MessageRenderer->CreateAnimation("Ending_Message", "Mario_Ending_BackGround_Message.png", 0, 4, 1, false);
+	MessageRenderer->CreateAnimation("Ending_Message", "Mario_Ending_BackGround_Message.png", 0, 4, 1.0f, false);
 	MessageRenderer->ChangeAnimation("Ending_Message");
 }
 

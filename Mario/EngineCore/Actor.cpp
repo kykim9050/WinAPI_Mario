@@ -24,7 +24,6 @@ AActor::~AActor()
 void AActor::Tick(float _DeltaTime)
 {
 	UTickObject::Tick(_DeltaTime);
-	DestroyUpdate(_DeltaTime);
 }
 
 UImageRenderer* AActor::CreateImageRenderer(int Order /*= 0*/)
@@ -55,5 +54,15 @@ void AActor::DestroyUpdate(float _DeltaTime)
 	for (UImageRenderer* Renderer : Renderers)
 	{
 		Renderer->DestroyUpdate(_DeltaTime);
+	}
+}
+
+void AActor::ActiveUpdate(float _DeltaTime)
+{
+	UTickObject::ActiveUpdate(_DeltaTime);
+
+	for (UImageRenderer* Renderer : Renderers)
+	{
+		Renderer->ActiveUpdate(_DeltaTime);
 	}
 }

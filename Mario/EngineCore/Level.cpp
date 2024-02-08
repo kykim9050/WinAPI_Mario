@@ -32,6 +32,9 @@ void ULevel::LevelTick(float _DeltaTime)
 		std::list<AActor*>& ActorList = OrderListPair.second;
 		for (AActor* Actor : ActorList)
 		{
+			Actor->ActiveUpdate(_DeltaTime);
+			Actor->DestroyUpdate(_DeltaTime);
+
 			if (false == Actor->IsActive())
 			{
 				continue;

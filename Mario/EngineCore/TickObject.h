@@ -26,9 +26,17 @@ public:
 		IsActiveValue = false;
 	}
 
-	void SetActive(bool _Active)
+	void SetActive(bool _Active, float _ActiveTime = 0.0f)
 	{
-		IsActiveValue = _Active;
+		ActiveTime = _ActiveTime;
+
+		if (true == _Active && 0.0f == ActiveTime)
+		{
+			IsActiveValue = _Active;
+			return;
+		}
+
+		IsActiveValue = false;
 	}
 
 	bool IsActive()
@@ -56,6 +64,23 @@ public:
 	virtual void SetOrder(int _Order)
 	{
 		Order = _Order;
+	}
+
+	virtual void ActiveUpdate(float _DeltaTime)
+	{
+		if (0.0f == ActiveTime)
+		{
+			IsActiveValue = true;
+			return;
+		}
+
+		ActiveTime -= _DeltaTime;
+
+		if (0.0f >= ActiveTime)
+		{
+			ActiveTime = 0.0f;
+			IsActiveValue = true;
+		}
 	}
 
 	virtual void DestroyUpdate(float _DeltaTime)
@@ -86,8 +111,9 @@ private:
 	int Order = 0;
 	bool IsDestroyUpdate = false;
 	float DestroyTime = 0.0f;
-	bool IsActiveValue = true;
 	bool IsDestroyValue = false;
 
+	float ActiveTime = 0.0f;
+	bool IsActiveValue = true;
 };
 
