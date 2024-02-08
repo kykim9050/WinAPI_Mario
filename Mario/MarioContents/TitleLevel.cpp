@@ -23,12 +23,12 @@ void UTitleLevel::Tick(float _DeltaTime)
 {
 	ULevel::Tick(_DeltaTime);
 
-	if (EngineInput::IsDown(VK_RETURN))
+	if (UEngineInput::IsDown(VK_RETURN))
 	{
 		GEngine->ChangeLevel("1_1StageLevel");
 	}
 
-	if (EngineInput::IsDown(VK_SPACE))
+	if (UEngineInput::IsDown(VK_SPACE))
 	{
 		GEngine->ChangeLevel("EndingLevel");
 	}
