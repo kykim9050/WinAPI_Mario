@@ -7,19 +7,19 @@
 #include <EngineCore/EngineResourcesManager.h>
 
 // 윈도우 크기 배율
-const int ContentsCore::WindowSizeMulValue = 3;
+const int UContentsCore::WindowSizeMulValue = 3;
 
-ContentsCore::ContentsCore()
+UContentsCore::UContentsCore()
 	: UEngineCore()
 {
 }
 
-ContentsCore::~ContentsCore()
+UContentsCore::~UContentsCore()
 {
 }
 
 // 프로그램 시작
-void ContentsCore::BeginPlay()
+void UContentsCore::BeginPlay()
 {
 	UEngineCore::BeginPlay();
 
@@ -50,13 +50,13 @@ void ContentsCore::BeginPlay()
 	ChangeLevel("TitleLevel");
 }
 
-void ContentsCore::Tick(float _DeltaTime)
+void UContentsCore::Tick(float _DeltaTime)
 {
 	UEngineCore::Tick(_DeltaTime);
 
 }
 
-void ContentsCore::End()
+void UContentsCore::End()
 {
 	UEngineCore::End();
 }
