@@ -13,7 +13,8 @@ void AEndingMessage::BeginPlay()
 {
 	AActor::BeginPlay();
 
-	UImageRenderer* MessageRenderer = CreateImageRenderer(static_cast<int>(TitleRenderOrder::Coin));
+	UImageRenderer* MessageRenderer = CreateImageRenderer(static_cast<int>(EndingRenderOrder::Message));
+	
 	MessageRenderer->SetImage("Mario_Ending_BackGround_Message.png");
 	FVector ImageScale = MessageRenderer->GetImage()->GetScale();
 	MessageRenderer->SetTransform({ {ImageScale.ihX(), ImageScale.ihY()},{ImageScale} });
