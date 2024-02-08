@@ -27,4 +27,9 @@ void UTitleLevel::Tick(float _DeltaTime)
 	{
 		GEngine->ChangeLevel("1_1StageLevel");
 	}
+
+	if (EngineInput::IsDown(VK_SPACE))
+	{
+		GEngine->ChangeLevel("EndingLevel");
+	}
 }
