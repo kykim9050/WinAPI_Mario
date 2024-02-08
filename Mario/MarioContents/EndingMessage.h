@@ -20,7 +20,12 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 private:
-	int MessageNum = 5;
+	const int MessageNum = 5;
+	int CurMessageNum = MessageNum;
+	float MessageOutPutIntervalTime = 1.0f;
+	UImageRenderer* MessageHideRenderer = nullptr;
+	FVector MessageHideScale;
 
+	int MessageVal = 1;
 };
 
