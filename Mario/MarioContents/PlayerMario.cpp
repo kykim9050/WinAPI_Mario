@@ -28,25 +28,25 @@ void APlayerMario::Tick(float _DeltaTime)
 
 	
 
-	if (EngineInput::IsPress(VK_LEFT))
+	if (UEngineInput::IsPress(VK_LEFT))
 	{
 		AddActorLocation(FVector::Left * PVelocity * _DeltaTime);
 		GetWorld()->AddCameraPos(FVector::Left * PVelocity * _DeltaTime);
 	}
 
-	if (EngineInput::IsPress(VK_RIGHT))
+	if (UEngineInput::IsPress(VK_RIGHT))
 	{
 		AddActorLocation(FVector::Right * PVelocity * _DeltaTime);
 		GetWorld()->AddCameraPos(FVector::Right * PVelocity * _DeltaTime);
 	}
 
-	if (EngineInput::IsPress(VK_UP))
+	if (UEngineInput::IsPress(VK_UP))
 	{
 		AddActorLocation(FVector::Up * PVelocity * _DeltaTime);
 		GetWorld()->AddCameraPos(FVector::Up * PVelocity * _DeltaTime);
 	}
 
-	if (EngineInput::IsPress(VK_DOWN))
+	if (UEngineInput::IsPress(VK_DOWN))
 	{
 		AddActorLocation(FVector::Down * PVelocity * _DeltaTime);
 		GetWorld()->AddCameraPos(FVector::Down * PVelocity * _DeltaTime);
