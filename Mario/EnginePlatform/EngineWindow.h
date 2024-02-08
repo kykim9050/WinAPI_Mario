@@ -44,6 +44,11 @@ public:
 		return Scale;
 	}
 
+	void SetClearColor(Color8Bit _Color)
+	{
+		_Color.A = 0;
+		ClearColor = _Color;
+	}
 	/// <summary>
 	/// 윈도우 창을 기준으로 마우스의 좌표를 받아오는 함수
 	/// </summary>
@@ -56,6 +61,8 @@ private:
 	static bool WindowLive;
 	static HINSTANCE hInstance;
 	static LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
+
+	Color8Bit ClearColor = Color8Bit::WhiteA;
 
 	HWND hWnd = nullptr;
 
