@@ -19,6 +19,7 @@ void AEndingBackGround::BeginPlay()
 	Renderer->SetImage("Mario_Ending_Background.png");
 	FVector ImageScale = Renderer->GetImage()->GetScale();
 	Renderer->SetTransform({ {ImageScale.ihX(), ImageScale.ihY()},{ImageScale}});
+	
 }
 
 void AEndingBackGround::Tick(float _DeltaTime)
