@@ -92,6 +92,9 @@ public:
 		return Image;
 	}
 
+	/// <summary>
+	/// Camera 효과의 영향을 받지 않게 하는 함수
+	/// </summary>
 	void CameraEffectOff()
 	{
 		CameraEffect = false;
