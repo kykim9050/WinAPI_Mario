@@ -6,6 +6,13 @@ enum class TitleRenderOrder
 	Coin,
 };
 
+enum class EndingRenderOrder
+{
+	BackGroundMap,
+	UI,
+	Message,
+};
+
 enum class StageRenderOrder
 {
 	BackGroundMap,
