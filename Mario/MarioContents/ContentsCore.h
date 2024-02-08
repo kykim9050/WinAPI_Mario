@@ -2,18 +2,18 @@
 #include <EngineCore\EngineCore.h>
 
 // Ό³Έν :
-class ContentsCore : public UEngineCore
+class UContentsCore : public UEngineCore
 {
 public:
 	// constrcuter destructer
-	ContentsCore();
-	~ContentsCore();
+	UContentsCore();
+	~UContentsCore();
 
 	// delete Function
-	ContentsCore(const ContentsCore& _Other) = delete;
-	ContentsCore(ContentsCore&& _Other) noexcept = delete;
-	ContentsCore& operator=(const ContentsCore& _Other) = delete;
-	ContentsCore& operator=(ContentsCore&& _Other) noexcept = delete;
+	UContentsCore(const UContentsCore& _Other) = delete;
+	UContentsCore(UContentsCore&& _Other) noexcept = delete;
+	UContentsCore& operator=(const UContentsCore& _Other) = delete;
+	UContentsCore& operator=(UContentsCore&& _Other) noexcept = delete;
 
 
 protected:
