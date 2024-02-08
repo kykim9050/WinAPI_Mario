@@ -178,6 +178,14 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="EndingBackGround.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="EndingLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="EnumClass.h" />
     <ClInclude Include="PlayerMario.h">
       <SubType>
@@ -203,6 +211,14 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="1_1StageLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="EndingBackGround.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="EndingLevel.cpp">
       <SubType>
       </SubType>
     </ClCompile>
