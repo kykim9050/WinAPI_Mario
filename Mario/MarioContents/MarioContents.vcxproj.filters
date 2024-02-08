@@ -27,6 +27,9 @@
     <ClInclude Include="EndingBackGround.h">
       <Filter>Ending\Actor</Filter>
     </ClInclude>
+    <ClInclude Include="EndingMessage.h">
+      <Filter>Ending\Actor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp" />
@@ -52,6 +55,9 @@
       <Filter>Ending</Filter>
     </ClCompile>
     <ClCompile Include="EndingBackGround.cpp">
+      <Filter>Ending\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="EndingMessage.cpp">
       <Filter>Ending\Actor</Filter>
     </ClCompile>
   </ItemGroup>
