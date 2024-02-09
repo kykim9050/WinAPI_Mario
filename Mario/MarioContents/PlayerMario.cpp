@@ -17,16 +17,20 @@ void APlayerMario::BeginPlay()
 
 	UImageRenderer* MarioRenderer = CreateImageRenderer(static_cast<int>(StageRenderOrder::Mario));
 
-	MarioRenderer->SetImage("Mario_Stop_Right.png");
-	MarioRenderer->SetTransform({ {300, 300}, {200, 200} });
+	MarioRenderer->SetImage("Mario_Right.png");
+	FVector MarioScale = MarioRenderer->GetImage()->GetScale();
 
+	// 수정 필요 : 마리오 초기 위치
+	MarioRenderer->SetTransform({ {140,624}, {MarioScale.iX() / 5 * 3, MarioScale.iY() / 8 * 3} });
+	MarioRenderer->CreateAnimation("IDLE", "Mario_Right.png", 0, 0, 0.1f, true);
+	MarioRenderer->ChangeAnimation("IDLE");
 }
 
 void APlayerMario::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
 
-	
+
 
 	if (UEngineInput::IsPress(VK_LEFT))
 	{
