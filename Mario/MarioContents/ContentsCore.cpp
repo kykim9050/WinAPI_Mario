@@ -9,6 +9,7 @@
 // 윈도우 크기 배율
 const int UContentsCore::WindowSizeMulValue = 3;
 
+
 UContentsCore::UContentsCore()
 	: UEngineCore()
 {
@@ -40,7 +41,9 @@ void UContentsCore::BeginPlay()
 	}
 
 	UEngineResourcesManager::GetInst().CuttingImage("TitleCoin.png", 6, 1);
-	//UEngineResourcesManager::GetInst().CuttingImage("Mario_Ending_BackGround_Message.png", 1, 5);
+	UEngineResourcesManager::GetInst().CuttingImage("Mario_Right.png", 5, 8);
+	UEngineResourcesManager::GetInst().CuttingImage("Mario_Left.png", 5, 8);
+
 
 	CreateLevel<UTitleLevel>("TitleLevel");
 	CreateLevel<U1_1StageLevel>("1_1StageLevel");

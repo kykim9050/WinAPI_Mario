@@ -1,6 +1,7 @@
 #pragma once
 #include <EngineCore\EngineCore.h>
 
+
 // Ό³Έν :
 class UContentsCore : public UEngineCore
 {
@@ -15,6 +16,7 @@ public:
 	UContentsCore& operator=(const UContentsCore& _Other) = delete;
 	UContentsCore& operator=(UContentsCore&& _Other) noexcept = delete;
 
+	static const int WindowSizeMulValue;
 
 protected:
 	void BeginPlay() override;
@@ -22,7 +24,6 @@ protected:
 	void End() override;
 
 private:
-	static const int WindowSizeMulValue;
 
 };
 
