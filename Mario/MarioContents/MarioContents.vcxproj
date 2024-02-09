@@ -191,6 +191,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="EnumClass.h" />
+    <ClInclude Include="InGameValue.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="PlayerMario.h">
       <SubType>
       </SubType>
@@ -227,6 +231,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="EndingMessage.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="InGameValue.cpp">
       <SubType>
       </SubType>
     </ClCompile>

@@ -20,7 +20,6 @@
     <ClInclude Include="BackGroundMap.h">
       <Filter>Stage1-1\Actor</Filter>
     </ClInclude>
-    <ClInclude Include="EnumClass.h" />
     <ClInclude Include="EndingLevel.h">
       <Filter>Ending</Filter>
     </ClInclude>
@@ -29,6 +28,12 @@
     </ClInclude>
     <ClInclude Include="EndingMessage.h">
       <Filter>Ending\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="InGameValue.h">
+      <Filter>ContentsHelper</Filter>
+    </ClInclude>
+    <ClInclude Include="EnumClass.h">
+      <Filter>ContentsHelper</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -60,6 +65,9 @@
     <ClCompile Include="EndingMessage.cpp">
       <Filter>Ending\Actor</Filter>
     </ClCompile>
+    <ClCompile Include="InGameValue.cpp">
+      <Filter>ContentsHelper</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Title">
@@ -82,6 +90,9 @@
     </Filter>
     <Filter Include="Ending\Actor">
       <UniqueIdentifier>{6d8014be-edbd-45fe-87e8-92981e6a5f76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ContentsHelper">
+      <UniqueIdentifier>{684d1bd9-ab39-4302-b267-1595f4ea6054}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

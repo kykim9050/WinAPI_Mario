@@ -2,6 +2,7 @@
 #include "EnumClass.h"
 #include <EnginePlatform/EngineInput.h>
 #include <EngineBase/EngineMath.h>
+#include "InGameValue.h"
 
 APlayerMario::APlayerMario()
 {
@@ -21,7 +22,7 @@ void APlayerMario::BeginPlay()
 	FVector MarioScale = MarioRenderer->GetImage()->GetScale();
 
 	// 수정 필요 : 마리오 초기 위치
-	MarioRenderer->SetTransform({ {140,624}, {MarioScale.iX() / 5 * 3, MarioScale.iY() / 8 * 3} });
+	MarioRenderer->SetTransform({ {140,624}, {MarioScale.iX() / UInGameValue::MarioRightImageXValue * UInGameValue::WindowSizeMulValue, MarioScale.iY() / UInGameValue::MarioRightImageYValue * UInGameValue::WindowSizeMulValue} });
 	MarioRenderer->CreateAnimation("IDLE", "Mario_Right.png", 0, 0, 0.1f, true);
 	MarioRenderer->ChangeAnimation("IDLE");
 }

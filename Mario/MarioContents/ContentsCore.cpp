@@ -5,9 +5,9 @@
 #include <EngineBase/EngineDirectory.h>
 #include <EngineBase/EngineFile.h>
 #include <EngineCore/EngineResourcesManager.h>
+#include "InGameValue.h"
 
-// 윈도우 크기 배율
-const int UContentsCore::WindowSizeMulValue = 3;
+
 
 
 UContentsCore::UContentsCore()
@@ -26,7 +26,7 @@ void UContentsCore::BeginPlay()
 
 
 	// 마리오용 윈도우 크기 설정
-	MainWindow.SetWindowScale({ 256 * WindowSizeMulValue, 240 * WindowSizeMulValue });
+	MainWindow.SetWindowScale({ UInGameValue::MainWindowXScale * UInGameValue::WindowSizeMulValue, UInGameValue::MainWindowYScale * UInGameValue::WindowSizeMulValue });
 
 
 	UEngineDirectory ResourcesDir = UEngineDirectory();
@@ -40,9 +40,9 @@ void UContentsCore::BeginPlay()
 		UEngineResourcesManager::GetInst().LoadImg(CurFIle.GetFullPath());
 	}
 
-	UEngineResourcesManager::GetInst().CuttingImage("TitleCoin.png", 6, 1);
-	UEngineResourcesManager::GetInst().CuttingImage("Mario_Right.png", 5, 8);
-	UEngineResourcesManager::GetInst().CuttingImage("Mario_Left.png", 5, 8);
+	UEngineResourcesManager::GetInst().CuttingImage("TitleCoin.png", UInGameValue::TitleCoinImgX, UInGameValue::TitleCoinImgY);
+	UEngineResourcesManager::GetInst().CuttingImage("Mario_Right.png", UInGameValue::MarioRightImageXValue, UInGameValue::MarioRightImageYValue);
+	UEngineResourcesManager::GetInst().CuttingImage("Mario_Left.png", UInGameValue::MarioLeftImageXValue, UInGameValue::MarioLeftImageYValue);
 
 
 	CreateLevel<UTitleLevel>("TitleLevel");
