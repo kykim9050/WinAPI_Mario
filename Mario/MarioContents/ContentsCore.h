@@ -16,8 +16,6 @@ public:
 	UContentsCore& operator=(const UContentsCore& _Other) = delete;
 	UContentsCore& operator=(UContentsCore&& _Other) noexcept = delete;
 
-	static const int WindowSizeMulValue;
-
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
