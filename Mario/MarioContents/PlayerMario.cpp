@@ -34,136 +34,116 @@ void APlayerMario::BeginPlay()
 	MarioState = EPlayerState::Idle;
 }
 
-void APlayerMario::FreeMove(float _DeltaTime)
+
+void APlayerMario::StateChange(EPlayerState _PlayerState)
 {
-	if (UEngineInput::IsPress(VK_LEFT))
+	if (MarioState != _PlayerState)
 	{
-		AddActorLocation(FVector::Left * PVelocity * _DeltaTime);
-		GetWorld()->AddCameraPos(FVector::Left * PVelocity * _DeltaTime);
+		switch (_PlayerState)
+		{
+		case EPlayerState::Idle:
+			IdleStart();
+			break;
+		case EPlayerState::Move:
+			MoveStart();
+			break;
+		default:
+			break;
+		}
 	}
 
-	if (UEngineInput::IsPress(VK_RIGHT))
-	{
-		AddActorLocation(FVector::Right * PVelocity * _DeltaTime);
-		GetWorld()->AddCameraPos(FVector::Right * PVelocity * _DeltaTime);
-	}
-
-	if (UEngineInput::IsPress(VK_UP))
-	{
-		AddActorLocation(FVector::Up * PVelocity * _DeltaTime);
-		GetWorld()->AddCameraPos(FVector::Up * PVelocity * _DeltaTime);
-	}
-
-	if (UEngineInput::IsPress(VK_DOWN))
-	{
-		AddActorLocation(FVector::Down * PVelocity * _DeltaTime);
-		GetWorld()->AddCameraPos(FVector::Down * PVelocity * _DeltaTime);
-	}
+	SetMarioState(_PlayerState);
 }
+
+//void APlayerMario::FreeMove(float _DeltaTime)
+//{
+//	if (UEngineInput::IsPress(VK_LEFT))
+//	{
+//		AddActorLocation(FVector::Left * PVelocity * _DeltaTime);
+//		GetWorld()->AddCameraPos(FVector::Left * PVelocity * _DeltaTime);
+//	}
+//
+//	if (UEngineInput::IsPress(VK_RIGHT))
+//	{
+//		AddActorLocation(FVector::Right * PVelocity * _DeltaTime);
+//		GetWorld()->AddCameraPos(FVector::Right * PVelocity * _DeltaTime);
+//	}
+//
+//	if (UEngineInput::IsPress(VK_UP))
+//	{
+//		AddActorLocation(FVector::Up * PVelocity * _DeltaTime);
+//		GetWorld()->AddCameraPos(FVector::Up * PVelocity * _DeltaTime);
+//	}
+//
+//	if (UEngineInput::IsPress(VK_DOWN))
+//	{
+//		AddActorLocation(FVector::Down * PVelocity * _DeltaTime);
+//		GetWorld()->AddCameraPos(FVector::Down * PVelocity * _DeltaTime);
+//	}
+//}
+
 
 void APlayerMario::Idle(float _DeltaTime)
 {
-
-	if (UEngineInput::IsPress(VK_LEFT))
+	
+	if (UEngineInput::IsPress(VK_LEFT) || UEngineInput::IsPress(VK_RIGHT))
 	{
-		SetMarioDir(EPlayerDir::Left);
-		MoveStart(_DeltaTime);
-		// Left Move
-		// 애니메이션 변경 필요
-	}
-	if (UEngineInput::IsPress(VK_RIGHT))
-	{
-		SetMarioDir(EPlayerDir::Right);
-		MoveStart(_DeltaTime);
-		// Right Move
-		// 애니메이션 변경 필요
+		StateChange(EPlayerState::Move);
+		return;
 	}
 
 }
 
 void APlayerMario::Move(float _DeltaTime)
 {
-	// 수정 필요 : 캐릭터 방향 호출하는거 따로 함수로 만들고
+	if ((UEngineInput::IsFree(VK_LEFT) && UEngineInput::IsFree(VK_RIGHT)))
+	{
+		StateChange(EPlayerState::Idle);
+		return;
+	}
 
 	if (UEngineInput::IsPress(VK_LEFT))
 	{
-		SetMarioDir(EPlayerDir::Left);
 		AddActorLocation(FVector::Left * PVelocity * _DeltaTime);
 		GetWorld()->AddCameraPos(FVector::Left * PVelocity * _DeltaTime);
 	}
+	
 	if (UEngineInput::IsPress(VK_RIGHT))
 	{
-		SetMarioDir(EPlayerDir::Right);
 		AddActorLocation(FVector::Right * PVelocity * _DeltaTime);
 		GetWorld()->AddCameraPos(FVector::Right * PVelocity * _DeltaTime);
 	}
+	
 
 }
 
-void APlayerMario::FreeMoveStart(float _DeltaTime)
-{
 
-	FreeMove(_DeltaTime);
-}
-
-void APlayerMario::CameraMoveStart(float _DeltaTime)
-{
-	int a = 0;
-}
-
-void APlayerMario::IdleStart(float _DeltaTime)
+void APlayerMario::IdleStart()
 {
 	if (EPlayerDir::Right == MarioDir)
 	{
 		MarioRenderer->ChangeAnimation("Idle_Right");
 	}
-
-	if (EPlayerDir::Left == MarioDir)
-	{
-		MarioRenderer->ChangeAnimation("Idle_Left");
-	}
-
-	Idle(_DeltaTime);
 }
 
-void APlayerMario::MoveStart(float _DeltaTime)
+void APlayerMario::MoveStart()
 {
 	if (EPlayerDir::Right == MarioDir)
 	{
 		MarioRenderer->ChangeAnimation("Move_Right");
 	}
-
-	if (EPlayerDir::Left == MarioDir)
-	{
-		MarioRenderer->ChangeAnimation("Move_Left");
-	}
-
-	Move(_DeltaTime);
 }
 
-void APlayerMario::JumpStart(float _DeltaTime)
-{
-	int a = 0;
-}
 
 void APlayerMario::StateUpdate(float _DeltaTime)
 {
 	switch (MarioState)
 	{
-	case EPlayerState::FreeMove:
-		FreeMoveStart(_DeltaTime);
-		break;
-	case EPlayerState::CameraMove:
-		// CameraMoveStart(_DeltaTime);
-		break;
 	case EPlayerState::Idle:
-		IdleStart(_DeltaTime);
+		Idle(_DeltaTime);
 		break;
 	case EPlayerState::Move:
-		MoveStart(_DeltaTime);
-		break;
-	case EPlayerState::Jump:
-		JumpStart(_DeltaTime);
+		Move(_DeltaTime);
 		break;
 	default:
 		break;

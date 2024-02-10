@@ -21,11 +21,9 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 private:
-	void FreeMoveStart(float _DeltaTime);
-	void CameraMoveStart(float _DeltaTime);
-	void IdleStart(float _DeltaTime);
-	void MoveStart(float _DeltaTime);
-	void JumpStart(float _DeltaTime);
+	void IdleStart();
+	void MoveStart();
+	void StateChange(EPlayerState _PlayerState);
 
 	void FreeMove(float _DeltaTime);
 	void StateUpdate(float _DeltaTime);
@@ -35,6 +33,11 @@ private:
 	void SetMarioDir(const EPlayerDir _Dir)
 	{
 		MarioDir = _Dir;
+	}
+	
+	void SetMarioState(const EPlayerState _State)
+	{
+		MarioState = _State;
 	}
 
 	EPlayerState MarioState = EPlayerState::None;
