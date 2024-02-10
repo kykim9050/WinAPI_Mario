@@ -58,6 +58,19 @@ void APlayerMario::FreeMove(float _DeltaTime)
 
 void APlayerMario::Idle(float _DeltaTime)
 {
+
+	if (UEngineInput::IsPress(VK_LEFT))
+	{
+		// Left Move
+		// 애니메이션 변경 필요
+	}
+
+	if (UEngineInput::IsPress(VK_RIGHT))
+	{
+		// Right Move
+		// 애니메이션 변경 필요
+	}
+
 }
 
 void APlayerMario::StateUpdate(float _DeltaTime)
