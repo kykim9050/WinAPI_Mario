@@ -16,15 +16,15 @@ void APlayerMario::BeginPlay()
 {
 	AActor::BeginPlay();
 
-	UImageRenderer* MarioRenderer = CreateImageRenderer(static_cast<int>(StageRenderOrder::Mario));
+	MarioRenderer = CreateImageRenderer(static_cast<int>(StageRenderOrder::Mario));
 
 	MarioRenderer->SetImage("Mario_Right.png");
 	FVector MarioScale = MarioRenderer->GetImage()->GetScale();
 
 	// 수정 필요 : 마리오 초기 위치
 	MarioRenderer->SetTransform({ {140,624}, {MarioScale.iX() / UInGameValue::MarioRightImageXValue * UInGameValue::WindowSizeMulValue, MarioScale.iY() / UInGameValue::MarioRightImageYValue * UInGameValue::WindowSizeMulValue} });
-	MarioRenderer->CreateAnimation("Idle", "Mario_Right.png", 0, 0, 0.1f, true);
-	MarioRenderer->ChangeAnimation("Idle");
+	MarioRenderer->CreateAnimation("Idle_Right", "Mario_Right.png", 0, 0, 0.1f, true);
+	MarioRenderer->CreateAnimation("Idle_Left", "Mario_Left.png", 0, 0, 0.1f, true);
 
 	MarioState = PlayerState::Idle;
 }
@@ -58,19 +58,38 @@ void APlayerMario::FreeMove(float _DeltaTime)
 
 void APlayerMario::Idle(float _DeltaTime)
 {
+	if (EPlayerDir::Right == MarioDir)
+	{
+		MarioRenderer->ChangeAnimation("Idle_Right");
+	}
+
+	if (EPlayerDir::Left == MarioDir)
+	{
+		MarioRenderer->ChangeAnimation("Idle_Left");
+	}
+
+
 
 	if (UEngineInput::IsPress(VK_LEFT))
 	{
+		SetMarioDir(EPlayerDir::Left);
+		Move(_DeltaTime);
 		// Left Move
 		// 애니메이션 변경 필요
 	}
-
 	if (UEngineInput::IsPress(VK_RIGHT))
 	{
+		SetMarioDir(EPlayerDir::Right);
+		Move(_DeltaTime);
 		// Right Move
 		// 애니메이션 변경 필요
 	}
 
+}
+
+void APlayerMario::Move(float _DeltaTime)
+{
+	int a = 0;
 }
 
 void APlayerMario::StateUpdate(float _DeltaTime)

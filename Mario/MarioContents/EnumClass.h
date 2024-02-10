@@ -42,3 +42,10 @@ enum class PlayerState
 	Move,
 	Jump,
 };
+
+enum class EPlayerDir
+{
+	None,
+	Left,
+	Right,
+};
