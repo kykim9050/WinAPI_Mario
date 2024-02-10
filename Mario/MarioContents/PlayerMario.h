@@ -25,10 +25,18 @@ private:
 	void FreeMove(float _DeltaTime);
 	void StateUpdate(float _DeltaTime);
 	void Idle(float _DeltaTime);
+	void Move(float _DeltaTime);
+	void SetMarioDir(const EPlayerDir _Dir)
+	{
+		MarioDir = _Dir;
+	}
+
+
 
 	PlayerState MarioState = PlayerState::None;
+	EPlayerDir MarioDir = EPlayerDir::Right;
 	float PVelocity = 500.0f;
-
+	UImageRenderer* MarioRenderer = nullptr;
 
 };
 
