@@ -14,7 +14,7 @@ void ABackGroundMap::BeginPlay()
 {
 	AActor::BeginPlay();
 
-	UImageRenderer* Stage1_1BackGroundRenderer = CreateImageRenderer(static_cast<int>(StageRenderOrder::BackGroundMap));
+	UImageRenderer* Stage1_1BackGroundRenderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::BackGroundMap));
 
 	
 	Stage1_1BackGroundRenderer->SetImage("1_1StageBackGroundMap.png");

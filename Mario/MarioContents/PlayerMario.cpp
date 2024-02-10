@@ -16,7 +16,7 @@ void APlayerMario::BeginPlay()
 {
 	AActor::BeginPlay();
 
-	MarioRenderer = CreateImageRenderer(static_cast<int>(StageRenderOrder::Mario));
+	MarioRenderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::Mario));
 
 	MarioRenderer->SetImage("Mario_Right.png");
 	FVector MarioScale = MarioRenderer->GetImage()->GetScale();
@@ -31,7 +31,7 @@ void APlayerMario::BeginPlay()
 	MarioRenderer->CreateAnimation("Move_Left", "Mario_Left.png", 1, 3, 0.1f, true);
 
 
-	MarioState = PlayerState::Idle;
+	MarioState = EPlayerState::Idle;
 }
 
 void APlayerMario::FreeMove(float _DeltaTime)
@@ -127,17 +127,17 @@ void APlayerMario::StateUpdate(float _DeltaTime)
 {
 	switch (MarioState)
 	{
-	case PlayerState::FreeMove:
+	case EPlayerState::FreeMove:
 		break;
-	case PlayerState::CameraMove:
+	case EPlayerState::CameraMove:
 		break;
-	case PlayerState::Idle:
+	case EPlayerState::Idle:
 		Idle(_DeltaTime);
 		break;
-	case PlayerState::Move:
+	case EPlayerState::Move:
 		Move(_DeltaTime);
 		break;
-	case PlayerState::Jump:
+	case EPlayerState::Jump:
 		break;
 	default:
 		break;

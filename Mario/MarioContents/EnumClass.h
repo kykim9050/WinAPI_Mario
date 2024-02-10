@@ -3,7 +3,7 @@
 /// <summary>
 /// 타이틀 랜더링 순서
 /// </summary>
-enum class TitleRenderOrder
+enum class ETitleRenderOrder
 {
 	BackGroundMap,
 	Coin,
@@ -12,7 +12,7 @@ enum class TitleRenderOrder
 /// <summary>
 /// 엔딩 랜더링 순서
 /// </summary>
-enum class EndingRenderOrder
+enum class EEndingRenderOrder
 {
 	BackGroundMap,
 	UI,
@@ -23,7 +23,7 @@ enum class EndingRenderOrder
 /// <summary>
 /// 스테이지 랜더러 순서
 /// </summary>
-enum class StageRenderOrder
+enum class EStageRenderOrder
 {
 	BackGroundMap,
 	Mario,
@@ -33,7 +33,7 @@ enum class StageRenderOrder
 /// <summary>
 /// 플레이어의 상태
 /// </summary>
-enum class PlayerState
+enum class EPlayerState
 {
 	None,
 	FreeMove,

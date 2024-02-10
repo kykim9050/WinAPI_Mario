@@ -14,7 +14,7 @@ void ATitleBackGround::BeginPlay()
 {
 	AActor::BeginPlay();
 
-	UImageRenderer* TitleBackGroundRenderer = CreateImageRenderer(static_cast<int>(TitleRenderOrder::BackGroundMap));
+	UImageRenderer* TitleBackGroundRenderer = CreateImageRenderer(static_cast<int>(ETitleRenderOrder::BackGroundMap));
 
 	TitleBackGroundRenderer->SetImage("Mario_Title_Background.png");
 

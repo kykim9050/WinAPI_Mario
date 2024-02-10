@@ -33,7 +33,7 @@ private:
 
 
 
-	PlayerState MarioState = PlayerState::None;
+	EPlayerState MarioState = EPlayerState::None;
 	EPlayerDir MarioDir = EPlayerDir::Right;
 	float PVelocity = 500.0f;
 	UImageRenderer* MarioRenderer = nullptr;
