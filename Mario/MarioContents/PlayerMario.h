@@ -1,5 +1,6 @@
 #pragma once
 #include <EngineCore/Actor.h>
+#include "EnumClass.h"
 
 // Ό³Έν :
 class APlayerMario : public AActor
@@ -19,9 +20,13 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
+
 private:
 	void FreeMove(float _DeltaTime);
+	void StateUpdate(float _DeltaTime);
+	void Idle(float _DeltaTime);
 
+	PlayerState MarioState = PlayerState::None;
 	float PVelocity = 500.0f;
 
 
