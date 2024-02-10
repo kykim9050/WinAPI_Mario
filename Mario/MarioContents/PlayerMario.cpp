@@ -25,6 +25,8 @@ void APlayerMario::BeginPlay()
 	MarioRenderer->SetTransform({ {140,624}, {MarioScale.iX() / UInGameValue::MarioRightImageXValue * UInGameValue::WindowSizeMulValue, MarioScale.iY() / UInGameValue::MarioRightImageYValue * UInGameValue::WindowSizeMulValue} });
 	MarioRenderer->CreateAnimation("Idle", "Mario_Right.png", 0, 0, 0.1f, true);
 	MarioRenderer->ChangeAnimation("Idle");
+
+	MarioState = PlayerState::Idle;
 }
 
 void APlayerMario::FreeMove(float _DeltaTime)
@@ -54,9 +56,33 @@ void APlayerMario::FreeMove(float _DeltaTime)
 	}
 }
 
+void APlayerMario::Idle(float _DeltaTime)
+{
+}
+
+void APlayerMario::StateUpdate(float _DeltaTime)
+{
+	switch (MarioState)
+	{
+	case PlayerState::FreeMove:
+		break;
+	case PlayerState::CameraMove:
+		break;
+	case PlayerState::Idle:
+		Idle(_DeltaTime);
+		break;
+	case PlayerState::Move:
+		break;
+	case PlayerState::Jump:
+		break;
+	default:
+		break;
+	}
+}
+
 void APlayerMario::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
 
-	FreeMove(_DeltaTime);
+	StateUpdate(_DeltaTime);
 }
