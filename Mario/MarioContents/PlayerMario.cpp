@@ -63,29 +63,18 @@ void APlayerMario::FreeMove(float _DeltaTime)
 
 void APlayerMario::Idle(float _DeltaTime)
 {
-	if (EPlayerDir::Right == MarioDir)
-	{
-		MarioRenderer->ChangeAnimation("Idle_Right");
-	}
-
-	if (EPlayerDir::Left == MarioDir)
-	{
-		MarioRenderer->ChangeAnimation("Idle_Left");
-	}
-
-
 
 	if (UEngineInput::IsPress(VK_LEFT))
 	{
 		SetMarioDir(EPlayerDir::Left);
-		Move(_DeltaTime);
+		MoveStart(_DeltaTime);
 		// Left Move
 		// 애니메이션 변경 필요
 	}
 	if (UEngineInput::IsPress(VK_RIGHT))
 	{
 		SetMarioDir(EPlayerDir::Right);
-		Move(_DeltaTime);
+		MoveStart(_DeltaTime);
 		// Right Move
 		// 애니메이션 변경 필요
 	}
@@ -95,18 +84,6 @@ void APlayerMario::Idle(float _DeltaTime)
 void APlayerMario::Move(float _DeltaTime)
 {
 	// 수정 필요 : 캐릭터 방향 호출하는거 따로 함수로 만들고
-	// 수정 필요 : 애니메이션 지정하는건 Move가 할일이 아니다. (따로 애니메이션을 지정해주는 함수를 만들어서 호출할 것 (FSM)
-	if (EPlayerDir::Right == MarioDir)
-	{
-		MarioRenderer->ChangeAnimation("Move_Right");
-	}
-
-	if (EPlayerDir::Left == MarioDir)
-	{
-		MarioRenderer->ChangeAnimation("Move_Left");
-	}
-
-
 
 	if (UEngineInput::IsPress(VK_LEFT))
 	{
@@ -123,21 +100,70 @@ void APlayerMario::Move(float _DeltaTime)
 
 }
 
+void APlayerMario::FreeMoveStart(float _DeltaTime)
+{
+
+	FreeMove(_DeltaTime);
+}
+
+void APlayerMario::CameraMoveStart(float _DeltaTime)
+{
+	int a = 0;
+}
+
+void APlayerMario::IdleStart(float _DeltaTime)
+{
+	if (EPlayerDir::Right == MarioDir)
+	{
+		MarioRenderer->ChangeAnimation("Idle_Right");
+	}
+
+	if (EPlayerDir::Left == MarioDir)
+	{
+		MarioRenderer->ChangeAnimation("Idle_Left");
+	}
+
+	Idle(_DeltaTime);
+}
+
+void APlayerMario::MoveStart(float _DeltaTime)
+{
+	if (EPlayerDir::Right == MarioDir)
+	{
+		MarioRenderer->ChangeAnimation("Move_Right");
+	}
+
+	if (EPlayerDir::Left == MarioDir)
+	{
+		MarioRenderer->ChangeAnimation("Move_Left");
+	}
+
+	Move(_DeltaTime);
+}
+
+void APlayerMario::JumpStart(float _DeltaTime)
+{
+	int a = 0;
+}
+
 void APlayerMario::StateUpdate(float _DeltaTime)
 {
 	switch (MarioState)
 	{
 	case EPlayerState::FreeMove:
+		FreeMoveStart(_DeltaTime);
 		break;
 	case EPlayerState::CameraMove:
+		// CameraMoveStart(_DeltaTime);
 		break;
 	case EPlayerState::Idle:
-		Idle(_DeltaTime);
+		IdleStart(_DeltaTime);
 		break;
 	case EPlayerState::Move:
-		Move(_DeltaTime);
+		MoveStart(_DeltaTime);
 		break;
 	case EPlayerState::Jump:
+		JumpStart(_DeltaTime);
 		break;
 	default:
 		break;
