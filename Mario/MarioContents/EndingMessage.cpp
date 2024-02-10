@@ -13,8 +13,8 @@ void AEndingMessage::BeginPlay()
 {
 	AActor::BeginPlay();
 
-	UImageRenderer* MessageRenderer = CreateImageRenderer(static_cast<int>(EndingRenderOrder::Message));
-	MessageHideRenderer = CreateImageRenderer(static_cast<int>(EndingRenderOrder::MessageHide));
+	UImageRenderer* MessageRenderer = CreateImageRenderer(static_cast<int>(EEndingRenderOrder::Message));
+	MessageHideRenderer = CreateImageRenderer(static_cast<int>(EEndingRenderOrder::MessageHide));
 
 	MessageRenderer->SetImage("Mario_Ending_BackGround_Message.png");
 	FVector MessageScale = MessageRenderer->GetImage()->GetScale();

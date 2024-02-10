@@ -14,7 +14,7 @@ void AEndingBackGround::BeginPlay()
 {
 	AActor::BeginPlay();
 
-	UImageRenderer* Renderer = CreateImageRenderer(static_cast<int>(TitleRenderOrder::BackGroundMap));
+	UImageRenderer* Renderer = CreateImageRenderer(static_cast<int>(ETitleRenderOrder::BackGroundMap));
 
 	Renderer->SetImage("Mario_Ending_Background.png");
 	FVector ImageScale = Renderer->GetImage()->GetScale();

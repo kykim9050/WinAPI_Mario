@@ -16,7 +16,7 @@ void ATitleCoin::BeginPlay()
 	AActor::BeginPlay();
 
 
-	UImageRenderer* TitleCoinRenderer = CreateImageRenderer(static_cast<int>(TitleRenderOrder::Coin));
+	UImageRenderer* TitleCoinRenderer = CreateImageRenderer(static_cast<int>(ETitleRenderOrder::Coin));
 	TitleCoinRenderer->SetImage("TitleCoin.png");
 
 
