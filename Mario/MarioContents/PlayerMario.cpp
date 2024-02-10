@@ -23,8 +23,13 @@ void APlayerMario::BeginPlay()
 
 	// 수정 필요 : 마리오 초기 위치
 	MarioRenderer->SetTransform({ {140,624}, {MarioScale.iX() / UInGameValue::MarioRightImageXValue * UInGameValue::WindowSizeMulValue, MarioScale.iY() / UInGameValue::MarioRightImageYValue * UInGameValue::WindowSizeMulValue} });
+	
 	MarioRenderer->CreateAnimation("Idle_Right", "Mario_Right.png", 0, 0, 0.1f, true);
 	MarioRenderer->CreateAnimation("Idle_Left", "Mario_Left.png", 0, 0, 0.1f, true);
+
+	MarioRenderer->CreateAnimation("Move_Right", "Mario_Right.png", 1, 3, 0.1f, true);
+	MarioRenderer->CreateAnimation("Move_Left", "Mario_Left.png", 1, 3, 0.1f, true);
+
 
 	MarioState = PlayerState::Idle;
 }
@@ -89,7 +94,33 @@ void APlayerMario::Idle(float _DeltaTime)
 
 void APlayerMario::Move(float _DeltaTime)
 {
-	int a = 0;
+	// 수정 필요 : 캐릭터 방향 호출하는거 따로 함수로 만들고
+	// 수정 필요 : 애니메이션 지정하는건 Move가 할일이 아니다. (따로 애니메이션을 지정해주는 함수를 만들어서 호출할 것 (FSM)
+	if (EPlayerDir::Right == MarioDir)
+	{
+		MarioRenderer->ChangeAnimation("Move_Right");
+	}
+
+	if (EPlayerDir::Left == MarioDir)
+	{
+		MarioRenderer->ChangeAnimation("Move_Left");
+	}
+
+
+
+	if (UEngineInput::IsPress(VK_LEFT))
+	{
+		SetMarioDir(EPlayerDir::Left);
+		AddActorLocation(FVector::Left * PVelocity * _DeltaTime);
+		GetWorld()->AddCameraPos(FVector::Left * PVelocity * _DeltaTime);
+	}
+	if (UEngineInput::IsPress(VK_RIGHT))
+	{
+		SetMarioDir(EPlayerDir::Right);
+		AddActorLocation(FVector::Right * PVelocity * _DeltaTime);
+		GetWorld()->AddCameraPos(FVector::Right * PVelocity * _DeltaTime);
+	}
+
 }
 
 void APlayerMario::StateUpdate(float _DeltaTime)
@@ -104,6 +135,7 @@ void APlayerMario::StateUpdate(float _DeltaTime)
 		Idle(_DeltaTime);
 		break;
 	case PlayerState::Move:
+		Move(_DeltaTime);
 		break;
 	case PlayerState::Jump:
 		break;
