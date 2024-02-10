@@ -15,9 +15,10 @@ void ATitleCoin::BeginPlay()
 {
 	AActor::BeginPlay();
 
-	// Title전용 RendererOrder Enum class만들어야 함
+
 	UImageRenderer* TitleCoinRenderer = CreateImageRenderer(static_cast<int>(TitleRenderOrder::Coin));
 	TitleCoinRenderer->SetImage("TitleCoin.png");
+
 
 	TitleCoinRenderer->SetTransform({ {88 * UInGameValue::WindowSizeMulValue, 24 * UInGameValue::WindowSizeMulValue},{64,64} });
 	TitleCoinRenderer->CreateAnimation("Coin_Twinkle", "TitleCoin.png", 0, 5, 0.15f, true);

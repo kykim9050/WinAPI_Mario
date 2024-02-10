@@ -23,16 +23,12 @@ void APlayerMario::BeginPlay()
 
 	// 수정 필요 : 마리오 초기 위치
 	MarioRenderer->SetTransform({ {140,624}, {MarioScale.iX() / UInGameValue::MarioRightImageXValue * UInGameValue::WindowSizeMulValue, MarioScale.iY() / UInGameValue::MarioRightImageYValue * UInGameValue::WindowSizeMulValue} });
-	MarioRenderer->CreateAnimation("IDLE", "Mario_Right.png", 0, 0, 0.1f, true);
-	MarioRenderer->ChangeAnimation("IDLE");
+	MarioRenderer->CreateAnimation("Idle", "Mario_Right.png", 0, 0, 0.1f, true);
+	MarioRenderer->ChangeAnimation("Idle");
 }
 
-void APlayerMario::Tick(float _DeltaTime)
+void APlayerMario::FreeMove(float _DeltaTime)
 {
-	AActor::Tick(_DeltaTime);
-
-
-
 	if (UEngineInput::IsPress(VK_LEFT))
 	{
 		AddActorLocation(FVector::Left * PVelocity * _DeltaTime);
@@ -56,5 +52,11 @@ void APlayerMario::Tick(float _DeltaTime)
 		AddActorLocation(FVector::Down * PVelocity * _DeltaTime);
 		GetWorld()->AddCameraPos(FVector::Down * PVelocity * _DeltaTime);
 	}
+}
 
+void APlayerMario::Tick(float _DeltaTime)
+{
+	AActor::Tick(_DeltaTime);
+
+	FreeMove(_DeltaTime);
 }

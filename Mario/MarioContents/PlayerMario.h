@@ -20,8 +20,10 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 private:
+	void FreeMove(float _DeltaTime);
 
 	float PVelocity = 500.0f;
+
 
 };
 
