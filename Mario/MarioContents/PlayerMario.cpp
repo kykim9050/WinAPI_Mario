@@ -84,20 +84,22 @@ void APlayerMario::StateChange(EPlayerState _PlayerState)
 //	}
 //}
 
-void APlayerMario::GravityCheck()
+void APlayerMario::GravityCheck(float _DeltaTime)
 {
 	Color8Bit CollisionColor = Color8Bit::BlueA;
 
 	UWindowImage* CollisionMapImg = UContentsFunction::GetCollisionMapImg();
 
-	int a = 0;
-
+	if (CollisionColor != CollisionMapImg->GetColor(GetActorLocation().iX(), GetActorLocation().iY(), CollisionColor))
+	{
+		AddActorLocation(FVector::Down * PGravity * _DeltaTime);
+	}
 }
 
 
 void APlayerMario::Idle(float _DeltaTime)
 {
-	GravityCheck();
+	GravityCheck(_DeltaTime);
 
 	if (UEngineInput::IsPress(VK_LEFT) || UEngineInput::IsPress(VK_RIGHT))
 	{
