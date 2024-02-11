@@ -26,7 +26,7 @@ private:
 	void MoveStart();
 	void StateChange(EPlayerState _PlayerState);
 	void DirCheck();
-	void GravityCheck();
+	void GravityCheck(float _DeltaTime);
 	std::string ChangeAnimationName(std::string _MainName);
 
 	//void FreeMove(float _DeltaTime);
@@ -47,6 +47,7 @@ private:
 	EPlayerState MarioState = EPlayerState::None;
 	EPlayerDir MarioDir = EPlayerDir::Right;
 	float PVelocity = 500.0f;
+	float PGravity = 500.0f;
 	UImageRenderer* MarioRenderer = nullptr;
 	std::string CurAnimationName = "None";
 
