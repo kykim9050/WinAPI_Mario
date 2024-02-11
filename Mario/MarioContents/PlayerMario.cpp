@@ -22,8 +22,7 @@ void APlayerMario::BeginPlay()
 	MarioRenderer->SetImage("Mario_Right.png");
 	FVector MarioScale = MarioRenderer->GetImage()->GetScale();
 
-	// 수정 필요 : 마리오 초기 위치
-	MarioRenderer->SetTransform({ {140,624}, {MarioScale.iX() / UInGameValue::MarioRightImageXValue * UInGameValue::WindowSizeMulValue, MarioScale.iY() / UInGameValue::MarioRightImageYValue * UInGameValue::WindowSizeMulValue} });
+	MarioRenderer->SetTransform({ {UInGameValue::MarioInitXPos, UInGameValue::MarioInitYPos}, {MarioScale.iX() / UInGameValue::MarioRightImageXValue * UInGameValue::WindowSizeMulValue, MarioScale.iY() / UInGameValue::MarioRightImageYValue * UInGameValue::WindowSizeMulValue} });
 
 	MarioRenderer->CreateAnimation("Idle_Right", "Mario_Right.png", 0, 0, 0.1f, true);
 	MarioRenderer->CreateAnimation("Idle_Left", "Mario_Left.png", 0, 0, 0.1f, true);

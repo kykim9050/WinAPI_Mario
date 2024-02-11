@@ -30,6 +30,12 @@ public:
 	// 행 수
 	static const int TitleCoinImgY;
 
+	/// <summary>
+	/// 스테이지에서 마리오 초기 위치
+	/// </summary>
+	static const int MarioInitXPos;
+	static const int MarioInitYPos;
+
 protected:
 
 private:
