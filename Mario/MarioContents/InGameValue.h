@@ -44,6 +44,14 @@ public:
 	/// 스테이지에서 CollisionMap에서 벽, 바닥 색
 	/// </summary>
 	static const Color8Bit CollisionColor;
+
+	/// <summary>
+	/// CollisionMap에서 충돌할 오프셋 사이즈 (Actor Pos 기준)
+	/// </summary>
+	static const int ColOffSetX;
+	static const int ColOffSetY;
+
+
 protected:
 
 private:

@@ -135,21 +135,20 @@ void APlayerMario::Move(float _DeltaTime)
 
 
 	FVector ComparePos = GetActorLocation();
-	int ColOffSet = 30;
 
 	switch (MarioDir)
 	{
 	case EPlayerDir::Right:
-		ComparePos.X += ColOffSet;
+		ComparePos.X += UInGameValue::ColOffSetX;
 		break;
 	case EPlayerDir::Left:
-		ComparePos.X -= ColOffSet;
+		ComparePos.X -= UInGameValue::ColOffSetX;
 		break;
 	default:
 		break;
 	}
-	ComparePos.Y -= ColOffSet;
 
+	ComparePos.Y -= UInGameValue::ColOffSetY;
 
 	Color8Bit ColMapColor = UContentsFunction::GetCollisionMapImg()->GetColor(ComparePos.iX(), ComparePos.iY(), UInGameValue::CollisionColor);
 
