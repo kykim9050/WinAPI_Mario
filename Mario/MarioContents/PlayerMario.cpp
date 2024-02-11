@@ -3,6 +3,7 @@
 #include <EnginePlatform/EngineInput.h>
 #include <EngineBase/EngineMath.h>
 #include "InGameValue.h"
+#include <EngineBase/EngineDebug.h>
 
 APlayerMario::APlayerMario()
 {
@@ -23,7 +24,7 @@ void APlayerMario::BeginPlay()
 
 	// 수정 필요 : 마리오 초기 위치
 	MarioRenderer->SetTransform({ {140,624}, {MarioScale.iX() / UInGameValue::MarioRightImageXValue * UInGameValue::WindowSizeMulValue, MarioScale.iY() / UInGameValue::MarioRightImageYValue * UInGameValue::WindowSizeMulValue} });
-	
+
 	MarioRenderer->CreateAnimation("Idle_Right", "Mario_Right.png", 0, 0, 0.1f, true);
 	MarioRenderer->CreateAnimation("Idle_Left", "Mario_Left.png", 0, 0, 0.1f, true);
 
@@ -85,7 +86,7 @@ void APlayerMario::StateChange(EPlayerState _PlayerState)
 
 void APlayerMario::Idle(float _DeltaTime)
 {
-	
+
 	if (UEngineInput::IsPress(VK_LEFT) || UEngineInput::IsPress(VK_RIGHT))
 	{
 		StateChange(EPlayerState::Move);
@@ -96,42 +97,82 @@ void APlayerMario::Idle(float _DeltaTime)
 
 void APlayerMario::Move(float _DeltaTime)
 {
+
 	if ((UEngineInput::IsFree(VK_LEFT) && UEngineInput::IsFree(VK_RIGHT)))
 	{
 		StateChange(EPlayerState::Idle);
 		return;
 	}
 
+	DirCheck();
+	MarioRenderer->ChangeAnimation(ChangeAnimationName("Move"));
+
 	if (UEngineInput::IsPress(VK_LEFT))
 	{
 		AddActorLocation(FVector::Left * PVelocity * _DeltaTime);
 		GetWorld()->AddCameraPos(FVector::Left * PVelocity * _DeltaTime);
 	}
-	
+
 	if (UEngineInput::IsPress(VK_RIGHT))
 	{
 		AddActorLocation(FVector::Right * PVelocity * _DeltaTime);
 		GetWorld()->AddCameraPos(FVector::Right * PVelocity * _DeltaTime);
 	}
-	
+
 
 }
 
+void APlayerMario::DirCheck()
+{
+	EPlayerDir Dir = MarioDir;
+
+	if (UEngineInput::IsPress(VK_LEFT))
+	{
+		Dir = EPlayerDir::Left;
+		EngineDebug::OutPutDebugText("_Left");
+	}
+	else if (UEngineInput::IsPress(VK_RIGHT))
+	{
+		Dir = EPlayerDir::Right;
+		EngineDebug::OutPutDebugText("_Right");
+	}
+
+	if (MarioDir != Dir)
+	{
+		SetMarioDir(Dir);
+	}
+}
 
 void APlayerMario::IdleStart()
 {
-	if (EPlayerDir::Right == MarioDir)
+	DirCheck();
+	MarioRenderer->ChangeAnimation(ChangeAnimationName("Idle"));
+}
+
+std::string APlayerMario::ChangeAnimationName(std::string _MainName)
+{
+	std::string Dir = "";
+	CurAnimationName = _MainName;
+
+	switch (MarioDir)
 	{
-		MarioRenderer->ChangeAnimation("Idle_Right");
+	case EPlayerDir::Left:
+		Dir = "_Left";
+		break;
+	case EPlayerDir::Right:
+		Dir = "_Right";
+		break;
+	default:
+		break;
 	}
+
+	return CurAnimationName + Dir;
 }
 
 void APlayerMario::MoveStart()
 {
-	if (EPlayerDir::Right == MarioDir)
-	{
-		MarioRenderer->ChangeAnimation("Move_Right");
-	}
+	DirCheck();
+	MarioRenderer->ChangeAnimation(ChangeAnimationName("Move"));
 }
 
 
