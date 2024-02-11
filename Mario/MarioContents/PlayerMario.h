@@ -33,7 +33,7 @@ private:
 	void MoveStart();
 	
 	/// <summary>
-	/// FreeMove
+	/// FreeMove용으로 애니메이션 변경
 	/// </summary>
 	void FreeMoveStart();
 
@@ -65,10 +65,16 @@ private:
 	FVector GetActorOffSetPos();
 
 	/// <summary>
-	/// 디버깅용 이동기능 (모든 충돌을 무시하고 빠르게 이동 가능)
+	/// 카메라. 플레이어 이동기능 (디버깅용. 모든 충돌을 무시하고 빠르게 이동 가능)
 	/// </summary>
 	void FreeMove(float _DeltaTime);
 	
+	/// <summary>
+	/// 카메라만 이동할 수 있는 기능 (디버깅용)
+	/// </summary>
+	/// <param name="_DeltaTime"></param>
+	void CameraMove(float _DeltaTime);
+
 	/// <summary>
 	/// 상태를 체크하며 각 상태에 맞는 함수를 호출
 	/// </summary>

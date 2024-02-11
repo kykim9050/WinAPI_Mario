@@ -98,6 +98,35 @@ void APlayerMario::FreeMove(float _DeltaTime)
 	}
 }
 
+void APlayerMario::CameraMove(float _DeltaTime)
+{
+	if (UEngineInput::IsDown('2'))
+	{
+		StateChange(EPlayerState::Idle);
+		return;
+	}
+
+	if (UEngineInput::IsPress(VK_LEFT))
+	{
+		GetWorld()->AddCameraPos(FVector::Left * PFreeMoveVelocity * _DeltaTime);
+	}
+
+	if (UEngineInput::IsPress(VK_RIGHT))
+	{
+		GetWorld()->AddCameraPos(FVector::Right * PFreeMoveVelocity * _DeltaTime);
+	}
+
+	if (UEngineInput::IsPress(VK_UP))
+	{
+		GetWorld()->AddCameraPos(FVector::Up * PFreeMoveVelocity * _DeltaTime);
+	}
+
+	if (UEngineInput::IsPress(VK_DOWN))
+	{
+		GetWorld()->AddCameraPos(FVector::Down * PFreeMoveVelocity * _DeltaTime);
+	}
+}
+
 void APlayerMario::GravityCheck(float _DeltaTime)
 {
 	Color8Bit MapColor = UContentsFunction::GetCollisionMapImg()->GetColor(GetActorLocation().iX(), GetActorLocation().iY(), UInGameValue::CollisionColor);
@@ -116,6 +145,12 @@ void APlayerMario::Idle(float _DeltaTime)
 	if (UEngineInput::IsDown('1'))
 	{
 		StateChange(EPlayerState::FreeMove);
+		return;
+	}
+
+	if (UEngineInput::IsDown('2'))
+	{
+		StateChange(EPlayerState::CameraMove);
 		return;
 	}
 
@@ -252,6 +287,9 @@ void APlayerMario::StateUpdate(float _DeltaTime)
 		break;
 	case EPlayerState::FreeMove:
 		FreeMove(_DeltaTime);
+		break;
+	case EPlayerState::CameraMove:
+		CameraMove(_DeltaTime);
 		break;
 	default:
 		break;
