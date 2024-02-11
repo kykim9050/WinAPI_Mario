@@ -24,8 +24,10 @@ private:
 	void IdleStart();
 	void MoveStart();
 	void StateChange(EPlayerState _PlayerState);
+	void DirCheck();
+	std::string ChangeAnimationName(std::string _MainName);
 
-	void FreeMove(float _DeltaTime);
+	//void FreeMove(float _DeltaTime);
 	void StateUpdate(float _DeltaTime);
 	void Idle(float _DeltaTime);
 	void Move(float _DeltaTime);
@@ -44,6 +46,7 @@ private:
 	EPlayerDir MarioDir = EPlayerDir::Right;
 	float PVelocity = 500.0f;
 	UImageRenderer* MarioRenderer = nullptr;
+	std::string CurAnimationName = "None";
 
 };
 
