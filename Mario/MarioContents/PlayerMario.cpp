@@ -107,6 +107,27 @@ void APlayerMario::Idle(float _DeltaTime)
 
 }
 
+FVector APlayerMario::GetActorOffSetPos()
+{
+	FVector Pos = GetActorLocation();
+
+	switch (MarioDir)
+	{
+	case EPlayerDir::Right:
+		Pos.X += UInGameValue::ColOffSetX;
+		break;
+	case EPlayerDir::Left:
+		Pos.X -= UInGameValue::ColOffSetX;
+		break;
+	default:
+		break;
+	}
+
+	Pos.Y -= UInGameValue::ColOffSetY;
+
+	return Pos;
+}
+
 void APlayerMario::Move(float _DeltaTime)
 {
 
@@ -133,22 +154,8 @@ void APlayerMario::Move(float _DeltaTime)
 		MovePos += FVector::Right * PVelocity * _DeltaTime;
 	}
 
-
-	FVector ComparePos = GetActorLocation();
-
-	switch (MarioDir)
-	{
-	case EPlayerDir::Right:
-		ComparePos.X += UInGameValue::ColOffSetX;
-		break;
-	case EPlayerDir::Left:
-		ComparePos.X -= UInGameValue::ColOffSetX;
-		break;
-	default:
-		break;
-	}
-
-	ComparePos.Y -= UInGameValue::ColOffSetY;
+	// CollisionMap과 충돌을 예상할 수 있도록 기존 Actor의 좌표값에 Offset값을 추가 가공한 좌표를 반환
+	FVector ComparePos = GetActorOffSetPos();
 
 	Color8Bit ColMapColor = UContentsFunction::GetCollisionMapImg()->GetColor(ComparePos.iX(), ComparePos.iY(), UInGameValue::CollisionColor);
 

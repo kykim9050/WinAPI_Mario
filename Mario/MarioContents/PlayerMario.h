@@ -28,6 +28,7 @@ private:
 	void DirCheck();
 	void GravityCheck(float _DeltaTime);
 	std::string ChangeAnimationName(std::string _MainName);
+	FVector GetActorOffSetPos();
 
 	//void FreeMove(float _DeltaTime);
 	void StateUpdate(float _DeltaTime);
@@ -43,6 +44,7 @@ private:
 	{
 		MarioState = _State;
 	}
+
 
 	EPlayerState MarioState = EPlayerState::None;
 	EPlayerDir MarioDir = EPlayerDir::Right;
