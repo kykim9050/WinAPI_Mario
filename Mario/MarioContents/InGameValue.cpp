@@ -12,3 +12,6 @@ const int UInGameValue::MarioLeftImageYValue = 8;
 
 const int UInGameValue::TitleCoinImgX = 6;
 const int UInGameValue::TitleCoinImgY = 1;
+
+const int UInGameValue::MarioInitXPos = 140;
+const int UInGameValue::MarioInitYPos = 600;
