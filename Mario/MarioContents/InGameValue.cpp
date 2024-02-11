@@ -17,5 +17,7 @@ const int UInGameValue::TitleCoinImgY = 1;
 const int UInGameValue::MarioInitXPos = 140;
 const int UInGameValue::MarioInitYPos = 400;
 
-
 const Color8Bit UInGameValue::CollisionColor = Color8Bit(0, 0, 255, 0);
+
+const int UInGameValue::ColOffSetX = 20;
+const int UInGameValue::ColOffSetY = 40;
