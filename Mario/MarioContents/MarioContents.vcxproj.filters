@@ -38,6 +38,9 @@
     <ClInclude Include="CollisionMap.h">
       <Filter>Level\Stage1-1\Actor</Filter>
     </ClInclude>
+    <ClInclude Include="ContentsFunction.h">
+      <Filter>ContentsHelper</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp" />
@@ -73,6 +76,9 @@
     </ClCompile>
     <ClCompile Include="CollisionMap.cpp">
       <Filter>Level\Stage1-1\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="ContentsFunction.cpp">
+      <Filter>ContentsHelper</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
