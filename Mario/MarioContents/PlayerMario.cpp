@@ -86,11 +86,9 @@ void APlayerMario::StateChange(EPlayerState _PlayerState)
 
 void APlayerMario::GravityCheck(float _DeltaTime)
 {
-	Color8Bit CollisionColor = Color8Bit::BlueA;
+	Color8Bit MapColor = UContentsFunction::GetCollisionMapImg()->GetColor(GetActorLocation().iX(), GetActorLocation().iY(), UInGameValue::CollisionColor);
 
-	UWindowImage* CollisionMapImg = UContentsFunction::GetCollisionMapImg();
-
-	if (CollisionColor != CollisionMapImg->GetColor(GetActorLocation().iX(), GetActorLocation().iY(), CollisionColor))
+	if (UInGameValue::CollisionColor != MapColor)
 	{
 		AddActorLocation(FVector::Down * PGravity * _DeltaTime);
 	}

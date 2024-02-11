@@ -1,6 +1,10 @@
 #pragma once
 
+
 // 설명 :
+
+class Color8Bit;
+
 class UInGameValue
 {
 public:
@@ -36,6 +40,10 @@ public:
 	static const int MarioInitXPos;
 	static const int MarioInitYPos;
 
+	/// <summary>
+	/// 스테이지에서 CollisionMap에서 벽, 바닥 색
+	/// </summary>
+	static const Color8Bit CollisionColor;
 protected:
 
 private:
