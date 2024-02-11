@@ -49,6 +49,9 @@ void APlayerMario::StateChange(EPlayerState _PlayerState)
 		case EPlayerState::Move:
 			MoveStart();
 			break;
+		case EPlayerState::FreeMove:
+			FreeMoveStart();
+			break;
 		default:
 			break;
 		}
@@ -57,32 +60,43 @@ void APlayerMario::StateChange(EPlayerState _PlayerState)
 	SetMarioState(_PlayerState);
 }
 
-//void APlayerMario::FreeMove(float _DeltaTime)
-//{
-//	if (UEngineInput::IsPress(VK_LEFT))
-//	{
-//		AddActorLocation(FVector::Left * PVelocity * _DeltaTime);
-//		GetWorld()->AddCameraPos(FVector::Left * PVelocity * _DeltaTime);
-//	}
-//
-//	if (UEngineInput::IsPress(VK_RIGHT))
-//	{
-//		AddActorLocation(FVector::Right * PVelocity * _DeltaTime);
-//		GetWorld()->AddCameraPos(FVector::Right * PVelocity * _DeltaTime);
-//	}
-//
-//	if (UEngineInput::IsPress(VK_UP))
-//	{
-//		AddActorLocation(FVector::Up * PVelocity * _DeltaTime);
-//		GetWorld()->AddCameraPos(FVector::Up * PVelocity * _DeltaTime);
-//	}
-//
-//	if (UEngineInput::IsPress(VK_DOWN))
-//	{
-//		AddActorLocation(FVector::Down * PVelocity * _DeltaTime);
-//		GetWorld()->AddCameraPos(FVector::Down * PVelocity * _DeltaTime);
-//	}
-//}
+void APlayerMario::FreeMoveStart()
+{
+	MarioRenderer->ChangeAnimation("Idle_Right");
+}
+
+void APlayerMario::FreeMove(float _DeltaTime)
+{
+	if (UEngineInput::IsDown('1'))
+	{
+		StateChange(EPlayerState::Idle);
+		return;
+	}
+
+	if (UEngineInput::IsPress(VK_LEFT))
+	{
+		AddActorLocation(FVector::Left * PFreeMoveVelocity * _DeltaTime);
+		GetWorld()->AddCameraPos(FVector::Left * PFreeMoveVelocity * _DeltaTime);
+	}
+
+	if (UEngineInput::IsPress(VK_RIGHT))
+	{
+		AddActorLocation(FVector::Right * PFreeMoveVelocity * _DeltaTime);
+		GetWorld()->AddCameraPos(FVector::Right * PFreeMoveVelocity * _DeltaTime);
+	}
+
+	if (UEngineInput::IsPress(VK_UP))
+	{
+		AddActorLocation(FVector::Up * PFreeMoveVelocity * _DeltaTime);
+		GetWorld()->AddCameraPos(FVector::Up * PFreeMoveVelocity * _DeltaTime);
+	}
+
+	if (UEngineInput::IsPress(VK_DOWN))
+	{
+		AddActorLocation(FVector::Down * PFreeMoveVelocity * _DeltaTime);
+		GetWorld()->AddCameraPos(FVector::Down * PFreeMoveVelocity * _DeltaTime);
+	}
+}
 
 void APlayerMario::GravityCheck(float _DeltaTime)
 {
@@ -98,6 +112,12 @@ void APlayerMario::GravityCheck(float _DeltaTime)
 void APlayerMario::Idle(float _DeltaTime)
 {
 	GravityCheck(_DeltaTime);
+
+	if (UEngineInput::IsDown('1'))
+	{
+		StateChange(EPlayerState::FreeMove);
+		return;
+	}
 
 	if (UEngineInput::IsPress(VK_LEFT) || UEngineInput::IsPress(VK_RIGHT))
 	{
@@ -229,6 +249,9 @@ void APlayerMario::StateUpdate(float _DeltaTime)
 		break;
 	case EPlayerState::Move:
 		Move(_DeltaTime);
+		break;
+	case EPlayerState::FreeMove:
+		FreeMove(_DeltaTime);
 		break;
 	default:
 		break;
