@@ -25,6 +25,7 @@ enum class EEndingRenderOrder
 /// </summary>
 enum class EStageRenderOrder
 {
+	CollisionMap,
 	BackGroundMap,
 	Mario,
 	Monster,

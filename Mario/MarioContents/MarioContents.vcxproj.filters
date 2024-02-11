@@ -3,31 +3,31 @@
   <ItemGroup>
     <ClInclude Include="ContentsCore.h" />
     <ClInclude Include="TitleLevel.h">
-      <Filter>Title</Filter>
+      <Filter>Level\Title</Filter>
     </ClInclude>
     <ClInclude Include="TitleBackGround.h">
-      <Filter>Title\Actor</Filter>
+      <Filter>Level\Title\Actor</Filter>
     </ClInclude>
     <ClInclude Include="TitleCoin.h">
-      <Filter>Title\Actor</Filter>
+      <Filter>Level\Title\Actor</Filter>
     </ClInclude>
     <ClInclude Include="1_1StageLevel.h">
-      <Filter>Stage1-1</Filter>
+      <Filter>Level\Stage1-1</Filter>
     </ClInclude>
     <ClInclude Include="PlayerMario.h">
-      <Filter>Player</Filter>
+      <Filter>Object\Player</Filter>
     </ClInclude>
     <ClInclude Include="BackGroundMap.h">
-      <Filter>Stage1-1\Actor</Filter>
+      <Filter>Level\Stage1-1\Actor</Filter>
     </ClInclude>
     <ClInclude Include="EndingLevel.h">
-      <Filter>Ending</Filter>
+      <Filter>Level\Ending</Filter>
     </ClInclude>
     <ClInclude Include="EndingBackGround.h">
-      <Filter>Ending\Actor</Filter>
+      <Filter>Level\Ending\Actor</Filter>
     </ClInclude>
     <ClInclude Include="EndingMessage.h">
-      <Filter>Ending\Actor</Filter>
+      <Filter>Level\Ending\Actor</Filter>
     </ClInclude>
     <ClInclude Include="InGameValue.h">
       <Filter>ContentsHelper</Filter>
@@ -35,64 +35,76 @@
     <ClInclude Include="EnumClass.h">
       <Filter>ContentsHelper</Filter>
     </ClInclude>
+    <ClInclude Include="CollisionMap.h">
+      <Filter>Level\Stage1-1\Actor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp" />
     <ClCompile Include="TitleLevel.cpp">
-      <Filter>Title</Filter>
+      <Filter>Level\Title</Filter>
     </ClCompile>
     <ClCompile Include="TitleBackGround.cpp">
-      <Filter>Title\Actor</Filter>
+      <Filter>Level\Title\Actor</Filter>
     </ClCompile>
     <ClCompile Include="TitleCoin.cpp">
-      <Filter>Title\Actor</Filter>
+      <Filter>Level\Title\Actor</Filter>
     </ClCompile>
     <ClCompile Include="1_1StageLevel.cpp">
-      <Filter>Stage1-1</Filter>
+      <Filter>Level\Stage1-1</Filter>
     </ClCompile>
     <ClCompile Include="PlayerMario.cpp">
-      <Filter>Player</Filter>
+      <Filter>Object\Player</Filter>
     </ClCompile>
     <ClCompile Include="BackGroundMap.cpp">
-      <Filter>Stage1-1\Actor</Filter>
+      <Filter>Level\Stage1-1\Actor</Filter>
     </ClCompile>
     <ClCompile Include="EndingLevel.cpp">
-      <Filter>Ending</Filter>
+      <Filter>Level\Ending</Filter>
     </ClCompile>
     <ClCompile Include="EndingBackGround.cpp">
-      <Filter>Ending\Actor</Filter>
+      <Filter>Level\Ending\Actor</Filter>
     </ClCompile>
     <ClCompile Include="EndingMessage.cpp">
-      <Filter>Ending\Actor</Filter>
+      <Filter>Level\Ending\Actor</Filter>
     </ClCompile>
     <ClCompile Include="InGameValue.cpp">
       <Filter>ContentsHelper</Filter>
     </ClCompile>
+    <ClCompile Include="CollisionMap.cpp">
+      <Filter>Level\Stage1-1\Actor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Title">
-      <UniqueIdentifier>{b2b49b77-6b9c-4b7f-9f81-9cc5ad6646ca}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Title\Actor">
-      <UniqueIdentifier>{5bb86687-b42e-48c0-bafb-fdb5c9aae956}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Stage1-1">
-      <UniqueIdentifier>{c44e7e1c-7d68-496d-b02f-fd49445bbe07}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Stage1-1\Actor">
-      <UniqueIdentifier>{ba34b179-ef07-4e81-b013-93d5f5f33181}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Player">
-      <UniqueIdentifier>{4f380fdc-c820-4e41-88eb-56a5f726ff9b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Ending">
-      <UniqueIdentifier>{a058ab92-c3f2-4008-be57-34523cde488a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Ending\Actor">
-      <UniqueIdentifier>{6d8014be-edbd-45fe-87e8-92981e6a5f76}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ContentsHelper">
       <UniqueIdentifier>{684d1bd9-ab39-4302-b267-1595f4ea6054}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object">
+      <UniqueIdentifier>{7c5b5a4a-9c4e-423e-97bd-26714342ee73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level">
+      <UniqueIdentifier>{11c97b29-3130-457b-9676-0ed0b777e488}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\Title">
+      <UniqueIdentifier>{b2b49b77-6b9c-4b7f-9f81-9cc5ad6646ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\Title\Actor">
+      <UniqueIdentifier>{5bb86687-b42e-48c0-bafb-fdb5c9aae956}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\Ending">
+      <UniqueIdentifier>{a058ab92-c3f2-4008-be57-34523cde488a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\Ending\Actor">
+      <UniqueIdentifier>{6d8014be-edbd-45fe-87e8-92981e6a5f76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\Stage1-1">
+      <UniqueIdentifier>{c44e7e1c-7d68-496d-b02f-fd49445bbe07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\Stage1-1\Actor">
+      <UniqueIdentifier>{ba34b179-ef07-4e81-b013-93d5f5f33181}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Player">
+      <UniqueIdentifier>{4f380fdc-c820-4e41-88eb-56a5f726ff9b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
