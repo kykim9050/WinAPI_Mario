@@ -121,19 +121,43 @@ void APlayerMario::Move(float _DeltaTime)
 	DirCheck();
 	MarioRenderer->ChangeAnimation(ChangeAnimationName("Move"));
 
+
+	FVector MovePos = FVector::Zero;
+
 	if (UEngineInput::IsPress(VK_LEFT))
 	{
-		AddActorLocation(FVector::Left * PVelocity * _DeltaTime);
-		GetWorld()->AddCameraPos(FVector::Left * PVelocity * _DeltaTime);
+		MovePos += FVector::Left * PVelocity * _DeltaTime;
 	}
-
 	if (UEngineInput::IsPress(VK_RIGHT))
 	{
-		AddActorLocation(FVector::Right * PVelocity * _DeltaTime);
-		GetWorld()->AddCameraPos(FVector::Right * PVelocity * _DeltaTime);
+		MovePos += FVector::Right * PVelocity * _DeltaTime;
 	}
 
 
+	FVector ComparePos = GetActorLocation();
+	int ColOffSet = 30;
+
+	switch (MarioDir)
+	{
+	case EPlayerDir::Right:
+		ComparePos.X += ColOffSet;
+		break;
+	case EPlayerDir::Left:
+		ComparePos.X -= ColOffSet;
+		break;
+	default:
+		break;
+	}
+	ComparePos.Y -= ColOffSet;
+
+
+	Color8Bit ColMapColor = UContentsFunction::GetCollisionMapImg()->GetColor(ComparePos.iX(), ComparePos.iY(), UInGameValue::CollisionColor);
+
+	if (UInGameValue::CollisionColor != ColMapColor)
+	{
+		AddActorLocation(MovePos);
+		GetWorld()->AddCameraPos(MovePos);
+	}
 }
 
 void APlayerMario::DirCheck()
