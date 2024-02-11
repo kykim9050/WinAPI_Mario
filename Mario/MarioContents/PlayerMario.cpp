@@ -103,7 +103,7 @@ void APlayerMario::Move(float _DeltaTime)
 		StateChange(EPlayerState::Idle);
 		return;
 	}
-
+		
 	DirCheck();
 	MarioRenderer->ChangeAnimation(ChangeAnimationName("Move"));
 
