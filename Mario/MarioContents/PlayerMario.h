@@ -31,6 +31,11 @@ private:
 	/// 방향을 확인한 후에 해당 방향을 기준으로 Move 애니메이션이름을 바꾸고 ChangeAnimation의 인자로 넣는다.
 	/// </summary>
 	void MoveStart();
+	
+	/// <summary>
+	/// FreeMove
+	/// </summary>
+	void FreeMoveStart();
 
 	/// <summary>
 	/// Actor의 상태가 변경될 때 실행되는 함수
@@ -59,7 +64,10 @@ private:
 	/// </summary>
 	FVector GetActorOffSetPos();
 
-	//void FreeMove(float _DeltaTime);
+	/// <summary>
+	/// 디버깅용 이동기능 (모든 충돌을 무시하고 빠르게 이동 가능)
+	/// </summary>
+	void FreeMove(float _DeltaTime);
 	
 	/// <summary>
 	/// 상태를 체크하며 각 상태에 맞는 함수를 호출
@@ -103,6 +111,7 @@ private:
 	EPlayerDir MarioDir = EPlayerDir::Right;
 	float PVelocity = 500.0f;
 	float PGravity = 500.0f;
+	float PFreeMoveVelocity = 1000.0f;
 	UImageRenderer* MarioRenderer = nullptr;
 	std::string CurAnimationName = "None";
 
