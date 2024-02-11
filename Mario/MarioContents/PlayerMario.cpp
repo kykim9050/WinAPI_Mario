@@ -4,6 +4,7 @@
 #include <EngineBase/EngineMath.h>
 #include "InGameValue.h"
 #include <EngineBase/EngineDebug.h>
+#include "ContentsFunction.h"
 
 
 APlayerMario::APlayerMario()
@@ -86,6 +87,8 @@ void APlayerMario::StateChange(EPlayerState _PlayerState)
 void APlayerMario::GravityCheck()
 {
 	Color8Bit CollisionColor = Color8Bit::BlueA;
+
+	UWindowImage* CollisionMapImg = UContentsFunction::GetCollisionMapImg();
 
 	int a = 0;
 

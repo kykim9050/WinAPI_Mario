@@ -1,6 +1,8 @@
 #include "CollisionMap.h"
 #include "EnumClass.h"
 
+UImageRenderer* UCollisionMap::CollisionMapRenderer = nullptr;
+
 UCollisionMap::UCollisionMap()
 {
 }
