@@ -116,6 +116,8 @@ void APlayerMario::Move(float _DeltaTime)
 		return;
 	}
 
+	GravityCheck(_DeltaTime);
+
 	DirCheck();
 	MarioRenderer->ChangeAnimation(ChangeAnimationName("Move"));
 
