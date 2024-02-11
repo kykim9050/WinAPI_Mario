@@ -4,6 +4,7 @@
 // Ό³Έν :
 class UCollisionMap : public AActor
 {
+
 public:
 	// constrcuter destructer
 	UCollisionMap();
@@ -20,6 +21,6 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 private:
-
+	UImageRenderer* CollisionMapRenderer = nullptr;
 };
 

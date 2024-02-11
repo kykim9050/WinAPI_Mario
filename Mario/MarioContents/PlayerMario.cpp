@@ -5,6 +5,7 @@
 #include "InGameValue.h"
 #include <EngineBase/EngineDebug.h>
 
+
 APlayerMario::APlayerMario()
 {
 }
@@ -22,7 +23,7 @@ void APlayerMario::BeginPlay()
 	MarioRenderer->SetImage("Mario_Right.png");
 	FVector MarioScale = MarioRenderer->GetImage()->GetScale();
 
-	MarioRenderer->SetTransform({ {UInGameValue::MarioInitXPos, UInGameValue::MarioInitYPos}, {MarioScale.iX() / UInGameValue::MarioRightImageXValue * UInGameValue::WindowSizeMulValue, MarioScale.iY() / UInGameValue::MarioRightImageYValue * UInGameValue::WindowSizeMulValue} });
+	MarioRenderer->SetTransform({ {0,0}, {MarioScale.iX() / UInGameValue::MarioRightImageXValue * UInGameValue::WindowSizeMulValue, MarioScale.iY() / UInGameValue::MarioRightImageYValue * UInGameValue::WindowSizeMulValue} });
 
 	MarioRenderer->CreateAnimation("Idle_Right", "Mario_Right.png", 0, 0, 0.1f, true);
 	MarioRenderer->CreateAnimation("Idle_Left", "Mario_Left.png", 0, 0, 0.1f, true);
@@ -82,9 +83,18 @@ void APlayerMario::StateChange(EPlayerState _PlayerState)
 //	}
 //}
 
+void APlayerMario::GravityCheck()
+{
+	Color8Bit CollisionColor = Color8Bit::BlueA;
+
+	int a = 0;
+
+}
+
 
 void APlayerMario::Idle(float _DeltaTime)
 {
+	GravityCheck();
 
 	if (UEngineInput::IsPress(VK_LEFT) || UEngineInput::IsPress(VK_RIGHT))
 	{
@@ -102,7 +112,7 @@ void APlayerMario::Move(float _DeltaTime)
 		StateChange(EPlayerState::Idle);
 		return;
 	}
-		
+
 	DirCheck();
 	MarioRenderer->ChangeAnimation(ChangeAnimationName("Move"));
 

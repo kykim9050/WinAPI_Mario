@@ -2,6 +2,7 @@
 #include <EngineCore/Actor.h>
 #include "EnumClass.h"
 
+
 // Ό³Έν :
 class APlayerMario : public AActor
 {
@@ -25,6 +26,7 @@ private:
 	void MoveStart();
 	void StateChange(EPlayerState _PlayerState);
 	void DirCheck();
+	void GravityCheck();
 	std::string ChangeAnimationName(std::string _MainName);
 
 	//void FreeMove(float _DeltaTime);
