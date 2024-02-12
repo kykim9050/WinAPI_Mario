@@ -54,8 +54,9 @@ private:
 
 	/// <summary>
 	/// 픽셀 충돌을 활용한 중력체크 함수
+	/// bool 형을 반환하는데, 장애물에 착지하면 true, 낙하중이면 false를 반환
 	/// </summary>
-	void GravityCheck(float _DeltaTime);
+	bool GravityCheck(float _DeltaTime);
 
 	/// <summary>
 	/// 방향 정보가 적용된 애니메이션 이름으로 수정하는 함수
@@ -129,6 +130,7 @@ private:
 	float PGravity = 500.0f;
 	float PFreeMoveVelocity = 1000.0f;
 	float PJumpHeightLimit = 0.0f;
+	bool JumpEnd = false;
 	UImageRenderer* MarioRenderer = nullptr;
 	std::string CurAnimationName = "None";
 

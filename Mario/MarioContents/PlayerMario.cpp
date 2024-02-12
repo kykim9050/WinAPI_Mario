@@ -5,7 +5,7 @@
 #include "InGameValue.h"
 #include <EngineBase/EngineDebug.h>
 #include "ContentsFunction.h"
-
+#include <cmath>
 
 APlayerMario::APlayerMario()
 {
@@ -75,6 +75,7 @@ void APlayerMario::JumpStart()
 	// 현재의 좌표 기준으로 최대 점프 높이를 계산해 놓는다.
 	FVector CurPos = GetActorLocation();
 	PJumpHeightLimit = CurPos.Y - UInGameValue::JumpLimitValue;
+	JumpEnd = false;
 }
 
 void APlayerMario::FreeMoveStart()
@@ -144,14 +145,17 @@ void APlayerMario::CameraMove(float _DeltaTime)
 	}
 }
 
-void APlayerMario::GravityCheck(float _DeltaTime)
+bool APlayerMario::GravityCheck(float _DeltaTime)
 {
 	Color8Bit MapColor = UContentsFunction::GetCollisionMapImg()->GetColor(GetActorLocation().iX(), GetActorLocation().iY(), UInGameValue::CollisionColor);
 
 	if (UInGameValue::CollisionColor != MapColor)
 	{
 		AddActorLocation(FVector::Down * PGravity * _DeltaTime);
+		return false;
 	}
+
+	return true;
 }
 
 
@@ -215,6 +219,13 @@ void APlayerMario::Move(float _DeltaTime)
 		return;
 	}
 
+	if (UEngineInput::IsDown('Z'))
+	{
+		StateChange(EPlayerState::Jump);
+		return;
+	}
+
+
 	GravityCheck(_DeltaTime);
 
 	DirCheck();
@@ -246,12 +257,34 @@ void APlayerMario::Move(float _DeltaTime)
 
 void APlayerMario::Jump(float _DeltaTime)
 {
+
 	// 먼저 일정 높이 이상 떠오르고
-	
+	if (false == JumpEnd && GetActorLocation().iY() >= std::lround(PJumpHeightLimit))
+	{
+		AddActorLocation(FVector::Up * PVelocity * _DeltaTime);
+		return;
+	}
+	else
+	{
+		PJumpHeightLimit = 0.0f;
+		JumpEnd = true;
+	}
 
 	// 일정 높이 됬을 때 중력에 영향 받을 수 있도록 GravityCheck
+	if (GravityCheck(_DeltaTime))
+	{
+		if ((UEngineInput::IsFree(VK_LEFT) && UEngineInput::IsFree(VK_RIGHT)))
+		{
+			StateChange(EPlayerState::Idle);
+			return;
+		}
 
-	// 땅에 착지 하면 Idle
+		if (UEngineInput::IsPress(VK_LEFT) || UEngineInput::IsPress(VK_RIGHT))
+		{
+			StateChange(EPlayerState::Move);
+			return;
+		}
+	}
 }
 
 void APlayerMario::DirCheck()
