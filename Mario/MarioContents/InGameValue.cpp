@@ -21,3 +21,5 @@ const Color8Bit UInGameValue::CollisionColor = Color8Bit(0, 0, 255, 0);
 
 const int UInGameValue::ColOffSetX = 20;
 const int UInGameValue::ColOffSetY = 40;
+
+const float UInGameValue::JumpLimitValue = 500.0f;

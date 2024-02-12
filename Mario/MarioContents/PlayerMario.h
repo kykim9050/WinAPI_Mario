@@ -32,6 +32,9 @@ private:
 	/// </summary>
 	void MoveStart();
 	
+
+	void JumpStart();
+
 	/// <summary>
 	/// FreeMove용으로 애니메이션 변경
 	/// </summary>
@@ -97,6 +100,13 @@ private:
 	void Move(float _DeltaTime);
 
 	/// <summary>
+	/// Actor가 jump 상태에서 취할 수 있는 기능
+	/// 1. 중력 적용
+	/// 
+	/// </summary>
+	void Jump(float _DeltaTime);
+
+	/// <summary>
 	/// Actor의 방향을 수정
 	/// </summary>
 	void SetMarioDir(const EPlayerDir _Dir)
@@ -118,6 +128,7 @@ private:
 	float PVelocity = 500.0f;
 	float PGravity = 500.0f;
 	float PFreeMoveVelocity = 1000.0f;
+	float PJumpHeightLimit = 0.0f;
 	UImageRenderer* MarioRenderer = nullptr;
 	std::string CurAnimationName = "None";
 

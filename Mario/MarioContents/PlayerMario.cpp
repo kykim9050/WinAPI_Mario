@@ -32,6 +32,10 @@ void APlayerMario::BeginPlay()
 	MarioRenderer->CreateAnimation("Move_Right", "Mario_Right.png", 1, 3, 0.1f, true);
 	MarioRenderer->CreateAnimation("Move_Left", "Mario_Left.png", 1, 3, 0.1f, true);
 
+	MarioRenderer->CreateAnimation("Jump_Right", "Mario_Right.png", 5, 5, 0.1f, true);
+	MarioRenderer->CreateAnimation("Jump_Left", "Mario_Left.png", 5, 5, 0.1f, true);
+
+
 
 	MarioState = EPlayerState::Idle;
 }
@@ -52,12 +56,25 @@ void APlayerMario::StateChange(EPlayerState _PlayerState)
 		case EPlayerState::FreeMove:
 			FreeMoveStart();
 			break;
+		case EPlayerState::Jump:
+			JumpStart();
+			break;
 		default:
 			break;
 		}
 	}
 
 	SetMarioState(_PlayerState);
+}
+
+void APlayerMario::JumpStart()
+{
+	DirCheck();
+	MarioRenderer->ChangeAnimation(ChangeAnimationName("Jump"));
+
+	// 현재의 좌표 기준으로 최대 점프 높이를 계산해 놓는다.
+	FVector CurPos = GetActorLocation();
+	PJumpHeightLimit = CurPos.Y - UInGameValue::JumpLimitValue;
 }
 
 void APlayerMario::FreeMoveStart()
@@ -154,6 +171,12 @@ void APlayerMario::Idle(float _DeltaTime)
 		return;
 	}
 
+	if (UEngineInput::IsDown('Z'))
+	{
+		StateChange(EPlayerState::Jump);
+		return;
+	}
+
 	if (UEngineInput::IsPress(VK_LEFT) || UEngineInput::IsPress(VK_RIGHT))
 	{
 		StateChange(EPlayerState::Move);
@@ -219,6 +242,16 @@ void APlayerMario::Move(float _DeltaTime)
 		AddActorLocation(MovePos);
 		GetWorld()->AddCameraPos(MovePos);
 	}
+}
+
+void APlayerMario::Jump(float _DeltaTime)
+{
+	// 먼저 일정 높이 이상 떠오르고
+	
+
+	// 일정 높이 됬을 때 중력에 영향 받을 수 있도록 GravityCheck
+
+	// 땅에 착지 하면 Idle
 }
 
 void APlayerMario::DirCheck()
@@ -290,6 +323,9 @@ void APlayerMario::StateUpdate(float _DeltaTime)
 		break;
 	case EPlayerState::CameraMove:
 		CameraMove(_DeltaTime);
+		break;
+	case EPlayerState::Jump:
+		Jump(_DeltaTime);
 		break;
 	default:
 		break;
