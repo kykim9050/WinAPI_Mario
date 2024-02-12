@@ -51,6 +51,10 @@ public:
 	static const int ColOffSetX;
 	static const int ColOffSetY;
 
+	/// <summary>
+	/// Jump 동작시 상한선
+	/// </summary>
+	static const float JumpLimitValue;
 
 protected:
 
