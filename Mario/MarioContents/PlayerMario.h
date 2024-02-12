@@ -23,6 +23,11 @@ protected:
 
 private:
 	/// <summary>
+	/// 가속 계산을 위한 함수
+	/// </summary>
+	void Accel(float _DeltaTime);
+
+	/// <summary>
 	/// 방향을 확인한 후에 해당 방향을 기준으로 Idle 애니메이션이름을 바꾸고 ChangeAnimation의 인자로 넣는다.
 	/// </summary>
 	void IdleStart();
@@ -32,7 +37,9 @@ private:
 	/// </summary>
 	void MoveStart();
 	
-
+	/// <summary>
+	/// Jump 관련 키를 눌렀을 때, 일정 높이로 뛰어오를 때 취해야 하는 행동에 대한 함수를 포함하고 있다.
+	/// </summary>
 	void JumpStart();
 
 	/// <summary>
@@ -126,7 +133,10 @@ private:
 
 	EPlayerState MarioState = EPlayerState::None;
 	EPlayerDir MarioDir = EPlayerDir::Right;
-	float PVelocity = 500.0f;
+	float PMaxVelocity = 500.0f;
+	float PJumpVelocity = 500.0f;
+	float PVelocity = 0.0f;
+	float PAcceleration = 300.0f;
 	float PGravity = 500.0f;
 	float PFreeMoveVelocity = 1000.0f;
 	float PJumpHeightLimit = 0.0f;
