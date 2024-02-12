@@ -236,10 +236,12 @@ void APlayerMario::Move(float _DeltaTime)
 
 	if (UEngineInput::IsPress(VK_LEFT))
 	{
+		Accel(_DeltaTime);
 		MovePos += FVector::Left * PVelocity * _DeltaTime;
 	}
 	if (UEngineInput::IsPress(VK_RIGHT))
 	{
+		Accel(_DeltaTime);
 		MovePos += FVector::Right * PVelocity * _DeltaTime;
 	}
 
@@ -261,7 +263,7 @@ void APlayerMario::Jump(float _DeltaTime)
 	// 먼저 일정 높이 이상 떠오르고
 	if (false == JumpEnd && GetActorLocation().iY() >= std::lround(PJumpHeightLimit))
 	{
-		AddActorLocation(FVector::Up * PVelocity * _DeltaTime);
+		AddActorLocation(FVector::Up * PJumpVelocity * _DeltaTime);
 		return;
 	}
 	else
@@ -287,6 +289,21 @@ void APlayerMario::Jump(float _DeltaTime)
 	}
 }
 
+void APlayerMario::Accel(float _DeltaTime)
+{
+	if (PVelocity < PMaxVelocity)
+	{
+		PVelocity += PAcceleration * _DeltaTime;
+	}
+	else
+	{
+		PVelocity = PMaxVelocity;
+	}
+
+	EngineDebug::OutPutDebugText(std::to_string(PAcceleration));
+	EngineDebug::OutPutDebugText(std::to_string(PVelocity));
+}
+
 void APlayerMario::DirCheck()
 {
 	EPlayerDir Dir = MarioDir;
@@ -294,12 +311,12 @@ void APlayerMario::DirCheck()
 	if (UEngineInput::IsPress(VK_LEFT))
 	{
 		Dir = EPlayerDir::Left;
-		EngineDebug::OutPutDebugText("_Left");
+		//EngineDebug::OutPutDebugText("_Left");
 	}
 	else if (UEngineInput::IsPress(VK_RIGHT))
 	{
 		Dir = EPlayerDir::Right;
-		EngineDebug::OutPutDebugText("_Right");
+		//EngineDebug::OutPutDebugText("_Right");
 	}
 
 	if (MarioDir != Dir)
