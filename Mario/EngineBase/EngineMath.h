@@ -70,6 +70,38 @@ public:
 
 
 public:
+	/// <summary>
+	/// sqrtf 제곱근 구해주는 함수
+	/// </summary>
+	/// <returns></returns>
+	float Size2D()
+	{
+		return std::sqrtf((X * X) + (Y * Y));
+	}
+	
+	/// <summary>
+	/// FVector 본인이 길이가 1인 벡터로 변경되는것
+	/// </summary>
+	void Normalize2D()
+	{
+		float Size = Size2D();
+		X /= Size;
+		Y /= Size;
+		Z = 0.0f;
+		W = 0.0f;
+	}
+
+	/// <summary>
+	/// FVector 본인과 같은 방향이며 길이가 1인 벡터를 리턴하는 함수
+	/// </summary>
+	/// <returns></returns>
+	float4 Normalize2DReturn()
+	{
+		float4 Result = *this;
+		Result.Normalize2D();
+		return Result;
+	}
+
 	std::string ToString()
 	{
 		return "[X : " + std::to_string(X) + " Y : " + std::to_string(Y) + " Z : " + std::to_string(Z) + " W : " + std::to_string(W) + "]";
