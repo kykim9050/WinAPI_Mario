@@ -130,6 +130,7 @@ private:
 		MarioState = _State;
 	}
 
+	void CameraPosUpdate(FVector _Player, FVector _MovePos);
 
 	EPlayerState MarioState = EPlayerState::None;
 	EPlayerDir MarioDir = EPlayerDir::Right;
