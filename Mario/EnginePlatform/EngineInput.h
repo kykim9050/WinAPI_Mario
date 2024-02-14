@@ -24,7 +24,7 @@ private:
 
 		int Key = -1; 
 
-		void KeyCheck();
+		void KeyCheck(float _DeltaTime);
 
 		EngineKey()
 		{
