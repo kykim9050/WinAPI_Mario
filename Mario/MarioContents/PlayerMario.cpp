@@ -67,6 +67,14 @@ void APlayerMario::StateChange(EPlayerState _PlayerState)
 	SetMarioState(_PlayerState);
 }
 
+void APlayerMario::CameraPosUpdate(FVector _Player, FVector _MovePos)
+{
+	if (_Player.iX() >= UInGameValue::MainWindowXScale * UInGameValue::WindowSizeMulValue / 2)
+	{
+		GetWorld()->AddCameraPos(_MovePos);
+	}
+}
+
 void APlayerMario::JumpStart()
 {
 	DirCheck();
@@ -253,7 +261,10 @@ void APlayerMario::Move(float _DeltaTime)
 	if (UInGameValue::CollisionColor != ColMapColor)
 	{
 		AddActorLocation(MovePos);
-		GetWorld()->AddCameraPos(MovePos);
+		
+		// 플레이어가 윈도우 화면 절반 지점에 왔을 때 카메라 이동
+		CameraPosUpdate(GetActorLocation(), MovePos);
+		
 	}
 }
 
