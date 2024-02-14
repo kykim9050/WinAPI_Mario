@@ -40,24 +40,24 @@ void AActor::Tick(float _DeltaTime)
 	UTickObject::Tick(_DeltaTime);
 }
 
-UImageRenderer* AActor::CreateImageRenderer(int Order /*= 0*/)
+UImageRenderer* AActor::CreateImageRenderer(int _Order /*= 0*/)
 {
 	UImageRenderer* Component = new UImageRenderer();
 	UActorComponent* ActorCom = Component;
 	ActorCom->SetOwner(this);
-	ActorCom->SetOrder(Order);
+	ActorCom->SetOrder(_Order);
 	ActorCom->BeginPlay();
 	Renderers.push_back(Component);
 	return Component;
 }
 
 
-UCollision* AActor::CreateCollision(int Order /*= 0*/)
+UCollision* AActor::CreateCollision(int _Order /*= 0*/)
 {
 	UCollision* Component = new UCollision();
 	UActorComponent* ActorCom = Component;
 	ActorCom->SetOwner(this);
-	ActorCom->SetOrder(Order);
+	ActorCom->SetOrder(_Order);
 	ActorCom->BeginPlay();
 	Collisions.push_back(Component);
 	return Component;

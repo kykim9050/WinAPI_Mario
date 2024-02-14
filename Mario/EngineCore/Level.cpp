@@ -66,25 +66,50 @@ void ULevel::LevelRender(float _DeltaTime)
 void ULevel::LevelRelease(float _DeltaTime)
 {
 
-
-	for (std::pair<const int, std::list<UImageRenderer*>>& OrderListPair : Renderers)
 	{
-		std::list<UImageRenderer*>& RendererList = OrderListPair.second;
-
-		std::list<UImageRenderer*>::iterator StartIter = RendererList.begin();
-		std::list<UImageRenderer*>::iterator EndIter = RendererList.end();
-
-		for (; StartIter != EndIter; )
+		for (std::pair<const int, std::list<UCollision*>>& OrderListPair : Collisions)
 		{
-			UImageRenderer* Renderer = StartIter.operator*();
+			std::list<UCollision*>& List = OrderListPair.second;
 
-			if (false == Renderer->IsDestroy())
+			std::list<UCollision*>::iterator StartIter = List.begin();
+			std::list<UCollision*>::iterator EndIter = List.end();
+
+			for (; StartIter != EndIter; )
 			{
-				++StartIter;
-				continue;
-			}
+				UCollision* Collision = StartIter.operator*();
 
-			StartIter = RendererList.erase(StartIter);
+				if (false == Collision->IsDestroy())
+				{
+					++StartIter;
+					continue;
+				}
+
+				StartIter = List.erase(StartIter);
+			}
+		}
+	}
+
+
+	{
+		for (std::pair<const int, std::list<UImageRenderer*>>& OrderListPair : Renderers)
+		{
+			std::list<UImageRenderer*>& List = OrderListPair.second;
+
+			std::list<UImageRenderer*>::iterator StartIter = List.begin();
+			std::list<UImageRenderer*>::iterator EndIter = List.end();
+
+			for (; StartIter != EndIter; )
+			{
+				UImageRenderer* Renderer = StartIter.operator*();
+
+				if (false == Renderer->IsDestroy())
+				{
+					++StartIter;
+					continue;
+				}
+
+				StartIter = List.erase(StartIter);
+			}
 		}
 	}
 

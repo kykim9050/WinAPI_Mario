@@ -32,7 +32,7 @@ void UCollision::BeginPlay()
 
 bool UCollision::CollisionCheck(int _Order, std::vector<UCollision*>& _Result)
 {
-	// 나랑 특정개수의 콜리전이랑 충돌해야 한다.
+	// 본인과 특정 콜리전과 충돌해야 한다.
 	AActor* Owner = GetOwner();
 	ULevel* Level = Owner->GetWorld();
 
@@ -44,7 +44,7 @@ bool UCollision::CollisionCheck(int _Order, std::vector<UCollision*>& _Result)
 	{
 		FTransform OtherTransform = _OtherCollision->GetActorBaseTransform();
 
-		if (true == ThisTransform.Collision(ECollisionType::CirCle, ECollisionType::CirCle, OtherTransform))
+		if (true == ThisTransform.Collision(ColType, _OtherCollision->ColType, OtherTransform))
 		{
 			_Result.push_back(_OtherCollision);
 		}

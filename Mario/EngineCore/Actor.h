@@ -53,22 +53,21 @@ public:
 	}
 
 	template<typename EnumType>
-	UCollision* CreateCollision(EnumType Order = 0)
+	UCollision* CreateCollision(EnumType _Order = 0)
 	{
-		return CreateCollision(static_cast<int>(Order));
+		return CreateCollision(static_cast<int>(_Order));
 	}
 
 	template<typename EnumType>
-	UImageRenderer* CreateImageRenderer(EnumType Order = 0)
+	UImageRenderer* CreateImageRenderer(EnumType _Order = 0)
 	{
-		return CreateImageRenderer(static_cast<int>(Order));
+		return CreateImageRenderer(static_cast<int>(_Order));
 	}
 
-	UCollision* CreateCollision(int Order = 0);
+	UCollision* CreateCollision(int _Order = 0);
+	UImageRenderer* CreateImageRenderer(int _Order = 0);
 
-	UImageRenderer* CreateImageRenderer(int Order = 0);
-
-	void Destroy(float _DestroyTime /*= 0.0f*/) override;
+	void Destroy(float _DestroyTime = 0.0f) override;
 	void DestroyUpdate(float _DeltaTime) override;
 
 	void ActiveUpdate(float _DeltaTime) override;
