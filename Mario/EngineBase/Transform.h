@@ -8,9 +8,16 @@ enum ECollisionType
 	Rect,
 };
 
+class CollisionFunctionInit;
+
 // Ό³Έν :
 class FTransform
 {
+	friend CollisionFunctionInit;
+
+private:
+	static bool (*CollisionFunction[static_cast<int>(Rect)][static_cast<int>(Rect)])(const FTransform& _Left, const FTransform& _Right);
+
 public:
 	// constrcuter destructer
 	FTransform();
@@ -26,6 +33,8 @@ public:
 	//FTransform(FTransform&& _Other) noexcept = delete;
 	//FTransform& operator=(const FTransform& _Other) = delete;
 	//FTransform& operator=(FTransform&& _Other) noexcept = delete;
+
+	static bool CircleToCircle(const FTransform& _Left, const FTransform& _Right);
 
 public:
 	void SetScale(FVector _Value)
