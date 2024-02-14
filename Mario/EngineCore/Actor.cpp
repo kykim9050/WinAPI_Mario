@@ -19,6 +19,20 @@ AActor::~AActor()
 	}
 
 	Renderers.clear();
+
+	for (UCollision* Collision : Collisions)
+	{
+		if (nullptr == Collision)
+		{
+			MsgBoxAssert("이미지 랜더러가 nullptr인 상황이 있었습니다");
+		}
+
+		delete Collision;
+		Collision = nullptr;
+	}
+
+	Collisions.clear();
+
 }
 
 void AActor::Tick(float _DeltaTime)
@@ -28,13 +42,25 @@ void AActor::Tick(float _DeltaTime)
 
 UImageRenderer* AActor::CreateImageRenderer(int Order /*= 0*/)
 {
-	UImageRenderer* NewRenderer = new UImageRenderer();
-	UActorComponent* ActorCom = NewRenderer;
+	UImageRenderer* Component = new UImageRenderer();
+	UActorComponent* ActorCom = Component;
 	ActorCom->SetOwner(this);
 	ActorCom->SetOrder(Order);
 	ActorCom->BeginPlay();
-	Renderers.push_back(NewRenderer);
-	return NewRenderer;
+	Renderers.push_back(Component);
+	return Component;
+}
+
+
+UCollision* AActor::CreateCollision(int Order /*= 0*/)
+{
+	UCollision* Component = new UCollision();
+	UActorComponent* ActorCom = Component;
+	ActorCom->SetOwner(this);
+	ActorCom->SetOrder(Order);
+	ActorCom->BeginPlay();
+	Collisions.push_back(Component);
+	return Component;
 }
 
 void AActor::Destroy(float _DestroyTime /*= 0.0f*/)
