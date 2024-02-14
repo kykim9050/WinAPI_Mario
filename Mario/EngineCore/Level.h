@@ -5,6 +5,7 @@
 #include <list>
 
 class AActor;
+class UCollision;
 class UEngineCore;
 class UImageRenderer;
 // 설명 :
@@ -13,6 +14,7 @@ class ULevel : public UNameObject
 
 	friend UEngineCore;
 	friend UImageRenderer;
+	friend UCollision;
 
 public:
 	// constrcuter destructer
@@ -92,6 +94,8 @@ private:
 	void LevelRelease(float _DeltaTime);
 
 	std::map<int, std::list<UImageRenderer*>> Renderers;
+
+	std::map<int, std::list<UCollision*>> Collisions;
 
 	/// <summary>
 	/// 카메라 좌표 관련 맴버변수
