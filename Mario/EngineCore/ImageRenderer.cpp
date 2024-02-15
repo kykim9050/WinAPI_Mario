@@ -59,49 +59,13 @@ int UAnimationInfo::Update(float _DeltaTime)
 
 void UImageRenderer::Render(float _DeltaTime)
 {
-	if (nullptr == Image)
+	if (false == Text.empty())
 	{
-		MsgBoxAssert("이미지가 존재하지 않는 랜더러 입니다");
+		TextRender(_DeltaTime);
 	}
-
-	if (nullptr != CurAnimation)
-	{
-		Image = CurAnimation->Image;
-		InfoIndex = CurAnimation->Update(_DeltaTime);
+	else {
+		ImageRender(_DeltaTime);
 	}
-
-	FTransform RendererTrans = GetTransform();
-
-	FTransform ActorTrans = GetOwner()->GetTransform();
-
-	RendererTrans.AddPosition(ActorTrans.GetPosition());
-
-	if (true == CameraEffect)
-	{
-		AActor* Actor = GetOwner();
-		ULevel* World = Actor->GetWorld();
-		FVector CameraPos = World->GetCameraPos();
-
-		// 모든 랜더링에서 카메라의 위치만큼 빼주는 것
-		// 카메라가 이동할때 배경이미지들이 이동하는 듯한 기능을 수행
-		RendererTrans.AddPosition(-CameraPos);
-	}
-	EWIndowImageType ImageType = Image->GetImageType();
-
-	switch (ImageType)
-	{
-	case EWIndowImageType::IMG_BMP:
-		// bmp일때는 일반적으로 Transcopy로 투명처리를 한다.
-		GEngine->MainWindow.GetBackBufferImage()->TransCopy(Image, RendererTrans, InfoIndex, TransColor);
-		break;
-	case EWIndowImageType::IMG_PNG:
-		GEngine->MainWindow.GetBackBufferImage()->AlphaCopy(Image, RendererTrans, InfoIndex, TransColor);
-		break;
-	default:
-		MsgBoxAssert("투명처리가 불가능한 이미지 입니다.");
-		break;
-	}
-
 }
 
 void UImageRenderer::BeginPlay()
@@ -216,4 +180,62 @@ void UImageRenderer::AnimationReset()
 {
 	CurAnimation = nullptr;
 
+}
+
+FTransform UImageRenderer::GetRenderTransForm()
+{
+	FTransform RendererTrans = GetActorBaseTransform();
+
+	if (true == CameraEffect)
+	{
+		AActor* Actor = GetOwner();
+		ULevel* World = Actor->GetWorld();
+		FVector CameraPos = World->GetCameraPos();
+
+		// 모든 랜더링에서 카메라의 위치만큼 빼주는 것
+		// 카메라가 이동할때 배경이미지들이 이동하는 듯한 기능을 수행
+		RendererTrans.AddPosition(-CameraPos);
+	}
+
+	return RendererTrans;
+}
+
+void UImageRenderer::TextRender(float _DeltaTime)
+{
+	FTransform RendererTrans = GetRenderTransForm();
+
+	GEngine->MainWindow.GetBackBufferImage()->TextCopy(Text, Font, Size, RendererTrans, TextColor);
+}
+
+void UImageRenderer::ImageRender(float _DeltaTime)
+{
+
+	if (nullptr == Image)
+	{
+		MsgBoxAssert("이미지가 존재하지 않는 랜더러 입니다");
+	}
+
+	if (nullptr != CurAnimation)
+	{
+		Image = CurAnimation->Image;
+		InfoIndex = CurAnimation->Update(_DeltaTime);
+	}
+
+	FTransform RendererTrans = GetRenderTransForm();
+
+	EWIndowImageType ImageType = Image->GetImageType();
+
+	switch (ImageType)
+	{
+	case EWIndowImageType::IMG_BMP:
+		GEngine->MainWindow.GetBackBufferImage()->TransCopy(Image, RendererTrans, InfoIndex, TransColor);
+		// bmp일때는 일반적으로 Transcopy로 투명처리를 한다.
+		break;
+	case EWIndowImageType::IMG_PNG:
+		GEngine->MainWindow.GetBackBufferImage()->AlphaCopy(Image, RendererTrans, InfoIndex, TransColor);
+		break;
+	default:
+		MsgBoxAssert("투명처리가 불가능한 이미지 입니다.");
+		break;
+	}
 }
