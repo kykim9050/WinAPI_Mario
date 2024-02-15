@@ -104,11 +104,6 @@ void APlayerMario::JumpStart()
 {
 	DirCheck();
 	MarioRenderer->ChangeAnimation(ChangeAnimationName("Jump"));
-
-	// 현재의 좌표 기준으로 최대 점프 높이를 계산해 놓는다.
-	FVector CurPos = GetActorLocation();
-	PJumpHeightLimit = CurPos.Y - UInGameValue::JumpLimitValue;
-	JumpEnd = false;
 }
 
 void APlayerMario::FreeMoveStart()
@@ -167,33 +162,6 @@ void APlayerMario::Move(float _DeltaTime)
 void APlayerMario::Jump(float _DeltaTime)
 {
 
-	// 먼저 일정 높이 이상 떠오르고
-	if (false == JumpEnd && GetActorLocation().iY() >= std::lround(PJumpHeightLimit))
-	{
-		AddActorLocation(FVector::Up * PJumpVelocity * _DeltaTime);
-		return;
-	}
-	else
-	{
-		PJumpHeightLimit = 0.0f;
-		JumpEnd = true;
-	}
-
-	// 일정 높이 됬을 때 중력에 영향 받을 수 있도록 GravityCheck
-	if (GravityCheck(_DeltaTime))
-	{
-		if ((UEngineInput::IsFree(VK_LEFT) && UEngineInput::IsFree(VK_RIGHT)))
-		{
-			StateChange(EPlayerState::Idle);
-			return;
-		}
-
-		if (UEngineInput::IsPress(VK_LEFT) || UEngineInput::IsPress(VK_RIGHT))
-		{
-			StateChange(EPlayerState::Move);
-			return;
-		}
-	}
 }
 
 void APlayerMario::FreeMove(float _DeltaTime)
@@ -290,21 +258,6 @@ void APlayerMario::Idle(float _DeltaTime)
 }
 
 
-
-void APlayerMario::Accel(float _DeltaTime)
-{
-	if (PVelocity < PMaxVelocity)
-	{
-		PVelocity += PAcceleration * _DeltaTime;
-	}
-	else
-	{
-		PVelocity = PMaxVelocity;
-	}
-
-	EngineDebug::OutPutDebugText(std::to_string(PAcceleration));
-	EngineDebug::OutPutDebugText(std::to_string(PVelocity));
-}
 
 void APlayerMario::DirCheck()
 {

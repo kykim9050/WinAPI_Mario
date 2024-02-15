@@ -147,14 +147,9 @@ private:
 	// 수평 방향 최고 제한 속도의 크기
 	float HorizonMaxSpeed = 500.0f;
 
-	float PMaxVelocity = 500.0f;
-	float PJumpVelocity = 500.0f;
-	float PVelocity = 0.0f;
-	float PAcceleration = 300.0f;
 	float PGravity = 500.0f;
 	float PFreeMoveVelocity = 1000.0f;
-	float PJumpHeightLimit = 0.0f;
-	bool JumpEnd = false;
+
 
 	UImageRenderer* MarioRenderer = nullptr;
 	std::string CurAnimationName = "None";
