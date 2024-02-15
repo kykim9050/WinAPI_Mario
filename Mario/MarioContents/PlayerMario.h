@@ -129,13 +129,22 @@ public:
 
 	void CameraPosUpdate(FVector _Player, FVector _MovePos);
 
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
 private:
+	// 플레이어의 현재 상태
 	EPlayerState MarioState = EPlayerState::None;
+	// 플레이어의 현재 방향 (좌, 우)
 	EPlayerDir MarioDir = EPlayerDir::Right;
+
+	// 수평 방향 속도에 대한 벡터
+	FVector HorizonVelocityVector = FVector::Zero;
+	// 수평 방향 속도 크기에 영향을 끼치는 가속도 관련 벡터
+	FVector HorizonAccVector = FVector::Right * 500.0f;
+
 	float PMaxVelocity = 500.0f;
 	float PJumpVelocity = 500.0f;
 	float PVelocity = 0.0f;
@@ -147,6 +156,9 @@ private:
 
 	UImageRenderer* MarioRenderer = nullptr;
 	std::string CurAnimationName = "None";
+
+
+	void AddHorizonVelocityVector(const FVector& _DirDelta);
 
 };
 
