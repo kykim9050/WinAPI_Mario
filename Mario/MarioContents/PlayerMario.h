@@ -62,11 +62,6 @@ public:
 	std::string ChangeAnimationName(std::string _MainName);
 
 	/// <summary>
-	/// Actor의 현재 좌표 X, Y에서 현재 방향을 기준으로 OffSet값을 적용한 위치를 반환하는 함수
-	/// </summary>
-	FVector GetActorOffSetPos();
-
-	/// <summary>
 	/// 카메라. 플레이어 이동기능 (디버깅용. 모든 충돌을 무시하고 빠르게 이동 가능)
 	/// </summary>
 	void FreeMove(float _DeltaTime);
@@ -145,9 +140,14 @@ private:
 	// 중력 방향 속도에 대한 벡터
 	FVector GravityVelocityVector = FVector::Zero;
 	// 중력 방향 속도 크기에 영향을 끼치는 중력 가속도 벡터
-	FVector GravityAccVector = FVector::Down * 1000.0f;
+	FVector GravityAccVector = FVector::Down * 2000.0f;
 	// Player에 작용하는 모든 벡터에 대한 총합 벡터
 	FVector TotalVelocityVector = FVector::Zero;
+
+
+	FVector JumpVelocityVector = FVector::Zero;
+	FVector MaxJumpVelocityVector = FVector::Up * 900.0f;
+
 
 	// FreeMove 작동 시 속도
 	float PFreeMoveVelocity = 1000.0f;
@@ -163,5 +163,6 @@ private:
 	void CalHorizonVelocityVector(float _DeltaTime);
 	void CalGravityVelocityVector(float _DeltaTime);
 	void CalTotalVelocityVector(float _DeltaTime);
+	void CalJumpVelocityVector(float _DeltaTime);
 };
 
