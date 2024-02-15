@@ -410,23 +410,9 @@ void APlayerMario::ApplyMovement(float _DeltaTime)
 	CameraPosUpdate(GetActorLocation(), HorizonVelocityVector * _DeltaTime);
 }
 
-void APlayerMario::ResultMovementUpdate(float _DeltaTime)
+void APlayerMario::CalHorizonVelocityVector(float _DeltaTime)
 {
-	FVector CheckPos = GetActorLocation();
-
-	switch (MarioDir)
-	{
-	case EPlayerDir::Left:
-		CheckPos.X -= 30;
-		break;
-	case EPlayerDir::Right:
-		CheckPos.X += 30;
-		break;
-	default:
-		break;
-	}
-	CheckPos.Y -= 30;
-
+	FVector CheckPos = GetActorOffSetPos();
 
 	Color8Bit Color = UContentsFunction::GetCollisionMapImg()->GetColor(CheckPos.iX(), CheckPos.iY(), UInGameValue::CollisionColor);
 
@@ -450,7 +436,10 @@ void APlayerMario::ResultMovementUpdate(float _DeltaTime)
 	{
 		HorizonVelocityVector = HorizonVelocityVector.Normalize2DReturn() * HorizonMaxSpeed;
 	}
+}
 
-
+void APlayerMario::ResultMovementUpdate(float _DeltaTime)
+{
+	CalHorizonVelocityVector(_DeltaTime);
 	ApplyMovement(_DeltaTime);
 }

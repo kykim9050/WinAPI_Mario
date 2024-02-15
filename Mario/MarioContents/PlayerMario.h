@@ -163,5 +163,6 @@ private:
 	void AddHorizonVelocityVector(const FVector& _DirDelta);
 	void ResultMovementUpdate(float _DeltaTime);
 	void ApplyMovement(float _DeltaTime);
+	void CalHorizonVelocityVector(float _DeltaTime);
 };
 
