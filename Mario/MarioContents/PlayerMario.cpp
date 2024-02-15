@@ -403,6 +403,13 @@ void APlayerMario::AddHorizonVelocityVector(const FVector& _DirDelta)
 	HorizonVelocityVector += _DirDelta * HorizonAccVector;
 }
 
+void APlayerMario::ApplyMovement(float _DeltaTime)
+{
+	AddActorLocation(HorizonVelocityVector * _DeltaTime);
+	// 플레이어가 윈도우 화면 절반 지점에 왔을 때 카메라 이동
+	CameraPosUpdate(GetActorLocation(), HorizonVelocityVector * _DeltaTime);
+}
+
 void APlayerMario::ResultMovementUpdate(float _DeltaTime)
 {
 	FVector CheckPos = GetActorLocation();
@@ -445,8 +452,5 @@ void APlayerMario::ResultMovementUpdate(float _DeltaTime)
 	}
 
 
-
-	AddActorLocation(HorizonVelocityVector * _DeltaTime);
-	// 플레이어가 윈도우 화면 절반 지점에 왔을 때 카메라 이동
-	CameraPosUpdate(GetActorLocation(), HorizonVelocityVector * _DeltaTime);
+	ApplyMovement(_DeltaTime);
 }
