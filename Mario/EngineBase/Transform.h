@@ -1,11 +1,12 @@
 #pragma once
 #include "EngineMath.h"
 
-enum ECollisionType
+enum class ECollisionType
 {
 	Point,
 	CirCle,
 	Rect,
+	Max,
 };
 
 class CollisionFunctionInit;
@@ -16,7 +17,7 @@ class FTransform
 	friend CollisionFunctionInit;
 
 private:
-	static bool (*CollisionFunction[static_cast<int>(Rect)][static_cast<int>(Rect)])(const FTransform& _Left, const FTransform& _Right);
+	static bool (*CollisionFunction[static_cast<int>(ECollisionType::Max)][static_cast<int>(ECollisionType::Max)])(const FTransform& _Left, const FTransform& _Right);
 
 public:
 	// constrcuter destructer
