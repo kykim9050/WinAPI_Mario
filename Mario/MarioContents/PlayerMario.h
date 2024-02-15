@@ -17,11 +17,8 @@ public:
 	APlayerMario& operator=(const APlayerMario& _Other) = delete;
 	APlayerMario& operator=(APlayerMario&& _Other) noexcept = delete;
 
-protected:
-	void BeginPlay() override;
-	void Tick(float _DeltaTime) override;
+	void ReverseMoveCheck();
 
-private:
 	/// <summary>
 	/// 가속 계산을 위한 함수
 	/// </summary>
@@ -36,7 +33,7 @@ private:
 	/// 방향을 확인한 후에 해당 방향을 기준으로 Move 애니메이션이름을 바꾸고 ChangeAnimation의 인자로 넣는다.
 	/// </summary>
 	void MoveStart();
-	
+
 	/// <summary>
 	/// Jump 관련 키를 눌렀을 때, 일정 높이로 뛰어오를 때 취해야 하는 행동에 대한 함수를 포함하고 있다.
 	/// </summary>
@@ -53,7 +50,7 @@ private:
 	/// </summary>
 	/// <param name="_PlayerState"></param>
 	void StateChange(EPlayerState _PlayerState);
-	
+
 	/// <summary>
 	/// Actor의 방향(좌,우)을 확인하고 맴버 변수값으로 지정하는 함수
 	/// </summary>
@@ -79,7 +76,7 @@ private:
 	/// 카메라. 플레이어 이동기능 (디버깅용. 모든 충돌을 무시하고 빠르게 이동 가능)
 	/// </summary>
 	void FreeMove(float _DeltaTime);
-	
+
 	/// <summary>
 	/// 카메라만 이동할 수 있는 기능 (디버깅용)
 	/// </summary>
@@ -90,7 +87,7 @@ private:
 	/// 상태를 체크하며 각 상태에 맞는 함수를 호출
 	/// </summary>
 	void StateUpdate(float _DeltaTime);
-	
+
 	/// <summary>
 	/// Actor가 Idle 상태에서 취할 수 있는 기능
 	/// 1. 중력 적용
@@ -121,7 +118,7 @@ private:
 	{
 		MarioDir = _Dir;
 	}
-	
+
 	/// <summary>
 	/// Actor의 현 상태를 수정
 	/// </summary>
@@ -132,6 +129,11 @@ private:
 
 	void CameraPosUpdate(FVector _Player, FVector _MovePos);
 
+protected:
+	void BeginPlay() override;
+	void Tick(float _DeltaTime) override;
+
+private:
 	EPlayerState MarioState = EPlayerState::None;
 	EPlayerDir MarioDir = EPlayerDir::Right;
 	float PMaxVelocity = 500.0f;
@@ -142,6 +144,7 @@ private:
 	float PFreeMoveVelocity = 1000.0f;
 	float PJumpHeightLimit = 0.0f;
 	bool JumpEnd = false;
+
 	UImageRenderer* MarioRenderer = nullptr;
 	std::string CurAnimationName = "None";
 
