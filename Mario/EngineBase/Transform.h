@@ -35,6 +35,7 @@ public:
 	//FTransform& operator=(FTransform&& _Other) noexcept = delete;
 
 	static bool CircleToCircle(const FTransform& _Left, const FTransform& _Right);
+	static bool RectToRect(const FTransform& _Left, const FTransform& _Right);
 
 public:
 	void SetScale(FVector _Value)

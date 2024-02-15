@@ -3,7 +3,7 @@
 #include "Level.h"
 #include "EnginePlatform\EngineInput.h"
 
-
+bool UEngineCore::IsDebugValue = false;
 UEngineCore* GEngine = nullptr;
 
 UEngineCore::UEngineCore()
@@ -57,6 +57,8 @@ void UEngineCore::CoreTick()
 		MsgBoxAssert("엔진을 시작할 레벨이 지정되지 않았습니다 치명적인 오류입니다");
 	}
 
+
+	GEngine->Tick(DeltaTime);
 
 	CurLevel->Tick(DeltaTime);
 
