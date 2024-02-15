@@ -104,6 +104,8 @@ void APlayerMario::JumpStart()
 {
 	DirCheck();
 	MarioRenderer->ChangeAnimation(ChangeAnimationName("Jump"));
+
+	JumpVelocityVector = MaxJumpVelocityVector;
 }
 
 void APlayerMario::FreeMoveStart()
@@ -159,8 +161,32 @@ void APlayerMario::Move(float _DeltaTime)
 
 void APlayerMario::Jump(float _DeltaTime)
 {
+	if (UEngineInput::IsPress(VK_LEFT))
+	{
+		AddHorizonVelocityVector(FVector::Left * _DeltaTime);
+	}
+
+	if (UEngineInput::IsPress(VK_RIGHT))
+	{
+		AddHorizonVelocityVector(FVector::Right * _DeltaTime);
+	}
 
 	ResultMovementUpdate(_DeltaTime);
+
+	Color8Bit Color = UContentsFunction::GetCollisionMapImg()->GetColor(GetActorLocation().iX(), GetActorLocation().iY(), UInGameValue::CollisionColor);
+
+	if (UInGameValue::CollisionColor == Color)
+	{
+		JumpVelocityVector = FVector::Zero;
+		if (true == UEngineInput::IsPress(VK_LEFT) || true == UEngineInput::IsPress(VK_RIGHT))
+		{
+			StateChange(EPlayerState::Move);
+			return;
+		}
+
+		StateChange(EPlayerState::Idle);
+		return;
+	}
 }
 
 void APlayerMario::FreeMove(float _DeltaTime)
@@ -314,26 +340,6 @@ std::string APlayerMario::ChangeAnimationName(std::string _MainName)
 
 
 
-FVector APlayerMario::GetActorOffSetPos()
-{
-	FVector Pos = GetActorLocation();
-
-	switch (MarioDir)
-	{
-	case EPlayerDir::Right:
-		Pos.X += UInGameValue::ColOffSetX;
-		break;
-	case EPlayerDir::Left:
-		Pos.X -= UInGameValue::ColOffSetX;
-		break;
-	default:
-		break;
-	}
-
-	Pos.Y -= UInGameValue::ColOffSetY;
-
-	return Pos;
-}
 
 void APlayerMario::AddHorizonVelocityVector(const FVector& _DirDelta)
 {
@@ -425,13 +431,19 @@ void APlayerMario::CalGravityVelocityVector(float _DeltaTime)
 void APlayerMario::CalTotalVelocityVector(float _DeltaTime)
 {
 	TotalVelocityVector = FVector::Zero;
-	TotalVelocityVector = TotalVelocityVector + HorizonVelocityVector + GravityVelocityVector;
+	TotalVelocityVector = TotalVelocityVector + HorizonVelocityVector + GravityVelocityVector + JumpVelocityVector;
+}
+
+void APlayerMario::CalJumpVelocityVector(float _DeltaTime)
+{
+
 }
 
 void APlayerMario::ResultMovementUpdate(float _DeltaTime)
 {
 	CalHorizonVelocityVector(_DeltaTime);
 	CalGravityVelocityVector(_DeltaTime);
+	CalJumpVelocityVector(_DeltaTime);
 	CalTotalVelocityVector(_DeltaTime);
 	ApplyMovement(_DeltaTime);
 }
