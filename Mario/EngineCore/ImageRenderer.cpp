@@ -204,6 +204,9 @@ void UImageRenderer::TextRender(float _DeltaTime)
 {
 	FTransform RendererTrans = GetRenderTransForm();
 
+	// 글자 수
+	float TextCount = static_cast<float>(Text.size());
+
 	GEngine->MainWindow.GetBackBufferImage()->TextCopy(Text, Font, Size, RendererTrans, TextColor);
 }
 
