@@ -142,8 +142,6 @@ void APlayerMario::Move(float _DeltaTime)
 		return;
 	}
 
-	GravityCheck(_DeltaTime);
-
 	ReverseMoveCheck();
 
 	if (UEngineInput::IsPress(VK_LEFT))
@@ -162,6 +160,7 @@ void APlayerMario::Move(float _DeltaTime)
 void APlayerMario::Jump(float _DeltaTime)
 {
 
+	ResultMovementUpdate(_DeltaTime);
 }
 
 void APlayerMario::FreeMove(float _DeltaTime)
@@ -228,8 +227,6 @@ void APlayerMario::CameraMove(float _DeltaTime)
 
 void APlayerMario::Idle(float _DeltaTime)
 {
-	GravityCheck(_DeltaTime);
-
 	if (UEngineInput::IsDown('1'))
 	{
 		StateChange(EPlayerState::FreeMove);
@@ -276,19 +273,6 @@ void APlayerMario::DirCheck()
 	{
 		SetMarioDir(Dir);
 	}
-}
-
-bool APlayerMario::GravityCheck(float _DeltaTime)
-{
-	Color8Bit MapColor = UContentsFunction::GetCollisionMapImg()->GetColor(GetActorLocation().iX(), GetActorLocation().iY(), UInGameValue::CollisionColor);
-
-	if (UInGameValue::CollisionColor != MapColor)
-	{
-		AddActorLocation(FVector::Down * PGravity * _DeltaTime);
-		return false;
-	}
-
-	return true;
 }
 
 void APlayerMario::ReverseMoveCheck()
@@ -358,7 +342,7 @@ void APlayerMario::AddHorizonVelocityVector(const FVector& _DirDelta)
 
 void APlayerMario::ApplyMovement(float _DeltaTime)
 {
-	AddActorLocation(HorizonVelocityVector * _DeltaTime);
+	AddActorLocation(TotalVelocityVector * _DeltaTime);
 	// 플레이어가 윈도우 화면 절반 지점에 왔을 때 카메라 이동
 	CameraPosUpdate(GetActorLocation(), HorizonVelocityVector * _DeltaTime);
 }
@@ -426,8 +410,28 @@ void APlayerMario::CalHorizonVelocityVector(float _DeltaTime)
 	}
 }
 
+void APlayerMario::CalGravityVelocityVector(float _DeltaTime)
+{
+	GravityVelocityVector += GravityAccVector * _DeltaTime;
+
+	Color8Bit Color = UContentsFunction::GetCollisionMapImg()->GetColor(GetActorLocation().iX(), GetActorLocation().iY(), UInGameValue::CollisionColor);
+
+	if (UInGameValue::CollisionColor == Color)
+	{
+		GravityVelocityVector = FVector::Zero;
+	}
+}
+
+void APlayerMario::CalTotalVelocityVector(float _DeltaTime)
+{
+	TotalVelocityVector = FVector::Zero;
+	TotalVelocityVector = TotalVelocityVector + HorizonVelocityVector + GravityVelocityVector;
+}
+
 void APlayerMario::ResultMovementUpdate(float _DeltaTime)
 {
 	CalHorizonVelocityVector(_DeltaTime);
+	CalGravityVelocityVector(_DeltaTime);
+	CalTotalVelocityVector(_DeltaTime);
 	ApplyMovement(_DeltaTime);
 }

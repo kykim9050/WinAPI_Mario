@@ -57,12 +57,6 @@ public:
 	void DirCheck();
 
 	/// <summary>
-	/// 픽셀 충돌을 활용한 중력체크 함수
-	/// bool 형을 반환하는데, 장애물에 착지하면 true, 낙하중이면 false를 반환
-	/// </summary>
-	bool GravityCheck(float _DeltaTime);
-
-	/// <summary>
 	/// 방향 정보가 적용된 애니메이션 이름으로 수정하는 함수
 	/// </summary>
 	std::string ChangeAnimationName(std::string _MainName);
@@ -147,7 +141,15 @@ private:
 	// 수평 방향 최고 제한 속도의 크기
 	float HorizonMaxSpeed = 500.0f;
 
-	float PGravity = 500.0f;
+
+	// 중력 방향 속도에 대한 벡터
+	FVector GravityVelocityVector = FVector::Zero;
+	// 중력 방향 속도 크기에 영향을 끼치는 중력 가속도 벡터
+	FVector GravityAccVector = FVector::Down * 1000.0f;
+	// Player에 작용하는 모든 벡터에 대한 총합 벡터
+	FVector TotalVelocityVector = FVector::Zero;
+
+	// FreeMove 작동 시 속도
 	float PFreeMoveVelocity = 1000.0f;
 
 
@@ -159,5 +161,7 @@ private:
 	void ResultMovementUpdate(float _DeltaTime);
 	void ApplyMovement(float _DeltaTime);
 	void CalHorizonVelocityVector(float _DeltaTime);
+	void CalGravityVelocityVector(float _DeltaTime);
+	void CalTotalVelocityVector(float _DeltaTime);
 };
 
