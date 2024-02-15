@@ -131,7 +131,7 @@ void APlayerMario::MoveStart()
 
 
 
-
+// X축 이동만을 담당하는 함수
 void APlayerMario::Move(float _DeltaTime)
 {
 
@@ -151,7 +151,6 @@ void APlayerMario::Move(float _DeltaTime)
 
 	ReverseMoveCheck();
 
-
 	if (UEngineInput::IsPress(VK_LEFT))
 	{
 		AddHorizonVelocityVector(FVector::Left * _DeltaTime);
@@ -161,19 +160,8 @@ void APlayerMario::Move(float _DeltaTime)
 		AddHorizonVelocityVector(FVector::Right * _DeltaTime);
 	}
 
-	// CollisionMap과 충돌을 예상할 수 있도록 기존 Actor의 좌표값에 Offset값을 추가 가공한 좌표를 반환
-	FVector ComparePos = GetActorOffSetPos();
 
-	Color8Bit ColMapColor = UContentsFunction::GetCollisionMapImg()->GetColor(ComparePos.iX(), ComparePos.iY(), UInGameValue::CollisionColor);
-
-	if (UInGameValue::CollisionColor != ColMapColor)
-	{
-		AddActorLocation(HorizonVelocityVector * _DeltaTime);
-
-		// 플레이어가 윈도우 화면 절반 지점에 왔을 때 카메라 이동
-		CameraPosUpdate(GetActorLocation(), HorizonVelocityVector * _DeltaTime);
-
-	}
+	ResultMovementUpdate(_DeltaTime);
 }
 
 void APlayerMario::Jump(float _DeltaTime)
@@ -298,6 +286,7 @@ void APlayerMario::Idle(float _DeltaTime)
 		return;
 	}
 
+	ResultMovementUpdate(_DeltaTime);
 }
 
 
@@ -406,7 +395,58 @@ std::string APlayerMario::ChangeAnimationName(std::string _MainName)
 }
 
 
+
+
+
 void APlayerMario::AddHorizonVelocityVector(const FVector& _DirDelta)
 {
 	HorizonVelocityVector += _DirDelta * HorizonAccVector;
+}
+
+void APlayerMario::ResultMovementUpdate(float _DeltaTime)
+{
+	FVector CheckPos = GetActorLocation();
+
+	switch (MarioDir)
+	{
+	case EPlayerDir::Left:
+		CheckPos.X -= 30;
+		break;
+	case EPlayerDir::Right:
+		CheckPos.X += 30;
+		break;
+	default:
+		break;
+	}
+	CheckPos.Y -= 30;
+
+
+	Color8Bit Color = UContentsFunction::GetCollisionMapImg()->GetColor(CheckPos.iX(), CheckPos.iY(), UInGameValue::CollisionColor);
+
+	if (Color == UInGameValue::CollisionColor)
+	{
+		HorizonVelocityVector = FVector::Zero;
+	}
+
+	if (true == UEngineInput::IsFree(VK_LEFT) && true == UEngineInput::IsFree(VK_RIGHT))
+	{
+		if (0.001 <= HorizonVelocityVector.Size2D())
+		{
+			HorizonVelocityVector += (-HorizonVelocityVector.Normalize2DReturn()) * _DeltaTime * HorizonAccVector;
+		}
+		else {
+			HorizonVelocityVector = float4::Zero;
+		}
+	}
+
+	if (HorizonMaxSpeed <= HorizonVelocityVector.Size2D())
+	{
+		HorizonVelocityVector = HorizonVelocityVector.Normalize2DReturn() * HorizonMaxSpeed;
+	}
+
+
+
+	AddActorLocation(HorizonVelocityVector * _DeltaTime);
+	// 플레이어가 윈도우 화면 절반 지점에 왔을 때 카메라 이동
+	CameraPosUpdate(GetActorLocation(), HorizonVelocityVector * _DeltaTime);
 }
