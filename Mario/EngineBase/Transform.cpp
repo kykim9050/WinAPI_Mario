@@ -10,6 +10,7 @@ public:
 	CollisionFunctionInit()
 	{
 		FTransform::CollisionFunction[static_cast<int>(ECollisionType::CirCle)][static_cast<int>(ECollisionType::CirCle)] = FTransform::CircleToCircle;
+		FTransform::CollisionFunction[static_cast<int>(ECollisionType::Rect)][static_cast<int>(ECollisionType::Rect)] = FTransform::RectToRect;
 	}
 	~CollisionFunctionInit()
 	{
@@ -27,7 +28,31 @@ bool FTransform::CircleToCircle(const FTransform& _Left, const FTransform& _Righ
 	return Dir.Size2D() <= Len;
 }
 
+bool FTransform::RectToRect(const FTransform& _Left, const FTransform& _Right)
+{
+	if (_Left.Bottom() < _Right.Top())
+	{
+		return false;
+	}
 
+	if (_Left.Right() < _Right.Left())
+	{
+		return false;
+	}
+
+	if (_Right.Bottom() < _Left.Top())
+	{
+		return false;
+	}
+
+	if (_Right.Right() < _Left.Left())
+	{
+		return false;
+	}
+
+
+	return true;
+}
 
 FTransform::FTransform()
 {
