@@ -353,27 +353,6 @@ void APlayerMario::CameraPosUpdate(FVector _Player, FVector _MovePos)
 	}
 }
 
-FVector APlayerMario::GetActorOffSetPos()
-{
-	FVector Pos = GetActorLocation();
-
-	switch (MarioDir)
-	{
-	case EPlayerDir::Right:
-		Pos.X += UInGameValue::ColOffSetX;
-		break;
-	case EPlayerDir::Left:
-		Pos.X -= UInGameValue::ColOffSetX;
-		break;
-	default:
-		break;
-	}
-
-	Pos.Y -= UInGameValue::ColOffSetY;
-
-	return Pos;
-}
-
 std::string APlayerMario::ChangeAnimationName(std::string _MainName)
 {
 	std::string Dir = "";
@@ -398,6 +377,27 @@ std::string APlayerMario::ChangeAnimationName(std::string _MainName)
 
 
 
+FVector APlayerMario::GetActorOffSetPos()
+{
+	FVector Pos = GetActorLocation();
+
+	switch (MarioDir)
+	{
+	case EPlayerDir::Right:
+		Pos.X += UInGameValue::ColOffSetX;
+		break;
+	case EPlayerDir::Left:
+		Pos.X -= UInGameValue::ColOffSetX;
+		break;
+	default:
+		break;
+	}
+
+	Pos.Y -= UInGameValue::ColOffSetY;
+
+	return Pos;
+}
+
 void APlayerMario::AddHorizonVelocityVector(const FVector& _DirDelta)
 {
 	HorizonVelocityVector += _DirDelta * HorizonAccVector;
@@ -412,14 +412,49 @@ void APlayerMario::ApplyMovement(float _DeltaTime)
 
 void APlayerMario::CalHorizonVelocityVector(float _DeltaTime)
 {
-	FVector CheckPos = GetActorOffSetPos();
+	FVector CheckPos = GetActorLocation();
+	CheckPos.Y -= UInGameValue::ColOffSetY;
+
+	FVector BackPos = GetActorLocation();
+	BackPos.Y -= UInGameValue::ColOffSetY;
+
+	switch (MarioDir)
+	{
+	case EPlayerDir::Right:
+		CheckPos.X += UInGameValue::ColOffSetX;
+		BackPos.X -= UInGameValue::ColOffSetX;
+		break;
+	case EPlayerDir::Left:
+		CheckPos.X -= UInGameValue::ColOffSetX;
+		BackPos.X += UInGameValue::ColOffSetX;
+		break;
+	default:
+		break;
+	}
 
 	Color8Bit Color = UContentsFunction::GetCollisionMapImg()->GetColor(CheckPos.iX(), CheckPos.iY(), UInGameValue::CollisionColor);
+	Color8Bit PlayerBackColor = UContentsFunction::GetCollisionMapImg()->GetColor(BackPos.iX(), BackPos.iY(), UInGameValue::CollisionColor);
 
 	if (Color == UInGameValue::CollisionColor)
 	{
 		HorizonVelocityVector = FVector::Zero;
 	}
+
+	if (PlayerBackColor == UInGameValue::CollisionColor)
+	{
+		switch (MarioDir)
+		{
+		case EPlayerDir::Right:
+			HorizonVelocityVector = FVector::Right* _DeltaTime * HorizonAccVector;
+			break;
+		case EPlayerDir::Left:
+			HorizonVelocityVector = FVector::Left * _DeltaTime * HorizonAccVector;
+			break;
+		default:
+			break;
+		}
+	}
+
 
 	if (true == UEngineInput::IsFree(VK_LEFT) && true == UEngineInput::IsFree(VK_RIGHT))
 	{
