@@ -152,17 +152,13 @@ void APlayerMario::Move(float _DeltaTime)
 	ReverseMoveCheck();
 
 
-	FVector MovePos = FVector::Zero;
-
 	if (UEngineInput::IsPress(VK_LEFT))
 	{
-		Accel(_DeltaTime);
-		MovePos += FVector::Left * PVelocity * _DeltaTime;
+		AddHorizonVelocityVector(FVector::Left * _DeltaTime);
 	}
 	if (UEngineInput::IsPress(VK_RIGHT))
 	{
-		Accel(_DeltaTime);
-		MovePos += FVector::Right * PVelocity * _DeltaTime;
+		AddHorizonVelocityVector(FVector::Right * _DeltaTime);
 	}
 
 	// CollisionMap과 충돌을 예상할 수 있도록 기존 Actor의 좌표값에 Offset값을 추가 가공한 좌표를 반환
@@ -172,10 +168,10 @@ void APlayerMario::Move(float _DeltaTime)
 
 	if (UInGameValue::CollisionColor != ColMapColor)
 	{
-		AddActorLocation(MovePos);
+		AddActorLocation(HorizonVelocityVector * _DeltaTime);
 
 		// 플레이어가 윈도우 화면 절반 지점에 왔을 때 카메라 이동
-		CameraPosUpdate(GetActorLocation(), MovePos);
+		CameraPosUpdate(GetActorLocation(), HorizonVelocityVector * _DeltaTime);
 
 	}
 }
@@ -407,4 +403,10 @@ std::string APlayerMario::ChangeAnimationName(std::string _MainName)
 	}
 
 	return CurAnimationName + Dir;
+}
+
+
+void APlayerMario::AddHorizonVelocityVector(const FVector& _DirDelta)
+{
+	HorizonVelocityVector += _DirDelta * HorizonAccVector;
 }
