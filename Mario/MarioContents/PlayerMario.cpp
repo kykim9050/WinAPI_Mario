@@ -40,6 +40,13 @@ void APlayerMario::BeginPlay()
 	MarioState = EPlayerState::Idle;
 }
 
+void APlayerMario::Tick(float _DeltaTime)
+{
+	AActor::Tick(_DeltaTime);
+
+	StateUpdate(_DeltaTime);
+}
+
 
 void APlayerMario::StateChange(EPlayerState _PlayerState)
 {
@@ -67,13 +74,31 @@ void APlayerMario::StateChange(EPlayerState _PlayerState)
 	SetMarioState(_PlayerState);
 }
 
-void APlayerMario::CameraPosUpdate(FVector _Player, FVector _MovePos)
+void APlayerMario::StateUpdate(float _DeltaTime)
 {
-	if (_Player.iX() >= UInGameValue::MainWindowXScale * UInGameValue::WindowSizeMulValue / 2)
+	switch (MarioState)
 	{
-		GetWorld()->AddCameraPos(_MovePos);
+	case EPlayerState::Idle:
+		Idle(_DeltaTime);
+		break;
+	case EPlayerState::Move:
+		Move(_DeltaTime);
+		break;
+	case EPlayerState::FreeMove:
+		FreeMove(_DeltaTime);
+		break;
+	case EPlayerState::CameraMove:
+		CameraMove(_DeltaTime);
+		break;
+	case EPlayerState::Jump:
+		Jump(_DeltaTime);
+		break;
+	default:
+		break;
 	}
 }
+
+
 
 void APlayerMario::JumpStart()
 {
@@ -89,6 +114,104 @@ void APlayerMario::JumpStart()
 void APlayerMario::FreeMoveStart()
 {
 	MarioRenderer->ChangeAnimation("Idle_Right");
+}
+
+void APlayerMario::IdleStart()
+{
+	DirCheck();
+	MarioRenderer->ChangeAnimation(ChangeAnimationName("Idle"));
+}
+
+void APlayerMario::MoveStart()
+{
+	DirCheck();
+	MarioRenderer->ChangeAnimation(ChangeAnimationName("Move"));
+}
+
+
+
+
+
+void APlayerMario::Move(float _DeltaTime)
+{
+
+	if ((UEngineInput::IsFree(VK_LEFT) && UEngineInput::IsFree(VK_RIGHT)))
+	{
+		StateChange(EPlayerState::Idle);
+		return;
+	}
+
+	if (UEngineInput::IsDown('Z'))
+	{
+		StateChange(EPlayerState::Jump);
+		return;
+	}
+
+
+	GravityCheck(_DeltaTime);
+
+	DirCheck();
+	MarioRenderer->ChangeAnimation(ChangeAnimationName("Move"));
+
+
+	FVector MovePos = FVector::Zero;
+
+	if (UEngineInput::IsPress(VK_LEFT))
+	{
+		Accel(_DeltaTime);
+		MovePos += FVector::Left * PVelocity * _DeltaTime;
+	}
+	if (UEngineInput::IsPress(VK_RIGHT))
+	{
+		Accel(_DeltaTime);
+		MovePos += FVector::Right * PVelocity * _DeltaTime;
+	}
+
+	// CollisionMap과 충돌을 예상할 수 있도록 기존 Actor의 좌표값에 Offset값을 추가 가공한 좌표를 반환
+	FVector ComparePos = GetActorOffSetPos();
+
+	Color8Bit ColMapColor = UContentsFunction::GetCollisionMapImg()->GetColor(ComparePos.iX(), ComparePos.iY(), UInGameValue::CollisionColor);
+
+	if (UInGameValue::CollisionColor != ColMapColor)
+	{
+		AddActorLocation(MovePos);
+
+		// 플레이어가 윈도우 화면 절반 지점에 왔을 때 카메라 이동
+		CameraPosUpdate(GetActorLocation(), MovePos);
+
+	}
+}
+
+void APlayerMario::Jump(float _DeltaTime)
+{
+
+	// 먼저 일정 높이 이상 떠오르고
+	if (false == JumpEnd && GetActorLocation().iY() >= std::lround(PJumpHeightLimit))
+	{
+		AddActorLocation(FVector::Up * PJumpVelocity * _DeltaTime);
+		return;
+	}
+	else
+	{
+		PJumpHeightLimit = 0.0f;
+		JumpEnd = true;
+	}
+
+	// 일정 높이 됬을 때 중력에 영향 받을 수 있도록 GravityCheck
+	if (GravityCheck(_DeltaTime))
+	{
+		if ((UEngineInput::IsFree(VK_LEFT) && UEngineInput::IsFree(VK_RIGHT)))
+		{
+			StateChange(EPlayerState::Idle);
+			return;
+		}
+
+		if (UEngineInput::IsPress(VK_LEFT) || UEngineInput::IsPress(VK_RIGHT))
+		{
+			StateChange(EPlayerState::Move);
+			return;
+		}
+	}
 }
 
 void APlayerMario::FreeMove(float _DeltaTime)
@@ -153,20 +276,6 @@ void APlayerMario::CameraMove(float _DeltaTime)
 	}
 }
 
-bool APlayerMario::GravityCheck(float _DeltaTime)
-{
-	Color8Bit MapColor = UContentsFunction::GetCollisionMapImg()->GetColor(GetActorLocation().iX(), GetActorLocation().iY(), UInGameValue::CollisionColor);
-
-	if (UInGameValue::CollisionColor != MapColor)
-	{
-		AddActorLocation(FVector::Down * PGravity * _DeltaTime);
-		return false;
-	}
-
-	return true;
-}
-
-
 void APlayerMario::Idle(float _DeltaTime)
 {
 	GravityCheck(_DeltaTime);
@@ -197,108 +306,7 @@ void APlayerMario::Idle(float _DeltaTime)
 
 }
 
-FVector APlayerMario::GetActorOffSetPos()
-{
-	FVector Pos = GetActorLocation();
 
-	switch (MarioDir)
-	{
-	case EPlayerDir::Right:
-		Pos.X += UInGameValue::ColOffSetX;
-		break;
-	case EPlayerDir::Left:
-		Pos.X -= UInGameValue::ColOffSetX;
-		break;
-	default:
-		break;
-	}
-
-	Pos.Y -= UInGameValue::ColOffSetY;
-
-	return Pos;
-}
-
-void APlayerMario::Move(float _DeltaTime)
-{
-
-	if ((UEngineInput::IsFree(VK_LEFT) && UEngineInput::IsFree(VK_RIGHT)))
-	{
-		StateChange(EPlayerState::Idle);
-		return;
-	}
-
-	if (UEngineInput::IsDown('Z'))
-	{
-		StateChange(EPlayerState::Jump);
-		return;
-	}
-
-
-	GravityCheck(_DeltaTime);
-
-	DirCheck();
-	MarioRenderer->ChangeAnimation(ChangeAnimationName("Move"));
-
-
-	FVector MovePos = FVector::Zero;
-
-	if (UEngineInput::IsPress(VK_LEFT))
-	{
-		Accel(_DeltaTime);
-		MovePos += FVector::Left * PVelocity * _DeltaTime;
-	}
-	if (UEngineInput::IsPress(VK_RIGHT))
-	{
-		Accel(_DeltaTime);
-		MovePos += FVector::Right * PVelocity * _DeltaTime;
-	}
-
-	// CollisionMap과 충돌을 예상할 수 있도록 기존 Actor의 좌표값에 Offset값을 추가 가공한 좌표를 반환
-	FVector ComparePos = GetActorOffSetPos();
-
-	Color8Bit ColMapColor = UContentsFunction::GetCollisionMapImg()->GetColor(ComparePos.iX(), ComparePos.iY(), UInGameValue::CollisionColor);
-
-	if (UInGameValue::CollisionColor != ColMapColor)
-	{
-		AddActorLocation(MovePos);
-		
-		// 플레이어가 윈도우 화면 절반 지점에 왔을 때 카메라 이동
-		CameraPosUpdate(GetActorLocation(), MovePos);
-		
-	}
-}
-
-void APlayerMario::Jump(float _DeltaTime)
-{
-
-	// 먼저 일정 높이 이상 떠오르고
-	if (false == JumpEnd && GetActorLocation().iY() >= std::lround(PJumpHeightLimit))
-	{
-		AddActorLocation(FVector::Up * PJumpVelocity * _DeltaTime);
-		return;
-	}
-	else
-	{
-		PJumpHeightLimit = 0.0f;
-		JumpEnd = true;
-	}
-
-	// 일정 높이 됬을 때 중력에 영향 받을 수 있도록 GravityCheck
-	if (GravityCheck(_DeltaTime))
-	{
-		if ((UEngineInput::IsFree(VK_LEFT) && UEngineInput::IsFree(VK_RIGHT)))
-		{
-			StateChange(EPlayerState::Idle);
-			return;
-		}
-
-		if (UEngineInput::IsPress(VK_LEFT) || UEngineInput::IsPress(VK_RIGHT))
-		{
-			StateChange(EPlayerState::Move);
-			return;
-		}
-	}
-}
 
 void APlayerMario::Accel(float _DeltaTime)
 {
@@ -322,12 +330,10 @@ void APlayerMario::DirCheck()
 	if (UEngineInput::IsPress(VK_LEFT))
 	{
 		Dir = EPlayerDir::Left;
-		//EngineDebug::OutPutDebugText("_Left");
 	}
 	else if (UEngineInput::IsPress(VK_RIGHT))
 	{
 		Dir = EPlayerDir::Right;
-		//EngineDebug::OutPutDebugText("_Right");
 	}
 
 	if (MarioDir != Dir)
@@ -336,10 +342,47 @@ void APlayerMario::DirCheck()
 	}
 }
 
-void APlayerMario::IdleStart()
+bool APlayerMario::GravityCheck(float _DeltaTime)
 {
-	DirCheck();
-	MarioRenderer->ChangeAnimation(ChangeAnimationName("Idle"));
+	Color8Bit MapColor = UContentsFunction::GetCollisionMapImg()->GetColor(GetActorLocation().iX(), GetActorLocation().iY(), UInGameValue::CollisionColor);
+
+	if (UInGameValue::CollisionColor != MapColor)
+	{
+		AddActorLocation(FVector::Down * PGravity * _DeltaTime);
+		return false;
+	}
+
+	return true;
+}
+
+
+void APlayerMario::CameraPosUpdate(FVector _Player, FVector _MovePos)
+{
+	if (_Player.iX() >= UInGameValue::MainWindowXScale * UInGameValue::WindowSizeMulValue / 2)
+	{
+		GetWorld()->AddCameraPos(_MovePos);
+	}
+}
+
+FVector APlayerMario::GetActorOffSetPos()
+{
+	FVector Pos = GetActorLocation();
+
+	switch (MarioDir)
+	{
+	case EPlayerDir::Right:
+		Pos.X += UInGameValue::ColOffSetX;
+		break;
+	case EPlayerDir::Left:
+		Pos.X -= UInGameValue::ColOffSetX;
+		break;
+	default:
+		break;
+	}
+
+	Pos.Y -= UInGameValue::ColOffSetY;
+
+	return Pos;
 }
 
 std::string APlayerMario::ChangeAnimationName(std::string _MainName)
@@ -360,42 +403,4 @@ std::string APlayerMario::ChangeAnimationName(std::string _MainName)
 	}
 
 	return CurAnimationName + Dir;
-}
-
-void APlayerMario::MoveStart()
-{
-	DirCheck();
-	MarioRenderer->ChangeAnimation(ChangeAnimationName("Move"));
-}
-
-
-void APlayerMario::StateUpdate(float _DeltaTime)
-{
-	switch (MarioState)
-	{
-	case EPlayerState::Idle:
-		Idle(_DeltaTime);
-		break;
-	case EPlayerState::Move:
-		Move(_DeltaTime);
-		break;
-	case EPlayerState::FreeMove:
-		FreeMove(_DeltaTime);
-		break;
-	case EPlayerState::CameraMove:
-		CameraMove(_DeltaTime);
-		break;
-	case EPlayerState::Jump:
-		Jump(_DeltaTime);
-		break;
-	default:
-		break;
-	}
-}
-
-void APlayerMario::Tick(float _DeltaTime)
-{
-	AActor::Tick(_DeltaTime);
-
-	StateUpdate(_DeltaTime);
 }
