@@ -147,11 +147,9 @@ void APlayerMario::Move(float _DeltaTime)
 		return;
 	}
 
-
 	GravityCheck(_DeltaTime);
 
-	DirCheck();
-	MarioRenderer->ChangeAnimation(ChangeAnimationName("Move"));
+	ReverseMoveCheck();
 
 
 	FVector MovePos = FVector::Zero;
@@ -353,6 +351,12 @@ bool APlayerMario::GravityCheck(float _DeltaTime)
 	}
 
 	return true;
+}
+
+void APlayerMario::ReverseMoveCheck()
+{
+	DirCheck();
+	MarioRenderer->ChangeAnimation(ChangeAnimationName("Move"));
 }
 
 
