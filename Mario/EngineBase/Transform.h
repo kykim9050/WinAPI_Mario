@@ -36,7 +36,15 @@ public:
 	//FTransform& operator=(FTransform&& _Other) noexcept = delete;
 
 	static bool CircleToCircle(const FTransform& _Left, const FTransform& _Right);
+	static bool CircleToRect(const FTransform& _Left, const FTransform& _Right);
+	static bool CircleToPoint(const FTransform& _Left, const FTransform& _Right);
+	
 	static bool RectToRect(const FTransform& _Left, const FTransform& _Right);
+	static bool RectToCircle(const FTransform& _Left, const FTransform& _Right);
+	static bool RectToPoint(const FTransform& _Left, const FTransform& _Right);
+
+	static bool PointToRect(const FTransform& _Left, const FTransform& _Right);
+	static bool PointToCircle(const FTransform& _Left, const FTransform& _Right);
 
 public:
 	void SetScale(FVector _Value)
@@ -58,6 +66,26 @@ public:
 	FVector GetPosition() const
 	{
 		return Position;
+	}
+
+	FVector LeftTop() const
+	{
+		return { Left(), Top() };
+	}
+
+	FVector RightTop() const
+	{
+		return { Right(), Top() };
+	}
+
+	FVector LeftBottom() const
+	{
+		return { Left(), Bottom() };
+	}
+
+	FVector RightBottom() const
+	{
+		return { Right(), Bottom() };
 	}
 
 	float Left() const
@@ -92,6 +120,17 @@ public:
 	int iBottom() const
 	{
 		return std::lround(Bottom());
+	}
+
+	void SetRadius(float _Radius)
+	{
+		Scale = float4::Zero;
+		Scale.X = _Radius * 2.0f;
+	}
+
+	float GetRadius() const
+	{
+		return Scale.hX();
 	}
 
 	bool Collision(ECollisionType _ThisType, ECollisionType _OtherType, const FTransform& _Other);
