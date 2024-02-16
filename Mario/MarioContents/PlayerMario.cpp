@@ -389,7 +389,7 @@ bool APlayerMario::IsReverseMove()
 
 void APlayerMario::CameraPosUpdate(FVector _Player, FVector _MovePos)
 {
-	if (_Player.iX() >= UInGameValue::MainWindowXScale * UInGameValue::WindowSizeMulValue / 2)
+	if (_Player.iX() >= UInGameValue::MainWindowXScale * UInGameValue::WindowSizeMulValue / 5 * 2)
 	{
 		GetWorld()->AddCameraPos(_MovePos);
 	}
