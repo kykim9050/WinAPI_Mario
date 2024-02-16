@@ -9,6 +9,12 @@ class UInGameValue
 {
 public:
 
+
+	// 배율만큼 곱해진 변현된 윈도우 사이즈
+	static const int ResultMainWindowXScale;
+	static const int ResultMainWindowYScale;
+
+
 	/// 기본 윈도우 사이즈
 	static const int MainWindowXScale;
 	static const int MainWindowYScale;
@@ -51,10 +57,7 @@ public:
 	static const int ColOffSetX;
 	static const int ColOffSetY;
 
-	/// <summary>
-	/// Jump 동작시 상한선
-	/// </summary>
-	static const float JumpLimitValue;
+
 
 protected:
 
