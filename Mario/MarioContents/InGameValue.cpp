@@ -5,6 +5,10 @@ const int UInGameValue::WindowSizeMulValue = 3;
 const int UInGameValue::MainWindowXScale = 256;
 const int UInGameValue::MainWindowYScale = 240;
 
+const int UInGameValue::ResultMainWindowXScale = UInGameValue::MainWindowXScale * UInGameValue::WindowSizeMulValue;
+const int UInGameValue::ResultMainWindowYScale = UInGameValue::MainWindowYScale * UInGameValue::WindowSizeMulValue;
+
+
 const int UInGameValue::MarioRightImageXValue = 5;
 const int UInGameValue::MarioRightImageYValue = 8;
 
@@ -21,5 +25,3 @@ const Color8Bit UInGameValue::CollisionColor = Color8Bit(0, 0, 255, 0);
 
 const int UInGameValue::ColOffSetX = 20;
 const int UInGameValue::ColOffSetY = 40;
-
-const float UInGameValue::JumpLimitValue = 200.0f;

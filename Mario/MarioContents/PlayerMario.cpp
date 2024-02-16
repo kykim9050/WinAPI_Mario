@@ -389,6 +389,15 @@ bool APlayerMario::IsReverseMove()
 
 void APlayerMario::CameraPosUpdate(FVector _Player, FVector _MovePos)
 {
+	
+
+	if (GetWorld()->GetCameraPos().X >= UContentsFunction::GetCollisionMapImg()->GetScale().X - UInGameValue::ResultMainWindowXScale)
+	{
+		FVector CameraPos = GetWorld()->GetCameraPos();
+		GetWorld()->SetCameraPos(CameraPos);
+		return;
+	}
+
 	if (_Player.iX() >= UInGameValue::MainWindowXScale * UInGameValue::WindowSizeMulValue / 5 * 2)
 	{
 		GetWorld()->AddCameraPos(_MovePos);
@@ -428,8 +437,9 @@ void APlayerMario::AddHorizonVelocityVector(const FVector& _DirDelta)
 void APlayerMario::ApplyMovement(float _DeltaTime)
 {
 	AddActorLocation(TotalVelocityVector * _DeltaTime);
-	// 플레이어가 윈도우 화면 절반 지점에 왔을 때 카메라 이동
+	// 플레이어가 윈도우 화면 2/5 지점에 왔을 때 카메라 이동
 	CameraPosUpdate(GetActorLocation(), HorizonVelocityVector * _DeltaTime);
+
 }
 
 void APlayerMario::CalHorizonVelocityVector(float _DeltaTime)
