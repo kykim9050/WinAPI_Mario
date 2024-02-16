@@ -109,6 +109,7 @@ void APlayerMario::StateUpdate(float _DeltaTime)
 
 void APlayerMario::JumpStart()
 {
+	EngineDebug::OutPutDebugText("JumpStart");
 	DirCheck();
 	MarioRenderer->ChangeAnimation(ChangeAnimationName("Jump"));
 
@@ -122,18 +123,21 @@ void APlayerMario::FreeMoveStart()
 
 void APlayerMario::IdleStart()
 {
+	EngineDebug::OutPutDebugText("IdleStart");
 	DirCheck();
 	MarioRenderer->ChangeAnimation(ChangeAnimationName("Idle"));
 }
 
 void APlayerMario::MoveStart()
 {
+	EngineDebug::OutPutDebugText("MoveStart");
 	DirCheck();
 	MarioRenderer->ChangeAnimation(ChangeAnimationName("Move"));
 }
 
 void APlayerMario::ReverseMoveStart()
 {
+	EngineDebug::OutPutDebugText("ReverseMoveStart");
 	DirCheck();
 	MarioRenderer->ChangeAnimation(ChangeAnimationName("ReverseMove"));
 }
@@ -151,10 +155,26 @@ void APlayerMario::ReverseMove(float _DeltaTime)
 
 	if (UEngineInput::IsPress(VK_LEFT))
 	{
+		
+		//EngineDebug::OutPutDebugText(std::to_string(HorizonVelocityVector.X));
+		if (HorizonVelocityVector.X < 0.0f)
+		{
+			StateChange(EPlayerState::Move);
+			return;
+		}
+
 		AddHorizonVelocityVector(FVector::Left * _DeltaTime);
+
 	}
+
 	if (UEngineInput::IsPress(VK_RIGHT))
 	{
+		//EngineDebug::OutPutDebugText(std::to_string(HorizonVelocityVector.X));
+		if (HorizonVelocityVector.X > 0.0f)
+		{
+			StateChange(EPlayerState::Move);
+			return;
+		}
 		AddHorizonVelocityVector(FVector::Right * _DeltaTime);
 	}
 
@@ -172,7 +192,7 @@ void APlayerMario::ReverseMove(float _DeltaTime)
 void APlayerMario::Move(float _DeltaTime)
 {
 
-	if ((UEngineInput::IsFree(VK_LEFT) && UEngineInput::IsFree(VK_RIGHT)))
+	if (HorizonVelocityVector.X < 3.0f && (UEngineInput::IsFree(VK_LEFT) && UEngineInput::IsFree(VK_RIGHT)))
 	{
 		StateChange(EPlayerState::Idle);
 		return;
@@ -334,7 +354,7 @@ bool APlayerMario::DirCheck()
 	{
 		Dir = EPlayerDir::Left;
 	}
-	else if (UEngineInput::IsPress(VK_RIGHT))
+	if (UEngineInput::IsPress(VK_RIGHT))
 	{
 		Dir = EPlayerDir::Right;
 	}
