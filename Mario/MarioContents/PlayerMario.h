@@ -45,6 +45,11 @@ public:
 	void FreeMoveStart();
 
 	/// <summary>
+	/// ReverseMove시에 애니메이션 변경
+	/// </summary>
+	void ReverseMoveStart();
+
+	/// <summary>
 	/// Actor의 상태가 변경될 때 실행되는 함수
 	/// 각 상태가 시작되기 전에 실행되어야 할 함수를 호출해준다.
 	/// </summary>
@@ -100,6 +105,8 @@ public:
 	/// 
 	/// </summary>
 	void Jump(float _DeltaTime);
+
+	void ReverseMove(float _DeltaTime);
 
 	/// <summary>
 	/// Actor의 방향을 수정
