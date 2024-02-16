@@ -192,7 +192,7 @@ void APlayerMario::ReverseMove(float _DeltaTime)
 void APlayerMario::Move(float _DeltaTime)
 {
 
-	if (HorizonVelocityVector.X < 3.0f && (UEngineInput::IsFree(VK_LEFT) && UEngineInput::IsFree(VK_RIGHT)))
+	if (HorizonVelocityVector.X < 3.0f && HorizonVelocityVector.X > -3.0f && (UEngineInput::IsFree(VK_LEFT) && UEngineInput::IsFree(VK_RIGHT)))
 	{
 		StateChange(EPlayerState::Idle);
 		return;
