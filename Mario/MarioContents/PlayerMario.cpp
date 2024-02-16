@@ -389,8 +389,6 @@ bool APlayerMario::IsReverseMove()
 
 void APlayerMario::CameraPosUpdate(FVector _Player, FVector _MovePos)
 {
-	
-
 	if (GetWorld()->GetCameraPos().X >= UContentsFunction::GetCollisionMapImg()->GetScale().X - UInGameValue::ResultMainWindowXScale)
 	{
 		FVector CameraPos = GetWorld()->GetCameraPos();
