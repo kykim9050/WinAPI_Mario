@@ -53,8 +53,9 @@ public:
 
 	/// <summary>
 	/// Actor의 방향(좌,우)을 확인하고 맴버 변수값으로 지정하는 함수
+	/// 기존 방향과 같으면 true, 기존 방향과 다르면 false
 	/// </summary>
-	void DirCheck();
+	bool DirCheck();
 
 	/// <summary>
 	/// 방향 정보가 적용된 애니메이션 이름으로 수정하는 함수
@@ -117,6 +118,8 @@ public:
 	}
 
 	void CameraPosUpdate(FVector _Player, FVector _MovePos);
+
+	bool IsReverseMove();
 
 
 protected:

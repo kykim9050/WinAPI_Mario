@@ -144,7 +144,6 @@ void APlayerMario::Move(float _DeltaTime)
 		return;
 	}
 
-	ReverseMoveCheck();
 
 	if (UEngineInput::IsPress(VK_LEFT))
 	{
@@ -155,8 +154,13 @@ void APlayerMario::Move(float _DeltaTime)
 		AddHorizonVelocityVector(FVector::Right * _DeltaTime);
 	}
 
-
 	ResultMovementUpdate(_DeltaTime);
+	
+	if (true == IsReverseMove())
+	{
+		int a = 0;
+	}
+	//ReverseMoveCheck();
 }
 
 void APlayerMario::Jump(float _DeltaTime)
@@ -282,7 +286,7 @@ void APlayerMario::Idle(float _DeltaTime)
 
 
 
-void APlayerMario::DirCheck()
+bool APlayerMario::DirCheck()
 {
 	EPlayerDir Dir = MarioDir;
 
@@ -298,7 +302,10 @@ void APlayerMario::DirCheck()
 	if (MarioDir != Dir)
 	{
 		SetMarioDir(Dir);
+		return false;
 	}
+
+	return true;
 }
 
 void APlayerMario::ReverseMoveCheck()
@@ -306,6 +313,17 @@ void APlayerMario::ReverseMoveCheck()
 	DirCheck();
 	MarioRenderer->ChangeAnimation(ChangeAnimationName("Move"));
 }
+
+bool APlayerMario::IsReverseMove()
+{
+	if (false == DirCheck())
+	{
+		return true;
+	}
+	return false;
+}
+
+
 
 
 void APlayerMario::CameraPosUpdate(FVector _Player, FVector _MovePos)
