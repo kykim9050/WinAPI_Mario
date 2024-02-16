@@ -396,8 +396,13 @@ void APlayerMario::CameraPosUpdate(FVector _Player, FVector _MovePos)
 		return;
 	}
 
-	if (_Player.iX() >= UInGameValue::MainWindowXScale * UInGameValue::WindowSizeMulValue / 5 * 2)
+	if (_Player.X >= UInGameValue::MainWindowXScale * UInGameValue::WindowSizeMulValue / 5 * 2)
 	{
+		if (0 >= _MovePos.X)
+		{
+			_MovePos.X = 0.0f;
+		}
+
 		GetWorld()->AddCameraPos(_MovePos);
 	}
 }
