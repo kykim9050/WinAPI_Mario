@@ -350,11 +350,12 @@ bool APlayerMario::DirCheck()
 {
 	EPlayerDir Dir = MarioDir;
 
-	if (UEngineInput::IsPress(VK_LEFT))
+	if (UEngineInput::IsPress(VK_LEFT) && UEngineInput::IsFree(VK_RIGHT))
 	{
 		Dir = EPlayerDir::Left;
 	}
-	if (UEngineInput::IsPress(VK_RIGHT))
+
+	if (UEngineInput::IsPress(VK_RIGHT) && UEngineInput::IsFree(VK_LEFT))
 	{
 		Dir = EPlayerDir::Right;
 	}
