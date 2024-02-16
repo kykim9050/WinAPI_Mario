@@ -35,7 +35,8 @@ void APlayerMario::BeginPlay()
 	MarioRenderer->CreateAnimation("Jump_Right", "Mario_Right.png", 5, 5, 0.1f, true);
 	MarioRenderer->CreateAnimation("Jump_Left", "Mario_Left.png", 5, 5, 0.1f, true);
 
-
+	MarioRenderer->CreateAnimation("ReverseMove_Right", "Mario_Right.png", 4, 4, 0.1f, true);
+	MarioRenderer->CreateAnimation("ReverseMove_Left", "Mario_Left.png", 4, 4, 0.1f, true);
 
 	MarioState = EPlayerState::Idle;
 }
@@ -66,6 +67,9 @@ void APlayerMario::StateChange(EPlayerState _PlayerState)
 		case EPlayerState::Jump:
 			JumpStart();
 			break;
+		case EPlayerState::ReverseMove:
+			ReverseMoveStart();
+			break;
 		default:
 			break;
 		}
@@ -92,6 +96,9 @@ void APlayerMario::StateUpdate(float _DeltaTime)
 		break;
 	case EPlayerState::Jump:
 		Jump(_DeltaTime);
+		break;
+	case EPlayerState::ReverseMove:
+		ReverseMove(_DeltaTime);
 		break;
 	default:
 		break;
@@ -125,8 +132,41 @@ void APlayerMario::MoveStart()
 	MarioRenderer->ChangeAnimation(ChangeAnimationName("Move"));
 }
 
+void APlayerMario::ReverseMoveStart()
+{
+	DirCheck();
+	MarioRenderer->ChangeAnimation(ChangeAnimationName("ReverseMove"));
+}
 
 
+
+
+void APlayerMario::ReverseMove(float _DeltaTime)
+{
+	if (UEngineInput::IsDown('Z'))
+	{
+		StateChange(EPlayerState::Jump);
+		return;
+	}
+
+	if (UEngineInput::IsPress(VK_LEFT))
+	{
+		AddHorizonVelocityVector(FVector::Left * _DeltaTime);
+	}
+	if (UEngineInput::IsPress(VK_RIGHT))
+	{
+		AddHorizonVelocityVector(FVector::Right * _DeltaTime);
+	}
+
+	if ((UEngineInput::IsFree(VK_LEFT) && UEngineInput::IsFree(VK_RIGHT)))
+	{
+		StateChange(EPlayerState::Idle);
+		return;
+	}
+
+	ResultMovementUpdate(_DeltaTime);
+
+}
 
 // X축 이동만을 담당하는 함수
 void APlayerMario::Move(float _DeltaTime)
@@ -158,9 +198,9 @@ void APlayerMario::Move(float _DeltaTime)
 	
 	if (true == IsReverseMove())
 	{
-		int a = 0;
+		StateChange(EPlayerState::ReverseMove);
+		return;
 	}
-	//ReverseMoveCheck();
 }
 
 void APlayerMario::Jump(float _DeltaTime)

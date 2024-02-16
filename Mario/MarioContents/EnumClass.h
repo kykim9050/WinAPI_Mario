@@ -42,6 +42,7 @@ enum class EPlayerState
 	Idle,
 	Move,
 	Jump,
+	ReverseMove,
 };
 
 enum class EPlayerDir
