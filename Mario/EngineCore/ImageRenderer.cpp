@@ -29,18 +29,25 @@ void UImageRenderer::SetOrder(int _Order)
 int UAnimationInfo::Update(float _DeltaTime)
 {
 	IsEnd = false;
-
 	CurTime -= _DeltaTime;
 
 	if (0.0f >= CurTime)
 	{
 		CurTime = Times[CurFrame];
 		++CurFrame;
+
+		if (1 == Indexs.size())
+		{
+			IsEnd = true;
+		}
 	}
 
 	if (Indexs.size() <= CurFrame)
 	{
-		IsEnd = true;
+		if (1 < Indexs.size())
+		{
+			IsEnd = true;
+		}
 		if (true == Loop)
 		{
 			CurFrame = 0;
@@ -160,6 +167,7 @@ void UImageRenderer::ChangeAnimation(std::string_view _AnimationName, bool _IsFo
 		return;
 	}
 
+	// 지금 진행중인 애니메이션과 완전히 똑같은 애니메이션을 실행하라고하면 그걸 실행하지 않는다.
 	if (false == _IsForce && nullptr != CurAnimation && CurAnimation->Name == UpperAniName)
 	{
 		return;
@@ -168,8 +176,8 @@ void UImageRenderer::ChangeAnimation(std::string_view _AnimationName, bool _IsFo
 	UAnimationInfo& Info = AnimationInfos[UpperAniName];
 	CurAnimation = &Info;
 	CurAnimation->CurFrame = _StartIndex;
-	CurAnimation->CurTime = _Time;
-	if (0.0f >= _Time)
+	CurAnimation->CurTime = CurAnimation->Times[_StartIndex];
+	if (0.0f < _Time)
 	{
 		CurAnimation->CurTime = _Time;
 	}
