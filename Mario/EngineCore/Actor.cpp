@@ -78,6 +78,61 @@ void AActor::Destroy(float _DestroyTime /*= 0.0f*/)
 	}
 }
 
+void AActor::CheckReleaseChild()
+{
+
+	{
+		std::list<UImageRenderer*>::iterator StartIter = Renderers.begin();
+		std::list<UImageRenderer*>::iterator EndIter = Renderers.end();
+
+		for (; StartIter != EndIter;)
+		{
+			UImageRenderer* Renderer = StartIter.operator*();
+
+			if (nullptr == Renderer)
+			{
+				MsgBoxAssert("Collision가 nullptr인 경우가 존재했습니다");
+				return;
+			}
+
+			if (false == Renderer->IsDestroy())
+			{
+				++StartIter;
+				continue;
+			}
+
+			delete Renderer;
+			Renderer = nullptr;
+			StartIter = Renderers.erase(StartIter);
+		}
+	}
+
+	{
+		std::list<UCollision*>::iterator StartIter = Collisions.begin();
+		std::list<UCollision*>::iterator EndIter = Collisions.end();
+
+		for (; StartIter != EndIter;)
+		{
+			UCollision* Collision = StartIter.operator*();
+
+			if (nullptr == Collision)
+			{
+				MsgBoxAssert("Collision가 nullptr인 경우가 존재했습니다");
+				return;
+			}
+
+			if (false == Collision->IsDestroy())
+			{
+				++StartIter;
+				continue;
+			}
+
+			delete Collision;
+			Collision = nullptr;
+			StartIter = Collisions.erase(StartIter);
+		}
+	}
+}
 void AActor::DestroyUpdate(float _DeltaTime)
 {
 	UTickObject::DestroyUpdate(_DeltaTime);
