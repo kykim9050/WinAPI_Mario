@@ -57,6 +57,11 @@ public:
 	static const int ColOffSetX;
 	static const int ColOffSetY;
 
+	/// <summary>
+	/// UI이미지 X크기, Y크기 값
+	/// </summary>
+	static const int UIXScaleValue;
+	static const int UIYScaleValue;
 
 
 protected:
