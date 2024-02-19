@@ -29,6 +29,7 @@ enum class EStageRenderOrder
 	BackGroundMap,
 	Mario,
 	Monster,
+	UI,
 };
 
 /// <summary>
