@@ -44,6 +44,9 @@
     <ClInclude Include="UI.h">
       <Filter>Object</Filter>
     </ClInclude>
+    <ClInclude Include="Goomba.h">
+      <Filter>Object\Monster</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp" />
@@ -86,6 +89,9 @@
     <ClCompile Include="UI.cpp">
       <Filter>Object</Filter>
     </ClCompile>
+    <ClCompile Include="Goomba.cpp">
+      <Filter>Object\Monster</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ContentsHelper">
@@ -117,6 +123,9 @@
     </Filter>
     <Filter Include="Object\Player">
       <UniqueIdentifier>{4f380fdc-c820-4e41-88eb-56a5f726ff9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Monster">
+      <UniqueIdentifier>{b5e70565-51e7-4f0a-8803-ac5557324f07}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
