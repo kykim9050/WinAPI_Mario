@@ -28,3 +28,6 @@ const int UInGameValue::ColOffSetY = 40;
 
 const int UInGameValue::UIXScaleValue = 256;
 const int UInGameValue::UIYScaleValue = 32;
+
+const int UInGameValue::GoombaImageXValue = 3;
+const int UInGameValue::GoombaImageYValue = 1;

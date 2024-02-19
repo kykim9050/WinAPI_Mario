@@ -4,6 +4,7 @@
 #include "CollisionMap.h"
 #include "InGameValue.h"
 #include "UI.h"
+#include "Goomba.h"
 
 U1_1StageLevel::U1_1StageLevel()
 {
@@ -21,7 +22,9 @@ void U1_1StageLevel::BeginPlay()
 	UCollisionMap* Stage1_1CollisionMap = SpawnActor< UCollisionMap>();
 	APlayerMario* Mario = SpawnActor< APlayerMario>();
 	AUI* PlayerUI = SpawnActor<AUI>();
+	AGoomba* MonsterGoomba = SpawnActor<AGoomba>();
 
+	MonsterGoomba->SetActorLocation({ 500, 200 });
 	PlayerUI->SetActorLocation({ UInGameValue::UIXScaleValue / 2 * UInGameValue::WindowSizeMulValue, UInGameValue::UIYScaleValue / 2 * UInGameValue::WindowSizeMulValue });
 	Mario->SetActorLocation({ UInGameValue::MarioInitXPos, UInGameValue::MarioInitYPos });
 }

@@ -64,6 +64,12 @@ public:
 	static const int UIYScaleValue;
 
 
+	/// <summary>
+	/// Goolba.png ¿­, Çà ¼ö
+	/// </summary>
+	static const int GoombaImageXValue;
+	static const int GoombaImageYValue;
+
 protected:
 
 private:
