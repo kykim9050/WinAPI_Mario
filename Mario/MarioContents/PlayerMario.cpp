@@ -155,7 +155,7 @@ void APlayerMario::ReverseMove(float _DeltaTime)
 
 	if (UEngineInput::IsPress(VK_LEFT))
 	{
-		
+
 		//EngineDebug::OutPutDebugText(std::to_string(HorizonVelocityVector.X));
 		if (HorizonVelocityVector.X < 0.0f)
 		{
@@ -215,7 +215,7 @@ void APlayerMario::Move(float _DeltaTime)
 	}
 
 	ResultMovementUpdate(_DeltaTime);
-	
+
 	if (true == IsReverseMove())
 	{
 		StateChange(EPlayerState::ReverseMove);
@@ -389,14 +389,16 @@ bool APlayerMario::IsReverseMove()
 
 void APlayerMario::CameraPosUpdate(FVector _Player, FVector _MovePos)
 {
+	FVector CameraPos = GetWorld()->GetCameraPos();
+
 	if (GetWorld()->GetCameraPos().X >= UContentsFunction::GetCollisionMapImg()->GetScale().X - UInGameValue::ResultMainWindowXScale)
 	{
-		FVector CameraPos = GetWorld()->GetCameraPos();
 		GetWorld()->SetCameraPos(CameraPos);
 		return;
 	}
 
-	if (_Player.X >= UInGameValue::MainWindowXScale * UInGameValue::WindowSizeMulValue / 5 * 2)
+
+	if (_Player.X >= (CameraPos.X + UInGameValue::MainWindowXScale * UInGameValue::WindowSizeMulValue / 5 * 2))
 	{
 		if (0 >= _MovePos.X)
 		{
@@ -480,7 +482,7 @@ void APlayerMario::CalHorizonVelocityVector(float _DeltaTime)
 		switch (MarioDir)
 		{
 		case EPlayerDir::Right:
-			HorizonVelocityVector = FVector::Right* _DeltaTime * HorizonAccVector;
+			HorizonVelocityVector = FVector::Right * _DeltaTime * HorizonAccVector;
 			break;
 		case EPlayerDir::Left:
 			HorizonVelocityVector = FVector::Left * _DeltaTime * HorizonAccVector;
