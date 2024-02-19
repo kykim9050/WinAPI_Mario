@@ -20,6 +20,7 @@ void AUI::BeginPlay()
 	FVector UIScale = PlayerUIRenderer->GetImage()->GetScale();
 	PlayerUIRenderer->SetTransform({ {0,0}, {UIScale.iX() * UInGameValue::WindowSizeMulValue, UIScale.iY() * UInGameValue::WindowSizeMulValue} });
 
+	PlayerUIRenderer->CameraEffectOff();
 }
 
 void AUI::Tick(float _DeltaTime)
