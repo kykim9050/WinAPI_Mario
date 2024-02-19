@@ -1,5 +1,6 @@
 ﻿#include "Goomba.h"
 #include "EnumClass.h"
+#include "InGameValue.h"
 
 AGoomba::AGoomba()
 {
@@ -13,19 +14,16 @@ void AGoomba::BeginPlay()
 {
 	AActor::BeginPlay();
 
+	Renderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::Monster));
+	Renderer->SetImage("Goomba.png");
+	
+	FVector GoombaScale = Renderer->GetImage()->GetScale();
 
+	Renderer->SetTransform({ {0,0}, {GoombaScale.iX() / UInGameValue::GoombaImageXValue * UInGameValue::WindowSizeMulValue, GoombaScale.iY() / UInGameValue::GoombaImageYValue * UInGameValue::WindowSizeMulValue} });
+	Renderer->CreateAnimation("Goomba_Move", "Goomba.png", 0, 1, 0.1f, true);
+	Renderer->CreateAnimation("Goomba_Dead", "Goomba.png", 2, 2, 0.1f, true);
 
-	//Renderer = CreateImageRenderer(EStageRenderOrder::Monster);
-	/*MarioRenderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::Mario));
-
-	MarioRenderer->SetImage("Mario_Right.png");
-	FVector MarioScale = MarioRenderer->GetImage()->GetScale();
-
-	MarioRenderer->SetTransform({ {0,0}, {MarioScale.iX() / UInGameValue::MarioRightImageXValue * UInGameValue::WindowSizeMulValue, MarioScale.iY() / UInGameValue::MarioRightImageYValue * UInGameValue::WindowSizeMulValue} });
-
-	MarioRenderer->CreateAnimation("Idle_Right", "Mario_Right.png", 0, 0, 0.1f, true);*/
-
-
+	Renderer->ChangeAnimation("Goomba_Move");
 }
 
 void AGoomba::Tick(float _DeltaTime)
