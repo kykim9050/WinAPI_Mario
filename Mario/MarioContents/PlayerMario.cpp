@@ -472,12 +472,12 @@ void APlayerMario::CalHorizonVelocityVector(float _DeltaTime)
 	Color8Bit Color = UContentsFunction::GetCollisionMapImg()->GetColor(CheckPos.iX(), CheckPos.iY(), UInGameValue::CollisionColor);
 	Color8Bit PlayerBackColor = UContentsFunction::GetCollisionMapImg()->GetColor(BackPos.iX(), BackPos.iY(), UInGameValue::CollisionColor);
 
-	if (Color == UInGameValue::CollisionColor)
+	if (Color == UInGameValue::CollisionColor || CheckPos.X <= GetWorld()->GetCameraPos().X)
 	{
 		HorizonVelocityVector = FVector::Zero;
 	}
 
-	if (PlayerBackColor == UInGameValue::CollisionColor)
+	if (PlayerBackColor == UInGameValue::CollisionColor || BackPos.X <= GetWorld()->GetCameraPos().X)
 	{
 		switch (MarioDir)
 		{
@@ -500,7 +500,7 @@ void APlayerMario::CalHorizonVelocityVector(float _DeltaTime)
 			HorizonVelocityVector += (-HorizonVelocityVector.Normalize2DReturn()) * _DeltaTime * HorizonAccVector;
 		}
 		else {
-			HorizonVelocityVector = float4::Zero;
+			HorizonVelocityVector = FVector::Zero;
 		}
 	}
 
@@ -508,6 +508,7 @@ void APlayerMario::CalHorizonVelocityVector(float _DeltaTime)
 	{
 		HorizonVelocityVector = HorizonVelocityVector.Normalize2DReturn() * HorizonMaxSpeed;
 	}
+
 }
 
 void APlayerMario::CalGravityVelocityVector(float _DeltaTime)
