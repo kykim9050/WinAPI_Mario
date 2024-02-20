@@ -15,17 +15,24 @@ void AGoomba::BeginPlay()
 
 	Renderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::Monster));
 	Renderer->SetImage("Goomba.png");
-	
+
 	FVector GoombaScale = Renderer->GetImage()->GetScale();
 
 	Renderer->SetTransform({ {0,0}, {GoombaScale.iX() / UInGameValue::GoombaImageXValue * UInGameValue::WindowSizeMulValue, GoombaScale.iY() / UInGameValue::GoombaImageYValue * UInGameValue::WindowSizeMulValue} });
 	Renderer->CreateAnimation("Goomba_Move", "Goomba.png", 0, 1, 0.1f, true);
 	Renderer->CreateAnimation("Goomba_Dead", "Goomba.png", 2, 2, 0.1f, true);
 	Renderer->ChangeAnimation("Goomba_Move");
-	
+
 	BodyCollision = CreateCollision(ECollisionOrder::Monster);
 	BodyCollision->SetScale({ UInGameValue::GoombaBodyCollisionScaleX, UInGameValue::GoombaBodyCollisionScaleY });
 	BodyCollision->SetColType(ECollisionType::Rect);
+
+
+	FVector HeadPos = { GetActorLocation().iX(), GetActorLocation().iY() - (UInGameValue::GoombaBodyCollisionScaleY / 2) - (UInGameValue::GoombaHeadCollisionScaleY / 2) };
+	HeadCollision = CreateCollision(ECollisionOrder::Monster);
+	HeadCollision->SetTransform({ {HeadPos},{UInGameValue::GoombaHeadCollisionScaleX, UInGameValue::GoombaHeadCollisionScaleY}});
+	HeadCollision->SetColType(ECollisionType::Rect);
+
 
 	GravityVelocityVector = FVector::Down * 500.0f;
 	HorizonVelocityVector = FVector::Left * 50.0f;
@@ -88,6 +95,7 @@ void AGoomba::CollisionUpdate(float _DeltaTime)
 
 	if (true == BodyCollision->CollisionCheck(ECollisionOrder::Player, Result))
 	{
+
 		// Player의 Collision 상태를 업데이트
 		Player->CollisionStateChange(ECollisionState::GetHit);
 
