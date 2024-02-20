@@ -22,6 +22,6 @@ protected:
 	void End() override;
 
 private:
-
+	void DebugModeUpdate(float _DeltaTime);
 };
 
