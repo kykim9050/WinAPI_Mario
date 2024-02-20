@@ -137,24 +137,11 @@ public:
 
 	void CollisionUpdate(float _DeltaTime);
 
-	void SetMarioCollisionState(ECollisionState _CollisionState)
-	{
-		switch (_CollisionState)
-		{
-		case ECollisionState::Hit:
-		{
-			MarioCollisionState = ECollisionState::Hit;
-			break;
-		}
-		case ECollisionState::GetHit:
-		{
-			MarioCollisionState = ECollisionState::GetHit;
-			break;
-		}
-		default:
-			break;
-		}
-	}
+	void SetMarioCollisionState(ECollisionState _CollisionState);
+
+
+
+
 
 protected:
 	void BeginPlay() override;
