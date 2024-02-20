@@ -23,9 +23,12 @@ void AGoomba::BeginPlay()
 	Renderer->SetTransform({ {0,0}, {GoombaScale.iX() / UInGameValue::GoombaImageXValue * UInGameValue::WindowSizeMulValue, GoombaScale.iY() / UInGameValue::GoombaImageYValue * UInGameValue::WindowSizeMulValue} });
 	Renderer->CreateAnimation("Goomba_Move", "Goomba.png", 0, 1, 0.1f, true);
 	Renderer->CreateAnimation("Goomba_Dead", "Goomba.png", 2, 2, 0.1f, true);
-
 	Renderer->ChangeAnimation("Goomba_Move");
 	
+	BodyCollision = CreateCollision(ECollisionOrder::Monster);
+	BodyCollision->SetScale({ 100, 100 });
+	BodyCollision->SetColType(ECollisionType::Rect);
+
 	GravityVelocityVector = FVector::Down * 500.0f;
 	HorizonVelocityVector = FVector::Left * 50.0f;
 
