@@ -1,6 +1,8 @@
 #pragma once
 #include <EngineCore/Actor.h>
 #include "EnumClass.h"
+#include "ContentsFunction.h"
+#include "InGameValue.h"
 
 
 // 설명 :
@@ -128,6 +130,13 @@ public:
 
 	bool IsReverseMove();
 
+	static APlayerMario* GetMainPlayer()
+	{
+		return MainPlayer;
+	}
+
+	void CollisionUpdate(float _DeltaTime);
+
 
 protected:
 	void BeginPlay() override;
@@ -158,6 +167,14 @@ private:
 
 	// FreeMove 작동 시 속도
 	float PFreeMoveVelocity = 1000.0f;
+
+
+	static APlayerMario* MainPlayer;
+	void SetMainPlayer(APlayerMario* _MainPlayer)
+	{
+		MainPlayer = _MainPlayer;
+	}
+
 
 	UImageRenderer* MarioRenderer = nullptr;
 	UCollision* BodyCollision = nullptr;

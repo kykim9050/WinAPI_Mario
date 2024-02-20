@@ -1,6 +1,8 @@
 #pragma once
 #include <EngineCore/Actor.h>
 #include "EnumClass.h"
+#include "InGameValue.h"
+#include "ContentsFunction.h"
 
 
 // Ό³Έν :
