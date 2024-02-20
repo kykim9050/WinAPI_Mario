@@ -28,6 +28,8 @@ public:
 
 	void ResultMovementUpdate(float _DeltaTime);
 
+	void CollisionUpdate(float _DeltaTime);
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;

@@ -39,6 +39,7 @@ void AGoomba::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
 
+	CollisionUpdate(_DeltaTime);
 	StateUpdate(_DeltaTime);
 }
 
@@ -75,4 +76,14 @@ void AGoomba::ResultMovementUpdate(float _DeltaTime)
 	TotalVelocityVector = FVector::Zero;
 	TotalVelocityVector = TotalVelocityVector + GravityVelocityVector + HorizonVelocityVector;
 	AddActorLocation(TotalVelocityVector * _DeltaTime);
+}
+
+void AGoomba::CollisionUpdate(float _DeltaTime)
+{
+	std::vector<UCollision*> Result;
+
+	if (true == BodyCollision->CollisionCheck(ECollisionOrder::Player, Result))
+	{
+		int a = 0;
+	}
 }
