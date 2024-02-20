@@ -24,11 +24,34 @@ void AGoomba::BeginPlay()
 	Renderer->CreateAnimation("Goomba_Dead", "Goomba.png", 2, 2, 0.1f, true);
 
 	Renderer->ChangeAnimation("Goomba_Move");
+	SetActorState(EPlayerState::Move);
 }
 
 void AGoomba::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
+
+	StateUpdate(_DeltaTime);
 }
 
+void AGoomba::StateUpdate(float _DeltaTime)
+{
+	switch (ActorState)
+	{
+	/*case EPlayerState::Idle:
+		Idle(_DeltaTime);
+		break;*/
+	case EPlayerState::Move:
+		Move(_DeltaTime);
+		break;
+	default:
+		break;
+	}
+
+}
+
+void AGoomba::Move(float _DeltaTime)
+{
+	int a = 0;
+}
 
