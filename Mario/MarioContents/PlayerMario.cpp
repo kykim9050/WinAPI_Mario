@@ -40,8 +40,10 @@ void APlayerMario::BeginPlay()
 	MarioRenderer->CreateAnimation("ReverseMove_Right", "Mario_Right.png", 4, 4, 0.1f, true);
 	MarioRenderer->CreateAnimation("ReverseMove_Left", "Mario_Left.png", 4, 4, 0.1f, true);
 
+	MarioRenderer->CreateAnimation("Dead", "Mario_Right.png", 6, 6, 0.1f, true);
+
 	BodyCollision = CreateCollision(ECollisionOrder::Player);
-	BodyCollision->SetScale({ 100, 100 });
+	BodyCollision->SetScale({ 64, 64 });
 	BodyCollision->SetColType(ECollisionType::Rect);
 
 	MarioState = EPlayerState::Idle;
@@ -51,8 +53,14 @@ void APlayerMario::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
 
-	StateUpdate(_DeltaTime);
 	CollisionUpdate(_DeltaTime);
+	
+	if (ECollisionState::GetHit == MarioCollisionState)
+	{
+		return;
+	}
+
+	StateUpdate(_DeltaTime);
 }
 
 
@@ -83,6 +91,26 @@ void APlayerMario::StateChange(EPlayerState _PlayerState)
 	}
 
 	SetMarioState(_PlayerState);
+}
+
+void APlayerMario::CollisionStateChange(ECollisionState _CollisionState)
+{
+	if (MarioCollisionState != _CollisionState)
+	{
+		switch (_CollisionState)
+		{
+		case ECollisionState::Hit:
+			//HitStart();
+			break;
+		case ECollisionState::GetHit:
+			GetHitStart();
+			break;
+		default:
+			break;
+		}
+	}
+
+	SetMarioCollisionState(_CollisionState);
 }
 
 void APlayerMario::StateUpdate(float _DeltaTime)
@@ -117,17 +145,11 @@ void APlayerMario::CollisionUpdate(float _DeltaTime)
 	switch (MarioCollisionState)
 	{
 	case ECollisionState::Hit:
-	{
 		//EngineDebug::OutPutDebugText("Mario Hit");
 		break;
-	}
 	case ECollisionState::GetHit:
-	{
-		EngineDebug::OutPutDebugText("Mario GetHit");
-		GetHitStart(_DeltaTime);
 		GetHit(_DeltaTime);
 		break;
-	}
 	default:
 		break;
 	}
@@ -137,7 +159,7 @@ void APlayerMario::CollisionUpdate(float _DeltaTime)
 
 void APlayerMario::JumpStart()
 {
-	EngineDebug::OutPutDebugText("JumpStart");
+	//EngineDebug::OutPutDebugText("JumpStart");
 	DirCheck();
 	MarioRenderer->ChangeAnimation(ChangeAnimationName("Jump"));
 
@@ -151,21 +173,21 @@ void APlayerMario::FreeMoveStart()
 
 void APlayerMario::IdleStart()
 {
-	EngineDebug::OutPutDebugText("IdleStart");
+	//EngineDebug::OutPutDebugText("IdleStart");
 	DirCheck();
 	MarioRenderer->ChangeAnimation(ChangeAnimationName("Idle"));
 }
 
 void APlayerMario::MoveStart()
 {
-	EngineDebug::OutPutDebugText("MoveStart");
+	//EngineDebug::OutPutDebugText("MoveStart");
 	DirCheck();
 	MarioRenderer->ChangeAnimation(ChangeAnimationName("Move"));
 }
 
 void APlayerMario::ReverseMoveStart()
 {
-	EngineDebug::OutPutDebugText("ReverseMoveStart");
+	//EngineDebug::OutPutDebugText("ReverseMoveStart");
 	DirCheck();
 	MarioRenderer->ChangeAnimation(ChangeAnimationName("ReverseMove"));
 }
@@ -374,12 +396,14 @@ void APlayerMario::Idle(float _DeltaTime)
 
 void APlayerMario::GetHit(float _DeltaTime)
 {
-	int a = 0;
+	
 }
 
-void APlayerMario::GetHitStart(float _DeltaTime)
+void APlayerMario::GetHitStart()
 {
-	int a = 0;
+	MarioRenderer->ChangeAnimation("Dead");
+
+	TotalVelocityVector = FVector::Zero;
 }
 
 
@@ -467,27 +491,6 @@ std::string APlayerMario::ChangeAnimationName(std::string _MainName)
 	return CurAnimationName + Dir;
 }
 
-
-
-
-void APlayerMario::SetMarioCollisionState(ECollisionState _CollisionState)
-{
-	switch (_CollisionState)
-	{
-	case ECollisionState::Hit:
-	{
-		MarioCollisionState = ECollisionState::Hit;
-		break;
-	}
-	case ECollisionState::GetHit:
-	{
-		MarioCollisionState = ECollisionState::GetHit;
-		break;
-	}
-	default:
-		break;
-	}
-}
 
 
 
