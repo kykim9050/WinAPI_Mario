@@ -52,3 +52,11 @@ enum class EPlayerDir
 	Left,
 	Right,
 };
+
+
+enum class ECollisionOrder
+{
+	PlayerBullet,
+	Monster,
+	Player
+};

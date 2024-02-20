@@ -34,6 +34,7 @@ protected:
 
 private:
 	UImageRenderer* Renderer = nullptr;
+	UCollision* BodyCollision = nullptr;
 
 	EPlayerState ActorState = EPlayerState::None;
 

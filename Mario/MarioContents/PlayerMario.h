@@ -153,17 +153,14 @@ private:
 	FVector GravityAccVector = FVector::Down * 2000.0f;
 	// Player에 작용하는 모든 벡터에 대한 총합 벡터
 	FVector TotalVelocityVector = FVector::Zero;
-
-
 	FVector JumpVelocityVector = FVector::Zero;
 	FVector MaxJumpVelocityVector = FVector::Up * 900.0f;
-
 
 	// FreeMove 작동 시 속도
 	float PFreeMoveVelocity = 1000.0f;
 
-
 	UImageRenderer* MarioRenderer = nullptr;
+	UCollision* BodyCollision = nullptr;
 	std::string CurAnimationName = "None";
 
 
