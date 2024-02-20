@@ -24,7 +24,7 @@ void AGoomba::BeginPlay()
 	Renderer->ChangeAnimation("Goomba_Move");
 	
 	BodyCollision = CreateCollision(ECollisionOrder::Monster);
-	BodyCollision->SetScale({ 100, 100 });
+	BodyCollision->SetScale({ 64, 64 });
 	BodyCollision->SetColType(ECollisionType::Rect);
 
 	GravityVelocityVector = FVector::Down * 500.0f;
@@ -89,7 +89,7 @@ void AGoomba::CollisionUpdate(float _DeltaTime)
 	if (true == BodyCollision->CollisionCheck(ECollisionOrder::Player, Result))
 	{
 		// Player의 Collision 상태를 업데이트
-		Player->SetMarioCollisionState(ECollisionState::GetHit);
+		Player->CollisionStateChange(ECollisionState::GetHit);
 
 	}
 

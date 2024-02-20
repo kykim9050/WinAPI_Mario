@@ -137,10 +137,16 @@ public:
 
 	void CollisionUpdate(float _DeltaTime);
 
-	void SetMarioCollisionState(ECollisionState _CollisionState);
+	void CollisionStateChange(ECollisionState _CollisionState);
+
+	void SetMarioCollisionState(ECollisionState _CollisionState)
+	{
+		MarioCollisionState = _CollisionState;
+	}
 
 	void GetHit(float _DeltaTime);
-	void GetHitStart(float _DeltaTime);
+
+	void GetHitStart();
 
 
 protected:
