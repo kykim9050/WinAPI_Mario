@@ -1,5 +1,7 @@
 #pragma once
 #include <EngineCore/Actor.h>
+#include "EnumClass.h"
+
 
 // Ό³Έν :
 class AGoomba : public AActor
@@ -15,11 +17,24 @@ public:
 	AGoomba& operator=(const AGoomba& _Other) = delete;
 	AGoomba& operator=(AGoomba&& _Other) noexcept = delete;
 
+	void StateUpdate(float _DeltaTime);
+
+	void SetActorState(const EPlayerState _State)
+	{
+		ActorState = _State;
+	}
+
+	void Move(float _DeltaTime);
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
 private:
 	UImageRenderer* Renderer = nullptr;
+
+	FVector HorizonVelocityVector = FVector::Zero;
+	EPlayerState ActorState = EPlayerState::None;
+
 };
 
