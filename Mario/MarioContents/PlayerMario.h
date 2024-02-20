@@ -137,6 +137,24 @@ public:
 
 	void CollisionUpdate(float _DeltaTime);
 
+	void SetMarioCollisionState(ECollisionState _CollisionState)
+	{
+		switch (_CollisionState)
+		{
+		case ECollisionState::Hit:
+		{
+			MarioCollisionState = ECollisionState::Hit;
+			break;
+		}
+		case ECollisionState::GetHit:
+		{
+			MarioCollisionState = ECollisionState::GetHit;
+			break;
+		}
+		default:
+			break;
+		}
+	}
 
 protected:
 	void BeginPlay() override;
@@ -147,6 +165,8 @@ private:
 	EPlayerState MarioState = EPlayerState::None;
 	// 플레이어의 현재 방향 (좌, 우)
 	EPlayerDir MarioDir = EPlayerDir::Right;
+	// 플레이어의 현재 콜리젼 상태
+	ECollisionState MarioCollisionState = ECollisionState::None;
 
 	// 수평 방향 속도에 대한 벡터
 	FVector HorizonVelocityVector = FVector::Zero;
