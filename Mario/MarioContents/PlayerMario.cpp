@@ -1,11 +1,11 @@
 ﻿#include "PlayerMario.h"
-#include "EnumClass.h"
 #include <EnginePlatform/EngineInput.h>
 #include <EngineBase/EngineMath.h>
-#include "InGameValue.h"
 #include <EngineBase/EngineDebug.h>
-#include "ContentsFunction.h"
 #include <cmath>
+
+APlayerMario* APlayerMario::MainPlayer = nullptr;
+
 
 APlayerMario::APlayerMario()
 {
@@ -18,6 +18,8 @@ APlayerMario::~APlayerMario()
 void APlayerMario::BeginPlay()
 {
 	AActor::BeginPlay();
+
+	SetMainPlayer(this);
 
 	MarioRenderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::Mario));
 
@@ -50,6 +52,7 @@ void APlayerMario::Tick(float _DeltaTime)
 	AActor::Tick(_DeltaTime);
 
 	StateUpdate(_DeltaTime);
+	CollisionUpdate(_DeltaTime);
 }
 
 
@@ -107,6 +110,11 @@ void APlayerMario::StateUpdate(float _DeltaTime)
 	default:
 		break;
 	}
+}
+
+void APlayerMario::CollisionUpdate(float _DeltaTime)
+{
+	int a = 0;
 }
 
 

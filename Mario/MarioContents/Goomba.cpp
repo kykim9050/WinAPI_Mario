@@ -1,7 +1,5 @@
 ﻿#include "Goomba.h"
-#include "EnumClass.h"
-#include "InGameValue.h"
-#include "ContentsFunction.h"
+#include "PlayerMario.h"
 
 AGoomba::AGoomba()
 {
@@ -80,10 +78,18 @@ void AGoomba::ResultMovementUpdate(float _DeltaTime)
 
 void AGoomba::CollisionUpdate(float _DeltaTime)
 {
-	std::vector<UCollision*> Result;
+	std::vector<UCollision*> Result = std::vector<UCollision*>();
+	
+	APlayerMario* Player = APlayerMario::GetMainPlayer();
+	if (nullptr == Player)
+	{
+		MsgBoxAssert("플레이어가 존재하지 않습니다.");
+	}
 
 	if (true == BodyCollision->CollisionCheck(ECollisionOrder::Player, Result))
 	{
+		// 플레이어를 목숨이 하나 뺌
 		int a = 0;
 	}
+
 }
