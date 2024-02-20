@@ -93,12 +93,18 @@ void AGoomba::CollisionUpdate(float _DeltaTime)
 		MsgBoxAssert("플레이어가 존재하지 않습니다.");
 	}
 
+	// Player가 Monster HeadCollision과 충돌 시에 하는 역할
+	if (true == HeadCollision->CollisionCheck(ECollisionOrder::Player, Result))
+	{
+		int a = 0;
+		return;
+	}
+
 	if (true == BodyCollision->CollisionCheck(ECollisionOrder::Player, Result))
 	{
-
 		// Player의 Collision 상태를 업데이트
 		Player->CollisionStateChange(ECollisionState::GetHit);
-
+		return;
 	}
 
 }
