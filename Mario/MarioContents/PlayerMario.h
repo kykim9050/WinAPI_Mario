@@ -139,8 +139,8 @@ public:
 
 	void SetMarioCollisionState(ECollisionState _CollisionState);
 
-
-
+	void GetHit(float _DeltaTime);
+	void GetHitStart(float _DeltaTime);
 
 
 protected:
