@@ -60,3 +60,10 @@ enum class ECollisionOrder
 	Monster,
 	Player
 };
+
+enum class ECollisionState
+{
+	None,
+	Hit,
+	GetHit,
+};

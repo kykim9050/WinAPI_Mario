@@ -88,8 +88,9 @@ void AGoomba::CollisionUpdate(float _DeltaTime)
 
 	if (true == BodyCollision->CollisionCheck(ECollisionOrder::Player, Result))
 	{
-		// 플레이어를 목숨이 하나 뺌
-		int a = 0;
+		// Player의 Collision 상태를 업데이트
+		Player->SetMarioCollisionState(ECollisionState::GetHit);
+
 	}
 
 }
