@@ -114,7 +114,21 @@ void APlayerMario::StateUpdate(float _DeltaTime)
 
 void APlayerMario::CollisionUpdate(float _DeltaTime)
 {
-	int a = 0;
+	switch (MarioCollisionState)
+	{
+	case ECollisionState::Hit:
+	{
+		EngineDebug::OutPutDebugText("Mario Hit");
+		break;
+	}
+	case ECollisionState::GetHit:
+	{
+		EngineDebug::OutPutDebugText("Mario GetHit");
+		break;
+	}
+	default:
+		break;
+	}
 }
 
 
@@ -439,6 +453,28 @@ std::string APlayerMario::ChangeAnimationName(std::string _MainName)
 	}
 
 	return CurAnimationName + Dir;
+}
+
+
+
+
+void APlayerMario::SetMarioCollisionState(ECollisionState _CollisionState)
+{
+	switch (_CollisionState)
+	{
+	case ECollisionState::Hit:
+	{
+		MarioCollisionState = ECollisionState::Hit;
+		break;
+	}
+	case ECollisionState::GetHit:
+	{
+		MarioCollisionState = ECollisionState::GetHit;
+		break;
+	}
+	default:
+		break;
+	}
 }
 
 
