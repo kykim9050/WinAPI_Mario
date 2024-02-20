@@ -38,6 +38,10 @@ void APlayerMario::BeginPlay()
 	MarioRenderer->CreateAnimation("ReverseMove_Right", "Mario_Right.png", 4, 4, 0.1f, true);
 	MarioRenderer->CreateAnimation("ReverseMove_Left", "Mario_Left.png", 4, 4, 0.1f, true);
 
+	BodyCollision = CreateCollision(ECollisionOrder::Player);
+	BodyCollision->SetScale({ 100, 100 });
+	BodyCollision->SetColType(ECollisionType::Rect);
+
 	MarioState = EPlayerState::Idle;
 }
 
