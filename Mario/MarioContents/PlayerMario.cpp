@@ -43,7 +43,7 @@ void APlayerMario::BeginPlay()
 	MarioRenderer->CreateAnimation("Dead", "Mario_Right.png", 6, 6, 0.1f, true);
 
 	BodyCollision = CreateCollision(ECollisionOrder::Player);
-	BodyCollision->SetScale({ 64, 64 });
+	BodyCollision->SetScale({ UInGameValue::PlayerCollisionScaleX, UInGameValue::PlayerCollisionScaleY });
 	BodyCollision->SetColType(ECollisionType::Rect);
 
 	MarioState = EPlayerState::Idle;

@@ -24,7 +24,7 @@ void AGoomba::BeginPlay()
 	Renderer->ChangeAnimation("Goomba_Move");
 	
 	BodyCollision = CreateCollision(ECollisionOrder::Monster);
-	BodyCollision->SetScale({ 64, 64 });
+	BodyCollision->SetScale({ UInGameValue::GoombaBodyCollisionScaleX, UInGameValue::GoombaBodyCollisionScaleY });
 	BodyCollision->SetColType(ECollisionType::Rect);
 
 	GravityVelocityVector = FVector::Down * 500.0f;

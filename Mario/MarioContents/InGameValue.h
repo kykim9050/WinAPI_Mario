@@ -63,12 +63,23 @@ public:
 	static const int UIXScaleValue;
 	static const int UIYScaleValue;
 
-
 	/// <summary>
 	/// Goolba.png 열, 행 수
 	/// </summary>
 	static const int GoombaImageXValue;
 	static const int GoombaImageYValue;
+
+	/// <summary>
+	/// Player 의 collision scale값
+	/// </summary>
+	static const int PlayerCollisionScaleX;
+	static const int PlayerCollisionScaleY;
+
+	/// <summary>
+	/// Goomba 의 body Collosion scale 값
+	/// </summary>
+	static const int GoombaBodyCollisionScaleX;
+	static const int GoombaBodyCollisionScaleY;
 
 protected:
 
