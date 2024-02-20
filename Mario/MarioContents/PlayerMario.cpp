@@ -118,12 +118,14 @@ void APlayerMario::CollisionUpdate(float _DeltaTime)
 	{
 	case ECollisionState::Hit:
 	{
-		EngineDebug::OutPutDebugText("Mario Hit");
+		//EngineDebug::OutPutDebugText("Mario Hit");
 		break;
 	}
 	case ECollisionState::GetHit:
 	{
 		EngineDebug::OutPutDebugText("Mario GetHit");
+		GetHitStart(_DeltaTime);
+		GetHit(_DeltaTime);
 		break;
 	}
 	default:
@@ -368,6 +370,16 @@ void APlayerMario::Idle(float _DeltaTime)
 	}
 
 	ResultMovementUpdate(_DeltaTime);
+}
+
+void APlayerMario::GetHit(float _DeltaTime)
+{
+	int a = 0;
+}
+
+void APlayerMario::GetHitStart(float _DeltaTime)
+{
+	int a = 0;
 }
 
 
