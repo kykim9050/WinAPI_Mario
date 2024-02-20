@@ -1,6 +1,7 @@
 ﻿#include "Goomba.h"
 #include "EnumClass.h"
 #include "InGameValue.h"
+#include "ContentsFunction.h"
 
 AGoomba::AGoomba()
 {
@@ -24,6 +25,10 @@ void AGoomba::BeginPlay()
 	Renderer->CreateAnimation("Goomba_Dead", "Goomba.png", 2, 2, 0.1f, true);
 
 	Renderer->ChangeAnimation("Goomba_Move");
+	
+	GravityVelocityVector = FVector::Down * 500.0f;
+	HorizonVelocityVector = FVector::Left * 50.0f;
+
 	SetActorState(EPlayerState::Move);
 }
 
@@ -52,6 +57,19 @@ void AGoomba::StateUpdate(float _DeltaTime)
 
 void AGoomba::Move(float _DeltaTime)
 {
-	int a = 0;
+	ResultMovementUpdate(_DeltaTime);
 }
 
+void AGoomba::ResultMovementUpdate(float _DeltaTime)
+{
+	Color8Bit Color = UContentsFunction::GetCollisionMapImg()->GetColor(GetActorLocation().iX(), GetActorLocation().iY(), UInGameValue::CollisionColor);
+
+	if (UInGameValue::CollisionColor == Color)
+	{
+		GravityVelocityVector = FVector::Zero;
+	}
+
+	TotalVelocityVector = FVector::Zero;
+	TotalVelocityVector = TotalVelocityVector + GravityVelocityVector + HorizonVelocityVector;
+	AddActorLocation(TotalVelocityVector * _DeltaTime);
+}

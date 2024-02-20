@@ -26,6 +26,8 @@ public:
 
 	void Move(float _DeltaTime);
 
+	void ResultMovementUpdate(float _DeltaTime);
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -33,8 +35,11 @@ protected:
 private:
 	UImageRenderer* Renderer = nullptr;
 
-	FVector HorizonVelocityVector = FVector::Zero;
 	EPlayerState ActorState = EPlayerState::None;
+
+	FVector HorizonVelocityVector = FVector::Zero;
+	FVector GravityVelocityVector = FVector::Zero;
+	FVector TotalVelocityVector = FVector::Zero;
 
 };
 
