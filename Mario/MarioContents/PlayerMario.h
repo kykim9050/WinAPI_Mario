@@ -144,6 +144,11 @@ public:
 		MarioCollisionState = _CollisionState;
 	}
 
+	UCollision* GetBodyCollision()
+	{
+		return BodyCollision;
+	}
+
 	void GetHit(float _DeltaTime);
 
 	void GetHitStart();
