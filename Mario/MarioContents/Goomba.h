@@ -56,5 +56,6 @@ private:
 	FVector GravityVelocityVector = FVector::Zero;
 	FVector TotalVelocityVector = FVector::Zero;
 
+	int Life = 1;
 };
 
