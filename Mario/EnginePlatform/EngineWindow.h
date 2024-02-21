@@ -55,6 +55,11 @@ public:
 	/// <returns></returns>
 	FVector GetMousePosition();
 
+	void Off()
+	{
+		WindowLive = false;
+	}
+
 protected:
 
 private:
