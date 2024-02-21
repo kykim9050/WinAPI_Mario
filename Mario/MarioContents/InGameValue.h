@@ -81,12 +81,6 @@ public:
 	static const int GoombaBodyCollisionScaleX;
 	static const int GoombaBodyCollisionScaleY;
 
-	/// <summary>
-	/// Goomba ÀÇ Head Collosion scale °ª
-	/// </summary>
-	static const int GoombaHeadCollisionScaleX;
-	static const int GoombaHeadCollisionScaleY;
-
 protected:
 
 private:

@@ -23,15 +23,10 @@ void AGoomba::BeginPlay()
 	Renderer->CreateAnimation("Goomba_Dead", "Goomba.png", 2, 2, 0.1f, true);
 	Renderer->ChangeAnimation("Goomba_Move");
 
+
 	BodyCollision = CreateCollision(ECollisionOrder::Monster);
-	BodyCollision->SetScale({ UInGameValue::GoombaBodyCollisionScaleX, UInGameValue::GoombaBodyCollisionScaleY });
+	BodyCollision->SetTransform({ { 0,0 }, { UInGameValue::GoombaBodyCollisionScaleX, UInGameValue::GoombaBodyCollisionScaleY } });
 	BodyCollision->SetColType(ECollisionType::Rect);
-
-
-	FVector HeadPos = { GetActorLocation().iX(), GetActorLocation().iY() - (UInGameValue::GoombaBodyCollisionScaleY / 2) - (UInGameValue::GoombaHeadCollisionScaleY / 2) };
-	HeadCollision = CreateCollision(ECollisionOrder::Monster);
-	HeadCollision->SetTransform({ {HeadPos},{UInGameValue::GoombaHeadCollisionScaleX, UInGameValue::GoombaHeadCollisionScaleY}});
-	HeadCollision->SetColType(ECollisionType::Rect);
 
 
 	GravityVelocityVector = FVector::Down * 500.0f;
@@ -93,18 +88,27 @@ void AGoomba::CollisionUpdate(float _DeltaTime)
 		MsgBoxAssert("플레이어가 존재하지 않습니다.");
 	}
 
-	// Player가 Monster HeadCollision과 충돌 시에 하는 역할
-	if (true == HeadCollision->CollisionCheck(ECollisionOrder::Player, Result))
-	{
-		int a = 0;
-		return;
-	}
-
 	if (true == BodyCollision->CollisionCheck(ECollisionOrder::Player, Result))
 	{
-		// Player의 Collision 상태를 업데이트
+		float PlayerBottom = Player->GetBodyCollision()->GetActorBaseTransform().Bottom();
+		float MonsterBottom = BodyCollision->GetActorBaseTransform().Bottom();
+		
+		// 현재 몬스터의 Collision ScaleY의 반값만큼 Player의 Bottom 값이 위에 잇다면 몬스터를 밟은 것
+		float OffsetYValue = BodyCollision->GetActorBaseTransform().GetScale().hY();
+
+		// 몬스터 밟은 것
+		if (PlayerBottom < MonsterBottom - OffsetYValue)
+		{
+			// 몬스터의 상태를 GetHit로 변환
+			// GetHit시 짜부 랜더링 실시
+			// GetHit시 Collision 삭제해버리기
+			int a = 0;
+			return;
+		}
+
+		// 몬스터를 밟지 않고 충돌했을 경우 (플레이어 사망)
 		Player->CollisionStateChange(ECollisionState::GetHit);
-		return;
+		int a = 0;
 	}
 
 }
