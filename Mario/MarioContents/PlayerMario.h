@@ -41,6 +41,8 @@ public:
 	/// </summary>
 	void JumpStart();
 
+	void CollisionJumpStart();
+
 	/// <summary>
 	/// FreeMove용으로 애니메이션 변경
 	/// </summary>
@@ -107,6 +109,8 @@ public:
 	/// 
 	/// </summary>
 	void Jump(float _DeltaTime);
+
+	void CollisionJump(float _DeltaTime);
 
 	void ReverseMove(float _DeltaTime);
 
@@ -182,6 +186,7 @@ private:
 	FVector TotalVelocityVector = FVector::Zero;
 	FVector JumpVelocityVector = FVector::Zero;
 	FVector MaxJumpVelocityVector = FVector::Up * 900.0f;
+	FVector CollisionJumpVelocityVector = FVector::Up * 400.0f;
 
 	// FreeMove 작동 시 속도
 	float PFreeMoveVelocity = 1000.0f;
