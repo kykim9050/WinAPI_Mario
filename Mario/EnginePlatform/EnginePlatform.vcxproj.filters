@@ -22,6 +22,9 @@
     <Filter Include="ThirdParty\FMOD\Release">
       <UniqueIdentifier>{2ca37ccd-8141-4209-8efc-9b465febf821}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sound">
+      <UniqueIdentifier>{06be5494-522a-43a6-9ba8-651d8904aa98}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EngineInput.h">
@@ -57,6 +60,9 @@
     <ClInclude Include="ThirdParty\FMOD\inc\fmod_output.h">
       <Filter>ThirdParty\FMOD\inc</Filter>
     </ClInclude>
+    <ClInclude Include="EngineSound.h">
+      <Filter>Sound</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EngineInput.cpp">
@@ -67,6 +73,9 @@
     </ClCompile>
     <ClCompile Include="WindowImage.cpp">
       <Filter>Window</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineSound.cpp">
+      <Filter>Sound</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
