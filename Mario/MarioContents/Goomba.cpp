@@ -40,6 +40,12 @@ void AGoomba::Tick(float _DeltaTime)
 	AActor::Tick(_DeltaTime);
 
 	CollisionUpdate(_DeltaTime);
+
+	if (ECollisionState::GetHit == ActorCollisionState)
+	{
+		return;
+	}
+
 	StateUpdate(_DeltaTime);
 }
 
@@ -99,9 +105,10 @@ void AGoomba::CollisionUpdate(float _DeltaTime)
 		// 몬스터 밟은 것
 		if (PlayerBottom < MonsterBottom - OffsetYValue)
 		{
+			//Player->StateChange()
 			// 몬스터의 상태를 GetHit로 변환
 			CollisionStateChange(ECollisionState::GetHit);
-			// GetHit시 짜부 랜더링 실시
+			
 			// GetHit시 Collision 삭제해버리기
 			// Player의 State에서 CollisionJump 추가해서 구현하기
 			return;
@@ -123,7 +130,7 @@ void AGoomba::CollisionStateChange(ECollisionState _CollisionState)
 			//HitStart();
 			break;
 		case ECollisionState::GetHit:
-			//GetHitStart();
+			GetHitStart();
 			break;
 		default:
 			break;
@@ -133,4 +140,9 @@ void AGoomba::CollisionStateChange(ECollisionState _CollisionState)
 	SetCollisionState(_CollisionState);
 }
 
-
+void AGoomba::GetHitStart()
+{
+	// GetHit시 짜부 랜더링 실시
+	Renderer->ChangeAnimation("Goomba_Dead");
+	TotalVelocityVector = FVector::Zero;
+}
