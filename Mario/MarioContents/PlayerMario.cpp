@@ -55,7 +55,7 @@ void APlayerMario::Tick(float _DeltaTime)
 
 	CollisionUpdate(_DeltaTime);
 	
-	if (ECollisionState::GetHit == MarioCollisionState)
+	if (ECollisionState::GetHit == ActorCollisionState)
 	{
 		return;
 	}
@@ -95,7 +95,7 @@ void APlayerMario::StateChange(EPlayerState _PlayerState)
 
 void APlayerMario::CollisionStateChange(ECollisionState _CollisionState)
 {
-	if (MarioCollisionState != _CollisionState)
+	if (ActorCollisionState != _CollisionState)
 	{
 		switch (_CollisionState)
 		{
@@ -110,7 +110,7 @@ void APlayerMario::CollisionStateChange(ECollisionState _CollisionState)
 		}
 	}
 
-	SetMarioCollisionState(_CollisionState);
+	SetCollisionState(_CollisionState);
 }
 
 void APlayerMario::StateUpdate(float _DeltaTime)
@@ -142,7 +142,7 @@ void APlayerMario::StateUpdate(float _DeltaTime)
 
 void APlayerMario::CollisionUpdate(float _DeltaTime)
 {
-	switch (MarioCollisionState)
+	switch (ActorCollisionState)
 	{
 	case ECollisionState::Hit:
 		//EngineDebug::OutPutDebugText("Mario Hit");

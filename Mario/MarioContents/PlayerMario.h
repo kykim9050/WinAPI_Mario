@@ -139,9 +139,9 @@ public:
 
 	void CollisionStateChange(ECollisionState _CollisionState);
 
-	void SetMarioCollisionState(ECollisionState _CollisionState)
+	void SetCollisionState(ECollisionState _CollisionState)
 	{
-		MarioCollisionState = _CollisionState;
+		ActorCollisionState = _CollisionState;
 	}
 
 	UCollision* GetBodyCollision()
@@ -164,7 +164,7 @@ private:
 	// 플레이어의 현재 방향 (좌, 우)
 	EPlayerDir MarioDir = EPlayerDir::Right;
 	// 플레이어의 현재 콜리젼 상태
-	ECollisionState MarioCollisionState = ECollisionState::None;
+	ECollisionState ActorCollisionState = ECollisionState::None;
 
 	// 수평 방향 속도에 대한 벡터
 	FVector HorizonVelocityVector = FVector::Zero;

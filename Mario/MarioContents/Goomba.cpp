@@ -100,15 +100,37 @@ void AGoomba::CollisionUpdate(float _DeltaTime)
 		if (PlayerBottom < MonsterBottom - OffsetYValue)
 		{
 			// 몬스터의 상태를 GetHit로 변환
+			CollisionStateChange(ECollisionState::GetHit);
 			// GetHit시 짜부 랜더링 실시
 			// GetHit시 Collision 삭제해버리기
-			int a = 0;
+			// Player의 State에서 CollisionJump 추가해서 구현하기
 			return;
 		}
 
 		// 몬스터를 밟지 않고 충돌했을 경우 (플레이어 사망)
 		Player->CollisionStateChange(ECollisionState::GetHit);
-		int a = 0;
 	}
 
 }
+
+void AGoomba::CollisionStateChange(ECollisionState _CollisionState)
+{
+	if (ActorCollisionState != _CollisionState)
+	{
+		switch (_CollisionState)
+		{
+		case ECollisionState::Hit:
+			//HitStart();
+			break;
+		case ECollisionState::GetHit:
+			//GetHitStart();
+			break;
+		default:
+			break;
+		}
+	}
+
+	SetCollisionState(_CollisionState);
+}
+
+

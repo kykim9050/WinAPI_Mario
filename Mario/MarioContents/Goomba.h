@@ -32,6 +32,13 @@ public:
 
 	void CollisionUpdate(float _DeltaTime);
 
+	void CollisionStateChange(ECollisionState _CollisionState);
+
+	void SetCollisionState(ECollisionState _CollisionState)
+	{
+		ActorCollisionState = _CollisionState;
+	}
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -41,6 +48,7 @@ private:
 	UCollision* BodyCollision = nullptr;
 
 	EPlayerState ActorState = EPlayerState::None;
+	ECollisionState ActorCollisionState = ECollisionState::None;
 
 	FVector HorizonVelocityVector = FVector::Zero;
 	FVector GravityVelocityVector = FVector::Zero;
