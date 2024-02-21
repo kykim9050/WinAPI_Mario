@@ -350,7 +350,7 @@ void UWindowImage::AlphaCopy(UWindowImage* _CopyImage, const FTransform& _Trans,
 	);
 }
 
-void UWindowImage::PlgCopy(UWindowImage* _CopyImage, const FTransform& _Trans, int _Index, float _Angle)
+void UWindowImage::PlgCopy(UWindowImage* _CopyImage, const FTransform& _Trans, int _Index, float _RadAngle)
 {
 	if (nullptr == _CopyImage)
 	{
@@ -365,6 +365,8 @@ void UWindowImage::PlgCopy(UWindowImage* _CopyImage, const FTransform& _Trans, i
 
 	FTransform& ImageTrans = _CopyImage->Infos[_Index].CuttingTrans;
 
+	POINT Arr[3];
+
 	{
 		FTransform Trans = FTransform(float4::Zero, _Trans.GetScale());
 
@@ -372,38 +374,45 @@ void UWindowImage::PlgCopy(UWindowImage* _CopyImage, const FTransform& _Trans, i
 		FVector RightTop = Trans.RightTop();
 		FVector LeftBot = Trans.LeftBottom();
 
-		// LeftTop.RotationZ(40);
+		LeftTop.RotationZToRad(_RadAngle);
+		RightTop.RotationZToRad(_RadAngle);
+		LeftBot.RotationZToRad(_RadAngle);
 
-		// 회전시키고 위치를 이동시켜야 한다.
+		LeftTop += _Trans.GetPosition();
+		RightTop += _Trans.GetPosition();
+		LeftBot += _Trans.GetPosition();
+
+		Arr[0] = LeftTop.ConvertToWinApiPOINT();
+		Arr[1] = RightTop.ConvertToWinApiPOINT();
+		Arr[2] = LeftBot.ConvertToWinApiPOINT();
 	}
 
+	int ImageLeft = ImageTrans.GetPosition().iX();
+	int ImageTop = ImageTrans.GetPosition().iY();
+	int ImageScaleX = ImageTrans.GetScale().iX();
+	int ImageScaleY = ImageTrans.GetScale().iY();
 
-	//// 각도만큼 회전시킨 값을 만들어 내야 합니다.
-	//// 어떻게 그렇게 만들수 있을까?
+	if (nullptr == _CopyImage->RotationMaskImage)
+	{
+		MsgBoxAssert("이미지를 회전시키려고 했는데 이미지가 없습니다.");
+	}
 
-
-	//HDC hdc = ImageDC;
+	HDC hdc = ImageDC;
 	//// 이미지
-	//HDC hdcSrc = _CopyImage->Infos[_Index].ImageDC;
+	HDC hdcSrc = _CopyImage->Infos[_Index].ImageDC;
 
-
-	//// 3개를 넣어줘야 한다.
-	//POINT
-	//// 
-
-	//PlgBlt(
-	//	hdc, 							  // HDC hdc, // 
-
-	//	hdcSrc,							// HDC hdcSrc, 
-	//	RenderLeft, 		  // int x,   // 
-	//	RenderTop, 		  // int y,   // 
-	//	RenderScaleX,		  // int cx,  // 
-	//	RenderScaleY,		  // int cy,  
-	//	ImageLeft,   							// int y1, 
-	//	ImageTop,   							// int x1,  
-	//	ImageScaleX, 							// int y1, 
-	//	ImageScaleY, 							// int y1, 
-	//);
+	PlgBlt(
+		hdc, 							  // HDC hdc, // 
+		Arr,
+		hdcSrc,							// HDC hdcSrc, 
+		ImageLeft,   							// int y1, 
+		ImageTop,   							// int x1,  
+		ImageScaleX, 							// int y1, 
+		ImageScaleY, 							// int y1, 
+		_CopyImage->RotationMaskImage->hBitMap, // 투명처리할 부분
+		ImageLeft,   							// int y1, 
+		ImageTop   							// int x1,  
+	);
 }
 
 void UWindowImage::Cutting(int _X, int _Y)
