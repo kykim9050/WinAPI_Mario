@@ -81,6 +81,12 @@ public:
 	static const int GoombaBodyCollisionScaleX;
 	static const int GoombaBodyCollisionScaleY;
 
+	/// <summary>
+	/// 
+	/// </summary>
+	static const int KoopaTroopaImageXValue;
+	static const int KoopaTroopaImageYValue;
+
 protected:
 
 private:
