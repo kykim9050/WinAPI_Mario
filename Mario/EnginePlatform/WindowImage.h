@@ -64,6 +64,8 @@ public:
 	/// <param name="_Color"></param>
 	void AlphaCopy(UWindowImage* _CopyImage, const FTransform& _Trans, int _Index, Color8Bit _Color = Color8Bit::Black);
 
+	void PlgCopy(UWindowImage* _CopyImage, const FTransform& _Trans, int _Index, float _Angle);
+
 	void TextCopy(const std::string& _Text, const std::string& _Font, float _Size, const FTransform& _Trans, Color8Bit _Color /*= Color8Bit::Black*/);
 
 	bool Create(UWindowImage* _Image, const FVector& _Scale);
