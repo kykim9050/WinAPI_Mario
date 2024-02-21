@@ -108,9 +108,12 @@ void AGoomba::CollisionUpdate(float _DeltaTime)
 			//Player->StateChange()
 			// 몬스터의 상태를 GetHit로 변환
 			CollisionStateChange(ECollisionState::GetHit);
-			
+
 			// GetHit시 Collision 삭제해버리기
+			BodyCollision->Destroy();
+
 			// Player의 State에서 CollisionJump 추가해서 구현하기
+
 			return;
 		}
 
