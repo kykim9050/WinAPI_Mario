@@ -32,7 +32,7 @@ void AGoomba::BeginPlay()
 	GravityVelocityVector = FVector::Down * 500.0f;
 	HorizonVelocityVector = FVector::Left * 50.0f;
 
-	SetActorState(EPlayerState::Move);
+	SetActorState(EActorState::Move);
 }
 
 void AGoomba::Tick(float _DeltaTime)
@@ -56,7 +56,7 @@ void AGoomba::StateUpdate(float _DeltaTime)
 	/*case EPlayerState::Idle:
 		Idle(_DeltaTime);
 		break;*/
-	case EPlayerState::Move:
+	case EActorState::Move:
 		Move(_DeltaTime);
 		break;
 	default:

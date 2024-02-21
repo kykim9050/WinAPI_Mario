@@ -33,9 +33,9 @@ enum class EStageRenderOrder
 };
 
 /// <summary>
-/// 플레이어의 상태
+/// Actor의 상태
 /// </summary>
-enum class EPlayerState
+enum class EActorState
 {
 	None,
 	FreeMove,

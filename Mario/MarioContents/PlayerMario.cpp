@@ -46,7 +46,7 @@ void APlayerMario::BeginPlay()
 	BodyCollision->SetScale({ UInGameValue::PlayerCollisionScaleX, UInGameValue::PlayerCollisionScaleY });
 	BodyCollision->SetColType(ECollisionType::Rect);
 
-	MarioState = EPlayerState::Idle;
+	MarioState = EActorState::Idle;
 }
 
 void APlayerMario::Tick(float _DeltaTime)
@@ -64,25 +64,25 @@ void APlayerMario::Tick(float _DeltaTime)
 }
 
 
-void APlayerMario::StateChange(EPlayerState _PlayerState)
+void APlayerMario::StateChange(EActorState _PlayerState)
 {
 	if (MarioState != _PlayerState)
 	{
 		switch (_PlayerState)
 		{
-		case EPlayerState::Idle:
+		case EActorState::Idle:
 			IdleStart();
 			break;
-		case EPlayerState::Move:
+		case EActorState::Move:
 			MoveStart();
 			break;
-		case EPlayerState::FreeMove:
+		case EActorState::FreeMove:
 			FreeMoveStart();
 			break;
-		case EPlayerState::Jump:
+		case EActorState::Jump:
 			JumpStart();
 			break;
-		case EPlayerState::ReverseMove:
+		case EActorState::ReverseMove:
 			ReverseMoveStart();
 			break;
 		default:
@@ -117,22 +117,22 @@ void APlayerMario::StateUpdate(float _DeltaTime)
 {
 	switch (MarioState)
 	{
-	case EPlayerState::Idle:
+	case EActorState::Idle:
 		Idle(_DeltaTime);
 		break;
-	case EPlayerState::Move:
+	case EActorState::Move:
 		Move(_DeltaTime);
 		break;
-	case EPlayerState::FreeMove:
+	case EActorState::FreeMove:
 		FreeMove(_DeltaTime);
 		break;
-	case EPlayerState::CameraMove:
+	case EActorState::CameraMove:
 		CameraMove(_DeltaTime);
 		break;
-	case EPlayerState::Jump:
+	case EActorState::Jump:
 		Jump(_DeltaTime);
 		break;
-	case EPlayerState::ReverseMove:
+	case EActorState::ReverseMove:
 		ReverseMove(_DeltaTime);
 		break;
 	default:
@@ -199,7 +199,7 @@ void APlayerMario::ReverseMove(float _DeltaTime)
 {
 	if (UEngineInput::IsDown('Z'))
 	{
-		StateChange(EPlayerState::Jump);
+		StateChange(EActorState::Jump);
 		return;
 	}
 
@@ -209,7 +209,7 @@ void APlayerMario::ReverseMove(float _DeltaTime)
 		//EngineDebug::OutPutDebugText(std::to_string(HorizonVelocityVector.X));
 		if (HorizonVelocityVector.X < 0.0f)
 		{
-			StateChange(EPlayerState::Move);
+			StateChange(EActorState::Move);
 			return;
 		}
 
@@ -222,7 +222,7 @@ void APlayerMario::ReverseMove(float _DeltaTime)
 		//EngineDebug::OutPutDebugText(std::to_string(HorizonVelocityVector.X));
 		if (HorizonVelocityVector.X > 0.0f)
 		{
-			StateChange(EPlayerState::Move);
+			StateChange(EActorState::Move);
 			return;
 		}
 		AddHorizonVelocityVector(FVector::Right * _DeltaTime);
@@ -230,7 +230,7 @@ void APlayerMario::ReverseMove(float _DeltaTime)
 
 	if ((UEngineInput::IsFree(VK_LEFT) && UEngineInput::IsFree(VK_RIGHT)))
 	{
-		StateChange(EPlayerState::Idle);
+		StateChange(EActorState::Idle);
 		return;
 	}
 
@@ -244,13 +244,13 @@ void APlayerMario::Move(float _DeltaTime)
 
 	if (HorizonVelocityVector.X < 3.0f && HorizonVelocityVector.X > -3.0f && (UEngineInput::IsFree(VK_LEFT) && UEngineInput::IsFree(VK_RIGHT)))
 	{
-		StateChange(EPlayerState::Idle);
+		StateChange(EActorState::Idle);
 		return;
 	}
 
 	if (UEngineInput::IsDown('Z'))
 	{
-		StateChange(EPlayerState::Jump);
+		StateChange(EActorState::Jump);
 		return;
 	}
 
@@ -268,7 +268,7 @@ void APlayerMario::Move(float _DeltaTime)
 
 	if (true == IsReverseMove())
 	{
-		StateChange(EPlayerState::ReverseMove);
+		StateChange(EActorState::ReverseMove);
 		return;
 	}
 }
@@ -294,11 +294,11 @@ void APlayerMario::Jump(float _DeltaTime)
 		JumpVelocityVector = FVector::Zero;
 		if (true == UEngineInput::IsPress(VK_LEFT) || true == UEngineInput::IsPress(VK_RIGHT))
 		{
-			StateChange(EPlayerState::Move);
+			StateChange(EActorState::Move);
 			return;
 		}
 
-		StateChange(EPlayerState::Idle);
+		StateChange(EActorState::Idle);
 		return;
 	}
 }
@@ -307,7 +307,7 @@ void APlayerMario::FreeMove(float _DeltaTime)
 {
 	if (UEngineInput::IsDown('1'))
 	{
-		StateChange(EPlayerState::Idle);
+		StateChange(EActorState::Idle);
 		return;
 	}
 
@@ -340,7 +340,7 @@ void APlayerMario::CameraMove(float _DeltaTime)
 {
 	if (UEngineInput::IsDown('2'))
 	{
-		StateChange(EPlayerState::Idle);
+		StateChange(EActorState::Idle);
 		return;
 	}
 
@@ -369,25 +369,25 @@ void APlayerMario::Idle(float _DeltaTime)
 {
 	if (UEngineInput::IsDown('1'))
 	{
-		StateChange(EPlayerState::FreeMove);
+		StateChange(EActorState::FreeMove);
 		return;
 	}
 
 	if (UEngineInput::IsDown('2'))
 	{
-		StateChange(EPlayerState::CameraMove);
+		StateChange(EActorState::CameraMove);
 		return;
 	}
 
 	if (UEngineInput::IsDown('Z'))
 	{
-		StateChange(EPlayerState::Jump);
+		StateChange(EActorState::Jump);
 		return;
 	}
 
 	if (UEngineInput::IsPress(VK_LEFT) || UEngineInput::IsPress(VK_RIGHT))
 	{
-		StateChange(EPlayerState::Move);
+		StateChange(EActorState::Move);
 		return;
 	}
 
