@@ -56,7 +56,7 @@ public:
 	/// 각 상태가 시작되기 전에 실행되어야 할 함수를 호출해준다.
 	/// </summary>
 	/// <param name="_PlayerState"></param>
-	void StateChange(EPlayerState _PlayerState);
+	void StateChange(EActorState _PlayerState);
 
 	/// <summary>
 	/// Actor의 방향(좌,우)을 확인하고 맴버 변수값으로 지정하는 함수
@@ -121,7 +121,7 @@ public:
 	/// <summary>
 	/// Actor의 현 상태를 수정
 	/// </summary>
-	void SetMarioState(const EPlayerState _State)
+	void SetMarioState(const EActorState _State)
 	{
 		MarioState = _State;
 	}
@@ -160,7 +160,7 @@ protected:
 
 private:
 	// 플레이어의 현재 상태
-	EPlayerState MarioState = EPlayerState::None;
+	EActorState MarioState = EActorState::None;
 	// 플레이어의 현재 방향 (좌, 우)
 	EPlayerDir MarioDir = EPlayerDir::Right;
 	// 플레이어의 현재 콜리젼 상태

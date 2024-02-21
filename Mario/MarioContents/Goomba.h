@@ -21,7 +21,7 @@ public:
 
 	void StateUpdate(float _DeltaTime);
 
-	void SetActorState(const EPlayerState _State)
+	void SetActorState(const EActorState _State)
 	{
 		ActorState = _State;
 	}
@@ -49,7 +49,7 @@ private:
 	UImageRenderer* Renderer = nullptr;
 	UCollision* BodyCollision = nullptr;
 
-	EPlayerState ActorState = EPlayerState::None;
+	EActorState ActorState = EActorState::None;
 	ECollisionState ActorCollisionState = ECollisionState::None;
 
 	FVector HorizonVelocityVector = FVector::Zero;
