@@ -1,6 +1,35 @@
 #pragma once
 #include <string>
 #include <cmath>
+#include <Windows.h>
+
+// 설명 :
+class UEngineMath
+{
+public:
+	// constrcuter destructer
+	UEngineMath();
+	~UEngineMath();
+
+	// delete Function
+	UEngineMath(const UEngineMath& _Other) = delete;
+	UEngineMath(UEngineMath&& _Other) noexcept = delete;
+	UEngineMath& operator=(const UEngineMath& _Other) = delete;
+	UEngineMath& operator=(UEngineMath&& _Other) noexcept = delete;
+
+	static const float PI;
+	static const float PI2;
+
+	// Degree -> Radian
+	static const float DToR;
+	// Radian -> Degree
+	static const float RToD;
+
+protected:
+
+private:
+
+};
 
 struct float4
 {
@@ -70,6 +99,29 @@ public:
 
 
 public:
+	static float4 VectorRotationZToDeg(float4 _OriginVector, float _Angle)
+	{
+		return VectorRotationZToRad(_OriginVector, _Angle * UEngineMath::DToR);
+	}
+
+	static float4 VectorRotationZToRad(float4 _OriginVector, float _Angle)
+	{
+		float4 Result;
+		Result.X = (_OriginVector.X * cosf(_Angle)) - (_OriginVector.Y * sinf(_Angle));
+		Result.Y = (_OriginVector.X * sinf(_Angle)) + (_OriginVector.Y * cosf(_Angle));
+		return Result;
+	}
+
+	static float4 DegToDir(float _Angle)
+	{
+		return RadToDir(_Angle * UEngineMath::DToR);
+	}
+	static float4 RadToDir(float _Angle)
+	{
+		// 특정 각도에 빗변의 길이가 1인 방향 벡터를 구해줍니다.
+		return float4(cosf(_Angle), sinf(_Angle));
+	}
+
 	static float4 LerpClamp(float4 p1, float4 p2, float d1)
 	{
 		if (0.0f >= d1)
@@ -97,6 +149,17 @@ public:
 	float Size2D()
 	{
 		return std::sqrtf((X * X) + (Y * Y));
+	}
+
+	void RotationZToDeg(float _Angle)
+	{
+		RotationZToRad(_Angle * UEngineMath::DToR);
+	}
+
+	void RotationZToRad(float _Angle)
+	{
+		*this = VectorRotationZToRad(*this, _Angle);
+		return;
 	}
 	
 	/// <summary>
@@ -258,6 +321,11 @@ public:
 
 		return *this;
 	}
+
+	POINT ConvertToWinApiPOINT()
+	{
+		return { iX(),iY() };
+	}
 };
 
 using FVector = float4;
@@ -324,25 +392,5 @@ public:
 	{
 		return Color8Bit{ R,G,B,0 };
 	}
-};
-
-// 설명 :
-class EngineMath
-{
-public:
-	// constrcuter destructer
-	EngineMath();
-	~EngineMath();
-
-	// delete Function
-	EngineMath(const EngineMath& _Other) = delete;
-	EngineMath(EngineMath&& _Other) noexcept = delete;
-	EngineMath& operator=(const EngineMath& _Other) = delete;
-	EngineMath& operator=(EngineMath&& _Other) noexcept = delete;
-
-protected:
-
-private:
-
 };
 

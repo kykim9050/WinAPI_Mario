@@ -64,7 +64,7 @@ public:
 	/// <param name="_Color"></param>
 	void AlphaCopy(UWindowImage* _CopyImage, const FTransform& _Trans, int _Index, Color8Bit _Color = Color8Bit::Black);
 
-	void PlgCopy(UWindowImage* _CopyImage, const FTransform& _Trans, int _Index, float _Angle);
+	void PlgCopy(UWindowImage* _CopyImage, const FTransform& _Trans, int _Index, float _RadAngle);
 
 	void TextCopy(const std::string& _Text, const std::string& _Font, float _Size, const FTransform& _Trans, Color8Bit _Color /*= Color8Bit::Black*/);
 
@@ -90,9 +90,16 @@ public:
 		return ImageType;
 	}
 
+	void SetRotationMaskImage(UWindowImage* _RotationMaskImage)
+	{
+		RotationMaskImage = _RotationMaskImage;
+	}
+
 protected:
 
 private:
+	UWindowImage* RotationMaskImage = nullptr;
+
 	EImageLoadType LoadType = EImageLoadType::IMG_Cutting;
 
 	HBITMAP hBitMap = 0;

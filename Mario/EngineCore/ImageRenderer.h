@@ -105,6 +105,11 @@ public:
 	void ChangeAnimation(std::string_view _AnimationName, bool _IsForce = false, int _StartIndex = 0, float _Time = -1.0f);
 	void AnimationReset();
 
+	void SetAngle(float _Angle)
+	{
+		Angle = _Angle;
+	}
+
 	void SetTransColor(Color8Bit _Color)
 	{
 		TransColor = _Color;
@@ -218,6 +223,8 @@ private:
 
 	std::map<std::string, UAnimationInfo> AnimationInfos;
 	UAnimationInfo* CurAnimation = nullptr;
+
+	float Angle = 0.0f;
 
 	std::string Text = "";
 	std::string Font = "±Ã¼­";
