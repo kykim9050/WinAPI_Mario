@@ -5,7 +5,7 @@
 #include <cmath>
 
 APlayerMario* APlayerMario::MainPlayer = nullptr;
-
+int APlayerMario::Life = 3;
 
 APlayerMario::APlayerMario()
 {
@@ -89,6 +89,9 @@ void APlayerMario::StateChange(EActorState _PlayerState)
 		case EActorState::CollisionJump:
 			CollisionJumpStart();
 			break;
+		case EActorState::GetHit:
+			GetHitStart();
+			break;
 		default:
 			break;
 		}
@@ -141,6 +144,9 @@ void APlayerMario::StateUpdate(float _DeltaTime)
 		break;
 	case EActorState::CollisionJump:
 		CollisionJump(_DeltaTime);
+		break;
+	case EActorState::GetHit:
+		GetHit(_DeltaTime);
 		break;
 	default:
 		break;
@@ -437,14 +443,31 @@ void APlayerMario::Idle(float _DeltaTime)
 
 void APlayerMario::GetHit(float _DeltaTime)
 {
-	
+	static float DelayTime = 0.5f;
+
+	DelayTime -= _DeltaTime;
+
+	if (0 >= DelayTime)
+	{
+		GravityVelocityVector += GravityAccVector * _DeltaTime;
+
+		TotalVelocityVector = FVector::Zero;
+		TotalVelocityVector = TotalVelocityVector + GravityVelocityVector + JumpVelocityVector;
+
+		AddActorLocation(TotalVelocityVector * _DeltaTime);
+	}
+
+	// collision 맵 수정해서 캐릭터가 특정 색깔에 닿을때, 다시 시작하게 하는 Level로 넘어가게 하기
+	// 혹은 위 함수가 실행되고 나서 특정 조건을 걸어서 다시 시작하게 하기
+	// 여기에 기능 넣어야 함
 }
 
 void APlayerMario::GetHitStart()
 {
 	MarioRenderer->ChangeAnimation("Dead");
+	--Life;
 
-	TotalVelocityVector = FVector::Zero;
+	JumpVelocityVector = FVector::Up * 500.0f;
 }
 
 

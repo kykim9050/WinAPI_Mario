@@ -57,5 +57,6 @@ private:
 	FVector TotalVelocityVector = FVector::Zero;
 
 	int Life = 1;
+	bool KillPlayer = false;
 };
 
