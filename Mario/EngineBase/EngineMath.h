@@ -70,7 +70,7 @@ public:
 
 
 public:
-	static float4 LerpClemp(float4 p1, float4 p2, float d1)
+	static float4 LerpClamp(float4 p1, float4 p2, float d1)
 	{
 		if (0.0f >= d1)
 		{
@@ -82,7 +82,7 @@ public:
 			d1 = 1.0f;
 		}
 
-		return LerpClemp(p1, p2, d1);
+		return Lerp(p1, p2, d1);
 	}
 
 	static float4 Lerp(float4 p1, float4 p2, float d1)
