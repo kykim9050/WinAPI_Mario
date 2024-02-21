@@ -3,6 +3,12 @@
 #include <EngineBase\EngineMath.h>
 #include <EngineBase\Transform.h>
 #include <Windows.h>
+#include <string>
+#include <string_view>
+
+
+#include <objidl.h>
+#include <gdiplus.h>
 
 enum class EImageLoadType
 {
@@ -68,6 +74,8 @@ public:
 
 	void TextCopy(const std::string& _Text, const std::string& _Font, float _Size, const FTransform& _Trans, Color8Bit _Color /*= Color8Bit::Black*/);
 
+	void TextCopyFormat(const std::string& _Text, const std::string& _Font, const Gdiplus::StringFormat& stringFormat, float _Size, const FTransform& _Trans, Color8Bit _Color /*= Color8Bit::Black*/);
+
 	bool Create(UWindowImage* _Image, const FVector& _Scale);
 
 	void Cutting(int _X, int _Y);
@@ -94,6 +102,8 @@ public:
 	{
 		RotationMaskImage = _RotationMaskImage;
 	}
+
+	void TextPrint(std::string_view _Text, FVector _Pos);
 
 protected:
 

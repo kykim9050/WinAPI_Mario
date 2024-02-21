@@ -7,9 +7,6 @@
 
 #pragma comment(lib, "Msimg32.lib")
 
-#include <objidl.h>
-#include <gdiplus.h>
-
 
 #pragma comment(lib, "Gdiplus.lib")
 
@@ -285,6 +282,14 @@ void UWindowImage::TransCopy(UWindowImage* _CopyImage, const FTransform& _Trans,
 
 void UWindowImage::TextCopy(const std::string& _Text, const std::string& _Font, float _Size, const FTransform& _Trans, Color8Bit _Color/* = Color8Bit::Black*/)
 {
+	Gdiplus::StringFormat stringFormat;
+	stringFormat.SetAlignment(Gdiplus::StringAlignmentCenter);
+	stringFormat.SetLineAlignment(Gdiplus::StringAlignmentCenter);
+	TextCopyFormat(_Text, _Font, stringFormat, _Size, _Trans, _Color);  //출력
+}
+
+void UWindowImage::TextCopyFormat(const std::string& _Text, const std::string& _Font, const Gdiplus::StringFormat& stringFormat, float _Size, const FTransform& _Trans, Color8Bit _Color /*= Color8Bit::Black*/)
+{
 	Gdiplus::Graphics graphics(ImageDC);
 	std::wstring WFont = UEngineString::AnsiToUniCode(_Font);
 	Gdiplus::Font fnt(WFont.c_str(), _Size, /*Gdiplus::FontStyleBold | Gdiplus::FontStyleItalic*/0, Gdiplus::UnitPixel);
@@ -292,9 +297,6 @@ void UWindowImage::TextCopy(const std::string& _Text, const std::string& _Font, 
 	FVector Pos = _Trans.GetPosition();
 	Gdiplus::RectF  rectF(_Trans.GetPosition().X, _Trans.GetPosition().Y, 0, 0);
 
-	Gdiplus::StringFormat stringFormat;
-	stringFormat.SetAlignment(Gdiplus::StringAlignmentCenter);
-	stringFormat.SetLineAlignment(Gdiplus::StringAlignmentCenter);
 	std::wstring WText = UEngineString::AnsiToUniCode(_Text);
 	graphics.DrawString(WText.c_str(), -1, &fnt, rectF, &stringFormat, &hB);  //출력
 }
@@ -478,4 +480,9 @@ void UWindowImage::DrawRectangle(const FTransform& _Trans)
 void UWindowImage::DrawEllipse(const FTransform& _Trans)
 {
 	Ellipse(ImageDC, _Trans.iLeft(), _Trans.iTop(), _Trans.iRight(), _Trans.iBottom());
+}
+
+void UWindowImage::TextPrint(std::string_view _Text, FVector _Pos)
+{
+	TextOutA(ImageDC, _Pos.iX(), _Pos.iY(), _Text.data(), static_cast<int>(_Text.size()));
 }
