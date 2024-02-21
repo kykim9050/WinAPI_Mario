@@ -47,6 +47,9 @@
     <ClInclude Include="Goomba.h">
       <Filter>Object\Monster</Filter>
     </ClInclude>
+    <ClInclude Include="KoopaTroopa.h">
+      <Filter>Object\Monster</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp" />
@@ -90,6 +93,9 @@
       <Filter>Object</Filter>
     </ClCompile>
     <ClCompile Include="Goomba.cpp">
+      <Filter>Object\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="KoopaTroopa.cpp">
       <Filter>Object\Monster</Filter>
     </ClCompile>
   </ItemGroup>
