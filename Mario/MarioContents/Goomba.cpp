@@ -26,6 +26,7 @@ void AGoomba::BeginPlay()
 
 	BodyCollision = CreateCollision(ECollisionOrder::Monster);
 	BodyCollision->SetTransform({ { 0,0 }, { UInGameValue::GoombaBodyCollisionScaleX, UInGameValue::GoombaBodyCollisionScaleY } });
+	BodyCollision->SetPosition({ 0, -(BodyCollision->GetTransform().GetScale().ihY()) });
 	BodyCollision->SetColType(ECollisionType::Rect);
 
 
