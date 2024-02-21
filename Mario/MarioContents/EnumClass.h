@@ -45,6 +45,7 @@ enum class EActorState
 	Jump,
 	ReverseMove,
 	CollisionJump,
+	GetHit,
 };
 
 enum class EPlayerDir

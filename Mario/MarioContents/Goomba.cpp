@@ -95,7 +95,7 @@ void AGoomba::CollisionUpdate(float _DeltaTime)
 		MsgBoxAssert("플레이어가 존재하지 않습니다.");
 	}
 
-	if (true == BodyCollision->CollisionCheck(ECollisionOrder::Player, Result))
+	if (false == KillPlayer && true == BodyCollision->CollisionCheck(ECollisionOrder::Player, Result))
 	{
 		float PlayerBottom = Player->GetBodyCollision()->GetActorBaseTransform().Bottom();
 		float MonsterBottom = BodyCollision->GetActorBaseTransform().Bottom();
@@ -123,7 +123,9 @@ void AGoomba::CollisionUpdate(float _DeltaTime)
 		}
 
 		// 몬스터를 밟지 않고 충돌했을 경우 (플레이어 사망)
-		Player->CollisionStateChange(ECollisionState::GetHit);
+		Player->StateChange(EActorState::GetHit);
+		// 플레이어를 한번 죽였다.
+		KillPlayer = true;
 	}
 
 }

@@ -198,6 +198,8 @@ private:
 		MainPlayer = _MainPlayer;
 	}
 
+	// 플레이어의 목숨 디폴트 3개
+	static int Life;
 
 	UImageRenderer* MarioRenderer = nullptr;
 	UCollision* BodyCollision = nullptr;
