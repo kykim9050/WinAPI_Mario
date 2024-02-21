@@ -13,6 +13,7 @@ void UEngineInput::EngineKey::KeyCheck(float _DeltaTime)
 	{
 		if (true == Free)
 		{
+			UpTime;
 			PressTime = 0.0f;
 			Down = true;
 			Press = true;
@@ -21,6 +22,7 @@ void UEngineInput::EngineKey::KeyCheck(float _DeltaTime)
 		}
 		else if (true == Down)
 		{
+			UpTime = 0.0f;
 			PressTime += _DeltaTime;
 			Down = false;
 			Press = true;
@@ -30,6 +32,7 @@ void UEngineInput::EngineKey::KeyCheck(float _DeltaTime)
 	}
 	else
 	{
+		UpTime += _DeltaTime;
 		if (true == Press)
 		{
 			PressTime = 0.0f;
