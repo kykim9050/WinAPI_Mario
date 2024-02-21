@@ -24,7 +24,7 @@ void U1_1StageLevel::BeginPlay()
 	AUI* PlayerUI = SpawnActor<AUI>();
 	AGoomba* MonsterGoomba = SpawnActor<AGoomba>();
 
-	MonsterGoomba->SetActorLocation({ 500, 200 });
+	MonsterGoomba->SetActorLocation({ 800, 500 });
 	PlayerUI->SetActorLocation({ UInGameValue::UIXScaleValue / 2 * UInGameValue::WindowSizeMulValue, UInGameValue::UIYScaleValue / 2 * UInGameValue::WindowSizeMulValue });
 	Mario->SetActorLocation({ UInGameValue::MarioInitXPos, UInGameValue::MarioInitYPos });
 }

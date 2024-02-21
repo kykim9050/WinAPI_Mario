@@ -106,12 +106,15 @@ void AGoomba::CollisionUpdate(float _DeltaTime)
 		// 몬스터 밟은 것
 		if (PlayerBottom < MonsterBottom - OffsetYValue)
 		{
-			//Player->StateChange()
+
+			// GetHit시 Collision 삭제후
+			BodyCollision->Destroy();
+			// 본인도 삭제하는 함수 실행
+
 			// 몬스터의 상태를 GetHit로 변환
 			CollisionStateChange(ECollisionState::GetHit);
-
-			// GetHit시 Collision 삭제해버리기
-			BodyCollision->Destroy();
+			
+			Destroy(1.0f);
 
 			// Player의 State에서 CollisionJump 추가해서 구현하기
 			Player->StateChange(EActorState::CollisionJump);
