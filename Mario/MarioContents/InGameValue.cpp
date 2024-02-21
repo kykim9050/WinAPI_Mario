@@ -37,3 +37,6 @@ const int UInGameValue::PlayerCollisionScaleY = 32;
 
 const int UInGameValue::GoombaBodyCollisionScaleX = 32;
 const int UInGameValue::GoombaBodyCollisionScaleY = 32;
+
+const int UInGameValue::KoopaTroopaImageXValue = 5;
+const int UInGameValue::KoopaTroopaImageYValue = 2;

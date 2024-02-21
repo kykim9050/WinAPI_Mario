@@ -44,7 +44,10 @@ void UContentsCore::BeginPlay()
 	UEngineResourcesManager::GetInst().CuttingImage("Mario_Right.png", UInGameValue::MarioRightImageXValue, UInGameValue::MarioRightImageYValue);
 	UEngineResourcesManager::GetInst().CuttingImage("Mario_Left.png", UInGameValue::MarioLeftImageXValue, UInGameValue::MarioLeftImageYValue);
 	UEngineResourcesManager::GetInst().CuttingImage("Goomba.png", UInGameValue::GoombaImageXValue, UInGameValue::GoombaImageYValue);
-
+	UEngineResourcesManager::GetInst().CuttingImage("KoopaTroopa_Left.png", UInGameValue::KoopaTroopaImageXValue, UInGameValue::KoopaTroopaImageYValue);
+	UEngineResourcesManager::GetInst().CuttingImage("KoopaTroopa_Right.png", UInGameValue::KoopaTroopaImageXValue, UInGameValue::KoopaTroopaImageYValue);
+	
+	
 	CreateLevel<UTitleLevel>("TitleLevel");
 	CreateLevel<U1_1StageLevel>("1_1StageLevel");
 	CreateLevel<UEndingLevel>("EndingLevel");
