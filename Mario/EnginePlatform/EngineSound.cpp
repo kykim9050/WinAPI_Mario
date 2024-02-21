@@ -1,6 +1,11 @@
 #include "EngineSound.h"
 
-#pragma comment(lib, "ThirdParty\\FMOD\\inc\\fmod_vc.lib")
+// Debug 일때는
+// #pragma comment(lib, "ThirdParty\\FMOD\\inc\\fmodL_vc.lib")
+#pragma comment(lib, "fmodL_vc.lib")
+
+// Release 일때는 
+// #pragma comment(lib, "fmod_vc.lib")
 
 UEngineSound::UEngineSound()
 {
