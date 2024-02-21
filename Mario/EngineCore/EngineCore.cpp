@@ -105,6 +105,11 @@ void UEngineCore::EngineStart(HINSTANCE _hInstance)
 	UEngineWindow::WindowMessageLoop(EngineTick, EngineEnd);
 }
 
+void Exit()
+{
+
+}
+
 void UEngineCore::CoreInit(HINSTANCE _HINSTANCE)
 {
 	if (true == EngineInit)

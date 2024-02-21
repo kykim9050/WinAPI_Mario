@@ -18,5 +18,5 @@ UEngineSound::~UEngineSound()
 
 void UEngineSound::Load(std::string_view _Path, std::string_view _Name)
 {
-	UEngineSound* NewSound = new UEngineSound();
+	
 }
