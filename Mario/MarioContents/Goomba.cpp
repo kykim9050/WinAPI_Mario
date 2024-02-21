@@ -113,6 +113,7 @@ void AGoomba::CollisionUpdate(float _DeltaTime)
 			BodyCollision->Destroy();
 
 			// Player의 State에서 CollisionJump 추가해서 구현하기
+			Player->StateChange(EActorState::CollisionJump);
 
 			return;
 		}

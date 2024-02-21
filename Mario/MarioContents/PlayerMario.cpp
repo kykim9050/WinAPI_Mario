@@ -85,6 +85,9 @@ void APlayerMario::StateChange(EActorState _PlayerState)
 		case EActorState::ReverseMove:
 			ReverseMoveStart();
 			break;
+		case EActorState::CollisionJump:
+			CollisionJumpStart();
+			break;
 		default:
 			break;
 		}
@@ -135,6 +138,9 @@ void APlayerMario::StateUpdate(float _DeltaTime)
 	case EActorState::ReverseMove:
 		ReverseMove(_DeltaTime);
 		break;
+	case EActorState::CollisionJump:
+		CollisionJump(_DeltaTime);
+		break;
 	default:
 		break;
 	}
@@ -155,7 +161,11 @@ void APlayerMario::CollisionUpdate(float _DeltaTime)
 	}
 }
 
-
+void APlayerMario::CollisionJumpStart()
+{
+	GravityVelocityVector = FVector::Zero;
+	JumpVelocityVector = CollisionJumpVelocityVector;
+}
 
 void APlayerMario::JumpStart()
 {
@@ -269,6 +279,36 @@ void APlayerMario::Move(float _DeltaTime)
 	if (true == IsReverseMove())
 	{
 		StateChange(EActorState::ReverseMove);
+		return;
+	}
+}
+
+void APlayerMario::CollisionJump(float _DeltaTime)
+{
+	if (UEngineInput::IsPress(VK_LEFT))
+	{
+		AddHorizonVelocityVector(FVector::Left * _DeltaTime);
+	}
+
+	if (UEngineInput::IsPress(VK_RIGHT))
+	{
+		AddHorizonVelocityVector(FVector::Right * _DeltaTime);
+	}
+
+	ResultMovementUpdate(_DeltaTime);
+
+	Color8Bit Color = UContentsFunction::GetCollisionMapImg()->GetColor(GetActorLocation().iX(), GetActorLocation().iY(), UInGameValue::CollisionColor);
+
+	if (UInGameValue::CollisionColor == Color)
+	{
+		JumpVelocityVector = FVector::Zero;
+		if (true == UEngineInput::IsPress(VK_LEFT) || true == UEngineInput::IsPress(VK_RIGHT))
+		{
+			StateChange(EActorState::Move);
+			return;
+		}
+
+		StateChange(EActorState::Idle);
 		return;
 	}
 }
