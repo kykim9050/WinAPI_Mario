@@ -39,6 +39,8 @@ public:
 		ActorCollisionState = _CollisionState;
 	}
 
+	void GetHitStart();
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
