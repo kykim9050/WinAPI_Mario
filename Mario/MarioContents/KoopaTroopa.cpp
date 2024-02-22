@@ -10,7 +10,7 @@ AKoopaTroopa::~AKoopaTroopa()
 
 void AKoopaTroopa::BeginPlay()
 {
-	AActor::BeginPlay();
+	UStateUnit::BeginPlay();
 
 	Renderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::Monster));
 	Renderer->SetImage("KoopaTroopa_Left.png");
@@ -40,7 +40,7 @@ void AKoopaTroopa::BeginPlay()
 
 void AKoopaTroopa::Tick(float _DeltaTime)
 {
-	AActor::Tick(_DeltaTime);
+	UStateUnit::Tick(_DeltaTime);
 
 	StateUpdate(_DeltaTime);
 }
