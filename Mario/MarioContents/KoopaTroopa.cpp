@@ -35,7 +35,7 @@ void AKoopaTroopa::BeginPlay()
 	GravityVelocityVector = FVector::Down * 500.0f;
 	HorizonVelocityVector = FVector::Left * 50.0f;
 
-	//SetActorState(EActorState::Move);
+	SetActorState(EActorState::Move);
 }
 
 void AKoopaTroopa::Tick(float _DeltaTime)
@@ -53,7 +53,7 @@ void AKoopaTroopa::StateUpdate(float _DeltaTime)
 			Idle(_DeltaTime);
 			break;*/
 	case EActorState::Move:
-		//Move(_DeltaTime);
+		Move(_DeltaTime);
 		break;
 	default:
 		break;
@@ -61,4 +61,22 @@ void AKoopaTroopa::StateUpdate(float _DeltaTime)
 
 }
 
+void AKoopaTroopa::Move(float _DeltaTime)
+{
+	ResultMovementUpdate(_DeltaTime);
+}
+
+void AKoopaTroopa::ResultMovementUpdate(float _DeltaTime)
+{
+	Color8Bit Color = UContentsFunction::GetCollisionMapImg()->GetColor(GetActorLocation().iX(), GetActorLocation().iY(), UInGameValue::CollisionColor);
+
+	if (UInGameValue::CollisionColor == Color)
+	{
+		GravityVelocityVector = FVector::Zero;
+	}
+
+	TotalVelocityVector = FVector::Zero;
+	TotalVelocityVector = TotalVelocityVector + GravityVelocityVector + HorizonVelocityVector;
+	AddActorLocation(TotalVelocityVector * _DeltaTime);
+}
 

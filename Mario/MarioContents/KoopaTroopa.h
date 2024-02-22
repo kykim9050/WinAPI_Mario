@@ -2,6 +2,7 @@
 #include <EngineCore/Actor.h>
 #include "EnumClass.h"
 #include "InGameValue.h"
+#include "ContentsFunction.h"
 
 // Ό³Έν :
 class AKoopaTroopa : public AActor
@@ -22,6 +23,11 @@ public:
 
 	void StateUpdate(float _DeltaTime);
 
+	void Move(float _DeltaTime);
+
+	void ResultMovementUpdate(float _DeltaTime);
+
+
 protected:
 
 private:
@@ -37,5 +43,10 @@ private:
 
 	int Life = 2;
 	bool KillPlayer = false;
+
+	void SetActorState(const EActorState _State)
+	{
+		ActorState = _State;
+	}
 };
 
