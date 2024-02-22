@@ -62,6 +62,18 @@ void AKoopaTroopa::StateUpdate(float _DeltaTime)
 	case EActorState::Move:
 		Move(_DeltaTime);
 		break;
+	case EActorState::GetFirstHit:
+	{
+		//GetFirstHit(_DeltaTime);
+		int a = 0;
+		break;
+	}
+	case EActorState::GetSecondHit:
+	{
+		//GetSecondHit(_DeltaTime);
+		int a = 0;
+		break;
+	}
 	default:
 		break;
 	}
@@ -190,15 +202,11 @@ void AKoopaTroopa::StateChange(EActorState _ActorState)
 		switch (_ActorState)
 		{
 		case EActorState::GetFirstHit:
-		{
-			int a = 0;
+			//GetFirstHitStart();
 			break;
-		}
 		case EActorState::GetSecondHit:
-		{
-			int a = 0;
+			//GetSecondHitStart();
 			break;
-		}
 		default:
 			break;
 		}
