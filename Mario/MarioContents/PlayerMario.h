@@ -1,5 +1,6 @@
 #pragma once
 #include <EngineCore/Actor.h>
+#include "StateUnit.h"
 #include "EnumClass.h"
 #include "ContentsFunction.h"
 #include "InGameValue.h"
@@ -117,7 +118,7 @@ public:
 	/// <summary>
 	/// Actor의 방향을 수정
 	/// </summary>
-	void SetMarioDir(const EPlayerDir _Dir)
+	void SetMarioDir(const EActorDir _Dir)
 	{
 		MarioDir = _Dir;
 	}
@@ -160,7 +161,7 @@ private:
 	// 플레이어의 현재 상태
 	EActorState MarioState = EActorState::None;
 	// 플레이어의 현재 방향 (좌, 우)
-	EPlayerDir MarioDir = EPlayerDir::Right;
+	EActorDir MarioDir = EActorDir::Right;
 	// 플레이어의 현재 콜리젼 상태
 	ECollisionState ActorCollisionState = ECollisionState::None;
 

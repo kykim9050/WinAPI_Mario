@@ -48,7 +48,7 @@ enum class EActorState
 	GetHit,
 };
 
-enum class EPlayerDir
+enum class EActorDir
 {
 	None,
 	Left,
