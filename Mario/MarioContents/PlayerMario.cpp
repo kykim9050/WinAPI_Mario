@@ -8,6 +8,7 @@ APlayerMario* APlayerMario::MainPlayer = nullptr;
 
 APlayerMario::APlayerMario()
 {
+	Life = 3;
 }
 
 APlayerMario::~APlayerMario()
