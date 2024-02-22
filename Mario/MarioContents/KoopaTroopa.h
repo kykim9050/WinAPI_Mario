@@ -20,6 +20,8 @@ public:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
+	void StateUpdate(float _DeltaTime);
+
 protected:
 
 private:

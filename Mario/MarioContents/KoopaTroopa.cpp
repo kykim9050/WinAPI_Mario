@@ -32,8 +32,8 @@ void AKoopaTroopa::BeginPlay()
 	BodyCollision->SetColType(ECollisionType::Rect);
 
 
-	//GravityVelocityVector = FVector::Down * 500.0f;
-	//HorizonVelocityVector = FVector::Left * 50.0f;
+	GravityVelocityVector = FVector::Down * 500.0f;
+	HorizonVelocityVector = FVector::Left * 50.0f;
 
 	//SetActorState(EActorState::Move);
 }
@@ -41,4 +41,24 @@ void AKoopaTroopa::BeginPlay()
 void AKoopaTroopa::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
+
+	StateUpdate(_DeltaTime);
 }
+
+void AKoopaTroopa::StateUpdate(float _DeltaTime)
+{
+	switch (ActorState)
+	{
+		/*case EPlayerState::Idle:
+			Idle(_DeltaTime);
+			break;*/
+	case EActorState::Move:
+		//Move(_DeltaTime);
+		break;
+	default:
+		break;
+	}
+
+}
+
+
