@@ -89,10 +89,15 @@ void AKoopaTroopa::ResultMovementUpdate(float _DeltaTime)
 
 void AKoopaTroopa::CollisionUpdate(float _DeltaTime)
 {
+	CollisionCheck();
+}
+
+void AKoopaTroopa::CollisionCheck()
+{
 	std::vector<UCollision*> Result = std::vector<UCollision*>();
 
 	APlayerMario* Player = APlayerMario::GetMainPlayer();
-	
+
 	if (nullptr == Player)
 	{
 		MsgBoxAssert("플레이어가 존재하지 않습니다.");
@@ -106,26 +111,21 @@ void AKoopaTroopa::CollisionUpdate(float _DeltaTime)
 		// 현재 몬스터의 Collision ScaleY의 반값만큼 Player의 Bottom 값이 위에 잇다면 몬스터를 밟은 것
 		float OffsetYValue = BodyCollision->GetActorBaseTransform().GetScale().hY();
 
-		// 몬스터 밟은 것
 		if (PlayerBottom < MonsterBottom - OffsetYValue)
 		{
-			// 수정 필요 : 엉금엉금의 상태에 따라서 다른 기능을 수행할 수 있게 해당 부분 코드 수정 필요 (현재는 굼바의 코드를 그대로 사용하고 있음)
-			--Life;
-
-			BodyCollision->Destroy();
-
-			CollisionStateChange(ECollisionState::GetHit);
-
-			Player->StateChange(EActorState::CollisionJump);
-
+			// 만약 머리위를 때렸다면 GetHit로 ActorStateChange
+			// GetHit에서는 라이프가 몇개인지에 따라서 2개면 그냥 거북모양으로 바꾸고 플레이어가 맞아도 죽지않게
+			// 
+			// 라이프가 1개면 이미 쳐서 돌아댕기는거니까 플레이어가 맞으면 죽도록 만들기
+			// GetHitStart는 라이브에 따라서 다르게 작동되도록 만들기
+			int a = 0;
 			return;
 		}
 
-		// 몬스터를 밟지 않고 충돌했을 경우 (플레이어 사망)
-		Player->StateChange(EActorState::GetHit);
-		// 플레이어를 한번 죽였다.
-		KillPlayer = true;
+		// 만약 머리위를 떄리지 않았다면 Git로 ActorStateChange
+		int a = 0;
 	}
+
 }
 
 void AKoopaTroopa::CollisionStateChange(ECollisionState _CollisionState)
