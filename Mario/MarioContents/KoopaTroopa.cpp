@@ -165,13 +165,13 @@ void AKoopaTroopa::GetHitStart()
 	case 2: // Life가 2일 때 -> 플레이어한테 머리 한방 맞았을 때
 	{
 		Renderer->ChangeAnimation("KoopaTroopa_OneHit");
-		//CollisionStateChange(ECollisionState::OneHit);
+		StateChange(EActorState::GetFirstHit);
 		break;
 	}
 	case 1:	// Life가 1일 때 -> 플레이어한테 한방 맞은 후에 또 맞았을 때 (밀거나 머리 맞거나)
 	{
 		Renderer->ChangeAnimation("KoopaTroopa_TwoHit");
-		//CollisionStateChange(ECollisionState::TwoHit);
+		StateChange(EActorState::GetSecondHit);
 		break;
 	}
 	default:
@@ -181,4 +181,28 @@ void AKoopaTroopa::GetHitStart()
 	}
 	}
 
+}
+
+void AKoopaTroopa::StateChange(EActorState _ActorState)
+{
+	if (ActorState != _ActorState)
+	{
+		switch (_ActorState)
+		{
+		case EActorState::GetFirstHit:
+		{
+			int a = 0;
+			break;
+		}
+		case EActorState::GetSecondHit:
+		{
+			int a = 0;
+			break;
+		}
+		default:
+			break;
+		}
+	}
+
+	SetActorState(_ActorState);
 }
