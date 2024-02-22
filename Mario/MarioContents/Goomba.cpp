@@ -3,6 +3,8 @@
 
 AGoomba::AGoomba()
 {
+	GravityVelocityVector = FVector::Down * 500.0f;
+	HorizonVelocityVector = FVector::Left * 50.0f;
 }
 
 AGoomba::~AGoomba()
@@ -28,10 +30,6 @@ void AGoomba::BeginPlay()
 	BodyCollision->SetTransform({ { 0,0 }, { UInGameValue::GoombaBodyCollisionScaleX, UInGameValue::GoombaBodyCollisionScaleY } });
 	BodyCollision->SetPosition({ 0, -(BodyCollision->GetTransform().GetScale().ihY()) });
 	BodyCollision->SetColType(ECollisionType::Rect);
-
-
-	GravityVelocityVector = FVector::Down * 500.0f;
-	HorizonVelocityVector = FVector::Left * 50.0f;
 
 	SetActorState(EActorState::Move);
 }
