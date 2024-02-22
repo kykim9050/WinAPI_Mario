@@ -68,4 +68,6 @@ enum class ECollisionState
 	None,
 	Hit,
 	GetHit,
+	OneHit,
+	TwoHit,
 };

@@ -113,6 +113,11 @@ void AKoopaTroopa::CollisionCheck()
 
 		if (PlayerBottom < MonsterBottom - OffsetYValue)
 		{
+
+			Player->StateChange(EActorState::CollisionJump);
+
+			CollisionStateChange(ECollisionState::GetHit);
+
 			// 만약 머리위를 때렸다면 GetHit로 ActorStateChange
 			// GetHit에서는 라이프가 몇개인지에 따라서 2개면 그냥 거북모양으로 바꾸고 플레이어가 맞아도 죽지않게
 			// 
@@ -124,8 +129,10 @@ void AKoopaTroopa::CollisionCheck()
 
 		// 만약 머리위를 떄리지 않았다면 Git로 ActorStateChange
 		int a = 0;
+		return;
 	}
-
+	
+	CollisionStateChange(ECollisionState::None);
 }
 
 void AKoopaTroopa::CollisionStateChange(ECollisionState _CollisionState)
@@ -150,13 +157,28 @@ void AKoopaTroopa::CollisionStateChange(ECollisionState _CollisionState)
 
 void AKoopaTroopa::GetHitStart()
 {
-	Renderer->ChangeAnimation("KoopaTroopa_OneHit");
-	TotalVelocityVector = FVector::Zero;
+	UEngineDebug::OutPutDebugText("GetHitStart");
+	--Life;
 
-	// 목숨이 0 이하라면
-	// 본인도 삭제하는 함수 실행
-	if (0 >= Life)
+	switch (Life)
 	{
-		Destroy(1.0f);
+	case 2: // Life가 2일 때 -> 플레이어한테 머리 한방 맞았을 때
+	{
+		Renderer->ChangeAnimation("KoopaTroopa_OneHit");
+		//CollisionStateChange(ECollisionState::OneHit);
+		break;
 	}
+	case 1:	// Life가 1일 때 -> 플레이어한테 한방 맞은 후에 또 맞았을 때 (밀거나 머리 맞거나)
+	{
+		Renderer->ChangeAnimation("KoopaTroopa_TwoHit");
+		//CollisionStateChange(ECollisionState::TwoHit);
+		break;
+	}
+	default:
+	{
+		Life = 0;
+		break;
+	}
+	}
+
 }
