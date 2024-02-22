@@ -1,12 +1,12 @@
 #pragma once
-#include <EngineCore/Actor.h>
+#include "StateUnit.h"
 #include "EnumClass.h"
 #include "InGameValue.h"
 #include "ContentsFunction.h"
 
 
 // Ό³Έν :
-class AGoomba : public AActor
+class AGoomba : public UStateUnit
 {
 public:
 	// constrcuter destructer
@@ -19,44 +19,23 @@ public:
 	AGoomba& operator=(const AGoomba& _Other) = delete;
 	AGoomba& operator=(AGoomba&& _Other) noexcept = delete;
 
-	void StateUpdate(float _DeltaTime);
+	void StateUpdate(float _DeltaTime) override;
 
-	void Move(float _DeltaTime);
+	void Move(float _DeltaTime) override;
 
-	void ResultMovementUpdate(float _DeltaTime);
+	void ResultMovementUpdate(float _DeltaTime) override;
 
-	void CollisionUpdate(float _DeltaTime);
+	void CollisionUpdate(float _DeltaTime) override;
 
-	void CollisionStateChange(ECollisionState _CollisionState);
+	void CollisionStateChange(ECollisionState _CollisionState) override;
 
-	void SetCollisionState(ECollisionState _CollisionState)
-	{
-		ActorCollisionState = _CollisionState;
-	}
-
-	void GetHitStart();
+	void GetHitStart() override;
 
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
 private:
-	UImageRenderer* Renderer = nullptr;
-	UCollision* BodyCollision = nullptr;
-
-	EActorState ActorState = EActorState::None;
-	ECollisionState ActorCollisionState = ECollisionState::None;
-
-	FVector HorizonVelocityVector = FVector::Zero;
-	FVector GravityVelocityVector = FVector::Zero;
-	FVector TotalVelocityVector = FVector::Zero;
-
-	int Life = 1;
 	bool KillPlayer = false;
-
-	void SetActorState(const EActorState _State)
-	{
-		ActorState = _State;
-	}
 };
 

@@ -1,5 +1,4 @@
 #pragma once
-//#include <EngineCore/Actor.h>
 #include "StateUnit.h"
 #include "EnumClass.h"
 #include "ContentsFunction.h"
