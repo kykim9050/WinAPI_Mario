@@ -17,6 +17,7 @@ APlayerMario::~APlayerMario()
 
 void APlayerMario::BeginPlay()
 {
+	//UStateUnit::BeginPlay();
 	AActor::BeginPlay();
 
 	SetMainPlayer(this);
@@ -52,6 +53,7 @@ void APlayerMario::BeginPlay()
 
 void APlayerMario::Tick(float _DeltaTime)
 {
+	//UStateUnit::Tick(_DeltaTime);
 	AActor::Tick(_DeltaTime);
 
 	CollisionUpdate(_DeltaTime);
@@ -478,16 +480,16 @@ void APlayerMario::GetHitStart()
 
 bool APlayerMario::DirCheck()
 {
-	EPlayerDir Dir = MarioDir;
+	EActorDir Dir = MarioDir;
 
 	if (UEngineInput::IsPress(VK_LEFT) && UEngineInput::IsFree(VK_RIGHT))
 	{
-		Dir = EPlayerDir::Left;
+		Dir = EActorDir::Left;
 	}
 
 	if (UEngineInput::IsPress(VK_RIGHT) && UEngineInput::IsFree(VK_LEFT))
 	{
-		Dir = EPlayerDir::Right;
+		Dir = EActorDir::Right;
 	}
 
 	if (MarioDir != Dir)
@@ -546,10 +548,10 @@ std::string APlayerMario::ChangeAnimationName(std::string _MainName)
 
 	switch (MarioDir)
 	{
-	case EPlayerDir::Left:
+	case EActorDir::Left:
 		Dir = "_Left";
 		break;
-	case EPlayerDir::Right:
+	case EActorDir::Right:
 		Dir = "_Right";
 		break;
 	default:
@@ -588,11 +590,11 @@ void APlayerMario::CalHorizonVelocityVector(float _DeltaTime)
 
 	switch (MarioDir)
 	{
-	case EPlayerDir::Right:
+	case EActorDir::Right:
 		CheckPos.X += UInGameValue::ColOffSetX;
 		BackPos.X -= UInGameValue::ColOffSetX;
 		break;
-	case EPlayerDir::Left:
+	case EActorDir::Left:
 		CheckPos.X -= UInGameValue::ColOffSetX;
 		BackPos.X += UInGameValue::ColOffSetX;
 		break;
@@ -612,10 +614,10 @@ void APlayerMario::CalHorizonVelocityVector(float _DeltaTime)
 	{
 		switch (MarioDir)
 		{
-		case EPlayerDir::Right:
+		case EActorDir::Right:
 			HorizonVelocityVector = FVector::Right * _DeltaTime * HorizonAccVector;
 			break;
-		case EPlayerDir::Left:
+		case EActorDir::Left:
 			HorizonVelocityVector = FVector::Left * _DeltaTime * HorizonAccVector;
 			break;
 		default:
