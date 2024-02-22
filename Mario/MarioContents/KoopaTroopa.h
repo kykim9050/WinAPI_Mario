@@ -33,6 +33,8 @@ public:
 	// StateUnit에 virtual로 넣을지 고민~
 	void CollisionCheck();
 
+	void StateChange(EActorState _ActorState) override;
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
