@@ -82,12 +82,11 @@ protected:
 	FVector TotalVelocityVector = FVector::Zero;
 	FVector JumpVelocityVector = FVector::Zero;
 
-	int Life;
-
 	UImageRenderer* Renderer = nullptr;
 	UCollision* BodyCollision = nullptr;
 	std::string CurAnimationName = "None";
 
+	int Life = 1;
 
 private:
 };
