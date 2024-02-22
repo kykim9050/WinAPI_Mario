@@ -82,10 +82,16 @@ public:
 	static const int GoombaBodyCollisionScaleY;
 
 	/// <summary>
-	/// 
+	/// KoopaTroopa_Right 의 열, 행 수
 	/// </summary>
 	static const int KoopaTroopaImageXValue;
 	static const int KoopaTroopaImageYValue;
+
+	/// <summary>
+	/// KoopaTroopa 의 body Collosion scale 값
+	/// </summary>
+	static const int KoopaTroopaBodyCollisionScaleX;
+	static const int KoopaTroopaBodyCollisionScaleY;
 
 protected:
 

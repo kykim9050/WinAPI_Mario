@@ -26,10 +26,10 @@ void AKoopaTroopa::BeginPlay()
 	Renderer->ChangeAnimation("KoopaTroopa_Left_Move");
 
 
-	//BodyCollision = CreateCollision(ECollisionOrder::Monster);
-	//BodyCollision->SetTransform({ { 0,0 }, { UInGameValue::GoombaBodyCollisionScaleX, UInGameValue::GoombaBodyCollisionScaleY } });
-	//BodyCollision->SetPosition({ 0, -(BodyCollision->GetTransform().GetScale().ihY()) });
-	//BodyCollision->SetColType(ECollisionType::Rect);
+	BodyCollision = CreateCollision(ECollisionOrder::Monster);
+	BodyCollision->SetTransform({ { 0,0 }, { UInGameValue::KoopaTroopaBodyCollisionScaleX, UInGameValue::KoopaTroopaBodyCollisionScaleY} });
+	BodyCollision->SetPosition({ 0, -(BodyCollision->GetTransform().GetScale().ihY()) });
+	BodyCollision->SetColType(ECollisionType::Rect);
 
 
 	//GravityVelocityVector = FVector::Down * 500.0f;
