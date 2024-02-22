@@ -294,6 +294,8 @@ void APlayerMario::Move(float _DeltaTime)
 
 void APlayerMario::CollisionJump(float _DeltaTime)
 {
+	SetMarioState(EActorState::Jump);
+
 	if (UEngineInput::IsPress(VK_LEFT))
 	{
 		AddHorizonVelocityVector(FVector::Left * _DeltaTime);

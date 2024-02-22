@@ -30,7 +30,7 @@ void U1_1StageLevel::BeginPlay()
 
 	MonsterKoopaTroopa->SetActorLocation({ 500,500 });
 	MonsterGoomba1->SetActorLocation({ 800, 500 });
-	MonsterGoomba2->SetActorLocation({ 1000, 500 });
+	MonsterGoomba2->SetActorLocation({ 850, 500 });
 	MonsterGoomba3->SetActorLocation({ 1500, 500 });
 	PlayerUI->SetActorLocation({ UInGameValue::UIXScaleValue / 2 * UInGameValue::WindowSizeMulValue, UInGameValue::UIYScaleValue / 2 * UInGameValue::WindowSizeMulValue });
 	Mario->SetActorLocation({ UInGameValue::MarioInitXPos, UInGameValue::MarioInitYPos });

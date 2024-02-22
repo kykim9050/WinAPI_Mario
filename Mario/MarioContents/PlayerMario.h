@@ -180,7 +180,7 @@ private:
 	FVector TotalVelocityVector = FVector::Zero;
 	FVector JumpVelocityVector = FVector::Zero;
 	FVector MaxJumpVelocityVector = FVector::Up * 900.0f;
-	FVector CollisionJumpVelocityVector = FVector::Up * 400.0f;
+	FVector CollisionJumpVelocityVector = FVector::Up * 500.0f;
 
 	// FreeMove 작동 시 속도
 	float PFreeMoveVelocity = 1000.0f;
