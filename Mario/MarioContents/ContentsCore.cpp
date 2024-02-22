@@ -52,7 +52,7 @@ void UContentsCore::BeginPlay()
 	CreateLevel<U1_1StageLevel>("1_1StageLevel");
 	CreateLevel<UEndingLevel>("EndingLevel");
 
-	ChangeLevel("TitleLevel");
+	ChangeLevel("1_1StageLevel");
 }
 
 void UContentsCore::Tick(float _DeltaTime)
