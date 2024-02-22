@@ -122,13 +122,7 @@ public:
 		MarioDir = _Dir;
 	}
 
-	/// <summary>
-	/// Actor의 현 상태를 수정
-	/// </summary>
-	void SetMarioState(const EActorState _State)
-	{
-		MarioState = _State;
-	}
+	
 
 	void CameraPosUpdate(FVector _Player, FVector _MovePos);
 
@@ -196,6 +190,14 @@ private:
 	void SetMainPlayer(APlayerMario* _MainPlayer)
 	{
 		MainPlayer = _MainPlayer;
+	}
+
+	/// <summary>
+	/// Actor의 현 상태를 수정
+	/// </summary>
+	void SetMarioState(const EActorState _State)
+	{
+		MarioState = _State;
 	}
 
 	// 플레이어의 목숨 디폴트 3개

@@ -21,11 +21,6 @@ public:
 
 	void StateUpdate(float _DeltaTime);
 
-	void SetActorState(const EActorState _State)
-	{
-		ActorState = _State;
-	}
-
 	void Move(float _DeltaTime);
 
 	void ResultMovementUpdate(float _DeltaTime);
@@ -58,5 +53,10 @@ private:
 
 	int Life = 1;
 	bool KillPlayer = false;
+
+	void SetActorState(const EActorState _State)
+	{
+		ActorState = _State;
+	}
 };
 
