@@ -25,9 +25,9 @@ protected:
 	virtual void IdleStart() {}
 	virtual void MoveStart() {}
 	virtual void JumpStart() {}
-	virtual void CollisionJumpStart() {}
-	virtual void FreeMoveStart() {}
-	virtual void ReverseMoveStart() {}
+	//virtual void CollisionJumpStart() {}
+	//virtual void FreeMoveStart() {}
+	//virtual void ReverseMoveStart() {}
 	virtual void GetHitStart() {}
 
 	virtual void StateChange(EActorState _ActorState) {}
@@ -85,23 +85,16 @@ protected:
 	//void ReverseMove(float _DeltaTime);
 	virtual void GetHit(float _DeltaTime) {}
 
-	void AddHorizonVelocityVector(const FVector& _DirDelta)
-	{
-		HorizonVelocityVector += _DirDelta * HorizonAccVector;
-	}
 
-	void ResultMovementUpdate(float _DeltaTime)
-	{
-		CalHorizonVelocityVector(_DeltaTime);
-		CalGravityVelocityVector(_DeltaTime);
-		CalJumpVelocityVector(_DeltaTime);
-		CalTotalVelocityVector(_DeltaTime);
-		ApplyMovement(_DeltaTime);
-	}
+	virtual void ResultMovementUpdate(float _DeltaTime) {}
+
+	virtual void AddHorizonVelocityVector(const FVector& _DirDelta) {}
 
 	virtual void ApplyMovement(float _DeltaTime) {}
 
-	virtual void CalHorizonVelocityVector(float _DeltaTime) {	}
+	virtual void CalHorizonVelocityVector(float _DeltaTime) {}
+
+	virtual void CalJumpVelocityVector(float _DeltaTime) {}
 
 	void CalGravityVelocityVector(float _DeltaTime)
 	{
@@ -121,10 +114,6 @@ protected:
 		TotalVelocityVector = TotalVelocityVector + HorizonVelocityVector + GravityVelocityVector + JumpVelocityVector;
 	}
 
-	void CalJumpVelocityVector(float _DeltaTime)
-	{
-
-	}
 	
 
 	UCollision* GetBodyCollision()
@@ -144,21 +133,20 @@ protected:
 
 
 
-private:
 	EActorState ActorState = EActorState::None;
 	EActorDir ActorDir = EActorDir::Right;
 	ECollisionState ActorCollisionState = ECollisionState::None;
 
 	FVector HorizonVelocityVector = FVector::Zero;
-	FVector HorizonAccVector = FVector::Right * 1000.0f;
-	float HorizonMaxSpeed = 500.0f;
+	//FVector HorizonAccVector = FVector::Right * 1000.0f;
+	//float HorizonMaxSpeed = 500.0f;
 
 	FVector GravityVelocityVector = FVector::Zero;
 	FVector GravityAccVector = FVector::Down * 2000.0f;
 	FVector TotalVelocityVector = FVector::Zero;
 	FVector JumpVelocityVector = FVector::Zero;
-	FVector MaxJumpVelocityVector = FVector::Up * 900.0f;
-	FVector CollisionJumpVelocityVector = FVector::Up * 500.0f;
+	//FVector MaxJumpVelocityVector = FVector::Up * 900.0f;
+	//FVector CollisionJumpVelocityVector = FVector::Up * 500.0f;
 
 	//float PFreeMoveVelocity = 1000.0f;
 	//static APlayerMario* MainPlayer;
@@ -167,5 +155,8 @@ private:
 	UImageRenderer* Renderer = nullptr;
 	UCollision* BodyCollision = nullptr;
 	std::string CurAnimationName = "None";
+
+
+private:
 };
 

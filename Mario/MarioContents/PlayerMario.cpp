@@ -172,7 +172,6 @@ void APlayerMario::CollisionUpdate(float _DeltaTime)
 
 void APlayerMario::CollisionJumpStart()
 {
-	// 수정 필요 : 연달아서 두번 CollisionJumpStart가 호출되지 않음
 	UEngineDebug::OutPutDebugText("CollisionJumpStart");
 	GravityVelocityVector = FVector::Zero;
 	JumpVelocityVector = CollisionJumpVelocityVector;
