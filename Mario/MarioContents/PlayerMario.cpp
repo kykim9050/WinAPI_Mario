@@ -5,7 +5,6 @@
 #include <cmath>
 
 APlayerMario* APlayerMario::MainPlayer = nullptr;
-int APlayerMario::Life = 3;
 
 APlayerMario::APlayerMario()
 {
@@ -17,44 +16,42 @@ APlayerMario::~APlayerMario()
 
 void APlayerMario::BeginPlay()
 {
-	//UStateUnit::BeginPlay();
-	AActor::BeginPlay();
+	UStateUnit::BeginPlay();
 
 	SetMainPlayer(this);
 
-	MarioRenderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::Mario));
+	Renderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::Mario));
 
-	MarioRenderer->SetImage("Mario_Right.png");
-	FVector MarioScale = MarioRenderer->GetImage()->GetScale();
+	Renderer->SetImage("Mario_Right.png");
+	FVector MarioScale = Renderer->GetImage()->GetScale();
 
-	MarioRenderer->SetTransform({ {0,0}, {MarioScale.iX() / UInGameValue::MarioRightImageXValue * UInGameValue::WindowSizeMulValue, MarioScale.iY() / UInGameValue::MarioRightImageYValue * UInGameValue::WindowSizeMulValue} });
+	Renderer->SetTransform({ {0,0}, {MarioScale.iX() / UInGameValue::MarioRightImageXValue * UInGameValue::WindowSizeMulValue, MarioScale.iY() / UInGameValue::MarioRightImageYValue * UInGameValue::WindowSizeMulValue} });
 
-	MarioRenderer->CreateAnimation("Idle_Right", "Mario_Right.png", 0, 0, 0.1f, true);
-	MarioRenderer->CreateAnimation("Idle_Left", "Mario_Left.png", 0, 0, 0.1f, true);
+	Renderer->CreateAnimation("Idle_Right", "Mario_Right.png", 0, 0, 0.1f, true);
+	Renderer->CreateAnimation("Idle_Left", "Mario_Left.png", 0, 0, 0.1f, true);
 
-	MarioRenderer->CreateAnimation("Move_Right", "Mario_Right.png", 1, 3, 0.1f, true);
-	MarioRenderer->CreateAnimation("Move_Left", "Mario_Left.png", 1, 3, 0.1f, true);
+	Renderer->CreateAnimation("Move_Right", "Mario_Right.png", 1, 3, 0.1f, true);
+	Renderer->CreateAnimation("Move_Left", "Mario_Left.png", 1, 3, 0.1f, true);
 
-	MarioRenderer->CreateAnimation("Jump_Right", "Mario_Right.png", 5, 5, 0.1f, true);
-	MarioRenderer->CreateAnimation("Jump_Left", "Mario_Left.png", 5, 5, 0.1f, true);
+	Renderer->CreateAnimation("Jump_Right", "Mario_Right.png", 5, 5, 0.1f, true);
+	Renderer->CreateAnimation("Jump_Left", "Mario_Left.png", 5, 5, 0.1f, true);
 
-	MarioRenderer->CreateAnimation("ReverseMove_Right", "Mario_Right.png", 4, 4, 0.1f, true);
-	MarioRenderer->CreateAnimation("ReverseMove_Left", "Mario_Left.png", 4, 4, 0.1f, true);
+	Renderer->CreateAnimation("ReverseMove_Right", "Mario_Right.png", 4, 4, 0.1f, true);
+	Renderer->CreateAnimation("ReverseMove_Left", "Mario_Left.png", 4, 4, 0.1f, true);
 
-	MarioRenderer->CreateAnimation("Dead", "Mario_Right.png", 6, 6, 0.1f, true);
+	Renderer->CreateAnimation("Dead", "Mario_Right.png", 6, 6, 0.1f, true);
 
 	BodyCollision = CreateCollision(ECollisionOrder::Player);
 	BodyCollision->SetScale({ UInGameValue::PlayerCollisionScaleX, UInGameValue::PlayerCollisionScaleY });
 	BodyCollision->SetPosition({0, -(BodyCollision->GetTransform().GetScale().ihY())});
 	BodyCollision->SetColType(ECollisionType::Rect);
 
-	MarioState = EActorState::Idle;
+	ActorState = EActorState::Idle;
 }
 
 void APlayerMario::Tick(float _DeltaTime)
 {
-	//UStateUnit::Tick(_DeltaTime);
-	AActor::Tick(_DeltaTime);
+	UStateUnit::Tick(_DeltaTime);
 
 	CollisionUpdate(_DeltaTime);
 	
@@ -69,7 +66,7 @@ void APlayerMario::Tick(float _DeltaTime)
 
 void APlayerMario::StateChange(EActorState _PlayerState)
 {
-	if (MarioState != _PlayerState)
+	if (ActorState != _PlayerState)
 	{
 		switch (_PlayerState)
 		{
@@ -99,7 +96,7 @@ void APlayerMario::StateChange(EActorState _PlayerState)
 		}
 	}
 
-	SetMarioState(_PlayerState);
+	SetActorState(_PlayerState);
 }
 
 void APlayerMario::CollisionStateChange(ECollisionState _CollisionState)
@@ -124,7 +121,7 @@ void APlayerMario::CollisionStateChange(ECollisionState _CollisionState)
 
 void APlayerMario::StateUpdate(float _DeltaTime)
 {
-	switch (MarioState)
+	switch (ActorState)
 	{
 	case EActorState::Idle:
 		Idle(_DeltaTime);
@@ -181,35 +178,35 @@ void APlayerMario::JumpStart()
 {
 	//EngineDebug::OutPutDebugText("JumpStart");
 	DirCheck();
-	MarioRenderer->ChangeAnimation(ChangeAnimationName("Jump"));
+	Renderer->ChangeAnimation(ChangeAnimationName("Jump"));
 
 	JumpVelocityVector = MaxJumpVelocityVector;
 }
 
 void APlayerMario::FreeMoveStart()
 {
-	MarioRenderer->ChangeAnimation("Idle_Right");
+	Renderer->ChangeAnimation("Idle_Right");
 }
 
 void APlayerMario::IdleStart()
 {
 	//EngineDebug::OutPutDebugText("IdleStart");
 	DirCheck();
-	MarioRenderer->ChangeAnimation(ChangeAnimationName("Idle"));
+	Renderer->ChangeAnimation(ChangeAnimationName("Idle"));
 }
 
 void APlayerMario::MoveStart()
 {
 	//EngineDebug::OutPutDebugText("MoveStart");
 	DirCheck();
-	MarioRenderer->ChangeAnimation(ChangeAnimationName("Move"));
+	Renderer->ChangeAnimation(ChangeAnimationName("Move"));
 }
 
 void APlayerMario::ReverseMoveStart()
 {
 	//EngineDebug::OutPutDebugText("ReverseMoveStart");
 	DirCheck();
-	MarioRenderer->ChangeAnimation(ChangeAnimationName("ReverseMove"));
+	Renderer->ChangeAnimation(ChangeAnimationName("ReverseMove"));
 }
 
 
@@ -295,7 +292,7 @@ void APlayerMario::Move(float _DeltaTime)
 
 void APlayerMario::CollisionJump(float _DeltaTime)
 {
-	SetMarioState(EActorState::Jump);
+	SetActorState(EActorState::Jump);
 
 	if (UEngineInput::IsPress(VK_LEFT))
 	{
@@ -469,7 +466,7 @@ void APlayerMario::GetHit(float _DeltaTime)
 
 void APlayerMario::GetHitStart()
 {
-	MarioRenderer->ChangeAnimation("Dead");
+	Renderer->ChangeAnimation("Dead");
 	--Life;
 
 	JumpVelocityVector = FVector::Up * 500.0f;
@@ -479,7 +476,7 @@ void APlayerMario::GetHitStart()
 
 bool APlayerMario::DirCheck()
 {
-	EActorDir Dir = MarioDir;
+	EActorDir Dir = ActorDir;
 
 	if (UEngineInput::IsPress(VK_LEFT) && UEngineInput::IsFree(VK_RIGHT))
 	{
@@ -491,9 +488,9 @@ bool APlayerMario::DirCheck()
 		Dir = EActorDir::Right;
 	}
 
-	if (MarioDir != Dir)
+	if (ActorDir != Dir)
 	{
-		SetMarioDir(Dir);
+		SetActorDir(Dir);
 		return false;
 	}
 
@@ -503,7 +500,7 @@ bool APlayerMario::DirCheck()
 void APlayerMario::ReverseMoveCheck()
 {
 	DirCheck();
-	MarioRenderer->ChangeAnimation(ChangeAnimationName("Move"));
+	Renderer->ChangeAnimation(ChangeAnimationName("Move"));
 }
 
 bool APlayerMario::IsReverseMove()
@@ -540,32 +537,6 @@ void APlayerMario::CameraPosUpdate(FVector _Player, FVector _MovePos)
 	}
 }
 
-std::string APlayerMario::ChangeAnimationName(std::string _MainName)
-{
-	std::string Dir = "";
-	CurAnimationName = _MainName;
-
-	switch (MarioDir)
-	{
-	case EActorDir::Left:
-		Dir = "_Left";
-		break;
-	case EActorDir::Right:
-		Dir = "_Right";
-		break;
-	default:
-		break;
-	}
-
-	return CurAnimationName + Dir;
-}
-
-
-
-
-
-
-
 void APlayerMario::AddHorizonVelocityVector(const FVector& _DirDelta)
 {
 	HorizonVelocityVector += _DirDelta * HorizonAccVector;
@@ -587,7 +558,7 @@ void APlayerMario::CalHorizonVelocityVector(float _DeltaTime)
 	FVector BackPos = GetActorLocation();
 	BackPos.Y -= UInGameValue::ColOffSetY;
 
-	switch (MarioDir)
+	switch (ActorDir)
 	{
 	case EActorDir::Right:
 		CheckPos.X += UInGameValue::ColOffSetX;
@@ -611,7 +582,7 @@ void APlayerMario::CalHorizonVelocityVector(float _DeltaTime)
 
 	if (PlayerBackColor == UInGameValue::CollisionColor || BackPos.X <= GetWorld()->GetCameraPos().X)
 	{
-		switch (MarioDir)
+		switch (ActorDir)
 		{
 		case EActorDir::Right:
 			HorizonVelocityVector = FVector::Right * _DeltaTime * HorizonAccVector;
@@ -641,24 +612,6 @@ void APlayerMario::CalHorizonVelocityVector(float _DeltaTime)
 		HorizonVelocityVector = HorizonVelocityVector.Normalize2DReturn() * HorizonMaxSpeed;
 	}
 
-}
-
-void APlayerMario::CalGravityVelocityVector(float _DeltaTime)
-{
-	GravityVelocityVector += GravityAccVector * _DeltaTime;
-
-	Color8Bit Color = UContentsFunction::GetCollisionMapImg()->GetColor(GetActorLocation().iX(), GetActorLocation().iY(), UInGameValue::CollisionColor);
-
-	if (UInGameValue::CollisionColor == Color)
-	{
-		GravityVelocityVector = FVector::Zero;
-	}
-}
-
-void APlayerMario::CalTotalVelocityVector(float _DeltaTime)
-{
-	TotalVelocityVector = FVector::Zero;
-	TotalVelocityVector = TotalVelocityVector + HorizonVelocityVector + GravityVelocityVector + JumpVelocityVector;
 }
 
 void APlayerMario::CalJumpVelocityVector(float _DeltaTime)

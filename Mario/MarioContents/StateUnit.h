@@ -18,6 +18,11 @@ public:
 	UStateUnit& operator=(const UStateUnit& _Other) = delete;
 	UStateUnit& operator=(UStateUnit&& _Other) noexcept = delete;
 
+	UCollision* GetBodyCollision() const
+	{
+		return BodyCollision;
+	}
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -56,6 +61,9 @@ protected:
 	
 	//void CameraPosUpdate(FVector _Player, FVector _MovePos);
 	
+	/// <summary>
+	/// 방향 정보가 적용된 애니메이션 이름으로 수정하는 함수
+	/// </summary>
 	std::string ChangeAnimationName(std::string _MainName)
 	{
 		std::string Dir = "";
@@ -112,13 +120,6 @@ protected:
 	{
 		TotalVelocityVector = FVector::Zero;
 		TotalVelocityVector = TotalVelocityVector + HorizonVelocityVector + GravityVelocityVector + JumpVelocityVector;
-	}
-
-	
-
-	UCollision* GetBodyCollision()
-	{
-		return BodyCollision;
 	}
 
 	/*void SetMainPlayer(APlayerMario* _MainPlayer)
