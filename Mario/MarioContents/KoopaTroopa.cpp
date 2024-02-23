@@ -100,7 +100,7 @@ void AKoopaTroopa::GetMonsterHit(float _DeltaTime)
 
 	if (900.0f <= GetActorLocation().Y)
 	{
-		StateChange(EActorState::Died);
+		StateChange(EActorState::Dead);
 	}
 }
 
@@ -136,7 +136,7 @@ void AKoopaTroopa::StateChange(EActorState _ActorState)
 		case EActorState::GetMonsterHit:
 			GetHitFromMonsterStart();
 			break;
-		case EActorState::Died:
+		case EActorState::Dead:
 			Destroy();
 			return;
 		default:

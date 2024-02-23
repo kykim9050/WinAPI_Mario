@@ -19,23 +19,26 @@ public:
 	AGoomba& operator=(const AGoomba& _Other) = delete;
 	AGoomba& operator=(AGoomba&& _Other) noexcept = delete;
 
-	void StateUpdate(float _DeltaTime) override;
-
-	void Move(float _DeltaTime) override;
-
-	void ResultMovementUpdate(float _DeltaTime) override;
-
-	void CollisionUpdate(float _DeltaTime) override;
-
-	void CollisionStateChange(ECollisionState _CollisionState) override;
-
-	void GetHitStart() override;
+	
 
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
+	void StateUpdate(float _DeltaTime) override;
+	void StateChange(EActorState _ActorState) override;
+
+	void GetHitStart() override;
+
+	void Move(float _DeltaTime) override;
+	
+	void ResultMovementUpdate(float _DeltaTime) override;
+
 	void CollisionCheck() override;
+	void CollisionUpdate(float _DeltaTime) override;
+	void CollisionStateChange(ECollisionState _CollisionState) override;
+
+
 
 private:
 	bool KillPlayer = false;
