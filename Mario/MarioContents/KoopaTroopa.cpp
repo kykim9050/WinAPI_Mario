@@ -181,7 +181,10 @@ void AKoopaTroopa::GetFirstHitStart()
 
 void AKoopaTroopa::GetSecondHitStart()
 {
-	FVector AfterDir = SetDirAfterCollision(BodyCollision, APlayerMario::GetMainPlayer()->GetBodyCollision());
+	FVector AfterDir = SetDirAfterCollision(GetActorLocation(), APlayerMario::GetMainPlayer()->GetActorLocation());
+
+
+
 	Renderer->ChangeAnimation("KoopaTroopa_TwoHit");
 }
 
@@ -190,9 +193,17 @@ void AKoopaTroopa::GetHitFromMonsterStart()
 
 }
 
-FVector AKoopaTroopa::SetDirAfterCollision(const UCollision* _MyBodyCollision, const UCollision* _OtherBodyCollision)
+FVector AKoopaTroopa::SetDirAfterCollision(const FVector _MyFVector, const FVector _OtherFVector)
 {
+	if (_MyFVector.X < _OtherFVector.X)
+	{
+		return FVector::Left;
+	}
 
+	if (_MyFVector.X > _OtherFVector.X)
+	{
+		return FVector::Right;
+	}
 
 	return FVector::Zero;
 }
