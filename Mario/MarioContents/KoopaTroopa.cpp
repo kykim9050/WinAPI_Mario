@@ -44,11 +44,6 @@ void AKoopaTroopa::Tick(float _DeltaTime)
 
 	CollisionUpdate(_DeltaTime);
 
-	if (ECollisionState::GetHit == ActorCollisionState)
-	{
-		return;
-	}
-
 	StateUpdate(_DeltaTime);
 }
 
@@ -130,17 +125,12 @@ void AKoopaTroopa::CollisionCheck()
 
 			CollisionStateChange(ECollisionState::GetHit);
 
-			// 만약 머리위를 때렸다면 GetHit로 ActorStateChange
 			// GetHit에서는 라이프가 몇개인지에 따라서 2개면 그냥 거북모양으로 바꾸고 플레이어가 맞아도 죽지않게
-			// 
 			// 라이프가 1개면 이미 쳐서 돌아댕기는거니까 플레이어가 맞으면 죽도록 만들기
-			// GetHitStart는 라이브에 따라서 다르게 작동되도록 만들기
-			int a = 0;
 			return;
 		}
 
 		// 만약 머리위를 떄리지 않았다면 Git로 ActorStateChange
-		int a = 0;
 		return;
 	}
 	
@@ -175,17 +165,11 @@ void AKoopaTroopa::GetHitStart()
 	switch (Life)
 	{
 	case 2: // Life가 2일 때 -> 플레이어한테 머리 한방 맞았을 때
-	{
-		Renderer->ChangeAnimation("KoopaTroopa_OneHit");
 		StateChange(EActorState::GetFirstHit);
 		break;
-	}
 	case 1:	// Life가 1일 때 -> 플레이어한테 한방 맞은 후에 또 맞았을 때 (밀거나 머리 맞거나)
-	{
-		Renderer->ChangeAnimation("KoopaTroopa_TwoHit");
 		StateChange(EActorState::GetSecondHit);
 		break;
-	}
 	default:
 	{
 		Life = 0;
@@ -202,10 +186,10 @@ void AKoopaTroopa::StateChange(EActorState _ActorState)
 		switch (_ActorState)
 		{
 		case EActorState::GetFirstHit:
-			//GetFirstHitStart();
+			GetFirstHitStart();
 			break;
 		case EActorState::GetSecondHit:
-			//GetSecondHitStart();
+			GetSecondHitStart();
 			break;
 		default:
 			break;
@@ -213,4 +197,14 @@ void AKoopaTroopa::StateChange(EActorState _ActorState)
 	}
 
 	SetActorState(_ActorState);
+}
+
+void AKoopaTroopa::GetFirstHitStart()
+{
+	Renderer->ChangeAnimation("KoopaTroopa_OneHit");
+}
+
+void AKoopaTroopa::GetSecondHitStart()
+{
+	Renderer->ChangeAnimation("KoopaTroopa_TwoHit");
 }
