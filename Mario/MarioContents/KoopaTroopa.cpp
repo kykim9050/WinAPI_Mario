@@ -130,6 +130,29 @@ void AKoopaTroopa::CollisionCheck()
 			return;
 		}
 
+		switch (Life)
+		{
+		case 1:
+		case 3:
+		{
+			// KoopaTroopa가 살아있을 때 혹은 등껍질로 날라다닐때 충돌의 경우
+			// 이때는 플레이어 사망해야 함
+			int a = 0;
+			break;
+		}
+		case 2:
+		{
+			// KoopaTroopa가 한번 맞아서 들어간 상태로 멈춰있을 때의 경우
+			// 이때 플레이어가 발로찰 수 있기 때문에 CollisionState를 GetKick로 변경할 수 있을 것이다.
+			// 그리고 GetKick이라는 상태에서는 플레이어의 어디에서 충돌했는지를 체크해서 해당 방향으로 날라가도록 구현
+			// GetKick상태에서는 다른 몬스터, 플레이어 전부다 죽일 수 있음 (다른 몬스터들은 Koopatroopa의 충돌을 체크해야 함)
+			// 해당 상태는 옆에서 밀었을때만 해당되는 상태
+			int a = 0;
+			break;
+		}
+		default:
+			break;
+		}
 		// 만약 머리위를 떄리지 않았다면 Git로 ActorStateChange
 		return;
 	}
