@@ -33,6 +33,7 @@ protected:
 
 	void Move(float _DeltaTime) override;
 	void GetMonsterHit(float _DeltaTime);
+	void CalHorizonVelocityVector(float _DeltaTime) override;
 	void ResultMovementUpdate(float _DeltaTime) override;
 
 	void CollisionCheck() override;
@@ -40,6 +41,7 @@ protected:
 	void CollisionStateChange(ECollisionState _CollisionState) override;
 	void GetMonsterHitStart();
 	void GetHitFromMonsterStart();
+
 
 private:
 	bool KillPlayer = false;
