@@ -31,7 +31,7 @@ void U1_1StageLevel::BeginPlay()
 
 
 	MonsterKoopaTroopa1->SetActorLocation({ 500,500 });
-	MonsterKoopaTroopa2->SetActorLocation({ 700,500 });
+	MonsterKoopaTroopa2->SetActorLocation({ 1700,500 });
 	MonsterGoomba1->SetActorLocation({ 800, 500 });
 	MonsterGoomba2->SetActorLocation({ 850, 500 });
 	MonsterGoomba3->SetActorLocation({ 1500, 500 });

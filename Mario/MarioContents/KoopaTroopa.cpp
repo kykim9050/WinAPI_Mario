@@ -74,7 +74,7 @@ void AKoopaTroopa::StateUpdate(float _DeltaTime)
 
 void AKoopaTroopa::Move(float _DeltaTime)
 {
-	//CalHorizonVelocityVector(_DeltaTime);
+	CalHorizonVelocityVector(_DeltaTime);
 	ResultMovementUpdate(_DeltaTime);
 }
 
@@ -86,8 +86,8 @@ void AKoopaTroopa::GetFirstHit(float _DeltaTime)
 
 void AKoopaTroopa::GetSecondHit(float _DeltaTime)
 {
-	HorizonVelocityVector = ActorMoveDir * 500.0f;
 	CalHorizonVelocityVector(_DeltaTime);
+	HorizonVelocityVector = ActorMoveDir * 500.0f;
 	ResultMovementUpdate(_DeltaTime);
 }
 
@@ -108,27 +108,7 @@ void AKoopaTroopa::GetMonsterHit(float _DeltaTime)
 
 void AKoopaTroopa::CalHorizonVelocityVector(float _DeltaTime)
 {
-	FVector CheckPos = GetActorLocation();
-	CheckPos.Y -= UInGameValue::ColOffSetY;
-
-	switch (ActorDir)
-	{
-	case EActorDir::Right:
-		CheckPos.X += UInGameValue::ColOffSetX;
-		break;
-	case EActorDir::Left:
-		CheckPos.X -= UInGameValue::ColOffSetX;
-		break;
-	default:
-		break;
-	}
-
-	Color8Bit Color = UContentsFunction::GetCollisionMapImg()->GetColor(CheckPos.iX(), CheckPos.iY(), UInGameValue::CollisionColor);
-
-	if (Color == UInGameValue::CollisionColor)
-	{
-		HorizonVelocityVector = FVector::Zero;
-	}
+	UMonsterUnit::CalHorizonVelocityVector(_DeltaTime);
 }
 
 void AKoopaTroopa::ResultMovementUpdate(float _DeltaTime)
