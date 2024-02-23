@@ -57,10 +57,12 @@ void U1_1StageLevel::Tick(float _DeltaTime)
 		if (Player->GetBodyCollision()->IsActive())
 		{
 			Player->GetBodyCollision()->SetActive(false);
+			Player->GetRenderer()->SetAlpha(0.5f);
 		}
 		else
 		{
 			Player->GetBodyCollision()->SetActive(true);
+			Player->GetRenderer()->SetAlpha(1.0f);
 		}
 	}
 }

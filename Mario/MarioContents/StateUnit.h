@@ -23,6 +23,11 @@ public:
 		return BodyCollision;
 	}
 
+	UImageRenderer* GetRenderer() const
+	{
+		return Renderer;
+	}
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
