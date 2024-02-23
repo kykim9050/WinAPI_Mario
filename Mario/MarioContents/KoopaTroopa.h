@@ -18,37 +18,30 @@ public:
 	AKoopaTroopa& operator=(const AKoopaTroopa& _Other) = delete;
 	AKoopaTroopa& operator=(AKoopaTroopa&& _Other) noexcept = delete;
 
-	void StateUpdate(float _DeltaTime) override;
-
-	void Move(float _DeltaTime) override;
-
-	void ResultMovementUpdate(float _DeltaTime) override;
-
-	void CollisionUpdate(float _DeltaTime) override;
-
-	void CollisionStateChange(ECollisionState _CollisionState) override;
-
-	void GetHitStart() override;
-
-	void CollisionCheck() override;
-
-	void StateChange(EActorState _ActorState) override;
+	
 
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
-	void GetFirstHitStart();
-	void GetSecondHitStart();
+	void StateUpdate(float _DeltaTime) override;
+	void StateChange(EActorState _ActorState) override;
 
+	void Move(float _DeltaTime) override;
 	void GetFirstHit(float _DeltaTime);
 	void GetSecondHit(float _DeltaTime);
-
-	void GetMonsterHitStart();
-
-	void GetHitFromMonsterStart();
-
 	void GetMonsterHit(float _DeltaTime);
+	void ResultMovementUpdate(float _DeltaTime) override;
+
+	void CollisionUpdate(float _DeltaTime) override;
+	void CollisionStateChange(ECollisionState _CollisionState) override;
+	void CollisionCheck() override;
+
+	void GetFirstHitStart();
+	void GetSecondHitStart();
+	void GetHitFromMonsterStart();
+	void GetHitStart() override;
+	void GetMonsterHitStart();
 
 private:
 	bool KillPlayer = false;
