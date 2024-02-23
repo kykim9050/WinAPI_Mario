@@ -44,10 +44,10 @@ protected:
 	void GetHitStart() override;
 	void GetMonsterHitStart();
 
-	FVector SetDirAfterCollision(const FVector _MyFVector, const FVector _OtherFVector);
+	void SetDirAfterCollision(const FVector _MyFVector, const FVector _OtherFVector);
 
 private:
 	bool KillPlayer = false;
-	FVector GetSecondHitDir = FVector::Zero;
+	//FVector GetSecondHitDir = FVector::Zero;
 };
 

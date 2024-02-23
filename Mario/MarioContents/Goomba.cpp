@@ -4,7 +4,7 @@
 AGoomba::AGoomba()
 {
 	GravityVelocityVector = FVector::Down * 500.0f;
-	HorizonVelocityVector = FVector::Left * 50.0f;
+	HorizonVelocityVector = ActorMoveDir * 50.0f;
 }
 
 AGoomba::~AGoomba()
