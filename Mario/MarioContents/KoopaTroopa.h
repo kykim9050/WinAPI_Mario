@@ -44,6 +44,12 @@ protected:
 	void GetFirstHit(float _DeltaTime);
 	void GetSecondHit(float _DeltaTime);
 
+	void GetMonsterHitStart();
+
+	void GetHitFromMonsterStart();
+
+	void GetMonsterHit(float _DeltaTime);
+
 private:
 	bool KillPlayer = false;
 };
