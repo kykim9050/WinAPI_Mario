@@ -29,6 +29,7 @@ protected:
 	void StateChange(EActorState _ActorState) override;
 
 	void GetHitStart() override;
+	void GetHitFromPlayerStart();
 
 	void Move(float _DeltaTime) override;
 	void GetMonsterHit(float _DeltaTime);
