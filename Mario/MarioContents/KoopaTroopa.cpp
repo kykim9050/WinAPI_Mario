@@ -232,6 +232,7 @@ void AKoopaTroopa::CollisionCheck()
 		BodyCollision->Destroy();
 
 		CollisionStateChange(ECollisionState::GetMonsterHit);
+		return;
 	}
 
 	//UEngineDebug::OutPutDebugText(std::to_string(Life));
