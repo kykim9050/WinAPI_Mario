@@ -26,9 +26,12 @@ void U1_1StageLevel::BeginPlay()
 	AGoomba* MonsterGoomba1 = SpawnActor<AGoomba>();
 	AGoomba* MonsterGoomba2 = SpawnActor<AGoomba>();
 	AGoomba* MonsterGoomba3 = SpawnActor<AGoomba>();
-	AKoopaTroopa* MonsterKoopaTroopa = SpawnActor< AKoopaTroopa>();
+	AKoopaTroopa* MonsterKoopaTroopa1 = SpawnActor< AKoopaTroopa>();
+	AKoopaTroopa* MonsterKoopaTroopa2 = SpawnActor< AKoopaTroopa>();
 
-	MonsterKoopaTroopa->SetActorLocation({ 500,500 });
+
+	MonsterKoopaTroopa1->SetActorLocation({ 500,500 });
+	MonsterKoopaTroopa2->SetActorLocation({ 700,500 });
 	MonsterGoomba1->SetActorLocation({ 800, 500 });
 	MonsterGoomba2->SetActorLocation({ 850, 500 });
 	MonsterGoomba3->SetActorLocation({ 1500, 500 });
