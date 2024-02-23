@@ -98,7 +98,7 @@ void AKoopaTroopa::GetMonsterHit(float _DeltaTime)
 
 	AddActorLocation(TotalVelocityVector * _DeltaTime);
 
-	if (700.0f <= GetActorLocation().Y)
+	if (900.0f <= GetActorLocation().Y)
 	{
 		StateChange(EActorState::Died);
 	}
@@ -294,7 +294,6 @@ void AKoopaTroopa::GetHitStart()
 
 void AKoopaTroopa::GetMonsterHitStart()
 {
-	//Destroy(0.2f);
 	JumpVelocityVector = FVector::Up * 300.0f;
 	StateChange(EActorState::GetMonsterHit);
 }
