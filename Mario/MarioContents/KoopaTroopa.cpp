@@ -58,17 +58,11 @@ void AKoopaTroopa::StateUpdate(float _DeltaTime)
 		Move(_DeltaTime);
 		break;
 	case EActorState::GetFirstHit:
-	{
-		//GetFirstHit(_DeltaTime);
-		int a = 0;
+		GetFirstHit(_DeltaTime);
 		break;
-	}
 	case EActorState::GetSecondHit:
-	{
-		//GetSecondHit(_DeltaTime);
-		int a = 0;
+		GetSecondHit(_DeltaTime);
 		break;
-	}
 	default:
 		break;
 	}
@@ -77,6 +71,18 @@ void AKoopaTroopa::StateUpdate(float _DeltaTime)
 
 void AKoopaTroopa::Move(float _DeltaTime)
 {
+	ResultMovementUpdate(_DeltaTime);
+}
+
+void AKoopaTroopa::GetFirstHit(float _DeltaTime)
+{
+	HorizonVelocityVector = FVector::Zero;
+	ResultMovementUpdate(_DeltaTime);
+}
+
+void AKoopaTroopa::GetSecondHit(float _DeltaTime)
+{
+	HorizonVelocityVector = FVector::Right * 500.0f;
 	ResultMovementUpdate(_DeltaTime);
 }
 
@@ -93,6 +99,9 @@ void AKoopaTroopa::ResultMovementUpdate(float _DeltaTime)
 	TotalVelocityVector = TotalVelocityVector + GravityVelocityVector + HorizonVelocityVector;
 	AddActorLocation(TotalVelocityVector * _DeltaTime);
 }
+
+
+
 
 void AKoopaTroopa::CollisionUpdate(float _DeltaTime)
 {

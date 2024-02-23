@@ -42,6 +42,10 @@ protected:
 	void GetFirstHitStart();
 	void GetSecondHitStart();
 
+	void GetFirstHit(float _DeltaTime);
+	void GetSecondHit(float _DeltaTime);
+
+
 private:
 	bool KillPlayer = false;
 };
