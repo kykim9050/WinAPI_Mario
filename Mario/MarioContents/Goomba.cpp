@@ -58,6 +58,9 @@ void AGoomba::StateUpdate(float _DeltaTime)
 	case EActorState::Move:
 		Move(_DeltaTime);
 		break;
+	case EActorState::GetMonsterHit:
+		GetMonsterHit(_DeltaTime);
+		break;
 	default:
 		break;
 	}
@@ -126,7 +129,7 @@ void AGoomba::CollisionCheck()
 		BodyCollision->Destroy();
 
 		// 몬스터의 상태를 GetHit로 변환
-		CollisionStateChange(ECollisionState::GetHit);
+		CollisionStateChange(ECollisionState::GetMonsterHit);
 
 		return;
 	}
@@ -136,6 +139,21 @@ void AGoomba::CollisionCheck()
 void AGoomba::Move(float _DeltaTime)
 {
 	ResultMovementUpdate(_DeltaTime);
+}
+
+void AGoomba::GetMonsterHit(float _DeltaTime)
+{
+	GravityVelocityVector += GravityAccVector * _DeltaTime;
+
+	TotalVelocityVector = FVector::Zero;
+	TotalVelocityVector = TotalVelocityVector + GravityVelocityVector + JumpVelocityVector;
+
+	AddActorLocation(TotalVelocityVector * _DeltaTime);
+
+	if (900.0f <= GetActorLocation().Y)
+	{
+		StateChange(EActorState::Dead);
+	}
 }
 
 void AGoomba::ResultMovementUpdate(float _DeltaTime)
@@ -165,6 +183,9 @@ void AGoomba::CollisionStateChange(ECollisionState _CollisionState)
 		case ECollisionState::GetHit:
 			GetHitStart();
 			break;
+		case ECollisionState::GetMonsterHit:
+			GetMonsterHitStart();
+			break;
 		default:
 			break;
 		}
@@ -179,12 +200,26 @@ void AGoomba::GetHitStart()
 	--Life;
 }
 
+void AGoomba::GetMonsterHitStart()
+{
+	JumpVelocityVector = FVector::Up * 300.0f;
+	StateChange(EActorState::GetMonsterHit);
+}
+
+void AGoomba::GetHitFromMonsterStart()
+{
+
+}
+
 void AGoomba::StateChange(EActorState _ActorState)
 {
 	if (ActorState != _ActorState)
 	{
 		switch (_ActorState)
 		{
+		case EActorState::GetMonsterHit:
+			GetHitFromMonsterStart();
+			break;
 		case EActorState::Dead:
 			Destroy();
 			return;
