@@ -75,6 +75,7 @@ void AKoopaTroopa::StateUpdate(float _DeltaTime)
 void AKoopaTroopa::Move(float _DeltaTime)
 {
 	CalHorizonVelocityVector(_DeltaTime);
+	HorizonVelocityVector = ActorMoveDir * 50.0f;
 	ResultMovementUpdate(_DeltaTime);
 }
 
