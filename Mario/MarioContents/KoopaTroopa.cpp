@@ -97,6 +97,11 @@ void AKoopaTroopa::GetMonsterHit(float _DeltaTime)
 	TotalVelocityVector = TotalVelocityVector + GravityVelocityVector + JumpVelocityVector;
 
 	AddActorLocation(TotalVelocityVector * _DeltaTime);
+
+	if (700.0f <= GetActorLocation().Y)
+	{
+		StateChange(EActorState::Died);
+	}
 }
 
 void AKoopaTroopa::ResultMovementUpdate(float _DeltaTime)
@@ -112,6 +117,51 @@ void AKoopaTroopa::ResultMovementUpdate(float _DeltaTime)
 	TotalVelocityVector = TotalVelocityVector + GravityVelocityVector + HorizonVelocityVector;
 	AddActorLocation(TotalVelocityVector * _DeltaTime);
 }
+
+
+
+
+void AKoopaTroopa::StateChange(EActorState _ActorState)
+{
+	if (ActorState != _ActorState)
+	{
+		switch (_ActorState)
+		{
+		case EActorState::GetFirstHit:
+			GetFirstHitStart();
+			break;
+		case EActorState::GetSecondHit:
+			GetSecondHitStart();
+			break;
+		case EActorState::GetMonsterHit:
+			GetHitFromMonsterStart();
+			break;
+		case EActorState::Died:
+			Destroy();
+			return;
+		default:
+			break;
+		}
+	}
+
+	SetActorState(_ActorState);
+}
+
+void AKoopaTroopa::GetFirstHitStart()
+{
+	Renderer->ChangeAnimation("KoopaTroopa_OneHit");
+}
+
+void AKoopaTroopa::GetSecondHitStart()
+{
+	Renderer->ChangeAnimation("KoopaTroopa_TwoHit");
+}
+
+void AKoopaTroopa::GetHitFromMonsterStart()
+{
+
+}
+
 
 
 
@@ -201,10 +251,8 @@ void AKoopaTroopa::CollisionStateChange(ECollisionState _CollisionState)
 			GetHitStart();
 			break;
 		case ECollisionState::GetMonsterHit:
-		{
 			GetMonsterHitStart();
 			break;
-		}
 		default:
 			break;
 		}
@@ -257,40 +305,3 @@ void AKoopaTroopa::GetMonsterHitStart()
 
 
 
-void AKoopaTroopa::StateChange(EActorState _ActorState)
-{
-	if (ActorState != _ActorState)
-	{
-		switch (_ActorState)
-		{
-		case EActorState::GetFirstHit:
-			GetFirstHitStart();
-			break;
-		case EActorState::GetSecondHit:
-			GetSecondHitStart();
-			break;
-		case EActorState::GetMonsterHit:
-			GetHitFromMonsterStart();
-			break;
-		default:
-			break;
-		}
-	}
-
-	SetActorState(_ActorState);
-}
-
-void AKoopaTroopa::GetFirstHitStart()
-{
-	Renderer->ChangeAnimation("KoopaTroopa_OneHit");
-}
-
-void AKoopaTroopa::GetSecondHitStart()
-{
-	Renderer->ChangeAnimation("KoopaTroopa_TwoHit");
-}
-
-void AKoopaTroopa::GetHitFromMonsterStart()
-{
-	
-}
