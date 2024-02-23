@@ -137,7 +137,9 @@ void AKoopaTroopa::CollisionCheck()
 		{
 			// KoopaTroopa가 살아있을 때 혹은 등껍질로 날라다닐때 충돌의 경우
 			// 이때는 플레이어 사망해야 함
-			int a = 0;
+			Player->StateChange(EActorState::GetHit);
+			// 플레이어를 죽였다.
+			KillPlayer = true;
 			break;
 		}
 		case 2:
