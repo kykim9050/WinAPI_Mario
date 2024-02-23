@@ -40,6 +40,11 @@ void AGoomba::Tick(float _DeltaTime)
 
 	CollisionUpdate(_DeltaTime);
 
+	if (ECollisionState::GetHit == ActorCollisionState)
+	{
+		return;
+	}
+
 	StateUpdate(_DeltaTime);
 }
 
