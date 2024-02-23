@@ -527,7 +527,7 @@ void APlayerMario::CameraPosUpdate(FVector _Player, FVector _MovePos)
 		return;
 	}
 
-	float CheckRange = CameraPos.X + 2 * UInGameValue::ResultMainWindowXScale / 5;
+	float CheckRange = CameraPos.X + 2.0f * static_cast<float>(UInGameValue::ResultMainWindowXScale) / 5.0f;
 
 	if (_Player.X >= CheckRange)
 	{
