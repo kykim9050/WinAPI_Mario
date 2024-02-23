@@ -86,7 +86,7 @@ void AKoopaTroopa::GetFirstHit(float _DeltaTime)
 
 void AKoopaTroopa::GetSecondHit(float _DeltaTime)
 {
-	HorizonVelocityVector = FVector::Right * 500.0f;
+	HorizonVelocityVector = GetSecondHitDir * 500.0f;
 	CalHorizonVelocityVector(_DeltaTime);
 	ResultMovementUpdate(_DeltaTime);
 }
@@ -182,9 +182,6 @@ void AKoopaTroopa::GetFirstHitStart()
 void AKoopaTroopa::GetSecondHitStart()
 {
 	FVector AfterDir = SetDirAfterCollision(GetActorLocation(), APlayerMario::GetMainPlayer()->GetActorLocation());
-
-
-
 	Renderer->ChangeAnimation("KoopaTroopa_TwoHit");
 }
 
@@ -197,14 +194,20 @@ FVector AKoopaTroopa::SetDirAfterCollision(const FVector _MyFVector, const FVect
 {
 	if (_MyFVector.X < _OtherFVector.X)
 	{
+		GetSecondHitDir = FVector::Left;
+		ActorDir = EActorDir::Left;
 		return FVector::Left;
 	}
 
 	if (_MyFVector.X > _OtherFVector.X)
 	{
+		GetSecondHitDir = FVector::Right;
+		ActorDir = EActorDir::Right;
 		return FVector::Right;
 	}
 
+	GetSecondHitDir = FVector::Zero;
+	ActorDir = EActorDir::None;
 	return FVector::Zero;
 }
 

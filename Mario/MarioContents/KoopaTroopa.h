@@ -48,5 +48,6 @@ protected:
 
 private:
 	bool KillPlayer = false;
+	FVector GetSecondHitDir = FVector::Zero;
 };
 
