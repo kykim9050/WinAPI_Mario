@@ -1,12 +1,12 @@
 #pragma once
-#include "StateUnit.h"
+#include "MonsterUnit.h"
 #include "EnumClass.h"
 #include "InGameValue.h"
 #include "ContentsFunction.h"
 
 
 // Ό³Έν :
-class AGoomba : public UStateUnit
+class AGoomba : public UMonsterUnit
 {
 public:
 	// constrcuter destructer
