@@ -118,18 +118,17 @@ void AKoopaTroopa::CollisionCheck()
 		// 현재 몬스터의 Collision ScaleY의 반값만큼 Player의 Bottom 값이 위에 잇다면 몬스터를 밟은 것
 		float OffsetYValue = BodyCollision->GetActorBaseTransform().GetScale().hY();
 
+		// 몬스터의 머리를 맞았을때 실행하는 경우
 		if (PlayerBottom < MonsterBottom - OffsetYValue)
 		{
-
 			Player->StateChange(EActorState::CollisionJump);
 
 			CollisionStateChange(ECollisionState::GetHit);
 
-			// GetHit에서는 라이프가 몇개인지에 따라서 2개면 그냥 거북모양으로 바꾸고 플레이어가 맞아도 죽지않게
-			// 라이프가 1개면 이미 쳐서 돌아댕기는거니까 플레이어가 맞으면 죽도록 만들기
 			return;
 		}
 
+		// 엉금엉금의 머리위가 아닌 곳에서 충돌이 일어났을 때
 		switch (Life)
 		{
 		case 1:
@@ -144,18 +143,13 @@ void AKoopaTroopa::CollisionCheck()
 		}
 		case 2:
 		{
-			// KoopaTroopa가 한번 맞아서 들어간 상태로 멈춰있을 때의 경우
-			// 이때 플레이어가 발로찰 수 있기 때문에 CollisionState를 GetKick로 변경할 수 있을 것이다.
-			// 그리고 GetKick이라는 상태에서는 플레이어의 어디에서 충돌했는지를 체크해서 해당 방향으로 날라가도록 구현
-			// GetKick상태에서는 다른 몬스터, 플레이어 전부다 죽일 수 있음 (다른 몬스터들은 Koopatroopa의 충돌을 체크해야 함)
-			// 해당 상태는 옆에서 밀었을때만 해당되는 상태
-			int a = 0;
+			CollisionStateChange(ECollisionState::GetHit);
 			break;
 		}
 		default:
 			break;
 		}
-		// 만약 머리위를 떄리지 않았다면 Git로 ActorStateChange
+
 		return;
 	}
 	
@@ -185,19 +179,25 @@ void AKoopaTroopa::CollisionStateChange(ECollisionState _CollisionState)
 void AKoopaTroopa::GetHitStart()
 {
 	UEngineDebug::OutPutDebugText("GetHitStart");
-	--Life;
 
 	switch (Life)
 	{
-	case 2: // Life가 2일 때 -> 플레이어한테 머리 한방 맞았을 때
+	case 3: // Life가 3인데 플레이어한테 머리 한방 맞았을 때
+	{
 		StateChange(EActorState::GetFirstHit);
+		--Life;
 		break;
-	case 1:	// Life가 1일 때 -> 플레이어한테 한방 맞은 후에 또 맞았을 때 (밀거나 머리 맞거나)
+	}
+	case 2:	// Life가 2일 때 -> 플레이어한테 한방 맞은 후에 또 맞았을 때 (밀거나 머리 맞거나하는 행동 취할 수 있음)
+	{
+		// GetSecondHit상태에서는 다른 몬스터, 플레이어 전부다 죽일 수 있음 (다른 몬스터들은 Koopatroopa의 충돌을 체크해야 함)
 		StateChange(EActorState::GetSecondHit);
+		--Life;
 		break;
+	}
 	default:
 	{
-		Life = 0;
+		Life = 1;
 		break;
 	}
 	}
