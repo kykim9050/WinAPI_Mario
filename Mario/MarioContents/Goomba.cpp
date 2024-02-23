@@ -111,6 +111,19 @@ void AGoomba::CollisionCheck()
 		// 플레이어를 한번 죽였다.
 		KillPlayer = true;
 	}
+
+	if (false == KillPlayer && true == BodyCollision->CollisionCheck(ECollisionOrder::AttackableMonster, Result))
+	{
+		--Life;
+
+		// GetHit시 Collision 삭제후
+		BodyCollision->Destroy();
+
+		// 몬스터의 상태를 GetHit로 변환
+		CollisionStateChange(ECollisionState::GetHit);
+
+		return;
+	}
 }
 
 
