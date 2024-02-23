@@ -162,6 +162,7 @@ void AKoopaTroopa::CollisionCheck()
 		return;
 	}
 	
+	//UEngineDebug::OutPutDebugText(std::to_string(Life));
 	CollisionStateChange(ECollisionState::None);
 }
 
