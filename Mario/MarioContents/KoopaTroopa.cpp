@@ -162,6 +162,12 @@ void AKoopaTroopa::CollisionCheck()
 		return;
 	}
 	
+	// 만약 엉금엉금이 굴러다닐때 충돌하면 충돌로 인지
+	if (false == KillPlayer && true == BodyCollision->CollisionCheck(ECollisionOrder::AttackableMonster, Result))
+	{
+		int a = 0;
+	}
+
 	//UEngineDebug::OutPutDebugText(std::to_string(Life));
 	CollisionStateChange(ECollisionState::None);
 }
@@ -202,6 +208,9 @@ void AKoopaTroopa::GetHitStart()
 	{
 		// GetSecondHit상태에서는 다른 몬스터, 플레이어 전부다 죽일 수 있음 (다른 몬스터들은 Koopatroopa의 충돌을 체크해야 함)
 		StateChange(EActorState::GetSecondHit);
+
+		// 다른 몬스터들도 죽일 수 있도록 Order를 ECollisionOrder::AttackableMonster로 변경
+		BodyCollision->SetOrder(static_cast<int>(ECollisionOrder::AttackableMonster));
 		--Life;
 		break;
 	}
