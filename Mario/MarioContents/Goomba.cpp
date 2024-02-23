@@ -127,6 +127,8 @@ void AGoomba::CollisionCheck()
 
 void AGoomba::Move(float _DeltaTime)
 {
+	CalHorizonVelocityVector(_DeltaTime);
+	HorizonVelocityVector = ActorMoveDir * 50.0f;
 	ResultMovementUpdate(_DeltaTime);
 }
 
@@ -228,16 +230,8 @@ void AGoomba::StateChange(EActorState _ActorState)
 
 	SetActorState(_ActorState);
 }
-//void AGoomba::GetHitStart()
-//{
-//	// GetHit시 짜부 랜더링 실시
-//	Renderer->ChangeAnimation("Goomba_Dead");
-//	TotalVelocityVector = FVector::Zero;
-//	
-//	// 목숨이 0 이하라면
-//	// 본인도 삭제하는 함수 실행
-//	if (0 >= Life)
-//	{
-//		Destroy(1.0f);
-//	}
-//}
+
+void AGoomba::CalHorizonVelocityVector(float _DeltaTime)
+{
+	UMonsterUnit::CalHorizonVelocityVector(_DeltaTime);
+}
