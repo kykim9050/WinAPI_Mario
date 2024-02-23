@@ -8,6 +8,7 @@ APlayerMario* APlayerMario::MainPlayer = nullptr;
 
 APlayerMario::APlayerMario()
 {
+	ActorDir = EActorDir::Right;
 	Life = 3;
 }
 
