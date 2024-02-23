@@ -58,12 +58,10 @@ void AGoomba::StateUpdate(float _DeltaTime)
 	case EActorState::Move:
 		Move(_DeltaTime);
 		break;
-	case EActorState::GetHit:
-		
-		break;
 	case EActorState::GetMonsterHit:
 		GetMonsterHit(_DeltaTime);
 		break;
+	case EActorState::GetHit:
 	default:
 		break;
 	}
