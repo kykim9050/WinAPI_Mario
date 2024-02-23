@@ -22,12 +22,12 @@ void AKoopaTroopa::BeginPlay()
 	FVector KoopaTroopaScale = Renderer->GetImage()->GetScale();
 
 	Renderer->SetTransform({ {0,0}, {KoopaTroopaScale.iX() / UInGameValue::KoopaTroopaImageXValue * UInGameValue::WindowSizeMulValue, KoopaTroopaScale.iY() / UInGameValue::KoopaTroopaImageYValue * UInGameValue::WindowSizeMulValue} });
-	Renderer->CreateAnimation("KoopaTroopa_Right_Move", "KoopaTroopa_Right.png", 0, 1, 0.3f, true);
-	Renderer->CreateAnimation("KoopaTroopa_Left_Move", "KoopaTroopa_Left.png", 0, 1, 0.3f, true);
+	Renderer->CreateAnimation("KoopaTroopa_Move_Right", "KoopaTroopa_Right.png", 0, 1, 0.3f, true);
+	Renderer->CreateAnimation("KoopaTroopa_Move_Left", "KoopaTroopa_Left.png", 0, 1, 0.3f, true);
 	Renderer->CreateAnimation("KoopaTroopa_OneHit", "KoopaTroopa_Left.png", 5, 5, 0.1f, true);
 	Renderer->CreateAnimation("KoopaTroopa_TwoHit", "KoopaTroopa_Left.png", 4, 4, 0.1f, true);
 
-	Renderer->ChangeAnimation("KoopaTroopa_Left_Move");
+	Renderer->ChangeAnimation("KoopaTroopa_Move_Left");
 
 
 	BodyCollision = CreateCollision(ECollisionOrder::Monster);
