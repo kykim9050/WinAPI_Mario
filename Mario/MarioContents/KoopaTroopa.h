@@ -39,6 +39,9 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
+	void GetFirstHitStart();
+	void GetSecondHitStart();
+
 private:
 	bool KillPlayer = false;
 };
