@@ -63,6 +63,9 @@ void AKoopaTroopa::StateUpdate(float _DeltaTime)
 	case EActorState::GetSecondHit:
 		GetSecondHit(_DeltaTime);
 		break;
+	case EActorState::GetMonsterHit:
+		GetMonsterHit(_DeltaTime);
+		break;
 	default:
 		break;
 	}
@@ -84,6 +87,16 @@ void AKoopaTroopa::GetSecondHit(float _DeltaTime)
 {
 	HorizonVelocityVector = FVector::Right * 500.0f;
 	ResultMovementUpdate(_DeltaTime);
+}
+
+void AKoopaTroopa::GetMonsterHit(float _DeltaTime)
+{
+	GravityVelocityVector += GravityAccVector * _DeltaTime;
+
+	TotalVelocityVector = FVector::Zero;
+	TotalVelocityVector = TotalVelocityVector + GravityVelocityVector + JumpVelocityVector;
+
+	AddActorLocation(TotalVelocityVector * _DeltaTime);
 }
 
 void AKoopaTroopa::ResultMovementUpdate(float _DeltaTime)
@@ -165,7 +178,10 @@ void AKoopaTroopa::CollisionCheck()
 	// 만약 엉금엉금이 굴러다닐때 충돌하면 충돌로 인지
 	if (false == KillPlayer && true == BodyCollision->CollisionCheck(ECollisionOrder::AttackableMonster, Result))
 	{
-		int a = 0;
+		// GetHit시 Collision 삭제후
+		BodyCollision->Destroy();
+
+		CollisionStateChange(ECollisionState::GetMonsterHit);
 	}
 
 	//UEngineDebug::OutPutDebugText(std::to_string(Life));
@@ -184,6 +200,11 @@ void AKoopaTroopa::CollisionStateChange(ECollisionState _CollisionState)
 		case ECollisionState::GetHit:
 			GetHitStart();
 			break;
+		case ECollisionState::GetMonsterHit:
+		{
+			GetMonsterHitStart();
+			break;
+		}
 		default:
 			break;
 		}
@@ -194,7 +215,7 @@ void AKoopaTroopa::CollisionStateChange(ECollisionState _CollisionState)
 
 void AKoopaTroopa::GetHitStart()
 {
-	UEngineDebug::OutPutDebugText("GetHitStart");
+	//UEngineDebug::OutPutDebugText("GetHitStart");
 
 	switch (Life)
 	{
@@ -223,6 +244,19 @@ void AKoopaTroopa::GetHitStart()
 
 }
 
+void AKoopaTroopa::GetMonsterHitStart()
+{
+	//Destroy(0.2f);
+	JumpVelocityVector = FVector::Up * 300.0f;
+	StateChange(EActorState::GetMonsterHit);
+}
+
+
+
+
+
+
+
 void AKoopaTroopa::StateChange(EActorState _ActorState)
 {
 	if (ActorState != _ActorState)
@@ -234,6 +268,9 @@ void AKoopaTroopa::StateChange(EActorState _ActorState)
 			break;
 		case EActorState::GetSecondHit:
 			GetSecondHitStart();
+			break;
+		case EActorState::GetMonsterHit:
+			GetHitFromMonsterStart();
 			break;
 		default:
 			break;
@@ -251,4 +288,9 @@ void AKoopaTroopa::GetFirstHitStart()
 void AKoopaTroopa::GetSecondHitStart()
 {
 	Renderer->ChangeAnimation("KoopaTroopa_TwoHit");
+}
+
+void AKoopaTroopa::GetHitFromMonsterStart()
+{
+	
 }

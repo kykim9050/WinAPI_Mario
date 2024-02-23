@@ -48,6 +48,7 @@ enum class EActorState
 	GetHit,
 	GetFirstHit,
 	GetSecondHit,
+	GetMonsterHit,
 };
 
 enum class EActorDir
@@ -73,4 +74,5 @@ enum class ECollisionState
 	GetHit,
 	OneHit,
 	TwoHit,
+	GetMonsterHit,
 };
