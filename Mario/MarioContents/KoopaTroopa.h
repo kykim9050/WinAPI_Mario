@@ -30,8 +30,7 @@ public:
 
 	void GetHitStart() override;
 
-	// StateUnit에 virtual로 넣을지 고민~
-	void CollisionCheck();
+	void CollisionCheck() override;
 
 	void StateChange(EActorState _ActorState) override;
 
@@ -44,7 +43,6 @@ protected:
 
 	void GetFirstHit(float _DeltaTime);
 	void GetSecondHit(float _DeltaTime);
-
 
 private:
 	bool KillPlayer = false;
