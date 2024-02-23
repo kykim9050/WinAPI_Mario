@@ -31,6 +31,7 @@ protected:
 	void GetFirstHit(float _DeltaTime);
 	void GetSecondHit(float _DeltaTime);
 	void GetMonsterHit(float _DeltaTime);
+	void CalHorizonVelocityVector(float _DeltaTime);
 	void ResultMovementUpdate(float _DeltaTime) override;
 
 	void CollisionUpdate(float _DeltaTime) override;

@@ -74,7 +74,7 @@ protected:
 
 
 	EActorState ActorState = EActorState::None;
-	EActorDir ActorDir = EActorDir::Right;
+	EActorDir ActorDir = EActorDir::Left;
 	ECollisionState ActorCollisionState = ECollisionState::None;
 
 	FVector HorizonVelocityVector = FVector::Zero;
