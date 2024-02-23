@@ -44,7 +44,7 @@ protected:
 	void GetHitStart() override;
 	void GetMonsterHitStart();
 
-	FVector SetDirAfterCollision(const UCollision* _MyBodyCollision, const UCollision* _OtherBodyCollision);
+	FVector SetDirAfterCollision(const FVector _MyFVector, const FVector _OtherFVector);
 
 private:
 	bool KillPlayer = false;
