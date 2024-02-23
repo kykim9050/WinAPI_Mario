@@ -6,6 +6,7 @@
 #include "UI.h"
 #include "Goomba.h"
 #include "KoopaTroopa.h"
+#include <EnginePlatform/EngineInput.h>
 
 U1_1StageLevel::U1_1StageLevel()
 {
@@ -42,4 +43,24 @@ void U1_1StageLevel::BeginPlay()
 void U1_1StageLevel::Tick(float _DeltaTime)
 {
 	ULevel::Tick(_DeltaTime);
+
+	if (true == UEngineInput::IsDown(VK_F3))
+	{
+		APlayerMario* Player = APlayerMario::GetMainPlayer();
+
+		if (nullptr == Player)
+		{
+			UEngineDebug::OutPutDebugText("Player가 없습니다.");
+			return;
+		}
+		
+		if (Player->GetBodyCollision()->IsActive())
+		{
+			Player->GetBodyCollision()->SetActive(false);
+		}
+		else
+		{
+			Player->GetBodyCollision()->SetActive(true);
+		}
+	}
 }
