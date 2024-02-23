@@ -58,6 +58,9 @@ void AGoomba::StateUpdate(float _DeltaTime)
 	case EActorState::Move:
 		Move(_DeltaTime);
 		break;
+	case EActorState::GetHit:
+		
+		break;
 	case EActorState::GetMonsterHit:
 		GetMonsterHit(_DeltaTime);
 		break;
@@ -93,25 +96,13 @@ void AGoomba::CollisionCheck()
 		// 몬스터 밟은 것
 		if (PlayerBottom < MonsterBottom - OffsetYValue)
 		{
+			BodyCollision->Destroy();
+
 			Player->StateChange(EActorState::CollisionJump);
 
 			CollisionStateChange(ECollisionState::GetHit);
 
 			return;
-			//// 머리를 밟히면 가지고 있는 목숨 하나를 차감
-			//--Life;
-
-			//// GetHit시 Collision 삭제후
-			//BodyCollision->Destroy();
-
-			//// 몬스터의 상태를 GetHit로 변환
-			//CollisionStateChange(ECollisionState::GetHit);
-
-
-			//// Player의 State에서 CollisionJump 추가해서 구현하기
-			//Player->StateChange(EActorState::CollisionJump);
-
-			//return;
 		}
 
 		// 몬스터를 밟지 않고 충돌했을 경우 (플레이어 사망)
@@ -196,7 +187,7 @@ void AGoomba::CollisionStateChange(ECollisionState _CollisionState)
 
 void AGoomba::GetHitStart()
 {
-	StateChange(EActorState::Dead);
+	StateChange(EActorState::GetHit);
 	--Life;
 }
 
@@ -211,12 +202,21 @@ void AGoomba::GetHitFromMonsterStart()
 
 }
 
+void AGoomba::GetHitFromPlayerStart()
+{
+	Renderer->ChangeAnimation("Goomba_Dead");
+	Destroy(1.0f);
+}
+
 void AGoomba::StateChange(EActorState _ActorState)
 {
 	if (ActorState != _ActorState)
 	{
 		switch (_ActorState)
 		{
+		case EActorState::GetHit:
+			GetHitFromPlayerStart();
+			break;
 		case EActorState::GetMonsterHit:
 			GetHitFromMonsterStart();
 			break;
