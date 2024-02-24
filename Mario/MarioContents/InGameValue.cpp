@@ -43,3 +43,6 @@ const int UInGameValue::KoopaTroopaImageYValue = 2;
 
 const int UInGameValue::KoopaTroopaBodyCollisionScaleX = 32;
 const int UInGameValue::KoopaTroopaBodyCollisionScaleY = 32;
+
+const int UInGameValue::PiranhaPlantImageXValue = 2;
+const int UInGameValue::PiranhaPlantImageYValue = 1;
