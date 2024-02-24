@@ -59,6 +59,9 @@
     <ClInclude Include="PiranhaPlant.h">
       <Filter>Object\Monster</Filter>
     </ClInclude>
+    <ClInclude Include="TestLevel.h">
+      <Filter>Level\TestLevel</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp" />
@@ -116,6 +119,9 @@
     <ClCompile Include="PiranhaPlant.cpp">
       <Filter>Object\Monster</Filter>
     </ClCompile>
+    <ClCompile Include="TestLevel.cpp">
+      <Filter>Level\TestLevel</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ContentsHelper">
@@ -150,6 +156,9 @@
     </Filter>
     <Filter Include="Object\Monster">
       <UniqueIdentifier>{b5e70565-51e7-4f0a-8803-ac5557324f07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\TestLevel">
+      <UniqueIdentifier>{deeed926-378e-4ef2-952f-8286a87d81bc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
