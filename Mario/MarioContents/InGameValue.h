@@ -96,6 +96,12 @@ public:
 	// PiranhaPlant.png 의 열, 행 수
 	static const int PiranhaPlantImageXValue;
 	static const int PiranhaPlantImageYValue;
+
+	/// <summary>
+	/// PiranhaPlant 의 Body Collision Scale 값
+	/// </summary>
+	static const int PiranhaPlantBodyCollisionScaleX;
+	static const int PiranhaPlantBodyCollisionScaleY;
 protected:
 
 private:
