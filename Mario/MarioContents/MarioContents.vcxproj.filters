@@ -56,6 +56,9 @@
     <ClInclude Include="MonsterUnit.h">
       <Filter>Object</Filter>
     </ClInclude>
+    <ClInclude Include="PiranhaPlant.h">
+      <Filter>Object\Monster</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp" />
@@ -109,6 +112,9 @@
     </ClCompile>
     <ClCompile Include="MonsterUnit.cpp">
       <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="PiranhaPlant.cpp">
+      <Filter>Object\Monster</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
