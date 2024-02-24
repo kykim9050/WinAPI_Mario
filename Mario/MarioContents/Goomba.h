@@ -44,6 +44,6 @@ protected:
 
 
 private:
-	bool KillPlayer = false;
+	
 };
 

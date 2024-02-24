@@ -47,7 +47,6 @@ protected:
 	void SetDirAfterCollision(const FVector _MyFVector, const FVector _OtherFVector);
 
 private:
-	bool KillPlayer = false;
-	//FVector GetSecondHitDir = FVector::Zero;
+
 };
 

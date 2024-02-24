@@ -82,7 +82,7 @@ public:
 	static const int GoombaBodyCollisionScaleY;
 
 	/// <summary>
-	/// KoopaTroopa_Right 의 열, 행 수
+	/// KoopaTroopa_Right.png 의 열, 행 수
 	/// </summary>
 	static const int KoopaTroopaImageXValue;
 	static const int KoopaTroopaImageYValue;
@@ -93,6 +93,9 @@ public:
 	static const int KoopaTroopaBodyCollisionScaleX;
 	static const int KoopaTroopaBodyCollisionScaleY;
 
+	// PiranhaPlant.png 의 열, 행 수
+	static const int PiranhaPlantImageXValue;
+	static const int PiranhaPlantImageYValue;
 protected:
 
 private:

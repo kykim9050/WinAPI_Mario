@@ -22,6 +22,7 @@ protected:
 	void CalHorizonVelocityVector(float _DeltaTime) override;
 
 	FVector ActorMoveDir = FVector::Left;
+	bool KillPlayer = false;
 
 private:
 
