@@ -19,11 +19,14 @@ void APiranhaPlant::BeginPlay()
 
 	FVector PiranhaPlantScale = Renderer->GetImage()->GetScale();
 
-
 	Renderer->SetTransform({ {0,0}, {PiranhaPlantScale.iX() / UInGameValue::PiranhaPlantImageXValue * UInGameValue::WindowSizeMulValue, PiranhaPlantScale.iY() / UInGameValue::PiranhaPlantImageYValue * UInGameValue::WindowSizeMulValue} });
 	Renderer->CreateAnimation("PiranhaPlant_Move", "PiranhaPlant.png", 0, 1, 0.2f, true);
-
 	Renderer->ChangeAnimation("PiranhaPlant_Move");
+
+	BodyCollision = CreateCollision(ECollisionOrder::Monster);
+	BodyCollision->SetTransform({ { 0,0 }, { UInGameValue::PiranhaPlantBodyCollisionScaleX, UInGameValue::PiranhaPlantBodyCollisionScaleY} });
+	BodyCollision->SetPosition({ 0, -(BodyCollision->GetTransform().GetScale().ihY()) });
+	BodyCollision->SetColType(ECollisionType::Rect);
 }
 
 void APiranhaPlant::Tick(float _DeltaTime)
