@@ -25,19 +25,19 @@ void U1_1StageLevel::BeginPlay()
 	UCollisionMap* Stage1_1CollisionMap = SpawnActor< UCollisionMap>();
 	APlayerMario* Mario = SpawnActor< APlayerMario>();
 	AUI* PlayerUI = SpawnActor<AUI>();
-	//AGoomba* MonsterGoomba1 = SpawnActor<AGoomba>();
-	//AGoomba* MonsterGoomba2 = SpawnActor<AGoomba>();
-	//AGoomba* MonsterGoomba3 = SpawnActor<AGoomba>();
-	//AKoopaTroopa* MonsterKoopaTroopa1 = SpawnActor< AKoopaTroopa>();
-	//AKoopaTroopa* MonsterKoopaTroopa2 = SpawnActor< AKoopaTroopa>();
+	AGoomba* MonsterGoomba1 = SpawnActor<AGoomba>();
+	AGoomba* MonsterGoomba2 = SpawnActor<AGoomba>();
+	AGoomba* MonsterGoomba3 = SpawnActor<AGoomba>();
+	AKoopaTroopa* MonsterKoopaTroopa1 = SpawnActor< AKoopaTroopa>();
+	AKoopaTroopa* MonsterKoopaTroopa2 = SpawnActor< AKoopaTroopa>();
 	APiranhaPlant* MonsterPiranhaPlant1 = SpawnActor< APiranhaPlant>();
 
 	MonsterPiranhaPlant1->SetActorLocation({500,500});
-	//MonsterKoopaTroopa1->SetActorLocation({ 500,500 });
-	//MonsterKoopaTroopa2->SetActorLocation({ 1700,500 });
-	//MonsterGoomba1->SetActorLocation({ 1800, 500 });
-	//MonsterGoomba2->SetActorLocation({ 850, 500 });
-	//MonsterGoomba3->SetActorLocation({ 1500, 500 });
+	MonsterKoopaTroopa1->SetActorLocation({ 500,500 });
+	MonsterKoopaTroopa2->SetActorLocation({ 1700,500 });
+	MonsterGoomba1->SetActorLocation({ 1800, 500 });
+	MonsterGoomba2->SetActorLocation({ 850, 500 });
+	MonsterGoomba3->SetActorLocation({ 1500, 500 });
 	PlayerUI->SetActorLocation({ UInGameValue::UIXScaleValue / 2 * UInGameValue::WindowSizeMulValue, UInGameValue::UIYScaleValue / 2 * UInGameValue::WindowSizeMulValue });
 	Mario->SetActorLocation({ UInGameValue::MarioInitXPos, UInGameValue::MarioInitYPos });
 }
