@@ -25,7 +25,7 @@ public:
 		Control->setLoopCount(Count);
 	}
 
-	void Sound_Initialization()
+	void Replay()
 	{
 		Control->setPosition(0, FMOD_TIMEUNIT_MS);
 	}
