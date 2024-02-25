@@ -13,7 +13,7 @@ AGoomba::~AGoomba()
 
 void AGoomba::BeginPlay()
 {
-	UMonsterUnit::BeginPlay();
+	AMonsterUnit::BeginPlay();
 
 	Renderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::Monster));
 	Renderer->SetImage("Goomba.png");
@@ -36,7 +36,7 @@ void AGoomba::BeginPlay()
 
 void AGoomba::Tick(float _DeltaTime)
 {
-	UMonsterUnit::Tick(_DeltaTime);
+	AMonsterUnit::Tick(_DeltaTime);
 
 	CollisionUpdate(_DeltaTime);
 
@@ -232,5 +232,5 @@ void AGoomba::StateChange(EActorState _ActorState)
 
 void AGoomba::CalHorizonVelocityVector(float _DeltaTime)
 {
-	UMonsterUnit::CalHorizonVelocityVector(_DeltaTime);
+	AMonsterUnit::CalHorizonVelocityVector(_DeltaTime);
 }

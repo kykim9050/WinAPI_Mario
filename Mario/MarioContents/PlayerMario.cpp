@@ -171,7 +171,7 @@ void APlayerMario::CollisionUpdate(float _DeltaTime)
 
 void APlayerMario::CollisionJumpStart()
 {
-	UEngineDebug::OutPutDebugText("CollisionJumpStart");
+	//UEngineDebug::OutPutDebugText("CollisionJumpStart");
 	GravityVelocityVector = FVector::Zero;
 	JumpVelocityVector = CollisionJumpVelocityVector;
 }

@@ -12,7 +12,7 @@ APiranhaPlant::~APiranhaPlant()
 
 void APiranhaPlant::BeginPlay()
 {
-	UMonsterUnit::BeginPlay();
+	AMonsterUnit::BeginPlay();
 
 	Renderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::Monster));
 	Renderer->SetImage("PiranhaPlant.png");
@@ -33,7 +33,7 @@ void APiranhaPlant::BeginPlay()
 
 void APiranhaPlant::Tick(float _DeltaTime)
 {
-	UMonsterUnit::Tick(_DeltaTime);
+	AMonsterUnit::Tick(_DeltaTime);
 
 	CollisionUpdate(_DeltaTime);
 

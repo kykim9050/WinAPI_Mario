@@ -3,18 +3,18 @@
 #include "PlayerMario.h"
 
 // Ό³Έν :
-class UMonsterUnit : public UStateUnit
+class AMonsterUnit : public UStateUnit
 {
 public:
 	// constrcuter destructer
-	UMonsterUnit();
-	~UMonsterUnit();
+	AMonsterUnit();
+	~AMonsterUnit();
 
 	// delete Function
-	UMonsterUnit(const UMonsterUnit& _Other) = delete;
-	UMonsterUnit(UMonsterUnit&& _Other) noexcept = delete;
-	UMonsterUnit& operator=(const UMonsterUnit& _Other) = delete;
-	UMonsterUnit& operator=(UMonsterUnit&& _Other) noexcept = delete;
+	AMonsterUnit(const AMonsterUnit& _Other) = delete;
+	AMonsterUnit(AMonsterUnit&& _Other) noexcept = delete;
+	AMonsterUnit& operator=(const AMonsterUnit& _Other) = delete;
+	AMonsterUnit& operator=(AMonsterUnit&& _Other) noexcept = delete;
 
 protected:
 	void BeginPlay() override;

@@ -2,7 +2,7 @@
 #include "MonsterUnit.h"
 
 // Ό³Έν :
-class APiranhaPlant : public UMonsterUnit
+class APiranhaPlant : public AMonsterUnit
 {
 public:
 	// constrcuter destructer

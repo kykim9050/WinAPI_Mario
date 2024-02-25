@@ -13,7 +13,7 @@ AKoopaTroopa::~AKoopaTroopa()
 
 void AKoopaTroopa::BeginPlay()
 {
-	UMonsterUnit::BeginPlay();
+	AMonsterUnit::BeginPlay();
 
 	Renderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::Monster));
 	Renderer->SetImage("KoopaTroopa_Left.png");
@@ -39,7 +39,7 @@ void AKoopaTroopa::BeginPlay()
 
 void AKoopaTroopa::Tick(float _DeltaTime)
 {
-	UMonsterUnit::Tick(_DeltaTime);
+	AMonsterUnit::Tick(_DeltaTime);
 
 	CollisionUpdate(_DeltaTime);
 
@@ -123,7 +123,7 @@ void AKoopaTroopa::GetMonsterHit(float _DeltaTime)
 
 void AKoopaTroopa::CalHorizonVelocityVector(float _DeltaTime)
 {
-	UMonsterUnit::CalHorizonVelocityVector(_DeltaTime);
+	AMonsterUnit::CalHorizonVelocityVector(_DeltaTime);
 }
 
 void AKoopaTroopa::ResultMovementUpdate(float _DeltaTime)

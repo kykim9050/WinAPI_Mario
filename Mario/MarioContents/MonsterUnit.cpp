@@ -1,24 +1,24 @@
 ﻿#include "MonsterUnit.h"
 
-UMonsterUnit::UMonsterUnit()
+AMonsterUnit::AMonsterUnit()
 {
 }
 
-UMonsterUnit::~UMonsterUnit()
+AMonsterUnit::~AMonsterUnit()
 {
 }
 
-void UMonsterUnit::BeginPlay()
+void AMonsterUnit::BeginPlay()
 {
 	UStateUnit::BeginPlay();
 }
 
-void UMonsterUnit::Tick(float _DeltaTime)
+void AMonsterUnit::Tick(float _DeltaTime)
 {
 	UStateUnit::Tick(_DeltaTime);
 }
 
-void UMonsterUnit::CalHorizonVelocityVector(float _DeltaTime)
+void AMonsterUnit::CalHorizonVelocityVector(float _DeltaTime)
 {
 	FVector CheckPos = GetActorLocation();
 	CheckPos.Y -= UInGameValue::ColOffSetY;
