@@ -54,6 +54,7 @@ void UEngineCore::CoreTick()
 		NextLevel = nullptr;
 		MainTimer.TimeCheckStart();
 		DeltaTime = MainTimer.TimeCheck();
+		CurFrameTime = 0.0f;
 	}
 
 	if (nullptr == CurLevel)
