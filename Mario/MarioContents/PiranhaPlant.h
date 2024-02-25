@@ -20,10 +20,16 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 	void StateUpdate(float _DeltaTime) override;
-	void Move(float _DeltaTime) override;
-	void ResultMovementUpdate(float _DeltaTime);
+	void StateChange(EActorState _ActorState) override;
+
+	void IdleStart();
+	void MoveStart();
+
+	void Idle(float _DeltaTime) override;
+	void Move(float _DeltaTime) override ;
+	void ResultMovementUpdate(float _DeltaTime) override;
 	
 private:
-
+	float IdleDelayTime = 1.0f;
 };
 
