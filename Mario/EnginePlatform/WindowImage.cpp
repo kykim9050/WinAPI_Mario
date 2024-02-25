@@ -105,7 +105,7 @@ bool UWindowImage::Load(UWindowImage* _Image)
 
 	GetObject(hBitMap, sizeof(BITMAP), &BitMapInfo);
 
-	ImageInfo Info;
+	UImageInfo Info;
 	Info.hBitMap = hBitMap;
 	Info.ImageDC = ImageDC;
 	Info.CuttingTrans.SetPosition({ 0,0 });
@@ -173,7 +173,7 @@ bool UWindowImage::LoadFolder(UWindowImage* _Image)
 		DeleteObject(OldBitMap);
 		GetObject(hBitMap, sizeof(BITMAP), &BitMapInfo);
 
-		ImageInfo Info;
+		UImageInfo Info;
 		Info.hBitMap = hBitMap;
 		Info.ImageDC = ImageDC;
 		Info.CuttingTrans.SetPosition({ 0,0 });
@@ -412,6 +412,8 @@ void UWindowImage::PlgCopy(UWindowImage* _CopyImage, const FTransform& _Trans, i
 	}
 
 
+	UImageInfo& CurInfo = _CopyImage->Infos[_Index];
+
 	FTransform& ImageTrans = _CopyImage->Infos[_Index].CuttingTrans;
 
 	POINT Arr[3];
@@ -441,7 +443,7 @@ void UWindowImage::PlgCopy(UWindowImage* _CopyImage, const FTransform& _Trans, i
 	int ImageScaleX = ImageTrans.GetScale().iX();
 	int ImageScaleY = ImageTrans.GetScale().iY();
 
-	if (nullptr == _CopyImage->RotationMaskImage)
+	if (nullptr == CurInfo.RotationMaskImage)
 	{
 		MsgBoxAssert("이미지를 회전시키려고 했는데 이미지가 없습니다.");
 	}
@@ -458,7 +460,7 @@ void UWindowImage::PlgCopy(UWindowImage* _CopyImage, const FTransform& _Trans, i
 		ImageTop,   							// int x1,  
 		ImageScaleX, 							// int y1, 
 		ImageScaleY, 							// int y1, 
-		_CopyImage->RotationMaskImage->hBitMap, // 투명처리할 부분
+		CurInfo.RotationMaskImage->hBitMap, // 투명처리할 부분
 		ImageLeft,   							// int y1, 
 		ImageTop   							// int x1,  
 	);
@@ -475,7 +477,7 @@ void UWindowImage::Cutting(int _X, int _Y)
 	{
 		for (int i = 0; i < _X; i++)
 		{
-			ImageInfo Info;
+			UImageInfo Info;
 			Info.ImageDC = ImageDC;
 			Info.CuttingTrans.SetPosition(CuttingPos);
 			Info.CuttingTrans.SetScale(CuttingScale);
