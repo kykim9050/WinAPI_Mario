@@ -25,6 +25,11 @@ public:
 		Control->setLoopCount(Count);
 	}
 
+	void Sound_Initialization()
+	{
+		Control->setPosition(0, FMOD_TIMEUNIT_MS);
+	}
+
 
 	void OnOffSwitch()
 	{
