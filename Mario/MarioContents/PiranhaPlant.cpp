@@ -35,6 +35,7 @@ void APiranhaPlant::Tick(float _DeltaTime)
 {
 	UMonsterUnit::Tick(_DeltaTime);
 
+	CollisionUpdate(_DeltaTime);
 
 	StateUpdate(_DeltaTime);
 }
@@ -75,6 +76,36 @@ void APiranhaPlant::StateChange(EActorState _ActorState)
 	}
 	SetActorState(_ActorState);
 }
+
+
+void APiranhaPlant::CollisionUpdate(float _DeltaTime)
+{
+	CollisionCheck();
+}
+
+void APiranhaPlant::CollisionCheck()
+{
+	std::vector<UCollision*> Result = std::vector<UCollision*>();
+
+	APlayerMario* Player = APlayerMario::GetMainPlayer();
+
+	if (nullptr == Player)
+	{
+		MsgBoxAssert("플레이어가 존재하지 않습니다.");
+	}
+
+	if (false == KillPlayer && true == BodyCollision->CollisionCheck(ECollisionOrder::Player, Result))
+	{
+		Player->StateChange(EActorState::GetHit);
+		// 플레이어를 죽였다.
+		KillPlayer = true;
+		return;
+	}
+
+}
+
+
+
 
 void APiranhaPlant::IdleStart()
 {

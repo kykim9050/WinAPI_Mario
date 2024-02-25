@@ -1,5 +1,6 @@
 #pragma once
 #include "StateUnit.h"
+#include "PlayerMario.h"
 
 // Ό³Έν :
 class UMonsterUnit : public UStateUnit

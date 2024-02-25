@@ -29,7 +29,7 @@ void UTestLevel::BeginPlay()
 	AUI* PlayerUI = SpawnActor<AUI>();
 	APiranhaPlant* MonsterPiranhaPlant1 = SpawnActor< APiranhaPlant>();
 
-	MonsterPiranhaPlant1->SetActorLocation({ 500,500 });
+	MonsterPiranhaPlant1->SetActorLocation({ 500,700 });
 	PlayerUI->SetActorLocation({ UInGameValue::UIXScaleValue / 2 * UInGameValue::WindowSizeMulValue, UInGameValue::UIYScaleValue / 2 * UInGameValue::WindowSizeMulValue });
 	Mario->SetActorLocation({ UInGameValue::MarioInitXPos, UInGameValue::MarioInitYPos });
 }
