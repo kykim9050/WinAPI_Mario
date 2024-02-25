@@ -27,6 +27,7 @@ protected:
 	void StateUpdate(float _DeltaTime) override;
 	void StateChange(EActorState _ActorState) override;
 
+	void Idle(float _DeltaTime) override;
 	void Move(float _DeltaTime) override;
 	void GetFirstHit(float _DeltaTime);
 	void GetSecondHit(float _DeltaTime);
@@ -38,6 +39,8 @@ protected:
 	void CollisionStateChange(ECollisionState _CollisionState) override;
 	void CollisionCheck() override;
 
+	void IdleStart();
+	void MoveStart();
 	void GetFirstHitStart();
 	void GetSecondHitStart();
 	void GetHitFromMonsterStart();
