@@ -1,5 +1,4 @@
 #include "KoopaTroopa.h"
-#include "PlayerMario.h"
 
 AKoopaTroopa::AKoopaTroopa()
 {
