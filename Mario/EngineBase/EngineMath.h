@@ -340,6 +340,7 @@ public:
 	static const Color8Bit Blue;
 	static const Color8Bit White;
 	static const Color8Bit Magenta;
+	static const Color8Bit Orange;
 
 	static const Color8Bit BlackA;
 	static const Color8Bit RedA;
@@ -347,6 +348,7 @@ public:
 	static const Color8Bit BlueA;
 	static const Color8Bit WhiteA;
 	static const Color8Bit MagentaA;
+	static const Color8Bit OrangeA;
 
 	union
 	{

@@ -215,7 +215,14 @@ void UImageRenderer::TextRender(float _DeltaTime)
 	// 글자 수
 	float TextCount = static_cast<float>(Text.size());
 
-	GEngine->MainWindow.GetBackBufferImage()->TextCopy(Text, Font, Size, RendererTrans, TextColor);
+	if (TextBoldSwitch == false)
+	{
+		GEngine->MainWindow.GetBackBufferImage()->TextCopy(Text, Font, Size, RendererTrans, TextColor);
+	}
+	else
+	{
+		GEngine->MainWindow.GetBackBufferImage()->TextCopy(Text, Font, Size, RendererTrans, TextColor, TextColor2);
+	}
 }
 
 void UImageRenderer::ImageRender(float _DeltaTime)
