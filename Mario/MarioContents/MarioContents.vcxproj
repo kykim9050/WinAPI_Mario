@@ -178,6 +178,14 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="BrickBlock.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="CoinBlock.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="CollisionMap.h">
       <SubType>
       </SubType>
@@ -259,6 +267,14 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="BlockUnit.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BrickBlock.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="CoinBlock.cpp">
       <SubType>
       </SubType>
     </ClCompile>

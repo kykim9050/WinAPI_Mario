@@ -65,6 +65,12 @@
     <ClInclude Include="BlockUnit.h">
       <Filter>Object</Filter>
     </ClInclude>
+    <ClInclude Include="CoinBlock.h">
+      <Filter>Object\Block</Filter>
+    </ClInclude>
+    <ClInclude Include="BrickBlock.h">
+      <Filter>Object\Block</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp" />
@@ -127,6 +133,12 @@
     </ClCompile>
     <ClCompile Include="BlockUnit.cpp">
       <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CoinBlock.cpp">
+      <Filter>Object\Block</Filter>
+    </ClCompile>
+    <ClCompile Include="BrickBlock.cpp">
+      <Filter>Object\Block</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
