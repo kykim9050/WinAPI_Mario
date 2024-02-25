@@ -2,7 +2,7 @@
 
 APiranhaPlant::APiranhaPlant()
 {
-	JumpVelocityVector = FVector::Up * 50.0f;
+	ActorMoveDir = FVector::Down;
 	Life = 1;
 }
 
@@ -28,7 +28,7 @@ void APiranhaPlant::BeginPlay()
 	BodyCollision->SetPosition({ 0, -(BodyCollision->GetTransform().GetScale().ihY()) });
 	BodyCollision->SetColType(ECollisionType::Rect);
 
-	SetActorState(EActorState::Move);
+	SetActorState(EActorState::Idle);
 }
 
 void APiranhaPlant::Tick(float _DeltaTime)
@@ -44,7 +44,7 @@ void APiranhaPlant::StateUpdate(float _DeltaTime)
 	switch (ActorState)
 	{
 	case EActorState::Idle:
-		//Idle(_DeltaTime);
+		Idle(_DeltaTime);
 		break;
 	case EActorState::Move:
 		Move(_DeltaTime);
@@ -54,12 +54,61 @@ void APiranhaPlant::StateUpdate(float _DeltaTime)
 	}
 }
 
+void APiranhaPlant::StateChange(EActorState _ActorState)
+{
+	if (ActorState != _ActorState)
+	{
+		switch (_ActorState)
+		{
+		case EActorState::Idle:
+			IdleStart();
+			break;
+		case EActorState::Move:
+			MoveStart();
+			break;
+		default:
+			break;
+		}
+	}
+	SetActorState(_ActorState);
+}
+
+void APiranhaPlant::IdleStart()
+{
+	JumpVelocityVector = FVector::Zero;
+}
+
+void APiranhaPlant::MoveStart()
+{
+	ActorMoveDir *= -1;
+	JumpVelocityVector = ActorMoveDir * 50.0f;
+}
+
+
+void APiranhaPlant::Idle(float _DeltaTime)
+{
+	IdleDelayTime -= _DeltaTime;
+	
+	if (0.0f >= IdleDelayTime)
+	{
+		StateChange(EActorState::Move);
+		IdleDelayTime = 1.0f;
+	}
+}
+
 void APiranhaPlant::Move(float _DeltaTime)
 {
 	ResultMovementUpdate(_DeltaTime);
-	//if(GetActorLocation().Y < )
-	//CalHorizonVelocityVector(_DeltaTime);
-	//HorizonVelocityVector = ActorMoveDir * 50.0f;
+
+	if (GetActorLocation().Y <= 400.0f)
+	{
+		StateChange(EActorState::Idle);
+	}
+	else if(GetActorLocation().Y >= 600.0f)
+	{
+		StateChange(EActorState::Idle);
+	}
+
 }
 
 void APiranhaPlant::ResultMovementUpdate(float _DeltaTime)
