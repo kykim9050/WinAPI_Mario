@@ -38,6 +38,7 @@ enum class EStageRenderOrder
 enum class EActorState
 {
 	None,
+	FirstInit,
 	FreeMove,
 	CameraMove,
 	Idle,

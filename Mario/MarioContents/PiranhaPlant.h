@@ -25,11 +25,13 @@ protected:
 	void IdleStart();
 	void MoveStart();
 
+	void FirstInit(float _Deltatime);
 	void Idle(float _DeltaTime) override;
 	void Move(float _DeltaTime) override ;
 	void ResultMovementUpdate(float _DeltaTime) override;
 	
 private:
 	float IdleDelayTime = 1.0f;
+	float InitYPos = 0.0f;
 };
 

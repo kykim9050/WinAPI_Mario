@@ -2,7 +2,7 @@
 
 APiranhaPlant::APiranhaPlant()
 {
-	ActorMoveDir = FVector::Down;
+	ActorMoveDir = FVector::Up;
 	Life = 1;
 }
 
@@ -28,7 +28,7 @@ void APiranhaPlant::BeginPlay()
 	BodyCollision->SetPosition({ 0, -(BodyCollision->GetTransform().GetScale().ihY()) });
 	BodyCollision->SetColType(ECollisionType::Rect);
 
-	SetActorState(EActorState::Idle);
+	SetActorState(EActorState::FirstInit);
 }
 
 void APiranhaPlant::Tick(float _DeltaTime)
@@ -43,6 +43,9 @@ void APiranhaPlant::StateUpdate(float _DeltaTime)
 {
 	switch (ActorState)
 	{
+	case EActorState::FirstInit:
+		FirstInit(_DeltaTime);
+		break;
 	case EActorState::Idle:
 		Idle(_DeltaTime);
 		break;
@@ -85,6 +88,12 @@ void APiranhaPlant::MoveStart()
 }
 
 
+void APiranhaPlant::FirstInit(float _Deltatime)
+{
+	InitYPos = GetActorLocation().Y;
+	StateChange(EActorState::Idle);
+}
+
 void APiranhaPlant::Idle(float _DeltaTime)
 {
 	IdleDelayTime -= _DeltaTime;
@@ -100,11 +109,11 @@ void APiranhaPlant::Move(float _DeltaTime)
 {
 	ResultMovementUpdate(_DeltaTime);
 
-	if (GetActorLocation().Y <= 400.0f)
+	if (GetActorLocation().Y <= InitYPos - static_cast<float>(UInGameValue::PiranhaPlantBodyCollisionScaleY))
 	{
 		StateChange(EActorState::Idle);
 	}
-	else if(GetActorLocation().Y >= 600.0f)
+	else if(GetActorLocation().Y >= InitYPos + static_cast<float>(UInGameValue::PiranhaPlantBodyCollisionScaleY))
 	{
 		StateChange(EActorState::Idle);
 	}
