@@ -5,7 +5,7 @@
 #include "ContentsFunction.h"
 
 // Ό³Έν :
-class AKoopaTroopa : public UMonsterUnit
+class AKoopaTroopa : public AMonsterUnit
 {
 public:
 	// constrcuter destructer

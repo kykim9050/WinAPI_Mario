@@ -6,7 +6,7 @@
 
 
 // Ό³Έν :
-class AGoomba : public UMonsterUnit
+class AGoomba : public AMonsterUnit
 {
 public:
 	// constrcuter destructer

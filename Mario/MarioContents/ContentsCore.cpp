@@ -52,8 +52,8 @@ void UContentsCore::BeginPlay()
 	CreateLevel<UTitleLevel>("TitleLevel");
 	CreateLevel<U1_1StageLevel>("1_1StageLevel");
 	CreateLevel<UEndingLevel>("EndingLevel");
-
 	ChangeLevel("1_1StageLevel");
+
 	/*CreateLevel<UTestLevel>("TestLevel");
 	ChangeLevel("TestLevel");*/
 
