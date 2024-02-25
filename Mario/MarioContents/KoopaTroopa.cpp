@@ -34,7 +34,7 @@ void AKoopaTroopa::BeginPlay()
 	BodyCollision->SetPosition({ 0, -(BodyCollision->GetTransform().GetScale().ihY()) });
 	BodyCollision->SetColType(ECollisionType::Rect);
 
-	SetActorState(EActorState::Move);
+	SetActorState(EActorState::Idle);
 }
 
 void AKoopaTroopa::Tick(float _DeltaTime)
@@ -50,9 +50,9 @@ void AKoopaTroopa::StateUpdate(float _DeltaTime)
 {
 	switch (ActorState)
 	{
-		/*case EPlayerState::Idle:
-			Idle(_DeltaTime);
-			break;*/
+	case EActorState::Idle:
+		Idle(_DeltaTime);
+		break;
 	case EActorState::Move:
 		Move(_DeltaTime);
 		break;
@@ -71,9 +71,24 @@ void AKoopaTroopa::StateUpdate(float _DeltaTime)
 
 }
 
+
+
+void AKoopaTroopa::Idle(float _DeltaTime)
+{
+	StateChange(EActorState::Move);
+}
+
 void AKoopaTroopa::Move(float _DeltaTime)
 {
+	EActorDir CurDir = ActorDir;
 	CalHorizonVelocityVector(_DeltaTime);
+
+	if (ActorDir != CurDir)
+	{
+		StateChange(EActorState::Idle);
+		return;
+	}
+
 	HorizonVelocityVector = ActorMoveDir * 50.0f;
 	ResultMovementUpdate(_DeltaTime);
 }
@@ -133,6 +148,9 @@ void AKoopaTroopa::StateChange(EActorState _ActorState)
 	{
 		switch (_ActorState)
 		{
+		case EActorState::Move:
+			MoveStart();
+			break;
 		case EActorState::GetFirstHit:
 			GetFirstHitStart();
 			break;
@@ -151,6 +169,27 @@ void AKoopaTroopa::StateChange(EActorState _ActorState)
 	}
 
 	SetActorState(_ActorState);
+}
+
+void AKoopaTroopa::IdleStart()
+{
+
+}
+
+void AKoopaTroopa::MoveStart()
+{
+	if(EActorDir::Left == ActorDir)
+	{
+		Renderer->ChangeAnimation("KoopaTroopa_Move_Left");
+		return;
+	}
+
+	if (EActorDir::Right == ActorDir)
+	{
+		Renderer->ChangeAnimation("KoopaTroopa_Move_Right");
+		return;
+	}
+
 }
 
 void AKoopaTroopa::GetFirstHitStart()
