@@ -22,7 +22,10 @@
     <Filter Include="ThirdParty\FMOD\Release">
       <UniqueIdentifier>{2ca37ccd-8141-4209-8efc-9b465febf821}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Sound">
+    <Filter Include="Resources">
+      <UniqueIdentifier>{ce0d78c4-7156-4daa-be83-7938e0f3b56c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Sound">
       <UniqueIdentifier>{06be5494-522a-43a6-9ba8-651d8904aa98}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -61,7 +64,10 @@
       <Filter>ThirdParty\FMOD\inc</Filter>
     </ClInclude>
     <ClInclude Include="EngineSound.h">
-      <Filter>Sound</Filter>
+      <Filter>Resources\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineResources.h">
+      <Filter>Resources</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -75,7 +81,10 @@
       <Filter>Window</Filter>
     </ClCompile>
     <ClCompile Include="EngineSound.cpp">
-      <Filter>Sound</Filter>
+      <Filter>Resources\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineResources.cpp">
+      <Filter>Resources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
