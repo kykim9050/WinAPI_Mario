@@ -210,7 +210,11 @@ public:
 
 	FTransform GetRenderTransForm();
 
-	void SwitchTextBold() { TextBoldSwitch = !TextBoldSwitch; }
+	// Text È¿°ú
+	void SetTextEffect(int _Effect = 0)
+	{
+		TextEffect = _Effect;
+	}
 
 protected:
 	void BeginPlay() override;
@@ -235,6 +239,10 @@ private:
 	Color8Bit TextColor = Color8Bit::BlackA;
 
 	Color8Bit TextColor2 = Color8Bit::BlackA; 
-	bool TextBoldSwitch = false; 
+	int TextEffect = 0;
+	// Default : 0, 
+	// Bold & Italic : 1, (custom)
+	// Bold : 2,
+	// ...
 };
 
