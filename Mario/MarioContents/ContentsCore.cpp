@@ -49,12 +49,12 @@ void UContentsCore::BeginPlay()
 	UEngineResourcesManager::GetInst().CuttingImage("KoopaTroopa_Right.png", UInGameValue::KoopaTroopaImageXValue, UInGameValue::KoopaTroopaImageYValue);
 	UEngineResourcesManager::GetInst().CuttingImage("PiranhaPlant.png", UInGameValue::PiranhaPlantImageXValue, UInGameValue::PiranhaPlantImageYValue);
 	
-	//CreateLevel<UTitleLevel>("TitleLevel");
-	//CreateLevel<U1_1StageLevel>("1_1StageLevel");
-	//CreateLevel<UEndingLevel>("EndingLevel");
-	CreateLevel<UTestLevel>("TestLevel");
+	/*CreateLevel<UTitleLevel>("TitleLevel");
+	CreateLevel<U1_1StageLevel>("1_1StageLevel");
+	CreateLevel<UEndingLevel>("EndingLevel");
 
-	//ChangeLevel("1_1StageLevel");
+	ChangeLevel("1_1StageLevel");*/
+	CreateLevel<UTestLevel>("TestLevel");
 	ChangeLevel("TestLevel");
 
 }

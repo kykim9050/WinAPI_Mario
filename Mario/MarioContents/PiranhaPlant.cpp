@@ -27,9 +27,43 @@ void APiranhaPlant::BeginPlay()
 	BodyCollision->SetTransform({ { 0,0 }, { UInGameValue::PiranhaPlantBodyCollisionScaleX, UInGameValue::PiranhaPlantBodyCollisionScaleY} });
 	BodyCollision->SetPosition({ 0, -(BodyCollision->GetTransform().GetScale().ihY()) });
 	BodyCollision->SetColType(ECollisionType::Rect);
+
+	SetActorState(EActorState::Move);
 }
 
 void APiranhaPlant::Tick(float _DeltaTime)
 {
 	UMonsterUnit::Tick(_DeltaTime);
+
+
+	StateUpdate(_DeltaTime);
+}
+
+void APiranhaPlant::StateUpdate(float _DeltaTime)
+{
+	switch (ActorState)
+	{
+	case EActorState::Idle:
+		//Idle(_DeltaTime);
+		break;
+	case EActorState::Move:
+		Move(_DeltaTime);
+		break;
+	default:
+		break;
+	}
+}
+
+void APiranhaPlant::Move(float _DeltaTime)
+{
+	ResultMovementUpdate(_DeltaTime);
+	//if(GetActorLocation().Y < )
+	//CalHorizonVelocityVector(_DeltaTime);
+	//HorizonVelocityVector = ActorMoveDir * 50.0f;
+}
+
+void APiranhaPlant::ResultMovementUpdate(float _DeltaTime)
+{
+	CalTotalVelocityVector(_DeltaTime);
+	AddActorLocation(TotalVelocityVector * _DeltaTime);
 }

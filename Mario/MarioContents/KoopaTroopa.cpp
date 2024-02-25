@@ -121,8 +121,7 @@ void AKoopaTroopa::ResultMovementUpdate(float _DeltaTime)
 		GravityVelocityVector = FVector::Zero;
 	}
 
-	TotalVelocityVector = FVector::Zero;
-	TotalVelocityVector = TotalVelocityVector + GravityVelocityVector + HorizonVelocityVector;
+	CalTotalVelocityVector(_DeltaTime);
 	AddActorLocation(TotalVelocityVector * _DeltaTime);
 }
 
