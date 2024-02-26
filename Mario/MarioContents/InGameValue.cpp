@@ -55,3 +55,6 @@ const int UInGameValue::BrickBlockImageYValue = 1;
 
 const int UInGameValue::CoinBlockImageXValue = 5;
 const int UInGameValue::CoinBlockImageYValue = 1;
+
+const int UInGameValue::BlockCollisionScaleX = 16 * UInGameValue::WindowSizeMulValue;
+const int UInGameValue::BlockCollisionScaleY = 16 * UInGameValue::WindowSizeMulValue;

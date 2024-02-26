@@ -115,6 +115,12 @@ public:
 	static const int CoinBlockImageXValue;
 	static const int CoinBlockImageYValue;
 
+	/// <summary>
+	/// Block ÀÇ Body Collision Scale °ª
+	/// </summary>
+	static const int BlockCollisionScaleX;
+	static const int BlockCollisionScaleY;
+
 protected:
 
 private:
