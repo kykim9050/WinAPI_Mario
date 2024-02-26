@@ -9,7 +9,8 @@
 #include "KoopaTroopa.h"
 #include <EnginePlatform/EngineInput.h>
 #include "PiranhaPlant.h"
-
+#include "BrickBlock.h"
+#include "CoinBlock.h"
 
 UTestLevel::UTestLevel()
 {
@@ -27,11 +28,15 @@ void UTestLevel::BeginPlay()
 	UCollisionMap* CollisionMap = SpawnActor< UCollisionMap>();
 	APlayerMario* Mario = SpawnActor< APlayerMario>();
 	AUI* PlayerUI = SpawnActor<AUI>();
-	APiranhaPlant* MonsterPiranhaPlant1 = SpawnActor< APiranhaPlant>();
+	//APiranhaPlant* MonsterPiranhaPlant1 = SpawnActor< APiranhaPlant>();
+	ABrickBlock* BrickBlock1 = SpawnActor< ABrickBlock>();
+	ACoinBlock* CoinBlock1 = SpawnActor< ACoinBlock>();
 
-	MonsterPiranhaPlant1->SetActorLocation({ 500,700 });
-	PlayerUI->SetActorLocation({ UInGameValue::UIXScaleValue / 2 * UInGameValue::WindowSizeMulValue, UInGameValue::UIYScaleValue / 2 * UInGameValue::WindowSizeMulValue });
 	Mario->SetActorLocation({ UInGameValue::MarioInitXPos, UInGameValue::MarioInitYPos });
+	PlayerUI->SetActorLocation({ UInGameValue::UIXScaleValue / 2 * UInGameValue::WindowSizeMulValue, UInGameValue::UIYScaleValue / 2 * UInGameValue::WindowSizeMulValue });
+	//MonsterPiranhaPlant1->SetActorLocation({ 500,700 });
+	BrickBlock1->SetActorLocation({ 500,400 });
+	CoinBlock1->SetActorLocation({ 600,400 });
 }
 
 void UTestLevel::Tick(float _DeltaTime)

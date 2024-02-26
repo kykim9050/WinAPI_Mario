@@ -28,6 +28,7 @@ enum class EStageRenderOrder
 	CollisionMap,
 	BackGroundMap,
 	Monster,
+	Block,
 	Mario,
 	UI,
 };
