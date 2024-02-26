@@ -171,7 +171,15 @@ void APlayerMario::CollisionUpdate(float _DeltaTime)
 
 void APlayerMario::CollisionJumpStart()
 {
-	//UEngineDebug::OutPutDebugText("CollisionJumpStart");
+	if (EActorDir::Left == ActorDir)
+	{
+		Renderer->ChangeAnimation("Jump_Left");
+	}
+	else if (EActorDir::Right == ActorDir)
+	{
+		Renderer->ChangeAnimation("Jump_Right");
+	}
+
 	GravityVelocityVector = FVector::Zero;
 	JumpVelocityVector = CollisionJumpVelocityVector;
 }
