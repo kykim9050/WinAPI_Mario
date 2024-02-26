@@ -145,18 +145,18 @@ void ABrickBlock::MoveStart()
 //	ABlockUnit::Idle(_DeltaTime);
 //}
 //
-//void ABrickBlock::Move(float _DeltaTime)
-//{
-//	ResultMovementUpdate(_DeltaTime);
-//
-//	if (GetActorLocation().Y >= InitPos.Y)
-//	{
-//		GravityVelocityVector = FVector::Zero;
-//		JumpVelocityVector = FVector::Zero;
-//		SetActorLocation(InitPos);
-//		StateChange(EActorState::Idle);
-//	}
-//}
+void ABrickBlock::Move(float _DeltaTime)
+{
+	ABlockUnit::Move(_DeltaTime);
+
+	if (GetActorLocation().Y >= InitPos.Y)
+	{
+		GravityVelocityVector = FVector::Zero;
+		JumpVelocityVector = FVector::Zero;
+		SetActorLocation(InitPos);
+		StateChange(EActorState::Idle);
+	}
+}
 
 
 

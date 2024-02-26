@@ -39,3 +39,28 @@ void ACoinBlock::IdleStart()
 	ABlockUnit::IdleStart();
 	Renderer->ChangeAnimation("CoinBlock_Init");
 }
+
+void ACoinBlock::MoveStart()
+{
+	ABlockUnit::MoveStart();
+
+	Renderer->ChangeAnimation("CoinBlock_Hit");
+}
+
+void ACoinBlock::Move(float _DeltaTime)
+{
+	ABlockUnit::Move(_DeltaTime);
+
+	if (GetActorLocation().Y >= InitPos.Y)
+	{
+		GravityVelocityVector = FVector::Zero;
+		JumpVelocityVector = FVector::Zero;
+		SetActorLocation(InitPos);
+		StateChange(EActorState::Fixed);
+	}
+}
+
+void ACoinBlock::FixedStart()
+{
+	Renderer->ChangeAnimation("CoinBlock_AfterHit");
+}

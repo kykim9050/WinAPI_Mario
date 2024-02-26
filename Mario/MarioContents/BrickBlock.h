@@ -22,6 +22,8 @@ protected:
 	void IdleStart() override;
 	void MoveStart() override;
 
+	void Move(float _DeltaTime) override;
+
 private:
 
 };

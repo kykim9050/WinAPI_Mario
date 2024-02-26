@@ -27,12 +27,13 @@ protected:
 	void CollisionCheck();
 	void CollisionStateChange(ECollisionState _CollisionState);
 
-	virtual void IdleStart() { }
+	virtual void IdleStart()	{}
 	virtual void MoveStart();
+	virtual void FixedStart()	{}
 	void GetHitStart();
 
 	void Idle(float _DeltaTime);
-	void Move(float _DeltaTime);
+	virtual void Move(float _DeltaTime);
 	void ResultMovementUpdate(float _DeltaTime);
 
 	FVector InitPos = FVector::Zero;
