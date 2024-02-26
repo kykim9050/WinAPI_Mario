@@ -102,6 +102,19 @@ public:
 	/// </summary>
 	static const int PiranhaPlantBodyCollisionScaleX;
 	static const int PiranhaPlantBodyCollisionScaleY;
+
+	/// <summary>
+	/// BrickBlock.png 의 열, 행 수
+	/// </summary>
+	static const int BrickBlockImageXValue;
+	static const int BrickBlockImageYValue;
+
+	/// <summary>
+	/// CoinBlock.png 의 열, 행 수
+	/// </summary>
+	static const int CoinBlockImageXValue;
+	static const int CoinBlockImageYValue;
+
 protected:
 
 private:
