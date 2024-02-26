@@ -23,6 +23,8 @@ protected:
 	void Tick(float _DeltaTime) override;
 	void CollisionStateChange(ECollisionState _CollisionState) override;
 
+	void ResultMovementUpdate(float _DeltaTime);
+
 	FVector InitPos = FVector::Zero;
 
 private:
