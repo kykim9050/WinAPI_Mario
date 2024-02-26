@@ -101,6 +101,7 @@ void ABrickBlock::CollisionCheck()
 		if (PlayerColTrans.GetPosition().X <= BlockColTrans.Right() && PlayerColTrans.GetPosition().X >= BlockColTrans.Left() && PlayerColTrans.Top() < BlockColTrans.Bottom())
 		{
 			Player->SetJumpZero();
+			Player->SetGravityZero();
 			CollisionStateChange(ECollisionState::GetHit);
 			return;
 		}
