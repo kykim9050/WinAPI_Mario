@@ -1,6 +1,7 @@
 ﻿#include "EngineDirectory.h"
 #include "EngineFile.h"
 #include "EngineString.h"
+#include "EngineDebug.h"
 
 UEngineDirectory::UEngineDirectory()
 {
@@ -112,5 +113,27 @@ void UEngineDirectory::AllDirectoryRecursive(const std::string_view _Path, std::
 
 void UEngineDirectory::MoveToSearchChild(std::string_view _Path)
 {
+	while (true)
+	{
+		std::list<UEngineDirectory> Dir = AllDirectory();
 
+		for (UEngineDirectory& _Dir : Dir)
+		{
+			std::string UpperLeft = UEngineString::ToUpper(_Dir.GetFileName());
+			std::string UpperRight = UEngineString::ToUpper(_Path);
+
+			if (UpperLeft == UpperRight)
+			{
+				Move(_Path);
+				return;
+			}
+		}
+
+		if (IsRoot())
+		{
+			MsgBoxAssert("루트디렉토리까지 존재하지 않는 경로 입니다." + std::string(_Path));
+		}
+
+		MoveParent();
+	}
 }
