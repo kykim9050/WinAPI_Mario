@@ -62,6 +62,9 @@ void ABlockUnit::StateUpdate(float _DeltaTime)
 	case EActorState::Move:
 		Move(_DeltaTime);
 		break;
+	case EActorState::Fixed:
+		Fixed(_DeltaTime);
+		break;
 	default:
 		break;
 	}
@@ -112,6 +115,7 @@ void ABlockUnit::CollisionCheck()
 		{
 			Player->SetJumpZero();
 			Player->SetGravityZero();
+
 			CollisionStateChange(ECollisionState::GetHit);
 			return;
 		}
@@ -134,6 +138,12 @@ void ABlockUnit::MoveStart()
 	JumpVelocityVector = FVector::Up * 400.0f;
 }
 
+void ABlockUnit::FixedStart()
+{
+	SetJumpZero();
+	SetGravityZero();
+}
+
 void ABlockUnit::Idle(float _DeltaTime)
 {
 
@@ -142,4 +152,10 @@ void ABlockUnit::Idle(float _DeltaTime)
 void ABlockUnit::Move(float _DeltaTime)
 {
 	ResultMovementUpdate(_DeltaTime);
+}
+
+void ABlockUnit::Fixed(float _DeltaTime)
+{
+	CalTotalVelocityVector(_DeltaTime);
+	AddActorLocation(TotalVelocityVector * _DeltaTime);
 }

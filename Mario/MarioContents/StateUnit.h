@@ -28,6 +28,16 @@ public:
 		return Renderer;
 	}
 
+	const void SetJumpZero()
+	{
+		JumpVelocityVector = FVector::Zero;
+	}
+
+	const void SetGravityZero()
+	{
+		GravityVelocityVector = FVector::Zero;
+	}
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -52,6 +62,7 @@ protected:
 	{
 		ActorDir = _Dir;
 	}
+	
 	
 	virtual void CollisionUpdate(float _DeltaTime);
 	virtual void CollisionStateChange(ECollisionState _CollisionState) {}
