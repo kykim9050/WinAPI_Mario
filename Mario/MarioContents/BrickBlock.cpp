@@ -50,8 +50,6 @@ void ABrickBlock::StateUpdate(float _DeltaTime)
 	}
 }
 
-
-
 void ABrickBlock::StateChange(EActorState _ActorState)
 {
 	ABlockUnit::StateChange(_ActorState);
@@ -71,6 +69,8 @@ void ABrickBlock::StateChange(EActorState _ActorState)
 	SetActorState(_ActorState);
 }
 
+
+
 void ABrickBlock::CollisionCheck()
 {
 	ABlockUnit::CollisionCheck();
@@ -88,16 +88,26 @@ void ABrickBlock::CollisionCheck()
 	{
 		const FTransform& PlayerColTrans = Player->GetBodyCollision()->GetActorBaseTransform();
 		const FTransform& BlockColTrans = BodyCollision->GetActorBaseTransform();
-		//float OffsetYValue = BodyCollision->GetActorBaseTransform().GetScale().hY();
 
 		if (PlayerColTrans.GetPosition().X <= BlockColTrans.Right() && PlayerColTrans.GetPosition().X >= BlockColTrans.Left() && PlayerColTrans.Top() < BlockColTrans.Bottom())
 		{
-			int a = 0;
+			CollisionStateChange(ECollisionState::GetHit);
 			return;
 		}
 
 		return;
 	}
+}
+
+void ABrickBlock::CollisionStateChange(ECollisionState _CollisionState)
+{
+	ABlockUnit::CollisionStateChange(_CollisionState);
+}
+
+void ABrickBlock::GetHitStart()
+{
+	ABlockUnit::GetHitStart();
+	StateChange(EActorState::Move);
 }
 
 
