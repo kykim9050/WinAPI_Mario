@@ -120,6 +120,10 @@ public:
 	const void SetJumpZero()
 	{
 		JumpVelocityVector = FVector::Zero;
+	}
+
+	const void SetGravityZero()
+	{
 		GravityVelocityVector = FVector::Zero;
 	}
 
