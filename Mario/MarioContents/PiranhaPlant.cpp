@@ -117,7 +117,7 @@ void APiranhaPlant::MoveStart()
 
 void APiranhaPlant::FirstInit(float _Deltatime)
 {
-	InitYPos = GetActorLocation().Y;
+	InitPos = GetActorLocation();
 	StateChange(EActorState::Idle);
 }
 
@@ -136,12 +136,14 @@ void APiranhaPlant::Move(float _DeltaTime)
 {
 	ResultMovementUpdate(_DeltaTime);
 
-	if (GetActorLocation().Y <= InitYPos - static_cast<float>(UInGameValue::PiranhaPlantBodyCollisionScaleY))
+	if (GetActorLocation().Y <= InitPos.Y - static_cast<float>(UInGameValue::PiranhaPlantBodyCollisionScaleY))
 	{
+		SetActorLocation({ InitPos.X, InitPos.Y - static_cast<float>(UInGameValue::PiranhaPlantBodyCollisionScaleY) });
 		StateChange(EActorState::Idle);
 	}
-	else if(GetActorLocation().Y >= InitYPos + static_cast<float>(UInGameValue::PiranhaPlantBodyCollisionScaleY))
+	else if (GetActorLocation().Y >= InitPos.Y + static_cast<float>(UInGameValue::PiranhaPlantBodyCollisionScaleY))
 	{
+		SetActorLocation({ InitPos.X, InitPos.Y + static_cast<float>(UInGameValue::PiranhaPlantBodyCollisionScaleY) });
 		StateChange(EActorState::Idle);
 	}
 
