@@ -117,6 +117,11 @@ public:
 
 	void GetHitStart() override;
 
+	const void SetJumpZero()
+	{
+		JumpVelocityVector = FVector::Zero;
+		GravityVelocityVector = FVector::Zero;
+	}
 
 protected:
 	void BeginPlay() override;
