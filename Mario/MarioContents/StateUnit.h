@@ -53,7 +53,7 @@ protected:
 		ActorDir = _Dir;
 	}
 	
-	virtual void CollisionUpdate(float _DeltaTime) {}
+	virtual void CollisionUpdate(float _DeltaTime);
 	virtual void CollisionStateChange(ECollisionState _CollisionState) {}
 	virtual void CollisionCheck() {}
 	void SetCollisionState(ECollisionState _CollisionState)

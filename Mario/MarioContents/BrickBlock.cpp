@@ -50,6 +50,8 @@ void ABrickBlock::StateUpdate(float _DeltaTime)
 	}
 }
 
+
+
 void ABrickBlock::StateChange(EActorState _ActorState)
 {
 	ABlockUnit::StateChange(_ActorState);
@@ -69,10 +71,12 @@ void ABrickBlock::StateChange(EActorState _ActorState)
 	SetActorState(_ActorState);
 }
 
-//void ABrickBlock::CollisionUpdate(float _DeltaTime)
-//{
-//	CollisionCheck();
-//}
+void ABrickBlock::CollisionCheck()
+{
+	ABlockUnit::CollisionCheck();
+
+
+}
 
 
 

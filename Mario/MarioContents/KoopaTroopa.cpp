@@ -229,10 +229,10 @@ void AKoopaTroopa::SetDirAfterCollision(const FVector _MyFVector, const FVector 
 
 
 
-void AKoopaTroopa::CollisionUpdate(float _DeltaTime)
-{
-	CollisionCheck();
-}
+//void AKoopaTroopa::CollisionUpdate(float _DeltaTime)
+//{
+//	CollisionCheck();
+//}
 
 void AKoopaTroopa::CollisionCheck()
 {

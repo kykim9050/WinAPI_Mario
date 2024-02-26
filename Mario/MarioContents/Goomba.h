@@ -37,7 +37,7 @@ protected:
 	void ResultMovementUpdate(float _DeltaTime) override;
 
 	void CollisionCheck() override;
-	void CollisionUpdate(float _DeltaTime) override;
+	//void CollisionUpdate(float _DeltaTime) override;
 	void CollisionStateChange(ECollisionState _CollisionState) override;
 	void GetMonsterHitStart();
 	void GetHitFromMonsterStart();

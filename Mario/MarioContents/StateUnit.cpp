@@ -22,6 +22,11 @@ void UStateUnit::Tick(float _DeltaTime)
 	StateUpdate(_DeltaTime);
 }
 
+void UStateUnit::CollisionUpdate(float _DeltaTime)
+{
+	CollisionCheck();
+}
+
 std::string UStateUnit::ChangeAnimationName(std::string _MainName)
 {
 	std::string Dir = "";
