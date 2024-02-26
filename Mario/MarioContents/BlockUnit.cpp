@@ -17,3 +17,21 @@ void ABlockUnit::Tick(float _DeltaTime)
 {
 	UStateUnit::Tick(_DeltaTime);
 }
+
+
+void ABlockUnit::CollisionStateChange(ECollisionState _CollisionState)
+{
+	if (ActorCollisionState != _CollisionState)
+	{
+		switch (_CollisionState)
+		{
+		case ECollisionState::GetHit:
+			GetHitStart();
+			break;
+		default:
+			break;
+		}
+	}
+
+	SetCollisionState(_CollisionState);
+}
