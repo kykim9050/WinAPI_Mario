@@ -126,17 +126,9 @@ void ABlockUnit::GetHitStart()
 
 
 
-
-
-void ABlockUnit::IdleStart()
-{
-	Renderer->ChangeAnimation("BrickBlock_Init");
-}
-
 void ABlockUnit::MoveStart()
 {
 	JumpVelocityVector = FVector::Up * 400.0f;
-	Renderer->ChangeAnimation("BrickBlock_EmptyHit");
 }
 
 void ABlockUnit::Idle(float _DeltaTime)
