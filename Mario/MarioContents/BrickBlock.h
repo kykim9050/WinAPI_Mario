@@ -25,7 +25,7 @@ protected:
 	void CollisionStateChange(ECollisionState _CollisionState) override;
 
 	void IdleStart() override;
-	
+	void MoveStart() override;
 	void GetHitStart() override;
 
 	void Idle(float _DeltaTime) override;

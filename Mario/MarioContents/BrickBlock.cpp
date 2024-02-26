@@ -61,6 +61,9 @@ void ABrickBlock::StateChange(EActorState _ActorState)
 		case EActorState::Idle:
 			IdleStart();
 			break;
+		case EActorState::Move:
+			MoveStart();
+			break;
 		default:
 			break;
 		}
@@ -119,6 +122,12 @@ void ABrickBlock::IdleStart()
 	ABlockUnit::IdleStart();
 
 	Renderer->ChangeAnimation("BrickBlock_Init");
+}
+
+void ABrickBlock::MoveStart()
+{
+	ABlockUnit::MoveStart();
+	Renderer->ChangeAnimation("BrickBlock_EmptyHit");
 }
 
 void ABrickBlock::Idle(float _DeltaTime)
