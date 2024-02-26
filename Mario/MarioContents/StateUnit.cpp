@@ -16,6 +16,10 @@ void UStateUnit::BeginPlay()
 void UStateUnit::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
+
+	CollisionUpdate(_DeltaTime);
+
+	StateUpdate(_DeltaTime);
 }
 
 std::string UStateUnit::ChangeAnimationName(std::string _MainName)

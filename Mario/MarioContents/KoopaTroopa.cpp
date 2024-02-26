@@ -40,10 +40,6 @@ void AKoopaTroopa::BeginPlay()
 void AKoopaTroopa::Tick(float _DeltaTime)
 {
 	AMonsterUnit::Tick(_DeltaTime);
-
-	CollisionUpdate(_DeltaTime);
-
-	StateUpdate(_DeltaTime);
 }
 
 void AKoopaTroopa::StateUpdate(float _DeltaTime)

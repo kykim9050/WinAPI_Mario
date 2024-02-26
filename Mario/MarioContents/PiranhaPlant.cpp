@@ -34,10 +34,6 @@ void APiranhaPlant::BeginPlay()
 void APiranhaPlant::Tick(float _DeltaTime)
 {
 	AMonsterUnit::Tick(_DeltaTime);
-
-	CollisionUpdate(_DeltaTime);
-
-	StateUpdate(_DeltaTime);
 }
 
 void APiranhaPlant::StateUpdate(float _DeltaTime)
