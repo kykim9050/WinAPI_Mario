@@ -29,6 +29,9 @@ protected:
 	void GetHitStart() override;
 
 	void Idle(float _DeltaTime) override;
+	void Move(float _DeltaTime) override;
+
+	void ResultMovementUpdate(float _DeltaTime);
 
 private:
 
