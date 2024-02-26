@@ -34,10 +34,6 @@ void ABrickBlock::BeginPlay()
 void ABrickBlock::Tick(float _DeltaTime)
 {
 	ABlockUnit::Tick(_DeltaTime);
-
-	CollisionUpdate(_DeltaTime);
-
-	StateUpdate(_DeltaTime);
 }
 
 void ABrickBlock::StateUpdate(float _DeltaTime)

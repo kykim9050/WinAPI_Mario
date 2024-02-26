@@ -54,15 +54,6 @@ void APlayerMario::BeginPlay()
 void APlayerMario::Tick(float _DeltaTime)
 {
 	UStateUnit::Tick(_DeltaTime);
-
-	CollisionUpdate(_DeltaTime);
-	
-	if (ECollisionState::GetHit == ActorCollisionState)
-	{
-		return;
-	}
-
-	StateUpdate(_DeltaTime);
 }
 
 
