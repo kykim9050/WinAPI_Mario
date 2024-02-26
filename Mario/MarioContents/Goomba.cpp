@@ -59,10 +59,10 @@ void AGoomba::StateUpdate(float _DeltaTime)
 
 }
 
-void AGoomba::CollisionUpdate(float _DeltaTime)
-{
-	CollisionCheck();
-}
+//void AGoomba::CollisionUpdate(float _DeltaTime)
+//{
+//	CollisionCheck();
+//}
 
 void AGoomba::CollisionCheck()
 {

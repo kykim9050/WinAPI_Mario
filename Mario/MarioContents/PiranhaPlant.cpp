@@ -73,11 +73,11 @@ void APiranhaPlant::StateChange(EActorState _ActorState)
 	SetActorState(_ActorState);
 }
 
-
-void APiranhaPlant::CollisionUpdate(float _DeltaTime)
-{
-	CollisionCheck();
-}
+//
+//void APiranhaPlant::CollisionUpdate(float _DeltaTime)
+//{
+//	CollisionCheck();
+//}
 
 void APiranhaPlant::CollisionCheck()
 {

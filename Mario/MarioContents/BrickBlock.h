@@ -21,6 +21,8 @@ protected:
 
 	void StateUpdate(float _DeltaTime) override;
 	void StateChange(EActorState _ActorState) override;
+	void CollisionCheck();
+
 
 	void IdleStart() override;
 

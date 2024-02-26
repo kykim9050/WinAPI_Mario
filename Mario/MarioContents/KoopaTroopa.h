@@ -35,7 +35,7 @@ protected:
 	void CalHorizonVelocityVector(float _DeltaTime);
 	void ResultMovementUpdate(float _DeltaTime) override;
 
-	void CollisionUpdate(float _DeltaTime) override;
+	//void CollisionUpdate(float _DeltaTime) override;
 	void CollisionStateChange(ECollisionState _CollisionState) override;
 	void CollisionCheck() override;
 
