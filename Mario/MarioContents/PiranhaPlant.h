@@ -35,6 +35,6 @@ protected:
 	
 private:
 	float IdleDelayTime = 1.0f;
-	float InitYPos = 0.0f;
+	FVector InitPos = FVector::Zero;
 };
 
