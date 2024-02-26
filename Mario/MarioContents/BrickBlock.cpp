@@ -157,11 +157,6 @@ void ABrickBlock::Move(float _DeltaTime)
 	}
 }
 
-void ABrickBlock::ResultMovementUpdate(float _DeltaTime)
-{
-	GravityVelocityVector += GravityAccVector * _DeltaTime;
-	CalTotalVelocityVector(_DeltaTime);
-	AddActorLocation(TotalVelocityVector * _DeltaTime);
-}
+
 
 

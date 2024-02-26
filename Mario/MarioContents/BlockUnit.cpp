@@ -41,3 +41,10 @@ void ABlockUnit::FirstInit(float _Deltatime)
 	InitPos = GetActorLocation();
 	StateChange(EActorState::Idle);
 }
+
+void ABlockUnit::ResultMovementUpdate(float _DeltaTime)
+{
+	GravityVelocityVector += GravityAccVector * _DeltaTime;
+	CalTotalVelocityVector(_DeltaTime);
+	AddActorLocation(TotalVelocityVector * _DeltaTime);
+}
