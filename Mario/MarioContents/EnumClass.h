@@ -52,6 +52,7 @@ enum class EActorState
 	GetSecondHit,
 	GetMonsterHit,
 	Dead,
+	Fixed,
 };
 
 enum class EActorDir

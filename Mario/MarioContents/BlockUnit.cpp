@@ -79,6 +79,9 @@ void ABlockUnit::StateChange(EActorState _ActorState)
 		case EActorState::Move:
 			MoveStart();
 			break;
+		case EActorState::Fixed:
+			FixedStart();
+			break;
 		default:
 			break;
 		}
@@ -139,12 +142,4 @@ void ABlockUnit::Idle(float _DeltaTime)
 void ABlockUnit::Move(float _DeltaTime)
 {
 	ResultMovementUpdate(_DeltaTime);
-
-	if (GetActorLocation().Y >= InitPos.Y)
-	{
-		GravityVelocityVector = FVector::Zero;
-		JumpVelocityVector = FVector::Zero;
-		SetActorLocation(InitPos);
-		StateChange(EActorState::Idle);
-	}
 }
