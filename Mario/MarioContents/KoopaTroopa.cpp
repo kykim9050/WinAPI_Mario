@@ -98,7 +98,7 @@ void AKoopaTroopa::GetFirstHit(float _DeltaTime)
 void AKoopaTroopa::GetSecondHit(float _DeltaTime)
 {
 	CalHorizonVelocityVector(_DeltaTime);
-	HorizonVelocityVector = ActorMoveDir * 500.0f;
+	HorizonVelocityVector = ActorMoveDir * 600.0f;
 	ResultMovementUpdate(_DeltaTime);
 }
 
