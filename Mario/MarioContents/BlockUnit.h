@@ -21,8 +21,18 @@ public:
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
-	void CollisionStateChange(ECollisionState _CollisionState) override;
 
+	void StateUpdate(float _DeltaTime);
+	void StateChange(EActorState _ActorState);
+	void CollisionCheck();
+	void CollisionStateChange(ECollisionState _CollisionState);
+
+	void IdleStart();
+	void MoveStart();
+	void GetHitStart();
+
+	void Idle(float _DeltaTime);
+	void Move(float _DeltaTime);
 	void ResultMovementUpdate(float _DeltaTime);
 
 	FVector InitPos = FVector::Zero;
