@@ -82,6 +82,43 @@ public:
 		return CameraPos;
 	}
 
+	void SetAllTimeScale(float _Scale)
+	{
+		for (std::pair<const int, float>& TimeScale : TimeScale)
+		{
+			TimeScale.second = _Scale;
+		}
+	}
+
+	template<typename EnumType>
+	void SetOtherTimeScale(EnumType _Value, float _Scale)
+	{
+		SetOtherTimeScale(static_cast<int>(_Value), _Scale);
+	}
+
+	void SetOtherTimeScale(int _Value, float _Scale)
+	{
+		for (std::pair<const int, float>& TimeScale : TimeScale)
+		{
+			if (TimeScale.first == _Value)
+			{
+				continue;
+			}
+
+			TimeScale.second = _Scale;
+		}
+	}
+
+	template<typename EnumType>
+	void SetTimeScale(EnumType _Value, float _Scale)
+	{
+		SetTimeScale(_Value, _Scale);
+	}
+
+	void SetTimeScale(int _Value, float _Scale)
+	{
+		TimeScale[_Value] = _Scale;
+	}
 
 protected:
 
@@ -92,6 +129,8 @@ private:
 	void LevelTick(float _DeltaTime);
 	void LevelRender(float _DeltaTime);
 	void LevelRelease(float _DeltaTime);
+
+	std::map<int, float> TimeScale;
 
 	std::map<int, std::list<UImageRenderer*>> Renderers;
 

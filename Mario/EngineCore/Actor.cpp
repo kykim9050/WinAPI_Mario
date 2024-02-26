@@ -35,6 +35,14 @@ AActor::~AActor()
 
 }
 
+void AActor::ChildTick(float _DeltaTime)
+{
+	for (UImageRenderer* Renderer : Renderers)
+	{
+		Renderer->Tick(_DeltaTime);
+	}
+}
+
 void AActor::Tick(float _DeltaTime)
 {
 	UTickObject::Tick(_DeltaTime);
