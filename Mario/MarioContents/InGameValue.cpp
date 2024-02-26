@@ -49,3 +49,9 @@ const int UInGameValue::PiranhaPlantImageYValue = 1;
 
 const int UInGameValue::PiranhaPlantBodyCollisionScaleX = 32;
 const int UInGameValue::PiranhaPlantBodyCollisionScaleY = 64;
+
+const int UInGameValue::BrickBlockImageXValue = 5;
+const int UInGameValue::BrickBlockImageYValue = 1;
+
+const int UInGameValue::CoinBlockImageXValue = 5;
+const int UInGameValue::CoinBlockImageYValue = 1;

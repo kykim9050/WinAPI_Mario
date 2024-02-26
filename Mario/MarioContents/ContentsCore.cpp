@@ -48,14 +48,17 @@ void UContentsCore::BeginPlay()
 	UEngineResourcesManager::GetInst().CuttingImage("KoopaTroopa_Left.png", UInGameValue::KoopaTroopaImageXValue, UInGameValue::KoopaTroopaImageYValue);
 	UEngineResourcesManager::GetInst().CuttingImage("KoopaTroopa_Right.png", UInGameValue::KoopaTroopaImageXValue, UInGameValue::KoopaTroopaImageYValue);
 	UEngineResourcesManager::GetInst().CuttingImage("PiranhaPlant.png", UInGameValue::PiranhaPlantImageXValue, UInGameValue::PiranhaPlantImageYValue);
-	
-	CreateLevel<UTitleLevel>("TitleLevel");
-	CreateLevel<U1_1StageLevel>("1_1StageLevel");
-	CreateLevel<UEndingLevel>("EndingLevel");
-	ChangeLevel("1_1StageLevel");
+	UEngineResourcesManager::GetInst().CuttingImage("BrickBlock.png", UInGameValue::BrickBlockImageXValue, UInGameValue::BrickBlockImageYValue);
+	UEngineResourcesManager::GetInst().CuttingImage("CoinBlock.png", UInGameValue::CoinBlockImageXValue, UInGameValue::CoinBlockImageYValue);
 
-	/*CreateLevel<UTestLevel>("TestLevel");
-	ChangeLevel("TestLevel");*/
+
+	//CreateLevel<UTitleLevel>("TitleLevel");
+	//CreateLevel<U1_1StageLevel>("1_1StageLevel");
+	//CreateLevel<UEndingLevel>("EndingLevel");
+	//ChangeLevel("1_1StageLevel");
+
+	CreateLevel<UTestLevel>("TestLevel");
+	ChangeLevel("TestLevel");
 
 }
 
