@@ -31,8 +31,8 @@ void UContentsCore::BeginPlay()
 
 
 	UEngineDirectory ResourcesDir = UEngineDirectory();
-	ResourcesDir.MoveParent();
-	ResourcesDir.Move("Resources");
+
+	ResourcesDir.MoveToSearchChild("Resources");
 
 	std::list<UEngineFile> ResourcesList = ResourcesDir.AllFile({ ".png" }, true);
 
