@@ -75,7 +75,24 @@ void ABrickBlock::CollisionCheck()
 {
 	ABlockUnit::CollisionCheck();
 
+	std::vector<UCollision*> Result = std::vector<UCollision*>();
 
+	APlayerMario* Player = APlayerMario::GetMainPlayer();
+
+	if (nullptr == Player)
+	{
+		MsgBoxAssert("플레이어가 존재하지 않습니다.");
+	}
+
+	if (true == BodyCollision->CollisionCheck(ECollisionOrder::Player, Result))
+	{
+		const FTransform& PlayerColTrans = Player->GetBodyCollision()->GetActorBaseTransform();
+		const FTransform& BlockColTrans = BodyCollision->GetActorBaseTransform();
+		//float OffsetYValue = BodyCollision->GetActorBaseTransform().GetScale().hY();
+
+		int a = 0;
+		return;
+	}
 }
 
 
