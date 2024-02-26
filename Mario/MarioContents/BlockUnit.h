@@ -16,10 +16,14 @@ public:
 	ABlockUnit& operator=(const ABlockUnit& _Other) = delete;
 	ABlockUnit& operator=(ABlockUnit&& _Other) noexcept = delete;
 
+	virtual void FirstInit(float _Deltatime);
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 	void CollisionStateChange(ECollisionState _CollisionState) override;
+
+	FVector InitPos = FVector::Zero;
 
 private:
 

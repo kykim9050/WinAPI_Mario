@@ -28,7 +28,7 @@ void ABrickBlock::BeginPlay()
 	BodyCollision->SetTransform({ { 0,0 }, { UInGameValue::BlockCollisionScaleX, UInGameValue::BlockCollisionScaleY} });
 	BodyCollision->SetColType(ECollisionType::Rect);
 
-	StateChange(EActorState::Idle);
+	SetActorState(EActorState::FirstInit);
 }
 
 void ABrickBlock::Tick(float _DeltaTime)
@@ -42,8 +42,14 @@ void ABrickBlock::StateUpdate(float _DeltaTime)
 
 	switch (ActorState)
 	{
+	case EActorState::FirstInit:
+		FirstInit(_DeltaTime);
+		break;
 	case EActorState::Idle:
 		Idle(_DeltaTime);
+		break;
+	case EActorState::Move:
+		Move(_DeltaTime);
 		break;
 	default:
 		break;
@@ -97,9 +103,11 @@ void ABrickBlock::CollisionCheck()
 			CollisionStateChange(ECollisionState::GetHit);
 			return;
 		}
-
+		
 		return;
 	}
+
+	CollisionStateChange(ECollisionState::None);
 }
 
 void ABrickBlock::CollisionStateChange(ECollisionState _CollisionState)
@@ -120,19 +128,40 @@ void ABrickBlock::GetHitStart()
 void ABrickBlock::IdleStart()
 {
 	ABlockUnit::IdleStart();
-
 	Renderer->ChangeAnimation("BrickBlock_Init");
 }
 
 void ABrickBlock::MoveStart()
 {
 	ABlockUnit::MoveStart();
+
+	JumpVelocityVector = FVector::Up * 400.0f;
 	Renderer->ChangeAnimation("BrickBlock_EmptyHit");
 }
 
 void ABrickBlock::Idle(float _DeltaTime)
 {
 	ABlockUnit::Idle(_DeltaTime);
+}
+
+void ABrickBlock::Move(float _DeltaTime)
+{
+	ResultMovementUpdate(_DeltaTime);
+
+	if (GetActorLocation().Y >= InitPos.Y)
+	{
+		GravityVelocityVector = FVector::Zero;
+		JumpVelocityVector = FVector::Zero;
+		SetActorLocation(InitPos);
+		StateChange(EActorState::Idle);
+	}
+}
+
+void ABrickBlock::ResultMovementUpdate(float _DeltaTime)
+{
+	GravityVelocityVector += GravityAccVector * _DeltaTime;
+	CalTotalVelocityVector(_DeltaTime);
+	AddActorLocation(TotalVelocityVector * _DeltaTime);
 }
 
 
