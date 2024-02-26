@@ -23,15 +23,75 @@ void ABrickBlock::BeginPlay()
 	Renderer->CreateAnimation("BrickBlock_Debris", "BrickBlock.png", 2, 2, 0.1f, true);
 	Renderer->CreateAnimation("BrickBlock_Hit", "BrickBlock.png", 3, 3, 0.1f, true);
 	Renderer->CreateAnimation("BrickBlock_AfterHit", "BrickBlock.png", 4, 4, 0.1f, true);
-	Renderer->ChangeAnimation("BrickBlock_Init");
 
 	BodyCollision = CreateCollision(ECollisionOrder::Block);
 	BodyCollision->SetTransform({ { 0,0 }, { UInGameValue::BlockCollisionScaleX, UInGameValue::BlockCollisionScaleY} });
 	BodyCollision->SetColType(ECollisionType::Rect);
 
+	StateChange(EActorState::Idle);
 }
 
 void ABrickBlock::Tick(float _DeltaTime)
 {
 	ABlockUnit::Tick(_DeltaTime);
+
+	CollisionUpdate(_DeltaTime);
+
+	StateUpdate(_DeltaTime);
 }
+
+void ABrickBlock::StateUpdate(float _DeltaTime)
+{
+	ABlockUnit::StateUpdate(_DeltaTime);
+
+	switch (ActorState)
+	{
+	case EActorState::Idle:
+		Idle(_DeltaTime);
+		break;
+	default:
+		break;
+	}
+}
+
+void ABrickBlock::StateChange(EActorState _ActorState)
+{
+	ABlockUnit::StateChange(_ActorState);
+
+	if (ActorState != _ActorState)
+	{
+		switch (_ActorState)
+		{
+		case EActorState::Idle:
+			IdleStart();
+			break;
+		default:
+			break;
+		}
+	}
+
+	SetActorState(_ActorState);
+}
+
+//void ABrickBlock::CollisionUpdate(float _DeltaTime)
+//{
+//	CollisionCheck();
+//}
+
+
+
+
+
+void ABrickBlock::IdleStart()
+{
+	ABlockUnit::IdleStart();
+
+	Renderer->ChangeAnimation("BrickBlock_Init");
+}
+
+void ABrickBlock::Idle(float _DeltaTime)
+{
+	ABlockUnit::Idle(_DeltaTime);
+}
+
+

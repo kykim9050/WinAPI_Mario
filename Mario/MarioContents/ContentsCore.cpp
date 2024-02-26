@@ -52,13 +52,13 @@ void UContentsCore::BeginPlay()
 	UEngineResourcesManager::GetInst().CuttingImage("CoinBlock.png", UInGameValue::CoinBlockImageXValue, UInGameValue::CoinBlockImageYValue);
 
 
-	//CreateLevel<UTitleLevel>("TitleLevel");
-	//CreateLevel<U1_1StageLevel>("1_1StageLevel");
-	//CreateLevel<UEndingLevel>("EndingLevel");
-	//ChangeLevel("1_1StageLevel");
+	CreateLevel<UTitleLevel>("TitleLevel");
+	CreateLevel<U1_1StageLevel>("1_1StageLevel");
+	CreateLevel<UEndingLevel>("EndingLevel");
+	ChangeLevel("1_1StageLevel");
 
-	CreateLevel<UTestLevel>("TestLevel");
-	ChangeLevel("TestLevel");
+	/*CreateLevel<UTestLevel>("TestLevel");
+	ChangeLevel("TestLevel");*/
 
 }
 
