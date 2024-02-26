@@ -128,6 +128,11 @@ void ABlockUnit::CollisionCheck()
 
 void ABlockUnit::GetHitStart()
 {
+	if (EActorState::Fixed == ActorState)
+	{
+		return;
+	}
+
 	StateChange(EActorState::Move);
 }
 
@@ -140,8 +145,8 @@ void ABlockUnit::MoveStart()
 
 void ABlockUnit::FixedStart()
 {
-	SetJumpZero();
-	SetGravityZero();
+	/*SetJumpZero();
+	SetGravityZero();*/
 }
 
 void ABlockUnit::Idle(float _DeltaTime)
@@ -156,6 +161,6 @@ void ABlockUnit::Move(float _DeltaTime)
 
 void ABlockUnit::Fixed(float _DeltaTime)
 {
-	CalTotalVelocityVector(_DeltaTime);
-	AddActorLocation(TotalVelocityVector * _DeltaTime);
+	/*CalTotalVelocityVector(_DeltaTime);
+	AddActorLocation(TotalVelocityVector * _DeltaTime);*/
 }

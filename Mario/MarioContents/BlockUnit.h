@@ -27,7 +27,7 @@ protected:
 	void CollisionCheck();
 	void CollisionStateChange(ECollisionState _CollisionState);
 
-	virtual void IdleStart()	{	}
+	virtual void IdleStart()	{}
 	virtual void MoveStart();
 	virtual void FixedStart();
 	void GetHitStart();

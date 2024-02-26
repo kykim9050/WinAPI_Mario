@@ -123,7 +123,7 @@ protected:
 
 private:
 	// 수평 방향 속도 크기에 영향을 끼치는 가속도 관련 벡터
-	FVector HorizonAccVector = FVector::Right * 1000.0f;
+	FVector HorizonAccVector = FVector::Right * 700.0f;
 	// 수평 방향 최고 제한 속도의 크기
 	float HorizonMaxSpeed = 400.0f;
 
