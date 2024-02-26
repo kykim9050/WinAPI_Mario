@@ -19,10 +19,12 @@ public:
 	int Update(float _DeltaTime);
 };
 
+class AActor;
 class UWindowImage;
 // Ό³Έν :
 class UImageRenderer : public USceneComponent
 {
+	friend AActor;
 public:
 
 public:
@@ -223,6 +225,7 @@ public:
 
 protected:
 	void BeginPlay() override;
+	void Tick(float _Time) override;
 
 private:
 	int InfoIndex = 0;
