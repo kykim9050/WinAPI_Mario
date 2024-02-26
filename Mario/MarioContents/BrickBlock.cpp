@@ -90,7 +90,12 @@ void ABrickBlock::CollisionCheck()
 		const FTransform& BlockColTrans = BodyCollision->GetActorBaseTransform();
 		//float OffsetYValue = BodyCollision->GetActorBaseTransform().GetScale().hY();
 
-		int a = 0;
+		if (PlayerColTrans.GetPosition().X <= BlockColTrans.Right() && PlayerColTrans.GetPosition().X >= BlockColTrans.Left() && PlayerColTrans.Top() < BlockColTrans.Bottom())
+		{
+			int a = 0;
+			return;
+		}
+
 		return;
 	}
 }
