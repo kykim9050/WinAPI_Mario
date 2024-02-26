@@ -19,6 +19,13 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
+	void StateUpdate(float _DeltaTime) override;
+	void StateChange(EActorState _ActorState) override;
+
+	void IdleStart() override;
+
+	void Idle(float _DeltaTime) override;
+
 private:
 
 };
