@@ -78,3 +78,39 @@ std::list<UEngineFile> UEngineDirectory::AllFile(
 	AllFileRecursive(Path.string(), Result, _Ext, _Rescursive);
 	return Result;
 }
+
+std::list<UEngineDirectory> UEngineDirectory::AllDirectory(bool _Recursive/* = false*/)
+{
+	std::list<UEngineDirectory> Result;
+	AllDirectoryRecursive(Path.string(), Result, _Recursive);
+	return Result;
+}
+
+void UEngineDirectory::AllDirectoryRecursive(const std::string_view _Path, std::list<UEngineDirectory>& _Result, bool _Recursive/* = false*/)
+{
+	std::filesystem::directory_iterator DirIter = std::filesystem::directory_iterator(_Path);
+
+	for (const std::filesystem::directory_entry& Entry : DirIter)
+	{
+		std::filesystem::path Path = Entry.path();
+		std::filesystem::path Ext = Entry.path().extension();
+		std::string UpperExt = UEngineString::ToUpper(Ext.string());
+
+		if (true != Entry.is_directory())
+		{
+			continue;
+		}
+
+		_Result.push_back(UEngineDirectory(Path));
+
+		if (true == _Recursive)
+		{
+			AllDirectoryRecursive(Path.string(), _Result, _Recursive);
+		}
+	}
+}
+
+void UEngineDirectory::MoveToSearchChild(std::string_view _Path)
+{
+
+}
