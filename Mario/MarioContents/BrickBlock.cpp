@@ -127,19 +127,18 @@ void ABrickBlock::Tick(float _DeltaTime)
 //
 //
 //
-//void ABrickBlock::IdleStart()
-//{
-//	ABlockUnit::IdleStart();
-//	Renderer->ChangeAnimation("BrickBlock_Init");
-//}
-//
-//void ABrickBlock::MoveStart()
-//{
-//	ABlockUnit::MoveStart();
-//
-//	JumpVelocityVector = FVector::Up * 400.0f;
-//	Renderer->ChangeAnimation("BrickBlock_EmptyHit");
-//}
+void ABrickBlock::IdleStart()
+{
+	ABlockUnit::IdleStart();
+	Renderer->ChangeAnimation("BrickBlock_Init");
+}
+
+void ABrickBlock::MoveStart()
+{
+	ABlockUnit::MoveStart();
+
+	Renderer->ChangeAnimation("BrickBlock_EmptyHit");
+}
 //
 //void ABrickBlock::Idle(float _DeltaTime)
 //{
