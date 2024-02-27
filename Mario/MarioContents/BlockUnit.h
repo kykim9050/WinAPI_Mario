@@ -39,7 +39,9 @@ protected:
 
 	FVector InitPos = FVector::Zero;
 
+
 private:
+	UCollision* SideCollision = nullptr;
 	const int BodyColInitXPos = 0;
 	const int BodyColInitYPos = 16;
 	const int BodyColXoffset = 8;
