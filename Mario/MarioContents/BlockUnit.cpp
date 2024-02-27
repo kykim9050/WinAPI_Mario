@@ -11,6 +11,10 @@ ABlockUnit::~ABlockUnit()
 void ABlockUnit::BeginPlay()
 {
 	UStateUnit::BeginPlay();
+
+	BodyCollision = CreateCollision(ECollisionOrder::CollisionBlock);
+	BodyCollision->SetTransform({ { 0,16 }, { UInGameValue::BlockCollisionScaleX - 8, UInGameValue::BlockCollisionScaleY - 32} });
+	BodyCollision->SetColType(ECollisionType::Rect);
 }
 
 void ABlockUnit::Tick(float _DeltaTime)
