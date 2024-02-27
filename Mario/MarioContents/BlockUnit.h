@@ -40,6 +40,9 @@ protected:
 	FVector InitPos = FVector::Zero;
 
 private:
-
+	const int BodyColInitXPos = 0;
+	const int BodyColInitYPos = 16;
+	const int BodyColXoffset = 8;
+	const int BodyColYoffset = 32;
 };
 

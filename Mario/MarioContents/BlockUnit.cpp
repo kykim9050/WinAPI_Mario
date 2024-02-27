@@ -13,7 +13,7 @@ void ABlockUnit::BeginPlay()
 	UStateUnit::BeginPlay();
 
 	BodyCollision = CreateCollision(ECollisionOrder::CollisionBlock);
-	BodyCollision->SetTransform({ { 0,16 }, { UInGameValue::BlockCollisionScaleX - 8, UInGameValue::BlockCollisionScaleY - 32} });
+	BodyCollision->SetTransform({ { BodyColInitXPos, BodyColInitYPos }, { UInGameValue::BlockCollisionScaleX - BodyColXoffset, UInGameValue::BlockCollisionScaleY - BodyColYoffset} });
 	BodyCollision->SetColType(ECollisionType::Rect);
 }
 
