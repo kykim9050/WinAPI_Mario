@@ -482,6 +482,7 @@ void APlayerMario::GetHitStart()
 	Renderer->ChangeAnimation("Dead");
 	--Life;
 
+	SetGravityZero();
 	JumpVelocityVector = FVector::Up * 500.0f;
 }
 

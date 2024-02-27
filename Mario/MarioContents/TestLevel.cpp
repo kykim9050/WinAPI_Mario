@@ -33,26 +33,26 @@ void UTestLevel::BeginPlay()
 	ACoinBlock* CoinBlock1 = SpawnActor< ACoinBlock>();
 	
 	//AGoomba* MonsterGoomba1 = SpawnActor<AGoomba>();
-	AGoomba* MonsterGoomba2 = SpawnActor<AGoomba>();
+	//AGoomba* MonsterGoomba2 = SpawnActor<AGoomba>();
 	//AGoomba* MonsterGoomba3 = SpawnActor<AGoomba>();
 	//
 	//AKoopaTroopa* MonsterKoopaTroopa1 = SpawnActor< AKoopaTroopa>();
 	//AKoopaTroopa* MonsterKoopaTroopa2 = SpawnActor< AKoopaTroopa>();
 	//
-	//APiranhaPlant* MonsterPiranhaPlant1 = SpawnActor< APiranhaPlant>();
+	APiranhaPlant* MonsterPiranhaPlant1 = SpawnActor< APiranhaPlant>();
 
 	Mario->SetActorLocation({ UInGameValue::MarioInitXPos, UInGameValue::MarioInitYPos });
 	PlayerUI->SetActorLocation({ UInGameValue::UIXScaleValue / 2 * UInGameValue::WindowSizeMulValue, UInGameValue::UIYScaleValue / 2 * UInGameValue::WindowSizeMulValue });
 	BrickBlock1->SetActorLocation({ 250,450 });
 	CoinBlock1->SetActorLocation({ 350,450 });
 	
-	//MonsterPiranhaPlant1->SetActorLocation({ 1875,550 });
+	MonsterPiranhaPlant1->SetActorLocation({ 1875,550 });
 	//
 	//MonsterKoopaTroopa1->SetActorLocation({ 1000,500 });
 	//MonsterKoopaTroopa2->SetActorLocation({ 1700,500 });
 	//
 	//MonsterGoomba1->SetActorLocation({ 1800, 500 });
-	MonsterGoomba2->SetActorLocation({ 1300, 500 });
+	//MonsterGoomba2->SetActorLocation({ 1300, 500 });
 	//MonsterGoomba3->SetActorLocation({ 2000, 500 });
 }
 
