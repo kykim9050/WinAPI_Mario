@@ -638,7 +638,24 @@ void APlayerMario::ResultMovementUpdate(float _DeltaTime)
 {
 	CalHorizonVelocityVector(_DeltaTime);
 	CalGravityVelocityVector(_DeltaTime);
+	GroundUp();
 	CalJumpVelocityVector(_DeltaTime);
 	CalTotalVelocityVector(_DeltaTime);
 	ApplyMovement(_DeltaTime);
+}
+
+void APlayerMario::GroundUp()
+{
+	while (true)
+	{
+		Color8Bit Color = UContentsFunction::GetCollisionMapImg()->GetColor(GetActorLocation().iX(), GetActorLocation().iY(), UInGameValue::CollisionColor);
+		if (UInGameValue::CollisionColor == Color)
+		{
+			AddActorLocation(FVector::Up);
+		}
+		else
+		{
+			break;
+		}
+	}
 }
