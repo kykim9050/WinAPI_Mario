@@ -78,6 +78,16 @@ public:
 		return AllKeys[_Key].Down;
 	}
 
+	static float GetPressTime(int _Key)
+	{
+		if (false == AllKeys.contains(_Key))
+		{
+			MsgBoxAssert("입력설정이 존재하지 않는 키 입니다");
+		}
+
+		return AllKeys[_Key].PressTime;
+	}
+
 	static bool IsPress(int _Key)
 	{
 		if (false == AllKeys.contains(_Key))
