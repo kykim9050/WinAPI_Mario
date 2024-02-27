@@ -49,7 +49,7 @@ std::string UStateUnit::ChangeAnimationName(std::string _MainName)
 
 void UStateUnit::CalGravityVelocityVector(float _DeltaTime)
 {
-	GravityVelocityVector += GravityAccVector * _DeltaTime;
+	GravityVelocityVector += GravityAccVector * _DeltaTime * GravityRatio;
 
 	Color8Bit Color = UContentsFunction::GetCollisionMapImg()->GetColor(GetActorLocation().iX(), GetActorLocation().iY(), UInGameValue::CollisionColor);
 
