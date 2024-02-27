@@ -114,6 +114,8 @@ void ABlockUnit::CollisionCheck()
 		if (PlayerColTrans.GetPosition().X <= BlockColTrans.Right() && PlayerColTrans.GetPosition().X >= BlockColTrans.Left() && PlayerColTrans.Top() < BlockColTrans.Bottom())
 		{
 			Player->SetJumpZero();
+			Player->SetGravityRatio(1.0f);
+			//Player->SetGravityRatio(1.0f);
 
 			CollisionStateChange(ECollisionState::GetHit);
 			return;
