@@ -127,7 +127,7 @@ private:
 	// 수평 방향 최고 제한 속도의 크기
 	float HorizonMaxSpeed = 400.0f;
 
-	FVector MaxJumpVelocityVector = FVector::Up * 900.0f;
+	FVector MaxJumpVelocityVector = FVector::Up * 700.0f;
 	FVector CollisionJumpVelocityVector = FVector::Up * 500.0f;
 
 	// FreeMove 작동 시 속도
