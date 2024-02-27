@@ -103,6 +103,8 @@ protected:
 	UCollision* BodyCollision = nullptr;
 	std::string CurAnimationName = "None";
 
+	float GravityRatio = 1.0f;
+
 	int Life = 1;
 
 private:
