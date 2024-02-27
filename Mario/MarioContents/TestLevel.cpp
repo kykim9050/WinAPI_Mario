@@ -33,7 +33,7 @@ void UTestLevel::BeginPlay()
 	ACoinBlock* CoinBlock1 = SpawnActor< ACoinBlock>();
 	
 	//AGoomba* MonsterGoomba1 = SpawnActor<AGoomba>();
-	//AGoomba* MonsterGoomba2 = SpawnActor<AGoomba>();
+	AGoomba* MonsterGoomba2 = SpawnActor<AGoomba>();
 	//AGoomba* MonsterGoomba3 = SpawnActor<AGoomba>();
 	//
 	//AKoopaTroopa* MonsterKoopaTroopa1 = SpawnActor< AKoopaTroopa>();
@@ -52,7 +52,7 @@ void UTestLevel::BeginPlay()
 	//MonsterKoopaTroopa2->SetActorLocation({ 1700,500 });
 	//
 	//MonsterGoomba1->SetActorLocation({ 1800, 500 });
-	//MonsterGoomba2->SetActorLocation({ 1300, 500 });
+	MonsterGoomba2->SetActorLocation({ 1300, 500 });
 	//MonsterGoomba3->SetActorLocation({ 2000, 500 });
 }
 

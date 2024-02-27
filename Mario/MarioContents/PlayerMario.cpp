@@ -171,13 +171,13 @@ void APlayerMario::CollisionJumpStart()
 		Renderer->ChangeAnimation("Jump_Right");
 	}
 
-	GravityVelocityVector = FVector::Zero;
+	SetGravityZero();
 	JumpVelocityVector = CollisionJumpVelocityVector;
 }
 
 void APlayerMario::JumpStart()
 {
-	SetGravityRatio(0.0f);
+	SetGravityRatio(0.5f);
 	//EngineDebug::OutPutDebugText("JumpStart");
 	DirCheck();
 	Renderer->ChangeAnimation(ChangeAnimationName("Jump"));
@@ -194,11 +194,13 @@ void APlayerMario::IdleStart()
 {
 	//EngineDebug::OutPutDebugText("IdleStart");
 	DirCheck();
+	SetGravityRatio(1.0f);
 	Renderer->ChangeAnimation(ChangeAnimationName("Idle"));
 }
 
 void APlayerMario::MoveStart()
 {
+	SetGravityRatio(1.0f);
 	//EngineDebug::OutPutDebugText("MoveStart");
 	DirCheck();
 	Renderer->ChangeAnimation(ChangeAnimationName("Move"));
@@ -206,6 +208,7 @@ void APlayerMario::MoveStart()
 
 void APlayerMario::ReverseMoveStart()
 {
+	SetGravityRatio(1.0f);
 	//EngineDebug::OutPutDebugText("ReverseMoveStart");
 	DirCheck();
 	Renderer->ChangeAnimation(ChangeAnimationName("ReverseMove"));
@@ -327,9 +330,9 @@ void APlayerMario::CollisionJump(float _DeltaTime)
 void APlayerMario::Jump(float _DeltaTime)
 {
 
-	UEngineDebug::OutPutDebugText(std::to_string(UEngineInput::GetPressTime('Z')));
+	//UEngineDebug::OutPutDebugText(std::to_string(UEngineInput::GetPressTime('Z')));
 
-	if (UEngineInput::IsUp('Z') || 0.2f < UEngineInput::GetPressTime('Z'))
+	if (UEngineInput::IsUp('Z') || 0.15f < UEngineInput::GetPressTime('Z'))
 	{
 		SetGravityRatio(1.0f);
 	}

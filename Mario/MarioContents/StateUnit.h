@@ -100,7 +100,7 @@ protected:
 
 	FVector HorizonVelocityVector = FVector::Zero;
 	FVector GravityVelocityVector = FVector::Zero;
-	FVector GravityAccVector = FVector::Down * 2000.0f;
+	FVector GravityAccVector = FVector::Down * 1500.0f;
 	FVector TotalVelocityVector = FVector::Zero;
 	FVector JumpVelocityVector = FVector::Zero;
 
