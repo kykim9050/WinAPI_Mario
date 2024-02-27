@@ -22,10 +22,6 @@ void ACoinBlock::BeginPlay()
 	Renderer->CreateAnimation("CoinBlock_Hit", "CoinBlock.png", 3, 3, 0.1f, true);
 	Renderer->CreateAnimation("CoinBlock_AfterHit", "CoinBlock.png", 4, 4, 0.1f, true);
 
-	BodyCollision = CreateCollision(ECollisionOrder::Block);
-	BodyCollision->SetTransform({ { 0,0 }, { UInGameValue::BlockCollisionScaleX, UInGameValue::BlockCollisionScaleY} });
-	BodyCollision->SetColType(ECollisionType::Rect);
-
 	SetActorState(EActorState::FirstInit);
 }
 

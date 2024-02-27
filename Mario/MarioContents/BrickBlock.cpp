@@ -24,10 +24,6 @@ void ABrickBlock::BeginPlay()
 	Renderer->CreateAnimation("BrickBlock_Hit", "BrickBlock.png", 3, 3, 0.1f, true);
 	Renderer->CreateAnimation("BrickBlock_AfterHit", "BrickBlock.png", 4, 4, 0.1f, true);
 
-	BodyCollision = CreateCollision(ECollisionOrder::Block);
-	BodyCollision->SetTransform({ { 0,0 }, { UInGameValue::BlockCollisionScaleX, UInGameValue::BlockCollisionScaleY} });
-	BodyCollision->SetColType(ECollisionType::Rect);
-
 	SetActorState(EActorState::FirstInit);
 }
 

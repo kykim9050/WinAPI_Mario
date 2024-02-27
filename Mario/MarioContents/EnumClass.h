@@ -70,6 +70,7 @@ enum class ECollisionOrder
 	Player,
 	AttackableMonster,
 	Block,
+	CollisionBlock,
 };
 
 enum class ECollisionState
