@@ -144,5 +144,6 @@ private:
 	void ApplyMovement(float _DeltaTime) override;
 	void CalHorizonVelocityVector(float _DeltaTime) override;
 	void CalJumpVelocityVector(float _DeltaTime) override;
+	void GroundUp();
 };
 
