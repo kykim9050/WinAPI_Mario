@@ -231,7 +231,7 @@ void APlayerMario::IdleStart()
 void APlayerMario::MoveStart()
 {
 	//SetGravityRatio(1.0f);
-	UEngineDebug::OutPutDebugText("MoveStart");
+	//UEngineDebug::OutPutDebugText("MoveStart");
 	DirCheck();
 	Renderer->ChangeAnimation(ChangeAnimationName("Move"));
 }
@@ -249,6 +249,8 @@ void APlayerMario::ReverseMoveStart()
 
 void APlayerMario::ReverseMove(float _DeltaTime)
 {
+	BlockCollisionCheck();
+
 	if (UEngineInput::IsDown('Z'))
 	{
 		StateChange(EActorState::Jump);
@@ -293,6 +295,7 @@ void APlayerMario::ReverseMove(float _DeltaTime)
 // X축 이동만을 담당하는 함수
 void APlayerMario::Move(float _DeltaTime)
 {
+	BlockCollisionCheck();
 
 	if (HorizonVelocityVector.X < 3.0f && HorizonVelocityVector.X > -3.0f && (UEngineInput::IsFree(VK_LEFT) && UEngineInput::IsFree(VK_RIGHT)))
 	{
@@ -331,12 +334,12 @@ void APlayerMario::CollisionJump(float _DeltaTime)
 
 	if (UEngineInput::IsPress(VK_LEFT))
 	{
-		AddHorizonVelocityVector(FVector::Left * _DeltaTime);
+		AddHorizonVelocityVector(FVector::Left * _DeltaTime * 0.5);
 	}
 
 	if (UEngineInput::IsPress(VK_RIGHT))
 	{
-		AddHorizonVelocityVector(FVector::Right * _DeltaTime);
+		AddHorizonVelocityVector(FVector::Right * _DeltaTime * 0.5);
 	}
 
 	ResultMovementUpdate(_DeltaTime);
@@ -459,7 +462,7 @@ void APlayerMario::CameraMove(float _DeltaTime)
 
 void APlayerMario::Idle(float _DeltaTime)
 {
-
+	BlockCollisionCheck();
 
 	if (UEngineInput::IsDown('1'))
 	{
