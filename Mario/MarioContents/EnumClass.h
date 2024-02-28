@@ -53,6 +53,7 @@ enum class EActorState
 	GetMonsterHit,
 	Dead,
 	Fixed,
+	OnTheBlock,
 };
 
 enum class EActorDir

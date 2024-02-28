@@ -160,7 +160,8 @@ void ABlockUnit::CollisionCheck()
 			PlayerColTrans.GetPosition().Y < BlockColTrans.Top())
 		{
 			//UEngineDebug::OutPutDebugText("Occur Block Top Collision");
-			Player->CollisionStateChange(ECollisionState::BlockTopHit);
+			//Player->CollisionStateChange(ECollisionState::BlockTopHit);
+			Player->StateChange(EActorState::OnTheBlock);
 			return;
 		}
 
