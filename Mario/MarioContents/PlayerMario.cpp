@@ -96,6 +96,7 @@ void APlayerMario::StateChange(EActorState _PlayerState)
 		}
 	}
 
+	UEngineDebug::OutPutDebugText(std::to_string(static_cast<int>(ActorState)));
 	SetActorState(_PlayerState);
 }
 
@@ -200,6 +201,7 @@ void APlayerMario::CollisionJumpStart()
 		Renderer->ChangeAnimation("Jump_Right");
 	}
 
+	IsOnTheBlock = false;
 	SetGravityZero();
 	JumpVelocityVector = CollisionJumpVelocityVector;
 }
@@ -208,6 +210,7 @@ void APlayerMario::JumpStart()
 {
 	SetGravityRatio(0.0f);
 	//EngineDebug::OutPutDebugText("JumpStart");
+	IsOnTheBlock = false;
 	DirCheck();
 	Renderer->ChangeAnimation(ChangeAnimationName("Jump"));
 
@@ -222,6 +225,7 @@ void APlayerMario::FreeMoveStart()
 void APlayerMario::IdleStart()
 {
 	//EngineDebug::OutPutDebugText("IdleStart");
+	IsOnTheBlock = false;
 	DirCheck();
 	Renderer->ChangeAnimation(ChangeAnimationName("Idle"));
 }
@@ -230,6 +234,7 @@ void APlayerMario::MoveStart()
 {
 	//SetGravityRatio(1.0f);
 	//UEngineDebug::OutPutDebugText("MoveStart");
+	IsOnTheBlock = false;
 	DirCheck();
 	Renderer->ChangeAnimation(ChangeAnimationName("Move"));
 }
@@ -238,6 +243,7 @@ void APlayerMario::ReverseMoveStart()
 {
 	//SetGravityRatio(1.0f);
 	//EngineDebug::OutPutDebugText("ReverseMoveStart");
+	IsOnTheBlock = false;
 	DirCheck();
 	Renderer->ChangeAnimation(ChangeAnimationName("ReverseMove"));
 }
@@ -508,7 +514,28 @@ void APlayerMario::GetHit(float _DeltaTime)
 
 void APlayerMario::OnTheBlock(float _DeltaTime)
 {
-	StateChange(EActorState::Idle);
+	//StateChange(EActorState::Idle);
+	BlockCollisionCheck();
+
+	if (HorizonVelocityVector.X < 3.0f && HorizonVelocityVector.X > -3.0f && (UEngineInput::IsFree(VK_LEFT) && UEngineInput::IsFree(VK_RIGHT)))
+	{
+		StateChange(EActorState::Idle);
+		return;
+	}
+
+	if (UEngineInput::IsDown('Z'))
+	{
+		StateChange(EActorState::Jump);
+		return;
+	}
+
+	if (UEngineInput::IsPress(VK_LEFT) || UEngineInput::IsPress(VK_RIGHT))
+	{
+		StateChange(EActorState::Move);
+		return;
+	}
+
+	ResultMovementUpdate(_DeltaTime);
 }
 
 void APlayerMario::GetHitStart()

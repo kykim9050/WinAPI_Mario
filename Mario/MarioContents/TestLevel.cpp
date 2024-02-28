@@ -30,6 +30,9 @@ void UTestLevel::BeginPlay()
 	AUI* PlayerUI = SpawnActor<AUI>();
 
 	ABrickBlock* BrickBlock1 = SpawnActor< ABrickBlock>();
+	ABrickBlock* BrickBlock2 = SpawnActor< ABrickBlock>();
+	ABrickBlock* BrickBlock3 = SpawnActor< ABrickBlock>();
+	ABrickBlock* BrickBlock4 = SpawnActor< ABrickBlock>();
 	ACoinBlock* CoinBlock1 = SpawnActor< ACoinBlock>();
 	
 	//AGoomba* MonsterGoomba1 = SpawnActor<AGoomba>();
@@ -43,7 +46,12 @@ void UTestLevel::BeginPlay()
 
 	Mario->SetActorLocation({ UInGameValue::MarioInitXPos, UInGameValue::MarioInitYPos });
 	PlayerUI->SetActorLocation({ UInGameValue::UIXScaleValue / 2 * UInGameValue::WindowSizeMulValue, UInGameValue::UIYScaleValue / 2 * UInGameValue::WindowSizeMulValue });
-	BrickBlock1->SetActorLocation({ 250,500 });
+	
+	BrickBlock1->SetActorLocation({ 250,450 });
+	BrickBlock2->SetActorLocation({ 300,450 });
+	BrickBlock3->SetActorLocation({ 350,450 });
+	BrickBlock4->SetActorLocation({ 400,450 });
+
 	CoinBlock1->SetActorLocation({ 850,600 });
 	
 	//MonsterPiranhaPlant1->SetActorLocation({ 1875,550 });
