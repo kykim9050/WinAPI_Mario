@@ -222,9 +222,7 @@ void APlayerMario::FreeMoveStart()
 void APlayerMario::IdleStart()
 {
 	//EngineDebug::OutPutDebugText("IdleStart");
-	//SetGravityRatio(1.0f);
 	DirCheck();
-	SetJumpZero();
 	Renderer->ChangeAnimation(ChangeAnimationName("Idle"));
 }
 
@@ -550,7 +548,6 @@ void APlayerMario::BlockTopHitStart()
 	SetGravityZero();
 	SetJumpZero();
 	SetGravityRatio(0.0f);
-	//StateChange(EActorState::Idle);
 }
 
 
