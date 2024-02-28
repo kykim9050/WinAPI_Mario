@@ -133,8 +133,6 @@ void ABlockUnit::CollisionCheck()
 			CollisionStateChange(ECollisionState::GetHit);
 			return;
 		}
-		
-		Player->CollisionStateChange(ECollisionState::None);
 	}
 
 	// Block의 측면과 Player의 충돌일 때
@@ -149,8 +147,6 @@ void ABlockUnit::CollisionCheck()
 			Player->CollisionStateChange(ECollisionState::BlockSideHit);
 			return;
 		}
-		
-		Player->CollisionStateChange(ECollisionState::None);
 	}
 
 	// Block의 Top과 Player의 충돌일 때
@@ -168,9 +164,9 @@ void ABlockUnit::CollisionCheck()
 			return;
 		}
 
-		Player->CollisionStateChange(ECollisionState::None);
 	}
 
+	Player->CollisionStateChange(ECollisionState::None);
 	CollisionStateChange(ECollisionState::None);
 }
 
