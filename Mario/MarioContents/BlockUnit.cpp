@@ -1,5 +1,6 @@
 #include "BlockUnit.h"
 
+
 ABlockUnit::ABlockUnit()
 {
 }
@@ -23,6 +24,8 @@ void ABlockUnit::BeginPlay()
 	BodyCollision = CreateCollision(ECollisionOrder::CollisionBlock);
 	BodyCollision->SetTransform({ { ColInitXPos, ColInitYPos }, { UInGameValue::BlockCollisionScaleX, UInGameValue::BlockCollisionScaleY - ColYoffset} });
 	BodyCollision->SetColType(ECollisionType::Rect);
+
+	Item = GetWorld()->SpawnActor< AItemUnit>();
 }
 
 void ABlockUnit::Tick(float _DeltaTime)
@@ -52,6 +55,9 @@ void ABlockUnit::FirstInit(float _Deltatime)
 {
 	InitPos = GetActorLocation();
 	StateChange(EActorState::Idle);
+
+	Item->SetActorLocation({InitPos.X, InitPos.Y - 32});
+	//Item->AllRenderersActiveOff();k
 }
 
 void ABlockUnit::ResultMovementUpdate(float _DeltaTime)
