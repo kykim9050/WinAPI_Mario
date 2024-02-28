@@ -360,7 +360,13 @@ void APlayerMario::CollisionJump(float _DeltaTime)
 void APlayerMario::Jump(float _DeltaTime)
 {
 
-	//UEngineDebug::OutPutDebugText(std::to_string(UEngineInput::GetPressTime('Z')));
+	std::vector<UCollision*> Result = std::vector<UCollision*>();
+	
+	if (true == BodyCollision->CollisionCheck(ECollisionOrder::BlockTop, Result))
+	{
+		StateChange(EActorState::OnTheBlock);
+		return;
+	}
 
 	if (UEngineInput::IsUp('Z') || 0.3f < UEngineInput::GetPressTime('Z'))
 	{
@@ -459,6 +465,8 @@ void APlayerMario::CameraMove(float _DeltaTime)
 
 void APlayerMario::Idle(float _DeltaTime)
 {
+
+
 	if (UEngineInput::IsDown('1'))
 	{
 		StateChange(EActorState::FreeMove);
