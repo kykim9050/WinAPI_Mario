@@ -88,6 +88,9 @@ void APlayerMario::StateChange(EActorState _PlayerState)
 		case EActorState::GetHit:
 			GetHitStart();
 			break;
+		case EActorState::OnTheBlock:
+			OnTheBlockStart();
+			break;
 		default:
 			break;
 		}
@@ -157,6 +160,9 @@ void APlayerMario::StateUpdate(float _DeltaTime)
 		break;
 	case EActorState::GetHit:
 		GetHit(_DeltaTime);
+		break;
+	case EActorState::OnTheBlock:
+		OnTheBlock(_DeltaTime);
 		break;
 	default:
 		break;
@@ -494,10 +500,29 @@ void APlayerMario::GetHit(float _DeltaTime)
 
 		AddActorLocation(TotalVelocityVector * _DeltaTime);
 	}
+}
 
-	// collision 맵 수정해서 캐릭터가 특정 색깔에 닿을때, 다시 시작하게 하는 Level로 넘어가게 하기
-	// 혹은 위 함수가 실행되고 나서 특정 조건을 걸어서 다시 시작하게 하기
-	// 여기에 기능 넣어야 함
+void APlayerMario::OnTheBlock(float _DeltaTime)
+{
+	if (HorizonVelocityVector.X < 3.0f && HorizonVelocityVector.X > -3.0f && (UEngineInput::IsFree(VK_LEFT) && UEngineInput::IsFree(VK_RIGHT)))
+	{
+		StateChange(EActorState::Idle);
+		return;
+	}
+
+	if (UEngineInput::IsDown('Z'))
+	{
+		StateChange(EActorState::Jump);
+		return;
+	}
+
+	if (UEngineInput::IsPress(VK_LEFT) || UEngineInput::IsPress(VK_RIGHT))
+	{
+		StateChange(EActorState::Move);
+		return;
+	}
+
+	ResultMovementUpdate(_DeltaTime);
 }
 
 void APlayerMario::GetHitStart()
@@ -507,6 +532,13 @@ void APlayerMario::GetHitStart()
 
 	SetGravityZero();
 	JumpVelocityVector = FVector::Up * 500.0f;
+}
+
+void APlayerMario::OnTheBlockStart()
+{
+	SetGravityZero();
+	SetJumpZero();
+	SetGravityRatio(0.0f);
 }
 
 void APlayerMario::BlockBotHitStart()
