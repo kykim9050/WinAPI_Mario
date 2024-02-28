@@ -81,4 +81,5 @@ enum class ECollisionState
 	OneHit,
 	TwoHit,
 	GetMonsterHit,
+	BlockBotHit,
 };

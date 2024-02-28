@@ -121,6 +121,10 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
+	void BlockBotHitStart();
+	void BlockBotHit(float _DeltaTime);
+
+
 private:
 	// 수평 방향 속도 크기에 영향을 끼치는 가속도 관련 벡터
 	FVector HorizonAccVector = FVector::Right * 700.0f;
