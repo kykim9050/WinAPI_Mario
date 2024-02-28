@@ -88,7 +88,7 @@ protected:
 	virtual void CalHorizonVelocityVector(float _DeltaTime) {}
 	virtual void CalJumpVelocityVector(float _DeltaTime) {}
 
-	void CalGravityVelocityVector(float _DeltaTime);
+	virtual void CalGravityVelocityVector(float _DeltaTime) {}
 	void CalTotalVelocityVector(float _DeltaTime);
 
 	/// <summary>

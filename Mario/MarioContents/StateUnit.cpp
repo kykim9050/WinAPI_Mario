@@ -47,17 +47,7 @@ std::string UStateUnit::ChangeAnimationName(std::string _MainName)
 	return CurAnimationName + Dir;
 }
 
-void UStateUnit::CalGravityVelocityVector(float _DeltaTime)
-{
-	GravityVelocityVector += GravityAccVector * _DeltaTime * GravityRatio;
 
-	Color8Bit Color = UContentsFunction::GetCollisionMapImg()->GetColor(GetActorLocation().iX(), GetActorLocation().iY(), UInGameValue::CollisionColor);
-
-	if (UInGameValue::CollisionColor == Color)
-	{
-		GravityVelocityVector = FVector::Zero;
-	}
-}
 
 void UStateUnit::CalTotalVelocityVector(float _DeltaTime)
 {
