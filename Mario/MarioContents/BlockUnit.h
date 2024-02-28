@@ -49,5 +49,6 @@ private:
 	const int ColYoffset = 32;
 	const int SideColYoffset = 8;
 
+
 };
 

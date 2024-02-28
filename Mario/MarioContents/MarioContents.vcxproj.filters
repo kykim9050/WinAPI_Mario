@@ -71,6 +71,9 @@
     <ClInclude Include="BrickBlock.h">
       <Filter>Object\Block</Filter>
     </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>Object\Item</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp" />
@@ -140,6 +143,9 @@
     <ClCompile Include="BrickBlock.cpp">
       <Filter>Object\Block</Filter>
     </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>Object\Item</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ContentsHelper">
@@ -183,6 +189,9 @@
     </Filter>
     <Filter Include="Object\UI">
       <UniqueIdentifier>{0516370b-6999-4b67-9482-54dd8e7be8ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Item">
+      <UniqueIdentifier>{a9613493-a6ac-4c50-9dc8-40dc8d855644}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
