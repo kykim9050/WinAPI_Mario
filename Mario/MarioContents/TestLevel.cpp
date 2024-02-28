@@ -39,14 +39,14 @@ void UTestLevel::BeginPlay()
 	//AKoopaTroopa* MonsterKoopaTroopa1 = SpawnActor< AKoopaTroopa>();
 	//AKoopaTroopa* MonsterKoopaTroopa2 = SpawnActor< AKoopaTroopa>();
 	//
-	APiranhaPlant* MonsterPiranhaPlant1 = SpawnActor< APiranhaPlant>();
+	//APiranhaPlant* MonsterPiranhaPlant1 = SpawnActor< APiranhaPlant>();
 
 	Mario->SetActorLocation({ UInGameValue::MarioInitXPos, UInGameValue::MarioInitYPos });
 	PlayerUI->SetActorLocation({ UInGameValue::UIXScaleValue / 2 * UInGameValue::WindowSizeMulValue, UInGameValue::UIYScaleValue / 2 * UInGameValue::WindowSizeMulValue });
-	BrickBlock1->SetActorLocation({ 250,450 });
-	CoinBlock1->SetActorLocation({ 350,450 });
+	BrickBlock1->SetActorLocation({ 250,600 });
+	CoinBlock1->SetActorLocation({ 850,600 });
 	
-	MonsterPiranhaPlant1->SetActorLocation({ 1875,550 });
+	//MonsterPiranhaPlant1->SetActorLocation({ 1875,550 });
 	//
 	//MonsterKoopaTroopa1->SetActorLocation({ 1000,500 });
 	//MonsterKoopaTroopa2->SetActorLocation({ 1700,500 });
