@@ -43,7 +43,7 @@ void UTestLevel::BeginPlay()
 
 	Mario->SetActorLocation({ UInGameValue::MarioInitXPos, UInGameValue::MarioInitYPos });
 	PlayerUI->SetActorLocation({ UInGameValue::UIXScaleValue / 2 * UInGameValue::WindowSizeMulValue, UInGameValue::UIYScaleValue / 2 * UInGameValue::WindowSizeMulValue });
-	BrickBlock1->SetActorLocation({ 250,600 });
+	BrickBlock1->SetActorLocation({ 250,500 });
 	CoinBlock1->SetActorLocation({ 850,600 });
 	
 	//MonsterPiranhaPlant1->SetActorLocation({ 1875,550 });
