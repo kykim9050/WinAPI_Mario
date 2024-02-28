@@ -108,12 +108,20 @@ void APlayerMario::CollisionStateChange(ECollisionState _CollisionState)
 		case ECollisionState::GetHit:
 			GetHitStart();
 			break;
+		case ECollisionState::BlockBotHit:
+			BlockBotHitStart();
+			break;
 		default:
 			break;
 		}
 	}
 
 	SetCollisionState(_CollisionState);
+}
+
+void APlayerMario::BlockBotHit(float _DeltaTime)
+{
+	CollisionStateChange(ECollisionState::None);
 }
 
 void APlayerMario::StateUpdate(float _DeltaTime)
@@ -158,6 +166,9 @@ void APlayerMario::CollisionUpdate(float _DeltaTime)
 		break;
 	case ECollisionState::GetHit:
 		GetHit(_DeltaTime);
+		break;
+	case ECollisionState::BlockBotHit:
+		BlockBotHit(_DeltaTime);
 		break;
 	default:
 		break;
@@ -490,6 +501,11 @@ void APlayerMario::GetHitStart()
 	JumpVelocityVector = FVector::Up * 500.0f;
 }
 
+void APlayerMario::BlockBotHitStart()
+{
+	SetJumpZero();
+	SetGravityRatio(1.0f);
+}
 
 
 bool APlayerMario::DirCheck()
