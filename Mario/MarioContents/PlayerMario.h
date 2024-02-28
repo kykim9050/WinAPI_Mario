@@ -157,5 +157,7 @@ private:
 	void CalHorizonVelocityVector(float _DeltaTime) override;
 	void CalJumpVelocityVector(float _DeltaTime) override;
 	void GroundUp();
+
+	bool IsOnTheBlock = false;
 };
 

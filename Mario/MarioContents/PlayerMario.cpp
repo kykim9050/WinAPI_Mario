@@ -522,9 +522,10 @@ void APlayerMario::GetHitStart()
 
 void APlayerMario::OnTheBlockStart()
 {
+	IsOnTheBlock = true;
 	SetGravityZero();
 	SetJumpZero();
-	SetGravityRatio(0.0f);
+	//SetGravityRatio(0.0f);
 }
 
 void APlayerMario::BlockBotHitStart()
@@ -746,7 +747,11 @@ void APlayerMario::BlockCollisionCheck()
 
 	if (true == BodyCollision->CollisionCheck(ECollisionOrder::BlockTop, Result))
 	{
+		if (true == IsOnTheBlock)
+		{
+			return;
+		}
+
 		StateChange(EActorState::OnTheBlock);
-		return;
 	}
 }
