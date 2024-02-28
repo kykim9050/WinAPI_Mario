@@ -88,9 +88,9 @@ void APlayerMario::StateChange(EActorState _PlayerState)
 		case EActorState::GetHit:
 			GetHitStart();
 			break;
-		case EActorState::OnTheBlock:
+		/*case EActorState::OnTheBlock:
 			OnTheBlockStart();
-			break;
+			break;*/
 		default:
 			break;
 		}
@@ -161,9 +161,9 @@ void APlayerMario::StateUpdate(float _DeltaTime)
 	case EActorState::GetHit:
 		GetHit(_DeltaTime);
 		break;
-	case EActorState::OnTheBlock:
+	/*case EActorState::OnTheBlock:
 		OnTheBlock(_DeltaTime);
-		break;
+		break;*/
 	default:
 		break;
 	}
@@ -230,7 +230,7 @@ void APlayerMario::IdleStart()
 void APlayerMario::MoveStart()
 {
 	//SetGravityRatio(1.0f);
-	//EngineDebug::OutPutDebugText("MoveStart");
+	//UEngineDebug::OutPutDebugText("MoveStart");
 	DirCheck();
 	Renderer->ChangeAnimation(ChangeAnimationName("Move"));
 }
@@ -724,6 +724,7 @@ void APlayerMario::ResultMovementUpdate(float _DeltaTime)
 
 void APlayerMario::GroundUp()
 {
+	// 여기서 블럭과의 충돌 추가
 	while (true)
 	{
 		Color8Bit Color = UContentsFunction::GetCollisionMapImg()->GetColor(GetActorLocation().iX(), GetActorLocation().iY(), UInGameValue::CollisionColor);
