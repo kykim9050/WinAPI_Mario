@@ -43,6 +43,11 @@ public:
 		GravityRatio = _RatioValue;
 	}
 
+	const void SetSpeedZero()
+	{
+		HorizonVelocityVector = FVector::Zero;
+	}
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
