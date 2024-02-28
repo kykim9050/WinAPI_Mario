@@ -139,7 +139,7 @@ void ABlockUnit::CollisionCheck()
 	if (true == SideCollision->CollisionCheck(ECollisionOrder::Player, Result))
 	{
 		const FTransform& PlayerColTrans = Player->GetBodyCollision()->GetActorBaseTransform();
-		const FTransform& BlockColTrans = BodyCollision->GetActorBaseTransform();
+		const FTransform& BlockColTrans = SideCollision->GetActorBaseTransform();
 
 		if (PlayerColTrans.GetPosition().X < BlockColTrans.Left() || PlayerColTrans.GetPosition().X > BlockColTrans.Right())
 		{
@@ -153,7 +153,7 @@ void ABlockUnit::CollisionCheck()
 	if (true == TopCollision->CollisionCheck(ECollisionOrder::Player, Result))
 	{
 		const FTransform& PlayerColTrans = Player->GetBodyCollision()->GetActorBaseTransform();
-		const FTransform& BlockColTrans = BodyCollision->GetActorBaseTransform();
+		const FTransform& BlockColTrans = TopCollision->GetActorBaseTransform();
 
 		if (
 			PlayerColTrans.GetPosition().X > BlockColTrans.Left() && PlayerColTrans.GetPosition().X < BlockColTrans.Right() &&
