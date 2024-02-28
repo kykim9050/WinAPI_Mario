@@ -731,6 +731,7 @@ void APlayerMario::GroundUp()
 	{
 		std::vector<UCollision*> Result = std::vector<UCollision*>();
 		Color8Bit Color = UContentsFunction::GetCollisionMapImg()->GetColor(GetActorLocation().iX(), GetActorLocation().iY(), UInGameValue::CollisionColor);
+
 		if (UInGameValue::CollisionColor == Color || true == BodyCollision->CollisionCheck(ECollisionOrder::BlockTop, Result))
 		{
 			AddActorLocation(FVector::Up);
@@ -739,5 +740,18 @@ void APlayerMario::GroundUp()
 		{
 			break;
 		}
+	}
+}
+
+void APlayerMario::CalGravityVelocityVector(float _DeltaTime)
+{
+	GravityVelocityVector += GravityAccVector * _DeltaTime * GravityRatio;
+
+	std::vector<UCollision*> Result = std::vector<UCollision*>();
+	Color8Bit Color = UContentsFunction::GetCollisionMapImg()->GetColor(GetActorLocation().iX(), GetActorLocation().iY(), UInGameValue::CollisionColor);
+
+	if (UInGameValue::CollisionColor == Color || true == BodyCollision->CollisionCheck(ECollisionOrder::BlockTop, Result))
+	{
+		GravityVelocityVector = FVector::Zero;
 	}
 }

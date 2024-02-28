@@ -117,6 +117,7 @@ public:
 
 	void GetHitStart() override;
 
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -129,6 +130,7 @@ protected:
 	void BlockBotHit(float _DeltaTime);
 	void OnTheBlock(float _DeltaTime);
 
+	void CalGravityVelocityVector(float _DeltaTime) override;
 
 private:
 	// 수평 방향 속도 크기에 영향을 끼치는 가속도 관련 벡터
