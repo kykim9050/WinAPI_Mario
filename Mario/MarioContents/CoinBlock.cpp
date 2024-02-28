@@ -58,5 +58,7 @@ void ACoinBlock::Move(float _DeltaTime)
 
 void ACoinBlock::FixedStart()
 {
+	ABlockUnit::FixedStart();
+
 	Renderer->ChangeAnimation("CoinBlock_AfterHit");
 }
