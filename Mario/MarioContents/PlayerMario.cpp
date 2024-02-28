@@ -3,6 +3,7 @@
 #include <EngineBase/EngineMath.h>
 #include <EngineBase/EngineDebug.h>
 #include <cmath>
+#include <EngineCore/EngineDebug.h>
 
 APlayerMario* APlayerMario::MainPlayer = nullptr;
 
@@ -54,6 +55,9 @@ void APlayerMario::BeginPlay()
 void APlayerMario::Tick(float _DeltaTime)
 {
 	UStateUnit::Tick(_DeltaTime);
+
+	UEngineDebug::DebugTextPrint(" X :" +std::to_string(GetActorLocation().X) +" , " + std::to_string(GetActorLocation().Y), 20.0f);
+
 }
 
 
