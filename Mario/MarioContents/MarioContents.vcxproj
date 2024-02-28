@@ -223,7 +223,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Item.h">
+    <ClInclude Include="ItemUnit.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -318,7 +318,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Item.cpp">
+    <ClCompile Include="ItemUnit.cpp">
       <SubType>
       </SubType>
     </ClCompile>

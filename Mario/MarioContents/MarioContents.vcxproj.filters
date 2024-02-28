@@ -71,7 +71,7 @@
     <ClInclude Include="BrickBlock.h">
       <Filter>Object\Block</Filter>
     </ClInclude>
-    <ClInclude Include="Item.h">
+    <ClInclude Include="ItemUnit.h">
       <Filter>Object\Item</Filter>
     </ClInclude>
   </ItemGroup>
@@ -143,7 +143,7 @@
     <ClCompile Include="BrickBlock.cpp">
       <Filter>Object\Block</Filter>
     </ClCompile>
-    <ClCompile Include="Item.cpp">
+    <ClCompile Include="ItemUnit.cpp">
       <Filter>Object\Item</Filter>
     </ClCompile>
   </ItemGroup>

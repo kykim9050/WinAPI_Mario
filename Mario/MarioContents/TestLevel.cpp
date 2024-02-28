@@ -11,6 +11,7 @@
 #include "PiranhaPlant.h"
 #include "BrickBlock.h"
 #include "CoinBlock.h"
+#include "ItemUnit.h"
 
 UTestLevel::UTestLevel()
 {
@@ -37,6 +38,7 @@ void UTestLevel::BeginPlay()
 	ACoinBlock* CoinBlock2 = SpawnActor< ACoinBlock>();
 	ACoinBlock* CoinBlock3 = SpawnActor< ACoinBlock>();
 	ACoinBlock* CoinBlock4 = SpawnActor< ACoinBlock>();
+	AItemUnit* Coin = SpawnActor< AItemUnit>();
 
 	//AGoomba* MonsterGoomba1 = SpawnActor<AGoomba>();
 	//AGoomba* MonsterGoomba2 = SpawnActor<AGoomba>();
@@ -60,6 +62,7 @@ void UTestLevel::BeginPlay()
 	CoinBlock3->SetActorLocation({ 250 + 48 * 6,450 });
 	CoinBlock4->SetActorLocation({ 250 + 48 * 7,450 });
 
+	Coin->SetActorLocation({ 250,400 });
 
 	//MonsterPiranhaPlant1->SetActorLocation({ 1875,550 });
 	//

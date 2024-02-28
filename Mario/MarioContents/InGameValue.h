@@ -121,6 +121,12 @@ public:
 	static const int BlockCollisionScaleX;
 	static const int BlockCollisionScaleY;
 
+	/// <summary>
+	/// Coin.png 의 열, 행 수
+	/// </summary>
+	static const int CoinImageXValue;
+	static const int CoinImageYValue;
+
 protected:
 
 private:
