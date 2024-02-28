@@ -149,23 +149,23 @@ void ABlockUnit::CollisionCheck()
 	//	}
 	//}
 
-	// Block의 Top과 Player의 충돌일 때
-	if (true == TopCollision->CollisionCheck(ECollisionOrder::Player, Result))
-	{
-		const FTransform& PlayerColTrans = Player->GetBodyCollision()->GetActorBaseTransform();
-		const FTransform& BlockColTrans = TopCollision->GetActorBaseTransform();
+	//// Block의 Top과 Player의 충돌일 때
+	//if (true == TopCollision->CollisionCheck(ECollisionOrder::Player, Result))
+	//{
+	//	const FTransform& PlayerColTrans = Player->GetBodyCollision()->GetActorBaseTransform();
+	//	const FTransform& BlockColTrans = TopCollision->GetActorBaseTransform();
 
-		if (
-			PlayerColTrans.GetPosition().X > BlockColTrans.Left() && PlayerColTrans.GetPosition().X < BlockColTrans.Right() &&
-			PlayerColTrans.GetPosition().Y < BlockColTrans.Top())
-		{
-			//UEngineDebug::OutPutDebugText("Occur Block Top Collision");
-			//Player->CollisionStateChange(ECollisionState::BlockTopHit);
-			Player->StateChange(EActorState::Idle);
-			return;
-		}
+	//	if (
+	//		PlayerColTrans.GetPosition().X > BlockColTrans.Left() && PlayerColTrans.GetPosition().X < BlockColTrans.Right() &&
+	//		PlayerColTrans.GetPosition().Y < BlockColTrans.Top())
+	//	{
+	//		//UEngineDebug::OutPutDebugText("Occur Block Top Collision");
+	//		//Player->CollisionStateChange(ECollisionState::BlockTopHit);
+	//		Player->StateChange(EActorState::Idle);
+	//		return;
+	//	}
 
-	}
+	//}
 
 	//Player->CollisionStateChange(ECollisionState::None);
 	CollisionStateChange(ECollisionState::None);
