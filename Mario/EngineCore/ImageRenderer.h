@@ -95,6 +95,23 @@ public:
 	);
 
 	/// <summary>
+	/// 이미지를 조합하여 애니메이션을 만드는 함수.
+	/// 여러개의 이미지가 모여있는 리소스 이미지의 Index(순서), 시간 인터벌(_Inters)를 직접 설정하여 원하는 순서의 애니메이션을 지정할 수 있다. (원하는 딜레이 부여도 가능)
+	/// </summary>
+	/// <param name="_AnimationName"></param>
+	/// <param name="_ImageName"></param>
+	/// <param name="_Indexs"></param>
+	/// <param name="_Inters"></param>
+	/// <param name="_Loop"></param>
+	void CreateAnimation(
+		std::string_view _AnimationName,
+		std::string_view _ImageName,
+		std::vector<int> _Indexs,
+		std::vector<float> _Inters,
+		bool _Loop = true
+	);
+
+	/// <summary>
 	/// 애니메이션을 변경하는 함수.
 	/// _IsForce는 같은 종류의 애니메이션도 강제로 idx0부터 실행시킬지를 정할 수 있는 인자
 	/// 애니메이션 변경 시, 대칭되는 애니메이션이 있다면 이미지도 대칭일테니 _StartIndex, _Time인자에 대응되는 값을 대입할 것
