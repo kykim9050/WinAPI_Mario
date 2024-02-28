@@ -133,6 +133,8 @@ void ABlockUnit::CollisionCheck()
 			CollisionStateChange(ECollisionState::GetHit);
 			return;
 		}
+		
+		Player->CollisionStateChange(ECollisionState::None);
 	}
 
 	if (true == SideCollision->CollisionCheck(ECollisionOrder::Player, Result))
@@ -143,10 +145,11 @@ void ABlockUnit::CollisionCheck()
 		if (PlayerColTrans.GetPosition().X < BlockColTrans.Left() || PlayerColTrans.GetPosition().X > BlockColTrans.Right())
 		{
 			UEngineDebug::OutPutDebugText("Occur Block Side Collision");
-			Player->SetSpeedZero();
+			//Player->SetSpeedZero();
 			return;
 		}
 		
+		Player->CollisionStateChange(ECollisionState::None);
 	}
 
 	if (true == TopCollision->CollisionCheck(ECollisionOrder::Player, Result))
@@ -161,6 +164,8 @@ void ABlockUnit::CollisionCheck()
 			UEngineDebug::OutPutDebugText("Occur Block Top Collision");
 			return;
 		}
+
+		Player->CollisionStateChange(ECollisionState::None);
 	}
 
 	CollisionStateChange(ECollisionState::None);
