@@ -114,16 +114,37 @@ void ABlockUnit::CollisionCheck()
 		MsgBoxAssert("플레이어가 존재하지 않습니다.");
 	}
 
+	if (true == SideCollision->CollisionCheck(ECollisionOrder::Player, Result))
+	{
+		const FTransform& PlayerColTrans = Player->GetBodyCollision()->GetActorBaseTransform();
+		const FTransform& BlockColTrans = BodyCollision->GetActorBaseTransform();
+
+		if (PlayerColTrans.GetPosition().X < BlockColTrans.Left() || PlayerColTrans.GetPosition().X > BlockColTrans.Right())
+		{
+			UEngineDebug::OutPutDebugText("Occur Block Side Collision");
+		}
+
+		if (
+			PlayerColTrans.GetPosition().X > BlockColTrans.Left() && PlayerColTrans.GetPosition().X < BlockColTrans.Right() &&
+			PlayerColTrans.GetPosition().Y < BlockColTrans.Top())
+		{
+			UEngineDebug::OutPutDebugText("Occur Block Top Collision");
+		}
+
+	}
+	
+
 	if (true == BodyCollision->CollisionCheck(ECollisionOrder::Player, Result))
 	{
 		const FTransform& PlayerColTrans = Player->GetBodyCollision()->GetActorBaseTransform();
 		const FTransform& BlockColTrans = BodyCollision->GetActorBaseTransform();
 
-		if (PlayerColTrans.GetPosition().X <= BlockColTrans.Right() && PlayerColTrans.GetPosition().X >= BlockColTrans.Left() && PlayerColTrans.Top() < BlockColTrans.Bottom())
+
+		if (PlayerColTrans.GetPosition().X < BlockColTrans.Right() && PlayerColTrans.GetPosition().X > BlockColTrans.Left() && PlayerColTrans.GetPosition().Y < BlockColTrans.Bottom())
 		{
+			UEngineDebug::OutPutDebugText("Occur Block Bot Collision");
 			Player->SetJumpZero();
 			Player->SetGravityRatio(1.0f);
-			//Player->SetGravityRatio(1.0f);
 
 			CollisionStateChange(ECollisionState::GetHit);
 			return;
@@ -149,7 +170,7 @@ void ABlockUnit::GetHitStart()
 
 void ABlockUnit::MoveStart()
 {
-	JumpVelocityVector = FVector::Up * 400.0f;
+	JumpVelocityVector = FVector::Up * 200.0f;
 }
 
 void ABlockUnit::FixedStart()
