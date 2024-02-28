@@ -222,8 +222,9 @@ void APlayerMario::FreeMoveStart()
 void APlayerMario::IdleStart()
 {
 	//EngineDebug::OutPutDebugText("IdleStart");
-	DirCheck();
 	//SetGravityRatio(1.0f);
+	DirCheck();
+	SetJumpZero();
 	Renderer->ChangeAnimation(ChangeAnimationName("Idle"));
 }
 
@@ -724,11 +725,13 @@ void APlayerMario::ResultMovementUpdate(float _DeltaTime)
 
 void APlayerMario::GroundUp()
 {
+	
 	// 여기서 블럭과의 충돌 추가
 	while (true)
 	{
+		std::vector<UCollision*> Result = std::vector<UCollision*>();
 		Color8Bit Color = UContentsFunction::GetCollisionMapImg()->GetColor(GetActorLocation().iX(), GetActorLocation().iY(), UInGameValue::CollisionColor);
-		if (UInGameValue::CollisionColor == Color)
+		if (UInGameValue::CollisionColor == Color || true == BodyCollision->CollisionCheck(ECollisionOrder::Block, Result))
 		{
 			AddActorLocation(FVector::Up);
 		}
