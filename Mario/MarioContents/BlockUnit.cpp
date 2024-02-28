@@ -20,9 +20,9 @@ void ABlockUnit::BeginPlay()
 	TopCollision->SetTransform({ { ColInitXPos, -ColInitYPos }, { UInGameValue::BlockCollisionScaleX, UInGameValue::BlockCollisionScaleY - ColYoffset} });
 	TopCollision->SetColType(ECollisionType::Rect);
 
-	//BodyCollision = CreateCollision(ECollisionOrder::CollisionBlock);
-	//BodyCollision->SetTransform({ { ColInitXPos, ColInitYPos }, { UInGameValue::BlockCollisionScaleX, UInGameValue::BlockCollisionScaleY - ColYoffset} });
-	//BodyCollision->SetColType(ECollisionType::Rect);
+	BodyCollision = CreateCollision(ECollisionOrder::CollisionBlock);
+	BodyCollision->SetTransform({ { ColInitXPos, ColInitYPos }, { UInGameValue::BlockCollisionScaleX, UInGameValue::BlockCollisionScaleY - ColYoffset} });
+	BodyCollision->SetColType(ECollisionType::Rect);
 }
 
 void ABlockUnit::Tick(float _DeltaTime)
@@ -118,22 +118,22 @@ void ABlockUnit::CollisionCheck()
 		MsgBoxAssert("플레이어가 존재하지 않습니다.");
 	}
 
-	//// Block의 바닥과 Player의 충돌일 때
-	//if (true == BodyCollision->CollisionCheck(ECollisionOrder::Player, Result))
-	//{
-	//	const FTransform& PlayerColTrans = Player->GetBodyCollision()->GetActorBaseTransform();
-	//	const FTransform& BlockColTrans = BodyCollision->GetActorBaseTransform();
+	// Block의 바닥과 Player의 충돌일 때
+	if (true == BodyCollision->CollisionCheck(ECollisionOrder::Player, Result))
+	{
+		const FTransform& PlayerColTrans = Player->GetBodyCollision()->GetActorBaseTransform();
+		const FTransform& BlockColTrans = BodyCollision->GetActorBaseTransform();
 
 
-	//	if (PlayerColTrans.GetPosition().X < BlockColTrans.Right() && PlayerColTrans.GetPosition().X > BlockColTrans.Left() && PlayerColTrans.GetPosition().Y < BlockColTrans.Bottom())
-	//	{
-	//		//UEngineDebug::OutPutDebugText("Occur Block Bot Collision");
-	//		Player->CollisionStateChange(ECollisionState::BlockBotHit);
+		if (PlayerColTrans.GetPosition().X < BlockColTrans.Right() && PlayerColTrans.GetPosition().X > BlockColTrans.Left() && PlayerColTrans.GetPosition().Y < BlockColTrans.Bottom())
+		{
+			//UEngineDebug::OutPutDebugText("Occur Block Bot Collision");
+			Player->CollisionStateChange(ECollisionState::BlockBotHit);
 
-	//		CollisionStateChange(ECollisionState::GetHit);
-	//		return;
-	//	}
-	//}
+			CollisionStateChange(ECollisionState::GetHit);
+			return;
+		}
+	}
 
 	//// Block의 측면과 Player의 충돌일 때
 	//if (true == SideCollision->CollisionCheck(ECollisionOrder::Player, Result))
