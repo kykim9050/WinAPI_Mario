@@ -1,6 +1,7 @@
 #pragma once
 #include "StateUnit.h"
 #include "PlayerMario.h"
+#include "ItemUnit.h"
 
 // Ό³Έν :
 class ABlockUnit : public UStateUnit
@@ -43,6 +44,8 @@ protected:
 private:
 	UCollision* SideCollision = nullptr;
 	UCollision* TopCollision = nullptr;
+
+	AItemUnit* Item = nullptr;
 	const int ColInitXPos = 0;
 	const int ColInitYPos = 16;
 	const int ColXoffset = 8;
