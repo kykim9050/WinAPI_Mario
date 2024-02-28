@@ -123,6 +123,7 @@ protected:
 
 	void BlockBotHitStart();
 	void BlockSideHitStart();
+	void BlockTopHitStart();
 	void BlockBotHit(float _DeltaTime);
 
 

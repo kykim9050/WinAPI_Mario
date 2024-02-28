@@ -114,6 +114,9 @@ void APlayerMario::CollisionStateChange(ECollisionState _CollisionState)
 		case ECollisionState::BlockSideHit:
 			BlockSideHitStart();
 			break;
+		case ECollisionState::BlockTopHit:
+			BlockTopHitStart();
+			break;
 		default:
 			break;
 		}
@@ -158,6 +161,8 @@ void APlayerMario::StateUpdate(float _DeltaTime)
 	default:
 		break;
 	}
+
+	UEngineDebug::OutPutDebugText(std::to_string(static_cast<int>(ActorState)));
 }
 
 void APlayerMario::CollisionUpdate(float _DeltaTime)
@@ -513,6 +518,13 @@ void APlayerMario::BlockBotHitStart()
 void APlayerMario::BlockSideHitStart()
 {
 	SetSpeedZero();
+}
+
+void APlayerMario::BlockTopHitStart()
+{
+	SetGravityZero();
+	SetJumpZero();
+	SetGravityRatio(0.0f);
 }
 
 

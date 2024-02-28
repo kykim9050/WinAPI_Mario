@@ -127,8 +127,7 @@ void ABlockUnit::CollisionCheck()
 
 		if (PlayerColTrans.GetPosition().X < BlockColTrans.Right() && PlayerColTrans.GetPosition().X > BlockColTrans.Left() && PlayerColTrans.GetPosition().Y < BlockColTrans.Bottom())
 		{
-			UEngineDebug::OutPutDebugText("Occur Block Bot Collision");
-
+			//UEngineDebug::OutPutDebugText("Occur Block Bot Collision");
 			Player->CollisionStateChange(ECollisionState::BlockBotHit);
 
 			CollisionStateChange(ECollisionState::GetHit);
@@ -164,7 +163,8 @@ void ABlockUnit::CollisionCheck()
 			PlayerColTrans.GetPosition().X > BlockColTrans.Left() && PlayerColTrans.GetPosition().X < BlockColTrans.Right() &&
 			PlayerColTrans.GetPosition().Y < BlockColTrans.Top())
 		{
-			UEngineDebug::OutPutDebugText("Occur Block Top Collision");
+			//UEngineDebug::OutPutDebugText("Occur Block Top Collision");
+			Player->CollisionStateChange(ECollisionState::BlockTopHit);
 			return;
 		}
 
