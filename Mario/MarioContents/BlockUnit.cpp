@@ -12,9 +12,9 @@ void ABlockUnit::BeginPlay()
 {
 	UStateUnit::BeginPlay();
 
-	//SideCollision = CreateCollision(ECollisionOrder::Block);
-	//SideCollision->SetTransform({ { 0, 0 }, { UInGameValue::BlockCollisionScaleX, UInGameValue::BlockCollisionScaleY - SideColYoffset} });
-	//SideCollision->SetColType(ECollisionType::Rect);
+	SideCollision = CreateCollision(ECollisionOrder::Block);
+	SideCollision->SetTransform({ { 0, 0 }, { UInGameValue::BlockCollisionScaleX + 16, UInGameValue::BlockCollisionScaleY} });
+	SideCollision->SetColType(ECollisionType::Rect);
 
 	TopCollision = CreateCollision(ECollisionOrder::BlockTop);
 	TopCollision->SetTransform({ { ColInitXPos, -ColInitYPos }, { UInGameValue::BlockCollisionScaleX, UInGameValue::BlockCollisionScaleY - ColYoffset} });
@@ -135,19 +135,19 @@ void ABlockUnit::CollisionCheck()
 		}
 	}
 
-	//// Block의 측면과 Player의 충돌일 때
-	//if (true == SideCollision->CollisionCheck(ECollisionOrder::Player, Result))
-	//{
-	//	const FTransform& PlayerColTrans = Player->GetBodyCollision()->GetActorBaseTransform();
-	//	const FTransform& BlockColTrans = SideCollision->GetActorBaseTransform();
+	// Block의 측면과 Player의 충돌일 때
+	if (true == SideCollision->CollisionCheck(ECollisionOrder::Player, Result))
+	{
+		const FTransform& PlayerColTrans = Player->GetBodyCollision()->GetActorBaseTransform();
+		const FTransform& BlockColTrans = SideCollision->GetActorBaseTransform();
 
-	//	if (PlayerColTrans.GetPosition().X < BlockColTrans.Left() || PlayerColTrans.GetPosition().X > BlockColTrans.Right())
-	//	{
-	//		UEngineDebug::OutPutDebugText("Occur Block Side Collision");
-	//		Player->CollisionStateChange(ECollisionState::BlockSideHit);
-	//		return;
-	//	}
-	//}
+		if (PlayerColTrans.GetPosition().X < BlockColTrans.Left() || PlayerColTrans.GetPosition().X > BlockColTrans.Right())
+		{
+			//UEngineDebug::OutPutDebugText("Occur Block Side Collision");
+			Player->CollisionStateChange(ECollisionState::BlockSideHit);
+			return;
+		}
+	}
 
 	//// Block의 Top과 Player의 충돌일 때
 	//if (true == TopCollision->CollisionCheck(ECollisionOrder::Player, Result))
