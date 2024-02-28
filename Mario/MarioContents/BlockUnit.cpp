@@ -122,6 +122,7 @@ void ABlockUnit::CollisionCheck()
 		if (PlayerColTrans.GetPosition().X < BlockColTrans.Left() || PlayerColTrans.GetPosition().X > BlockColTrans.Right())
 		{
 			UEngineDebug::OutPutDebugText("Occur Block Side Collision");
+			Player->SetSpeedZero();
 		}
 
 		if (
