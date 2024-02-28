@@ -13,15 +13,15 @@ void ABlockUnit::BeginPlay()
 	UStateUnit::BeginPlay();
 
 	SideCollision = CreateCollision(ECollisionOrder::Block);
-	SideCollision->SetTransform({ { 0, 0 }, { UInGameValue::BlockCollisionScaleX, UInGameValue::BlockCollisionScaleY} });
+	SideCollision->SetTransform({ { 0, 0 }, { UInGameValue::BlockCollisionScaleX, UInGameValue::BlockCollisionScaleY - SideColYoffset} });
 	SideCollision->SetColType(ECollisionType::Rect);
 
 	TopCollision = CreateCollision(ECollisionOrder::Block);
-	TopCollision->SetTransform({ { BodyColInitXPos, -BodyColInitYPos }, { UInGameValue::BlockCollisionScaleX, UInGameValue::BlockCollisionScaleY - BodyColYoffset} });
+	TopCollision->SetTransform({ { ColInitXPos, -ColInitYPos }, { UInGameValue::BlockCollisionScaleX, UInGameValue::BlockCollisionScaleY - ColYoffset} });
 	TopCollision->SetColType(ECollisionType::Rect);
 
 	BodyCollision = CreateCollision(ECollisionOrder::CollisionBlock);
-	BodyCollision->SetTransform({ { BodyColInitXPos, BodyColInitYPos }, { UInGameValue::BlockCollisionScaleX, UInGameValue::BlockCollisionScaleY - BodyColYoffset} });
+	BodyCollision->SetTransform({ { ColInitXPos, ColInitYPos }, { UInGameValue::BlockCollisionScaleX, UInGameValue::BlockCollisionScaleY - ColYoffset} });
 	BodyCollision->SetColType(ECollisionType::Rect);
 }
 

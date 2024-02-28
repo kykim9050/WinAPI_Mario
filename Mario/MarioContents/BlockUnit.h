@@ -43,9 +43,11 @@ protected:
 private:
 	UCollision* SideCollision = nullptr;
 	UCollision* TopCollision = nullptr;
-	const int BodyColInitXPos = 0;
-	const int BodyColInitYPos = 16;
-	const int BodyColXoffset = 8;
-	const int BodyColYoffset = 32;
+	const int ColInitXPos = 0;
+	const int ColInitYPos = 16;
+	const int ColXoffset = 8;
+	const int ColYoffset = 32;
+	const int SideColYoffset = 8;
+
 };
 
