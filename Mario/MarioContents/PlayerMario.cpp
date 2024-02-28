@@ -731,7 +731,7 @@ void APlayerMario::GroundUp()
 	{
 		std::vector<UCollision*> Result = std::vector<UCollision*>();
 		Color8Bit Color = UContentsFunction::GetCollisionMapImg()->GetColor(GetActorLocation().iX(), GetActorLocation().iY(), UInGameValue::CollisionColor);
-		if (UInGameValue::CollisionColor == Color || true == BodyCollision->CollisionCheck(ECollisionOrder::Block, Result))
+		if (UInGameValue::CollisionColor == Color || true == BodyCollision->CollisionCheck(ECollisionOrder::BlockTop, Result))
 		{
 			AddActorLocation(FVector::Up);
 		}

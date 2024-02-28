@@ -72,6 +72,7 @@ enum class ECollisionOrder
 	AttackableMonster,
 	Block,
 	CollisionBlock,
+	BlockTop,
 };
 
 enum class ECollisionState
