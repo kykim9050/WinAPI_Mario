@@ -161,7 +161,7 @@ void ABlockUnit::CollisionCheck()
 		{
 			//UEngineDebug::OutPutDebugText("Occur Block Top Collision");
 			//Player->CollisionStateChange(ECollisionState::BlockTopHit);
-			Player->StateChange(EActorState::OnTheBlock);
+			Player->StateChange(EActorState::Idle);
 			return;
 		}
 
