@@ -17,7 +17,7 @@ void ABlockUnit::BeginPlay()
 	SideCollision->SetColType(ECollisionType::Rect);
 
 	BodyCollision = CreateCollision(ECollisionOrder::CollisionBlock);
-	BodyCollision->SetTransform({ { BodyColInitXPos, BodyColInitYPos }, { UInGameValue::BlockCollisionScaleX - BodyColXoffset, UInGameValue::BlockCollisionScaleY - BodyColYoffset} });
+	BodyCollision->SetTransform({ { BodyColInitXPos, BodyColInitYPos }, { UInGameValue::BlockCollisionScaleX, UInGameValue::BlockCollisionScaleY - BodyColYoffset} });
 	BodyCollision->SetColType(ECollisionType::Rect);
 }
 
