@@ -177,12 +177,12 @@ void APlayerMario::CollisionJumpStart()
 
 void APlayerMario::JumpStart()
 {
-	SetGravityRatio(0.5f);
+	SetGravityRatio(0.0f);
 	//EngineDebug::OutPutDebugText("JumpStart");
 	DirCheck();
 	Renderer->ChangeAnimation(ChangeAnimationName("Jump"));
 
-	JumpVelocityVector = MaxJumpVelocityVector;
+	JumpVelocityVector = InitJumpVelocityVector;
 }
 
 void APlayerMario::FreeMoveStart()
@@ -332,19 +332,19 @@ void APlayerMario::Jump(float _DeltaTime)
 
 	//UEngineDebug::OutPutDebugText(std::to_string(UEngineInput::GetPressTime('Z')));
 
-	if (UEngineInput::IsUp('Z') || 0.15f < UEngineInput::GetPressTime('Z'))
+	if (UEngineInput::IsUp('Z') || 0.3f < UEngineInput::GetPressTime('Z'))
 	{
 		SetGravityRatio(1.0f);
 	}
 
 	if (UEngineInput::IsPress(VK_LEFT))
 	{
-		AddHorizonVelocityVector(FVector::Left * _DeltaTime);
+		AddHorizonVelocityVector(FVector::Left * _DeltaTime * 0.5);
 	}
 
 	if (UEngineInput::IsPress(VK_RIGHT))
 	{
-		AddHorizonVelocityVector(FVector::Right * _DeltaTime);
+		AddHorizonVelocityVector(FVector::Right * _DeltaTime * 0.5);
 	}
 
 	ResultMovementUpdate(_DeltaTime);
