@@ -231,7 +231,7 @@ void APlayerMario::IdleStart()
 void APlayerMario::MoveStart()
 {
 	//SetGravityRatio(1.0f);
-	//UEngineDebug::OutPutDebugText("MoveStart");
+	UEngineDebug::OutPutDebugText("MoveStart");
 	DirCheck();
 	Renderer->ChangeAnimation(ChangeAnimationName("Move"));
 }
