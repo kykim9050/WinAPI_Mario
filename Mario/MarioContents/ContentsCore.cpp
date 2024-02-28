@@ -50,6 +50,7 @@ void UContentsCore::BeginPlay()
 	UEngineResourcesManager::GetInst().CuttingImage("PiranhaPlant.png", UInGameValue::PiranhaPlantImageXValue, UInGameValue::PiranhaPlantImageYValue);
 	UEngineResourcesManager::GetInst().CuttingImage("BrickBlock.png", UInGameValue::BrickBlockImageXValue, UInGameValue::BrickBlockImageYValue);
 	UEngineResourcesManager::GetInst().CuttingImage("CoinBlock.png", UInGameValue::CoinBlockImageXValue, UInGameValue::CoinBlockImageYValue);
+	UEngineResourcesManager::GetInst().CuttingImage("Coin.png", UInGameValue::CoinImageXValue, UInGameValue::CoinImageYValue);
 
 
 	//CreateLevel<UTitleLevel>("TitleLevel");
