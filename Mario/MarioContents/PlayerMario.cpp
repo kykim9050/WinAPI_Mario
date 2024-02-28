@@ -168,7 +168,7 @@ void APlayerMario::StateUpdate(float _DeltaTime)
 		break;
 	}
 
-	UEngineDebug::OutPutDebugText(std::to_string(static_cast<int>(ActorState)));
+	//UEngineDebug::OutPutDebugText(std::to_string(static_cast<int>(ActorState)));
 }
 
 void APlayerMario::CollisionUpdate(float _DeltaTime)
@@ -360,14 +360,8 @@ void APlayerMario::CollisionJump(float _DeltaTime)
 void APlayerMario::Jump(float _DeltaTime)
 {
 
-	std::vector<UCollision*> Result = std::vector<UCollision*>();
+	BlockCollisionCheck();
 	
-	if (true == BodyCollision->CollisionCheck(ECollisionOrder::BlockTop, Result))
-	{
-		StateChange(EActorState::OnTheBlock);
-		return;
-	}
-
 	if (UEngineInput::IsUp('Z') || 0.3f < UEngineInput::GetPressTime('Z'))
 	{
 		SetGravityRatio(1.0f);
@@ -743,5 +737,16 @@ void APlayerMario::CalGravityVelocityVector(float _DeltaTime)
 	if (UInGameValue::CollisionColor == Color || true == BodyCollision->CollisionCheck(ECollisionOrder::BlockTop, Result))
 	{
 		GravityVelocityVector = FVector::Zero;
+	}
+}
+
+void APlayerMario::BlockCollisionCheck()
+{
+	std::vector<UCollision*> Result = std::vector<UCollision*>();
+
+	if (true == BodyCollision->CollisionCheck(ECollisionOrder::BlockTop, Result))
+	{
+		StateChange(EActorState::OnTheBlock);
+		return;
 	}
 }
