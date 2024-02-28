@@ -16,7 +16,7 @@ void ABlockUnit::BeginPlay()
 	//SideCollision->SetTransform({ { 0, 0 }, { UInGameValue::BlockCollisionScaleX, UInGameValue::BlockCollisionScaleY - SideColYoffset} });
 	//SideCollision->SetColType(ECollisionType::Rect);
 
-	TopCollision = CreateCollision(ECollisionOrder::Block);
+	TopCollision = CreateCollision(ECollisionOrder::BlockTop);
 	TopCollision->SetTransform({ { ColInitXPos, -ColInitYPos }, { UInGameValue::BlockCollisionScaleX, UInGameValue::BlockCollisionScaleY - ColYoffset} });
 	TopCollision->SetColType(ECollisionType::Rect);
 
