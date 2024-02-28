@@ -122,6 +122,7 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 	void BlockBotHitStart();
+	void BlockSideHitStart();
 	void BlockBotHit(float _DeltaTime);
 
 
