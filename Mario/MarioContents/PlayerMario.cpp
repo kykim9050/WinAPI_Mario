@@ -217,13 +217,13 @@ void APlayerMario::IdleStart()
 {
 	//EngineDebug::OutPutDebugText("IdleStart");
 	DirCheck();
-	SetGravityRatio(1.0f);
+	//SetGravityRatio(1.0f);
 	Renderer->ChangeAnimation(ChangeAnimationName("Idle"));
 }
 
 void APlayerMario::MoveStart()
 {
-	SetGravityRatio(1.0f);
+	//SetGravityRatio(1.0f);
 	//EngineDebug::OutPutDebugText("MoveStart");
 	DirCheck();
 	Renderer->ChangeAnimation(ChangeAnimationName("Move"));
@@ -231,7 +231,7 @@ void APlayerMario::MoveStart()
 
 void APlayerMario::ReverseMoveStart()
 {
-	SetGravityRatio(1.0f);
+	//SetGravityRatio(1.0f);
 	//EngineDebug::OutPutDebugText("ReverseMoveStart");
 	DirCheck();
 	Renderer->ChangeAnimation(ChangeAnimationName("ReverseMove"));
@@ -522,9 +522,15 @@ void APlayerMario::BlockSideHitStart()
 
 void APlayerMario::BlockTopHitStart()
 {
+	if (ECollisionState::BlockTopHit == ActorCollisionState)
+	{
+		return;
+	}
+
 	SetGravityZero();
 	SetJumpZero();
 	SetGravityRatio(0.0f);
+	//StateChange(EActorState::Idle);
 }
 
 
