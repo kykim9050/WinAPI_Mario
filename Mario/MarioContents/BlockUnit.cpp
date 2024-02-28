@@ -133,8 +133,20 @@ void ABlockUnit::CollisionCheck()
 			CollisionStateChange(ECollisionState::GetHit);
 			return;
 		}
+	}
 
-		return;
+	if (true == SideCollision->CollisionCheck(ECollisionOrder::Player, Result))
+	{
+		const FTransform& PlayerColTrans = Player->GetBodyCollision()->GetActorBaseTransform();
+		const FTransform& BlockColTrans = BodyCollision->GetActorBaseTransform();
+
+		if (PlayerColTrans.GetPosition().X < BlockColTrans.Left() || PlayerColTrans.GetPosition().X > BlockColTrans.Right())
+		{
+			UEngineDebug::OutPutDebugText("Occur Block Side Collision");
+			Player->SetSpeedZero();
+			return;
+		}
+		
 	}
 
 	if (true == TopCollision->CollisionCheck(ECollisionOrder::Player, Result))
@@ -147,27 +159,9 @@ void ABlockUnit::CollisionCheck()
 			PlayerColTrans.GetPosition().Y < BlockColTrans.Top())
 		{
 			UEngineDebug::OutPutDebugText("Occur Block Top Collision");
+			return;
 		}
-
-		return;
 	}
-
-
-	if (true == SideCollision->CollisionCheck(ECollisionOrder::Player, Result))
-	{
-		const FTransform& PlayerColTrans = Player->GetBodyCollision()->GetActorBaseTransform();
-		const FTransform& BlockColTrans = BodyCollision->GetActorBaseTransform();
-
-		if (PlayerColTrans.GetPosition().X < BlockColTrans.Left() || PlayerColTrans.GetPosition().X > BlockColTrans.Right())
-		{
-			UEngineDebug::OutPutDebugText("Occur Block Side Collision");
-			Player->SetSpeedZero();
-		}
-
-		return;
-	}
-	
-
 
 	CollisionStateChange(ECollisionState::None);
 }
