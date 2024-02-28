@@ -118,6 +118,7 @@ void ABlockUnit::CollisionCheck()
 		MsgBoxAssert("플레이어가 존재하지 않습니다.");
 	}
 
+	// Block의 바닥과 Player의 충돌일 때
 	if (true == BodyCollision->CollisionCheck(ECollisionOrder::Player, Result))
 	{
 		const FTransform& PlayerColTrans = Player->GetBodyCollision()->GetActorBaseTransform();
@@ -137,6 +138,7 @@ void ABlockUnit::CollisionCheck()
 		Player->CollisionStateChange(ECollisionState::None);
 	}
 
+	// Block의 측면과 Player의 충돌일 때
 	if (true == SideCollision->CollisionCheck(ECollisionOrder::Player, Result))
 	{
 		const FTransform& PlayerColTrans = Player->GetBodyCollision()->GetActorBaseTransform();
@@ -145,13 +147,14 @@ void ABlockUnit::CollisionCheck()
 		if (PlayerColTrans.GetPosition().X < BlockColTrans.Left() || PlayerColTrans.GetPosition().X > BlockColTrans.Right())
 		{
 			UEngineDebug::OutPutDebugText("Occur Block Side Collision");
-			//Player->SetSpeedZero();
+			Player->CollisionStateChange(ECollisionState::BlockSideHit);
 			return;
 		}
 		
 		Player->CollisionStateChange(ECollisionState::None);
 	}
 
+	// Block의 Top과 Player의 충돌일 때
 	if (true == TopCollision->CollisionCheck(ECollisionOrder::Player, Result))
 	{
 		const FTransform& PlayerColTrans = Player->GetBodyCollision()->GetActorBaseTransform();

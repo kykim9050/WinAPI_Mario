@@ -111,6 +111,9 @@ void APlayerMario::CollisionStateChange(ECollisionState _CollisionState)
 		case ECollisionState::BlockBotHit:
 			BlockBotHitStart();
 			break;
+		case ECollisionState::BlockSideHit:
+			BlockSideHitStart();
+			break;
 		default:
 			break;
 		}
@@ -505,6 +508,11 @@ void APlayerMario::BlockBotHitStart()
 {
 	SetJumpZero();
 	SetGravityRatio(1.0f);
+}
+
+void APlayerMario::BlockSideHitStart()
+{
+	SetSpeedZero();
 }
 
 
