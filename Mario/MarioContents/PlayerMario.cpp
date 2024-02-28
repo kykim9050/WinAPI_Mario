@@ -88,9 +88,9 @@ void APlayerMario::StateChange(EActorState _PlayerState)
 		case EActorState::GetHit:
 			GetHitStart();
 			break;
-		/*case EActorState::OnTheBlock:
+		case EActorState::OnTheBlock:
 			OnTheBlockStart();
-			break;*/
+			break;
 		default:
 			break;
 		}
@@ -161,9 +161,9 @@ void APlayerMario::StateUpdate(float _DeltaTime)
 	case EActorState::GetHit:
 		GetHit(_DeltaTime);
 		break;
-	/*case EActorState::OnTheBlock:
+	case EActorState::OnTheBlock:
 		OnTheBlock(_DeltaTime);
-		break;*/
+		break;
 	default:
 		break;
 	}
@@ -513,25 +513,7 @@ void APlayerMario::GetHit(float _DeltaTime)
 
 void APlayerMario::OnTheBlock(float _DeltaTime)
 {
-	if (HorizonVelocityVector.X < 3.0f && HorizonVelocityVector.X > -3.0f && (UEngineInput::IsFree(VK_LEFT) && UEngineInput::IsFree(VK_RIGHT)))
-	{
-		StateChange(EActorState::Idle);
-		return;
-	}
-
-	if (UEngineInput::IsDown('Z'))
-	{
-		StateChange(EActorState::Jump);
-		return;
-	}
-
-	if (UEngineInput::IsPress(VK_LEFT) || UEngineInput::IsPress(VK_RIGHT))
-	{
-		StateChange(EActorState::Move);
-		return;
-	}
-
-	ResultMovementUpdate(_DeltaTime);
+	StateChange(EActorState::Idle);
 }
 
 void APlayerMario::GetHitStart()
