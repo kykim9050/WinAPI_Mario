@@ -100,6 +100,8 @@ public:
 
 	void ReverseMove(float _DeltaTime);
 
+	void MarioGrowUpStart();
+
 	void CameraPosUpdate(FVector _Player, FVector _MovePos);
 
 	bool IsReverseMove();

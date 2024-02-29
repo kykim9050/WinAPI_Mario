@@ -57,6 +57,7 @@ enum class EActorState
 	OnTheBlock,
 	Release,
 	Appear,
+	MarioGrowUp
 };
 
 enum class EActorDir
