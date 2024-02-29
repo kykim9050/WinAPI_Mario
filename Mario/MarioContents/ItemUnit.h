@@ -1,5 +1,4 @@
 #pragma once
-//#include <EngineCore/Actor.h>
 #include "EnumClass.h"
 #include "InGameValue.h"
 #include "StateUnit.h"
@@ -23,6 +22,10 @@ public:
 
 	void StateUpdate(float _DeltaTime) override;
 	void StateChange(EActorState _ActorState) override;
+
+	void Idle(float _DeltaTime) override;
+
+	void IdleStart() override;
 
 protected:
 	void BeginPlay() override;

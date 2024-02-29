@@ -10,7 +10,6 @@ AItemUnit::~AItemUnit()
 
 void AItemUnit::BeginPlay()
 {
-	//AActor::BeginPlay();
 	UStateUnit::BeginPlay();
 
 
@@ -28,11 +27,9 @@ void AItemUnit::BeginPlay()
 
 void AItemUnit::Tick(float _DeltaTime)
 {
-	//AActor::Tick(_DeltaTime);
 	UStateUnit::Tick(_DeltaTime);
 
 	StateUpdate(_DeltaTime);
-
 }
 
 void AItemUnit::StateUpdate(float _DeltaTime)
@@ -51,32 +48,33 @@ void AItemUnit::StateUpdate(float _DeltaTime)
 
 }
 
-
 void AItemUnit::StateChange(EActorState _ActorState)
 {
 	if (ActorState != _ActorState)
 	{
-		//switch (_ActorState)
-		//{
-		//case EActorState::Move:
-		//	MoveStart();
-		//	break;
-		//case EActorState::GetFirstHit:
-		//	GetFirstHitStart();
-		//	break;
-		//case EActorState::GetSecondHit:
-		//	GetSecondHitStart();
-		//	break;
-		//case EActorState::GetMonsterHit:
-		//	GetHitFromMonsterStart();
-		//	break;
-		//case EActorState::Dead:
-		//	Destroy();
-		//	return;
-		//default:
-		//	break;
-		//}
+		switch (_ActorState)
+		{
+		case EActorState::Idle:
+			IdleStart();
+			break;
+		/*case EActorState::Move:
+			MoveStart();
+			break;*/
+		default:
+			break;
+		}
 	}
 
 	SetActorState(_ActorState);
+}
+
+
+void AItemUnit::Idle(float _DeltaTime)
+{
+	int a = 0;
+}
+
+void AItemUnit::IdleStart()
+{
+	int a = 0;
 }
