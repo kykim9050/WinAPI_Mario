@@ -90,6 +90,7 @@ enum class ECollisionOrder
 	CollisionBlock,
 	BlockTop,
 	Item,
+	Mushroom,
 };
 
 enum class ECollisionState

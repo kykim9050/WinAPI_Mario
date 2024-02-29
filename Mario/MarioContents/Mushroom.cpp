@@ -21,7 +21,7 @@ void AMushroom::BeginPlay()
 	Renderer->CreateAnimation("Mushroom", "Items.png", 0, 0, 0.1f, true);
 	Renderer->ChangeAnimation("Mushroom");
 
-	BodyCollision = CreateCollision(ECollisionOrder::Item);
+	BodyCollision = CreateCollision(ECollisionOrder::Mushroom);
 	BodyCollision->SetTransform({ { 0, 0}, { UInGameValue::MushroomCollisionScaleX, UInGameValue::MushroomCollisionScaleX} });
 	BodyCollision->SetColType(ECollisionType::Rect);
 

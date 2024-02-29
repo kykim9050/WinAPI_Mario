@@ -174,6 +174,9 @@ void APlayerMario::StateUpdate(float _DeltaTime)
 
 void APlayerMario::CollisionUpdate(float _DeltaTime)
 {
+	CollosionStateCheck();
+
+
 	switch (ActorCollisionState)
 	{
 	case ECollisionState::Hit:
@@ -189,6 +192,19 @@ void APlayerMario::CollisionUpdate(float _DeltaTime)
 		break;
 	}
 }
+
+void APlayerMario::CollosionStateCheck()
+{
+	std::vector<UCollision*> Result = std::vector<UCollision*>();
+
+	if (true == BodyCollision->CollisionCheck(ECollisionOrder::Mushroom, Result))
+	{
+		int a = 0;
+		return;
+	}
+
+}
+
 
 void APlayerMario::CollisionJumpStart()
 {
