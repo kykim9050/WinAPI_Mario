@@ -76,9 +76,26 @@ void AItemUnit::Idle(float _DeltaTime)
 
 void AItemUnit::Move(float _DeltaTime)
 {
+	if (true == RenderingEnd)
+	{
+		return;
+	}
+	// 동전의 경우
+	CoinRenderingTime -= _DeltaTime;
+
+	if (false == RenderingEnd && 0.0f >= CoinRenderingTime)
+	{
+		RenderingEnd = true;
+		GravityVelocityVector = FVector::Zero;
+		JumpVelocityVector = FVector::Zero;
+		return;
+		//StateChange(EActorState::Idle);
+	}
+
 	GravityVelocityVector += GravityAccVector * _DeltaTime;
 	CalTotalVelocityVector(_DeltaTime);
 	AddActorLocation(TotalVelocityVector * _DeltaTime);
+
 }
 
 void AItemUnit::IdleStart()
@@ -88,6 +105,6 @@ void AItemUnit::IdleStart()
 
 void AItemUnit::MoveStart()
 {
-	JumpVelocityVector = FVector::Up * 200.0f;
+	JumpVelocityVector = FVector::Up * 700.0f;
 	Renderer->ActiveOn();
 }
