@@ -25,7 +25,7 @@ protected:
 
 	void StateUpdate(float _DeltaTime);
 	void StateChange(EActorState _ActorState);
-	void CollisionCheck();
+	virtual void CollisionCheck();
 	void CollisionStateChange(ECollisionState _CollisionState);
 
 	virtual void IdleStart();
@@ -45,7 +45,6 @@ private:
 	UCollision* SideCollision = nullptr;
 	UCollision* TopCollision = nullptr;
 
-	AItemUnit* Item = nullptr;
 	const int ColInitXPos = 0;
 	const int ColInitYPos = 16;
 	const int ColXoffset = 8;

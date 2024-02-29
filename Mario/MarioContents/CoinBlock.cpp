@@ -23,11 +23,19 @@ void ACoinBlock::BeginPlay()
 	Renderer->CreateAnimation("CoinBlock_AfterHit", "CoinBlock.png", 4, 4, 0.1f, true);
 
 	SetActorState(EActorState::FirstInit);
+
+	Item = GetWorld()->SpawnActor< AItemUnit>();
 }
 
 void ACoinBlock::Tick(float _DeltaTime)
 {
 	ABlockUnit::Tick(_DeltaTime);
+}
+
+void ACoinBlock::FirstInit(float _Deltatime)
+{
+	ABlockUnit::FirstInit(_Deltatime);
+	Item->SetActorLocation({ InitPos.X, InitPos.Y - 32 });
 }
 
 void ACoinBlock::IdleStart()
@@ -61,4 +69,58 @@ void ACoinBlock::FixedStart()
 	ABlockUnit::FixedStart();
 
 	Renderer->ChangeAnimation("CoinBlock_AfterHit");
+}
+
+
+void ACoinBlock::CollisionCheck()
+{
+	ABlockUnit::CollisionCheck();
+
+	std::vector<UCollision*> Result = std::vector<UCollision*>();
+
+	APlayerMario* Player = APlayerMario::GetMainPlayer();
+
+	if (nullptr == Player)
+	{
+		MsgBoxAssert("플레이어가 존재하지 않습니다.");
+	}
+
+	// Block의 바닥과 Player의 충돌일 때
+	if (true == BodyCollision->CollisionCheck(ECollisionOrder::Player, Result))
+	{
+		const FTransform& PlayerColTrans = Player->GetBodyCollision()->GetActorBaseTransform();
+		const FTransform& BlockColTrans = BodyCollision->GetActorBaseTransform();
+
+
+		if (PlayerColTrans.GetPosition().X < BlockColTrans.Right() && PlayerColTrans.GetPosition().X > BlockColTrans.Left() && PlayerColTrans.GetPosition().Y < BlockColTrans.Bottom())
+		{
+			//UEngineDebug::OutPutDebugText("Occur Block Bot Collision");
+			Player->CollisionStateChange(ECollisionState::BlockBotHit);
+
+			CollisionStateChange(ECollisionState::GetHit);
+			Item->StateChange(EActorState::Move);
+			return;
+		}
+	}
+
+	//// Block의 Top과 Player의 충돌일 때
+	//if (true == TopCollision->CollisionCheck(ECollisionOrder::Player, Result))
+	//{
+	//	const FTransform& PlayerColTrans = Player->GetBodyCollision()->GetActorBaseTransform();
+	//	const FTransform& BlockColTrans = TopCollision->GetActorBaseTransform();
+
+	//	if (
+	//		PlayerColTrans.GetPosition().X > BlockColTrans.Left() && PlayerColTrans.GetPosition().X < BlockColTrans.Right() &&
+	//		PlayerColTrans.GetPosition().Y < BlockColTrans.Top())
+	//	{
+	//		//UEngineDebug::OutPutDebugText("Occur Block Top Collision");
+	//		//Player->CollisionStateChange(ECollisionState::BlockTopHit);
+	//		Player->StateChange(EActorState::Idle);
+	//		return;
+	//	}
+
+	//}
+
+	//Player->CollisionStateChange(ECollisionState::None);
+	CollisionStateChange(ECollisionState::None);
 }

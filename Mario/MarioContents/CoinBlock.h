@@ -19,13 +19,16 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
+	void FirstInit(float _Deltatime) override;
 	void IdleStart() override;
 	void MoveStart() override;
 
 	void Move(float _DeltaTime) override;
 	void FixedStart() override;
 
-private:
+	void CollisionCheck() override;
 
+private:
+	AItemUnit* Item = nullptr;
 };
 
