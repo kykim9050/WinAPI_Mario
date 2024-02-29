@@ -19,11 +19,12 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
-	/*void IdleStart() override;
-	void MoveStart() override;
-	void ReleaseStart() override;
+	void IdleStart() override;
+	//void MoveStart() override;
+	//void ReleaseStart() override;
 
-	void Move(float _DeltaTime) override;*/
+	void Idle(float _DeltaTime) override;
+	//void Move(float _DeltaTime) override;
 
 
 private:
