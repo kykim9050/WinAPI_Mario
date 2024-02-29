@@ -127,6 +127,12 @@ public:
 	static const int CoinImageXValue;
 	static const int CoinImageYValue;
 
+	/// <summary>
+	/// Items.png 의 열, 행 수
+	/// </summary>
+	static const int ItemsImageXValue;
+	static const int ItemsImageYValue;
+
 protected:
 
 private:

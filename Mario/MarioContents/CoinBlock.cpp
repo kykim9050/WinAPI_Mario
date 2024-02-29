@@ -1,5 +1,6 @@
 #include "CoinBlock.h"
 #include "BlockCoin.h"
+#include "Mushroom.h"
 
 
 ACoinBlock::ACoinBlock()
@@ -26,7 +27,7 @@ void ACoinBlock::BeginPlay()
 
 	SetActorState(EActorState::FirstInit);
 
-	Item = GetWorld()->SpawnActor< ABlockCoin>();
+	Item = GetWorld()->SpawnActor< AMushroom>();
 }
 
 void ACoinBlock::Tick(float _DeltaTime)
