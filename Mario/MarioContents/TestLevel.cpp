@@ -30,10 +30,11 @@ void UTestLevel::BeginPlay()
 	APlayerMario* Mario = SpawnActor< APlayerMario>();
 	AUI* PlayerUI = SpawnActor<AUI>();
 
-	ABrickBlock* BrickBlock1 = SpawnActor< ABrickBlock>();
-	ABrickBlock* BrickBlock2 = SpawnActor< ABrickBlock>();
-	ABrickBlock* BrickBlock3 = SpawnActor< ABrickBlock>();
-	ABrickBlock* BrickBlock4 = SpawnActor< ABrickBlock>();
+	//ABrickBlock* BrickBlock1 = SpawnActor< ABrickBlock>();
+	//ABrickBlock* BrickBlock2 = SpawnActor< ABrickBlock>();
+	//ABrickBlock* BrickBlock3 = SpawnActor< ABrickBlock>();
+	//ABrickBlock* BrickBlock4 = SpawnActor< ABrickBlock>();
+
 	ACoinBlock* CoinBlock1 = SpawnActor< ACoinBlock>();
 	ACoinBlock* CoinBlock2 = SpawnActor< ACoinBlock>();
 	ACoinBlock* CoinBlock3 = SpawnActor< ACoinBlock>();
@@ -52,10 +53,10 @@ void UTestLevel::BeginPlay()
 	Mario->SetActorLocation({ UInGameValue::MarioInitXPos, UInGameValue::MarioInitYPos });
 	PlayerUI->SetActorLocation({ UInGameValue::UIXScaleValue / 2 * UInGameValue::WindowSizeMulValue, UInGameValue::UIYScaleValue / 2 * UInGameValue::WindowSizeMulValue });
 
-	BrickBlock1->SetActorLocation({ 250,450 });
-	BrickBlock2->SetActorLocation({ 250 + 48,450 });
-	BrickBlock3->SetActorLocation({ 250 + 48 * 2,450 });
-	BrickBlock4->SetActorLocation({ 250 + 48 * 3,450 });
+	//BrickBlock1->SetActorLocation({ 250,450 });
+	//BrickBlock2->SetActorLocation({ 250 + 48,450 });
+	//BrickBlock3->SetActorLocation({ 250 + 48 * 2,450 });
+	//BrickBlock4->SetActorLocation({ 250 + 48 * 3,450 });
 
 	CoinBlock1->SetActorLocation({ 250 + 48 * 4,450 });
 	CoinBlock2->SetActorLocation({ 250 + 48 * 5,450 });

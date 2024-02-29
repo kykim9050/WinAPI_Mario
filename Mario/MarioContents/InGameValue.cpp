@@ -61,3 +61,6 @@ const int UInGameValue::BlockCollisionScaleY = 16 * UInGameValue::WindowSizeMulV
 
 const int UInGameValue::CoinImageXValue = 4;
 const int UInGameValue::CoinImageYValue = 1;
+
+const int UInGameValue::ItemsImageXValue = 5;
+const int UInGameValue::ItemsImageYValue = 2;
