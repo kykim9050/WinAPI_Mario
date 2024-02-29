@@ -20,11 +20,11 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 	void IdleStart() override;
-	//void MoveStart() override;
+	void MoveStart() override;
 	//void ReleaseStart() override;
 
 	void Idle(float _DeltaTime) override;
-	//void Move(float _DeltaTime) override;
+	void Move(float _DeltaTime) override;
 
 
 private:

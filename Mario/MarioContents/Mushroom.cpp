@@ -36,8 +36,25 @@ void AMushroom::IdleStart()
 	Renderer->ActiveOff();
 }
 
+void AMushroom::MoveStart()
+{
+	Renderer->ActiveOn();
+
+}
+
 void AMushroom::Idle(float _DeltaTime)
 {
 
+}
+
+void AMushroom::Move(float _DeltaTime)
+{
+	if (GetActorLocation().Y < 400.0f)
+	{
+		SetActorLocation({GetActorLocation().X, 200.0f });
+		StateChange(EActorState::Idle);
+	}
+
+	AddActorLocation(FVector::Up * 100.0f * _DeltaTime);
 }
 
