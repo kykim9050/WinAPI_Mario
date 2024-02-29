@@ -24,6 +24,8 @@ protected:
 
 	void Move(float _DeltaTime) override;
 
+	void CollisionCheck() override;
+
 private:
 
 };
