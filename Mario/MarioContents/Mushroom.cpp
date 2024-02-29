@@ -45,28 +45,42 @@ void AMushroom::IdleStart()
 {
 	AItemUnit::IdleStart();
 
+	BodyCollision->ActiveOff();
 	Renderer->ActiveOff();
 }
 
 void AMushroom::AppearStart()
 {
 	Renderer->ActiveOn();
-
 }
+
+void AMushroom::MoveStart()
+{
+	BodyCollision->ActiveOn();
+}
+
+
+
+
 
 void AMushroom::Idle(float _DeltaTime)
 {
 
 }
 
+
 void AMushroom::Appear(float _DeltaTime)
 {
 	if (GetActorLocation().Y < 400.0f)
 	{
-		SetActorLocation({GetActorLocation().X, 200.0f });
-		StateChange(EActorState::Idle);
+		SetActorLocation({GetActorLocation().X, GetActorLocation().Y });
+		StateChange(EActorState::Move);
 	}
 
 	AddActorLocation(FVector::Up * 100.0f * _DeltaTime);
 }
 
+void AMushroom::Move(float _DeltaTime)
+{
+	AddActorLocation(FVector::Right * 100.0f * _DeltaTime);
+}
