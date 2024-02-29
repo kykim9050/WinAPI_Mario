@@ -20,15 +20,15 @@ public:
 	AItemUnit& operator=(const AItemUnit& _Other) = delete;
 	AItemUnit& operator=(AItemUnit&& _Other) noexcept = delete;
 
-	void StateUpdate(float _DeltaTime) override;
-	void StateChange(EActorState _ActorState) override;
+	void StateUpdate(float _DeltaTime);
+	void StateChange(EActorState _ActorState);
 
-	void Idle(float _DeltaTime) override;
-	void Move(float _DeltaTime) override;
+	virtual void Idle(float _DeltaTime);
+	virtual void Move(float _DeltaTime);
 	
-	void IdleStart() override;
-	void MoveStart() override;
-	void ReleaseStart();
+	virtual void IdleStart();
+	virtual void MoveStart();
+	virtual void ReleaseStart();
 
 
 protected:

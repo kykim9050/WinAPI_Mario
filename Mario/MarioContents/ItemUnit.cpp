@@ -10,7 +10,7 @@ AItemUnit::~AItemUnit()
 
 void AItemUnit::BeginPlay()
 {
-	UStateUnit::BeginPlay();
+	AActor::BeginPlay();
 
 
 	Renderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::Item));
@@ -27,13 +27,14 @@ void AItemUnit::BeginPlay()
 
 void AItemUnit::Tick(float _DeltaTime)
 {
-	UStateUnit::Tick(_DeltaTime);
+	AActor::Tick(_DeltaTime);
 
 	StateUpdate(_DeltaTime);
 }
 
 void AItemUnit::StateUpdate(float _DeltaTime)
 {
+
 	switch (ActorState)
 	{
 	case EActorState::Idle:
@@ -50,6 +51,7 @@ void AItemUnit::StateUpdate(float _DeltaTime)
 
 void AItemUnit::StateChange(EActorState _ActorState)
 {
+
 	if (ActorState != _ActorState)
 	{
 		switch (_ActorState)
