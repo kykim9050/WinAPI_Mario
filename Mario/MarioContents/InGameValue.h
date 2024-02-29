@@ -133,6 +133,12 @@ public:
 	static const int ItemsImageXValue;
 	static const int ItemsImageYValue;
 
+	/// <summary>
+	/// MushroomÀÇ Body Collision Scale °ª
+	/// </summary>
+	static const int MushroomCollisionScaleX;
+	static const int MushroomCollisionScaleY;
+
 protected:
 
 private:
