@@ -38,7 +38,7 @@ void ACoinBlock::Tick(float _DeltaTime)
 void ACoinBlock::FirstInit(float _Deltatime)
 {
 	ABlockUnit::FirstInit(_Deltatime);
-	Item->SetActorLocation({ InitPos.X, InitPos.Y - 32 });
+	Item->SetActorLocation({ InitPos.X, InitPos.Y});
 }
 
 void ACoinBlock::IdleStart()

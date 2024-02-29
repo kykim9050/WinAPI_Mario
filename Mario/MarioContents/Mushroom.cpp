@@ -17,7 +17,7 @@ void AMushroom::BeginPlay()
 
 	FVector ItemScale = Renderer->GetImage()->GetScale();
 
-	Renderer->SetTransform({ {0,0}, {ItemScale.iX() / UInGameValue::ItemsImageXValue, ItemScale.iY() / UInGameValue::ItemsImageYValue} });
+	Renderer->SetTransform({ {0,0}, {ItemScale.iX() / UInGameValue::ItemsImageXValue * UInGameValue::WindowSizeMulValue, ItemScale.iY() / UInGameValue::ItemsImageYValue * UInGameValue::WindowSizeMulValue} });
 	Renderer->CreateAnimation("Mushroom", "Items.png", 0, 0, 0.1f, true);
 	Renderer->ChangeAnimation("Mushroom");
 
@@ -32,11 +32,12 @@ void AMushroom::Tick(float _DeltaTime)
 void AMushroom::IdleStart()
 {
 	AItemUnit::IdleStart();
-	int a = 0;
+
+	Renderer->ActiveOff();
 }
 
 void AMushroom::Idle(float _DeltaTime)
 {
-	int a = 0;
+
 }
 
