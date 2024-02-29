@@ -20,11 +20,14 @@ public:
 	AItemUnit& operator=(const AItemUnit& _Other) = delete;
 	AItemUnit& operator=(AItemUnit&& _Other) noexcept = delete;
 
+	void StateUpdate(float _DeltaTime);
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
 private:
+	EActorState ActorState = EActorState::None;
 	UImageRenderer* Renderer = nullptr;
 
 };
