@@ -1,12 +1,13 @@
 #pragma once
-#include <EngineCore/Actor.h>
+//#include <EngineCore/Actor.h>
 #include "EnumClass.h"
 #include "InGameValue.h"
+#include "StateUnit.h"
 
 class UImageRenderer;
 
 // Ό³Έν :
-class AItemUnit : public AActor
+class AItemUnit : public UStateUnit
 {
 	friend class ABlockUnit;
 public:
@@ -20,15 +21,14 @@ public:
 	AItemUnit& operator=(const AItemUnit& _Other) = delete;
 	AItemUnit& operator=(AItemUnit&& _Other) noexcept = delete;
 
-	void StateUpdate(float _DeltaTime);
+	void StateUpdate(float _DeltaTime) override;
+	void StateChange(EActorState _ActorState) override;
 
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
 private:
-	EActorState ActorState = EActorState::None;
-	UImageRenderer* Renderer = nullptr;
 
 };
 
