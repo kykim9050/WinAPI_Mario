@@ -50,9 +50,6 @@
     <ClInclude Include="StateUnit.h">
       <Filter>Object</Filter>
     </ClInclude>
-    <ClInclude Include="MonsterUnit.h">
-      <Filter>Object</Filter>
-    </ClInclude>
     <ClInclude Include="PiranhaPlant.h">
       <Filter>Object\Monster</Filter>
     </ClInclude>
@@ -62,9 +59,6 @@
     <ClInclude Include="UI.h">
       <Filter>Object\UI</Filter>
     </ClInclude>
-    <ClInclude Include="BlockUnit.h">
-      <Filter>Object</Filter>
-    </ClInclude>
     <ClInclude Include="CoinBlock.h">
       <Filter>Object\Block</Filter>
     </ClInclude>
@@ -72,6 +66,15 @@
       <Filter>Object\Block</Filter>
     </ClInclude>
     <ClInclude Include="ItemUnit.h">
+      <Filter>Object\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="BlockUnit.h">
+      <Filter>Object\Block</Filter>
+    </ClInclude>
+    <ClInclude Include="MonsterUnit.h">
+      <Filter>Object\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="BlockCoin.h">
       <Filter>Object\Item</Filter>
     </ClInclude>
   </ItemGroup>
@@ -122,9 +125,6 @@
     <ClCompile Include="StateUnit.cpp">
       <Filter>Object</Filter>
     </ClCompile>
-    <ClCompile Include="MonsterUnit.cpp">
-      <Filter>Object</Filter>
-    </ClCompile>
     <ClCompile Include="PiranhaPlant.cpp">
       <Filter>Object\Monster</Filter>
     </ClCompile>
@@ -134,9 +134,6 @@
     <ClCompile Include="UI.cpp">
       <Filter>Object\UI</Filter>
     </ClCompile>
-    <ClCompile Include="BlockUnit.cpp">
-      <Filter>Object</Filter>
-    </ClCompile>
     <ClCompile Include="CoinBlock.cpp">
       <Filter>Object\Block</Filter>
     </ClCompile>
@@ -144,6 +141,15 @@
       <Filter>Object\Block</Filter>
     </ClCompile>
     <ClCompile Include="ItemUnit.cpp">
+      <Filter>Object\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="BlockUnit.cpp">
+      <Filter>Object\Block</Filter>
+    </ClCompile>
+    <ClCompile Include="MonsterUnit.cpp">
+      <Filter>Object\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="BlockCoin.cpp">
       <Filter>Object\Item</Filter>
     </ClCompile>
   </ItemGroup>
