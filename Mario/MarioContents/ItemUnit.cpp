@@ -25,6 +25,9 @@ void AItemUnit::StateUpdate(float _DeltaTime)
 
 	switch (ActorState)
 	{
+	case EActorState::FirstInit:
+		FirstInit(_DeltaTime);
+		break;
 	case EActorState::Idle:
 		Idle(_DeltaTime);
 		break;
