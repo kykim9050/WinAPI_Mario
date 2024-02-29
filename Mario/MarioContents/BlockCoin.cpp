@@ -31,9 +31,9 @@ void ABlockCoin::Tick(float _DeltaTime)
 }
 
 
-void ABlockCoin::Move(float _DeltaTime)
+void ABlockCoin::Appear(float _DeltaTime)
 {
-	AItemUnit::Move(_DeltaTime);
+	AItemUnit::Appear(_DeltaTime);
 
 	// 동전의 경우
 	CoinRenderingTime -= _DeltaTime;
@@ -49,8 +49,8 @@ void ABlockCoin::Move(float _DeltaTime)
 	GravityVelocityVector += GravityAccVector * _DeltaTime;
 	CalTotalVelocityVector(_DeltaTime);
 	AddActorLocation(TotalVelocityVector * _DeltaTime);
-
 }
+
 
 void ABlockCoin::IdleStart()
 {
@@ -59,9 +59,9 @@ void ABlockCoin::IdleStart()
 	Renderer->ActiveOff();
 }
 
-void ABlockCoin::MoveStart()
+void ABlockCoin::AppearStart()
 {
-	AItemUnit::MoveStart();
+	AItemUnit::AppearStart();
 
 	JumpVelocityVector = FVector::Up * 600.0f;
 	Renderer->ActiveOn();

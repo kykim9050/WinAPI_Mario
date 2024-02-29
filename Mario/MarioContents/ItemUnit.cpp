@@ -28,6 +28,9 @@ void AItemUnit::StateUpdate(float _DeltaTime)
 	case EActorState::Idle:
 		Idle(_DeltaTime);
 		break;
+	case EActorState::Appear:
+		Appear(_DeltaTime);
+		break;
 	case EActorState::Move:
 		Move(_DeltaTime);
 		break;
@@ -46,6 +49,9 @@ void AItemUnit::StateChange(EActorState _ActorState)
 		{
 		case EActorState::Idle:
 			IdleStart();
+			break;
+		case EActorState::Appear:
+			AppearStart();
 			break;
 		case EActorState::Move:
 			MoveStart();
