@@ -15,8 +15,8 @@ void UTitleLevel::BeginPlay()
 {
 	ULevel::BeginPlay();
 
-	ATitleBackGround* Background = SpawnActor< ATitleBackGround>();
-	ATitleCoin* Coin = SpawnActor<ATitleCoin>();
+	ATitleBackGround* Background = SpawnActor< ATitleBackGround>(static_cast<int>(EActorType::Map));
+	ATitleCoin* Coin = SpawnActor<ATitleCoin>(static_cast<int>(EActorType::Item));
 }
 
 void UTitleLevel::Tick(float _DeltaTime)

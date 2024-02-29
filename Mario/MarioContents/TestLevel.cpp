@@ -25,30 +25,30 @@ void UTestLevel::BeginPlay()
 {
 	ULevel::BeginPlay();
 
-	ABackGroundMap* Map = SpawnActor< ABackGroundMap>();
-	UCollisionMap* CollisionMap = SpawnActor< UCollisionMap>();
-	APlayerMario* Mario = SpawnActor< APlayerMario>();
-	AUI* PlayerUI = SpawnActor<AUI>();
+	ABackGroundMap* Map = SpawnActor< ABackGroundMap>(static_cast<int>(EActorType::Map));
+	UCollisionMap* CollisionMap = SpawnActor< UCollisionMap>(static_cast<int>(EActorType::Map));
+	APlayerMario* Mario = SpawnActor< APlayerMario>(static_cast<int>(EActorType::Player));
+	AUI* PlayerUI = SpawnActor<AUI>(static_cast<int>(EActorType::UI));
 
-	//ABrickBlock* BrickBlock1 = SpawnActor< ABrickBlock>();
-	//ABrickBlock* BrickBlock2 = SpawnActor< ABrickBlock>();
-	//ABrickBlock* BrickBlock3 = SpawnActor< ABrickBlock>();
-	//ABrickBlock* BrickBlock4 = SpawnActor< ABrickBlock>();
+	//ABrickBlock* BrickBlock1 = SpawnActor< ABrickBlock>(static_cast<int>(EActorType::Block));
+	//ABrickBlock* BrickBlock2 = SpawnActor< ABrickBlock>(static_cast<int>(EActorType::Block));
+	//ABrickBlock* BrickBlock3 = SpawnActor< ABrickBlock>(static_cast<int>(EActorType::Block));
+	//ABrickBlock* BrickBlock4 = SpawnActor< ABrickBlock>(static_cast<int>(EActorType::Block));
 
-	ACoinBlock* CoinBlock1 = SpawnActor< ACoinBlock>();
-	//ACoinBlock* CoinBlock2 = SpawnActor< ACoinBlock>();
-	//ACoinBlock* CoinBlock3 = SpawnActor< ACoinBlock>();
-	//ACoinBlock* CoinBlock4 = SpawnActor< ACoinBlock>();
-	//AItemUnit* Coin = SpawnActor< AItemUnit>();
+	ACoinBlock* CoinBlock1 = SpawnActor< ACoinBlock>(static_cast<int>(EActorType::Block));
+	//ACoinBlock* CoinBlock2 = SpawnActor< ACoinBlock>(static_cast<int>(EActorType::Block));
+	//ACoinBlock* CoinBlock3 = SpawnActor< ACoinBlock>(static_cast<int>(EActorType::Block));
+	//ACoinBlock* CoinBlock4 = SpawnActor< ACoinBlock>(static_cast<int>(EActorType::Block));
+	//AItemUnit* Coin = SpawnActor< AItemUnit>(static_cast<int>(EActorType::Item));
 
-	//AGoomba* MonsterGoomba1 = SpawnActor<AGoomba>();
-	//AGoomba* MonsterGoomba2 = SpawnActor<AGoomba>();
-	//AGoomba* MonsterGoomba3 = SpawnActor<AGoomba>();
+	//AGoomba* MonsterGoomba1 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
+	//AGoomba* MonsterGoomba2 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
+	//AGoomba* MonsterGoomba3 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
 	//
-	//AKoopaTroopa* MonsterKoopaTroopa1 = SpawnActor< AKoopaTroopa>();
-	//AKoopaTroopa* MonsterKoopaTroopa2 = SpawnActor< AKoopaTroopa>();
+	//AKoopaTroopa* MonsterKoopaTroopa1 = SpawnActor< AKoopaTroopa>(static_cast<int>(EActorType::Monster));
+	//AKoopaTroopa* MonsterKoopaTroopa2 = SpawnActor< AKoopaTroopa>(static_cast<int>(EActorType::Monster));
 	//
-	//APiranhaPlant* MonsterPiranhaPlant1 = SpawnActor< APiranhaPlant>();
+	//APiranhaPlant* MonsterPiranhaPlant1 = SpawnActor< APiranhaPlant>(static_cast<int>(EActorType::Monster));
 
 	Mario->SetActorLocation({ UInGameValue::MarioInitXPos, UInGameValue::MarioInitYPos });
 	PlayerUI->SetActorLocation({ UInGameValue::UIXScaleValue / 2 * UInGameValue::WindowSizeMulValue, UInGameValue::UIYScaleValue / 2 * UInGameValue::WindowSizeMulValue });

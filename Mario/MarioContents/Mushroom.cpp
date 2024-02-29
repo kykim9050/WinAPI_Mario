@@ -36,7 +36,7 @@ void AMushroom::IdleStart()
 	Renderer->ActiveOff();
 }
 
-void AMushroom::MoveStart()
+void AMushroom::AppearStart()
 {
 	Renderer->ActiveOn();
 
@@ -47,7 +47,7 @@ void AMushroom::Idle(float _DeltaTime)
 
 }
 
-void AMushroom::Move(float _DeltaTime)
+void AMushroom::Appear(float _DeltaTime)
 {
 	if (GetActorLocation().Y < 400.0f)
 	{

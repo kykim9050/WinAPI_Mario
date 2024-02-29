@@ -21,16 +21,16 @@ void U1_1StageLevel::BeginPlay()
 {
 	ULevel::BeginPlay();
 
-	ABackGroundMap* Stage1_1Map = SpawnActor< ABackGroundMap>();
-	UCollisionMap* Stage1_1CollisionMap = SpawnActor< UCollisionMap>();
-	APlayerMario* Mario = SpawnActor< APlayerMario>();
-	AUI* PlayerUI = SpawnActor<AUI>();
-	AGoomba* MonsterGoomba1 = SpawnActor<AGoomba>();
-	AGoomba* MonsterGoomba2 = SpawnActor<AGoomba>();
-	AGoomba* MonsterGoomba3 = SpawnActor<AGoomba>();
-	AKoopaTroopa* MonsterKoopaTroopa1 = SpawnActor< AKoopaTroopa>();
-	AKoopaTroopa* MonsterKoopaTroopa2 = SpawnActor< AKoopaTroopa>();
-	APiranhaPlant* MonsterPiranhaPlant1 = SpawnActor< APiranhaPlant>();
+	ABackGroundMap* Stage1_1Map = SpawnActor< ABackGroundMap>(static_cast<int>(EActorType::Map));
+	UCollisionMap* Stage1_1CollisionMap = SpawnActor< UCollisionMap>(static_cast<int>(EActorType::Map));
+	APlayerMario* Mario = SpawnActor< APlayerMario>(static_cast<int>(EActorType::Player));
+	AUI* PlayerUI = SpawnActor<AUI>(static_cast<int>(EActorType::UI));
+	AGoomba* MonsterGoomba1 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
+	AGoomba* MonsterGoomba2 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
+	AGoomba* MonsterGoomba3 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
+	AKoopaTroopa* MonsterKoopaTroopa1 = SpawnActor< AKoopaTroopa>(static_cast<int>(EActorType::Monster));
+	AKoopaTroopa* MonsterKoopaTroopa2 = SpawnActor< AKoopaTroopa>(static_cast<int>(EActorType::Monster));
+	APiranhaPlant* MonsterPiranhaPlant1 = SpawnActor< APiranhaPlant>(static_cast<int>(EActorType::Monster));
 
 	Mario->SetActorLocation({ UInGameValue::MarioInitXPos, UInGameValue::MarioInitYPos });
 	PlayerUI->SetActorLocation({ UInGameValue::UIXScaleValue / 2 * UInGameValue::WindowSizeMulValue, UInGameValue::UIYScaleValue / 2 * UInGameValue::WindowSizeMulValue });

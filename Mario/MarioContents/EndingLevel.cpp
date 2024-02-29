@@ -13,7 +13,7 @@ UEndingLevel::~UEndingLevel()
 void UEndingLevel::BeginPlay()
 {
 	ULevel::BeginPlay();
-	AEndingBackGround* BackGround = SpawnActor<AEndingBackGround>();
+	AEndingBackGround* BackGround = SpawnActor<AEndingBackGround>(static_cast<int>(EActorType::Map));
 	AEndingMessage* Message = SpawnActor<AEndingMessage>();
 }
 

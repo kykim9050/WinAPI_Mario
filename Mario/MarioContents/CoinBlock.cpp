@@ -27,7 +27,7 @@ void ACoinBlock::BeginPlay()
 
 	SetActorState(EActorState::FirstInit);
 
-	Item = GetWorld()->SpawnActor< ABlockCoin>();
+	Item = GetWorld()->SpawnActor< AMushroom>(static_cast<int>(EActorType::Item));
 }
 
 void ACoinBlock::Tick(float _DeltaTime)
