@@ -42,6 +42,10 @@ void APlayerMario::BeginPlay()
 	Renderer->CreateAnimation("ReverseMove_Right", "Mario_Right.png", 4, 4, 0.1f, true);
 	Renderer->CreateAnimation("ReverseMove_Left", "Mario_Left.png", 4, 4, 0.1f, true);
 
+	Renderer->CreateAnimation("GrowUp_Left", "Mario_Left.png", 29, 32, 0.1f, true);
+	Renderer->CreateAnimation("GrowUp_Right", "Mario_Right.png", 29, 32, 0.1f, true);
+		
+
 	Renderer->CreateAnimation("Dead", "Mario_Right.png", 6, 6, 0.1f, true);
 
 	BodyCollision = CreateCollision(ECollisionOrder::Player);
@@ -576,7 +580,9 @@ void APlayerMario::OnTheBlockStart()
 
 void APlayerMario::MarioGrowUpStart()
 {
-	int a = 0;
+	IsOnTheBlock = false;
+	DirCheck();
+	Renderer->ChangeAnimation(ChangeAnimationName("GrowUp"));
 }
 
 
