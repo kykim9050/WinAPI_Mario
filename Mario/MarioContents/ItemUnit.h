@@ -36,6 +36,7 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 private:
-
+	float CoinRenderingTime = 0.5f;
+	bool RenderingEnd = false;
 };
 
