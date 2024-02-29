@@ -19,7 +19,7 @@ void AItemUnit::BeginPlay()
 	FVector ItemScale = Renderer->GetImage()->GetScale();
 
 	Renderer->SetTransform({ {0,0}, {ItemScale.iX() / UInGameValue::CoinImageXValue, ItemScale.iY() / UInGameValue::CoinImageYValue} });
-	Renderer->CreateAnimation("Rotating_Coin", "Coin.png", 0, 3, 0.1f, true);
+	Renderer->CreateAnimation("Rotating_Coin", "Coin.png", 0, 3, 0.05f, true);
 	Renderer->ChangeAnimation("Rotating_Coin");
 
 	StateChange(EActorState::Idle);
@@ -60,6 +60,9 @@ void AItemUnit::StateChange(EActorState _ActorState)
 		case EActorState::Move:
 			MoveStart();
 			break;
+		case EActorState::Release:
+			ReleaseStart();
+			break;
 		default:
 			break;
 		}
@@ -76,10 +79,6 @@ void AItemUnit::Idle(float _DeltaTime)
 
 void AItemUnit::Move(float _DeltaTime)
 {
-	if (true == RenderingEnd)
-	{
-		return;
-	}
 	// 동전의 경우
 	CoinRenderingTime -= _DeltaTime;
 
@@ -88,8 +87,7 @@ void AItemUnit::Move(float _DeltaTime)
 		RenderingEnd = true;
 		GravityVelocityVector = FVector::Zero;
 		JumpVelocityVector = FVector::Zero;
-		return;
-		//StateChange(EActorState::Idle);
+		StateChange(EActorState::Release);
 	}
 
 	GravityVelocityVector += GravityAccVector * _DeltaTime;
@@ -105,6 +103,13 @@ void AItemUnit::IdleStart()
 
 void AItemUnit::MoveStart()
 {
-	JumpVelocityVector = FVector::Up * 700.0f;
+	JumpVelocityVector = FVector::Up * 600.0f;
 	Renderer->ActiveOn();
+}
+
+void AItemUnit::ReleaseStart()
+{
+	// 랜더링만 Destroy
+	// 액터 자체를 Destory하면 BlockUnit에서 사용할 수가 없음
+	Renderer->Destroy();
 }

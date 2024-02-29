@@ -28,7 +28,7 @@ public:
 	
 	void IdleStart() override;
 	void MoveStart() override;
-
+	void ReleaseStart();
 
 
 protected:
@@ -36,7 +36,7 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 private:
-	float CoinRenderingTime = 0.5f;
+	float CoinRenderingTime = 0.7f;
 	bool RenderingEnd = false;
 };
 

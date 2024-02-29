@@ -96,7 +96,7 @@ void APlayerMario::StateChange(EActorState _PlayerState)
 		}
 	}
 
-	UEngineDebug::OutPutDebugText(std::to_string(static_cast<int>(ActorState)));
+	//UEngineDebug::OutPutDebugText(std::to_string(static_cast<int>(ActorState)));
 	SetActorState(_PlayerState);
 }
 
