@@ -57,9 +57,9 @@ void AItemUnit::StateChange(EActorState _ActorState)
 		case EActorState::Idle:
 			IdleStart();
 			break;
-		/*case EActorState::Move:
+		case EActorState::Move:
 			MoveStart();
-			break;*/
+			break;
 		default:
 			break;
 		}
@@ -77,4 +77,9 @@ void AItemUnit::Idle(float _DeltaTime)
 void AItemUnit::IdleStart()
 {
 	Renderer->ActiveOff();
+}
+
+void AItemUnit::MoveStart()
+{
+	Renderer->ActiveOn();
 }

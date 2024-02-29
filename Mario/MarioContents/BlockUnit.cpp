@@ -136,7 +136,7 @@ void ABlockUnit::CollisionCheck()
 			Player->CollisionStateChange(ECollisionState::BlockBotHit);
 
 			CollisionStateChange(ECollisionState::GetHit);
-			//Item->StateChange(EActorState::Move);
+			Item->StateChange(EActorState::Move);
 			return;
 		}
 	}

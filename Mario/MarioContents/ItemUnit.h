@@ -26,6 +26,7 @@ public:
 	void Idle(float _DeltaTime) override;
 
 	void IdleStart() override;
+	void MoveStart() override;
 
 protected:
 	void BeginPlay() override;
