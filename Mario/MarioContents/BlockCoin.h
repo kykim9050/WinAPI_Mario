@@ -4,6 +4,8 @@
 // Ό³Έν :
 class ABlockCoin : public AItemUnit
 {
+	friend class ABlockUnit;
+
 public:
 	// constrcuter destructer
 	ABlockCoin();
@@ -19,7 +21,15 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
-private:
+	void IdleStart() override;
+	void MoveStart() override;
+	void ReleaseStart() override;
 
+	void Move(float _DeltaTime) override;
+
+
+private:
+	float CoinRenderingTime = 0.7f;
+	bool RenderingEnd = false;
 };
 

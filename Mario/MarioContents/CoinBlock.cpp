@@ -1,4 +1,6 @@
 #include "CoinBlock.h"
+#include "BlockCoin.h"
+
 
 ACoinBlock::ACoinBlock()
 {
@@ -24,7 +26,7 @@ void ACoinBlock::BeginPlay()
 
 	SetActorState(EActorState::FirstInit);
 
-	Item = GetWorld()->SpawnActor< AItemUnit>();
+	Item = GetWorld()->SpawnActor< ABlockCoin>();
 }
 
 void ACoinBlock::Tick(float _DeltaTime)

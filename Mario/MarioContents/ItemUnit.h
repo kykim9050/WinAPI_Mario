@@ -8,7 +8,6 @@ class UImageRenderer;
 // Ό³Έν :
 class AItemUnit : public UStateUnit
 {
-	friend class ABlockUnit;
 public:
 	// constrcuter destructer
 	AItemUnit();
@@ -23,12 +22,12 @@ public:
 	void StateUpdate(float _DeltaTime);
 	void StateChange(EActorState _ActorState);
 
-	virtual void Idle(float _DeltaTime);
-	virtual void Move(float _DeltaTime);
+	virtual void Idle(float _DeltaTime) {}
+	virtual void Move(float _DeltaTime) {}
 	
-	virtual void IdleStart();
-	virtual void MoveStart();
-	virtual void ReleaseStart();
+	virtual void IdleStart() {}
+	virtual void MoveStart() {}
+	virtual void ReleaseStart() {}
 
 
 protected:
@@ -36,7 +35,7 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 private:
-	float CoinRenderingTime = 0.7f;
-	bool RenderingEnd = false;
+
+
 };
 
