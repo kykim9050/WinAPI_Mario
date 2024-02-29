@@ -64,3 +64,6 @@ const int UInGameValue::CoinImageYValue = 1;
 
 const int UInGameValue::ItemsImageXValue = 5;
 const int UInGameValue::ItemsImageYValue = 2;
+
+const int UInGameValue::MushroomCollisionScaleX = 32;
+const int UInGameValue::MushroomCollisionScaleY = 32;

@@ -1,5 +1,4 @@
 ﻿#include "Mushroom.h"
-#include "PlayerMario.h"
 
 AMushroom::AMushroom()
 {
@@ -23,8 +22,7 @@ void AMushroom::BeginPlay()
 	Renderer->ChangeAnimation("Mushroom");
 
 	BodyCollision = CreateCollision(ECollisionOrder::Item);
-	//BodyCollision->SetTransform({ { 0, 0}, { UInGameValue::MushroomCollisionScaleX, UInGameValue::MushroomCollisionScaleX} });
-	BodyCollision->SetTransform({ { 0, 0}, { 32, 32} });
+	BodyCollision->SetTransform({ { 0, 0}, { UInGameValue::MushroomCollisionScaleX, UInGameValue::MushroomCollisionScaleX} });
 	BodyCollision->SetColType(ECollisionType::Rect);
 
 	SetActorState(EActorState::FirstInit);
@@ -59,13 +57,6 @@ void AMushroom::MoveStart()
 {
 	BodyCollision->ActiveOn();
 
-	APlayerMario* Player = APlayerMario::GetMainPlayer();
-
-	FVector PlayerVector = Player->GetActorLocation();
-	FVector MushroomVector = GetActorLocation();
-
-	FVector DirValue = PlayerVector - MushroomVector;
-	InitChaseVector = DirValue.Normalize2DReturn();
 }
 
 
@@ -91,8 +82,5 @@ void AMushroom::Appear(float _DeltaTime)
 
 void AMushroom::Move(float _DeltaTime)
 {
-	{
-		AddActorLocation(InitChaseVector * FVector::Right *100.0f * _DeltaTime);
-		//AddActorLocation(FVector::Right * 100.0f * _DeltaTime);
-	}
+	AddActorLocation(FVector::Right * 100.0f * _DeltaTime);
 }
