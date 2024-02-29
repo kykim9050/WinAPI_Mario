@@ -24,9 +24,12 @@ public:
 	void StateChange(EActorState _ActorState) override;
 
 	void Idle(float _DeltaTime) override;
-
+	void Move(float _DeltaTime) override;
+	
 	void IdleStart() override;
 	void MoveStart() override;
+
+
 
 protected:
 	void BeginPlay() override;

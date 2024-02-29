@@ -39,9 +39,9 @@ void AItemUnit::StateUpdate(float _DeltaTime)
 	case EActorState::Idle:
 		Idle(_DeltaTime);
 		break;
-	/*case EActorState::Move:
+	case EActorState::Move:
 		Move(_DeltaTime);
-		break;*/
+		break;
 	default:
 		break;
 	}
@@ -74,6 +74,13 @@ void AItemUnit::Idle(float _DeltaTime)
 
 }
 
+void AItemUnit::Move(float _DeltaTime)
+{
+	GravityVelocityVector += GravityAccVector * _DeltaTime;
+	CalTotalVelocityVector(_DeltaTime);
+	AddActorLocation(TotalVelocityVector * _DeltaTime);
+}
+
 void AItemUnit::IdleStart()
 {
 	Renderer->ActiveOff();
@@ -81,5 +88,6 @@ void AItemUnit::IdleStart()
 
 void AItemUnit::MoveStart()
 {
+	JumpVelocityVector = FVector::Up * 200.0f;
 	Renderer->ActiveOn();
 }
