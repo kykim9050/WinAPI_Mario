@@ -55,6 +55,7 @@ enum class EActorState
 	Dead,
 	Fixed,
 	OnTheBlock,
+	Release,
 };
 
 enum class EActorDir
