@@ -1,5 +1,6 @@
 #pragma once
 #include <EngineCore\Level.h>
+#include "EnumClass.h"
 
 // Ό³Έν :
 class UTitleLevel : public ULevel

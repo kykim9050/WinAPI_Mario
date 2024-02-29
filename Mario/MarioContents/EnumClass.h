@@ -66,6 +66,19 @@ enum class EActorDir
 	Right,
 };
 
+/// <summary>
+/// 액터의 종류
+/// </summary>
+enum class EActorType
+{
+	None,
+	Map,
+	UI,
+	Player,
+	Monster,
+	Block,
+	Item,
+};
 
 enum class ECollisionOrder
 {
