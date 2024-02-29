@@ -21,12 +21,24 @@ void AMushroom::BeginPlay()
 	Renderer->CreateAnimation("Mushroom", "Items.png", 0, 0, 0.1f, true);
 	Renderer->ChangeAnimation("Mushroom");
 
-	StateChange(EActorState::Idle);
+	BodyCollision = CreateCollision(ECollisionOrder::Item);
+	//BodyCollision->SetTransform({ { 0, 0}, { UInGameValue::MushroomCollisionScaleX, UInGameValue::MushroomCollisionScaleX} });
+	BodyCollision->SetTransform({ { 0, 0}, { 32, 32} });
+	BodyCollision->SetColType(ECollisionType::Rect);
+
+	SetActorState(EActorState::FirstInit);
 }
 
 void AMushroom::Tick(float _DeltaTime)
 {
 	AItemUnit::Tick(_DeltaTime);
+}
+
+
+void AMushroom::FirstInit(float _Deltatime)
+{
+	InitPos = GetActorLocation();
+	StateChange(EActorState::Idle);
 }
 
 void AMushroom::IdleStart()

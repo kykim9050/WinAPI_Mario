@@ -89,6 +89,7 @@ enum class ECollisionOrder
 	Block,
 	CollisionBlock,
 	BlockTop,
+	Item,
 };
 
 enum class ECollisionState
