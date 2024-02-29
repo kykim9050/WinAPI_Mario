@@ -1,4 +1,5 @@
 ﻿#include "Mushroom.h"
+#include "PlayerMario.h"
 
 AMushroom::AMushroom()
 {
@@ -57,6 +58,14 @@ void AMushroom::AppearStart()
 void AMushroom::MoveStart()
 {
 	BodyCollision->ActiveOn();
+
+	APlayerMario* Player = APlayerMario::GetMainPlayer();
+
+	FVector PlayerVector = Player->GetActorLocation();
+	FVector MushroomVector = GetActorLocation();
+
+	FVector DirValue = PlayerVector - MushroomVector;
+	InitChaseVector = DirValue.Normalize2DReturn();
 }
 
 
@@ -82,5 +91,8 @@ void AMushroom::Appear(float _DeltaTime)
 
 void AMushroom::Move(float _DeltaTime)
 {
-	AddActorLocation(FVector::Right * 100.0f * _DeltaTime);
+	{
+		AddActorLocation(InitChaseVector * FVector::Right *100.0f * _DeltaTime);
+		//AddActorLocation(FVector::Right * 100.0f * _DeltaTime);
+	}
 }

@@ -31,6 +31,6 @@ protected:
 
 
 private:
-
+	FVector InitChaseVector = FVector::Zero;
 };
 
