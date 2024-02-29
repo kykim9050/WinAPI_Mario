@@ -22,11 +22,10 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 	void IdleStart() override;
-	void MoveStart() override;
+	void AppearStart() override;
 	void ReleaseStart() override;
 
-	void Move(float _DeltaTime) override;
-
+	void Appear(float _DeltaTime) override;
 
 private:
 	float CoinRenderingTime = 0.7f;

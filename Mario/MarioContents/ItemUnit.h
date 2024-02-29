@@ -24,8 +24,10 @@ public:
 
 	virtual void Idle(float _DeltaTime) {}
 	virtual void Move(float _DeltaTime) {}
-	
+	virtual void Appear(float _DeltaTime) {}
+
 	virtual void IdleStart() {}
+	virtual void AppearStart() {}
 	virtual void MoveStart() {}
 	virtual void ReleaseStart() {}
 

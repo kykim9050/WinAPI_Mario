@@ -27,7 +27,7 @@ void ACoinBlock::BeginPlay()
 
 	SetActorState(EActorState::FirstInit);
 
-	Item = GetWorld()->SpawnActor< AMushroom>();
+	Item = GetWorld()->SpawnActor< ABlockCoin>();
 }
 
 void ACoinBlock::Tick(float _DeltaTime)
@@ -101,7 +101,7 @@ void ACoinBlock::CollisionCheck()
 			Player->CollisionStateChange(ECollisionState::BlockBotHit);
 
 			CollisionStateChange(ECollisionState::GetHit);
-			Item->StateChange(EActorState::Move);
+			Item->StateChange(EActorState::Appear);
 			return;
 		}
 	}
