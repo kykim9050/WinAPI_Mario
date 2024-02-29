@@ -21,7 +21,7 @@ void AMushroom::BeginPlay()
 	Renderer->CreateAnimation("Mushroom", "Items.png", 0, 0, 0.1f, true);
 	Renderer->ChangeAnimation("Mushroom");
 
-	//StateChange(EActorState::Idle);
+	StateChange(EActorState::Idle);
 }
 
 void AMushroom::Tick(float _DeltaTime)
@@ -29,4 +29,14 @@ void AMushroom::Tick(float _DeltaTime)
 	AItemUnit::Tick(_DeltaTime);
 }
 
+void AMushroom::IdleStart()
+{
+	AItemUnit::IdleStart();
+	int a = 0;
+}
+
+void AMushroom::Idle(float _DeltaTime)
+{
+	int a = 0;
+}
 
