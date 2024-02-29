@@ -91,6 +91,9 @@ void APlayerMario::StateChange(EActorState _PlayerState)
 		case EActorState::OnTheBlock:
 			OnTheBlockStart();
 			break;
+		case EActorState::MarioGrowUp:
+			MarioGrowUpStart();
+			break;
 		default:
 			break;
 		}
@@ -199,7 +202,7 @@ void APlayerMario::CollosionStateCheck()
 
 	if (true == BodyCollision->CollisionCheck(ECollisionOrder::Mushroom, Result))
 	{
-		int a = 0;
+		StateChange(EActorState::MarioGrowUp);
 		return;
 	}
 
@@ -570,6 +573,12 @@ void APlayerMario::OnTheBlockStart()
 	SetJumpZero();
 	//SetGravityRatio(0.0f);
 }
+
+void APlayerMario::MarioGrowUpStart()
+{
+	int a = 0;
+}
+
 
 void APlayerMario::BlockBotHitStart()
 {
