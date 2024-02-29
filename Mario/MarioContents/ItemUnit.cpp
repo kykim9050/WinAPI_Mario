@@ -71,10 +71,10 @@ void AItemUnit::StateChange(EActorState _ActorState)
 
 void AItemUnit::Idle(float _DeltaTime)
 {
-	int a = 0;
+
 }
 
 void AItemUnit::IdleStart()
 {
-	int a = 0;
+	Renderer->ActiveOff();
 }

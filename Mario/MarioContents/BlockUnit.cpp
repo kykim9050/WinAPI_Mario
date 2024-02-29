@@ -57,7 +57,6 @@ void ABlockUnit::FirstInit(float _Deltatime)
 	StateChange(EActorState::Idle);
 
 	Item->SetActorLocation({InitPos.X, InitPos.Y - 32});
-	Item->AllRenderersActiveOff();
 }
 
 void ABlockUnit::ResultMovementUpdate(float _DeltaTime)
@@ -191,20 +190,17 @@ void ABlockUnit::GetHitStart()
 
 void ABlockUnit::IdleStart()
 {
-	Item->AllRenderersActiveOff();
+
 }
 
 void ABlockUnit::MoveStart()
 {
 	JumpVelocityVector = FVector::Up * 200.0f;
-	Item->AllRenderersActiveOn();
 }
 
 void ABlockUnit::FixedStart()
 {
-	Item->AllRenderersActiveOff();
-	/*SetJumpZero();
-	SetGravityZero();*/
+
 }
 
 void ABlockUnit::Idle(float _DeltaTime)
@@ -219,6 +215,5 @@ void ABlockUnit::Move(float _DeltaTime)
 
 void ABlockUnit::Fixed(float _DeltaTime)
 {
-	/*CalTotalVelocityVector(_DeltaTime);
-	AddActorLocation(TotalVelocityVector * _DeltaTime);*/
+
 }
