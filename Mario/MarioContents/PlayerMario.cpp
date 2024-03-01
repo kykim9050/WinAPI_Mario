@@ -201,9 +201,9 @@ void APlayerMario::CollisionUpdate(float _DeltaTime)
 
 	switch (ActorCollisionState)
 	{
-	case ECollisionState::GetHit:
-		GetHit(_DeltaTime);
-		break;
+	//case ECollisionState::GetHit:
+	//	GetHit(_DeltaTime);
+	//	break;
 	default:
 		CollisionStateChange(ECollisionState::None);
 		break;
