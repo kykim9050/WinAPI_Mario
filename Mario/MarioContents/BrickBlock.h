@@ -26,6 +26,8 @@ protected:
 
 	void CollisionCheck() override;
 
+	void DebrisStart() override;
+
 private:
 
 };

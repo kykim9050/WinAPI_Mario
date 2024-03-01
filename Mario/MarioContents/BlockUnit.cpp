@@ -98,6 +98,8 @@ void ABlockUnit::StateChange(EActorState _ActorState)
 		case EActorState::Fixed:
 			FixedStart();
 			break;
+		case EActorState::Debris:
+			DebrisStart();
 		default:
 			break;
 		}
@@ -114,23 +116,34 @@ void ABlockUnit::GetHitStart()
 		return;
 	}
 
-	StateChange(EActorState::Move);
-}
+	APlayerMario* Player = APlayerMario::GetMainPlayer();
+
+	if (nullptr == Player)
+	{
+		MsgBoxAssert("플레이어가 존재하지 않습니다.");
+	}
+
+	EMarioType type = Player->GetPlayerType();
 
 
-void ABlockUnit::IdleStart()
-{
+	switch (type)
+	{
+	case EMarioType::Small:
+		StateChange(EActorState::Move);
+		break;
+	case EMarioType::Big:
+		StateChange(EActorState::Debris);
+		break;
+	default:
+		break;
+	}
 
+	
 }
 
 void ABlockUnit::MoveStart()
 {
 	JumpVelocityVector = FVector::Up * 200.0f;
-}
-
-void ABlockUnit::FixedStart()
-{
-
 }
 
 void ABlockUnit::Idle(float _DeltaTime)

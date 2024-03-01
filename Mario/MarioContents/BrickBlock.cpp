@@ -93,6 +93,15 @@ void ABrickBlock::Move(float _DeltaTime)
 	}
 }
 
+void ABrickBlock::DebrisStart()
+{
+	ABlockUnit::DebrisStart();
+
+	TopCollision->ActiveOff();
+	SideCollision->ActiveOff();
+	BodyCollision->ActiveOff();
+	Renderer->ChangeAnimation("BrickBlock_Debris");
+}
 
 
 
