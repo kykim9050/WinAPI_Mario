@@ -292,8 +292,6 @@ void APlayerMario::ReverseMoveStart()
 
 void APlayerMario::ReverseMove(float _DeltaTime)
 {
-	//BlockCollisionCheck();
-
 	if (UEngineInput::IsDown('Z'))
 	{
 		StateChange(EActorState::Jump);
@@ -338,8 +336,6 @@ void APlayerMario::ReverseMove(float _DeltaTime)
 // X축 이동만을 담당하는 함수
 void APlayerMario::Move(float _DeltaTime)
 {
-	//BlockCollisionCheck();
-
 	if (HorizonVelocityVector.X < 3.0f && HorizonVelocityVector.X > -3.0f && (UEngineInput::IsFree(VK_LEFT) && UEngineInput::IsFree(VK_RIGHT)))
 	{
 		StateChange(EActorState::Idle);
@@ -406,7 +402,6 @@ void APlayerMario::CollisionJump(float _DeltaTime)
 void APlayerMario::Jump(float _DeltaTime)
 {
 	UEngineDebug::OutPutDebugText(std::to_string(IsOnTheBlock));
-	//BlockCollisionCheck();
 	
 	
 	if (UEngineInput::IsUp('Z') || 0.3f < UEngineInput::GetPressTime('Z'))
@@ -506,8 +501,6 @@ void APlayerMario::CameraMove(float _DeltaTime)
 
 void APlayerMario::Idle(float _DeltaTime)
 {
-	//BlockCollisionCheck();
-
 	if (UEngineInput::IsDown('1'))
 	{
 		StateChange(EActorState::FreeMove);
@@ -554,8 +547,6 @@ void APlayerMario::GetHit(float _DeltaTime)
 
 void APlayerMario::OnTheBlock(float _DeltaTime)
 {
-	//StateChange(EActorState::Idle);
-	//BlockCollisionCheck();
 
 	if (HorizonVelocityVector.X < 3.0f && HorizonVelocityVector.X > -3.0f && (UEngineInput::IsFree(VK_LEFT) && UEngineInput::IsFree(VK_RIGHT)))
 	{
@@ -814,20 +805,5 @@ void APlayerMario::CalGravityVelocityVector(float _DeltaTime)
 	if (UInGameValue::CollisionColor == Color || true == BodyCollision->CollisionCheck(ECollisionOrder::BlockTop, Result))
 	{
 		GravityVelocityVector = FVector::Zero;
-	}
-}
-
-void APlayerMario::BlockCollisionCheck()
-{
-	std::vector<UCollision*> Result = std::vector<UCollision*>();
-
-	if (true == BodyCollision->CollisionCheck(ECollisionOrder::BlockTop, Result))
-	{
-		if (true == IsOnTheBlock)
-		{
-			return;
-		}
-
-		StateChange(EActorState::OnTheBlock);
 	}
 }
