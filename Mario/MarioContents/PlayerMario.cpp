@@ -201,17 +201,7 @@ void APlayerMario::StateUpdate(float _DeltaTime)
 void APlayerMario::CollisionUpdate(float _DeltaTime)
 {
 	CollisionStateCheck();
-
-
-	switch (ActorCollisionState)
-	{
-	case ECollisionState::Invincible:
-		Invincible(_DeltaTime);
-		break;
-	default:
-		CollisionStateChange(ECollisionState::None);
-		break;
-	}
+	CollisionAction(_DeltaTime);
 }
 
 void APlayerMario::CollisionStateCheck()
@@ -245,6 +235,14 @@ void APlayerMario::CollisionStateCheck()
 		return;
 	}
 
+}
+
+void APlayerMario::CollisionAction(float _DeltaTime)
+{
+	if (IsInvincible)
+	{
+		Invincible(_DeltaTime);
+	}
 }
 
 
@@ -645,12 +643,15 @@ void APlayerMario::BlockBotHitStart()
 {
 	SetJumpZero();
 	SetGravityRatio(1.0f);
+	CollisionStateChange(ECollisionState::None);
 }
 
 void APlayerMario::InvincibleStart()
 {
 	//BodyCollision->ActiveOff();
 	BodyCollision->SetOrder(static_cast<int>(ECollisionOrder::Invincible));
+	IsInvincible = true;
+	CollisionStateChange(ECollisionState::None);
 }
 
 void APlayerMario::BlockSideHitStart()
@@ -895,6 +896,7 @@ void APlayerMario::Invincible(float _DeltaTime)
 		//BodyCollision->ActiveOn();
 		BodyCollision->SetOrder(static_cast<int>(ECollisionOrder::Player));
 		InvincibleTime = 2.0f;
+		IsInvincible = false;
 		CollisionStateChange(ECollisionState::None);
 	}
 }

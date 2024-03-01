@@ -153,6 +153,8 @@ protected:
 
 	void CalGravityVelocityVector(float _DeltaTime) override;
 
+	void CollisionAction(float _DeltaTime);
+
 private:
 	EMarioType MarioType = EMarioType::None;
 
@@ -182,6 +184,7 @@ private:
 
 	bool IsOnTheBlock = false;
 	bool EatMushroom = false;
+	bool IsInvincible = false;
 
 	EActorState PrevActorState = EActorState::None;
 };
