@@ -55,7 +55,7 @@ void ABrickBlock::CollisionCheck()
 		if (PlayerColTrans.GetPosition().X < BlockColTrans.Right() && PlayerColTrans.GetPosition().X > BlockColTrans.Left() && PlayerColTrans.GetPosition().Y < BlockColTrans.Bottom())
 		{
 			//UEngineDebug::OutPutDebugText("Occur Block Bot Collision");
-			Player->CollisionStateChange(ECollisionState::BlockBotHit);
+			Player->HitBlockBottom();
 
 			CollisionStateChange(ECollisionState::GetHit);
 			return;
