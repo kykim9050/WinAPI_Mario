@@ -558,11 +558,31 @@ void APlayerMario::GrowUp(float _DeltaTime)
 
 void APlayerMario::GetHitStart()
 {
-	Renderer->ChangeAnimation("Small_Dead");
-	--Life;
+	switch (MarioType)
+	{
+	case EMarioType::None:
+		break;
+	case EMarioType::Small:
+	{
+		Renderer->ChangeAnimation("Small_Dead");
+		--Life;
 
-	SetGravityZero();
-	JumpVelocityVector = FVector::Up * 500.0f;
+		SetGravityZero();
+		JumpVelocityVector = FVector::Up * 500.0f;
+		break;
+	}
+	case EMarioType::Big:
+	{
+		int a = 0;
+		break;
+	}
+	case EMarioType::Fire:
+		break;
+	default:
+		break;
+	}
+	
+	
 }
 
 
