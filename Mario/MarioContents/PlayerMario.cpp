@@ -53,6 +53,7 @@ void APlayerMario::BeginPlay()
 	BodyCollision->SetPosition({0, -(BodyCollision->GetTransform().GetScale().ihY())});
 	BodyCollision->SetColType(ECollisionType::Rect);
 
+	MarioType = EMarioType::Small;
 	ActorState = EActorState::Idle;
 }
 

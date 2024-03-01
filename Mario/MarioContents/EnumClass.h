@@ -81,6 +81,14 @@ enum class EActorType
 	Item,
 };
 
+enum class EMarioType
+{
+	None,
+	Small,
+	Big,
+	Fire,
+};
+
 enum class ECollisionOrder
 {
 	PlayerBullet,
