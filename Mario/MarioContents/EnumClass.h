@@ -100,6 +100,7 @@ enum class ECollisionOrder
 	BlockTop,
 	Item,
 	Mushroom,
+	Invincible,
 };
 
 enum class ECollisionState
