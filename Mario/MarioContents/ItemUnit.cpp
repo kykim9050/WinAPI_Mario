@@ -88,3 +88,14 @@ void AItemUnit::CollisionStateChange(ECollisionState _CollisionState)
 
 	SetCollisionState(_CollisionState);
 }
+
+void AItemUnit::GetHitStart()
+{
+	BodyCollision->Destroy();
+	StateChange(EActorState::Release);
+}
+
+void AItemUnit::ReleaseStart()
+{
+	Destroy();
+}
