@@ -132,11 +132,6 @@ void APlayerMario::CollisionStateChange(ECollisionState _CollisionState)
 	SetCollisionState(_CollisionState);
 }
 
-void APlayerMario::BlockBotHit(float _DeltaTime)
-{
-	CollisionStateChange(ECollisionState::None);
-}
-
 void APlayerMario::StateUpdate(float _DeltaTime)
 {
 	switch (ActorState)
@@ -183,10 +178,8 @@ void APlayerMario::CollisionUpdate(float _DeltaTime)
 	case ECollisionState::GetHit:
 		GetHit(_DeltaTime);
 		break;
-	case ECollisionState::BlockBotHit:
-		BlockBotHit(_DeltaTime);
-		break;
 	default:
+		CollisionStateChange(ECollisionState::None);
 		break;
 	}
 }
