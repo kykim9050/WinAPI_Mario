@@ -234,14 +234,8 @@ void APlayerMario::CollisionStateCheck()
 
 void APlayerMario::CollisionJumpStart()
 {
-	if (EActorDir::Left == ActorDir)
-	{
-		Renderer->ChangeAnimation("Small_Jump_Left");
-	}
-	else if (EActorDir::Right == ActorDir)
-	{
-		Renderer->ChangeAnimation("Small_Jump_Right");
-	}
+	DirCheck();
+	Renderer->ChangeAnimation(ChangeAnimationName("Jump"));
 
 	SetGravityZero();
 	JumpVelocityVector = CollisionJumpVelocityVector;
