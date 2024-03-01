@@ -26,7 +26,7 @@ protected:
 	void StateUpdate(float _DeltaTime);
 	void StateChange(EActorState _ActorState);
 	void CollisionStateChange(ECollisionState _CollisionState);
-	virtual void CollisionCheck();
+	virtual void CollisionCheck() {}
 
 	virtual void IdleStart();
 	virtual void MoveStart();

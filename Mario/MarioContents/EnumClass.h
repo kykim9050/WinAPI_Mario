@@ -87,7 +87,7 @@ enum class ECollisionOrder
 	Monster,
 	Player,
 	AttackableMonster,
-	Block,
+	BlockSide,
 	CollisionBlock,
 	BlockTop,
 	Item,
