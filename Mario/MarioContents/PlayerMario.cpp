@@ -552,6 +552,10 @@ void APlayerMario::MarioGrowUpStart()
 	DirCheck();
 	Renderer->ChangeAnimation(ChangeAnimationName("GrowUp"));
 	BodyCollision->SetTransform({ { 0,-40 }, {BodyCollision->GetTransform().GetScale().X * 1.5f, BodyCollision->GetTransform().GetScale().Y * 2} });
+	GetWorld()->SetOtherTimeScale(EActorType::Player, 0.0f);
+	/*PrevState = State;
+	ChangeTime = 1.f;*/
+
 }
 
 
