@@ -60,7 +60,7 @@ void UTestLevel::BeginPlay()
 	BrickBlock2->SetActorLocation({ StandardXPos + 48,StandardYPos });
 	BrickBlock3->SetActorLocation({ StandardXPos + 48 * 2,StandardYPos });
 	BrickBlock4->SetActorLocation({ StandardXPos + 48 * 3,StandardYPos });
-
+	
 	CoinBlock1->SetActorLocation({ 250 + 48 * 4,StandardYPos });
 	//CoinBlock2->SetActorLocation({ 250 + 48 * 5,450 });
 	//CoinBlock3->SetActorLocation({ 250 + 48 * 6,450 });
