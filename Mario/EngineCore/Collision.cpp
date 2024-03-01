@@ -38,6 +38,8 @@ bool UCollision::CollisionCheck(int _Order, std::vector<UCollision*>& _Result)
 		return false;
 	}
 
+	_Result.clear();
+
 	// 본인과 특정 콜리전과 충돌해야 한다.
 	AActor* Owner = GetOwner();
 	ULevel* Level = Owner->GetWorld();
