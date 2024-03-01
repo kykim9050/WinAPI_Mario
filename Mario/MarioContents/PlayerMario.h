@@ -41,6 +41,7 @@ public:
 	/// </summary>
 	void JumpStart() override;
 
+	void DeadStart();
 
 	void CollisionJumpStart();
 
@@ -109,6 +110,7 @@ public:
 
 	void GrowUp(float _DeltaTime);
 
+	void Dead(float _DeltaTime);
 
 	
 
