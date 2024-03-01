@@ -45,7 +45,7 @@ void UTestLevel::BeginPlay()
 	//AGoomba* MonsterGoomba2 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
 	AGoomba* MonsterGoomba3 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
 	//
-	//AKoopaTroopa* MonsterKoopaTroopa1 = SpawnActor< AKoopaTroopa>(static_cast<int>(EActorType::Monster));
+	AKoopaTroopa* MonsterKoopaTroopa1 = SpawnActor< AKoopaTroopa>(static_cast<int>(EActorType::Monster));
 	//AKoopaTroopa* MonsterKoopaTroopa2 = SpawnActor< AKoopaTroopa>(static_cast<int>(EActorType::Monster));
 	//
 	//APiranhaPlant* MonsterPiranhaPlant1 = SpawnActor< APiranhaPlant>(static_cast<int>(EActorType::Monster));
@@ -67,7 +67,7 @@ void UTestLevel::BeginPlay()
 
 	//MonsterPiranhaPlant1->SetActorLocation({ 1875,550 });
 	//
-	//MonsterKoopaTroopa1->SetActorLocation({ 1000,500 });
+	MonsterKoopaTroopa1->SetActorLocation({ 1000,500 });
 	//MonsterKoopaTroopa2->SetActorLocation({ 1700,500 });
 	//
 	//MonsterGoomba1->SetActorLocation({ 800, 500 });

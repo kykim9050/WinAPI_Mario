@@ -245,7 +245,7 @@ void AKoopaTroopa::CollisionCheck()
 		MsgBoxAssert("플레이어가 존재하지 않습니다.");
 	}
 
-	if (false == KillPlayer && true == BodyCollision->CollisionCheck(ECollisionOrder::Player, Result))
+	if (true == BodyCollision->CollisionCheck(ECollisionOrder::Player, Result))
 	{
 		float PlayerBottom = Player->GetBodyCollision()->GetActorBaseTransform().Bottom();
 		float MonsterBottom = BodyCollision->GetActorBaseTransform().Bottom();
@@ -272,8 +272,6 @@ void AKoopaTroopa::CollisionCheck()
 			// KoopaTroopa가 살아있을 때 혹은 등껍질로 날라다닐때 충돌의 경우
 			// 이때는 플레이어 사망해야 함
 			Player->StateChange(EActorState::GetHit);
-			// 플레이어를 죽였다.
-			KillPlayer = true;
 			break;
 		}
 		case 2:
@@ -289,7 +287,7 @@ void AKoopaTroopa::CollisionCheck()
 	}
 	
 	// 만약 엉금엉금이 굴러다닐때 충돌하면 충돌로 인지
-	if (false == KillPlayer && true == BodyCollision->CollisionCheck(ECollisionOrder::AttackableMonster, Result))
+	if (true == BodyCollision->CollisionCheck(ECollisionOrder::AttackableMonster, Result))
 	{
 		// GetHit시 Collision 삭제후
 		BodyCollision->Destroy();

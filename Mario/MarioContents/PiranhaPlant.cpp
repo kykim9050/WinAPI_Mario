@@ -90,11 +90,9 @@ void APiranhaPlant::CollisionCheck()
 		MsgBoxAssert("플레이어가 존재하지 않습니다.");
 	}
 
-	if (false == KillPlayer && true == BodyCollision->CollisionCheck(ECollisionOrder::Player, Result))
+	if (true == BodyCollision->CollisionCheck(ECollisionOrder::Player, Result))
 	{
 		Player->StateChange(EActorState::GetHit);
-		// 플레이어를 죽였다.
-		KillPlayer = true;
 		return;
 	}
 

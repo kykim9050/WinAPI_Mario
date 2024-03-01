@@ -604,6 +604,7 @@ void APlayerMario::Dead(float _DeltaTime)
 
 void APlayerMario::GetHitStart()
 {
+	BodyCollision->ActiveOff();
 
 	DirCheck();
 	Renderer->ChangeAnimation(ChangeAnimationName("SizeDown"));
