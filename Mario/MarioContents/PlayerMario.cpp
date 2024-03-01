@@ -62,8 +62,8 @@ void APlayerMario::BeginPlay()
 	Renderer->CreateAnimation("Big_ReverseMove_Left", "Mario_Left.png", 18, 18, 0.1f, true);
 
 
-	Renderer->CreateAnimation("Big_SizeDown_Left", "Mario_Left.png", { 32, 33, 34, 33, 34, 33, 34, 35}, 0.15f, true);
-	Renderer->CreateAnimation("Big_SizeDown_Right", "Mario_Right.png", { 32, 33, 34, 33, 34, 33, 34, 35 }, 0.15f, true);
+	Renderer->CreateAnimation("Big_SizeDown_Left", "Mario_Left.png", { 32, 33, 34, 33, 34, 33, 34, 35}, 0.15f, false);
+	Renderer->CreateAnimation("Big_SizeDown_Right", "Mario_Right.png", { 32, 33, 34, 33, 34, 33, 34, 35 }, 0.15f, false);
 	
 
 
@@ -112,8 +112,21 @@ void APlayerMario::StateChange(EActorState _PlayerState)
 			CollisionJumpStart();
 			break;
 		case EActorState::GetHit:
-			GetHitStart();
+		{
+			switch (MarioType)
+			{
+			case EMarioType::Small:
+				DeadStart();
+				_PlayerState = EActorState::Dead;
+				break;
+			case EMarioType::Big:
+				GetHitStart();
+				break;
+			default:
+				break;
+			}
 			break;
+		}
 		case EActorState::MarioGrowUp:
 			MarioGrowUpStart();
 			break;
@@ -182,6 +195,9 @@ void APlayerMario::StateUpdate(float _DeltaTime)
 	case EActorState::MarioGrowUp:
 		GrowUp(_DeltaTime);
 		break;
+	case EActorState::Dead:
+		Dead(_DeltaTime);
+		break;
 	default:
 		break;
 	}
@@ -244,6 +260,15 @@ void APlayerMario::CollisionJumpStart()
 
 	SetGravityZero();
 	JumpVelocityVector = CollisionJumpVelocityVector;
+}
+
+void APlayerMario::DeadStart()
+{
+	Renderer->ChangeAnimation("SmallMario_Dead");
+	--Life;
+
+	SetGravityZero();
+	JumpVelocityVector = FVector::Up * 500.0f;
 }
 
 void APlayerMario::JumpStart()
@@ -531,19 +556,7 @@ void APlayerMario::Idle(float _DeltaTime)
 
 void APlayerMario::GetHit(float _DeltaTime)
 {
-	static float DelayTime = 0.5f;
 
-	DelayTime -= _DeltaTime;
-
-	if (0.0f >= DelayTime)
-	{
-		GravityVelocityVector += GravityAccVector * _DeltaTime;
-
-		TotalVelocityVector = FVector::Zero;
-		TotalVelocityVector = TotalVelocityVector + GravityVelocityVector + JumpVelocityVector;
-
-		AddActorLocation(TotalVelocityVector * _DeltaTime);
-	}
 }
 
 void APlayerMario::GrowUp(float _DeltaTime)
@@ -560,44 +573,38 @@ void APlayerMario::GrowUp(float _DeltaTime)
 	}
 }
 
+void APlayerMario::Dead(float _DeltaTime)
+{
+	static float DelayTime = 0.5f;
+
+	DelayTime -= _DeltaTime;
+
+	if (0.0f >= DelayTime)
+	{
+		GravityVelocityVector += GravityAccVector * _DeltaTime;
+
+		TotalVelocityVector = FVector::Zero;
+		TotalVelocityVector = TotalVelocityVector + GravityVelocityVector + JumpVelocityVector;
+
+		AddActorLocation(TotalVelocityVector * _DeltaTime);
+	}
+}
+
 
 void APlayerMario::GetHitStart()
 {
-	switch (MarioType)
-	{
-	case EMarioType::None:
-		break;
-	case EMarioType::Small:
-	{
-		Renderer->ChangeAnimation("SmallMario_Dead");
-		--Life;
 
-		SetGravityZero();
-		JumpVelocityVector = FVector::Up * 500.0f;
-		break;
-	}
-	case EMarioType::Big:
-	{
-		DirCheck();
-		Renderer->ChangeAnimation(ChangeAnimationName("SizeDown"));
+	DirCheck();
+	Renderer->ChangeAnimation(ChangeAnimationName("SizeDown"));
 
-		MarioType = EMarioType::Small;
-		
-		BodyCollision->SetScale({ UInGameValue::PlayerCollisionScaleX, UInGameValue::PlayerCollisionScaleY });
-		BodyCollision->SetPosition({ 0, -(BodyCollision->GetTransform().GetScale().ihY()) });
+	MarioType = EMarioType::Small;
 
-		GetWorld()->SetOtherTimeScale(EActorType::Player, 0.0f);
-	
-		PrevActorState = ActorState;
-		break;
-	}
-	case EMarioType::Fire:
-		break;
-	default:
-		break;
-	}
-	
-	
+	BodyCollision->SetScale({ UInGameValue::PlayerCollisionScaleX, UInGameValue::PlayerCollisionScaleY });
+	BodyCollision->SetPosition({ 0, -(BodyCollision->GetTransform().GetScale().ihY()) });
+
+	GetWorld()->SetOtherTimeScale(EActorType::Player, 0.0f);
+
+	PrevActorState = ActorState;
 }
 
 
