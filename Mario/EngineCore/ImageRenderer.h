@@ -246,6 +246,11 @@ public:
 		TextEffect = _Effect;
 	}
 
+	void SetSortType(EImageSortType _SortType)
+	{
+		SortType = _SortType;
+	}
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _Time) override;
