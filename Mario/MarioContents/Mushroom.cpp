@@ -1,4 +1,5 @@
 ﻿#include "Mushroom.h"
+#include "PlayerMario.h"
 
 AMushroom::AMushroom()
 {
@@ -83,4 +84,25 @@ void AMushroom::Appear(float _DeltaTime)
 void AMushroom::Move(float _DeltaTime)
 {
 	AddActorLocation(FVector::Right * 100.0f * _DeltaTime);
+}
+
+
+
+void AMushroom::CollisionCheck()
+{
+	std::vector<UCollision*> Result = std::vector<UCollision*>();
+
+	APlayerMario* Player = APlayerMario::GetMainPlayer();
+
+	if (nullptr == Player)
+	{
+		MsgBoxAssert("플레이어가 존재하지 않습니다.");
+	}
+
+	if (true == BodyCollision->CollisionCheck(ECollisionOrder::Player, Result))
+	{
+		Player->EattingMushroom();
+		BodyCollision->Destroy();
+		return;
+	}
 }

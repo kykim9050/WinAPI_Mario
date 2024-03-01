@@ -18,6 +18,8 @@ void AItemUnit::Tick(float _DeltaTime)
 	AActor::Tick(_DeltaTime);
 
 	StateUpdate(_DeltaTime);
+
+	CollisionCheck();
 }
 
 void AItemUnit::StateUpdate(float _DeltaTime)

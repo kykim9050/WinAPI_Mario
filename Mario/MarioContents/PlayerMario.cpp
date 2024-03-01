@@ -195,9 +195,10 @@ void APlayerMario::CollisionStateCheck()
 {
 	std::vector<UCollision*> Result = std::vector<UCollision*>();
 
-	if (true == BodyCollision->CollisionCheck(ECollisionOrder::Mushroom, Result))
+	if (true == EatMushroom)
 	{
 		StateChange(EActorState::MarioGrowUp);
+		EatMushroom = false;
 		return;
 	}
 
@@ -547,8 +548,8 @@ void APlayerMario::GrowUp(float _DeltaTime)
 	
 	if (0.0f >= DelayTime)
 	{
-		GetWorld()->SetAllTimeScale(.0f);
-		StateChange(PrevActorState);
+		GetWorld()->SetAllTimeScale(1.0f);
+		SetActorState(PrevActorState);
 	}
 }
 
