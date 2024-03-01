@@ -251,6 +251,11 @@ public:
 		SortType = _SortType;
 	}
 
+	void AutoImageScale()
+	{
+		AutoImageScaleValue = true;
+	}
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _Time) override;
@@ -282,5 +287,6 @@ private:
 	// ...
 
 	EImageSortType SortType = EImageSortType::Center;
+	bool AutoImageScaleValue = false;
 };
 
