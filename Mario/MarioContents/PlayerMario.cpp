@@ -122,9 +122,6 @@ void APlayerMario::CollisionStateChange(ECollisionState _CollisionState)
 		case ECollisionState::BlockSideHit:
 			BlockSideHitStart();
 			break;
-		case ECollisionState::BlockTopHit:
-			BlockTopHitStart();
-			break;
 		default:
 			break;
 		}
@@ -564,6 +561,7 @@ void APlayerMario::MarioGrowUpStart()
 	DirCheck();
 	Renderer->ChangeAnimation(ChangeAnimationName("GrowUp"));
 
+	MarioType = EMarioType::Big;
 	BodyCollision->SetTransform({ { 0,-40 }, {32, 64} });
 	GetWorld()->SetOtherTimeScale(EActorType::Player, 0.0f);
 	PrevActorState = ActorState;
@@ -582,17 +580,6 @@ void APlayerMario::BlockSideHitStart()
 	SetSpeedZero();
 }
 
-void APlayerMario::BlockTopHitStart()
-{
-	if (ECollisionState::BlockTopHit == ActorCollisionState)
-	{
-		return;
-	}
-
-	SetGravityZero();
-	SetJumpZero();
-	SetGravityRatio(0.0f);
-}
 
 
 bool APlayerMario::DirCheck()
