@@ -3,6 +3,12 @@
 #include <EnginePlatform\WindowImage.h>
 #include <map>
 
+enum class EImageSortType
+{
+	Center,
+	Left,
+};
+
 class UAnimationInfo
 {
 public:
@@ -269,5 +275,7 @@ private:
 	// Bold & Italic : 1, (custom)
 	// Bold : 2,
 	// ...
+
+	EImageSortType SortType = EImageSortType::Center;
 };
 

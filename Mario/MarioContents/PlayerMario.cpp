@@ -583,6 +583,7 @@ void APlayerMario::MarioGrowUpStart()
 	IsOnTheBlock = false;
 	DirCheck();
 	Renderer->ChangeAnimation(ChangeAnimationName("GrowUp"));
+	BodyCollision->SetTransform({ { 0,-40 }, {BodyCollision->GetTransform().GetScale().X * 1.5f, BodyCollision->GetTransform().GetScale().Y * 2} });
 }
 
 
