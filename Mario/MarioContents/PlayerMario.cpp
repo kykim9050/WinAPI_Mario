@@ -576,7 +576,18 @@ void APlayerMario::GrowUp(float _DeltaTime)
 	{
 		GetWorld()->SetAllTimeScale(1.0f);
 		DelayTime = 1.0f;
-		SetActorState(PrevActorState);
+
+		switch (PrevActorState)
+		{
+		case EActorState::Jump:
+		case EActorState::CollisionJump:
+			SetActorState(PrevActorState);
+			break;
+		default:
+			StateChange(PrevActorState);
+			break;
+		}
+		
 	}
 }
 

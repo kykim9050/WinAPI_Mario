@@ -53,12 +53,15 @@ void UTestLevel::BeginPlay()
 	Mario->SetActorLocation({ UInGameValue::MarioInitXPos, UInGameValue::MarioInitYPos });
 	PlayerUI->SetActorLocation({ UInGameValue::UIXScaleValue / 2 * UInGameValue::WindowSizeMulValue, UInGameValue::UIYScaleValue / 2 * UInGameValue::WindowSizeMulValue });
 
-	BrickBlock1->SetActorLocation({ 250,350 });
-	BrickBlock2->SetActorLocation({ 250 + 48,350 });
-	BrickBlock3->SetActorLocation({ 250 + 48 * 2,350});
-	BrickBlock4->SetActorLocation({ 250 + 48 * 3,350 });
+	int StandardYPos = 450;
+	int StandardXPos = 600;
 
-	CoinBlock1->SetActorLocation({ 250 + 48 * 4,450 });
+	BrickBlock1->SetActorLocation({ StandardXPos,StandardYPos });
+	BrickBlock2->SetActorLocation({ StandardXPos + 48,StandardYPos });
+	BrickBlock3->SetActorLocation({ StandardXPos + 48 * 2,StandardYPos });
+	BrickBlock4->SetActorLocation({ StandardXPos + 48 * 3,StandardYPos });
+
+	CoinBlock1->SetActorLocation({ 250 + 48 * 4,StandardYPos });
 	//CoinBlock2->SetActorLocation({ 250 + 48 * 5,450 });
 	//CoinBlock3->SetActorLocation({ 250 + 48 * 6,450 });
 	//CoinBlock4->SetActorLocation({ 250 + 48 * 7,450 });
