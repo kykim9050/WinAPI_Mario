@@ -34,8 +34,10 @@ public:
 	virtual void IdleStart() {}
 	virtual void AppearStart() {}
 	virtual void MoveStart() {}
-	virtual void ReleaseStart() {}
+	virtual void ReleaseStart();
 	
+
+	virtual void GetHitStart();
 
 protected:
 	void BeginPlay() override;
