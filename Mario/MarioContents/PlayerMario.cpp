@@ -556,7 +556,16 @@ void APlayerMario::Idle(float _DeltaTime)
 
 void APlayerMario::GetHit(float _DeltaTime)
 {
+	static float DelayTime = 1.0f;
 
+	DelayTime -= _DeltaTime;
+	
+	if (0.0f >= DelayTime)
+	{
+		GetWorld()->SetAllTimeScale(1.0f);
+		DelayTime = 1.0f;
+		SetActorState(PrevActorState);
+	}
 }
 
 void APlayerMario::GrowUp(float _DeltaTime)
