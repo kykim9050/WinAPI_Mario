@@ -124,6 +124,10 @@ public:
 
 	void GetHitStart() override;
 
+	void EattingMushroom()
+	{
+		EatMushroom = true;
+	}
 
 protected:
 	void BeginPlay() override;
@@ -163,6 +167,7 @@ private:
 	void GroundUp();
 
 	bool IsOnTheBlock = false;
+	bool EatMushroom = false;
 
 	EActorState PrevActorState = EActorState::None;
 };

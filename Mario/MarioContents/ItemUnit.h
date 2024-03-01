@@ -22,6 +22,8 @@ public:
 	void StateUpdate(float _DeltaTime);
 	void StateChange(EActorState _ActorState);
 
+	virtual void CollisionCheck() {}
+
 	virtual void FirstInit(float _DeltaTime) {}
 	virtual void Idle(float _DeltaTime) {}
 	virtual void Move(float _DeltaTime) {}
@@ -32,14 +34,14 @@ public:
 	virtual void AppearStart() {}
 	virtual void MoveStart() {}
 	virtual void ReleaseStart() {}
-
+	
 
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
 	FVector InitPos = FVector::Zero;
-
+	bool IsAte = false;
 private:
 
 
