@@ -144,17 +144,8 @@ void APlayerMario::CollisionStateChange(ECollisionState _CollisionState)
 	{
 		switch (_CollisionState)
 		{
-		case ECollisionState::Hit:
-			//HitStart();
-			break;
-		case ECollisionState::GetHit:
-			GetHitStart();
-			break;
 		case ECollisionState::BlockBotHit:
 			BlockBotHitStart();
-			break;
-		case ECollisionState::BlockSideHit:
-			BlockSideHitStart();
 			break;
 		default:
 			break;
@@ -567,6 +558,7 @@ void APlayerMario::GetHit(float _DeltaTime)
 		GetWorld()->SetAllTimeScale(1.0f);
 		DelayTime = 1.0f;
 		SetActorState(PrevActorState);
+		//CollisionStateChange(ECollisionState::Invincible);
 	}
 }
 
