@@ -146,6 +146,9 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 	void BlockBotHitStart();
+	void InvincibleStart();
+	void Invincible(float _DeltaTime);
+	
 	void BlockSideHitStart();
 
 	void CalGravityVelocityVector(float _DeltaTime) override;

@@ -138,6 +138,7 @@ void APlayerMario::StateChange(EActorState _PlayerState)
 	SetActorState(_PlayerState);
 }
 
+
 void APlayerMario::CollisionStateChange(ECollisionState _CollisionState)
 {
 	if (ActorCollisionState != _CollisionState)
@@ -146,6 +147,9 @@ void APlayerMario::CollisionStateChange(ECollisionState _CollisionState)
 		{
 		case ECollisionState::BlockBotHit:
 			BlockBotHitStart();
+			break;
+		case ECollisionState::Invincible:
+			InvincibleStart();
 			break;
 		default:
 			break;
@@ -201,9 +205,9 @@ void APlayerMario::CollisionUpdate(float _DeltaTime)
 
 	switch (ActorCollisionState)
 	{
-	//case ECollisionState::GetHit:
-	//	GetHit(_DeltaTime);
-	//	break;
+	case ECollisionState::Invincible:
+		Invincible(_DeltaTime);
+		break;
 	default:
 		CollisionStateChange(ECollisionState::None);
 		break;
@@ -558,7 +562,7 @@ void APlayerMario::GetHit(float _DeltaTime)
 		GetWorld()->SetAllTimeScale(1.0f);
 		DelayTime = 1.0f;
 		SetActorState(PrevActorState);
-		//CollisionStateChange(ECollisionState::Invincible);
+		CollisionStateChange(ECollisionState::Invincible);
 	}
 }
 
@@ -596,10 +600,10 @@ void APlayerMario::Dead(float _DeltaTime)
 
 void APlayerMario::GetHitStart()
 {
-	BodyCollision->ActiveOff();
-
 	DirCheck();
 	Renderer->ChangeAnimation(ChangeAnimationName("SizeDown"));
+
+	Renderer->SetAlpha(0.7f);
 
 	MarioType = EMarioType::Small;
 
@@ -629,6 +633,11 @@ void APlayerMario::BlockBotHitStart()
 {
 	SetJumpZero();
 	SetGravityRatio(1.0f);
+}
+
+void APlayerMario::InvincibleStart()
+{
+	BodyCollision->ActiveOff();
 }
 
 void APlayerMario::BlockSideHitStart()
@@ -858,4 +867,19 @@ std::string APlayerMario::ChangeAnimationName(std::string _MainName)
 	}
 
 	return Type + CurAnimationName + Dir;
+}
+
+
+void APlayerMario::Invincible(float _DeltaTime)
+{
+	static float InvincibleTime = 2.0f;
+
+	InvincibleTime -= _DeltaTime;
+
+	if (0.0f >= InvincibleTime)
+	{
+		Renderer->SetAlpha(1.0f);
+		BodyCollision->ActiveOn();
+		CollisionStateChange(ECollisionState::None);
+	}
 }
