@@ -28,9 +28,10 @@ protected:
 	void CollisionStateChange(ECollisionState _CollisionState);
 	virtual void CollisionCheck() {}
 
-	virtual void IdleStart();
+	virtual void IdleStart() { }
 	virtual void MoveStart();
-	virtual void FixedStart();
+	virtual void FixedStart() { }
+	virtual void DebrisStart(){	}
 	void GetHitStart();
 
 	void Idle(float _DeltaTime);
@@ -40,10 +41,10 @@ protected:
 
 	FVector InitPos = FVector::Zero;
 
-
-private:
 	UCollision* SideCollision = nullptr;
 	UCollision* TopCollision = nullptr;
+
+private:
 
 	const int ColInitXPos = 0;
 	const int ColInitYPos = 16;
