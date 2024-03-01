@@ -165,6 +165,9 @@ void APlayerMario::StateUpdate(float _DeltaTime)
 	case EActorState::GetHit:
 		GetHit(_DeltaTime);
 		break;
+	case EActorState::MarioGrowUp:
+		GrowUp(_DeltaTime);
+		break;
 	default:
 		break;
 	}
@@ -525,7 +528,7 @@ void APlayerMario::GetHit(float _DeltaTime)
 
 	DelayTime -= _DeltaTime;
 
-	if (0 >= DelayTime)
+	if (0.0f >= DelayTime)
 	{
 		GravityVelocityVector += GravityAccVector * _DeltaTime;
 
@@ -533,6 +536,19 @@ void APlayerMario::GetHit(float _DeltaTime)
 		TotalVelocityVector = TotalVelocityVector + GravityVelocityVector + JumpVelocityVector;
 
 		AddActorLocation(TotalVelocityVector * _DeltaTime);
+	}
+}
+
+void APlayerMario::GrowUp(float _DeltaTime)
+{
+	static float DelayTime = 1.0f;
+
+	DelayTime -= _DeltaTime;
+	
+	if (0.0f >= DelayTime)
+	{
+		GetWorld()->SetAllTimeScale(.0f);
+		StateChange(PrevActorState);
 	}
 }
 
@@ -551,10 +567,18 @@ void APlayerMario::MarioGrowUpStart()
 {
 	DirCheck();
 	Renderer->ChangeAnimation(ChangeAnimationName("GrowUp"));
-	BodyCollision->SetTransform({ { 0,-40 }, {BodyCollision->GetTransform().GetScale().X * 1.5f, BodyCollision->GetTransform().GetScale().Y * 2} });
+
+	// BodyCollision->SetTransform({ { 0,-40 }, {BodyCollision->GetTransform().GetScale().X * 1.5f, BodyCollision->GetTransform().GetScale().Y * 2} });
 	GetWorld()->SetOtherTimeScale(EActorType::Player, 0.0f);
-	/*PrevState = State;
-	ChangeTime = 1.f;*/
+	PrevActorState = ActorState;
+
+	/*void Mario::Changing(float _DeltaTime)
+	{
+		if (ChangeTime <= 0) {
+			SetState(PrevState);
+			GetWorld()->SetAllTimeScale(1.0f);
+		}
+	}*/
 
 }
 
