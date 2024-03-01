@@ -264,6 +264,8 @@ void APlayerMario::CollisionJumpStart()
 
 void APlayerMario::DeadStart()
 {
+	BodyCollision->ActiveOff();
+
 	Renderer->ChangeAnimation("SmallMario_Dead");
 	--Life;
 
