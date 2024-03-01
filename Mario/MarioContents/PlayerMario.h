@@ -22,6 +22,11 @@ public:
 	void ReverseMoveCheck();
 
 	/// <summary>
+	/// 방향 정보가 적용된 애니메이션 이름으로 수정하는 함수
+	/// </summary>
+	std::string ChangeAnimationName(std::string _MainName);
+
+	/// <summary>
 	/// 방향을 확인한 후에 해당 방향을 기준으로 Idle 애니메이션이름을 바꾸고 ChangeAnimation의 인자로 넣는다.
 	/// </summary>
 	void IdleStart() override;

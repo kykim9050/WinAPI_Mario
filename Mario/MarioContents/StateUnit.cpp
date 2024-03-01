@@ -27,26 +27,6 @@ void UStateUnit::CollisionUpdate(float _DeltaTime)
 	CollisionCheck();
 }
 
-std::string UStateUnit::ChangeAnimationName(std::string _MainName)
-{
-	std::string Dir = "";
-	CurAnimationName = _MainName;
-
-	switch (ActorDir)
-	{
-	case EActorDir::Left:
-		Dir = "_Left";
-		break;
-	case EActorDir::Right:
-		Dir = "_Right";
-		break;
-	default:
-		break;
-	}
-
-	return CurAnimationName + Dir;
-}
-
 
 
 void UStateUnit::CalTotalVelocityVector(float _DeltaTime)

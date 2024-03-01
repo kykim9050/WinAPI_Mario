@@ -91,11 +91,6 @@ protected:
 	virtual void CalGravityVelocityVector(float _DeltaTime) {}
 	void CalTotalVelocityVector(float _DeltaTime);
 
-	/// <summary>
-	/// 방향 정보가 적용된 애니메이션 이름으로 수정하는 함수
-	/// </summary>
-	std::string ChangeAnimationName(std::string _MainName);
-
 
 
 
