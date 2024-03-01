@@ -102,7 +102,8 @@ void AMushroom::CollisionCheck()
 	if (true == BodyCollision->CollisionCheck(ECollisionOrder::Player, Result))
 	{
 		Player->EattingMushroom();
-		BodyCollision->Destroy();
+		CollisionStateChange(ECollisionState::GetHit);
+		//BodyCollision->Destroy();
 		return;
 	}
 }
