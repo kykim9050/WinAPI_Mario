@@ -92,9 +92,6 @@ void APlayerMario::StateChange(EActorState _PlayerState)
 		case EActorState::GetHit:
 			GetHitStart();
 			break;
-		case EActorState::OnTheBlock:
-			OnTheBlockStart();
-			break;
 		case EActorState::MarioGrowUp:
 			MarioGrowUpStart();
 			break;
@@ -167,9 +164,6 @@ void APlayerMario::StateUpdate(float _DeltaTime)
 		break;
 	case EActorState::GetHit:
 		GetHit(_DeltaTime);
-		break;
-	case EActorState::OnTheBlock:
-		OnTheBlock(_DeltaTime);
 		break;
 	default:
 		break;
@@ -380,8 +374,6 @@ void APlayerMario::CollisionJump(float _DeltaTime)
 
 void APlayerMario::Jump(float _DeltaTime)
 {
-	UEngineDebug::OutPutDebugText(std::to_string(IsOnTheBlock));
-	
 	
 	if (UEngineInput::IsUp('Z') || 0.3f < UEngineInput::GetPressTime('Z'))
 	{
@@ -524,29 +516,6 @@ void APlayerMario::GetHit(float _DeltaTime)
 	}
 }
 
-void APlayerMario::OnTheBlock(float _DeltaTime)
-{
-
-	if (HorizonVelocityVector.X < 3.0f && HorizonVelocityVector.X > -3.0f && (UEngineInput::IsFree(VK_LEFT) && UEngineInput::IsFree(VK_RIGHT)))
-	{
-		StateChange(EActorState::Idle);
-		return;
-	}
-
-	if (UEngineInput::IsDown('Z'))
-	{
-		StateChange(EActorState::Jump);
-		return;
-	}
-
-	if (UEngineInput::IsPress(VK_LEFT) || UEngineInput::IsPress(VK_RIGHT))
-	{
-		StateChange(EActorState::Move);
-		return;
-	}
-
-	ResultMovementUpdate(_DeltaTime);
-}
 
 void APlayerMario::GetHitStart()
 {
@@ -557,12 +526,6 @@ void APlayerMario::GetHitStart()
 	JumpVelocityVector = FVector::Up * 500.0f;
 }
 
-void APlayerMario::OnTheBlockStart()
-{
-	IsOnTheBlock = true;
-	SetGravityZero();
-	SetJumpZero();
-}
 
 void APlayerMario::MarioGrowUpStart()
 {
