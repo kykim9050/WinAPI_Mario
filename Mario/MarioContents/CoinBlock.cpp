@@ -71,6 +71,7 @@ void ACoinBlock::FixedStart()
 {
 	ABlockUnit::FixedStart();
 
+	Item->GetRenderer()->ActiveOn();
 	Renderer->ChangeAnimation("CoinBlock_AfterHit");
 }
 
