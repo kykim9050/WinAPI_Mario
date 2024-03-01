@@ -49,6 +49,8 @@ public:
 	/// </summary>
 	void ReverseMoveStart();
 
+	void MarioGrowUpStart();
+
 	/// <summary>
 	/// Actor의 상태가 변경될 때 실행되는 함수
 	/// 각 상태가 시작되기 전에 실행되어야 할 함수를 호출해준다.
@@ -100,7 +102,10 @@ public:
 
 	void ReverseMove(float _DeltaTime);
 
-	void MarioGrowUpStart();
+	void GrowUp(float _DeltaTime);
+
+
+	
 
 	void CameraPosUpdate(FVector _Player, FVector _MovePos);
 
@@ -143,7 +148,7 @@ private:
 
 	// FreeMove 작동 시 속도
 	float PFreeMoveVelocity = 1000.0f;
-
+	
 	static APlayerMario* MainPlayer;
 	void SetMainPlayer(APlayerMario* _MainPlayer)
 	{
@@ -158,5 +163,7 @@ private:
 	void GroundUp();
 
 	bool IsOnTheBlock = false;
+
+	EActorState PrevActorState = EActorState::None;
 };
 
