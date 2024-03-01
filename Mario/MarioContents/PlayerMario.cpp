@@ -215,6 +215,13 @@ void APlayerMario::CollisionStateCheck()
 		return;
 	}
 
+	if (true == BlockBottomHit && true == BodyCollision->CollisionCheck(ECollisionOrder::BlockBot, Result))
+	{
+		CollisionStateChange(ECollisionState::BlockBotHit);
+		BlockBottomHit = false;
+		return;
+	}
+
 	if (false == IsOnTheBlock && true == BodyCollision->CollisionCheck(ECollisionOrder::BlockTop, Result))
 	{
 		IsOnTheBlock = true;
@@ -234,6 +241,8 @@ void APlayerMario::CollisionStateCheck()
 		CollisionStateChange(ECollisionState::BlockSideHit);
 		return;
 	}
+
+	
 
 }
 

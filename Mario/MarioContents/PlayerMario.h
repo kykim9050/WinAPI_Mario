@@ -136,6 +136,11 @@ public:
 		EatMushroom = true;
 	}
 
+	void HitBlockBottom()
+	{
+		BlockBottomHit = true;
+	}
+
 	EMarioType GetPlayerType() const
 	{
 		return MarioType;
@@ -185,6 +190,7 @@ private:
 	bool IsOnTheBlock = false;
 	bool EatMushroom = false;
 	bool IsInvincible = false;
+	bool BlockBottomHit = false;
 
 	EActorState PrevActorState = EActorState::None;
 };
