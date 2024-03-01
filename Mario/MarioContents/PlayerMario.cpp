@@ -219,7 +219,7 @@ void APlayerMario::CollisionStateCheck()
 		StateChange(EActorState::Idle);
 		return;
 	}
-	if (true == IsOnTheBlock && true == BodyCollision->CollisionCheck(ECollisionOrder::BlockTop, Result))
+	else if(true == IsOnTheBlock && true == BodyCollision->CollisionCheck(ECollisionOrder::BlockTop, Result))
 	{
 		IsOnTheBlock = true;
 		return;
