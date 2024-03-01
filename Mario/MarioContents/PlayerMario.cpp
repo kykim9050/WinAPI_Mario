@@ -549,6 +549,7 @@ void APlayerMario::GrowUp(float _DeltaTime)
 	if (0.0f >= DelayTime)
 	{
 		GetWorld()->SetAllTimeScale(1.0f);
+		DelayTime = 1.0f;
 		SetActorState(PrevActorState);
 	}
 }
@@ -569,17 +570,9 @@ void APlayerMario::MarioGrowUpStart()
 	DirCheck();
 	Renderer->ChangeAnimation(ChangeAnimationName("GrowUp"));
 
-	// BodyCollision->SetTransform({ { 0,-40 }, {BodyCollision->GetTransform().GetScale().X * 1.5f, BodyCollision->GetTransform().GetScale().Y * 2} });
+	BodyCollision->SetTransform({ { 0,-40 }, {32, 64} });
 	GetWorld()->SetOtherTimeScale(EActorType::Player, 0.0f);
 	PrevActorState = ActorState;
-
-	/*void Mario::Changing(float _DeltaTime)
-	{
-		if (ChangeTime <= 0) {
-			SetState(PrevState);
-			GetWorld()->SetAllTimeScale(1.0f);
-		}
-	}*/
 
 }
 
