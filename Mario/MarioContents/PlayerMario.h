@@ -137,8 +137,6 @@ protected:
 	void BlockSideHitStart();
 	void BlockTopHitStart();
 
-	void BlockBotHit(float _DeltaTime);
-
 	void CalGravityVelocityVector(float _DeltaTime) override;
 
 private:
