@@ -24,7 +24,7 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 private:
-	static UWindowImage* GetCollosionMapImg()
+	static UWindowImage* GetCollisionMapImg()
 	{
 		return CollisionMapRenderer->GetImage();
 	}
