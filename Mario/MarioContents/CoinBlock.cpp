@@ -101,6 +101,10 @@ void ACoinBlock::CollisionCheck()
 			Player->CollisionStateChange(ECollisionState::BlockBotHit);
 
 			CollisionStateChange(ECollisionState::GetHit);
+			if (Item->IsDestroy())
+			{
+				return;
+			}
 			Item->StateChange(EActorState::Appear);
 			return;
 		}
