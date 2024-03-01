@@ -23,6 +23,7 @@ public:
 	void StateChange(EActorState _ActorState);
 
 	virtual void CollisionCheck() {}
+	virtual void CollisionStateChange(ECollisionState _CollisionState);
 
 	virtual void FirstInit(float _DeltaTime) {}
 	virtual void Idle(float _DeltaTime) {}

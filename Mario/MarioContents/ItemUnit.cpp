@@ -71,3 +71,20 @@ void AItemUnit::StateChange(EActorState _ActorState)
 
 	SetActorState(_ActorState);
 }
+
+void AItemUnit::CollisionStateChange(ECollisionState _CollisionState)
+{
+	if (ActorCollisionState != _CollisionState)
+	{
+		switch (_CollisionState)
+		{
+		case ECollisionState::GetHit:
+			GetHitStart();
+			break;
+		default:
+			break;
+		}
+	}
+
+	SetCollisionState(_CollisionState);
+}
