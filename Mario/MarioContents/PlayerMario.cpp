@@ -212,6 +212,21 @@ void APlayerMario::CollisionStateCheck()
 		return;
 	}
 
+	if (true == BodyCollision->CollisionCheck(ECollisionOrder::BlockTop, Result))
+	{
+		IsOnTheBlock = true;
+		SetGravityZero();
+		SetJumpZero();
+		StateChange(EActorState::Idle);
+		return;
+	}
+
+	if (true == BodyCollision->CollisionCheck(ECollisionOrder::BlockSide, Result))
+	{
+		CollisionStateChange(ECollisionState::BlockSideHit);
+		return;
+	}
+
 }
 
 

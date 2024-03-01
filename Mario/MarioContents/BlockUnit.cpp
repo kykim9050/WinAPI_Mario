@@ -13,12 +13,12 @@ void ABlockUnit::BeginPlay()
 {
 	UStateUnit::BeginPlay();
 
-	SideCollision = CreateCollision(ECollisionOrder::Block);
+	SideCollision = CreateCollision(ECollisionOrder::BlockSide);
 	SideCollision->SetTransform({ { 0, 0 }, { UInGameValue::BlockCollisionScaleX + 16, UInGameValue::BlockCollisionScaleY} });
 	SideCollision->SetColType(ECollisionType::Rect);
 
 	TopCollision = CreateCollision(ECollisionOrder::BlockTop);
-	TopCollision->SetTransform({ { ColInitXPos, -ColInitYPos }, { UInGameValue::BlockCollisionScaleX, UInGameValue::BlockCollisionScaleY - ColYoffset} });
+	TopCollision->SetTransform({ { ColInitXPos, -ColInitYPos }, { UInGameValue::BlockCollisionScaleX - 24, UInGameValue::BlockCollisionScaleY - ColYoffset} });
 	TopCollision->SetColType(ECollisionType::Rect);
 
 	BodyCollision = CreateCollision(ECollisionOrder::CollisionBlock);
@@ -104,32 +104,6 @@ void ABlockUnit::StateChange(EActorState _ActorState)
 	}
 
 	SetActorState(_ActorState);
-}
-
-void ABlockUnit::CollisionCheck()
-{
-	std::vector<UCollision*> Result = std::vector<UCollision*>();
-
-	APlayerMario* Player = APlayerMario::GetMainPlayer();
-
-	if (nullptr == Player)
-	{
-		MsgBoxAssert("플레이어가 존재하지 않습니다.");
-	}
-
-	//Block의 측면과 Player의 충돌일 때
-	if (true == SideCollision->CollisionCheck(ECollisionOrder::Player, Result))
-	{
-		const FTransform& PlayerColTrans = Player->GetBodyCollision()->GetActorBaseTransform();
-		const FTransform& BlockColTrans = SideCollision->GetActorBaseTransform();
-
-		if (PlayerColTrans.GetPosition().X < BlockColTrans.Left() || PlayerColTrans.GetPosition().X > BlockColTrans.Right())
-		{
-			//UEngineDebug::OutPutDebugText("Occur Block Side Collision");
-			Player->CollisionStateChange(ECollisionState::BlockSideHit);
-			return;
-		}
-	}
 }
 
 
