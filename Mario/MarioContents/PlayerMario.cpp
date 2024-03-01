@@ -363,6 +363,12 @@ void APlayerMario::CollisionJump(float _DeltaTime)
 		JumpVelocityVector = FVector::Zero;
 		if (true == UEngineInput::IsPress(VK_LEFT) || true == UEngineInput::IsPress(VK_RIGHT))
 		{
+			if (true == IsReverseMove())
+			{
+				StateChange(EActorState::ReverseMove);
+				return;
+			}
+
 			StateChange(EActorState::Move);
 			return;
 		}
@@ -392,6 +398,8 @@ void APlayerMario::Jump(float _DeltaTime)
 
 	ResultMovementUpdate(_DeltaTime);
 
+	
+
 	Color8Bit Color = UContentsFunction::GetCollisionMapImg()->GetColor(GetActorLocation().iX(), GetActorLocation().iY(), UInGameValue::CollisionColor);
 
 	if (UInGameValue::CollisionColor == Color)
@@ -399,6 +407,12 @@ void APlayerMario::Jump(float _DeltaTime)
 		JumpVelocityVector = FVector::Zero;
 		if (true == UEngineInput::IsPress(VK_LEFT) || true == UEngineInput::IsPress(VK_RIGHT))
 		{
+			if (true == IsReverseMove())
+			{
+				StateChange(EActorState::ReverseMove);
+				return;
+			}
+
 			StateChange(EActorState::Move);
 			return;
 		}
