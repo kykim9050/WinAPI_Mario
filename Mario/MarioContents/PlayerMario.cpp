@@ -42,8 +42,8 @@ void APlayerMario::BeginPlay()
 	Renderer->CreateAnimation("Small_ReverseMove_Right", "Mario_Right.png", 4, 4, 0.1f, true);
 	Renderer->CreateAnimation("Small_ReverseMove_Left", "Mario_Left.png", 4, 4, 0.1f, true);
 
-	Renderer->CreateAnimation("Small_GrowUp_Left", "Mario_Left.png", 29, 32, 0.1f, true);
-	Renderer->CreateAnimation("Small_GrowUp_Right", "Mario_Right.png", 29, 32, 0.1f, true);
+	Renderer->CreateAnimation("Small_GrowUp_Left", "Mario_Left.png", { 29, 30, 31, 30, 31 ,30, 31, 32 }, 0.15f, false);
+	Renderer->CreateAnimation("Small_GrowUp_Right", "Mario_Right.png", { 29, 30, 31, 30, 31 , 30, 31, 32 }, 0.15f, false);
 		
 	Renderer->CreateAnimation("Small_Dead", "Mario_Right.png", 6, 6, 0.1f, true);
 
