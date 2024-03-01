@@ -14,11 +14,11 @@ void ABlockUnit::BeginPlay()
 	UStateUnit::BeginPlay();
 
 	SideCollision = CreateCollision(ECollisionOrder::BlockSide);
-	SideCollision->SetTransform({ { 0, 0 }, { UInGameValue::BlockCollisionScaleX + 16, UInGameValue::BlockCollisionScaleY} });
+	SideCollision->SetTransform({ { 0, 0 }, { UInGameValue::BlockCollisionScaleX, UInGameValue::BlockCollisionScaleY} });
 	SideCollision->SetColType(ECollisionType::Rect);
 
 	TopCollision = CreateCollision(ECollisionOrder::BlockTop);
-	TopCollision->SetTransform({ { ColInitXPos, -ColInitYPos }, { UInGameValue::BlockCollisionScaleX - 24, UInGameValue::BlockCollisionScaleY - ColYoffset} });
+	TopCollision->SetTransform({ { ColInitXPos, -ColInitYPos }, { UInGameValue::BlockCollisionScaleX - 8, UInGameValue::BlockCollisionScaleY - ColYoffset} });
 	TopCollision->SetColType(ECollisionType::Rect);
 
 	BodyCollision = CreateCollision(ECollisionOrder::BlockBot);
