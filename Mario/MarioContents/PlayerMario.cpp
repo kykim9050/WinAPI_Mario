@@ -45,7 +45,7 @@ void APlayerMario::BeginPlay()
 	Renderer->CreateAnimation("Small_GrowUp_Left", "Mario_Left.png", { 29, 30, 31, 30, 31 ,30, 31, 32 }, 0.15f, false);
 	Renderer->CreateAnimation("Small_GrowUp_Right", "Mario_Right.png", { 29, 30, 31, 30, 31 , 30, 31, 32 }, 0.15f, false);
 		
-	Renderer->CreateAnimation("Small_Dead", "Mario_Right.png", 6, 6, 0.1f, true);
+	Renderer->CreateAnimation("SmallMario_Dead", "Mario_Right.png", 6, 6, 0.1f, true);
 
 
 
@@ -60,6 +60,11 @@ void APlayerMario::BeginPlay()
 
 	Renderer->CreateAnimation("Big_ReverseMove_Right", "Mario_Right.png", 18, 18, 0.1f, true);
 	Renderer->CreateAnimation("Big_ReverseMove_Left", "Mario_Left.png", 18, 18, 0.1f, true);
+
+
+	Renderer->CreateAnimation("Big_SizeDown_Left", "Mario_Left.png", { 32, 33, 34, 33, 34, 33, 34, 35}, 0.15f, true);
+	Renderer->CreateAnimation("Big_SizeDown_Right", "Mario_Right.png", { 32, 33, 34, 33, 34, 33, 34, 35 }, 0.15f, true);
+	
 
 
 
@@ -564,7 +569,7 @@ void APlayerMario::GetHitStart()
 		break;
 	case EMarioType::Small:
 	{
-		Renderer->ChangeAnimation("Small_Dead");
+		Renderer->ChangeAnimation("SmallMario_Dead");
 		--Life;
 
 		SetGravityZero();
@@ -573,7 +578,17 @@ void APlayerMario::GetHitStart()
 	}
 	case EMarioType::Big:
 	{
-		int a = 0;
+		DirCheck();
+		Renderer->ChangeAnimation(ChangeAnimationName("SizeDown"));
+
+		MarioType = EMarioType::Small;
+		
+		BodyCollision->SetScale({ UInGameValue::PlayerCollisionScaleX, UInGameValue::PlayerCollisionScaleY });
+		BodyCollision->SetPosition({ 0, -(BodyCollision->GetTransform().GetScale().ihY()) });
+
+		GetWorld()->SetOtherTimeScale(EActorType::Player, 0.0f);
+	
+		PrevActorState = ActorState;
 		break;
 	}
 	case EMarioType::Fire:
