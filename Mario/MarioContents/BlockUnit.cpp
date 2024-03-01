@@ -14,7 +14,7 @@ void ABlockUnit::BeginPlay()
 	UStateUnit::BeginPlay();
 
 	SideCollision = CreateCollision(ECollisionOrder::BlockSide);
-	SideCollision->SetTransform({ { 0, 0 }, { UInGameValue::BlockCollisionScaleX, UInGameValue::BlockCollisionScaleY} });
+	SideCollision->SetTransform({ { 0, 0 }, { UInGameValue::BlockCollisionScaleX, UInGameValue::BlockCollisionScaleY - ColYoffset} });
 	SideCollision->SetColType(ECollisionType::Rect);
 
 	TopCollision = CreateCollision(ECollisionOrder::BlockTop);
@@ -100,6 +100,7 @@ void ABlockUnit::StateChange(EActorState _ActorState)
 			break;
 		case EActorState::Debris:
 			DebrisStart();
+			break;
 		default:
 			break;
 		}
