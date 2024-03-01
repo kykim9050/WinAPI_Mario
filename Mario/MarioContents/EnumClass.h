@@ -88,7 +88,7 @@ enum class ECollisionOrder
 	Player,
 	AttackableMonster,
 	BlockSide,
-	CollisionBlock,
+	BlockBot,
 	BlockTop,
 	Item,
 	Mushroom,
