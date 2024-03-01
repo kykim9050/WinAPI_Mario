@@ -36,9 +36,9 @@ void UTestLevel::BeginPlay()
 	//ABrickBlock* BrickBlock4 = SpawnActor< ABrickBlock>(static_cast<int>(EActorType::Block));
 
 	ACoinBlock* CoinBlock1 = SpawnActor< ACoinBlock>(static_cast<int>(EActorType::Block));
-	//ACoinBlock* CoinBlock2 = SpawnActor< ACoinBlock>(static_cast<int>(EActorType::Block));
-	//ACoinBlock* CoinBlock3 = SpawnActor< ACoinBlock>(static_cast<int>(EActorType::Block));
-	//ACoinBlock* CoinBlock4 = SpawnActor< ACoinBlock>(static_cast<int>(EActorType::Block));
+	ACoinBlock* CoinBlock2 = SpawnActor< ACoinBlock>(static_cast<int>(EActorType::Block));
+	ACoinBlock* CoinBlock3 = SpawnActor< ACoinBlock>(static_cast<int>(EActorType::Block));
+	ACoinBlock* CoinBlock4 = SpawnActor< ACoinBlock>(static_cast<int>(EActorType::Block));
 	//AItemUnit* Coin = SpawnActor< AItemUnit>(static_cast<int>(EActorType::Item));
 
 	//AGoomba* MonsterGoomba1 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
@@ -59,9 +59,9 @@ void UTestLevel::BeginPlay()
 	//BrickBlock4->SetActorLocation({ 250 + 48 * 3,450 });
 
 	CoinBlock1->SetActorLocation({ 250 + 48 * 4,450 });
-	//CoinBlock2->SetActorLocation({ 250 + 48 * 5,450 });
-	//CoinBlock3->SetActorLocation({ 250 + 48 * 6,450 });
-	//CoinBlock4->SetActorLocation({ 250 + 48 * 7,450 });
+	CoinBlock2->SetActorLocation({ 250 + 48 * 5,450 });
+	CoinBlock3->SetActorLocation({ 250 + 48 * 6,450 });
+	CoinBlock4->SetActorLocation({ 250 + 48 * 7,450 });
 
 	//Coin->SetActorLocation({ 250,400 });
 
