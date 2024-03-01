@@ -11,7 +11,7 @@ UContentsFunction::~UContentsFunction()
 
 UWindowImage* UContentsFunction::GetCollisionMapImg()
 {
-	return UCollisionMap::GetCollosionMapImg();
+	return UCollisionMap::GetCollisionMapImg();
 }
 
 

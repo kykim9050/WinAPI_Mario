@@ -181,7 +181,7 @@ void APlayerMario::StateUpdate(float _DeltaTime)
 
 void APlayerMario::CollisionUpdate(float _DeltaTime)
 {
-	CollosionStateCheck();
+	CollisionStateCheck();
 
 
 	switch (ActorCollisionState)
@@ -200,7 +200,7 @@ void APlayerMario::CollisionUpdate(float _DeltaTime)
 	}
 }
 
-void APlayerMario::CollosionStateCheck()
+void APlayerMario::CollisionStateCheck()
 {
 	std::vector<UCollision*> Result = std::vector<UCollision*>();
 

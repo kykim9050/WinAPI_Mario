@@ -112,7 +112,7 @@ public:
 	}
 
 	void CollisionUpdate(float _DeltaTime) override;
-	void CollosionStateCheck();
+	void CollisionStateCheck();
 	void CollisionStateChange(ECollisionState _CollisionState) override;
 
 	void GetHit(float _DeltaTime) override;
