@@ -259,7 +259,8 @@ void APlayerMario::CollisionJumpStart()
 
 void APlayerMario::DeadStart()
 {
-	BodyCollision->ActiveOff();
+	//BodyCollision->ActiveOff();
+	BodyCollision->SetOrder(static_cast<int>(ECollisionOrder::Invincible));
 
 	Renderer->ChangeAnimation("SmallMario_Dead");
 	--Life;
@@ -648,7 +649,8 @@ void APlayerMario::BlockBotHitStart()
 
 void APlayerMario::InvincibleStart()
 {
-	BodyCollision->ActiveOff();
+	//BodyCollision->ActiveOff();
+	BodyCollision->SetOrder(static_cast<int>(ECollisionOrder::Invincible));
 }
 
 void APlayerMario::BlockSideHitStart()
@@ -890,7 +892,9 @@ void APlayerMario::Invincible(float _DeltaTime)
 	if (0.0f >= InvincibleTime)
 	{
 		Renderer->SetAlpha(1.0f);
-		BodyCollision->ActiveOn();
+		//BodyCollision->ActiveOn();
+		BodyCollision->SetOrder(static_cast<int>(ECollisionOrder::Player));
+		InvincibleTime = 2.0f;
 		CollisionStateChange(ECollisionState::None);
 	}
 }
