@@ -103,7 +103,6 @@ void APlayerMario::StateChange(EActorState _PlayerState)
 		}
 	}
 
-	//UEngineDebug::OutPutDebugText(std::to_string(static_cast<int>(ActorState)));
 	SetActorState(_PlayerState);
 }
 
@@ -175,8 +174,6 @@ void APlayerMario::StateUpdate(float _DeltaTime)
 	default:
 		break;
 	}
-
-	//UEngineDebug::OutPutDebugText(std::to_string(static_cast<int>(ActorState)));
 }
 
 void APlayerMario::CollisionUpdate(float _DeltaTime)
@@ -186,9 +183,6 @@ void APlayerMario::CollisionUpdate(float _DeltaTime)
 
 	switch (ActorCollisionState)
 	{
-	case ECollisionState::Hit:
-		//EngineDebug::OutPutDebugText("Mario Hit");
-		break;
 	case ECollisionState::GetHit:
 		GetHit(_DeltaTime);
 		break;
@@ -212,7 +206,6 @@ void APlayerMario::CollisionStateCheck()
 
 	if (false == IsOnTheBlock && true == BodyCollision->CollisionCheck(ECollisionOrder::BlockTop, Result))
 	{
-		//StateChange(EActorState::OnTheBlock);
 		IsOnTheBlock = true;
 		SetGravityZero();
 		SetJumpZero();
@@ -239,7 +232,6 @@ void APlayerMario::CollisionJumpStart()
 		Renderer->ChangeAnimation("Jump_Right");
 	}
 
-	//IsOnTheBlock = false;
 	SetGravityZero();
 	JumpVelocityVector = CollisionJumpVelocityVector;
 }
@@ -247,8 +239,6 @@ void APlayerMario::CollisionJumpStart()
 void APlayerMario::JumpStart()
 {
 	SetGravityRatio(0.0f);
-	//EngineDebug::OutPutDebugText("JumpStart");
-	//IsOnTheBlock = false;
 	IsOnTheBlock = false;
 	DirCheck();
 	Renderer->ChangeAnimation(ChangeAnimationName("Jump"));
@@ -263,26 +253,18 @@ void APlayerMario::FreeMoveStart()
 
 void APlayerMario::IdleStart()
 {
-	//EngineDebug::OutPutDebugText("IdleStart");
-	//IsOnTheBlock = false;
 	DirCheck();
 	Renderer->ChangeAnimation(ChangeAnimationName("Idle"));
 }
 
 void APlayerMario::MoveStart()
 {
-	//SetGravityRatio(1.0f);
-	//UEngineDebug::OutPutDebugText("MoveStart");
-	//IsOnTheBlock = false;
 	DirCheck();
 	Renderer->ChangeAnimation(ChangeAnimationName("Move"));
 }
 
 void APlayerMario::ReverseMoveStart()
 {
-	//SetGravityRatio(1.0f);
-	//EngineDebug::OutPutDebugText("ReverseMoveStart");
-	//IsOnTheBlock = false;
 	DirCheck();
 	Renderer->ChangeAnimation(ChangeAnimationName("ReverseMove"));
 }
@@ -300,8 +282,6 @@ void APlayerMario::ReverseMove(float _DeltaTime)
 
 	if (UEngineInput::IsPress(VK_LEFT))
 	{
-
-		//EngineDebug::OutPutDebugText(std::to_string(HorizonVelocityVector.X));
 		if (HorizonVelocityVector.X < 0.0f)
 		{
 			StateChange(EActorState::Move);
@@ -314,7 +294,6 @@ void APlayerMario::ReverseMove(float _DeltaTime)
 
 	if (UEngineInput::IsPress(VK_RIGHT))
 	{
-		//EngineDebug::OutPutDebugText(std::to_string(HorizonVelocityVector.X));
 		if (HorizonVelocityVector.X > 0.0f)
 		{
 			StateChange(EActorState::Move);
@@ -583,12 +562,10 @@ void APlayerMario::OnTheBlockStart()
 	IsOnTheBlock = true;
 	SetGravityZero();
 	SetJumpZero();
-	//SetGravityRatio(0.0f);
 }
 
 void APlayerMario::MarioGrowUpStart()
 {
-	//IsOnTheBlock = false;
 	DirCheck();
 	Renderer->ChangeAnimation(ChangeAnimationName("GrowUp"));
 	BodyCollision->SetTransform({ { 0,-40 }, {BodyCollision->GetTransform().GetScale().X * 1.5f, BodyCollision->GetTransform().GetScale().Y * 2} });
@@ -777,8 +754,6 @@ void APlayerMario::ResultMovementUpdate(float _DeltaTime)
 
 void APlayerMario::GroundUp()
 {
-	
-	// 여기서 블럭과의 충돌 추가
 	while (true)
 	{
 		std::vector<UCollision*> Result = std::vector<UCollision*>();
