@@ -30,23 +30,39 @@ void APlayerMario::BeginPlay()
 
 	Renderer->SetTransform({ {0,0}, {MarioScale.iX() / UInGameValue::MarioRightImageXValue * UInGameValue::WindowSizeMulValue, MarioScale.iY() / UInGameValue::MarioRightImageYValue * UInGameValue::WindowSizeMulValue} });
 
-	Renderer->CreateAnimation("Idle_Right", "Mario_Right.png", 0, 0, 0.1f, true);
-	Renderer->CreateAnimation("Idle_Left", "Mario_Left.png", 0, 0, 0.1f, true);
+	Renderer->CreateAnimation("Small_Idle_Right", "Mario_Right.png", 0, 0, 0.1f, true);
+	Renderer->CreateAnimation("Small_Idle_Left", "Mario_Left.png", 0, 0, 0.1f, true);
 
-	Renderer->CreateAnimation("Move_Right", "Mario_Right.png", 1, 3, 0.1f, true);
-	Renderer->CreateAnimation("Move_Left", "Mario_Left.png", 1, 3, 0.1f, true);
+	Renderer->CreateAnimation("Small_Move_Right", "Mario_Right.png", 1, 3, 0.1f, true);
+	Renderer->CreateAnimation("Small_Move_Left", "Mario_Left.png", 1, 3, 0.1f, true);
 
-	Renderer->CreateAnimation("Jump_Right", "Mario_Right.png", 5, 5, 0.1f, true);
-	Renderer->CreateAnimation("Jump_Left", "Mario_Left.png", 5, 5, 0.1f, true);
+	Renderer->CreateAnimation("Small_Jump_Right", "Mario_Right.png", 5, 5, 0.1f, true);
+	Renderer->CreateAnimation("Small_Jump_Left", "Mario_Left.png", 5, 5, 0.1f, true);
 
-	Renderer->CreateAnimation("ReverseMove_Right", "Mario_Right.png", 4, 4, 0.1f, true);
-	Renderer->CreateAnimation("ReverseMove_Left", "Mario_Left.png", 4, 4, 0.1f, true);
+	Renderer->CreateAnimation("Small_ReverseMove_Right", "Mario_Right.png", 4, 4, 0.1f, true);
+	Renderer->CreateAnimation("Small_ReverseMove_Left", "Mario_Left.png", 4, 4, 0.1f, true);
 
-	Renderer->CreateAnimation("GrowUp_Left", "Mario_Left.png", 29, 32, 0.1f, true);
-	Renderer->CreateAnimation("GrowUp_Right", "Mario_Right.png", 29, 32, 0.1f, true);
+	Renderer->CreateAnimation("Small_GrowUp_Left", "Mario_Left.png", 29, 32, 0.1f, true);
+	Renderer->CreateAnimation("Small_GrowUp_Right", "Mario_Right.png", 29, 32, 0.1f, true);
 		
+	Renderer->CreateAnimation("Small_Dead", "Mario_Right.png", 6, 6, 0.1f, true);
 
-	Renderer->CreateAnimation("Dead", "Mario_Right.png", 6, 6, 0.1f, true);
+
+
+	Renderer->CreateAnimation("Big_Idle_Right", "Mario_Right.png", 14, 14, 0.1f, true);
+	Renderer->CreateAnimation("Big_Idle_Left", "Mario_Left.png", 14, 14, 0.1f, true);
+
+	Renderer->CreateAnimation("Big_Move_Right", "Mario_Right.png", 15, 17, 0.1f, true);
+	Renderer->CreateAnimation("Big_Move_Left", "Mario_Left.png", 15, 17, 0.1f, true);
+
+	Renderer->CreateAnimation("Big_Jump_Right", "Mario_Right.png", 19, 19, 0.1f, true);
+	Renderer->CreateAnimation("Big_Jump_Left", "Mario_Left.png", 19, 19, 0.1f, true);
+
+	Renderer->CreateAnimation("Big_ReverseMove_Right", "Mario_Right.png", 18, 18, 0.1f, true);
+	Renderer->CreateAnimation("Big_ReverseMove_Left", "Mario_Left.png", 18, 18, 0.1f, true);
+
+
+
 
 	BodyCollision = CreateCollision(ECollisionOrder::Player);
 	BodyCollision->SetScale({ UInGameValue::PlayerCollisionScaleX, UInGameValue::PlayerCollisionScaleY });
@@ -220,11 +236,11 @@ void APlayerMario::CollisionJumpStart()
 {
 	if (EActorDir::Left == ActorDir)
 	{
-		Renderer->ChangeAnimation("Jump_Left");
+		Renderer->ChangeAnimation("Small_Jump_Left");
 	}
 	else if (EActorDir::Right == ActorDir)
 	{
-		Renderer->ChangeAnimation("Jump_Right");
+		Renderer->ChangeAnimation("Small_Jump_Right");
 	}
 
 	SetGravityZero();
@@ -548,7 +564,7 @@ void APlayerMario::GrowUp(float _DeltaTime)
 
 void APlayerMario::GetHitStart()
 {
-	Renderer->ChangeAnimation("Dead");
+	Renderer->ChangeAnimation("Small_Dead");
 	--Life;
 
 	SetGravityZero();
@@ -787,5 +803,19 @@ std::string APlayerMario::ChangeAnimationName(std::string _MainName)
 		break;
 	}
 
-	return CurAnimationName + Dir;
+	std::string Type = "";
+
+	switch (MarioType)
+	{
+	case EMarioType::Small:
+		Type = "Small_";
+		break;
+	case EMarioType::Big:
+		Type = "Big_";
+		break;
+	default:
+		break;
+	}
+
+	return Type + CurAnimationName + Dir;
 }
