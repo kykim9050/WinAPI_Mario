@@ -210,6 +210,21 @@ void APlayerMario::CollisionStateCheck()
 		return;
 	}
 
+	if (false == IsOnTheBlock && true == BodyCollision->CollisionCheck(ECollisionOrder::BlockTop, Result))
+	{
+		//StateChange(EActorState::OnTheBlock);
+		IsOnTheBlock = true;
+		SetGravityZero();
+		SetJumpZero();
+		StateChange(EActorState::Idle);
+		return;
+	}
+	if (true == IsOnTheBlock && true == BodyCollision->CollisionCheck(ECollisionOrder::BlockTop, Result))
+	{
+		IsOnTheBlock = true;
+		return;
+	}
+
 }
 
 
@@ -224,7 +239,7 @@ void APlayerMario::CollisionJumpStart()
 		Renderer->ChangeAnimation("Jump_Right");
 	}
 
-	IsOnTheBlock = false;
+	//IsOnTheBlock = false;
 	SetGravityZero();
 	JumpVelocityVector = CollisionJumpVelocityVector;
 }
@@ -233,6 +248,7 @@ void APlayerMario::JumpStart()
 {
 	SetGravityRatio(0.0f);
 	//EngineDebug::OutPutDebugText("JumpStart");
+	//IsOnTheBlock = false;
 	IsOnTheBlock = false;
 	DirCheck();
 	Renderer->ChangeAnimation(ChangeAnimationName("Jump"));
@@ -248,7 +264,7 @@ void APlayerMario::FreeMoveStart()
 void APlayerMario::IdleStart()
 {
 	//EngineDebug::OutPutDebugText("IdleStart");
-	IsOnTheBlock = false;
+	//IsOnTheBlock = false;
 	DirCheck();
 	Renderer->ChangeAnimation(ChangeAnimationName("Idle"));
 }
@@ -257,7 +273,7 @@ void APlayerMario::MoveStart()
 {
 	//SetGravityRatio(1.0f);
 	//UEngineDebug::OutPutDebugText("MoveStart");
-	IsOnTheBlock = false;
+	//IsOnTheBlock = false;
 	DirCheck();
 	Renderer->ChangeAnimation(ChangeAnimationName("Move"));
 }
@@ -266,7 +282,7 @@ void APlayerMario::ReverseMoveStart()
 {
 	//SetGravityRatio(1.0f);
 	//EngineDebug::OutPutDebugText("ReverseMoveStart");
-	IsOnTheBlock = false;
+	//IsOnTheBlock = false;
 	DirCheck();
 	Renderer->ChangeAnimation(ChangeAnimationName("ReverseMove"));
 }
@@ -276,7 +292,7 @@ void APlayerMario::ReverseMoveStart()
 
 void APlayerMario::ReverseMove(float _DeltaTime)
 {
-	BlockCollisionCheck();
+	//BlockCollisionCheck();
 
 	if (UEngineInput::IsDown('Z'))
 	{
@@ -322,7 +338,7 @@ void APlayerMario::ReverseMove(float _DeltaTime)
 // X축 이동만을 담당하는 함수
 void APlayerMario::Move(float _DeltaTime)
 {
-	BlockCollisionCheck();
+	//BlockCollisionCheck();
 
 	if (HorizonVelocityVector.X < 3.0f && HorizonVelocityVector.X > -3.0f && (UEngineInput::IsFree(VK_LEFT) && UEngineInput::IsFree(VK_RIGHT)))
 	{
@@ -389,8 +405,9 @@ void APlayerMario::CollisionJump(float _DeltaTime)
 
 void APlayerMario::Jump(float _DeltaTime)
 {
-
-	BlockCollisionCheck();
+	UEngineDebug::OutPutDebugText(std::to_string(IsOnTheBlock));
+	//BlockCollisionCheck();
+	
 	
 	if (UEngineInput::IsUp('Z') || 0.3f < UEngineInput::GetPressTime('Z'))
 	{
@@ -489,7 +506,7 @@ void APlayerMario::CameraMove(float _DeltaTime)
 
 void APlayerMario::Idle(float _DeltaTime)
 {
-	BlockCollisionCheck();
+	//BlockCollisionCheck();
 
 	if (UEngineInput::IsDown('1'))
 	{
@@ -538,7 +555,7 @@ void APlayerMario::GetHit(float _DeltaTime)
 void APlayerMario::OnTheBlock(float _DeltaTime)
 {
 	//StateChange(EActorState::Idle);
-	BlockCollisionCheck();
+	//BlockCollisionCheck();
 
 	if (HorizonVelocityVector.X < 3.0f && HorizonVelocityVector.X > -3.0f && (UEngineInput::IsFree(VK_LEFT) && UEngineInput::IsFree(VK_RIGHT)))
 	{
@@ -580,7 +597,7 @@ void APlayerMario::OnTheBlockStart()
 
 void APlayerMario::MarioGrowUpStart()
 {
-	IsOnTheBlock = false;
+	//IsOnTheBlock = false;
 	DirCheck();
 	Renderer->ChangeAnimation(ChangeAnimationName("GrowUp"));
 	BodyCollision->SetTransform({ { 0,-40 }, {BodyCollision->GetTransform().GetScale().X * 1.5f, BodyCollision->GetTransform().GetScale().Y * 2} });
@@ -775,7 +792,7 @@ void APlayerMario::GroundUp()
 	{
 		std::vector<UCollision*> Result = std::vector<UCollision*>();
 		Color8Bit Color = UContentsFunction::GetCollisionMapImg()->GetColor(GetActorLocation().iX(), GetActorLocation().iY(), UInGameValue::CollisionColor);
-
+		
 		if (UInGameValue::CollisionColor == Color || true == BodyCollision->CollisionCheck(ECollisionOrder::BlockTop, Result))
 		{
 			AddActorLocation(FVector::Up);
