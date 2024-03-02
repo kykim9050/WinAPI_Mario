@@ -23,6 +23,7 @@ protected:
 	void MoveStart() override;
 
 	void Move(float _DeltaTime) override;
+	void Debris(float _DeltaTime) override;
 
 	void CollisionCheck() override;
 

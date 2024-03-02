@@ -78,6 +78,9 @@ void ABlockUnit::StateUpdate(float _DeltaTime)
 	case EActorState::Fixed:
 		Fixed(_DeltaTime);
 		break;
+	case EActorState::Debris:
+		Debris(_DeltaTime);
+		break;
 	default:
 		break;
 	}
