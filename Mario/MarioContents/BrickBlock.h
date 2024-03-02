@@ -1,6 +1,15 @@
 #pragma once
 #include "BlockUnit.h"
 
+
+class ADebrisBlock : public AActor
+{
+	friend class ABrickBlock;
+
+public:
+	UImageRenderer* Renderer = nullptr;
+};
+
 // Ό³Έν :
 class ABrickBlock : public ABlockUnit
 {
@@ -30,7 +39,8 @@ protected:
 	void DebrisStart() override;
 
 private:
-	//std::vector<UImageRenderer*> DebrisRenderer;
+	std::vector<ADebrisBlock> DebrisBlocks = std::vector<ADebrisBlock>();
+
 	UImageRenderer* DebrisRenderer1 = nullptr;
 	UImageRenderer* DebrisRenderer2 = nullptr;
 	UImageRenderer* DebrisRenderer3 = nullptr;
