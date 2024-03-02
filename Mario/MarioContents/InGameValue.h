@@ -146,6 +146,13 @@ public:
 	static const int DebrisBlockImageXValue;
 	static const int DebrisBlockImageYValue;
 
+	/// <summary>
+	/// FireFlowerÀÇ Body Collision Scale °ª
+	/// </summary>
+	static const int FireFlowerCollisionScaleX;
+	static const int FireFlowerCollisionScaleY;
+
+
 protected:
 
 private:

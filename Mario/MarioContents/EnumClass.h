@@ -101,6 +101,7 @@ enum class ECollisionOrder
 	BlockTop,
 	Item,
 	Mushroom,
+	FireFlower,
 	Invincible,
 };
 

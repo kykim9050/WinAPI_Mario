@@ -27,8 +27,8 @@ void ACoinBlock::BeginPlay()
 
 	SetActorState(EActorState::FirstInit);
 
-	Item = GetWorld()->SpawnActor< AMushroom>(static_cast<int>(EActorType::Item));
-	//Item = GetWorld()->SpawnActor< AFireFlower>(static_cast<int>(EActorType::Item));
+	//Item = GetWorld()->SpawnActor< AMushroom>(static_cast<int>(EActorType::Item));
+	Item = GetWorld()->SpawnActor< AFireFlower>(static_cast<int>(EActorType::Item));
 }
 
 void ACoinBlock::Tick(float _DeltaTime)
