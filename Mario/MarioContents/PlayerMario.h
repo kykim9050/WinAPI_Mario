@@ -133,7 +133,12 @@ public:
 
 	void EattingMushroom()
 	{
-		EatMushroom = true;
+		AteMushroom = true;
+	}
+
+	void EattingFireFlower()
+	{
+		AteFireFlower = true;
 	}
 
 	void HitBlockBottom()
@@ -188,7 +193,8 @@ private:
 	void GroundUp();
 
 	bool IsOnTheBlock = false;
-	bool EatMushroom = false;
+	bool AteMushroom = false;
+	bool AteFireFlower = false;
 	bool IsInvincible = false;
 	bool BlockBottomHit = false;
 

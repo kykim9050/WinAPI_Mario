@@ -208,10 +208,10 @@ void APlayerMario::CollisionStateCheck()
 {
 	std::vector<UCollision*> Result = std::vector<UCollision*>();
 
-	if (true == EatMushroom)
+	if (true == AteMushroom)
 	{
 		StateChange(EActorState::MarioGrowUp);
-		EatMushroom = false;
+		AteMushroom = false;
 	}
 
 	if (true == BlockBottomHit)

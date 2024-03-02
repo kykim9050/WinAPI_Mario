@@ -72,7 +72,7 @@ void AFireFlower::CollisionCheck()
 
 	if (true == BodyCollision->CollisionCheck(ECollisionOrder::Player, Result))
 	{
-		//Player->EattingFireFlower();
+		Player->EattingFireFlower();
 		CollisionStateChange(ECollisionState::GetHit);
 		return;
 	}
