@@ -6,11 +6,7 @@ ABrickBlock::ABrickBlock()
 
 ABrickBlock::~ABrickBlock()
 {
-	for (int i = 0; i < 4; i++)
-	{
-		delete DebrisBlocks[i];
-		DebrisBlocks[i] = nullptr;
-	}
+
 }
 
 void ABrickBlock::BeginPlay()
@@ -31,7 +27,7 @@ void ABrickBlock::BeginPlay()
 
 	for (int i = 0; i < 4/*UInGameValue::DebrisBlockNum*/; i++)
 	{
-		ADebrisBlock* NewBlock = new ADebrisBlock();
+		ADebrisBlock* NewBlock = GetWorld()->SpawnActor< ADebrisBlock>(static_cast<int>(EActorType::Block));
 		DebrisBlocks.push_back(NewBlock);
 	}
 
