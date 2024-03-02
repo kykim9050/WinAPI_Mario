@@ -37,6 +37,7 @@ protected:
 	void Idle(float _DeltaTime);
 	virtual void Move(float _DeltaTime);
 	void Fixed(float _DeltaTime);
+	virtual void Debris(float _DeltaTime) { }
 	void ResultMovementUpdate(float _DeltaTime);
 
 	FVector InitPos = FVector::Zero;

@@ -118,6 +118,12 @@ void ABrickBlock::Move(float _DeltaTime)
 	}
 }
 
+void ABrickBlock::Debris(float _DeltaTime)
+{
+	ABlockUnit::Debris(_DeltaTime);
+
+}
+
 void ABrickBlock::DebrisStart()
 {
 	ABlockUnit::DebrisStart();
@@ -126,7 +132,16 @@ void ABrickBlock::DebrisStart()
 	SideCollision->ActiveOff();
 	BodyCollision->ActiveOff();
 	Renderer->ChangeAnimation("BrickBlock_Debris");
+
+	DebrisRenderer1->ChangeAnimation("BrickBlock_Debris");
+	DebrisRenderer2->ChangeAnimation("BrickBlock_Debris");
+	DebrisRenderer3->ChangeAnimation("BrickBlock_Debris");
+	DebrisRenderer4->ChangeAnimation("BrickBlock_Debris");
 }
+
+
+
+
 
 
 
