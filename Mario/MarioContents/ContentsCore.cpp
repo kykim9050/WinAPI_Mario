@@ -53,6 +53,15 @@ void UContentsCore::BeginPlay()
 	UEngineResourcesManager::GetInst().CuttingImage("Coin.png", UInGameValue::CoinImageXValue, UInGameValue::CoinImageYValue);
 	UEngineResourcesManager::GetInst().CuttingImage("Items.png", UInGameValue::ItemsImageXValue, UInGameValue::ItemsImageYValue);
 	UEngineResourcesManager::GetInst().CuttingImage("DebrisBlock.png", UInGameValue::DebrisBlockImageXValue, UInGameValue::DebrisBlockImageYValue);
+	UEngineResourcesManager::GetInst().CuttingImage("ChangingFireMario_Left.png", UInGameValue::ChangingFireMarioImageXValue, UInGameValue::ChangingFireMarioImageYValue);
+	UEngineResourcesManager::GetInst().CuttingImage("ChangingFireMario_Right.png", UInGameValue::ChangingFireMarioImageXValue, UInGameValue::ChangingFireMarioImageYValue);
+	UEngineResourcesManager::GetInst().CuttingImage("FireMario_Left.png", UInGameValue::FireMarioImageXValue, UInGameValue::FireMarioImageYValue);
+	UEngineResourcesManager::GetInst().CuttingImage("FireMario_Right.png", UInGameValue::FireMarioImageXValue, UInGameValue::FireMarioImageYValue);
+	UEngineResourcesManager::GetInst().CuttingImage("FireBall.png", UInGameValue::FireBallImageXValue, UInGameValue::FireBallImageYValue);
+
+
+
+
 
 	//CreateLevel<UTitleLevel>("TitleLevel");
 	//CreateLevel<U1_1StageLevel>("1_1StageLevel");

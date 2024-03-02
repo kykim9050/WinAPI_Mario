@@ -152,6 +152,23 @@ public:
 	static const int FireFlowerCollisionScaleX;
 	static const int FireFlowerCollisionScaleY;
 
+	/// <summary>
+	/// ChangingFireMario 의 열, 행 수
+	/// </summary>
+	static const int ChangingFireMarioImageXValue;
+	static const int ChangingFireMarioImageYValue;
+
+	/// <summary>
+	/// FireMario 의 열, 행 수
+	/// </summary>
+	static const int FireMarioImageXValue;
+	static const int FireMarioImageYValue;
+
+	/// <summary>
+	/// FireBall.png 의 열, 행 수
+	/// </summary>
+	static const int FireBallImageXValue;
+	static const int FireBallImageYValue;
 
 protected:
 
