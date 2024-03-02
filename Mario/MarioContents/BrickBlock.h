@@ -40,13 +40,9 @@ protected:
 	void DebrisStart() override;
 
 private:
-	//std::vector<ADebrisBlock*> DebrisBlocks = std::vector<ADebrisBlock*>();
 
 	UImageRenderer* DebrisingRenderer = nullptr;
-	/*UImageRenderer* DebrisRenderer1 = nullptr;
-	UImageRenderer* DebrisRenderer2 = nullptr;
-	UImageRenderer* DebrisRenderer3 = nullptr;
-	UImageRenderer* DebrisRenderer4 = nullptr;*/
+
 	float Debrisingtime = 0.375f;
 };
 
