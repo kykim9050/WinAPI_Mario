@@ -34,19 +34,16 @@ void AMushroom::Tick(float _DeltaTime)
 	AItemUnit::Tick(_DeltaTime);
 }
 
-
-void AMushroom::IdleStart()
+void AMushroom::FirstInit(float _DeltaTime)
 {
-	AItemUnit::IdleStart();
+	AItemUnit::FirstInit(_DeltaTime);
 
 	BodyCollision->ActiveOff();
 	Renderer->ActiveOff();
+
+	StateChange(EActorState::Idle);
 }
 
-void AMushroom::AppearStart()
-{
-	//Renderer->ActiveOn();
-}
 
 void AMushroom::MoveStart()
 {
