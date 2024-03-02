@@ -129,7 +129,7 @@ void ABrickBlock::DebrisStart()
 
 	FVector DebrisBlockScale = DebrisingRenderer->GetImage()->GetScale();
 
-	DebrisingRenderer->SetTransform({ {0,0}, {DebrisBlockScale.iX() / 5 * UInGameValue::WindowSizeMulValue, DebrisBlockScale.iY() / 3 * UInGameValue::WindowSizeMulValue} });
+	DebrisingRenderer->SetTransform({ {0,0}, {DebrisBlockScale.iX() / UInGameValue::DebrisBlockImageXValue * UInGameValue::WindowSizeMulValue, DebrisBlockScale.iY() / UInGameValue::DebrisBlockImageYValue * UInGameValue::WindowSizeMulValue} });
 	DebrisingRenderer->CreateAnimation("BrickBlock_Debrising", "DebrisBlock.png", 0, 14, 0.025f, false);
 
 	DebrisingRenderer->ChangeAnimation("BrickBlock_Debrising");

@@ -139,6 +139,13 @@ public:
 	static const int MushroomCollisionScaleX;
 	static const int MushroomCollisionScaleY;
 
+
+	/// <summary>
+	/// DebrisBlock.png 의 열, 행 수
+	/// </summary>
+	static const int DebrisBlockImageXValue;
+	static const int DebrisBlockImageYValue;
+
 protected:
 
 private:
