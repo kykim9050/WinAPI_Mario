@@ -67,3 +67,7 @@ const int UInGameValue::ItemsImageYValue = 2;
 
 const int UInGameValue::MushroomCollisionScaleX = 32;
 const int UInGameValue::MushroomCollisionScaleY = 32;
+
+const int UInGameValue::DebrisBlockImageXValue = 5;
+const int UInGameValue::DebrisBlockImageYValue = 3;
+
