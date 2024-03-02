@@ -161,9 +161,15 @@ void ABrickBlock::DebrisStart()
 	DebrisBlocks[3]->Renderer->ChangeAnimation("BrickBlock_Debris");
 }
 
+void ABrickBlock::FirstInit(float _Deltatime)
+{
+	ABlockUnit::FirstInit(_Deltatime);
 
+	for (int i = 0; i < 4/*UInGameValue::DebrisBlockNum*/; i++)
+	{
+		DebrisBlocks[i]->SetActorLocation({ InitPos.X, InitPos.Y });
+		UEngineDebug::OutPutDebugText("X :" + std::to_string(DebrisBlocks[i]->GetActorLocation().X));
+		UEngineDebug::OutPutDebugText("Y :" + std::to_string(DebrisBlocks[i]->GetActorLocation().Y));
+	}
 
-
-
-
-
+}
