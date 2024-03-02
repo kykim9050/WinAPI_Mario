@@ -20,13 +20,12 @@ protected:
 	//void CollisionCheck() override;
 	//void CollisionStateChange(ECollisionState _CollisionState) override;
 
-	//void FirstInit(float _DeltaTime) override;
+	void FirstInit(float _DeltaTime) override;
 	//void Idle(float _DeltaTime) override;
 	//void Move(float _DeltaTime) override;
 	void Appear(float _DeltaTime) override;
 
 
-	void IdleStart() override;
 	//void AppearStart() override;
 	//void MoveStart() override;
 	//void ReleaseStart() override;
