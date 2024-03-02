@@ -31,7 +31,7 @@ void ABrickBlock::BeginPlay()
 	FVector DebrisBlockScale = DebrisingRenderer->GetImage()->GetScale();
 
 	DebrisingRenderer->SetTransform({ {0,0}, {DebrisBlockScale.iX() / 5 * UInGameValue::WindowSizeMulValue, DebrisBlockScale.iY() / 3 * UInGameValue::WindowSizeMulValue} });
-	DebrisingRenderer->CreateAnimation("BrickBlock_Debrising", "DebrisBlock.png", 0, 14, 0.1f, false);
+	DebrisingRenderer->CreateAnimation("BrickBlock_Debrising", "DebrisBlock.png", 0, 14, 0.03f, false);
 
 
 	SetActorState(EActorState::FirstInit);
@@ -132,8 +132,8 @@ void ABrickBlock::DebrisStart()
 	BodyCollision->ActiveOff();
 	Renderer->ActiveOff();
 
-	//DebrisingRenderer->ChangeAnimation("BrickBlock_Debrising");
-	//DebrisingRenderer->ActiveOn();
+	DebrisingRenderer->ChangeAnimation("BrickBlock_Debrising");
+	DebrisingRenderer->ActiveOn();
 	JumpVelocityVector = FVector::Up * 600.0f;
 
 }
