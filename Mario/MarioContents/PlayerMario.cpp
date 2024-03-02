@@ -212,14 +212,12 @@ void APlayerMario::CollisionStateCheck()
 	{
 		StateChange(EActorState::MarioGrowUp);
 		EatMushroom = false;
-		return;
 	}
 
 	if (true == BlockBottomHit)
 	{
 		CollisionStateChange(ECollisionState::BlockBotHit);
 		BlockBottomHit = false;
-		return;
 	}
 
 	if (false == IsOnTheBlock && true == BodyCollision->CollisionCheck(ECollisionOrder::BlockTop, Result))
@@ -228,18 +226,15 @@ void APlayerMario::CollisionStateCheck()
 		SetGravityZero();
 		SetJumpZero();
 		StateChange(EActorState::Idle);
-		return;
 	}
 	else if(true == IsOnTheBlock && true == BodyCollision->CollisionCheck(ECollisionOrder::BlockTop, Result))
 	{
 		IsOnTheBlock = true;
-		return;
 	}
 
 	if (true == BodyCollision->CollisionCheck(ECollisionOrder::BlockSide, Result))
 	{
 		CollisionStateChange(ECollisionState::BlockSideHit);
-		return;
 	}
 
 	
