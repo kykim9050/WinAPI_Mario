@@ -130,6 +130,9 @@ void APlayerMario::StateChange(EActorState _PlayerState)
 		case EActorState::MarioGrowUp:
 			MarioGrowUpStart();
 			break;
+		case EActorState::FireMario:
+			ChangingFireMarioStart();
+			break;
 		default:
 			break;
 		}
@@ -646,6 +649,17 @@ void APlayerMario::MarioGrowUpStart()
 	GetWorld()->SetOtherTimeScale(EActorType::Player, 0.0f);
 	PrevActorState = ActorState;
 
+}
+
+void APlayerMario::ChangingFireMarioStart()
+{
+	DirCheck();
+	//Renderer->ChangeAnimation(ChangeAnimationName("ChangingFireMario"));
+
+	MarioType = EMarioType::Fire;
+	BodyCollision->SetTransform({ { 0,-40 }, {32, 64} });
+	GetWorld()->SetOtherTimeScale(EActorType::Player, 0.0f);
+	PrevActorState = ActorState;
 }
 
 
