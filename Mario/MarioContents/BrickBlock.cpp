@@ -137,10 +137,17 @@ void ABrickBlock::Debris(float _DeltaTime)
 		StateChange(EActorState::Release);
 	}
 
-	DebrisBlocks[0]->Renderer->SetPosition({ (FVector::Left + FVector::Up) * 100.0f });
+	GravityVelocityVector += GravityAccVector * _DeltaTime;
+	CalTotalVelocityVector(_DeltaTime);
+	AddActorLocation(TotalVelocityVector * _DeltaTime);
+
+	UEngineDebug::OutPutDebugText("X :" + std::to_string(GetActorLocation().X));
+	UEngineDebug::OutPutDebugText("Y :" + std::to_string(GetActorLocation().Y));
+
+	/*DebrisBlocks[0]->Renderer->SetPosition({ (FVector::Left + FVector::Up) * 100.0f });
 	DebrisBlocks[1]->Renderer->SetPosition({ (FVector::Right + FVector::Up) * 100.0f });
 	DebrisBlocks[2]->Renderer->SetPosition({ (FVector::Left + FVector::Down) * 100.0f });
-	DebrisBlocks[3]->Renderer->SetPosition({ (FVector::Right + FVector::Down) * 100.0f});
+	DebrisBlocks[3]->Renderer->SetPosition({ (FVector::Right + FVector::Down) * 100.0f});*/
 	
 	
 }
@@ -154,6 +161,7 @@ void ABrickBlock::DebrisStart()
 	BodyCollision->ActiveOff();
 	Renderer->ActiveOff();
 	//Renderer->ChangeAnimation("BrickBlock_Debris");
+	JumpVelocityVector = FVector::Up * 600.0f;
 
 	DebrisBlocks[0]->Renderer->ChangeAnimation("BrickBlock_Debris");
 	DebrisBlocks[1]->Renderer->ChangeAnimation("BrickBlock_Debris");
@@ -168,8 +176,6 @@ void ABrickBlock::FirstInit(float _Deltatime)
 	for (int i = 0; i < 4/*UInGameValue::DebrisBlockNum*/; i++)
 	{
 		DebrisBlocks[i]->SetActorLocation({ InitPos.X, InitPos.Y });
-		UEngineDebug::OutPutDebugText("X :" + std::to_string(DebrisBlocks[i]->GetActorLocation().X));
-		UEngineDebug::OutPutDebugText("Y :" + std::to_string(DebrisBlocks[i]->GetActorLocation().Y));
 	}
 
 }

@@ -46,6 +46,6 @@ private:
 	UImageRenderer* DebrisRenderer2 = nullptr;
 	UImageRenderer* DebrisRenderer3 = nullptr;
 	UImageRenderer* DebrisRenderer4 = nullptr;*/
-	float Debrisingtime = 2.0f;
+	float Debrisingtime = 1.0f;
 };
 
