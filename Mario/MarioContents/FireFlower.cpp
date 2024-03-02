@@ -22,7 +22,6 @@ void AFireFlower::BeginPlay()
 	Renderer->CreateAnimation("FireFlower", "Items.png", 2, 5, 0.15f, true);
 	Renderer->ChangeAnimation("FireFlower");
 
-	Renderer->SetPosition({ 0,-50 });
 	//BodyCollision = CreateCollision(ECollisionOrder::Mushroom);
 	//BodyCollision->SetTransform({ { 0, 0}, { UInGameValue::MushroomCollisionScaleX, UInGameValue::MushroomCollisionScaleX} });
 	//BodyCollision->SetColType(ECollisionType::Rect);
