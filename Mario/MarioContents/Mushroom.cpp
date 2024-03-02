@@ -23,7 +23,7 @@ void AMushroom::BeginPlay()
 	Renderer->ChangeAnimation("Mushroom");
 
 	BodyCollision = CreateCollision(ECollisionOrder::Mushroom);
-	BodyCollision->SetTransform({ { 0, 0}, { UInGameValue::MushroomCollisionScaleX, UInGameValue::MushroomCollisionScaleX} });
+	BodyCollision->SetTransform({ { 0, 0}, { UInGameValue::MushroomCollisionScaleX, UInGameValue::MushroomCollisionScaleY} });
 	BodyCollision->SetColType(ECollisionType::Rect);
 
 	SetActorState(EActorState::FirstInit);
@@ -57,7 +57,7 @@ void AMushroom::MoveStart()
 
 void AMushroom::Appear(float _DeltaTime)
 {
-	if (GetActorLocation().Y < 400.0f)
+	if (GetActorLocation().Y < InitPos.Y - (UInGameValue::BlockCollisionScaleY / 2) - (UInGameValue::MushroomCollisionScaleY / 2))
 	{
 		SetActorLocation({GetActorLocation().X, GetActorLocation().Y });
 		StateChange(EActorState::Move);
