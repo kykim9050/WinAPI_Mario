@@ -104,6 +104,9 @@ void ABlockUnit::StateChange(EActorState _ActorState)
 		case EActorState::Debris:
 			DebrisStart();
 			break;
+		case EActorState::Release:
+			Destroy();
+			break;
 		default:
 			break;
 		}
