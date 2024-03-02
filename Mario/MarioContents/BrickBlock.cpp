@@ -122,6 +122,23 @@ void ABrickBlock::Debris(float _DeltaTime)
 {
 	ABlockUnit::Debris(_DeltaTime);
 
+	static float Debrisingtime = 1.0f;
+
+	Debrisingtime -= _DeltaTime;
+
+	if (0.0f >= Debrisingtime)
+	{
+
+		Debrisingtime = 1.0f;
+		StateChange(EActorState::Release);
+	}
+
+	DebrisRenderer1->SetPosition({ (FVector::Left + FVector::Up) * 100.0f });
+	DebrisRenderer2->SetPosition({ (FVector::Right + FVector::Up) * 100.0f });
+	DebrisRenderer3->SetPosition({ (FVector::Left + FVector::Down) * 100.0f });
+	DebrisRenderer4->SetPosition({ (FVector::Right + FVector::Down) * 100.0f});
+	
+
 }
 
 void ABrickBlock::DebrisStart()
