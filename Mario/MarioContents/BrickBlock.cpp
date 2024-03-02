@@ -25,14 +25,6 @@ void ABrickBlock::BeginPlay()
 	Renderer->CreateAnimation("BrickBlock_Hit", "BrickBlock.png", 3, 3, 0.1f, true);
 	Renderer->CreateAnimation("BrickBlock_AfterHit", "BrickBlock.png", 4, 4, 0.1f, true);
 
-	DebrisingRenderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::Block));
-	DebrisingRenderer->SetImage("DebrisBlock.png");
-
-	FVector DebrisBlockScale = DebrisingRenderer->GetImage()->GetScale();
-
-	DebrisingRenderer->SetTransform({ {0,0}, {DebrisBlockScale.iX() / 5 * UInGameValue::WindowSizeMulValue, DebrisBlockScale.iY() / 3 * UInGameValue::WindowSizeMulValue} });
-	DebrisingRenderer->CreateAnimation("BrickBlock_Debrising", "DebrisBlock.png", 0, 14, 0.025f, false);
-
 
 	SetActorState(EActorState::FirstInit);
 }
@@ -132,6 +124,14 @@ void ABrickBlock::DebrisStart()
 	BodyCollision->ActiveOff();
 	Renderer->ActiveOff();
 
+	DebrisingRenderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::Block));
+	DebrisingRenderer->SetImage("DebrisBlock.png");
+
+	FVector DebrisBlockScale = DebrisingRenderer->GetImage()->GetScale();
+
+	DebrisingRenderer->SetTransform({ {0,0}, {DebrisBlockScale.iX() / 5 * UInGameValue::WindowSizeMulValue, DebrisBlockScale.iY() / 3 * UInGameValue::WindowSizeMulValue} });
+	DebrisingRenderer->CreateAnimation("BrickBlock_Debrising", "DebrisBlock.png", 0, 14, 0.025f, false);
+
 	DebrisingRenderer->ChangeAnimation("BrickBlock_Debrising");
 	DebrisingRenderer->ActiveOn();
 	JumpVelocityVector = FVector::Up * 250.0f;
@@ -141,5 +141,4 @@ void ABrickBlock::DebrisStart()
 void ABrickBlock::FirstInit(float _Deltatime)
 {
 	ABlockUnit::FirstInit(_Deltatime);
-	DebrisingRenderer->ActiveOff();
 }
