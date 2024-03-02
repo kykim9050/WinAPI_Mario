@@ -44,7 +44,6 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 	FVector InitPos = FVector::Zero;
-	bool IsAte = false;
 private:
 
 

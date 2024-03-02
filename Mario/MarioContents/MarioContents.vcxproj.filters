@@ -80,6 +80,9 @@
     <ClInclude Include="Mushroom.h">
       <Filter>Object\Item</Filter>
     </ClInclude>
+    <ClInclude Include="FireFlower.h">
+      <Filter>Object\Item</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp" />
@@ -156,6 +159,9 @@
       <Filter>Object\Item</Filter>
     </ClCompile>
     <ClCompile Include="Mushroom.cpp">
+      <Filter>Object\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="FireFlower.cpp">
       <Filter>Object\Item</Filter>
     </ClCompile>
   </ItemGroup>
