@@ -1,4 +1,5 @@
 #include "FireFlower.h"
+#include "PlayerMario.h"
 
 AFireFlower::AFireFlower()
 {
@@ -56,5 +57,24 @@ void AFireFlower::Appear(float _DeltaTime)
 void AFireFlower::IdleStart()
 {
 	BodyCollision->ActiveOn();
+}
+
+void AFireFlower::CollisionCheck()
+{
+	std::vector<UCollision*> Result = std::vector<UCollision*>();
+
+	APlayerMario* Player = APlayerMario::GetMainPlayer();
+
+	if (nullptr == Player)
+	{
+		MsgBoxAssert("플레이어가 존재하지 않습니다.");
+	}
+
+	if (true == BodyCollision->CollisionCheck(ECollisionOrder::Player, Result))
+	{
+		//Player->EattingFireFlower();
+		CollisionStateChange(ECollisionState::GetHit);
+		return;
+	}
 }
 
