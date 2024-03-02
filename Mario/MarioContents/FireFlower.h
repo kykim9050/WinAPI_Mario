@@ -23,7 +23,7 @@ protected:
 	//void FirstInit(float _DeltaTime) override;
 	//void Idle(float _DeltaTime) override;
 	//void Move(float _DeltaTime) override;
-	//void Appear(float _DeltaTime) override;
+	void Appear(float _DeltaTime) override;
 
 
 	void IdleStart() override;

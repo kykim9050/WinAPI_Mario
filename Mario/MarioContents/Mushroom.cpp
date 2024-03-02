@@ -55,15 +55,6 @@ void AMushroom::MoveStart()
 }
 
 
-
-
-
-void AMushroom::Idle(float _DeltaTime)
-{
-
-}
-
-
 void AMushroom::Appear(float _DeltaTime)
 {
 	if (GetActorLocation().Y < 400.0f)
