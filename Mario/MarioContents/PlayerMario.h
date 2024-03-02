@@ -55,7 +55,6 @@ public:
 	/// </summary>
 	void ReverseMoveStart();
 
-	void MarioGrowUpStart();
 
 	/// <summary>
 	/// Actor의 상태가 변경될 때 실행되는 함수
@@ -164,6 +163,9 @@ protected:
 	void CalGravityVelocityVector(float _DeltaTime) override;
 
 	void CollisionAction(float _DeltaTime);
+
+	void ChangingFireMarioStart();
+	void MarioGrowUpStart();
 
 private:
 	EMarioType MarioType = EMarioType::None;
