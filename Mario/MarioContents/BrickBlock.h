@@ -29,6 +29,10 @@ protected:
 	void DebrisStart() override;
 
 private:
-
+	//std::vector<UImageRenderer*> DebrisRenderer;
+	UImageRenderer* DebrisRenderer1 = nullptr;
+	UImageRenderer* DebrisRenderer2 = nullptr;
+	UImageRenderer* DebrisRenderer3 = nullptr;
+	UImageRenderer* DebrisRenderer4 = nullptr;
 };
 
