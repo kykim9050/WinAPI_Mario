@@ -35,12 +35,6 @@ void AMushroom::Tick(float _DeltaTime)
 }
 
 
-void AMushroom::FirstInit(float _Deltatime)
-{
-	InitPos = GetActorLocation();
-	StateChange(EActorState::Idle);
-}
-
 void AMushroom::IdleStart()
 {
 	AItemUnit::IdleStart();

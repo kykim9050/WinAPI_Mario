@@ -25,7 +25,7 @@ public:
 	virtual void CollisionCheck() {}
 	virtual void CollisionStateChange(ECollisionState _CollisionState);
 
-	virtual void FirstInit(float _DeltaTime) {}
+	virtual void FirstInit(float _DeltaTime);
 	virtual void Idle(float _DeltaTime) {}
 	virtual void Move(float _DeltaTime) {}
 	virtual void Appear(float _DeltaTime) {}

@@ -99,3 +99,10 @@ void AItemUnit::ReleaseStart()
 {
 	Destroy();
 }
+
+void AItemUnit::FirstInit(float _DeltaTime)
+{
+	InitPos = GetActorLocation();
+
+	StateChange(EActorState::Idle);
+}
