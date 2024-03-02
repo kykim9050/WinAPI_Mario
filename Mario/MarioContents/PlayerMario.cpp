@@ -32,39 +32,29 @@ void APlayerMario::BeginPlay()
 
 	Renderer->CreateAnimation("Small_Idle_Right", "Mario_Right.png", 0, 0, 0.1f, true);
 	Renderer->CreateAnimation("Small_Idle_Left", "Mario_Left.png", 0, 0, 0.1f, true);
-
 	Renderer->CreateAnimation("Small_Move_Right", "Mario_Right.png", 1, 3, 0.1f, true);
 	Renderer->CreateAnimation("Small_Move_Left", "Mario_Left.png", 1, 3, 0.1f, true);
-
 	Renderer->CreateAnimation("Small_Jump_Right", "Mario_Right.png", 5, 5, 0.1f, true);
 	Renderer->CreateAnimation("Small_Jump_Left", "Mario_Left.png", 5, 5, 0.1f, true);
-
 	Renderer->CreateAnimation("Small_ReverseMove_Right", "Mario_Right.png", 4, 4, 0.1f, true);
 	Renderer->CreateAnimation("Small_ReverseMove_Left", "Mario_Left.png", 4, 4, 0.1f, true);
-
 	Renderer->CreateAnimation("Small_GrowUp_Left", "Mario_Left.png", { 29, 30, 31, 30, 31 ,30, 31, 32 }, 0.15f, false);
 	Renderer->CreateAnimation("Small_GrowUp_Right", "Mario_Right.png", { 29, 30, 31, 30, 31 , 30, 31, 32 }, 0.15f, false);
-		
 	Renderer->CreateAnimation("SmallMario_Dead", "Mario_Right.png", 6, 6, 0.1f, true);
-
 
 
 	Renderer->CreateAnimation("Big_Idle_Right", "Mario_Right.png", 14, 14, 0.1f, true);
 	Renderer->CreateAnimation("Big_Idle_Left", "Mario_Left.png", 14, 14, 0.1f, true);
-
 	Renderer->CreateAnimation("Big_Move_Right", "Mario_Right.png", 15, 17, 0.1f, true);
 	Renderer->CreateAnimation("Big_Move_Left", "Mario_Left.png", 15, 17, 0.1f, true);
-
 	Renderer->CreateAnimation("Big_Jump_Right", "Mario_Right.png", 19, 19, 0.1f, true);
 	Renderer->CreateAnimation("Big_Jump_Left", "Mario_Left.png", 19, 19, 0.1f, true);
-
 	Renderer->CreateAnimation("Big_ReverseMove_Right", "Mario_Right.png", 18, 18, 0.1f, true);
 	Renderer->CreateAnimation("Big_ReverseMove_Left", "Mario_Left.png", 18, 18, 0.1f, true);
-
-
 	Renderer->CreateAnimation("Big_SizeDown_Left", "Mario_Left.png", { 32, 33, 34, 33, 34, 33, 34, 35}, 0.15f, false);
 	Renderer->CreateAnimation("Big_SizeDown_Right", "Mario_Right.png", { 32, 33, 34, 33, 34, 33, 34, 35 }, 0.15f, false);
-	
+	Renderer->CreateAnimation("Big_ChangingFireMario_Right", "ChangingFireMario_Right.png", 0, 2, 0.1f, true);
+	Renderer->CreateAnimation("Big_ChangingFireMario_Left", "ChangingFireMario_Left.png", 0, 2, 0.1f, true);
 
 
 
@@ -653,8 +643,9 @@ void APlayerMario::MarioGrowUpStart()
 
 void APlayerMario::ChangingFireMarioStart()
 {
-	DirCheck();
+	//DirCheck();
 	//Renderer->ChangeAnimation(ChangeAnimationName("ChangingFireMario"));
+	Renderer->ChangeAnimation("Big_ChangingFireMario_Left");
 
 	MarioType = EMarioType::Fire;
 	BodyCollision->SetTransform({ { 0,-40 }, {32, 64} });
@@ -902,6 +893,7 @@ std::string APlayerMario::ChangeAnimationName(std::string _MainName)
 		break;
 	case EMarioType::Fire:
 		Type = "Fire_";
+		break;
 	default:
 		break;
 	}
