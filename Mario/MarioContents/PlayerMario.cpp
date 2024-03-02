@@ -900,6 +900,8 @@ std::string APlayerMario::ChangeAnimationName(std::string _MainName)
 	case EMarioType::Big:
 		Type = "Big_";
 		break;
+	case EMarioType::Fire:
+		Type = "Fire_";
 	default:
 		break;
 	}
