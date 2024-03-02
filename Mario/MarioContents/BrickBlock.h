@@ -31,6 +31,7 @@ protected:
 	void IdleStart() override;
 	void MoveStart() override;
 
+	void FirstInit(float _Deltatime) override;
 	void Move(float _DeltaTime) override;
 	void Debris(float _DeltaTime) override;
 
