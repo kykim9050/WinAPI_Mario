@@ -22,14 +22,22 @@ void AFireFlower::BeginPlay()
 	Renderer->CreateAnimation("FireFlower", "Items.png", 2, 5, 0.15f, true);
 	Renderer->ChangeAnimation("FireFlower");
 
-	//BodyCollision = CreateCollision(ECollisionOrder::Mushroom);
-	//BodyCollision->SetTransform({ { 0, 0}, { UInGameValue::MushroomCollisionScaleX, UInGameValue::MushroomCollisionScaleX} });
+	BodyCollision = CreateCollision(ECollisionOrder::FireFlower);
+	BodyCollision->SetTransform({ { 0, 0}, { UInGameValue::MushroomCollisionScaleX, UInGameValue::MushroomCollisionScaleX} });
 	//BodyCollision->SetColType(ECollisionType::Rect);
 
-	//SetActorState(EActorState::FirstInit);
+	SetActorState(EActorState::FirstInit);
 }
 
 void AFireFlower::Tick(float _DeltaTime)
 {
 	AItemUnit::Tick(_DeltaTime);
+}
+
+void AFireFlower::IdleStart()
+{
+	AItemUnit::IdleStart();
+
+	BodyCollision->ActiveOff();
+	Renderer->ActiveOff();
 }

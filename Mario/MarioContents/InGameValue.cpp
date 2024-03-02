@@ -71,3 +71,5 @@ const int UInGameValue::MushroomCollisionScaleY = 32;
 const int UInGameValue::DebrisBlockImageXValue = 5;
 const int UInGameValue::DebrisBlockImageYValue = 3;
 
+const int UInGameValue::FireFlowerCollisionScaleX = 32;
+const int UInGameValue::FireFlowerCollisionScaleY = 32;
