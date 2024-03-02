@@ -52,7 +52,7 @@ void UContentsCore::BeginPlay()
 	UEngineResourcesManager::GetInst().CuttingImage("CoinBlock.png", UInGameValue::CoinBlockImageXValue, UInGameValue::CoinBlockImageYValue);
 	UEngineResourcesManager::GetInst().CuttingImage("Coin.png", UInGameValue::CoinImageXValue, UInGameValue::CoinImageYValue);
 	UEngineResourcesManager::GetInst().CuttingImage("Items.png", UInGameValue::ItemsImageXValue, UInGameValue::ItemsImageYValue);
-
+	UEngineResourcesManager::GetInst().CuttingImage("DebrisBlock.png", 5, 3);
 
 	//CreateLevel<UTitleLevel>("TitleLevel");
 	//CreateLevel<U1_1StageLevel>("1_1StageLevel");
