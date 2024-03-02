@@ -24,7 +24,7 @@ void AFireFlower::BeginPlay()
 
 	BodyCollision = CreateCollision(ECollisionOrder::FireFlower);
 	BodyCollision->SetTransform({ { 0, 0}, { UInGameValue::MushroomCollisionScaleX, UInGameValue::MushroomCollisionScaleX} });
-	//BodyCollision->SetColType(ECollisionType::Rect);
+	BodyCollision->SetColType(ECollisionType::Rect);
 
 	SetActorState(EActorState::FirstInit);
 }
@@ -41,3 +41,15 @@ void AFireFlower::IdleStart()
 	BodyCollision->ActiveOff();
 	Renderer->ActiveOff();
 }
+
+void AFireFlower::Appear(float _DeltaTime)
+{
+	if (GetActorLocation().Y < 400.0f)
+	{
+		SetActorLocation({ GetActorLocation().X, GetActorLocation().Y });
+		StateChange(EActorState::Move);
+	}
+
+	AddActorLocation(FVector::Up * 60.0f * _DeltaTime);
+}
+
