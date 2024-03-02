@@ -34,12 +34,14 @@ void AFireFlower::Tick(float _DeltaTime)
 	AItemUnit::Tick(_DeltaTime);
 }
 
-void AFireFlower::IdleStart()
+void AFireFlower::FirstInit(float _DeltaTime)
 {
-	AItemUnit::IdleStart();
+	AItemUnit::FirstInit(_DeltaTime);
 
 	BodyCollision->ActiveOff();
 	Renderer->ActiveOff();
+
+	StateChange(EActorState::Idle);
 }
 
 void AFireFlower::Appear(float _DeltaTime)
