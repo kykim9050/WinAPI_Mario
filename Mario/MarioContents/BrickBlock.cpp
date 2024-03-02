@@ -33,6 +33,21 @@ void ABrickBlock::BeginPlay()
 	DebrisRenderer3->SetImage("BrickBlock.png");
 	DebrisRenderer4->SetImage("BrickBlock.png");
 
+	FVector DebrisBlock1Scale = DebrisRenderer1->GetImage()->GetScale();
+	FVector DebrisBlock2Scale = DebrisRenderer2->GetImage()->GetScale();
+	FVector DebrisBlock3Scale = DebrisRenderer3->GetImage()->GetScale();
+	FVector DebrisBlock4Scale = DebrisRenderer4->GetImage()->GetScale();
+
+	DebrisRenderer1->SetTransform({ {0,0}, {DebrisBlock1Scale.iX() / UInGameValue::BrickBlockImageXValue * UInGameValue::WindowSizeMulValue, DebrisBlock1Scale.iY() / UInGameValue::BrickBlockImageYValue * UInGameValue::WindowSizeMulValue} });
+	DebrisRenderer2->SetTransform({ {0,0}, {DebrisBlock2Scale.iX() / UInGameValue::BrickBlockImageXValue * UInGameValue::WindowSizeMulValue, DebrisBlock2Scale.iY() / UInGameValue::BrickBlockImageYValue * UInGameValue::WindowSizeMulValue} });
+	DebrisRenderer3->SetTransform({ {0,0}, {DebrisBlock3Scale.iX() / UInGameValue::BrickBlockImageXValue * UInGameValue::WindowSizeMulValue, DebrisBlock3Scale.iY() / UInGameValue::BrickBlockImageYValue * UInGameValue::WindowSizeMulValue} });
+	DebrisRenderer4->SetTransform({ {0,0}, {DebrisBlock4Scale.iX() / UInGameValue::BrickBlockImageXValue * UInGameValue::WindowSizeMulValue, DebrisBlock4Scale.iY() / UInGameValue::BrickBlockImageYValue * UInGameValue::WindowSizeMulValue} });
+
+	DebrisRenderer1->CreateAnimation("BrickBlock_Debris", "BrickBlock.png", 2, 2, 0.1f, true);
+	DebrisRenderer2->CreateAnimation("BrickBlock_Debris", "BrickBlock.png", 2, 2, 0.1f, true);
+	DebrisRenderer3->CreateAnimation("BrickBlock_Debris", "BrickBlock.png", 2, 2, 0.1f, true);
+	DebrisRenderer4->CreateAnimation("BrickBlock_Debris", "BrickBlock.png", 2, 2, 0.1f, true);
+
 
 	SetActorState(EActorState::FirstInit);
 }
