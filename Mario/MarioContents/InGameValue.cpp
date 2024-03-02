@@ -73,3 +73,12 @@ const int UInGameValue::DebrisBlockImageYValue = 3;
 
 const int UInGameValue::FireFlowerCollisionScaleX = 32;
 const int UInGameValue::FireFlowerCollisionScaleY = 48;
+
+const int UInGameValue::ChangingFireMarioImageXValue = 5;
+const int UInGameValue::ChangingFireMarioImageYValue = 2;
+
+const int UInGameValue::FireMarioImageXValue = 5;
+const int UInGameValue::FireMarioImageYValue = 9;
+
+const int UInGameValue::FireBallImageXValue = 5;
+const int UInGameValue::FireBallImageYValue = 2;
