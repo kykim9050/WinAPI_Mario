@@ -40,8 +40,6 @@ void AFireFlower::FirstInit(float _DeltaTime)
 
 	BodyCollision->ActiveOff();
 	Renderer->ActiveOff();
-
-	StateChange(EActorState::Idle);
 }
 
 void AFireFlower::Appear(float _DeltaTime)
@@ -49,9 +47,14 @@ void AFireFlower::Appear(float _DeltaTime)
 	if (GetActorLocation().Y < InitPos.Y - (UInGameValue::BlockCollisionScaleY / 2) - (UInGameValue::FireFlowerCollisionScaleY / 2))
 	{
 		SetActorLocation({ GetActorLocation().X, GetActorLocation().Y });
-		StateChange(EActorState::Move);
+		StateChange(EActorState::Idle);
 	}
 
 	AddActorLocation(FVector::Up * 60.0f * _DeltaTime);
+}
+
+void AFireFlower::IdleStart()
+{
+	BodyCollision->ActiveOn();
 }
 
