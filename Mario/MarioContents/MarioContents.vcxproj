@@ -219,6 +219,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="EnumClass.h" />
+    <ClInclude Include="FireFlower.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Goomba.h">
       <SubType>
       </SubType>
@@ -319,6 +323,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="EndingMessage.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="FireFlower.cpp">
       <SubType>
       </SubType>
     </ClCompile>
