@@ -215,7 +215,7 @@ void APlayerMario::CollisionStateCheck()
 		return;
 	}
 
-	if (true == BlockBottomHit && true == BodyCollision->CollisionCheck(ECollisionOrder::BlockBot, Result))
+	if (true == BlockBottomHit)
 	{
 		CollisionStateChange(ECollisionState::BlockBotHit);
 		BlockBottomHit = false;
