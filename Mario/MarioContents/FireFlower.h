@@ -25,8 +25,9 @@ protected:
 	//void Move(float _DeltaTime) override;
 	void Appear(float _DeltaTime) override;
 
-
+	
 	//void AppearStart() override;
+	void IdleStart() override;
 	//void MoveStart() override;
 	//void ReleaseStart() override;
 	//void GetHitStart() override;
