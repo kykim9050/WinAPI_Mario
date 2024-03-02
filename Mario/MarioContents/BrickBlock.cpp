@@ -156,7 +156,8 @@ void ABrickBlock::DebrisStart()
 	TopCollision->ActiveOff();
 	SideCollision->ActiveOff();
 	BodyCollision->ActiveOff();
-	Renderer->ChangeAnimation("BrickBlock_Debris");
+	Renderer->ActiveOff();
+	//Renderer->ChangeAnimation("BrickBlock_Debris");
 
 	DebrisBlocks[0]->Renderer->ChangeAnimation("BrickBlock_Debris");
 	DebrisBlocks[1]->Renderer->ChangeAnimation("BrickBlock_Debris");
