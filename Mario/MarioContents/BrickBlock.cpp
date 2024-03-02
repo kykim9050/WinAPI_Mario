@@ -24,6 +24,16 @@ void ABrickBlock::BeginPlay()
 	Renderer->CreateAnimation("BrickBlock_Hit", "BrickBlock.png", 3, 3, 0.1f, true);
 	Renderer->CreateAnimation("BrickBlock_AfterHit", "BrickBlock.png", 4, 4, 0.1f, true);
 
+	DebrisRenderer1 = CreateImageRenderer(static_cast<int>(EStageRenderOrder::Block));
+	DebrisRenderer2 = CreateImageRenderer(static_cast<int>(EStageRenderOrder::Block));
+	DebrisRenderer3 = CreateImageRenderer(static_cast<int>(EStageRenderOrder::Block));
+	DebrisRenderer4 = CreateImageRenderer(static_cast<int>(EStageRenderOrder::Block));
+	DebrisRenderer1->SetImage("BrickBlock.png");
+	DebrisRenderer2->SetImage("BrickBlock.png");
+	DebrisRenderer3->SetImage("BrickBlock.png");
+	DebrisRenderer4->SetImage("BrickBlock.png");
+
+
 	SetActorState(EActorState::FirstInit);
 }
 
