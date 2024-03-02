@@ -214,6 +214,12 @@ void APlayerMario::CollisionStateCheck()
 		AteMushroom = false;
 	}
 
+	if (true == AteFireFlower)
+	{
+		StateChange(EActorState::FireMario);
+		AteFireFlower = false;
+	}
+
 	if (true == BlockBottomHit)
 	{
 		CollisionStateChange(ECollisionState::BlockBotHit);
