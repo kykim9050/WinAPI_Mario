@@ -25,35 +25,15 @@ void ABrickBlock::BeginPlay()
 	Renderer->CreateAnimation("BrickBlock_Hit", "BrickBlock.png", 3, 3, 0.1f, true);
 	Renderer->CreateAnimation("BrickBlock_AfterHit", "BrickBlock.png", 4, 4, 0.1f, true);
 
-	for (int i = 0; i < 4/*UInGameValue::DebrisBlockNum*/; i++)
-	{
-		ADebrisBlock* NewBlock = GetWorld()->SpawnActor< ADebrisBlock>(static_cast<int>(EActorType::Block));
-		DebrisBlocks.push_back(NewBlock);
-	}
 
-	DebrisBlocks[0]->Renderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::Block));
-	DebrisBlocks[1]->Renderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::Block));
-	DebrisBlocks[2]->Renderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::Block));
-	DebrisBlocks[3]->Renderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::Block));
-	DebrisBlocks[0]->Renderer->SetImage("BrickBlock.png");
-	DebrisBlocks[1]->Renderer->SetImage("BrickBlock.png");
-	DebrisBlocks[2]->Renderer->SetImage("BrickBlock.png");
-	DebrisBlocks[3]->Renderer->SetImage("BrickBlock.png");
 
-	FVector DebrisBlock1Scale = DebrisBlocks[0]->Renderer->GetImage()->GetScale();
-	FVector DebrisBlock2Scale = DebrisBlocks[1]->Renderer->GetImage()->GetScale();
-	FVector DebrisBlock3Scale = DebrisBlocks[2]->Renderer->GetImage()->GetScale();
-	FVector DebrisBlock4Scale = DebrisBlocks[3]->Renderer->GetImage()->GetScale();
+	DebrisingRenderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::Block));
+	DebrisingRenderer->SetImage("DebrisBlock.png");
 
-	DebrisBlocks[0]->Renderer->SetTransform({ {0,0}, {DebrisBlock1Scale.iX() / UInGameValue::BrickBlockImageXValue * UInGameValue::WindowSizeMulValue, DebrisBlock1Scale.iY() / UInGameValue::BrickBlockImageYValue * UInGameValue::WindowSizeMulValue} });
-	DebrisBlocks[1]->Renderer->SetTransform({ {0,0}, {DebrisBlock2Scale.iX() / UInGameValue::BrickBlockImageXValue * UInGameValue::WindowSizeMulValue, DebrisBlock2Scale.iY() / UInGameValue::BrickBlockImageYValue * UInGameValue::WindowSizeMulValue} });
-	DebrisBlocks[2]->Renderer->SetTransform({ {0,0}, {DebrisBlock3Scale.iX() / UInGameValue::BrickBlockImageXValue * UInGameValue::WindowSizeMulValue, DebrisBlock3Scale.iY() / UInGameValue::BrickBlockImageYValue * UInGameValue::WindowSizeMulValue} });
-	DebrisBlocks[3]->Renderer->SetTransform({ {0,0}, {DebrisBlock4Scale.iX() / UInGameValue::BrickBlockImageXValue * UInGameValue::WindowSizeMulValue, DebrisBlock4Scale.iY() / UInGameValue::BrickBlockImageYValue * UInGameValue::WindowSizeMulValue} });
-				  
-	DebrisBlocks[0]->Renderer->CreateAnimation("BrickBlock_Debris", "BrickBlock.png", 2, 2, 0.1f, true);
-	DebrisBlocks[1]->Renderer->CreateAnimation("BrickBlock_Debris", "BrickBlock.png", 2, 2, 0.1f, true);
-	DebrisBlocks[2]->Renderer->CreateAnimation("BrickBlock_Debris", "BrickBlock.png", 2, 2, 0.1f, true);
-	DebrisBlocks[3]->Renderer->CreateAnimation("BrickBlock_Debris", "BrickBlock.png", 2, 2, 0.1f, true);
+	FVector DebrisBlockScale = DebrisingRenderer->GetImage()->GetScale();
+	//Renderer->SetTransform({ {0,0}, {DebrisBlockScale.iX() / UInGameValue::BrickBlockImageXValue * UInGameValue::WindowSizeMulValue, DebrisBlockScale.iY() / UInGameValue::BrickBlockImageYValue * UInGameValue::WindowSizeMulValue} });
+	DebrisingRenderer->CreateAnimation("BrickBlock_Debrising", "BrickBlock.png", 0, 14, 0.1f, true);
+
 
 	SetActorState(EActorState::FirstInit);
 }
@@ -140,14 +120,6 @@ void ABrickBlock::Debris(float _DeltaTime)
 	GravityVelocityVector += GravityAccVector * _DeltaTime;
 	CalTotalVelocityVector(_DeltaTime);
 	AddActorLocation(TotalVelocityVector * _DeltaTime);
-
-	UEngineDebug::OutPutDebugText("X :" + std::to_string(GetActorLocation().X));
-	UEngineDebug::OutPutDebugText("Y :" + std::to_string(GetActorLocation().Y));
-
-	/*DebrisBlocks[0]->Renderer->SetPosition({ (FVector::Left + FVector::Up) * 100.0f });
-	DebrisBlocks[1]->Renderer->SetPosition({ (FVector::Right + FVector::Up) * 100.0f });
-	DebrisBlocks[2]->Renderer->SetPosition({ (FVector::Left + FVector::Down) * 100.0f });
-	DebrisBlocks[3]->Renderer->SetPosition({ (FVector::Right + FVector::Down) * 100.0f});*/
 	
 	
 }
@@ -163,19 +135,10 @@ void ABrickBlock::DebrisStart()
 	//Renderer->ChangeAnimation("BrickBlock_Debris");
 	JumpVelocityVector = FVector::Up * 600.0f;
 
-	DebrisBlocks[0]->Renderer->ChangeAnimation("BrickBlock_Debris");
-	DebrisBlocks[1]->Renderer->ChangeAnimation("BrickBlock_Debris");
-	DebrisBlocks[2]->Renderer->ChangeAnimation("BrickBlock_Debris");
-	DebrisBlocks[3]->Renderer->ChangeAnimation("BrickBlock_Debris");
 }
 
 void ABrickBlock::FirstInit(float _Deltatime)
 {
 	ABlockUnit::FirstInit(_Deltatime);
-
-	for (int i = 0; i < 4/*UInGameValue::DebrisBlockNum*/; i++)
-	{
-		DebrisBlocks[i]->SetActorLocation({ InitPos.X, InitPos.Y });
-	}
 
 }
