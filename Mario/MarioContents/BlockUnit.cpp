@@ -52,7 +52,6 @@ void ABlockUnit::CollisionStateChange(ECollisionState _CollisionState)
 void ABlockUnit::FirstInit(float _Deltatime)
 {
 	InitPos = GetActorLocation();
-	StateChange(EActorState::Idle);
 }
 
 void ABlockUnit::ResultMovementUpdate(float _DeltaTime)

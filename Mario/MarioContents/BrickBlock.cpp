@@ -141,6 +141,8 @@ void ABrickBlock::DebrisStart()
 void ABrickBlock::FirstInit(float _Deltatime)
 {
 	ABlockUnit::FirstInit(_Deltatime);
+
+	StateChange(EActorState::Idle);
 }
 
 void ABrickBlock::GetHitStart()
