@@ -16,4 +16,6 @@ void AStructureUnit::BeginPlay()
 void AStructureUnit::Tick(float _DeltaTime)
 {
 	UStateUnit::Tick(_DeltaTime);
+
+	CollisionCheck();
 }
