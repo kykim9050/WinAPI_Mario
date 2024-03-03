@@ -145,6 +145,11 @@ public:
 		BlockBottomHit = true;
 	}
 
+	void ReachToStageEnd()
+	{
+		IsReachingStageEnd = true;
+	}
+
 	EMarioType GetPlayerType() const
 	{
 		return MarioType;
@@ -199,6 +204,7 @@ private:
 	bool AteFireFlower = false;
 	bool IsInvincible = false;
 	bool BlockBottomHit = false;
+	bool IsReachingStageEnd = false;
 
 	EActorState PrevActorState = EActorState::None;
 };

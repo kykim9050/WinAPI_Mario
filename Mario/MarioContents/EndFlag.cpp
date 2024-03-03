@@ -48,8 +48,7 @@ void AEndFlag::CollisionCheck()
 	if (nullptr != BodyCollision && true == BodyCollision->CollisionCheck(ECollisionOrder::Player, Result))
 	{
 		BodyCollision->Destroy();
-		//Player->EattingMushroom();
-		//CollisionStateChange(ECollisionState::GetHit);
+		Player->ReachToStageEnd();
 		return;
 	}
 }
