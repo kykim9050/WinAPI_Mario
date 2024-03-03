@@ -30,6 +30,7 @@ protected:
 
 	void IdleStart() override;
 	void MoveStart() override;
+	void GetHitStart() override;
 
 	void FirstInit(float _Deltatime) override;
 	void Move(float _DeltaTime) override;
