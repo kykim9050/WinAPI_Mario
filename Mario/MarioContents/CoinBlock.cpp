@@ -167,4 +167,16 @@ void ACoinBlock::GetHitStart()
 void ACoinBlock::Wait(float _DeltaTime)
 {
 	ABlockUnit::Wait(_DeltaTime);
+
+	APlayerMario* Player = APlayerMario::GetMainPlayer();
+
+	if (nullptr == Player)
+	{
+		MsgBoxAssert("플레이어가 존재하지 않습니다.");
+	}
+
+	if (50.0f > (InitPos.X - Player->GetActorLocation().X))
+	{
+		int a = 0;
+	}
 }
