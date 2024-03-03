@@ -1,8 +1,8 @@
 #pragma once
-#include <EngineCore/Level.h>
+#include "DebugLevel.h"
 
 // Ό³Έν :
-class UCreateLevel : public ULevel
+class UCreateLevel : public UDebugLevel
 {
 public:
 	// constrcuter destructer
@@ -16,6 +16,8 @@ public:
 	UCreateLevel& operator=(UCreateLevel&& _Other) noexcept = delete;
 
 protected:
+	void BeginPlay() override;
+	void Tick(float _DeltaTime) override;
 
 private:
 

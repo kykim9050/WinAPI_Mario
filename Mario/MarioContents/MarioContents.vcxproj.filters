@@ -86,6 +86,9 @@
     <ClInclude Include="CreateLevel.h">
       <Filter>Level</Filter>
     </ClInclude>
+    <ClInclude Include="DebugLevel.h">
+      <Filter>Level</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp" />
@@ -168,6 +171,9 @@
       <Filter>Object\Item</Filter>
     </ClCompile>
     <ClCompile Include="CreateLevel.cpp">
+      <Filter>Level</Filter>
+    </ClCompile>
+    <ClCompile Include="DebugLevel.cpp">
       <Filter>Level</Filter>
     </ClCompile>
   </ItemGroup>
