@@ -648,29 +648,72 @@ void APlayerMario::Dead(float _DeltaTime)
 
 void APlayerMario::ReachingEndFlag(float _DeltaTime)
 {
-	static float ClimgDownTime = 3.0f;
+	static int EndStep = 0;
+	static float DelayTime = 3.0f;
 
-	ClimgDownTime -= _DeltaTime;
-
-	if (0.0f >= ClimgDownTime)
+	switch (EndStep)
 	{
-		ClimgDownTime = 3.0f;
-		SetActorLocation({ GetActorLocation().X + BodyCollision->GetTransform().GetScale().X, GetActorLocation().Y});
-		Renderer->ChangeAnimation("StopClimbDownAndTurnRight");
+	case 0:
+	{
+		DelayTime -= _DeltaTime;
+
+		if (0.0f >= DelayTime)
+		{
+			SetActorLocation({ GetActorLocation().X + BodyCollision->GetTransform().GetScale().X, GetActorLocation().Y });
+			Renderer->ChangeAnimation("StopClimbDownAndTurnRight");
+			DelayTime = 1.0f;
+			EndStep = 1;
+			break;
+		}
+
+		Color8Bit Color = UContentsFunction::GetCollisionMapImg()->GetColor(GetActorLocation().iX(), GetActorLocation().iY(), UInGameValue::CollisionColor);
+
+		if (UInGameValue::CollisionColor == Color)
+		{
+			Renderer->ChangeAnimation("StopClimbDown");
+			break;
+		}
+
+		AddActorLocation(FVector::Down * 200.0f * _DeltaTime);
+		break;
+	}
+	case 1:
+	{
+		DelayTime -= _DeltaTime;
+
+		if (0.0f >= DelayTime)
+		{
+			Renderer->ChangeAnimation("Small_Move_Right");
+			DelayTime = 3.0f;
+			EndStep = 2;
+			break;
+		}
+
+		break;
+	}
+	case 2:
+	{
+		DelayTime -= _DeltaTime;
+
+		if (0.0f >= DelayTime)
+		{
+			Renderer->ActiveOff();
+			DelayTime = 3.0f;
+			EndStep = 3;
+			break;
+		}
+
+		SetJumpZero();
+		HorizonVelocityVector = FVector::Right * 100.0f;
+		ResultMovementUpdate(_DeltaTime);
+		break;
+	}
+	default:
+	{
 		//StateChange(EActorState::Idle);
+		break;
 	}
-
-
-	Color8Bit Color = UContentsFunction::GetCollisionMapImg()->GetColor(GetActorLocation().iX(), GetActorLocation().iY(), UInGameValue::CollisionColor);
-
-	if (UInGameValue::CollisionColor == Color)
-	{
-		Renderer->ChangeAnimation("StopClimbDown");
-		return;
 	}
-
-	AddActorLocation(FVector::Down * 200.0f * _DeltaTime);
-
 
 }
 
