@@ -122,6 +122,7 @@ void APlayerMario::StateChange(EActorState _PlayerState)
 				_PlayerState = EActorState::Dead;
 				break;
 			case EMarioType::Big:
+			case EMarioType::Fire:
 				GetHitStart();
 				break;
 			default:
