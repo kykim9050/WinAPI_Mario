@@ -310,7 +310,10 @@ void APlayerMario::JumpStart()
 
 void APlayerMario::FreeMoveStart()
 {
-	Renderer->ChangeAnimation("Idle_Right");
+	DirCheck();
+	Renderer->ChangeAnimation(ChangeAnimationName("Idle"));
+	BodyCollision->ActiveOff();
+	Renderer->SetAlpha(0.5f);
 }
 
 void APlayerMario::IdleStart()
@@ -494,6 +497,8 @@ void APlayerMario::FreeMove(float _DeltaTime)
 {
 	if (UEngineInput::IsDown('1'))
 	{
+		BodyCollision->ActiveOn();
+		Renderer->SetAlpha(1.0f);
 		StateChange(EActorState::Idle);
 		return;
 	}
@@ -650,7 +655,7 @@ void APlayerMario::ReachingEndFlag(float _DeltaTime)
 		StateChange(EActorState::Idle);
 	}
 
-	AddActorLocation(FVector::Down * 50.0f * _DeltaTime);
+	AddActorLocation(FVector::Down * 100.0f * _DeltaTime);
 
 }
 
