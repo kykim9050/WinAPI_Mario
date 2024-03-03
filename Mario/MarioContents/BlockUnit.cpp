@@ -139,6 +139,7 @@ void ABlockUnit::GetHitStart()
 		StateChange(EActorState::Move);
 		break;
 	case EMarioType::Big:
+	case EMarioType::Fire:
 		StateChange(EActorState::Debris);
 		break;
 	default:
