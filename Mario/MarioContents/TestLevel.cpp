@@ -30,16 +30,17 @@ void UTestLevel::BeginPlay()
 	APlayerMario* Mario = SpawnActor< APlayerMario>(static_cast<int>(EActorType::Player));
 	AUI* PlayerUI = SpawnActor<AUI>(static_cast<int>(EActorType::UI));
 
-	ABrickBlock* BrickBlock1 = SpawnActor< ABrickBlock>(static_cast<int>(EActorType::Block));
-	ABrickBlock* BrickBlock2 = SpawnActor< ABrickBlock>(static_cast<int>(EActorType::Block));
-	ABrickBlock* BrickBlock3 = SpawnActor< ABrickBlock>(static_cast<int>(EActorType::Block));
-	ABrickBlock* BrickBlock4 = SpawnActor< ABrickBlock>(static_cast<int>(EActorType::Block));
+	//ABrickBlock* BrickBlock1 = SpawnActor< ABrickBlock>(static_cast<int>(EActorType::Block));
+	//ABrickBlock* BrickBlock2 = SpawnActor< ABrickBlock>(static_cast<int>(EActorType::Block));
+	//ABrickBlock* BrickBlock3 = SpawnActor< ABrickBlock>(static_cast<int>(EActorType::Block));
+	//ABrickBlock* BrickBlock4 = SpawnActor< ABrickBlock>(static_cast<int>(EActorType::Block));
 
 	ACoinBlock* CoinBlock1 = SpawnCoinBlock(EActorType::Block, EItemType::Coin);
 	//ACoinBlock* CoinBlock1 = SpawnActor< ACoinBlock>(static_cast<int>(EActorType::Block));
 	//ACoinBlock* CoinBlock2 = SpawnActor< ACoinBlock>(static_cast<int>(EActorType::Block));
 	//ACoinBlock* CoinBlock3 = SpawnActor< ACoinBlock>(static_cast<int>(EActorType::Block));
 	//ACoinBlock* CoinBlock4 = SpawnActor< ACoinBlock>(static_cast<int>(EActorType::Block));
+	ACoinBlock* CoinBlock5 = SpawnCoinBlock(EActorType::Block, EItemType::Item);
 
 	//AGoomba* MonsterGoomba1 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
 	//AGoomba* MonsterGoomba2 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
@@ -56,15 +57,16 @@ void UTestLevel::BeginPlay()
 	int StandardYPos = 450;
 	int StandardXPos = 600;
 
-	BrickBlock1->SetActorLocation({ StandardXPos,StandardYPos });
-	BrickBlock2->SetActorLocation({ StandardXPos + 48,StandardYPos });
-	BrickBlock3->SetActorLocation({ StandardXPos + 48 * 2,StandardYPos });
-	BrickBlock4->SetActorLocation({ StandardXPos + 48 * 3,StandardYPos });
+	//BrickBlock1->SetActorLocation({ StandardXPos,StandardYPos });
+	//BrickBlock2->SetActorLocation({ StandardXPos + 48,StandardYPos });
+	//BrickBlock3->SetActorLocation({ StandardXPos + 48 * 2,StandardYPos });
+	//BrickBlock4->SetActorLocation({ StandardXPos + 48 * 3,StandardYPos });
 	
 	CoinBlock1->SetActorLocation({ 250 + 48 * 4,StandardYPos });
 	//CoinBlock2->SetActorLocation({ 250 + 48 * 5,450 });
 	//CoinBlock3->SetActorLocation({ 250 + 48 * 6,450 });
 	//CoinBlock4->SetActorLocation({ 250 + 48 * 7,450 });
+	CoinBlock5->SetActorLocation({ 250 + 48 * 8,StandardYPos });
 
 
 	//MonsterPiranhaPlant1->SetActorLocation({ 1875,550 });

@@ -26,9 +26,6 @@ void ACoinBlock::BeginPlay()
 	Renderer->CreateAnimation("CoinBlock_AfterHit", "CoinBlock.png", 4, 4, 0.1f, true);
 
 	SetActorState(EActorState::FirstInit);
-
-	//Item = GetWorld()->SpawnActor< AMushroom>(static_cast<int>(EActorType::Item));
-	Item = GetWorld()->SpawnActor< AFireFlower>(static_cast<int>(EActorType::Item));
 }
 
 void ACoinBlock::Tick(float _DeltaTime)
@@ -39,8 +36,25 @@ void ACoinBlock::Tick(float _DeltaTime)
 void ACoinBlock::FirstInit(float _Deltatime)
 {
 	ABlockUnit::FirstInit(_Deltatime);
+
+	switch (ItemType)
+	{
+	case EItemType::Coin:
+	{
+		Item = GetWorld()->SpawnActor< ABlockCoin>(static_cast<int>(EActorType::Item));
+		break;
+	}
+	case EItemType::Item:
+	{
+		Item = GetWorld()->SpawnActor< AFireFlower>(static_cast<int>(EActorType::Item));
+		break;
+	}
+	default:
+		break;
+	}
 	Item->SetActorLocation({ InitPos.X, InitPos.Y});
 }
+
 
 void ACoinBlock::IdleStart()
 {
