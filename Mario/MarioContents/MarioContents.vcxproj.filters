@@ -83,6 +83,9 @@
     <ClInclude Include="FireFlower.h">
       <Filter>Object\Item</Filter>
     </ClInclude>
+    <ClInclude Include="CreateLevel.h">
+      <Filter>Level</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp" />
@@ -163,6 +166,9 @@
     </ClCompile>
     <ClCompile Include="FireFlower.cpp">
       <Filter>Object\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="CreateLevel.cpp">
+      <Filter>Level</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

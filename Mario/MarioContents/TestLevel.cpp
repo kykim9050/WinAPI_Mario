@@ -23,7 +23,7 @@ UTestLevel::~UTestLevel()
 
 void UTestLevel::BeginPlay()
 {
-	ULevel::BeginPlay();
+	UCreateLevel::BeginPlay();
 
 	ABackGroundMap* Map = SpawnActor< ABackGroundMap>(static_cast<int>(EActorType::Map));
 	UCollisionMap* CollisionMap = SpawnActor< UCollisionMap>(static_cast<int>(EActorType::Map));
@@ -78,7 +78,7 @@ void UTestLevel::BeginPlay()
 
 void UTestLevel::Tick(float _DeltaTime)
 {
-	ULevel::Tick(_DeltaTime);
+	UCreateLevel::Tick(_DeltaTime);
 
 	if (true == UEngineInput::IsDown(VK_F3))
 	{
