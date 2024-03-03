@@ -1,4 +1,5 @@
 #include "EndFlag.h"
+#include "PlayerMario.h"
 
 AEndFlag::AEndFlag()
 {
@@ -31,4 +32,24 @@ void AEndFlag::BeginPlay()
 void AEndFlag::Tick(float _DeltaTime)
 {
 	AStructureUnit::Tick(_DeltaTime);
+}
+
+void AEndFlag::CollisionCheck()
+{
+	std::vector<UCollision*> Result = std::vector<UCollision*>();
+
+	APlayerMario* Player = APlayerMario::GetMainPlayer();
+
+	if (nullptr == Player)
+	{
+		MsgBoxAssert("플레이어가 존재하지 않습니다.");
+	}
+
+	if (true == BodyCollision->CollisionCheck(ECollisionOrder::Player, Result))
+	{
+		int a = 0;
+		//Player->EattingMushroom();
+		//CollisionStateChange(ECollisionState::GetHit);
+		return;
+	}
 }
