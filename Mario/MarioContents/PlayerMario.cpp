@@ -69,6 +69,9 @@ void APlayerMario::BeginPlay()
 	Renderer->CreateAnimation("Fire_SizeDown_Right", "Mario_Right.png", { 32, 33, 34, 33, 34, 33, 34, 35 }, 0.15f, false);
 
 	Renderer->CreateAnimation("ClimbDown", "Mario_Right.png", 7, 8, 0.3f, true);
+	Renderer->CreateAnimation("StopClimbDown", "Mario_Right.png", 7, 7, 0.1f, true);
+	Renderer->CreateAnimation("StopClimbDownAndTurnRight", "Mario_Left.png", 7, 7, 0.1f, true);
+	
 
 
 
@@ -645,17 +648,29 @@ void APlayerMario::Dead(float _DeltaTime)
 
 void APlayerMario::ReachingEndFlag(float _DeltaTime)
 {
-	static float ClimgDownTime = 2.0f;
+	static float ClimgDownTime = 3.0f;
 
 	ClimgDownTime -= _DeltaTime;
 
 	if (0.0f >= ClimgDownTime)
 	{
-		ClimgDownTime = 2.0f;
-		StateChange(EActorState::Idle);
+		ClimgDownTime = 3.0f;
+		SetActorLocation({ GetActorLocation().X + BodyCollision->GetTransform().GetScale().X, GetActorLocation().Y});
+		Renderer->ChangeAnimation("StopClimbDownAndTurnRight");
+		//StateChange(EActorState::Idle);
 	}
 
-	AddActorLocation(FVector::Down * 100.0f * _DeltaTime);
+
+	Color8Bit Color = UContentsFunction::GetCollisionMapImg()->GetColor(GetActorLocation().iX(), GetActorLocation().iY(), UInGameValue::CollisionColor);
+
+	if (UInGameValue::CollisionColor == Color)
+	{
+		Renderer->ChangeAnimation("StopClimbDown");
+		return;
+	}
+
+	AddActorLocation(FVector::Down * 200.0f * _DeltaTime);
+
 
 }
 
