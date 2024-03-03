@@ -80,6 +80,7 @@ enum class EActorType
 	UI,
 	Player,
 	Monster,
+	Structure,
 	Block,
 	Item,
 };
