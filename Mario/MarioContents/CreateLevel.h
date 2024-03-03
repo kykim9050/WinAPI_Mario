@@ -32,6 +32,13 @@ protected:
 	ACoinBlock* SpawnCoinBlock(int _Order, EnumType _ItemType)
 	{
 		ACoinBlock* CoinBlock = SpawnActor< ACoinBlock>(_Order);
+		
+		if (nullptr == CoinBlock)
+		{
+			MsgBoxAssert("CoinBlock이 생성되지 않았습니다.");
+			return nullptr;
+		}
+
 		CoinBlock->SetItemType(_ItemType);
 		return CoinBlock;
 	}
