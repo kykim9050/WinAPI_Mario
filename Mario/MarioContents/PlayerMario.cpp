@@ -215,6 +215,13 @@ void APlayerMario::CollisionStateCheck()
 {
 	std::vector<UCollision*> Result = std::vector<UCollision*>();
 
+	if (true == IsReachingStageEnd)
+	{
+		StateChange(EActorState::ReachingEndFlag);
+		IsReachingStageEnd = false;
+		return;
+	}
+
 	if (true == AteMushroom)
 	{
 		StateChange(EActorState::MarioGrowUp);
