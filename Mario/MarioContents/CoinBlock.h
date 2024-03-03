@@ -27,6 +27,7 @@ protected:
 	void FirstInit(float _Deltatime) override;
 	void IdleStart() override;
 	void MoveStart() override;
+	void GetHitStart() override;
 
 	void Move(float _DeltaTime) override;
 	void FixedStart() override;

@@ -129,3 +129,34 @@ void ACoinBlock::CollisionCheck()
 
 	CollisionStateChange(ECollisionState::None);
 }
+
+void ACoinBlock::GetHitStart()
+{
+	ABlockUnit::GetHitStart();
+
+	if (EActorState::Fixed == ActorState)
+	{
+		return;
+	}
+
+	APlayerMario* Player = APlayerMario::GetMainPlayer();
+
+	if (nullptr == Player)
+	{
+		MsgBoxAssert("플레이어가 존재하지 않습니다.");
+	}
+
+	EMarioType type = Player->GetPlayerType();
+
+
+	switch (type)
+	{
+	case EMarioType::Small:
+	case EMarioType::Big:
+	case EMarioType::Fire:
+		StateChange(EActorState::Move);
+		break;
+	default:
+		break;
+	}
+}

@@ -142,3 +142,38 @@ void ABrickBlock::FirstInit(float _Deltatime)
 {
 	ABlockUnit::FirstInit(_Deltatime);
 }
+
+void ABrickBlock::GetHitStart()
+{
+	ABlockUnit::GetHitStart();
+
+	if (EActorState::Fixed == ActorState)
+	{
+		return;
+	}
+
+	APlayerMario* Player = APlayerMario::GetMainPlayer();
+
+	if (nullptr == Player)
+	{
+		MsgBoxAssert("플레이어가 존재하지 않습니다.");
+	}
+
+	EMarioType type = Player->GetPlayerType();
+
+
+	switch (type)
+	{
+	case EMarioType::Small:
+		StateChange(EActorState::Move);
+		break;
+	case EMarioType::Big:
+	case EMarioType::Fire:
+		StateChange(EActorState::Debris);
+		break;
+	default:
+		break;
+	}
+
+
+}

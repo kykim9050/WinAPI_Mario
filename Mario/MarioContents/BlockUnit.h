@@ -32,7 +32,7 @@ protected:
 	virtual void MoveStart();
 	virtual void FixedStart() { }
 	virtual void DebrisStart(){	}
-	void GetHitStart();
+	virtual void GetHitStart() { }
 
 	void Idle(float _DeltaTime);
 	virtual void Move(float _DeltaTime);
