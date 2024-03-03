@@ -204,6 +204,9 @@ void APlayerMario::StateUpdate(float _DeltaTime)
 	case EActorState::Dead:
 		Dead(_DeltaTime);
 		break;
+	case EActorState::ReachingEndFlag:
+		ReachingEndFlag(_DeltaTime);
+		break;
 	default:
 		break;
 	}
@@ -633,6 +636,22 @@ void APlayerMario::Dead(float _DeltaTime)
 
 		AddActorLocation(TotalVelocityVector * _DeltaTime);
 	}
+}
+
+void APlayerMario::ReachingEndFlag(float _DeltaTime)
+{
+	static float ClimgDownTime = 2.0f;
+
+	ClimgDownTime -= _DeltaTime;
+
+	if (0.0f >= ClimgDownTime)
+	{
+		ClimgDownTime = 2.0f;
+		StateChange(EActorState::Idle);
+	}
+
+	AddActorLocation(FVector::Down * 50.0f * _DeltaTime);
+
 }
 
 
