@@ -170,6 +170,12 @@ public:
 	static const int FireBallImageXValue;
 	static const int FireBallImageYValue;
 
+	/// <summary>
+	/// EndFlag 의 위치좌표값
+	/// </summary>
+	static const int EndFlagXPos;
+	static const int EndFlagYPos;
+
 protected:
 
 private:

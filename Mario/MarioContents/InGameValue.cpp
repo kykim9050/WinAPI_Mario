@@ -82,3 +82,6 @@ const int UInGameValue::FireMarioImageYValue = 9;
 
 const int UInGameValue::FireBallImageXValue = 5;
 const int UInGameValue::FireBallImageYValue = 2;
+
+const int UInGameValue::EndFlagXPos = 3176;
+const int UInGameValue::EndFlagYPos = 124;
