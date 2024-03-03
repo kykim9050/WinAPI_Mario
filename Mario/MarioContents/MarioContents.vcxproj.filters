@@ -89,6 +89,9 @@
     <ClInclude Include="DebugLevel.h">
       <Filter>Level</Filter>
     </ClInclude>
+    <ClInclude Include="StructureUnit.h">
+      <Filter>Object\Structure</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp" />
@@ -175,6 +178,9 @@
     </ClCompile>
     <ClCompile Include="DebugLevel.cpp">
       <Filter>Level</Filter>
+    </ClCompile>
+    <ClCompile Include="StructureUnit.cpp">
+      <Filter>Object\Structure</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
