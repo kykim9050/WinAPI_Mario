@@ -656,9 +656,8 @@ void APlayerMario::MarioGrowUpStart()
 
 void APlayerMario::ChangingFireMarioStart()
 {
-	//DirCheck();
-	//Renderer->ChangeAnimation(ChangeAnimationName("ChangingFireMario"));
-	Renderer->ChangeAnimation("Big_ChangingFireMario_Right");
+	DirCheck();
+	Renderer->ChangeAnimation(ChangeAnimationName("ChangingFireMario"));
 
 	MarioType = EMarioType::Fire;
 	BodyCollision->SetTransform({ { 0,-40 }, {32, 64} });
