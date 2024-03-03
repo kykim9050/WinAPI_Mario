@@ -35,7 +35,8 @@ void UTestLevel::BeginPlay()
 	ABrickBlock* BrickBlock3 = SpawnActor< ABrickBlock>(static_cast<int>(EActorType::Block));
 	ABrickBlock* BrickBlock4 = SpawnActor< ABrickBlock>(static_cast<int>(EActorType::Block));
 
-	ACoinBlock* CoinBlock1 = SpawnActor< ACoinBlock>(static_cast<int>(EActorType::Block));
+	ACoinBlock* CoinBlock1 = SpawnCoinBlock(EActorType::Block, EItemType::Coin);
+	//ACoinBlock* CoinBlock1 = SpawnActor< ACoinBlock>(static_cast<int>(EActorType::Block));
 	//ACoinBlock* CoinBlock2 = SpawnActor< ACoinBlock>(static_cast<int>(EActorType::Block));
 	//ACoinBlock* CoinBlock3 = SpawnActor< ACoinBlock>(static_cast<int>(EActorType::Block));
 	//ACoinBlock* CoinBlock4 = SpawnActor< ACoinBlock>(static_cast<int>(EActorType::Block));

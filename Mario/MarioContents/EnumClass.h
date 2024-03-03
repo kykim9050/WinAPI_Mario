@@ -118,3 +118,10 @@ enum class ECollisionState
 	BlockSideHit,
 	Invincible,
 };
+
+enum class EItemType
+{
+	None,
+	Coin,
+	Item,
+};
