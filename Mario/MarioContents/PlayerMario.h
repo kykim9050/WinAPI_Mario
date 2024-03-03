@@ -107,7 +107,7 @@ public:
 
 	void ReverseMove(float _DeltaTime);
 
-	void GrowUp(float _DeltaTime);
+	void Changing(float _DeltaTime);
 
 	void Dead(float _DeltaTime);
 

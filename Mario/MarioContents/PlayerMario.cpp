@@ -57,6 +57,18 @@ void APlayerMario::BeginPlay()
 	Renderer->CreateAnimation("Big_ChangingFireMario_Left", "ChangingFireMario_Left.png", 0, 2, 0.1f, true);
 
 
+	Renderer->CreateAnimation("Fire_Idle_Right", "FireMario_Right.png", 14, 14, 0.1f, true);
+	Renderer->CreateAnimation("Fire_Idle_Left", "FireMario_Left.png", 14, 14, 0.1f, true);
+	Renderer->CreateAnimation("Fire_Move_Right", "FireMario_Right.png", 15, 17, 0.1f, true);
+	Renderer->CreateAnimation("Fire_Move_Left", "FireMario_Left.png", 15, 17, 0.1f, true);
+	Renderer->CreateAnimation("Fire_Jump_Right", "FireMario_Right.png", 19, 19, 0.1f, true);
+	Renderer->CreateAnimation("Fire_Jump_Left", "FireMario_Left.png", 19, 19, 0.1f, true);
+	Renderer->CreateAnimation("Fire_ReverseMove_Right", "FireMario_Right.png", 18, 18, 0.1f, true);
+	Renderer->CreateAnimation("Fire_ReverseMove_Left", "FireMario_Left.png", 18, 18, 0.1f, true);
+	Renderer->CreateAnimation("Fire_SizeDown_Left", "Mario_Left.png", { 32, 33, 34, 33, 34, 33, 34, 35 }, 0.15f, false);
+	Renderer->CreateAnimation("Fire_SizeDown_Right", "Mario_Right.png", { 32, 33, 34, 33, 34, 33, 34, 35 }, 0.15f, false);
+
+
 
 
 	BodyCollision = CreateCollision(ECollisionOrder::Player);
@@ -181,7 +193,8 @@ void APlayerMario::StateUpdate(float _DeltaTime)
 		GetHit(_DeltaTime);
 		break;
 	case EActorState::MarioGrowUp:
-		GrowUp(_DeltaTime);
+	case EActorState::FireMario:
+		Changing(_DeltaTime);
 		break;
 	case EActorState::Dead:
 		Dead(_DeltaTime);
@@ -568,7 +581,7 @@ void APlayerMario::GetHit(float _DeltaTime)
 	}
 }
 
-void APlayerMario::GrowUp(float _DeltaTime)
+void APlayerMario::Changing(float _DeltaTime)
 {
 	static float DelayTime = 1.0f;
 
@@ -645,7 +658,7 @@ void APlayerMario::ChangingFireMarioStart()
 {
 	//DirCheck();
 	//Renderer->ChangeAnimation(ChangeAnimationName("ChangingFireMario"));
-	Renderer->ChangeAnimation("Big_ChangingFireMario_Left");
+	Renderer->ChangeAnimation("Big_ChangingFireMario_Right");
 
 	MarioType = EMarioType::Fire;
 	BodyCollision->SetTransform({ { 0,-40 }, {32, 64} });
