@@ -45,9 +45,9 @@ void AEndFlag::CollisionCheck()
 		MsgBoxAssert("플레이어가 존재하지 않습니다.");
 	}
 
-	if (true == BodyCollision->CollisionCheck(ECollisionOrder::Player, Result))
+	if (nullptr != BodyCollision && true == BodyCollision->CollisionCheck(ECollisionOrder::Player, Result))
 	{
-		int a = 0;
+		BodyCollision->Destroy();
 		//Player->EattingMushroom();
 		//CollisionStateChange(ECollisionState::GetHit);
 		return;
