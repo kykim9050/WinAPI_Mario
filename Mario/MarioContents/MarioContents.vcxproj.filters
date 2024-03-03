@@ -223,5 +223,8 @@
     <Filter Include="Object\Item">
       <UniqueIdentifier>{a9613493-a6ac-4c50-9dc8-40dc8d855644}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\Structure">
+      <UniqueIdentifier>{5c00217e-be7b-4558-9c63-4a8e20a6360a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>
