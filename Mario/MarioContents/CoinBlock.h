@@ -39,5 +39,6 @@ protected:
 private:
 	AItemUnit* Item = nullptr;
 	EItemType ItemType = EItemType::None;
+	static bool ItemIsMushroom;
 };
 

@@ -3,6 +3,8 @@
 #include "Mushroom.h"
 #include "FireFlower.h"
 
+bool ACoinBlock::ItemIsMushroom = true;
+
 ACoinBlock::ACoinBlock()
 {
 }
@@ -57,7 +59,14 @@ void ACoinBlock::IdleStart()
 	}
 	case EItemType::Item:
 	{
-		Item = GetWorld()->SpawnActor< AFireFlower>(static_cast<int>(EActorType::Item));
+		if (ItemIsMushroom)
+		{
+			Item = GetWorld()->SpawnActor< AMushroom>(static_cast<int>(EActorType::Item));
+		}
+		else
+		{
+			Item = GetWorld()->SpawnActor< AFireFlower>(static_cast<int>(EActorType::Item));
+		}
 		break;
 	}
 	default:
@@ -179,6 +188,28 @@ void ACoinBlock::Wait(float _DeltaTime)
 
 	if (50.0f > (InitPos.X - Player->GetActorLocation().X))
 	{
+		EMarioType type = Player->GetPlayerType();
+
+		switch (type)
+		{
+		case EMarioType::Small:
+		{
+			// 버섯이 나오게 설정
+			ItemIsMushroom = true;
+			break;
+		}
+		case EMarioType::Big:
+		case EMarioType::Fire:
+		{
+			//불꽃이 나오게 설정
+			ItemIsMushroom = false;
+			break;
+		}
+		default:
+			break;
+		}
+
+
 		StateChange(EActorState::Idle);
 	}
 }
