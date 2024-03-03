@@ -61,6 +61,7 @@ enum class EActorState
 	MarioGrowUp,
 	FireMario,
 	Wait,
+	ReachingEndFlag,
 };
 
 enum class EActorDir
