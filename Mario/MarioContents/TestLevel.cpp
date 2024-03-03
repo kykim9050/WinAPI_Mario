@@ -79,26 +79,4 @@ void UTestLevel::BeginPlay()
 void UTestLevel::Tick(float _DeltaTime)
 {
 	UCreateLevel::Tick(_DeltaTime);
-
-	if (true == UEngineInput::IsDown(VK_F3))
-	{
-		APlayerMario* Player = APlayerMario::GetMainPlayer();
-
-		if (nullptr == Player)
-		{
-			UEngineDebug::OutPutDebugText("Player가 없습니다.");
-			return;
-		}
-
-		if (Player->GetBodyCollision()->IsActive())
-		{
-			Player->GetBodyCollision()->SetActive(false);
-			Player->GetRenderer()->SetAlpha(0.5f);
-		}
-		else
-		{
-			Player->GetBodyCollision()->SetActive(true);
-			Player->GetRenderer()->SetAlpha(1.0f);
-		}
-	}
 }
