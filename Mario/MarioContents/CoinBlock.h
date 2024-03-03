@@ -15,6 +15,11 @@ public:
 	ACoinBlock& operator=(const ACoinBlock& _Other) = delete;
 	ACoinBlock& operator=(ACoinBlock&& _Other) noexcept = delete;
 
+	void SetItemType(EItemType _Type)
+	{
+		ItemType = _Type;
+	}
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -30,5 +35,6 @@ protected:
 
 private:
 	AItemUnit* Item = nullptr;
+	EItemType ItemType = EItemType::None;
 };
 
