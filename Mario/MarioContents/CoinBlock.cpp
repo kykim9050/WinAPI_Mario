@@ -37,8 +37,18 @@ void ACoinBlock::FirstInit(float _Deltatime)
 {
 	ABlockUnit::FirstInit(_Deltatime);
 
+	Renderer->ChangeAnimation("CoinBlock_Init");
+
 	SetActorState(EActorState::Wait);
-	/*switch (ItemType)
+}
+
+
+void ACoinBlock::IdleStart()
+{
+	ABlockUnit::IdleStart();
+	Renderer->ChangeAnimation("CoinBlock_Init");
+
+	switch (ItemType)
 	{
 	case EItemType::Coin:
 	{
@@ -55,14 +65,6 @@ void ACoinBlock::FirstInit(float _Deltatime)
 	}
 	Item->SetActorLocation({ InitPos.X, InitPos.Y});
 
-	StateChange(EActorState::Idle);*/
-}
-
-
-void ACoinBlock::IdleStart()
-{
-	ABlockUnit::IdleStart();
-	Renderer->ChangeAnimation("CoinBlock_Init");
 }
 
 void ACoinBlock::MoveStart()
@@ -177,6 +179,6 @@ void ACoinBlock::Wait(float _DeltaTime)
 
 	if (50.0f > (InitPos.X - Player->GetActorLocation().X))
 	{
-		int a = 0;
+		StateChange(EActorState::Idle);
 	}
 }
