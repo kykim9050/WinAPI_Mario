@@ -68,6 +68,7 @@ void APlayerMario::BeginPlay()
 	Renderer->CreateAnimation("Fire_SizeDown_Left", "Mario_Left.png", { 32, 33, 34, 33, 34, 33, 34, 35 }, 0.15f, false);
 	Renderer->CreateAnimation("Fire_SizeDown_Right", "Mario_Right.png", { 32, 33, 34, 33, 34, 33, 34, 35 }, 0.15f, false);
 
+	Renderer->CreateAnimation("ClimbDown", "Mario_Right.png", 7, 8, 0.3f, true);
 
 
 
@@ -135,6 +136,9 @@ void APlayerMario::StateChange(EActorState _PlayerState)
 			break;
 		case EActorState::FireMario:
 			ChangingFireMarioStart();
+			break;
+		case EActorState::ReachingEndFlag:
+			ReachingEndFlagStart();
 			break;
 		default:
 			break;
@@ -671,6 +675,11 @@ void APlayerMario::ChangingFireMarioStart()
 	BodyCollision->SetTransform({ { 0,-40 }, {32, 64} });
 	GetWorld()->SetOtherTimeScale(EActorType::Player, 0.0f);
 	PrevActorState = ActorState;
+}
+
+void APlayerMario::ReachingEndFlagStart()
+{
+	Renderer->ChangeAnimation("ClimbDown");
 }
 
 
