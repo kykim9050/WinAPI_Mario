@@ -37,7 +37,8 @@ void ACoinBlock::FirstInit(float _Deltatime)
 {
 	ABlockUnit::FirstInit(_Deltatime);
 
-	switch (ItemType)
+	SetActorState(EActorState::Wait);
+	/*switch (ItemType)
 	{
 	case EItemType::Coin:
 	{
@@ -54,7 +55,7 @@ void ACoinBlock::FirstInit(float _Deltatime)
 	}
 	Item->SetActorLocation({ InitPos.X, InitPos.Y});
 
-	StateChange(EActorState::Idle);
+	StateChange(EActorState::Idle);*/
 }
 
 
@@ -161,4 +162,9 @@ void ACoinBlock::GetHitStart()
 	default:
 		break;
 	}
+}
+
+void ACoinBlock::Wait(float _DeltaTime)
+{
+	ABlockUnit::Wait(_DeltaTime);
 }

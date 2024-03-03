@@ -34,6 +34,8 @@ protected:
 
 	void CollisionCheck() override;
 
+	void Wait(float _DeltaTime) override;
+
 private:
 	AItemUnit* Item = nullptr;
 	EItemType ItemType = EItemType::None;

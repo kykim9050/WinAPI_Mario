@@ -60,6 +60,7 @@ enum class EActorState
 	Release,
 	MarioGrowUp,
 	FireMario,
+	Wait,
 };
 
 enum class EActorDir

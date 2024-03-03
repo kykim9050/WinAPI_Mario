@@ -80,6 +80,9 @@ void ABlockUnit::StateUpdate(float _DeltaTime)
 	case EActorState::Debris:
 		Debris(_DeltaTime);
 		break;
+	case EActorState::Wait:
+		Wait(_DeltaTime);
+		break;
 	default:
 		break;
 	}
