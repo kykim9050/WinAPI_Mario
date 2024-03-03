@@ -53,6 +53,8 @@ void ACoinBlock::FirstInit(float _Deltatime)
 		break;
 	}
 	Item->SetActorLocation({ InitPos.X, InitPos.Y});
+
+	StateChange(EActorState::Idle);
 }
 
 
