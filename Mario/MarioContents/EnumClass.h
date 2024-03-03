@@ -106,6 +106,7 @@ enum class ECollisionOrder
 	Mushroom,
 	FireFlower,
 	Invincible,
+	EndFlagLine,
 };
 
 enum class ECollisionState
