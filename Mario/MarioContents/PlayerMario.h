@@ -172,6 +172,7 @@ protected:
 	void ChangingFireMarioStart();
 	void MarioGrowUpStart();
 	void ReachingEndFlagStart();
+	void ReachingEndFlag(float _DeltaTime);
 
 private:
 	EMarioType MarioType = EMarioType::None;
