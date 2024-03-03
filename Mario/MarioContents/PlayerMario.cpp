@@ -697,7 +697,7 @@ void APlayerMario::ReachingEndFlag(float _DeltaTime)
 
 		if (0.0f >= DelayTime)
 		{
-			Renderer->ActiveOff();
+			//Renderer->ActiveOff();
 			DelayTime = 3.0f;
 			EndStep = 3;
 			break;
@@ -710,7 +710,8 @@ void APlayerMario::ReachingEndFlag(float _DeltaTime)
 	}
 	default:
 	{
-		//StateChange(EActorState::Idle);
+		// 다음 스테이지로 넘어가는 코드 추가 필요
+		StateChange(EActorState::Idle);
 		break;
 	}
 	}
