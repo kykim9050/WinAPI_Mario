@@ -20,10 +20,10 @@ void AEndFlag::BeginPlay()
 	Renderer->SetTransform({ {0,0}, {EndFlagScale.iX() * UInGameValue::WindowSizeMulValue, EndFlagScale.iY() * UInGameValue::WindowSizeMulValue} });
 
 	
-	//BodyCollision = CreateCollision(ECollisionOrder::Monster);
-	//BodyCollision->SetTransform({ { 0,0 }, { UInGameValue::GoombaBodyCollisionScaleX, UInGameValue::GoombaBodyCollisionScaleY } });
+	BodyCollision = CreateCollision(ECollisionOrder::EndFlagLine);
+	BodyCollision->SetTransform({ { 0,0 }, { 5 * UInGameValue::WindowSizeMulValue, 500 * UInGameValue::WindowSizeMulValue} });
 	//BodyCollision->SetPosition({ 0, -(BodyCollision->GetTransform().GetScale().ihY()) });
-	//BodyCollision->SetColType(ECollisionType::Rect);
+	BodyCollision->SetColType(ECollisionType::Rect);
 
 	//SetActorState(EActorState::Move);
 }
