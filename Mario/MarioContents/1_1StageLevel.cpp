@@ -54,6 +54,9 @@ void U1_1StageLevel::BeginPlay()
 	ABrickBlock* BrickBlock14 = SpawnActor< ABrickBlock>(static_cast<int>(EActorType::Block));
 	ABrickBlock* BrickBlock15 = SpawnActor< ABrickBlock>(static_cast<int>(EActorType::Block));
 	ABrickBlock* BrickBlock16 = SpawnActor< ABrickBlock>(static_cast<int>(EActorType::Block));
+	ABrickBlock* BrickBlock17 = SpawnActor< ABrickBlock>(static_cast<int>(EActorType::Block));
+	ABrickBlock* BrickBlock18 = SpawnActor< ABrickBlock>(static_cast<int>(EActorType::Block));
+	ABrickBlock* BrickBlock19 = SpawnActor< ABrickBlock>(static_cast<int>(EActorType::Block));
 
 
 	ACoinBlock* CoinBlock1 = SpawnCoinBlock(EActorType::Block, EItemType::Coin);
@@ -61,6 +64,12 @@ void U1_1StageLevel::BeginPlay()
 	ACoinBlock* CoinBlock3 = SpawnCoinBlock(EActorType::Block, EItemType::Coin);
 	ACoinBlock* CoinBlock4 = SpawnCoinBlock(EActorType::Block, EItemType::Coin);
 	ACoinBlock* CoinBlock5 = SpawnCoinBlock(EActorType::Block, EItemType::Item);
+	ACoinBlock* CoinBlock6 = SpawnCoinBlock(EActorType::Block, EItemType::Coin);
+	ACoinBlock* CoinBlock7 = SpawnCoinBlock(EActorType::Block, EItemType::Coin);
+	ACoinBlock* CoinBlock8 = SpawnCoinBlock(EActorType::Block, EItemType::Coin);
+	ACoinBlock* CoinBlock9 = SpawnCoinBlock(EActorType::Block, EItemType::Coin);
+	ACoinBlock* CoinBlock10 = SpawnCoinBlock(EActorType::Block, EItemType::Coin);
+
 
 	int StandardYPos = 456;
 	int SecondYPos = 264;
@@ -89,6 +98,15 @@ void U1_1StageLevel::BeginPlay()
 	BrickBlock14->SetActorLocation({ 3720 + 48 * 14, SecondYPos });
 	BrickBlock15->SetActorLocation({ 3720 + 48 * 15, SecondYPos });
 	BrickBlock16->SetActorLocation({ 3720 + 48 * 16, SecondYPos });
+	CoinBlock6->SetActorLocation({ 3720 + 48 * 17, SecondYPos });
+	BrickBlock17->SetActorLocation({ 3720 + 48 * 17, StandardYPos });
+
+	BrickBlock18->SetActorLocation({ 4776 + 48, StandardYPos });
+	BrickBlock19->SetActorLocation({ 4776 + 48 * 2, StandardYPos });
+	CoinBlock7->SetActorLocation({ 4776 + 48 * 7, StandardYPos });
+	CoinBlock8->SetActorLocation({ 4776 + 48 * 10, StandardYPos });
+	CoinBlock9->SetActorLocation({ 4776 + 48 * 13, StandardYPos });
+	CoinBlock10->SetActorLocation({ 4776 + 48 * 10, SecondYPos });
 }
 
 void U1_1StageLevel::Tick(float _DeltaTime)
