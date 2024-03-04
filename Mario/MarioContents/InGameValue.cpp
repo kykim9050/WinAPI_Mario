@@ -85,3 +85,6 @@ const int UInGameValue::FireBallImageYValue = 2;
 
 const int UInGameValue::EndFlagXPos = 3176;
 const int UInGameValue::EndFlagYPos = 124;
+
+const int UInGameValue::EndFlagCollisionXScale = 2 * UInGameValue::WindowSizeMulValue;
+const int UInGameValue::EndFlagCollisionYScale = 400 * UInGameValue::WindowSizeMulValue;

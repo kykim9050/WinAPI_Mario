@@ -243,12 +243,14 @@ void APlayerMario::CollisionStateCheck()
 	{
 		StateChange(EActorState::MarioGrowUp);
 		AteMushroom = false;
+		return;
 	}
 
 	if (true == AteFireFlower)
 	{
 		StateChange(EActorState::FireMario);
 		AteFireFlower = false;
+		return;
 	}
 
 	if (true == BlockBottomHit)
@@ -666,7 +668,7 @@ void APlayerMario::ReachingEndFlag(float _DeltaTime)
 
 		if (0.0f >= DelayTime)
 		{
-			SetActorLocation({ GetActorLocation().X + BodyCollision->GetTransform().GetScale().X, GetActorLocation().Y });
+			SetActorLocation({ GetActorLocation().X + BodyCollision->GetTransform().GetScale().X + static_cast<float>(UInGameValue::EndFlagCollisionXScale), GetActorLocation().Y });
 			Renderer->ChangeAnimation(ChangeAnimationName("StopClimbDownAndTurnRight", true));
 			DelayTime = 1.0f;
 			EndStep = 1;

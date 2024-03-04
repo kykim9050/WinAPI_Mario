@@ -176,6 +176,12 @@ public:
 	static const int EndFlagXPos;
 	static const int EndFlagYPos;
 
+	/// <summary>
+	/// EndFlagÀÇ collision Scale °ª
+	/// </summary>
+	static const int EndFlagCollisionXScale;
+	static const int EndFlagCollisionYScale;
+
 protected:
 
 private:

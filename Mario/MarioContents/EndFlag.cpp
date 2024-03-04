@@ -22,8 +22,7 @@ void AEndFlag::BeginPlay()
 
 	
 	BodyCollision = CreateCollision(ECollisionOrder::EndFlagLine);
-	BodyCollision->SetTransform({ { 0,0 }, { 5 * UInGameValue::WindowSizeMulValue, 500 * UInGameValue::WindowSizeMulValue} });
-	//BodyCollision->SetPosition({ 0, -(BodyCollision->GetTransform().GetScale().ihY()) });
+	BodyCollision->SetTransform({ { 0,0 }, { UInGameValue::EndFlagCollisionXScale, UInGameValue::EndFlagCollisionYScale} });
 	BodyCollision->SetColType(ECollisionType::Rect);
 
 	//SetActorState(EActorState::Move);
