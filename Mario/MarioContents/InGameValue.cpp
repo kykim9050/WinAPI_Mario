@@ -98,3 +98,4 @@ const int UInGameValue::CastleGateCollisionYScale = 80 * UInGameValue::WindowSiz
 const int UInGameValue::NumberImageXValue = 10;
 const int UInGameValue::NumberImageYValue = 1;
 
+const int UInGameValue::TimeRendererSize = 3;
