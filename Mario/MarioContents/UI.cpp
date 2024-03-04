@@ -38,7 +38,7 @@ void AUI::BeginPlay()
 	TimeRenderer->CreateAnimation("8", "Numbers.png", 8, 8, false);
 	TimeRenderer->CreateAnimation("9", "Numbers.png", 9, 9, false);
 
-	TimeRenderer->ChangeAnimation("0");
+	/*TimeRenderer->ChangeAnimation("0");*/
 }
 
 void AUI::Tick(float _DeltaTime)
@@ -53,6 +53,7 @@ void AUI::TimeCheck(float _DeltaTime)
 {
 	TimeInterval -= _DeltaTime;
 
+
 	if (0 >= TimeCount)
 	{
 		UEngineDebug::OutPutDebugText("Time Out");
@@ -61,9 +62,10 @@ void AUI::TimeCheck(float _DeltaTime)
 		return;
 	}
 
+	static int i = 0;
 	if (0.0f >= TimeInterval)
 	{	
-		UEngineDebug::OutPutDebugText(std::to_string(TimeCount-1));
+		TimeRenderer->ChangeAnimation(std::to_string(i++));
 		
 		// 1초보다 더 지났다면 TimeInterval을 1초로 초기화하는 것이 아닌 더 지난만큼 값을 반영.
 		// (정확한 1초를 위함)
