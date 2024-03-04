@@ -22,6 +22,8 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 	void TimeCheck(float _DeltaTime);
+	void TimeRenderUpdate();
+
 
 private:
 	UImageRenderer* PlayerUIRenderer = nullptr;
@@ -30,8 +32,8 @@ private:
 	UImageRenderer* TimeRenderer1 = nullptr;
 	UImageRenderer* TimeRenderer2 = nullptr;
 	UImageRenderer* TimeRenderer3 = nullptr;
-	int TimeCount = 6;
+	int TimeCount = 400;
 	float TimeInterval = 1.0f;
-
+	bool TimeChange = false;
 };
 

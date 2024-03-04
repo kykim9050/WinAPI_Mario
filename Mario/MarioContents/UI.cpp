@@ -76,7 +76,7 @@ void AUI::Tick(float _DeltaTime)
 	AActor::Tick(_DeltaTime);
 
 	TimeCheck(_DeltaTime);
-	// TimeRenderUpdate();
+	TimeRenderUpdate();
 	// ScoreCheck();
 	// ScoreRenderUpdate();
 }
@@ -94,19 +94,35 @@ void AUI::TimeCheck(float _DeltaTime)
 		return;
 	}
 
-	static int i = 0;
 	if (0.0f >= TimeInterval)
 	{	
 		--TimeCount;
-
-		TimeRenderer1->ChangeAnimation(std::to_string(i));
-		TimeRenderer2->ChangeAnimation(std::to_string(i));
-		TimeRenderer3->ChangeAnimation(std::to_string(i));
-		++i;
-
 		// 1초보다 더 지났다면 TimeInterval을 1초로 초기화하는 것이 아닌 더 지난만큼 값을 반영.
 		// (정확한 1초를 위함)
 		TimeInterval = 1.0f + TimeInterval;
+		TimeChange = true;
 		return;
+	}
+}
+
+void AUI::TimeRenderUpdate()
+{
+	if (true == TimeChange)
+	{
+		int TempTime = TimeCount;
+		int ToStringValue = 0;
+
+		ToStringValue = TempTime / 100;
+		TimeRenderer1->ChangeAnimation(std::to_string(ToStringValue));
+		TempTime = TempTime % 100;
+
+		ToStringValue = TempTime / 10;
+		TimeRenderer2->ChangeAnimation(std::to_string(ToStringValue));
+		TempTime = TempTime % 10;
+
+		ToStringValue = TempTime;
+		TimeRenderer3->ChangeAnimation(std::to_string(ToStringValue));
+
+		TimeChange = false;
 	}
 }
