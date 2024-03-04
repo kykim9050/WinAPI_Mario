@@ -23,9 +23,6 @@ void ACastle::BeginPlay()
 	BodyCollision = CreateCollision(ECollisionOrder::CastleGate);
 	BodyCollision->SetTransform({ { 16,0 }, { UInGameValue::CastleGateCollisionXScale, UInGameValue::CastleGateCollisionYScale} });
 	BodyCollision->SetColType(ECollisionType::Rect);
-
-	UEngineDebug::OutPutDebugText(" X Pos = " + std::to_string(BodyCollision->GetPosition().X));
-	UEngineDebug::OutPutDebugText(" Y Pos = " + std::to_string(BodyCollision->GetPosition().Y));
 }
 
 void ACastle::Tick(float _DeltaTime)
