@@ -23,52 +23,25 @@ void AUI::BeginPlay()
 
 	// 숫자 나타나는 초기 위치는 현재 BackGround 기준 (252,24) -> 현재 숫자 이미지는 좌측 상단이 중심
 	// 숫자 한칸 사이의 간격은 24씩 X값에 가감하면 된다.
-	TimeRenderer1 = CreateImageRenderer(static_cast<int>(EStageRenderOrder::UIComponent));
-	TimeRenderer1->SetImage("Numbers.png");
-	FVector UITimeScale = TimeRenderer1->GetImage()->GetScale();
-	TimeRenderer1->SetTransform({ {252, 24}, {UITimeScale.iX() / UInGameValue::NumberImageXValue * UInGameValue::WindowSizeMulValue , UITimeScale.iY() / UInGameValue::NumberImageYValue * UInGameValue::WindowSizeMulValue}});
-	TimeRenderer1->CameraEffectOff();
-	TimeRenderer1->CreateAnimation("0", "Numbers.png", 0, 0, false);
-	TimeRenderer1->CreateAnimation("1", "Numbers.png", 1, 1, false);
-	TimeRenderer1->CreateAnimation("2", "Numbers.png", 2, 2, false);
-	TimeRenderer1->CreateAnimation("3", "Numbers.png", 3, 3, false);
-	TimeRenderer1->CreateAnimation("4", "Numbers.png", 4, 4, false);
-	TimeRenderer1->CreateAnimation("5", "Numbers.png", 5, 5, false);
-	TimeRenderer1->CreateAnimation("6", "Numbers.png", 6, 6, false);
-	TimeRenderer1->CreateAnimation("7", "Numbers.png", 7, 7, false);
-	TimeRenderer1->CreateAnimation("8", "Numbers.png", 8, 8, false);
-	TimeRenderer1->CreateAnimation("9", "Numbers.png", 9, 9, false);
-
-	TimeRenderer2 = CreateImageRenderer(static_cast<int>(EStageRenderOrder::UIComponent));
-	TimeRenderer2->SetImage("Numbers.png");
-	TimeRenderer2->SetTransform({ {252+24, 24}, {UITimeScale.iX() / UInGameValue::NumberImageXValue * UInGameValue::WindowSizeMulValue , UITimeScale.iY() / UInGameValue::NumberImageYValue * UInGameValue::WindowSizeMulValue} });
-	TimeRenderer2->CameraEffectOff();
-	TimeRenderer2->CreateAnimation("0", "Numbers.png", 0, 0, false);
-	TimeRenderer2->CreateAnimation("1", "Numbers.png", 1, 1, false);
-	TimeRenderer2->CreateAnimation("2", "Numbers.png", 2, 2, false);
-	TimeRenderer2->CreateAnimation("3", "Numbers.png", 3, 3, false);
-	TimeRenderer2->CreateAnimation("4", "Numbers.png", 4, 4, false);
-	TimeRenderer2->CreateAnimation("5", "Numbers.png", 5, 5, false);
-	TimeRenderer2->CreateAnimation("6", "Numbers.png", 6, 6, false);
-	TimeRenderer2->CreateAnimation("7", "Numbers.png", 7, 7, false);
-	TimeRenderer2->CreateAnimation("8", "Numbers.png", 8, 8, false);
-	TimeRenderer2->CreateAnimation("9", "Numbers.png", 9, 9, false);
-
-	TimeRenderer3 = CreateImageRenderer(static_cast<int>(EStageRenderOrder::UIComponent));
-	TimeRenderer3->SetImage("Numbers.png");
-	TimeRenderer3->SetTransform({ {252+ 24+ 24, 24}, {UITimeScale.iX() / UInGameValue::NumberImageXValue * UInGameValue::WindowSizeMulValue , UITimeScale.iY() / UInGameValue::NumberImageYValue * UInGameValue::WindowSizeMulValue} });
-	TimeRenderer3->CameraEffectOff();
-	TimeRenderer3->CreateAnimation("0", "Numbers.png", 0, 0, false);
-	TimeRenderer3->CreateAnimation("1", "Numbers.png", 1, 1, false);
-	TimeRenderer3->CreateAnimation("2", "Numbers.png", 2, 2, false);
-	TimeRenderer3->CreateAnimation("3", "Numbers.png", 3, 3, false);
-	TimeRenderer3->CreateAnimation("4", "Numbers.png", 4, 4, false);
-	TimeRenderer3->CreateAnimation("5", "Numbers.png", 5, 5, false);
-	TimeRenderer3->CreateAnimation("6", "Numbers.png", 6, 6, false);
-	TimeRenderer3->CreateAnimation("7", "Numbers.png", 7, 7, false);
-	TimeRenderer3->CreateAnimation("8", "Numbers.png", 8, 8, false);
-	TimeRenderer3->CreateAnimation("9", "Numbers.png", 9, 9, false);
-
+	for (int i = 0; i < 3; i++)
+	{
+		UImageRenderer* Renderer= CreateImageRenderer(static_cast<int>(EStageRenderOrder::UIComponent));
+		TimeRenderer.push_back(Renderer);
+		TimeRenderer[i]->SetImage("Numbers.png");
+		FVector UITimeScale = TimeRenderer[i]->GetImage()->GetScale();
+		TimeRenderer[i]->SetTransform({ {252 + 24*i, 24}, {UITimeScale.iX() / UInGameValue::NumberImageXValue * UInGameValue::WindowSizeMulValue , UITimeScale.iY() / UInGameValue::NumberImageYValue * UInGameValue::WindowSizeMulValue} });
+		TimeRenderer[i]->CameraEffectOff();
+		TimeRenderer[i]->CreateAnimation("0", "Numbers.png", 0, 0, false);
+		TimeRenderer[i]->CreateAnimation("1", "Numbers.png", 1, 1, false);
+		TimeRenderer[i]->CreateAnimation("2", "Numbers.png", 2, 2, false);
+		TimeRenderer[i]->CreateAnimation("3", "Numbers.png", 3, 3, false);
+		TimeRenderer[i]->CreateAnimation("4", "Numbers.png", 4, 4, false);
+		TimeRenderer[i]->CreateAnimation("5", "Numbers.png", 5, 5, false);
+		TimeRenderer[i]->CreateAnimation("6", "Numbers.png", 6, 6, false);
+		TimeRenderer[i]->CreateAnimation("7", "Numbers.png", 7, 7, false);
+		TimeRenderer[i]->CreateAnimation("8", "Numbers.png", 8, 8, false);
+		TimeRenderer[i]->CreateAnimation("9", "Numbers.png", 9, 9, false);
+	}
 }
 
 void AUI::Tick(float _DeltaTime)
@@ -113,15 +86,15 @@ void AUI::TimeRenderUpdate()
 		int ToStringValue = 0;
 
 		ToStringValue = TempTime / 100;
-		TimeRenderer1->ChangeAnimation(std::to_string(ToStringValue));
+		TimeRenderer[0]->ChangeAnimation(std::to_string(ToStringValue));
 		TempTime = TempTime % 100;
 
 		ToStringValue = TempTime / 10;
-		TimeRenderer2->ChangeAnimation(std::to_string(ToStringValue));
+		TimeRenderer[1]->ChangeAnimation(std::to_string(ToStringValue));
 		TempTime = TempTime % 10;
 
 		ToStringValue = TempTime;
-		TimeRenderer3->ChangeAnimation(std::to_string(ToStringValue));
+		TimeRenderer[2]->ChangeAnimation(std::to_string(ToStringValue));
 
 		TimeChange = false;
 	}

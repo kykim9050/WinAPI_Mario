@@ -27,11 +27,9 @@ protected:
 
 private:
 	UImageRenderer* PlayerUIRenderer = nullptr;
-	
+	std::vector<UImageRenderer*> TimeRenderer = std::vector<UImageRenderer*>();
 
-	UImageRenderer* TimeRenderer1 = nullptr;
-	UImageRenderer* TimeRenderer2 = nullptr;
-	UImageRenderer* TimeRenderer3 = nullptr;
+
 	int TimeCount = 400;
 	float TimeInterval = 1.0f;
 	bool TimeChange = false;
