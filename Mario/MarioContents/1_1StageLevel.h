@@ -1,8 +1,8 @@
 #pragma once
-#include <EngineCore/Level.h>
+#include "CreateLevel.h"
 
 // Ό³Έν :
-class U1_1StageLevel : public ULevel
+class U1_1StageLevel : public UCreateLevel
 {
 public:
 	// constrcuter destructer

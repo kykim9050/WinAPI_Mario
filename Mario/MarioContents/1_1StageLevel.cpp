@@ -8,6 +8,11 @@
 #include "KoopaTroopa.h"
 #include <EnginePlatform/EngineInput.h>
 #include "PiranhaPlant.h"
+#include "BrickBlock.h"
+#include "CoinBlock.h"
+#include "ItemUnit.h"
+#include "EndFlag.h"
+#include "Castle.h"
 
 U1_1StageLevel::U1_1StageLevel()
 {
@@ -19,52 +24,37 @@ U1_1StageLevel::~U1_1StageLevel()
 
 void U1_1StageLevel::BeginPlay()
 {
-	ULevel::BeginPlay();
+	UCreateLevel::BeginPlay();
 
-	ABackGroundMap* Stage1_1Map = SpawnActor< ABackGroundMap>(static_cast<int>(EActorType::Map));
-	UCollisionMap* Stage1_1CollisionMap = SpawnActor< UCollisionMap>(static_cast<int>(EActorType::Map));
+	ABackGroundMap* Map = SpawnActor< ABackGroundMap>(static_cast<int>(EActorType::Map));
+	UCollisionMap* CollisionMap = SpawnActor< UCollisionMap>(static_cast<int>(EActorType::Map));
 	APlayerMario* Mario = SpawnActor< APlayerMario>(static_cast<int>(EActorType::Player));
 	AUI* PlayerUI = SpawnActor<AUI>(static_cast<int>(EActorType::UI));
-	AGoomba* MonsterGoomba1 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
-	AGoomba* MonsterGoomba2 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
-	AGoomba* MonsterGoomba3 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
-	AKoopaTroopa* MonsterKoopaTroopa1 = SpawnActor< AKoopaTroopa>(static_cast<int>(EActorType::Monster));
-	AKoopaTroopa* MonsterKoopaTroopa2 = SpawnActor< AKoopaTroopa>(static_cast<int>(EActorType::Monster));
-	APiranhaPlant* MonsterPiranhaPlant1 = SpawnActor< APiranhaPlant>(static_cast<int>(EActorType::Monster));
+	AEndFlag* EndFlag = SpawnActor<AEndFlag>(static_cast<int>(EActorType::Structure));
+	ACastle* EndPointCastle = SpawnActor<ACastle>(static_cast<int>(EActorType::Structure));
+
+	ABrickBlock* BrickBlock1 = SpawnActor< ABrickBlock>(static_cast<int>(EActorType::Block));
+	ABrickBlock* BrickBlock2 = SpawnActor< ABrickBlock>(static_cast<int>(EActorType::Block));
+
+	ACoinBlock* CoinBlock5 = SpawnCoinBlock(EActorType::Block, EItemType::Item);
+	ACoinBlock* CoinBlock6 = SpawnCoinBlock(EActorType::Block, EItemType::Item);
 
 	Mario->SetActorLocation({ UInGameValue::MarioInitXPos, UInGameValue::MarioInitYPos });
 	PlayerUI->SetActorLocation({ UInGameValue::UIXScaleValue / 2 * UInGameValue::WindowSizeMulValue, UInGameValue::UIYScaleValue / 2 * UInGameValue::WindowSizeMulValue });
-	MonsterPiranhaPlant1->SetActorLocation({ 500,500 });
-	MonsterKoopaTroopa1->SetActorLocation({ 500,500 });
-	MonsterKoopaTroopa2->SetActorLocation({ 1700,500 });
-	MonsterGoomba1->SetActorLocation({ 1800, 500 });
-	MonsterGoomba2->SetActorLocation({ 850, 500 });
-	MonsterGoomba3->SetActorLocation({ 1500, 500 });
+	EndPointCastle->SetActorLocation({ UInGameValue::EndPointCastleXPos, UInGameValue::EndPointCastleYPos });
+	EndFlag->SetActorLocation({ UInGameValue::EndFlagXPos, UInGameValue::EndFlagYPos });
+
+	int StandardYPos = 450;
+	int StandardXPos = 600;
+
+	BrickBlock1->SetActorLocation({ StandardXPos + 48 * 20,StandardYPos });
+	BrickBlock2->SetActorLocation({ StandardXPos + 48 * 21,StandardYPos });
+
+	CoinBlock5->SetActorLocation({ 250 + 48 * 8,StandardYPos });
+	CoinBlock6->SetActorLocation({ 250 + 48 * 12,StandardYPos });
 }
 
 void U1_1StageLevel::Tick(float _DeltaTime)
 {
-	ULevel::Tick(_DeltaTime);
-
-	if (true == UEngineInput::IsDown(VK_F3))
-	{
-		APlayerMario* Player = APlayerMario::GetMainPlayer();
-
-		if (nullptr == Player)
-		{
-			UEngineDebug::OutPutDebugText("Player가 없습니다.");
-			return;
-		}
-
-		if (Player->GetBodyCollision()->IsActive())
-		{
-			Player->GetBodyCollision()->SetActive(false);
-			Player->GetRenderer()->SetAlpha(0.5f);
-		}
-		else
-		{
-			Player->GetBodyCollision()->SetActive(true);
-			Player->GetRenderer()->SetAlpha(1.0f);
-		}
-	}
+	UCreateLevel::Tick(_DeltaTime);
 }
