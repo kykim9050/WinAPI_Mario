@@ -55,7 +55,8 @@ void UTestLevel::BeginPlay()
 
 	Mario->SetActorLocation({ UInGameValue::MarioInitXPos, UInGameValue::MarioInitYPos });
 	PlayerUI->SetActorLocation({ UInGameValue::UIXScaleValue / 2 * UInGameValue::WindowSizeMulValue, UInGameValue::UIYScaleValue / 2 * UInGameValue::WindowSizeMulValue });
-	EndFlag->SetActorLocation({ UInGameValue::EndFlagXPos * UInGameValue::WindowSizeMulValue, UInGameValue::EndFlagYPos * UInGameValue::WindowSizeMulValue });
+	//EndFlag->SetActorLocation({ UInGameValue::EndFlagXPos * UInGameValue::WindowSizeMulValue, UInGameValue::EndFlagYPos * UInGameValue::WindowSizeMulValue });
+	EndFlag->SetActorLocation({ 300 * UInGameValue::WindowSizeMulValue, UInGameValue::EndFlagYPos * UInGameValue::WindowSizeMulValue });
 
 	int StandardYPos = 450;
 	int StandardXPos = 600;
