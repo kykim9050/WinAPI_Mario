@@ -194,6 +194,12 @@ public:
 	static const int CastleGateCollisionXScale;
 	static const int CastleGateCollisionYScale;
 
+	/// <summary>
+	/// Number_Origin.png의 열, 행 수
+	/// </summary>
+	static const int NumberImageXValue;
+	static const int NumberImageYValue;
+
 protected:
 
 private:

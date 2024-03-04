@@ -58,6 +58,7 @@ void UContentsCore::BeginPlay()
 	UEngineResourcesManager::GetInst().CuttingImage("FireMario_Left.png", UInGameValue::FireMarioImageXValue, UInGameValue::FireMarioImageYValue);
 	UEngineResourcesManager::GetInst().CuttingImage("FireMario_Right.png", UInGameValue::FireMarioImageXValue, UInGameValue::FireMarioImageYValue);
 	UEngineResourcesManager::GetInst().CuttingImage("FireBall.png", UInGameValue::FireBallImageXValue, UInGameValue::FireBallImageYValue);
+	UEngineResourcesManager::GetInst().CuttingImage("Numbers.png", UInGameValue::NumberImageXValue, UInGameValue::NumberImageYValue);
 
 
 
