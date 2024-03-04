@@ -67,12 +67,21 @@ void AKoopaTroopa::StateUpdate(float _DeltaTime)
 
 }
 
-
-
 void AKoopaTroopa::Idle(float _DeltaTime)
 {
-	StateChange(EActorState::Move);
+	APlayerMario* Player = APlayerMario::GetMainPlayer();
+
+	if (nullptr == Player)
+	{
+		MsgBoxAssert("플레이어가 존재하지 않습니다.");
+	}
+
+	if (GetActorLocation().iX() - Player->GetActorLocation().iX() < UInGameValue::ResultMainWindowXScale)
+	{
+		StateChange(EActorState::Move);
+	}
 }
+
 
 void AKoopaTroopa::Move(float _DeltaTime)
 {
