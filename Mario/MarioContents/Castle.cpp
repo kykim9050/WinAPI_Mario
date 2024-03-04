@@ -1,4 +1,5 @@
 ﻿#include "Castle.h"
+#include "PlayerMario.h"
 
 ACastle::ACastle()
 {
@@ -32,4 +33,20 @@ void ACastle::Tick(float _DeltaTime)
 void ACastle::CollisionCheck()
 {
 	AStructureUnit::CollisionCheck();
+
+	std::vector<UCollision*> Result = std::vector<UCollision*>();
+
+	APlayerMario* Player = APlayerMario::GetMainPlayer();
+
+	if (nullptr == Player)
+	{
+		MsgBoxAssert("플레이어가 존재하지 않습니다.");
+	}
+
+	if (nullptr != BodyCollision && true == BodyCollision->CollisionCheck(ECollisionOrder::Player, Result))
+	{
+		BodyCollision->ActiveOff();
+		//Player->ReachToCastleGate();
+		return;
+	}
 }
