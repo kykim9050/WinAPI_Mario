@@ -976,21 +976,25 @@ void APlayerMario::CalGravityVelocityVector(float _DeltaTime)
 }
 
 
-std::string APlayerMario::ChangeAnimationName(std::string _MainName)
+std::string APlayerMario::ChangeAnimationName(std::string _MainName, bool _DirExcept)
 {
+
 	std::string Dir = "";
 	CurAnimationName = _MainName;
 
-	switch (ActorDir)
+	if (!_DirExcept)
 	{
-	case EActorDir::Left:
-		Dir = "_Left";
-		break;
-	case EActorDir::Right:
-		Dir = "_Right";
-		break;
-	default:
-		break;
+		switch (ActorDir)
+		{
+		case EActorDir::Left:
+			Dir = "_Left";
+			break;
+		case EActorDir::Right:
+			Dir = "_Right";
+			break;
+		default:
+			break;
+		}
 	}
 
 	std::string Type = "";
