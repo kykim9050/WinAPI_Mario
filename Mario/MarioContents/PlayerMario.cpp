@@ -150,6 +150,9 @@ void APlayerMario::StateChange(EActorState _PlayerState)
 		case EActorState::ReachingEndFlag:
 			ReachingEndFlagStart();
 			break;
+		case EActorState::ReachStageEnd:
+			ReachStageEndStart();
+			break;
 		default:
 			break;
 		}
@@ -709,7 +712,7 @@ void APlayerMario::ReachingEndFlag(float _DeltaTime)
 		if (IsReachingCastleGate)
 		{
 			// Stage종료
-			StateChange(EActorState::Idle);
+			StateChange(EActorState::ReachStageEnd);
 			EndStep = -1;
 			IsReachingCastleGate = false;
 		}
@@ -769,6 +772,14 @@ void APlayerMario::ChangingFireMarioStart()
 void APlayerMario::ReachingEndFlagStart()
 {
 	Renderer->ChangeAnimation(ChangeAnimationName("ClimbDown", true));
+}
+
+void APlayerMario::ReachStageEndStart()
+{
+	DirCheck();
+	Renderer->ChangeAnimation(ChangeAnimationName("Idle"));
+	Renderer->ActiveOff();
+	TotalVelocityVector = FVector::Zero;
 }
 
 
