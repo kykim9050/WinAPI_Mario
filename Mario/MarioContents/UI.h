@@ -28,7 +28,7 @@ private:
 	
 
 	UImageRenderer* TimeRenderer = nullptr;
-	int TimeCount = 11;
+	int TimeCount = 6;
 	float TimeInterval = 1.0f;
 
 };
