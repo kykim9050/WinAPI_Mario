@@ -32,8 +32,8 @@ void UTestLevel::BeginPlay()
 	AUI* PlayerUI = SpawnActor<AUI>(static_cast<int>(EActorType::UI));
 	AEndFlag* EndFlag = SpawnActor<AEndFlag>(static_cast<int>(EActorType::Structure));
 
-	//ABrickBlock* BrickBlock1 = SpawnActor< ABrickBlock>(static_cast<int>(EActorType::Block));
-	//ABrickBlock* BrickBlock2 = SpawnActor< ABrickBlock>(static_cast<int>(EActorType::Block));
+	ABrickBlock* BrickBlock1 = SpawnActor< ABrickBlock>(static_cast<int>(EActorType::Block));
+	ABrickBlock* BrickBlock2 = SpawnActor< ABrickBlock>(static_cast<int>(EActorType::Block));
 	//ABrickBlock* BrickBlock3 = SpawnActor< ABrickBlock>(static_cast<int>(EActorType::Block));
 	//ABrickBlock* BrickBlock4 = SpawnActor< ABrickBlock>(static_cast<int>(EActorType::Block));
 
@@ -60,8 +60,8 @@ void UTestLevel::BeginPlay()
 	int StandardYPos = 450;
 	int StandardXPos = 600;
 
-	//BrickBlock1->SetActorLocation({ StandardXPos,StandardYPos });
-	//BrickBlock2->SetActorLocation({ StandardXPos + 48,StandardYPos });
+	BrickBlock1->SetActorLocation({ StandardXPos + 48*20,StandardYPos });
+	BrickBlock2->SetActorLocation({ StandardXPos + 48*21,StandardYPos });
 	//BrickBlock3->SetActorLocation({ StandardXPos + 48 * 2,StandardYPos });
 	//BrickBlock4->SetActorLocation({ StandardXPos + 48 * 3,StandardYPos });
 	
