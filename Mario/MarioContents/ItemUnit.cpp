@@ -97,7 +97,9 @@ void AItemUnit::GetHitStart()
 
 void AItemUnit::ReleaseStart()
 {
-	Destroy();
+	//Destroy();
+	Renderer->Destroy();
+	AddActorLocation(FVector::Zero);
 }
 
 void AItemUnit::FirstInit(float _DeltaTime)
