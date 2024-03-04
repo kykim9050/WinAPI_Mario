@@ -186,7 +186,7 @@ private:
 	FVector CollisionJumpVelocityVector = FVector::Up * 500.0f;
 
 	// FreeMove 작동 시 속도
-	float PFreeMoveVelocity = 1000.0f;
+	float PFreeMoveVelocity = 3000.0f;
 	
 	static APlayerMario* MainPlayer;
 	void SetMainPlayer(APlayerMario* _MainPlayer)
