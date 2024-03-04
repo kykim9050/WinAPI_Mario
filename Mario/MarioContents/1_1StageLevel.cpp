@@ -139,10 +139,41 @@ void U1_1StageLevel::BeginPlay()
 	BrickBlock30->SetActorLocation({ 8088 + 48 * 3, StandardYPos });
 
 	AGoomba* MonsterGoomba1 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
+	AGoomba* MonsterGoomba2 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
+	AGoomba* MonsterGoomba3 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
+	AGoomba* MonsterGoomba4 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
+	AGoomba* MonsterGoomba5 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
+	AGoomba* MonsterGoomba6 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
+	AGoomba* MonsterGoomba7 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
+	AGoomba* MonsterGoomba8 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
+	AGoomba* MonsterGoomba9 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
+	AGoomba* MonsterGoomba10 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
+	AGoomba* MonsterGoomba11 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
+	AGoomba* MonsterGoomba12 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
+	AGoomba* MonsterGoomba13 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
+	AGoomba* MonsterGoomba14 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
+	AGoomba* MonsterGoomba15 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
 	AKoopaTroopa* MonsterTroopa1 = SpawnActor<AKoopaTroopa>(static_cast<int>(EActorType::Monster));
 	
-	MonsterGoomba1->SetActorLocation({ 1300, StandardYPos });
-	MonsterTroopa1->SetActorLocation({ 1400, StandardYPos });
+	int MonsterInitHeight = 580;
+
+	MonsterGoomba1->SetActorLocation({ 1180, MonsterInitHeight });
+	MonsterGoomba2->SetActorLocation({ 2444, MonsterInitHeight });
+	MonsterGoomba3->SetActorLocation({ 2600, MonsterInitHeight });
+	MonsterGoomba4->SetActorLocation({ 3948, MonsterInitHeight });
+	MonsterGoomba5->SetActorLocation({ 4074, MonsterInitHeight });
+	MonsterGoomba6->SetActorLocation({ 4800, MonsterInitHeight });
+	MonsterGoomba7->SetActorLocation({ 4864, MonsterInitHeight });
+	MonsterGoomba8->SetActorLocation({ 5500, MonsterInitHeight });
+	MonsterGoomba9->SetActorLocation({ 5600, MonsterInitHeight });
+	MonsterGoomba10->SetActorLocation({ 6000, MonsterInitHeight });
+	MonsterGoomba11->SetActorLocation({ 6060, MonsterInitHeight });
+	MonsterGoomba12->SetActorLocation({ 6312, MonsterInitHeight });
+	MonsterGoomba13->SetActorLocation({ 6380, MonsterInitHeight });
+	MonsterGoomba14->SetActorLocation({ 8340, MonsterInitHeight });
+	MonsterGoomba15->SetActorLocation({ 8420, MonsterInitHeight });
+
+	MonsterTroopa1->SetActorLocation({ 5140, MonsterInitHeight });
 
 }
 
