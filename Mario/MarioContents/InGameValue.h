@@ -185,6 +185,7 @@ public:
 protected:
 
 private:
-
+	UInGameValue();
+	~UInGameValue();
 };
 
