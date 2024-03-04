@@ -662,12 +662,13 @@ void APlayerMario::ReachingEndFlag(float _DeltaTime)
 
 	switch (EndStep)
 	{
-	case 0:
+	case 0:	// 첫 번째 단계 : 깃대를 잡고 내려감
 	{
 		DelayTime -= _DeltaTime;
 
 		if (0.0f >= DelayTime)
 		{
+			// 지정 시간이 지나면 Player 반대편으로 도는 애니메이션 취하기
 			SetActorLocation({ GetActorLocation().X + BodyCollision->GetTransform().GetScale().X + static_cast<float>(UInGameValue::EndFlagCollisionXScale), GetActorLocation().Y });
 			Renderer->ChangeAnimation(ChangeAnimationName("StopClimbDownAndTurnRight", true));
 			DelayTime = 1.0f;
@@ -679,50 +680,46 @@ void APlayerMario::ReachingEndFlag(float _DeltaTime)
 
 		if (UInGameValue::CollisionColor == Color)
 		{
+			// Player 아래에 충돌체 만나면 내려가기 멈추고 시간이 다될때까지 대기
 			Renderer->ChangeAnimation(ChangeAnimationName("StopClimbDown", true));
 			break;
 		}
 
-		AddActorLocation(FVector::Down * 200.0f * _DeltaTime);
+		AddActorLocation(FVector::Down * 300.0f * _DeltaTime);
 		break;
 	}
-	case 1:
+	case 1:	// 도는 애니메이션 취하고 일정 시간 동안 대기하는 기능
 	{
 		DelayTime -= _DeltaTime;
-
+		
 		if (0.0f >= DelayTime)
 		{
+			// 깃발을 잡고 내려간 후에 걸어서 성문 입구로 걸어가기 시작 (자동 - 조작 안먹힘)
 			Renderer->ChangeAnimation(ChangeAnimationName("Move_Right", true));
-			DelayTime = 3.0f;
+			SetJumpZero();
+			DelayTime = 0.0f;
 			EndStep = 2;
 			break;
 		}
 
 		break;
 	}
-	case 2:
+	case 2: // 성문에 충돌할때까지 계속해서 오른쪽으로 걷기
 	{
-		DelayTime -= _DeltaTime;
-
-		if (0.0f >= DelayTime)
+		if (IsReachingCastleGate)
 		{
-			//Renderer->ActiveOff();
-			DelayTime = 3.0f;
-			EndStep = 3;
-			break;
+			// Stage종료
+			StateChange(EActorState::Idle);
+			EndStep = -1;
+			IsReachingCastleGate = false;
 		}
 
-		SetJumpZero();
-		HorizonVelocityVector = FVector::Right * 100.0f;
+		HorizonVelocityVector = FVector::Right * 150.0f;
 		ResultMovementUpdate(_DeltaTime);
 		break;
 	}
 	default:
-	{
-		// 다음 스테이지로 넘어가는 코드 추가 필요
-		StateChange(EActorState::Idle);
 		break;
-	}
 	}
 
 }
