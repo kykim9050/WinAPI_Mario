@@ -150,6 +150,11 @@ public:
 		IsReachingStageEnd = true;
 	}
 
+	void ReachToCastleGate()
+	{
+		IsReachingCastleGate = true;
+	}
+
 	EMarioType GetPlayerType() const
 	{
 		return MarioType;
@@ -207,6 +212,7 @@ private:
 	bool IsInvincible = false;
 	bool BlockBottomHit = false;
 	bool IsReachingStageEnd = false;
+	bool IsReachingCastleGate = false;
 
 	EActorState PrevActorState = EActorState::None;
 };
