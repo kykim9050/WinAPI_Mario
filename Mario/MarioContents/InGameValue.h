@@ -182,6 +182,12 @@ public:
 	static const int EndFlagCollisionXScale;
 	static const int EndFlagCollisionYScale;
 
+	/// <summary>
+	/// EndPointCastle의 위치 좌표값
+	/// </summary>
+	static const int EndPointCastleXPos;
+	static const int EndPointCastleYPos;
+
 protected:
 
 private:
