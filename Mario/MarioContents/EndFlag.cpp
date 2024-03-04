@@ -44,7 +44,7 @@ void AEndFlag::CollisionCheck()
 
 	if (nullptr != BodyCollision && true == BodyCollision->CollisionCheck(ECollisionOrder::Player, Result))
 	{
-		BodyCollision->Destroy();
+		BodyCollision->ActiveOff();
 		Player->ReachToStageEnd();
 		return;
 	}
