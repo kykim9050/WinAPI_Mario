@@ -27,7 +27,9 @@ private:
 	UImageRenderer* PlayerUIRenderer = nullptr;
 	
 
-	UImageRenderer* TimeRenderer = nullptr;
+	UImageRenderer* TimeRenderer1 = nullptr;
+	UImageRenderer* TimeRenderer2 = nullptr;
+	UImageRenderer* TimeRenderer3 = nullptr;
 	int TimeCount = 6;
 	float TimeInterval = 1.0f;
 
