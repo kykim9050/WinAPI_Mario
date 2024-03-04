@@ -68,10 +68,17 @@ void APlayerMario::BeginPlay()
 	Renderer->CreateAnimation("Fire_SizeDown_Left", "Mario_Left.png", { 32, 33, 34, 33, 34, 33, 34, 35 }, 0.15f, false);
 	Renderer->CreateAnimation("Fire_SizeDown_Right", "Mario_Right.png", { 32, 33, 34, 33, 34, 33, 34, 35 }, 0.15f, false);
 
-	Renderer->CreateAnimation("ClimbDown", "Mario_Right.png", 7, 8, 0.3f, true);
-	Renderer->CreateAnimation("StopClimbDown", "Mario_Right.png", 7, 7, 0.1f, true);
-	Renderer->CreateAnimation("StopClimbDownAndTurnRight", "Mario_Left.png", 7, 7, 0.1f, true);
+	Renderer->CreateAnimation("Small_ClimbDown", "Mario_Right.png", 7, 8, 0.3f, true);
+	Renderer->CreateAnimation("Big_ClimbDown", "Mario_Right.png", 21, 22, 0.3f, true);
+	Renderer->CreateAnimation("Fire_ClimbDown", "FireMario_Right.png", 21, 22, 0.3f, true);
+
+	Renderer->CreateAnimation("Small_StopClimbDown", "Mario_Right.png", 7, 7, 0.1f, true);
+	Renderer->CreateAnimation("Big_StopClimbDown", "Mario_Right.png", 21, 21, 0.1f, true);
+	Renderer->CreateAnimation("Fire_StopClimbDown", "FireMario_Right.png", 21, 21, 0.1f, true);
 	
+	Renderer->CreateAnimation("Small_StopClimbDownAndTurnRight", "Mario_Left.png", 7, 7, 0.1f, true);
+	Renderer->CreateAnimation("Big_StopClimbDownAndTurnRight", "Mario_Left.png", 21, 21, 0.1f, true);
+	Renderer->CreateAnimation("Fire_StopClimbDownAndTurnRight", "FireMario_Left.png", 21, 21, 0.1f, true);
 
 
 
@@ -660,7 +667,7 @@ void APlayerMario::ReachingEndFlag(float _DeltaTime)
 		if (0.0f >= DelayTime)
 		{
 			SetActorLocation({ GetActorLocation().X + BodyCollision->GetTransform().GetScale().X, GetActorLocation().Y });
-			Renderer->ChangeAnimation("StopClimbDownAndTurnRight");
+			Renderer->ChangeAnimation(ChangeAnimationName("StopClimbDownAndTurnRight", true));
 			DelayTime = 1.0f;
 			EndStep = 1;
 			break;
@@ -670,7 +677,7 @@ void APlayerMario::ReachingEndFlag(float _DeltaTime)
 
 		if (UInGameValue::CollisionColor == Color)
 		{
-			Renderer->ChangeAnimation("StopClimbDown");
+			Renderer->ChangeAnimation(ChangeAnimationName("StopClimbDown", true));
 			break;
 		}
 
@@ -683,7 +690,7 @@ void APlayerMario::ReachingEndFlag(float _DeltaTime)
 
 		if (0.0f >= DelayTime)
 		{
-			Renderer->ChangeAnimation("Small_Move_Right");
+			Renderer->ChangeAnimation(ChangeAnimationName("Move_Right", true));
 			DelayTime = 3.0f;
 			EndStep = 2;
 			break;
@@ -762,7 +769,7 @@ void APlayerMario::ChangingFireMarioStart()
 
 void APlayerMario::ReachingEndFlagStart()
 {
-	Renderer->ChangeAnimation("ClimbDown");
+	Renderer->ChangeAnimation(ChangeAnimationName("ClimbDown", true));
 }
 
 
