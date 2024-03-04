@@ -38,8 +38,8 @@ void APlayerMario::BeginPlay()
 	Renderer->CreateAnimation("Small_Jump_Left", "Mario_Left.png", 5, 5, 0.1f, true);
 	Renderer->CreateAnimation("Small_ReverseMove_Right", "Mario_Right.png", 4, 4, 0.1f, true);
 	Renderer->CreateAnimation("Small_ReverseMove_Left", "Mario_Left.png", 4, 4, 0.1f, true);
-	Renderer->CreateAnimation("Small_GrowUp_Left", "Mario_Left.png", { 29, 30, 31, 30, 31 ,30, 31, 32 }, 0.15f, false);
-	Renderer->CreateAnimation("Small_GrowUp_Right", "Mario_Right.png", { 29, 30, 31, 30, 31 , 30, 31, 32 }, 0.15f, false);
+	Renderer->CreateAnimation("GrowUp_Left", "Mario_Left.png", { 29, 30, 31, 30, 31 ,30, 31, 32 }, 0.15f, false);
+	Renderer->CreateAnimation("GrowUp_Right", "Mario_Right.png", { 29, 30, 31, 30, 31 , 30, 31, 32 }, 0.15f, false);
 	Renderer->CreateAnimation("SmallMario_Dead", "Mario_Right.png", 6, 6, 0.1f, true);
 
 
@@ -749,7 +749,7 @@ void APlayerMario::GetHitStart()
 void APlayerMario::MarioGrowUpStart()
 {
 	DirCheck();
-	Renderer->ChangeAnimation(ChangeAnimationName("GrowUp"));
+	Renderer->ChangeAnimation(ChangeAnimationName("GrowUp", false, true));
 
 	MarioType = EMarioType::Big;
 	BodyCollision->SetTransform({ { 0,-40 }, {32, 64} });
@@ -985,7 +985,7 @@ void APlayerMario::CalGravityVelocityVector(float _DeltaTime)
 }
 
 
-std::string APlayerMario::ChangeAnimationName(std::string _MainName, bool _DirExcept)
+std::string APlayerMario::ChangeAnimationName(std::string _MainName, bool _DirExcept, bool _TypeExcept)
 {
 
 	std::string Dir = "";
@@ -1008,19 +1008,23 @@ std::string APlayerMario::ChangeAnimationName(std::string _MainName, bool _DirEx
 
 	std::string Type = "";
 
-	switch (MarioType)
+
+	if (!_TypeExcept)
 	{
-	case EMarioType::Small:
-		Type = "Small_";
-		break;
-	case EMarioType::Big:
-		Type = "Big_";
-		break;
-	case EMarioType::Fire:
-		Type = "Fire_";
-		break;
-	default:
-		break;
+		switch (MarioType)
+		{
+		case EMarioType::Small:
+			Type = "Small_";
+			break;
+		case EMarioType::Big:
+			Type = "Big_";
+			break;
+		case EMarioType::Fire:
+			Type = "Fire_";
+			break;
+		default:
+			break;
+		}
 	}
 
 	return Type + CurAnimationName + Dir;

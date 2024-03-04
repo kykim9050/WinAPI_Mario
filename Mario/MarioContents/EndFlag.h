@@ -22,5 +22,7 @@ protected:
 	void CollisionCheck() override;
 
 private:
+	//UImageRenderer* 
+
 };
 
