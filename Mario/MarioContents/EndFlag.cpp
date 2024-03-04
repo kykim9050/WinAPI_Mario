@@ -13,7 +13,7 @@ void AEndFlag::BeginPlay()
 {
 	AStructureUnit::BeginPlay();
 
-	Renderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::Item));
+	Renderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::BackGrundStructure));
 	Renderer->SetImage("EndFlag.png");
 
 	FVector EndFlagScale = Renderer->GetImage()->GetScale();
@@ -24,8 +24,6 @@ void AEndFlag::BeginPlay()
 	BodyCollision = CreateCollision(ECollisionOrder::EndFlagLine);
 	BodyCollision->SetTransform({ { 0,0 }, { UInGameValue::EndFlagCollisionXScale, UInGameValue::EndFlagCollisionYScale} });
 	BodyCollision->SetColType(ECollisionType::Rect);
-
-	//SetActorState(EActorState::Move);
 }
 
 void AEndFlag::Tick(float _DeltaTime)
