@@ -24,6 +24,9 @@ void AEndFlag::BeginPlay()
 	BodyCollision = CreateCollision(ECollisionOrder::EndFlagLine);
 	BodyCollision->SetTransform({ { 0,0 }, { UInGameValue::EndFlagCollisionXScale, UInGameValue::EndFlagCollisionYScale} });
 	BodyCollision->SetColType(ECollisionType::Rect);
+
+	UEngineDebug::OutPutDebugText(" EndFlag X Pos = " + std::to_string(BodyCollision->GetPosition().X));
+	UEngineDebug::OutPutDebugText(" EndFlag Y Pos = " + std::to_string(BodyCollision->GetPosition().Y));
 }
 
 void AEndFlag::Tick(float _DeltaTime)
