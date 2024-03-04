@@ -24,7 +24,9 @@ void AUI::BeginPlay()
 	TimeRenderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::UIComponent));
 	TimeRenderer->SetImage("Numbers.png");
 	FVector UITimeScale = TimeRenderer->GetImage()->GetScale();
-	TimeRenderer->SetTransform({ {0,0}, {UITimeScale.iX() / UInGameValue::NumberImageXValue * UInGameValue::WindowSizeMulValue , UITimeScale.iY() / UInGameValue::NumberImageYValue * UInGameValue::WindowSizeMulValue}});
+	// 숫자 나타나는 초기 위치는 현재 BackGround 기준 (252,24) -> 현재 숫자 이미지는 좌측 상단이 중심
+	// 숫자 한칸 사이의 간격은 24씩 X값에 가감하면 된다.
+	TimeRenderer->SetTransform({ {252, 24}, {UITimeScale.iX() / UInGameValue::NumberImageXValue * UInGameValue::WindowSizeMulValue , UITimeScale.iY() / UInGameValue::NumberImageYValue * UInGameValue::WindowSizeMulValue}});
 	TimeRenderer->CameraEffectOff();
 
 	TimeRenderer->CreateAnimation("0", "Numbers.png", 0, 0, false);
