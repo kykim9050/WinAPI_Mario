@@ -77,11 +77,11 @@ void U1_1StageLevel::BeginPlay()
 	ACoinBlock* CoinBlock6 = SpawnCoinBlock(EActorType::Block, EItemType::Coin);
 	ACoinBlock* CoinBlock7 = SpawnCoinBlock(EActorType::Block, EItemType::Coin);
 	ACoinBlock* CoinBlock8 = SpawnCoinBlock(EActorType::Block, EItemType::Coin);
-	ACoinBlock* CoinBlock9 = SpawnCoinBlock(EActorType::Block, EItemType::Coin);
+	ACoinBlock* CoinBlock9 = SpawnCoinBlock(EActorType::Block, EItemType::Item);
 	ACoinBlock* CoinBlock10 = SpawnCoinBlock(EActorType::Block, EItemType::Coin);
 	ACoinBlock* CoinBlock11 = SpawnCoinBlock(EActorType::Block, EItemType::Coin);
 	ACoinBlock* CoinBlock12 = SpawnCoinBlock(EActorType::Block, EItemType::Coin);
-	ACoinBlock* CoinBlock13 = SpawnCoinBlock(EActorType::Block, EItemType::Coin);
+	ACoinBlock* CoinBlock13 = SpawnCoinBlock(EActorType::Block, EItemType::Item);
 
 	int StandardYPos = 456;
 	int SecondYPos = 264;
