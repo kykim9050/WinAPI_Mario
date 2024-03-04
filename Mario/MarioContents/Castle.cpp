@@ -21,8 +21,11 @@ void ACastle::BeginPlay()
 	Renderer->SetTransform({ {0,0}, {CastleScale.iX() * UInGameValue::WindowSizeMulValue, CastleScale.iY() * UInGameValue::WindowSizeMulValue} });
 
 	BodyCollision = CreateCollision(ECollisionOrder::CastleGate);
-	BodyCollision->SetTransform({ { 24,0 }, { UInGameValue::CastleGateCollisionXScale, UInGameValue::CastleGateCollisionYScale} });
+	BodyCollision->SetTransform({ { 16,0 }, { UInGameValue::CastleGateCollisionXScale, UInGameValue::CastleGateCollisionYScale} });
 	BodyCollision->SetColType(ECollisionType::Rect);
+
+	UEngineDebug::OutPutDebugText(" X Pos = " + std::to_string(BodyCollision->GetPosition().X));
+	UEngineDebug::OutPutDebugText(" Y Pos = " + std::to_string(BodyCollision->GetPosition().Y));
 }
 
 void ACastle::Tick(float _DeltaTime)
@@ -45,7 +48,7 @@ void ACastle::CollisionCheck()
 
 	if (nullptr != BodyCollision && true == BodyCollision->CollisionCheck(ECollisionOrder::Player, Result))
 	{
-		BodyCollision->ActiveOff();
+		//BodyCollision->ActiveOff();
 		Player->ReachToCastleGate();
 		return;
 	}

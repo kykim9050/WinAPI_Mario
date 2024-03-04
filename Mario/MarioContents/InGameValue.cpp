@@ -89,7 +89,7 @@ const int UInGameValue::EndFlagYPos = 124 * UInGameValue::WindowSizeMulValue;
 const int UInGameValue::EndFlagCollisionXScale = 2 * UInGameValue::WindowSizeMulValue;
 const int UInGameValue::EndFlagCollisionYScale = 400 * UInGameValue::WindowSizeMulValue;
 
-const int UInGameValue::EndPointCastleXPos = 3276 * UInGameValue::WindowSizeMulValue;
+const int UInGameValue::EndPointCastleXPos = 3272 * UInGameValue::WindowSizeMulValue;
 const int UInGameValue::EndPointCastleYPos = 168 * UInGameValue::WindowSizeMulValue;
 
 const int UInGameValue::CastleGateCollisionXScale = 4 * UInGameValue::WindowSizeMulValue;
