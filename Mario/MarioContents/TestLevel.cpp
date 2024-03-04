@@ -42,8 +42,8 @@ void UTestLevel::BeginPlay()
 	//ACoinBlock* CoinBlock2 = SpawnActor< ACoinBlock>(static_cast<int>(EActorType::Block));
 	//ACoinBlock* CoinBlock3 = SpawnActor< ACoinBlock>(static_cast<int>(EActorType::Block));
 	//ACoinBlock* CoinBlock4 = SpawnActor< ACoinBlock>(static_cast<int>(EActorType::Block));
-	//ACoinBlock* CoinBlock5 = SpawnCoinBlock(EActorType::Block, EItemType::Item);
-	//ACoinBlock* CoinBlock6 = SpawnCoinBlock(EActorType::Block, EItemType::Item);
+	ACoinBlock* CoinBlock5 = SpawnCoinBlock(EActorType::Block, EItemType::Item);
+	ACoinBlock* CoinBlock6 = SpawnCoinBlock(EActorType::Block, EItemType::Item);
 	//ACoinBlock* CoinBlock7 = SpawnCoinBlock(EActorType::Block, EItemType::Coin);
 
 	//AGoomba* MonsterGoomba1 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
@@ -69,8 +69,8 @@ void UTestLevel::BeginPlay()
 	//CoinBlock2->SetActorLocation({ 250 + 48 * 5,450 });
 	//CoinBlock3->SetActorLocation({ 250 + 48 * 6,450 });
 	//CoinBlock4->SetActorLocation({ 250 + 48 * 7,450 });
-	//CoinBlock5->SetActorLocation({ 250 + 48 * 8,StandardYPos });
-	//CoinBlock6->SetActorLocation({ 250 + 48 * 12,StandardYPos });
+	CoinBlock5->SetActorLocation({ 250 + 48 * 8,StandardYPos });
+	CoinBlock6->SetActorLocation({ 250 + 48 * 12,StandardYPos });
 	//CoinBlock7->SetActorLocation({ 250 + 48 * 16,StandardYPos });
 
 	//MonsterPiranhaPlant1->SetActorLocation({ 1875,550 });
