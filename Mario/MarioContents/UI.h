@@ -20,7 +20,13 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
+	void TimeCheck(float _DeltaTime);
+
 private:
 	UImageRenderer* PlayerUIRenderer = nullptr;
+	
+	int TimeCount = 11;
+	float TimeInterval = 1.0f;
+
 };
 
