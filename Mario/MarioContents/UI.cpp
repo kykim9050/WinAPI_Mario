@@ -24,7 +24,7 @@ void AUI::BeginPlay()
 	TimeRenderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::UIComponent));
 	TimeRenderer->SetImage("Numbers.png");
 	FVector UITimeScale = TimeRenderer->GetImage()->GetScale();
-	TimeRenderer->SetTransform({ {0,0}, {400 , 400}});
+	TimeRenderer->SetTransform({ {0,0}, {UITimeScale.iX() / UInGameValue::NumberImageXValue * UInGameValue::WindowSizeMulValue , UITimeScale.iY() / UInGameValue::NumberImageYValue * UInGameValue::WindowSizeMulValue}});
 	TimeRenderer->CameraEffectOff();
 
 	TimeRenderer->CreateAnimation("0", "Numbers.png", 0, 0, false);
@@ -37,8 +37,6 @@ void AUI::BeginPlay()
 	TimeRenderer->CreateAnimation("7", "Numbers.png", 7, 7, false);
 	TimeRenderer->CreateAnimation("8", "Numbers.png", 8, 8, false);
 	TimeRenderer->CreateAnimation("9", "Numbers.png", 9, 9, false);
-
-	/*TimeRenderer->ChangeAnimation("0");*/
 }
 
 void AUI::Tick(float _DeltaTime)
@@ -46,7 +44,9 @@ void AUI::Tick(float _DeltaTime)
 	AActor::Tick(_DeltaTime);
 
 	TimeCheck(_DeltaTime);
-	//TimeRenderUpdate();
+	// TimeRenderUpdate();
+	// ScoreCheck();
+	// ScoreRenderUpdate();
 }
 
 void AUI::TimeCheck(float _DeltaTime)
