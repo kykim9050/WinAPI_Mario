@@ -31,7 +31,7 @@ void AGoomba::BeginPlay()
 	BodyCollision->SetPosition({ 0, -(BodyCollision->GetTransform().GetScale().ihY()) });
 	BodyCollision->SetColType(ECollisionType::Rect);
 
-	SetActorState(EActorState::Move);
+	SetActorState(EActorState::Idle);
 }
 
 void AGoomba::Tick(float _DeltaTime)
@@ -43,9 +43,9 @@ void AGoomba::StateUpdate(float _DeltaTime)
 {
 	switch (ActorState)
 	{
-	/*case EPlayerState::Idle:
+	case EActorState::Idle:
 		Idle(_DeltaTime);
-		break;*/
+		break;
 	case EActorState::Move:
 		Move(_DeltaTime);
 		break;
@@ -113,6 +113,21 @@ void AGoomba::CollisionCheck()
 	}
 }
 
+
+void AGoomba::Idle(float _DeltaTime)
+{
+	APlayerMario* Player = APlayerMario::GetMainPlayer();
+
+	if (nullptr == Player)
+	{
+		MsgBoxAssert("플레이어가 존재하지 않습니다.");
+	}
+
+	if (GetActorLocation().iX() - Player->GetActorLocation().iX() < UInGameValue::ResultMainWindowXScale)
+	{
+		SetActorState(EActorState::Move);
+	}
+}
 
 void AGoomba::Move(float _DeltaTime)
 {

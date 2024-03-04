@@ -31,6 +31,7 @@ protected:
 	void GetHitStart() override;
 	void GetHitFromPlayerStart();
 
+	void Idle(float _DeltaTime) override;
 	void Move(float _DeltaTime) override;
 	void GetMonsterHit(float _DeltaTime);
 	void CalHorizonVelocityVector(float _DeltaTime) override;

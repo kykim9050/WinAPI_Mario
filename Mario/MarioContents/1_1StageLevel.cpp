@@ -138,6 +138,12 @@ void U1_1StageLevel::BeginPlay()
 	CoinBlock13->SetActorLocation({ 8088 + 48 * 2, StandardYPos });
 	BrickBlock30->SetActorLocation({ 8088 + 48 * 3, StandardYPos });
 
+	AGoomba* MonsterGoomba1 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
+	AKoopaTroopa* MonsterTroopa1 = SpawnActor<AKoopaTroopa>(static_cast<int>(EActorType::Monster));
+	
+	MonsterGoomba1->SetActorLocation({ 1300, StandardYPos });
+	MonsterTroopa1->SetActorLocation({ 1400, StandardYPos });
+
 }
 
 void U1_1StageLevel::Tick(float _DeltaTime)
