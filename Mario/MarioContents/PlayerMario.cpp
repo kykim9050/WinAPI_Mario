@@ -246,14 +246,12 @@ void APlayerMario::CollisionStateCheck()
 	{
 		StateChange(EActorState::MarioGrowUp);
 		AteMushroom = false;
-		return;
 	}
 
 	if (true == AteFireFlower)
 	{
 		StateChange(EActorState::FireMario);
 		AteFireFlower = false;
-		return;
 	}
 
 	if (true == BlockBottomHit)
