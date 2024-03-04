@@ -23,7 +23,7 @@ void AUI::BeginPlay()
 
 	// 숫자 나타나는 초기 위치는 현재 BackGround 기준 (252,24) -> 현재 숫자 이미지는 좌측 상단이 중심
 	// 숫자 한칸 사이의 간격은 24씩 X값에 가감하면 된다.
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < UInGameValue::TimeRendererSize; i++)
 	{
 		UImageRenderer* Renderer= CreateImageRenderer(static_cast<int>(EStageRenderOrder::UIComponent));
 		TimeRenderer.push_back(Renderer);

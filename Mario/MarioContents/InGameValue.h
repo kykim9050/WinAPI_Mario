@@ -200,6 +200,11 @@ public:
 	static const int NumberImageXValue;
 	static const int NumberImageYValue;
 
+	/// <summary>
+	/// UIÀÇ TimeRenderer ÀÇ size
+	/// </summary>
+	static const int TimeRendererSize;
+
 protected:
 
 private:
