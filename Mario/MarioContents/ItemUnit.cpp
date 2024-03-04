@@ -91,14 +91,14 @@ void AItemUnit::CollisionStateChange(ECollisionState _CollisionState)
 
 void AItemUnit::GetHitStart()
 {
-	BodyCollision->Destroy();
+	BodyCollision->ActiveOff();
 	StateChange(EActorState::Release);
 }
 
 void AItemUnit::ReleaseStart()
 {
 	//Destroy();
-	Renderer->Destroy();
+	Renderer->ActiveOff();
 	AddActorLocation(FVector::Zero);
 }
 
