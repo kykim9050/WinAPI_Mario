@@ -92,3 +92,6 @@ const int UInGameValue::EndFlagCollisionYScale = 400 * UInGameValue::WindowSizeM
 const int UInGameValue::EndPointCastleXPos = 3276 * UInGameValue::WindowSizeMulValue;
 const int UInGameValue::EndPointCastleYPos = 168 * UInGameValue::WindowSizeMulValue;
 
+const int UInGameValue::CastleGateCollisionXScale = 4 * UInGameValue::WindowSizeMulValue;
+const int UInGameValue::CastleGateCollisionYScale = 80 * UInGameValue::WindowSizeMulValue;
+

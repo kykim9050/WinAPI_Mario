@@ -109,6 +109,7 @@ enum class ECollisionOrder
 	FireFlower,
 	Invincible,
 	EndFlagLine,
+	CastleGate,
 };
 
 enum class ECollisionState

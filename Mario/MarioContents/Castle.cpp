@@ -19,9 +19,9 @@ void ACastle::BeginPlay()
 
 	Renderer->SetTransform({ {0,0}, {CastleScale.iX() * UInGameValue::WindowSizeMulValue, CastleScale.iY() * UInGameValue::WindowSizeMulValue} });
 
-	//BodyCollision = CreateCollision(ECollisionOrder::EndFlagLine);
-	//BodyCollision->SetTransform({ { 0,0 }, { UInGameValue::EndFlagCollisionXScale, UInGameValue::EndFlagCollisionYScale} });
-	//BodyCollision->SetColType(ECollisionType::Rect);
+	BodyCollision = CreateCollision(ECollisionOrder::CastleGate);
+	BodyCollision->SetTransform({ { 24,0 }, { UInGameValue::CastleGateCollisionXScale, UInGameValue::CastleGateCollisionYScale} });
+	BodyCollision->SetColType(ECollisionType::Rect);
 }
 
 void ACastle::Tick(float _DeltaTime)

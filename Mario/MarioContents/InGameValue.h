@@ -188,6 +188,12 @@ public:
 	static const int EndPointCastleXPos;
 	static const int EndPointCastleYPos;
 
+	/// <summary>
+	/// Stage 마지막 성문의 Collision의 Scale 값
+	/// </summary>
+	static const int CastleGateCollisionXScale;
+	static const int CastleGateCollisionYScale;
+
 protected:
 
 private:
