@@ -95,6 +95,9 @@
     <ClInclude Include="EndFlag.h">
       <Filter>Object\Structure</Filter>
     </ClInclude>
+    <ClInclude Include="Castle.h">
+      <Filter>Object\Structure</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp" />
@@ -186,6 +189,9 @@
       <Filter>Object\Structure</Filter>
     </ClCompile>
     <ClCompile Include="EndFlag.cpp">
+      <Filter>Object\Structure</Filter>
+    </ClCompile>
+    <ClCompile Include="Castle.cpp">
       <Filter>Object\Structure</Filter>
     </ClCompile>
   </ItemGroup>
