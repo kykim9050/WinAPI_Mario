@@ -27,6 +27,7 @@ enum class EStageRenderOrder
 {
 	CollisionMap,
 	BackGroundMap,
+	BackGrundStructure,
 	Item,
 	Block,
 	Monster,

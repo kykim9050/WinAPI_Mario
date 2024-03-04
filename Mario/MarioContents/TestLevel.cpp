@@ -13,6 +13,7 @@
 #include "CoinBlock.h"
 #include "ItemUnit.h"
 #include "EndFlag.h"
+#include "Castle.h"
 
 UTestLevel::UTestLevel()
 {
@@ -31,6 +32,7 @@ void UTestLevel::BeginPlay()
 	APlayerMario* Mario = SpawnActor< APlayerMario>(static_cast<int>(EActorType::Player));
 	AUI* PlayerUI = SpawnActor<AUI>(static_cast<int>(EActorType::UI));
 	AEndFlag* EndFlag = SpawnActor<AEndFlag>(static_cast<int>(EActorType::Structure));
+	ACastle* EndPointCastle = SpawnActor<ACastle>(static_cast<int>(EActorType::Structure));
 
 	ABrickBlock* BrickBlock1 = SpawnActor< ABrickBlock>(static_cast<int>(EActorType::Block));
 	ABrickBlock* BrickBlock2 = SpawnActor< ABrickBlock>(static_cast<int>(EActorType::Block));
@@ -55,8 +57,9 @@ void UTestLevel::BeginPlay()
 
 	Mario->SetActorLocation({ UInGameValue::MarioInitXPos, UInGameValue::MarioInitYPos });
 	PlayerUI->SetActorLocation({ UInGameValue::UIXScaleValue / 2 * UInGameValue::WindowSizeMulValue, UInGameValue::UIYScaleValue / 2 * UInGameValue::WindowSizeMulValue });
-	//EndFlag->SetActorLocation({ UInGameValue::EndFlagXPos * UInGameValue::WindowSizeMulValue, UInGameValue::EndFlagYPos * UInGameValue::WindowSizeMulValue });
-	EndFlag->SetActorLocation({ 300 * UInGameValue::WindowSizeMulValue, UInGameValue::EndFlagYPos * UInGameValue::WindowSizeMulValue });
+	EndFlag->SetActorLocation({ UInGameValue::EndFlagXPos * UInGameValue::WindowSizeMulValue, UInGameValue::EndFlagYPos * UInGameValue::WindowSizeMulValue });
+	EndPointCastle->SetActorLocation({ 200 * UInGameValue::WindowSizeMulValue, 200 * UInGameValue::WindowSizeMulValue });
+
 
 	int StandardYPos = 450;
 	int StandardXPos = 600;
