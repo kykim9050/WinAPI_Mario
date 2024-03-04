@@ -95,3 +95,6 @@ const int UInGameValue::EndPointCastleYPos = 168 * UInGameValue::WindowSizeMulVa
 const int UInGameValue::CastleGateCollisionXScale = 4 * UInGameValue::WindowSizeMulValue;
 const int UInGameValue::CastleGateCollisionYScale = 80 * UInGameValue::WindowSizeMulValue;
 
+const int UInGameValue::NumberImageXValue = 10;
+const int UInGameValue::NumberImageYValue = 1;
+

@@ -33,6 +33,7 @@ enum class EStageRenderOrder
 	Monster,
 	Mario,
 	UI,
+	UIComponent,
 };
 
 /// <summary>
