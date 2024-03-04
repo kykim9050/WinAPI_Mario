@@ -659,7 +659,7 @@ void APlayerMario::Dead(float _DeltaTime)
 void APlayerMario::ReachingEndFlag(float _DeltaTime)
 {
 	static int EndStep = 0;
-	static float DelayTime = 3.0f;
+	static float DelayTime = 2.0f;
 
 	switch (EndStep)
 	{
@@ -686,7 +686,7 @@ void APlayerMario::ReachingEndFlag(float _DeltaTime)
 			break;
 		}
 
-		AddActorLocation(FVector::Down * 300.0f * _DeltaTime);
+		AddActorLocation(FVector::Down * 400.0f * _DeltaTime);
 		break;
 	}
 	case 1:	// 도는 애니메이션 취하고 일정 시간 동안 대기하는 기능
