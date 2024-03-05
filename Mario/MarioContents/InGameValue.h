@@ -214,6 +214,10 @@ public:
 	/// </summary>
 	static const int ScoreRendererSize;
 
+	/// <summary>
+	/// UI의 CoinCountRenderer 의 size
+	/// </summary>
+	static const int CoinCountRendererSize;
 
 	/// <summary>
 	/// UI 창에서 출력되는 정보들 관련 수치

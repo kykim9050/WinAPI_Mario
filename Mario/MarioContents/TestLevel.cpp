@@ -37,14 +37,12 @@ void UTestLevel::BeginPlay()
 	ABrickBlock* BrickBlock1 = SpawnActor< ABrickBlock>(static_cast<int>(EActorType::Block));
 	ABrickBlock* BrickBlock2 = SpawnActor< ABrickBlock>(static_cast<int>(EActorType::Block));
 
-	ACoinBlock* CoinBlock5 = SpawnCoinBlock(EActorType::Block, EItemType::Item);
-	ACoinBlock* CoinBlock6 = SpawnCoinBlock(EActorType::Block, EItemType::Item);
 	ACoinBlock* CoinBlock1 = SpawnCoinBlock(EActorType::Block, EItemType::Coin);
+	ACoinBlock* CoinBlock2 = SpawnCoinBlock(EActorType::Block, EItemType::Coin);
+	ACoinBlock* CoinBlock3 = SpawnCoinBlock(EActorType::Block, EItemType::Coin);
+	ACoinBlock* CoinBlock4 = SpawnCoinBlock(EActorType::Block, EItemType::Coin);
+	ACoinBlock* CoinBlock5 = SpawnCoinBlock(EActorType::Block, EItemType::Coin);
 
-	AGoomba* Goomba1 = SpawnActor< AGoomba>(static_cast<int>(EActorType::Monster));
-	AGoomba* Goomba2 = SpawnActor< AGoomba>(static_cast<int>(EActorType::Monster));
-	AGoomba* Goomba3 = SpawnActor< AGoomba>(static_cast<int>(EActorType::Monster));
-	AKoopaTroopa* Troopa1 = SpawnActor< AKoopaTroopa>(static_cast<int>(EActorType::Monster));
 
 
 
@@ -60,13 +58,10 @@ void UTestLevel::BeginPlay()
 	BrickBlock2->SetActorLocation({ StandardXPos + 48*21,StandardYPos });
 	
 	CoinBlock1->SetActorLocation({ 250 + 48 * 9,StandardYPos });
-	CoinBlock5->SetActorLocation({ 250 + 48 * 8,StandardYPos });
-	CoinBlock6->SetActorLocation({ 250 + 48 * 12,StandardYPos });
-
-	Troopa1->SetActorLocation({ 250 + 48 * 4,StandardYPos });
-	Goomba1->SetActorLocation({ 250 + 48 * 7,StandardYPos });
-	Goomba2->SetActorLocation({ 250 + 48 * 8,StandardYPos });
-	Goomba3->SetActorLocation({ 250 + 48 * 9,StandardYPos });
+	CoinBlock2->SetActorLocation({ 250 + 48 * 10,StandardYPos });
+	CoinBlock3->SetActorLocation({ 250 + 48 * 11,StandardYPos });
+	CoinBlock4->SetActorLocation({ 250 + 48 * 12,StandardYPos });
+	CoinBlock5->SetActorLocation({ 250 + 48 * 13,StandardYPos });
 }
 
 void UTestLevel::Tick(float _DeltaTime)
