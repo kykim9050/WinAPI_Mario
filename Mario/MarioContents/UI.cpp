@@ -158,6 +158,9 @@ void AUI::ScoreCheck()
 	}
 
 	PlayerScore = Player->GetScore();
+	PlayerCoin = Player->GetCoinCount();
+
+	UEngineDebug::OutPutDebugText(std::to_string(PlayerCoin));
 }
 
 void AUI::ScoreRenderUpdate()

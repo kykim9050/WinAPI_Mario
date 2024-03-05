@@ -162,6 +162,16 @@ public:
 		return MarioType;
 	}
 
+	void GetCoin()
+	{
+		CoinCount += 1;
+	}
+
+	int GetCoinCount()
+	{
+		return CoinCount;
+	}
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -218,5 +228,7 @@ private:
 	bool IsReachingCastleGate = false;
 
 	EActorState PrevActorState = EActorState::None;
+
+	int CoinCount = 0;
 };
 

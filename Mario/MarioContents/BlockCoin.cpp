@@ -66,6 +66,7 @@ void ABlockCoin::AppearStart()
 	AItemUnit::AppearStart();
 
 	GiveScore(GetPlayer());
+	GetPlayer()->GetCoin();
 	JumpVelocityVector = FVector::Up * 600.0f;
 	Renderer->ActiveOn();
 }
