@@ -24,6 +24,7 @@ protected:
 	void TimeCheck(float _DeltaTime);
 	void TimeRenderUpdate();
 
+	void NumberToAnimation(int _PrintNumber, const FVector& _InitPos, int _AnimatingNum, const std::vector<UImageRenderer*>& _Renderer);
 
 private:
 	UImageRenderer* PlayerUIRenderer = nullptr;

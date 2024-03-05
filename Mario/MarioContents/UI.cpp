@@ -85,6 +85,8 @@ void AUI::TimeRenderUpdate()
 		int TempTime = TimeCount;
 		int ToStringValue = 0;
 
+		NumberToAnimation(TimeCount, FVector(100, 100), 3, TimeRenderer);
+
 		ToStringValue = TempTime / 100;
 		TimeRenderer[0]->ChangeAnimation(std::to_string(ToStringValue));
 		TempTime = TempTime % 100;
@@ -98,4 +100,15 @@ void AUI::TimeRenderUpdate()
 
 		TimeChange = false;
 	}
+}
+
+void AUI::NumberToAnimation(int _PrintNumber, const FVector& _InitPos, int _AnimatingNum, const std::vector<UImageRenderer*>& _Renderer)
+{
+	if (_Renderer.empty())
+	{
+		MsgBoxAssert("입력받은 자료 내부가 비어있습니다.");
+	}
+
+	int a = 0;
+
 }
