@@ -1,6 +1,8 @@
 ﻿#include "UI.h"
 #include "EnumClass.h"
 #include "InGameValue.h"
+#include "PlayerMario.h"
+
 
 AUI::AUI()
 {
@@ -50,7 +52,7 @@ void AUI::Tick(float _DeltaTime)
 
 	TimeCheck(_DeltaTime);
 	TimeRenderUpdate();
-	// ScoreCheck();
+	ScoreCheck();
 	// ScoreRenderUpdate();
 }
 
@@ -116,4 +118,18 @@ void AUI::NumberToAnimation(int _PrintNumber, int _AnimatingNum, const std::vect
 		MaxDigit /= 10;
 	}
 
+}
+
+void AUI::ScoreCheck()
+{
+	APlayerMario* Player = APlayerMario::GetMainPlayer();
+
+	if (nullptr == Player)
+	{
+		MsgBoxAssert("플레이어가 존재하지 않습니다.");
+	}
+
+	PlayerScore = Player->GetScore();
+
+	UEngineDebug::OutPutDebugText(std::to_string(PlayerScore));
 }

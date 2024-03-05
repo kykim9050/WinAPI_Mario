@@ -96,8 +96,6 @@ void APlayerMario::Tick(float _DeltaTime)
 	UStateUnit::Tick(_DeltaTime);
 
 	UEngineDebug::DebugTextPrint("X Pos : " +std::to_string(GetActorLocation().X) + " , Y Pos : " + std::to_string(GetActorLocation().Y), 20.0f);
-	
-	UEngineDebug::OutPutDebugText(std::to_string(GetScore()));
 }
 
 

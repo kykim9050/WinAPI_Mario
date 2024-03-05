@@ -8,6 +8,8 @@
 // Ό³Έν :
 class APlayerMario : public UStateUnit
 {
+	friend class AUI;
+
 public:
 	// constrcuter destructer
 	APlayerMario();
