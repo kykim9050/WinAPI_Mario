@@ -1,8 +1,9 @@
 #pragma once
 #include "StateUnit.h"
+#include "MainPlayer.h"
 
 // Ό³Έν :
-class AStructureUnit : public UStateUnit
+class AStructureUnit : public UStateUnit, public UMainPlayer
 {
 public:
 	// constrcuter destructer
