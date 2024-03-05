@@ -99,3 +99,5 @@ const int UInGameValue::NumberImageXValue = 10;
 const int UInGameValue::NumberImageYValue = 1;
 
 const int UInGameValue::TimeRendererSize = 3;
+
+const int UInGameValue::ScoreRendererSize = 6;

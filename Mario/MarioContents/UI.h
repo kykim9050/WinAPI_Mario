@@ -26,12 +26,12 @@ protected:
 
 	void NumberToAnimation(int _PrintNumber, int _AnimatingNum, const std::vector<UImageRenderer*>& _Renderer);
 	void ScoreCheck();
-
+	void ScoreRenderUpdate();
 
 private:
 	UImageRenderer* PlayerUIRenderer = nullptr;
 	std::vector<UImageRenderer*> TimeRenderer = std::vector<UImageRenderer*>();
-
+	std::vector<UImageRenderer*> ScoreRenderer = std::vector<UImageRenderer*>();
 
 	int TimeCount = 400;
 	float TimeInterval = 1.0f;
