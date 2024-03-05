@@ -92,27 +92,14 @@ void AUI::BeginPlay()
 		CoinCountRenderer[i]->CreateAnimation("9", "Numbers.png", 9, 9, false);
 	}
 
-
-	std::string StageName = GetWorld()->GetName();
-
-	if (StageName.empty())
-	{
-		MsgBoxAssert("스테이지 이름이 지정되지 않아서 스테이지 정보를 받아올 수 없습니다.");
-	}
-
 	std::vector<std::string> StageInfo = std::vector<std::string>();
-	std::stringstream StringStream(StageName);
-	std::string StrTemp = std::string();
+	GetLevelStageInfo(StageInfo);
 
-	while (std::getline(StringStream, StrTemp, '-'))
-	{
-		StageInfo.push_back(StrTemp);
-	}
-	
-	for ( std::string& _string: StageInfo)
+	for (std::string& _string : StageInfo)
 	{
 		UEngineDebug::OutPutDebugText(_string);
 	}
+	
 }
 
 void AUI::Tick(float _DeltaTime)
@@ -206,4 +193,29 @@ void AUI::ScoreRenderUpdate()
 {
 	NumberToAnimation(PlayerScore, 6, ScoreRenderer);
 	NumberToAnimation(PlayerCoin, 2, CoinCountRenderer);
+}
+
+
+void AUI::GetLevelStageInfo(std::vector<std::string>& _StageInfo)
+{
+	if (!_StageInfo.empty())
+	{
+		_StageInfo.clear();
+	}
+
+
+	std::string StageName = GetWorld()->GetName();
+
+	if (StageName.empty())
+	{
+		MsgBoxAssert("스테이지 이름이 지정되지 않아서 스테이지 정보를 받아올 수 없습니다.");
+	}
+
+	std::stringstream StringStream(StageName);
+	std::string StrTemp = std::string();
+
+	while (std::getline(StringStream, StrTemp, '-'))
+	{
+		_StageInfo.push_back(StrTemp);
+	}
 }
