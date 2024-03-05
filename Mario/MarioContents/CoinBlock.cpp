@@ -100,6 +100,7 @@ void ACoinBlock::FixedStart()
 {
 	ABlockUnit::FixedStart();
 
+	FixedBlock = true;
 	Item->GetRenderer()->ActiveOn();
 	Renderer->ChangeAnimation("CoinBlock_AfterHit");
 }
@@ -124,18 +125,18 @@ void ACoinBlock::CollisionCheck()
 		const FTransform& PlayerColTrans = Player->GetBodyCollision()->GetActorBaseTransform();
 		const FTransform& BlockColTrans = BodyCollision->GetActorBaseTransform();
 
-
 		if (PlayerColTrans.GetPosition().X < BlockColTrans.Right() && PlayerColTrans.GetPosition().X > BlockColTrans.Left() && PlayerColTrans.GetPosition().Y < BlockColTrans.Bottom())
 		{
 			//UEngineDebug::OutPutDebugText("Occur Block Bot Collision");
 			Player->HitBlockBottom();
 
-			CollisionStateChange(ECollisionState::GetHit);
 
-			if (Item->IsDestroy())
+			if (true == FixedBlock)
 			{
 				return;
 			}
+
+			CollisionStateChange(ECollisionState::GetHit);
 			Item->StateChange(EActorState::Appear);
 			return;
 		}
