@@ -3,6 +3,7 @@
 
 AFireFlower::AFireFlower()
 {
+	SetScore(1000);
 }
 
 AFireFlower::~AFireFlower()
@@ -67,6 +68,8 @@ void AFireFlower::CollisionCheck()
 	if (true == BodyCollision->CollisionCheck(ECollisionOrder::Player, Result))
 	{
 		GetPlayer()->EattingFireFlower();
+		GiveScore(GetPlayer());
+
 		CollisionStateChange(ECollisionState::GetHit);
 		return;
 	}

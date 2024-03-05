@@ -3,6 +3,7 @@
 
 AMushroom::AMushroom()
 {
+	SetScore(1000);
 }
 
 AMushroom::~AMushroom()
@@ -78,6 +79,8 @@ void AMushroom::CollisionCheck()
 	if (true == BodyCollision->CollisionCheck(ECollisionOrder::Player, Result))
 	{
 		GetPlayer()->EattingMushroom();
+		GiveScore(GetPlayer());
+
 		CollisionStateChange(ECollisionState::GetHit);
 		return;
 	}
