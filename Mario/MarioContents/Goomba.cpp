@@ -88,6 +88,7 @@ void AGoomba::CollisionCheck()
 			BodyCollision->Destroy();
 
 			Player->StateChange(EActorState::CollisionJump);
+			GiveScore(Player);
 
 			CollisionStateChange(ECollisionState::GetHit);
 
