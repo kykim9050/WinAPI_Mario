@@ -34,6 +34,10 @@ public:
 	/// 행 수
 	static const int MarioLeftImageYValue;
 
+
+	static const int UICoinImageXValue;
+	static const int UICoinImageYValue;
+
 	// TitleCoin.png
 	// 열 수 
 	static const int TitleCoinImgX;
@@ -195,7 +199,7 @@ public:
 	static const int CastleGateCollisionYScale;
 
 	/// <summary>
-	/// Number_Origin.png의 열, 행 수
+	/// Numbers.png의 열, 행 수
 	/// </summary>
 	static const int NumberImageXValue;
 	static const int NumberImageYValue;
