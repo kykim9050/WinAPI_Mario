@@ -37,8 +37,8 @@ void AUI::BeginPlay()
 		UImageRenderer* Renderer= CreateImageRenderer(static_cast<int>(EStageRenderOrder::UIComponent));
 		TimeRenderer.push_back(Renderer);
 		TimeRenderer[i]->SetImage("Numbers.png");
-		FVector UITimeScale = TimeRenderer[i]->GetImage()->GetScale();
-		TimeRenderer[i]->SetTransform({ {UInGameValue::UITtimeRendInitXPos + UInGameValue::UISpacingBetRends * i, UInGameValue::UIRendInitYPos}, {UITimeScale.iX() / UInGameValue::NumberImageXValue * UInGameValue::WindowSizeMulValue , UITimeScale.iY() / UInGameValue::NumberImageYValue * UInGameValue::WindowSizeMulValue} });
+		FVector UINumberScale = TimeRenderer[i]->GetImage()->GetScale();
+		TimeRenderer[i]->SetTransform({ {UInGameValue::UITtimeRendInitXPos + UInGameValue::UISpacingBetRends * i, UInGameValue::UIRendInitYPos}, {UINumberScale.iX() / UInGameValue::NumberImageXValue * UInGameValue::WindowSizeMulValue , UINumberScale.iY() / UInGameValue::NumberImageYValue * UInGameValue::WindowSizeMulValue} });
 		TimeRenderer[i]->CameraEffectOff();
 		TimeRenderer[i]->CreateAnimation("0", "Numbers.png", 0, 0, false);
 		TimeRenderer[i]->CreateAnimation("1", "Numbers.png", 1, 1, false);
@@ -57,8 +57,8 @@ void AUI::BeginPlay()
 		UImageRenderer* Renderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::UIComponent));
 		ScoreRenderer.push_back(Renderer);
 		ScoreRenderer[i]->SetImage("Numbers.png");
-		FVector UIComponentScale = ScoreRenderer[i]->GetImage()->GetScale();
-		ScoreRenderer[i]->SetTransform({ {UInGameValue::UIScoreRendInitXPos + UInGameValue::UISpacingBetRends * i, UInGameValue::UIRendInitYPos}, {UIComponentScale.iX() / UInGameValue::NumberImageXValue * UInGameValue::WindowSizeMulValue , UIComponentScale.iY() / UInGameValue::NumberImageYValue * UInGameValue::WindowSizeMulValue} });
+		FVector UINumberScale = ScoreRenderer[i]->GetImage()->GetScale();
+		ScoreRenderer[i]->SetTransform({ {UInGameValue::UIScoreRendInitXPos + UInGameValue::UISpacingBetRends * i, UInGameValue::UIRendInitYPos}, {UINumberScale.iX() / UInGameValue::NumberImageXValue * UInGameValue::WindowSizeMulValue , UINumberScale.iY() / UInGameValue::NumberImageYValue * UInGameValue::WindowSizeMulValue} });
 		ScoreRenderer[i]->CameraEffectOff();
 		ScoreRenderer[i]->CreateAnimation("0", "Numbers.png", 0, 0, false);
 		ScoreRenderer[i]->CreateAnimation("1", "Numbers.png", 1, 1, false);
@@ -77,8 +77,8 @@ void AUI::BeginPlay()
 		UImageRenderer* Renderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::UIComponent));
 		CoinCountRenderer.push_back(Renderer);
 		CoinCountRenderer[i]->SetImage("Numbers.png");
-		FVector UITimeScale = CoinCountRenderer[i]->GetImage()->GetScale();
-		CoinCountRenderer[i]->SetTransform({ {UInGameValue::UIScoreRendInitXPos + UInGameValue::UISpacingBetRends * (10+i), UInGameValue::UIRendInitYPos}, {UITimeScale.iX() / UInGameValue::NumberImageXValue * UInGameValue::WindowSizeMulValue , UITimeScale.iY() / UInGameValue::NumberImageYValue * UInGameValue::WindowSizeMulValue} });
+		FVector UINumberScale = CoinCountRenderer[i]->GetImage()->GetScale();
+		CoinCountRenderer[i]->SetTransform({ {UInGameValue::UIScoreRendInitXPos + UInGameValue::UISpacingBetRends * (10+i), UInGameValue::UIRendInitYPos}, {UINumberScale.iX() / UInGameValue::NumberImageXValue * UInGameValue::WindowSizeMulValue , UINumberScale.iY() / UInGameValue::NumberImageYValue * UInGameValue::WindowSizeMulValue} });
 		CoinCountRenderer[i]->CameraEffectOff();
 		CoinCountRenderer[i]->CreateAnimation("0", "Numbers.png", 0, 0, false);
 		CoinCountRenderer[i]->CreateAnimation("1", "Numbers.png", 1, 1, false);
@@ -92,13 +92,13 @@ void AUI::BeginPlay()
 		CoinCountRenderer[i]->CreateAnimation("9", "Numbers.png", 9, 9, false);
 	}
 
-	for (int i = 0; i < 2; i++)
+	for (int i = 0; i < UInGameValue::StageInfoRendererSize; i++)
 	{
 		UImageRenderer* Renderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::UIComponent));
 		StageInfoRenderer.push_back(Renderer);
 		StageInfoRenderer[i]->SetImage("Numbers.png");
-		FVector UITimeScale = StageInfoRenderer[i]->GetImage()->GetScale();
-		StageInfoRenderer[i]->SetTransform({ {UInGameValue::UIScoreRendInitXPos + UInGameValue::UISpacingBetRends * (16 + i*2), UInGameValue::UIRendInitYPos}, {UITimeScale.iX() / UInGameValue::NumberImageXValue * UInGameValue::WindowSizeMulValue , UITimeScale.iY() / UInGameValue::NumberImageYValue * UInGameValue::WindowSizeMulValue} });
+		FVector UINumberScale = StageInfoRenderer[i]->GetImage()->GetScale();
+		StageInfoRenderer[i]->SetTransform({ {UInGameValue::UIStageInfoRendInitXPos + UInGameValue::UISpacingBetRends * (i*2), UInGameValue::UIRendInitYPos}, {UINumberScale.iX() / UInGameValue::NumberImageXValue * UInGameValue::WindowSizeMulValue , UINumberScale.iY() / UInGameValue::NumberImageYValue * UInGameValue::WindowSizeMulValue} });
 		StageInfoRenderer[i]->CameraEffectOff();
 		StageInfoRenderer[i]->CreateAnimation("0", "Numbers.png", 0, 0, false);
 		StageInfoRenderer[i]->CreateAnimation("1", "Numbers.png", 1, 1, false);
@@ -115,7 +115,7 @@ void AUI::BeginPlay()
 	std::vector<std::string> StageInfo = std::vector<std::string>();
 	GetLevelStageInfo(StageInfo);
 
-	for (int i = 0; i < 2; i++)
+	for (int i = 0; i < UInGameValue::StageInfoRendererSize; i++)
 	{
 		StageInfoRenderer[i]->ChangeAnimation(StageInfo[i]);
 	}
