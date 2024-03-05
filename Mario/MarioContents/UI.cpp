@@ -87,17 +87,6 @@ void AUI::TimeRenderUpdate()
 
 		NumberToAnimation(TimeCount, 3, TimeRenderer);
 
-		ToStringValue = TempTime / 100;
-		TimeRenderer[0]->ChangeAnimation(std::to_string(ToStringValue));
-		TempTime = TempTime % 100;
-
-		ToStringValue = TempTime / 10;
-		TimeRenderer[1]->ChangeAnimation(std::to_string(ToStringValue));
-		TempTime = TempTime % 10;
-
-		ToStringValue = TempTime;
-		TimeRenderer[2]->ChangeAnimation(std::to_string(ToStringValue));
-
 		TimeChange = false;
 	}
 }
@@ -109,6 +98,22 @@ void AUI::NumberToAnimation(int _PrintNumber, int _AnimatingNum, const std::vect
 		MsgBoxAssert("입력받은 자료 내부가 비어있습니다.");
 	}
 
-	int a = 0;
+	int MaxDigit = 1;
+
+	for (int i = 0; i < _AnimatingNum - 1; i++)
+	{
+		MaxDigit *= 10;
+	}
+
+	int PrintNumber = _PrintNumber;
+	int ToStringValue = 0;
+
+	for (int i = 0; i < _AnimatingNum; i++)
+	{
+		ToStringValue = PrintNumber / MaxDigit;
+		_Renderer[i]->ChangeAnimation(std::to_string(ToStringValue));
+		PrintNumber = PrintNumber % MaxDigit;
+		MaxDigit /= 10;
+	}
 
 }
