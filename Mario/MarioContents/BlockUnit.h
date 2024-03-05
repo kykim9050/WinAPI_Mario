@@ -45,6 +45,7 @@ protected:
 
 	UCollision* SideCollision = nullptr;
 	UCollision* TopCollision = nullptr;
+	APlayerMario* Player = nullptr;
 
 private:
 
