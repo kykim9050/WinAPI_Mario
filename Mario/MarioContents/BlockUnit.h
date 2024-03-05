@@ -2,9 +2,10 @@
 #include "StateUnit.h"
 #include "PlayerMario.h"
 #include "ItemUnit.h"
+#include "MainPlayer.h"
 
 // Ό³Έν :
-class ABlockUnit : public UStateUnit
+class ABlockUnit : public UStateUnit, public UMainPlayer
 {
 public:
 	// constrcuter destructer
@@ -45,7 +46,6 @@ protected:
 
 	UCollision* SideCollision = nullptr;
 	UCollision* TopCollision = nullptr;
-	APlayerMario* Player = nullptr;
 
 private:
 

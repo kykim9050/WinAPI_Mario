@@ -18,9 +18,14 @@ public:
 	UMainPlayer& operator=(UMainPlayer&& _Other) noexcept = delete;
 
 protected:
-	APlayerMario* Player = nullptr;
+
+	APlayerMario* GetPlayer()
+	{
+		return Player;
+	}
 
 private:
+	APlayerMario* Player = nullptr;
 
 };
 

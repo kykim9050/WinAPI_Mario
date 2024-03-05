@@ -13,13 +13,6 @@ void ABlockUnit::BeginPlay()
 {
 	UStateUnit::BeginPlay();
 
-	Player = APlayerMario::GetMainPlayer();
-
-	if (nullptr == Player)
-	{
-		MsgBoxAssert("플레이어가 존재하지 않습니다.");
-	}
-
 	SideCollision = CreateCollision(ECollisionOrder::BlockSide);
 	SideCollision->SetTransform({ { 0, 0 }, { UInGameValue::BlockCollisionScaleX, UInGameValue::BlockCollisionScaleY - 16} });
 	SideCollision->SetColType(ECollisionType::Rect);
