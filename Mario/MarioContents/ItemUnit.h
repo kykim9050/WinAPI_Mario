@@ -2,11 +2,12 @@
 #include "EnumClass.h"
 #include "InGameValue.h"
 #include "StateUnit.h"
+#include "MainPlayer.h"
 
 class UImageRenderer;
 
 // Ό³Έν :
-class AItemUnit : public UStateUnit
+class AItemUnit : public UStateUnit , public UMainPlayer
 {
 public:
 	// constrcuter destructer
