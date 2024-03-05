@@ -98,6 +98,9 @@
     <ClInclude Include="Castle.h">
       <Filter>Object\Structure</Filter>
     </ClInclude>
+    <ClInclude Include="MainPlayer.h">
+      <Filter>Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp" />
@@ -193,6 +196,9 @@
     </ClCompile>
     <ClCompile Include="Castle.cpp">
       <Filter>Object\Structure</Filter>
+    </ClCompile>
+    <ClCompile Include="MainPlayer.cpp">
+      <Filter>Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
