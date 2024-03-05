@@ -112,12 +112,6 @@ void ACoinBlock::CollisionCheck()
 
 	std::vector<UCollision*> Result = std::vector<UCollision*>();
 
-	APlayerMario* Player = APlayerMario::GetMainPlayer();
-
-	if (nullptr == Player)
-	{
-		MsgBoxAssert("플레이어가 존재하지 않습니다.");
-	}
 
 	// Block의 바닥과 Player의 충돌일 때
 	if (true == BodyCollision->CollisionCheck(ECollisionOrder::Player, Result))
@@ -155,13 +149,6 @@ void ACoinBlock::GetHitStart()
 		return;
 	}
 
-	APlayerMario* Player = APlayerMario::GetMainPlayer();
-
-	if (nullptr == Player)
-	{
-		MsgBoxAssert("플레이어가 존재하지 않습니다.");
-	}
-
 	EMarioType type = Player->GetPlayerType();
 
 
@@ -180,13 +167,6 @@ void ACoinBlock::GetHitStart()
 void ACoinBlock::Wait(float _DeltaTime)
 {
 	ABlockUnit::Wait(_DeltaTime);
-
-	APlayerMario* Player = APlayerMario::GetMainPlayer();
-
-	if (nullptr == Player)
-	{
-		MsgBoxAssert("플레이어가 존재하지 않습니다.");
-	}
 
 	if (50.0f > (InitPos.X - Player->GetActorLocation().X))
 	{
