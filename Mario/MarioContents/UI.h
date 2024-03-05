@@ -30,8 +30,10 @@ protected:
 
 private:
 	UImageRenderer* PlayerUIRenderer = nullptr;
+	UImageRenderer* UICoinRenderer = nullptr;
 	std::vector<UImageRenderer*> TimeRenderer = std::vector<UImageRenderer*>();
 	std::vector<UImageRenderer*> ScoreRenderer = std::vector<UImageRenderer*>();
+
 
 	int TimeCount = 400;
 	float TimeInterval = 1.0f;

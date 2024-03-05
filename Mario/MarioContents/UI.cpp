@@ -22,6 +22,14 @@ void AUI::BeginPlay()
 	PlayerUIRenderer->SetTransform({ {0,0}, {UIScale.iX() * UInGameValue::WindowSizeMulValue, UIScale.iY() * UInGameValue::WindowSizeMulValue} });
 	PlayerUIRenderer->CameraEffectOff();
 
+	UICoinRenderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::UIComponent));
+	UICoinRenderer->SetImage("UICoin.png");
+	FVector UICoinScale = UICoinRenderer->GetImage()->GetScale();
+	UICoinRenderer->SetTransform({ {0,0}, {UICoinScale.iX() / UInGameValue::UICoinImageXValue * UInGameValue::WindowSizeMulValue, UICoinScale.iY() / UInGameValue::UICoinImageXValue * UInGameValue::WindowSizeMulValue} });
+	UICoinRenderer->CameraEffectOff();
+	UICoinRenderer->CreateAnimation("Twinkle", "UICoin.png", { 0,1,2,1,0,0 }, 0.15f, true);
+	UICoinRenderer->ChangeAnimation("Twinkle");
+
 
 	// 숫자 나타나는 초기 위치는 현재 BackGround 기준 (252,24) -> 현재 숫자 이미지는 좌측 상단이 중심
 	// 숫자 한칸 사이의 간격은 24씩 X값에 가감하면 된다.
