@@ -48,6 +48,19 @@ public:
 		HorizonVelocityVector = FVector::Zero;
 	}
 
+	void GiveScore(UStateUnit* _Other)
+	{
+		if (nullptr == _Other)
+		{
+			MsgBoxAssert("대상 오브젝트가 존재하지 않습니다.");
+		}
+
+		int MyScore = _Other->GetScore();
+
+		_Other->AddScore(MyScore);
+	}
+
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -91,14 +104,11 @@ protected:
 	virtual void CalGravityVelocityVector(float _DeltaTime) {}
 	void CalTotalVelocityVector(float _DeltaTime);
 
-	void AddScore(const UStateUnit* _Other)
-	{
-		if (nullptr == _Other)
-		{
-			MsgBoxAssert("대상 오브젝트가 존재하지 않습니다.");
-		}
+	
 
-		Score += _Other->GetScore();
+	void AddScore(const int _Score)
+	{
+		Score += _Score;
 	}
 
 	int GetScore() const
