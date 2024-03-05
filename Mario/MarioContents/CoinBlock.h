@@ -20,6 +20,11 @@ public:
 		ItemType = _Type;
 	}
 
+	void FixingBlock()
+	{
+		FixedBlock = true;
+	}
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -40,5 +45,6 @@ private:
 	AItemUnit* Item = nullptr;
 	EItemType ItemType = EItemType::None;
 	static bool ItemIsMushroom;
+	bool FixedBlock = false;
 };
 
