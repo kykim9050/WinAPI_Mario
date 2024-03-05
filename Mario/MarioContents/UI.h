@@ -33,6 +33,7 @@ private:
 	UImageRenderer* UICoinRenderer = nullptr;
 	std::vector<UImageRenderer*> TimeRenderer = std::vector<UImageRenderer*>();
 	std::vector<UImageRenderer*> ScoreRenderer = std::vector<UImageRenderer*>();
+	std::vector<UImageRenderer*> CoinCountRenderer = std::vector<UImageRenderer*>();
 
 
 	int TimeCount = 400;
