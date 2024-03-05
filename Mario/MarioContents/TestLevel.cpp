@@ -42,6 +42,9 @@ void UTestLevel::BeginPlay()
 	ACoinBlock* CoinBlock1 = SpawnCoinBlock(EActorType::Block, EItemType::Coin);
 
 	AGoomba* Goomba1 = SpawnActor< AGoomba>(static_cast<int>(EActorType::Monster));
+	AGoomba* Goomba2 = SpawnActor< AGoomba>(static_cast<int>(EActorType::Monster));
+	AGoomba* Goomba3 = SpawnActor< AGoomba>(static_cast<int>(EActorType::Monster));
+	AKoopaTroopa* Troopa1 = SpawnActor< AKoopaTroopa>(static_cast<int>(EActorType::Monster));
 
 
 
@@ -60,8 +63,10 @@ void UTestLevel::BeginPlay()
 	CoinBlock5->SetActorLocation({ 250 + 48 * 8,StandardYPos });
 	CoinBlock6->SetActorLocation({ 250 + 48 * 12,StandardYPos });
 
-	Goomba1->SetActorLocation({ 250 + 48 * 2,StandardYPos });
-
+	Troopa1->SetActorLocation({ 250 + 48 * 4,StandardYPos });
+	Goomba1->SetActorLocation({ 250 + 48 * 7,StandardYPos });
+	Goomba2->SetActorLocation({ 250 + 48 * 8,StandardYPos });
+	Goomba3->SetActorLocation({ 250 + 48 * 9,StandardYPos });
 }
 
 void UTestLevel::Tick(float _DeltaTime)
