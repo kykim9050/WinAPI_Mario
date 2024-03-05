@@ -35,7 +35,7 @@ private:
 	std::vector<UImageRenderer*> TimeRenderer = std::vector<UImageRenderer*>();
 	std::vector<UImageRenderer*> ScoreRenderer = std::vector<UImageRenderer*>();
 	std::vector<UImageRenderer*> CoinCountRenderer = std::vector<UImageRenderer*>();
-
+	std::vector<UImageRenderer*> StageInfoRenderer = std::vector<UImageRenderer*>();
 
 	int TimeCount = 400;
 	float TimeInterval = 1.0f;
