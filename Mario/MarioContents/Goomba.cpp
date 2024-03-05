@@ -68,15 +68,10 @@ void AGoomba::CollisionCheck()
 {
 	std::vector<UCollision*> Result = std::vector<UCollision*>();
 
-	APlayerMario* Player = APlayerMario::GetMainPlayer();
-	if (nullptr == Player)
-	{
-		MsgBoxAssert("플레이어가 존재하지 않습니다.");
-	}
 
 	if (true == BodyCollision->CollisionCheck(ECollisionOrder::Player, Result))
 	{
-		float PlayerBottom = Player->GetBodyCollision()->GetActorBaseTransform().Bottom();
+		float PlayerBottom = GetPlayer()->GetBodyCollision()->GetActorBaseTransform().Bottom();
 		float MonsterBottom = BodyCollision->GetActorBaseTransform().Bottom();
 
 		// 현재 몬스터의 Collision ScaleY의 반값만큼 Player의 Bottom 값이 위에 잇다면 몬스터를 밟은 것
@@ -87,8 +82,8 @@ void AGoomba::CollisionCheck()
 		{
 			BodyCollision->Destroy();
 
-			Player->StateChange(EActorState::CollisionJump);
-			GiveScore(Player);
+			GetPlayer()->StateChange(EActorState::CollisionJump);
+			GiveScore(GetPlayer());
 
 			CollisionStateChange(ECollisionState::GetHit);
 
@@ -96,7 +91,7 @@ void AGoomba::CollisionCheck()
 		}
 
 		// 몬스터를 밟지 않고 충돌했을 경우 (플레이어 사망)
-		Player->StateChange(EActorState::GetHit);
+		GetPlayer()->StateChange(EActorState::GetHit);
 		return;
 	}
 
@@ -117,14 +112,8 @@ void AGoomba::CollisionCheck()
 
 void AGoomba::Idle(float _DeltaTime)
 {
-	APlayerMario* Player = APlayerMario::GetMainPlayer();
 
-	if (nullptr == Player)
-	{
-		MsgBoxAssert("플레이어가 존재하지 않습니다.");
-	}
-
-	if (GetActorLocation().iX() - Player->GetActorLocation().iX() < UInGameValue::ResultMainWindowXScale)
+	if (GetActorLocation().iX() - GetPlayer()->GetActorLocation().iX() < UInGameValue::ResultMainWindowXScale)
 	{
 		SetActorState(EActorState::Move);
 	}
