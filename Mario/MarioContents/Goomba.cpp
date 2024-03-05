@@ -98,6 +98,7 @@ void AGoomba::CollisionCheck()
 
 		// GetHit시 Collision 삭제후
 		BodyCollision->Destroy();
+		GiveScore(GetPlayer());
 
 		// 몬스터의 상태를 GetHit로 변환
 		CollisionStateChange(ECollisionState::GetMonsterHit);

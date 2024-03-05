@@ -5,6 +5,7 @@ AKoopaTroopa::AKoopaTroopa()
 	GravityVelocityVector = FVector::Down * 500.0f;
 	HorizonVelocityVector = ActorMoveDir * 50.0f;
 	Life = 3;
+	SetScore(100);
 }
 
 AKoopaTroopa::~AKoopaTroopa()
@@ -287,6 +288,7 @@ void AKoopaTroopa::CollisionCheck()
 	{
 		// GetHit시 Collision 삭제후
 		BodyCollision->Destroy();
+		GiveScore(GetPlayer());
 
 		CollisionStateChange(ECollisionState::GetMonsterHit);
 		return;
