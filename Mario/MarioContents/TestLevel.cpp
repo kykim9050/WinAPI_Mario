@@ -27,6 +27,8 @@ void UTestLevel::BeginPlay()
 {
 	UCreateLevel::BeginPlay();
 
+	SetName("1-1");
+
 	ABackGroundMap* Map = SpawnActor< ABackGroundMap>(static_cast<int>(EActorType::Map));
 	UCollisionMap* CollisionMap = SpawnActor< UCollisionMap>(static_cast<int>(EActorType::Map));
 	APlayerMario* Mario = SpawnActor< APlayerMario>(static_cast<int>(EActorType::Player));

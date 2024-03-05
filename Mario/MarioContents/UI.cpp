@@ -30,7 +30,6 @@ void AUI::BeginPlay()
 	UICoinRenderer->CreateAnimation("Twinkle", "UICoin.png", { 0,1,2,1,0,0 }, 0.15f, true);
 	UICoinRenderer->ChangeAnimation("Twinkle");
 
-
 	// 숫자 나타나는 초기 위치는 현재 BackGround 기준 (252,24) -> 현재 숫자 이미지는 좌측 상단이 중심
 	// 숫자 한칸 사이의 간격은 24씩 X값에 가감하면 된다.
 	for (int i = 0; i < UInGameValue::TimeRendererSize; i++)
@@ -92,6 +91,15 @@ void AUI::BeginPlay()
 		CoinCountRenderer[i]->CreateAnimation("8", "Numbers.png", 8, 8, false);
 		CoinCountRenderer[i]->CreateAnimation("9", "Numbers.png", 9, 9, false);
 	}
+
+	std::string StageName = GetWorld()->GetName();
+
+	if (StageName.empty())
+	{
+		MsgBoxAssert("스테이지 이름이 지정되지 않아서 스테이지 정보를 받아올 수 없습니다.");
+	}
+
+
 }
 
 void AUI::Tick(float _DeltaTime)
