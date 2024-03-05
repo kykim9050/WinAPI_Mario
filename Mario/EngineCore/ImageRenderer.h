@@ -251,9 +251,10 @@ public:
 		SortType = _SortType;
 	}
 
-	void AutoImageScale()
+	void AutoImageScale(float _AutoScale = 1.0f)
 	{
 		AutoImageScaleValue = true;
+		AutoImageScaleRatio = _AutoScale;
 	}
 
 protected:
@@ -288,5 +289,6 @@ private:
 
 	EImageSortType SortType = EImageSortType::Center;
 	bool AutoImageScaleValue = false;
+	float AutoImageScaleRatio = 1.0f;
 };
 

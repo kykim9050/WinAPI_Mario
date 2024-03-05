@@ -70,8 +70,8 @@ void UContentsCore::BeginPlay()
 	//CreateLevel<U1_1StageLevel>("1_1StageLevel");
 	//ChangeLevel("1_1StageLevel");
 
-	CreateLevel<UTestLevel>("TestLevel");
-	ChangeLevel("TestLevel");
+	CreateLevel<UTestLevel>("1-1");
+	ChangeLevel("1-1");
 
 }
 

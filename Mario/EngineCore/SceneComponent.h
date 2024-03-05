@@ -21,6 +21,11 @@ public:
 		Transform.SetPosition(_Value);
 	}
 
+	void AddPosition(const FVector& _Value)
+	{
+		Transform.AddPosition(_Value);
+	}
+
 	void SetScale(const FVector& _Value)
 	{
 		Transform.SetScale(_Value);
