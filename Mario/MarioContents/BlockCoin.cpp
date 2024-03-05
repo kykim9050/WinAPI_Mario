@@ -2,6 +2,7 @@
 
 ABlockCoin::ABlockCoin()
 {
+	SetScore(200);
 }
 
 ABlockCoin::~ABlockCoin()

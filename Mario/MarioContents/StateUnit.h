@@ -116,6 +116,11 @@ protected:
 		return Score;
 	}
 
+	void SetScore(int _Value)
+	{
+		Score = _Value;
+	}
+
 
 	EActorState ActorState = EActorState::None;
 	EActorDir ActorDir = EActorDir::Left;
