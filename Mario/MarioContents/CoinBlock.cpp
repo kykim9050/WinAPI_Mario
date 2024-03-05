@@ -136,6 +136,7 @@ void ACoinBlock::CollisionCheck()
 				return;
 			}
 
+			
 			CollisionStateChange(ECollisionState::GetHit);
 			Item->StateChange(EActorState::Appear);
 			return;
