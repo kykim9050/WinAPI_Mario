@@ -39,5 +39,6 @@ private:
 	float TimeInterval = 1.0f;
 	bool TimeChange = false;
 	int PlayerScore = 0;
+	int PlayerCoin = 0;
 };
 
