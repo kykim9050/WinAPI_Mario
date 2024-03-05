@@ -43,14 +43,14 @@ void ABrickBlock::CollisionCheck()
 	// Block의 바닥과 Player의 충돌일 때
 	if (true == BodyCollision->CollisionCheck(ECollisionOrder::Player, Result))
 	{
-		const FTransform& PlayerColTrans = Player->GetBodyCollision()->GetActorBaseTransform();
+		const FTransform& PlayerColTrans = GetPlayer()->GetBodyCollision()->GetActorBaseTransform();
 		const FTransform& BlockColTrans = BodyCollision->GetActorBaseTransform();
 
 
 		if (PlayerColTrans.GetPosition().X < BlockColTrans.Right() && PlayerColTrans.GetPosition().X > BlockColTrans.Left() && PlayerColTrans.GetPosition().Y < BlockColTrans.Bottom())
 		{
 			//UEngineDebug::OutPutDebugText("Occur Block Bot Collision");
-			Player->HitBlockBottom();
+			GetPlayer()->HitBlockBottom();
 
 			CollisionStateChange(ECollisionState::GetHit);
 			return;
@@ -147,7 +147,7 @@ void ABrickBlock::GetHitStart()
 		return;
 	}
 
-	EMarioType type = Player->GetPlayerType();
+	EMarioType type = GetPlayer()->GetPlayerType();
 
 
 	switch (type)

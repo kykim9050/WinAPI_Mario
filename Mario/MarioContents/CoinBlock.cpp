@@ -116,13 +116,13 @@ void ACoinBlock::CollisionCheck()
 	// Block의 바닥과 Player의 충돌일 때
 	if (true == BodyCollision->CollisionCheck(ECollisionOrder::Player, Result))
 	{
-		const FTransform& PlayerColTrans = Player->GetBodyCollision()->GetActorBaseTransform();
+		const FTransform& PlayerColTrans = GetPlayer()->GetBodyCollision()->GetActorBaseTransform();
 		const FTransform& BlockColTrans = BodyCollision->GetActorBaseTransform();
 
 		if (PlayerColTrans.GetPosition().X < BlockColTrans.Right() && PlayerColTrans.GetPosition().X > BlockColTrans.Left() && PlayerColTrans.GetPosition().Y < BlockColTrans.Bottom())
 		{
 			//UEngineDebug::OutPutDebugText("Occur Block Bot Collision");
-			Player->HitBlockBottom();
+			GetPlayer()->HitBlockBottom();
 
 
 			if (true == FixedBlock)
@@ -149,7 +149,7 @@ void ACoinBlock::GetHitStart()
 		return;
 	}
 
-	EMarioType type = Player->GetPlayerType();
+	EMarioType type = GetPlayer()->GetPlayerType();
 
 
 	switch (type)
@@ -168,9 +168,9 @@ void ACoinBlock::Wait(float _DeltaTime)
 {
 	ABlockUnit::Wait(_DeltaTime);
 
-	if (50.0f > (InitPos.X - Player->GetActorLocation().X))
+	if (50.0f > (InitPos.X - GetPlayer()->GetActorLocation().X))
 	{
-		EMarioType type = Player->GetPlayerType();
+		EMarioType type = GetPlayer()->GetPlayerType();
 
 		switch (type)
 		{
