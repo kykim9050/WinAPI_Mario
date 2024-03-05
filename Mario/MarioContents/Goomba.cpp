@@ -5,6 +5,7 @@ AGoomba::AGoomba()
 {
 	GravityVelocityVector = FVector::Down * 500.0f;
 	HorizonVelocityVector = ActorMoveDir * 50.0f;
+	SetScore(100);
 }
 
 AGoomba::~AGoomba()
@@ -59,10 +60,6 @@ void AGoomba::StateUpdate(float _DeltaTime)
 
 }
 
-//void AGoomba::CollisionUpdate(float _DeltaTime)
-//{
-//	CollisionCheck();
-//}
 
 void AGoomba::CollisionCheck()
 {
