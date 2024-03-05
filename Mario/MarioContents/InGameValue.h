@@ -205,6 +205,11 @@ public:
 	/// </summary>
 	static const int TimeRendererSize;
 
+	/// <summary>
+	/// UIÀÇ ScoreRenderer ÀÇ size
+	/// </summary>
+	static const int ScoreRendererSize;
+
 protected:
 
 private:

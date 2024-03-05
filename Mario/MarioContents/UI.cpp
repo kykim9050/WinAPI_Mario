@@ -44,6 +44,26 @@ void AUI::BeginPlay()
 		TimeRenderer[i]->CreateAnimation("8", "Numbers.png", 8, 8, false);
 		TimeRenderer[i]->CreateAnimation("9", "Numbers.png", 9, 9, false);
 	}
+
+	for (int i = 0; i < UInGameValue::ScoreRendererSize; i++)
+	{
+		UImageRenderer* Renderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::UIComponent));
+		ScoreRenderer.push_back(Renderer);
+		ScoreRenderer[i]->SetImage("Numbers.png");
+		FVector UIComponentScale = ScoreRenderer[i]->GetImage()->GetScale();
+		ScoreRenderer[i]->SetTransform({ {4 + 24 * i, 24}, {UIComponentScale.iX() / UInGameValue::NumberImageXValue * UInGameValue::WindowSizeMulValue , UIComponentScale.iY() / UInGameValue::NumberImageYValue * UInGameValue::WindowSizeMulValue} });
+		ScoreRenderer[i]->CameraEffectOff();
+		ScoreRenderer[i]->CreateAnimation("0", "Numbers.png", 0, 0, false);
+		ScoreRenderer[i]->CreateAnimation("1", "Numbers.png", 1, 1, false);
+		ScoreRenderer[i]->CreateAnimation("2", "Numbers.png", 2, 2, false);
+		ScoreRenderer[i]->CreateAnimation("3", "Numbers.png", 3, 3, false);
+		ScoreRenderer[i]->CreateAnimation("4", "Numbers.png", 4, 4, false);
+		ScoreRenderer[i]->CreateAnimation("5", "Numbers.png", 5, 5, false);
+		ScoreRenderer[i]->CreateAnimation("6", "Numbers.png", 6, 6, false);
+		ScoreRenderer[i]->CreateAnimation("7", "Numbers.png", 7, 7, false);
+		ScoreRenderer[i]->CreateAnimation("8", "Numbers.png", 8, 8, false);
+		ScoreRenderer[i]->CreateAnimation("9", "Numbers.png", 9, 9, false);
+	}
 }
 
 void AUI::Tick(float _DeltaTime)
@@ -53,7 +73,7 @@ void AUI::Tick(float _DeltaTime)
 	TimeCheck(_DeltaTime);
 	TimeRenderUpdate();
 	ScoreCheck();
-	// ScoreRenderUpdate();
+	ScoreRenderUpdate();
 }
 
 void AUI::TimeCheck(float _DeltaTime)
@@ -130,6 +150,9 @@ void AUI::ScoreCheck()
 	}
 
 	PlayerScore = Player->GetScore();
+}
 
-	UEngineDebug::OutPutDebugText(std::to_string(PlayerScore));
+void AUI::ScoreRenderUpdate()
+{
+	NumberToAnimation(PlayerScore, 6, ScoreRenderer);
 }
