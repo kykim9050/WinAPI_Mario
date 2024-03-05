@@ -55,7 +55,7 @@ public:
 			MsgBoxAssert("대상 오브젝트가 존재하지 않습니다.");
 		}
 
-		int MyScore = _Other->GetScore();
+		int MyScore = GetScore();
 
 		_Other->AddScore(MyScore);
 	}
