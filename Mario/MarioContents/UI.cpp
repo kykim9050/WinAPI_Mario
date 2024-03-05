@@ -85,7 +85,7 @@ void AUI::TimeRenderUpdate()
 		int TempTime = TimeCount;
 		int ToStringValue = 0;
 
-		NumberToAnimation(TimeCount, FVector(100, 100), 3, TimeRenderer);
+		NumberToAnimation(TimeCount, 3, TimeRenderer);
 
 		ToStringValue = TempTime / 100;
 		TimeRenderer[0]->ChangeAnimation(std::to_string(ToStringValue));
@@ -102,7 +102,7 @@ void AUI::TimeRenderUpdate()
 	}
 }
 
-void AUI::NumberToAnimation(int _PrintNumber, const FVector& _InitPos, int _AnimatingNum, const std::vector<UImageRenderer*>& _Renderer)
+void AUI::NumberToAnimation(int _PrintNumber, int _AnimatingNum, const std::vector<UImageRenderer*>& _Renderer)
 {
 	if (_Renderer.empty())
 	{
