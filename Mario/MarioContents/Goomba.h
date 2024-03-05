@@ -3,10 +3,10 @@
 #include "EnumClass.h"
 #include "InGameValue.h"
 #include "ContentsFunction.h"
-#include "MainPlayer.h"
+
 
 // Ό³Έν :
-class AGoomba : public AMonsterUnit, public UMainPlayer
+class AGoomba : public AMonsterUnit
 {
 public:
 	// constrcuter destructer

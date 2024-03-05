@@ -69,14 +69,7 @@ void AKoopaTroopa::StateUpdate(float _DeltaTime)
 
 void AKoopaTroopa::Idle(float _DeltaTime)
 {
-	APlayerMario* Player = APlayerMario::GetMainPlayer();
-
-	if (nullptr == Player)
-	{
-		MsgBoxAssert("플레이어가 존재하지 않습니다.");
-	}
-
-	if (GetActorLocation().iX() - Player->GetActorLocation().iX() < UInGameValue::ResultMainWindowXScale)
+	if (GetActorLocation().iX() - GetPlayer()->GetActorLocation().iX() < UInGameValue::ResultMainWindowXScale)
 	{
 		StateChange(EActorState::Move);
 	}
@@ -247,16 +240,10 @@ void AKoopaTroopa::CollisionCheck()
 {
 	std::vector<UCollision*> Result = std::vector<UCollision*>();
 
-	APlayerMario* Player = APlayerMario::GetMainPlayer();
-
-	if (nullptr == Player)
-	{
-		MsgBoxAssert("플레이어가 존재하지 않습니다.");
-	}
 
 	if (true == BodyCollision->CollisionCheck(ECollisionOrder::Player, Result))
 	{
-		float PlayerBottom = Player->GetBodyCollision()->GetActorBaseTransform().Bottom();
+		float PlayerBottom = GetPlayer()->GetBodyCollision()->GetActorBaseTransform().Bottom();
 		float MonsterBottom = BodyCollision->GetActorBaseTransform().Bottom();
 
 		// 현재 몬스터의 Collision ScaleY의 반값만큼 Player의 Bottom 값이 위에 잇다면 몬스터를 밟은 것
@@ -265,7 +252,7 @@ void AKoopaTroopa::CollisionCheck()
 		// 몬스터의 머리를 맞았을때 실행하는 경우
 		if (PlayerBottom < MonsterBottom - OffsetYValue)
 		{
-			Player->StateChange(EActorState::CollisionJump);
+			GetPlayer()->StateChange(EActorState::CollisionJump);
 
 			CollisionStateChange(ECollisionState::GetHit);
 
@@ -280,7 +267,7 @@ void AKoopaTroopa::CollisionCheck()
 		{
 			// KoopaTroopa가 살아있을 때 혹은 등껍질로 날라다닐때 충돌의 경우
 			// 이때는 플레이어 사망해야 함
-			Player->StateChange(EActorState::GetHit);
+			GetPlayer()->StateChange(EActorState::GetHit);
 			break;
 		}
 		case 2:

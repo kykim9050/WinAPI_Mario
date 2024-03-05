@@ -4,6 +4,7 @@
 #include "InGameValue.h"
 #include "ContentsFunction.h"
 
+
 // Ό³Έν :
 class AKoopaTroopa : public AMonsterUnit
 {
