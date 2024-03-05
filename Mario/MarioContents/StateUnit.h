@@ -60,6 +60,11 @@ public:
 		_Other->AddScore(MyScore);
 	}
 
+	int GetScore() const
+	{
+		return Score;
+	}
+
 
 protected:
 	void BeginPlay() override;
@@ -109,11 +114,6 @@ protected:
 	void AddScore(const int _Score)
 	{
 		Score += _Score;
-	}
-
-	int GetScore() const
-	{
-		return Score;
 	}
 
 	void SetScore(int _Value)
