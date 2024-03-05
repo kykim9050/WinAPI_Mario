@@ -91,7 +91,20 @@ protected:
 	virtual void CalGravityVelocityVector(float _DeltaTime) {}
 	void CalTotalVelocityVector(float _DeltaTime);
 
+	void AddScore(const UStateUnit* _Other)
+	{
+		if (nullptr == _Other)
+		{
+			MsgBoxAssert("대상 오브젝트가 존재하지 않습니다.");
+		}
 
+		Score += _Other->GetScore();
+	}
+
+	int GetScore() const
+	{
+		return Score;
+	}
 
 
 	EActorState ActorState = EActorState::None;
@@ -113,5 +126,6 @@ protected:
 	int Life = 1;
 
 private:
+	int Score = 100;
 };
 
