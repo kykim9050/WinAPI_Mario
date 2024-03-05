@@ -64,6 +64,7 @@ void ABlockCoin::AppearStart()
 {
 	AItemUnit::AppearStart();
 
+
 	JumpVelocityVector = FVector::Up * 600.0f;
 	Renderer->ActiveOn();
 }

@@ -141,6 +141,6 @@ protected:
 	int Life = 1;
 
 private:
-	int Score = 100;
+	int Score = 0;
 };
 
