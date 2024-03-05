@@ -39,6 +39,7 @@ void UTestLevel::BeginPlay()
 
 	ACoinBlock* CoinBlock5 = SpawnCoinBlock(EActorType::Block, EItemType::Item);
 	ACoinBlock* CoinBlock6 = SpawnCoinBlock(EActorType::Block, EItemType::Item);
+	ACoinBlock* CoinBlock1 = SpawnCoinBlock(EActorType::Block, EItemType::Coin);
 
 	AGoomba* Goomba1 = SpawnActor< AGoomba>(static_cast<int>(EActorType::Monster));
 
@@ -55,6 +56,7 @@ void UTestLevel::BeginPlay()
 	BrickBlock1->SetActorLocation({ StandardXPos + 48*20,StandardYPos });
 	BrickBlock2->SetActorLocation({ StandardXPos + 48*21,StandardYPos });
 	
+	CoinBlock1->SetActorLocation({ 250 + 48 * 9,StandardYPos });
 	CoinBlock5->SetActorLocation({ 250 + 48 * 8,StandardYPos });
 	CoinBlock6->SetActorLocation({ 250 + 48 * 12,StandardYPos });
 

@@ -1,4 +1,5 @@
 ﻿#include "BlockCoin.h"
+#include "PlayerMario.h"
 
 ABlockCoin::ABlockCoin()
 {
@@ -64,7 +65,7 @@ void ABlockCoin::AppearStart()
 {
 	AItemUnit::AppearStart();
 
-
+	GiveScore(GetPlayer());
 	JumpVelocityVector = FVector::Up * 600.0f;
 	Renderer->ActiveOn();
 }
