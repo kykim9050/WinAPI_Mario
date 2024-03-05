@@ -1,9 +1,10 @@
 #pragma once
 #include "StateUnit.h"
 #include "PlayerMario.h"
+#include "MainPlayer.h"
 
 // Ό³Έν :
-class AMonsterUnit : public UStateUnit
+class AMonsterUnit : public UStateUnit, public UMainPlayer
 {
 public:
 	// constrcuter destructer
