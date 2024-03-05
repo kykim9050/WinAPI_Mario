@@ -101,3 +101,9 @@ const int UInGameValue::NumberImageYValue = 1;
 const int UInGameValue::TimeRendererSize = 3;
 
 const int UInGameValue::ScoreRendererSize = 6;
+
+
+const int UInGameValue::UITtimeRendInitXPos = 252;
+const int UInGameValue::UIScoreRendInitXPos = -300;
+const int UInGameValue::UIRendInitYPos = 24;
+const int UInGameValue::UISpacingBetRends = 24;

@@ -31,7 +31,7 @@ void AUI::BeginPlay()
 		TimeRenderer.push_back(Renderer);
 		TimeRenderer[i]->SetImage("Numbers.png");
 		FVector UITimeScale = TimeRenderer[i]->GetImage()->GetScale();
-		TimeRenderer[i]->SetTransform({ {252 + 24*i, 24}, {UITimeScale.iX() / UInGameValue::NumberImageXValue * UInGameValue::WindowSizeMulValue , UITimeScale.iY() / UInGameValue::NumberImageYValue * UInGameValue::WindowSizeMulValue} });
+		TimeRenderer[i]->SetTransform({ {UInGameValue::UITtimeRendInitXPos + UInGameValue::UISpacingBetRends * i, UInGameValue::UIRendInitYPos}, {UITimeScale.iX() / UInGameValue::NumberImageXValue * UInGameValue::WindowSizeMulValue , UITimeScale.iY() / UInGameValue::NumberImageYValue * UInGameValue::WindowSizeMulValue} });
 		TimeRenderer[i]->CameraEffectOff();
 		TimeRenderer[i]->CreateAnimation("0", "Numbers.png", 0, 0, false);
 		TimeRenderer[i]->CreateAnimation("1", "Numbers.png", 1, 1, false);
@@ -51,7 +51,7 @@ void AUI::BeginPlay()
 		ScoreRenderer.push_back(Renderer);
 		ScoreRenderer[i]->SetImage("Numbers.png");
 		FVector UIComponentScale = ScoreRenderer[i]->GetImage()->GetScale();
-		ScoreRenderer[i]->SetTransform({ {4 + 24 * i, 24}, {UIComponentScale.iX() / UInGameValue::NumberImageXValue * UInGameValue::WindowSizeMulValue , UIComponentScale.iY() / UInGameValue::NumberImageYValue * UInGameValue::WindowSizeMulValue} });
+		ScoreRenderer[i]->SetTransform({ {UInGameValue::UIScoreRendInitXPos + UInGameValue::UISpacingBetRends * i, UInGameValue::UIRendInitYPos}, {UIComponentScale.iX() / UInGameValue::NumberImageXValue * UInGameValue::WindowSizeMulValue , UIComponentScale.iY() / UInGameValue::NumberImageYValue * UInGameValue::WindowSizeMulValue} });
 		ScoreRenderer[i]->CameraEffectOff();
 		ScoreRenderer[i]->CreateAnimation("0", "Numbers.png", 0, 0, false);
 		ScoreRenderer[i]->CreateAnimation("1", "Numbers.png", 1, 1, false);
