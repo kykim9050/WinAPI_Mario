@@ -1,5 +1,6 @@
 #pragma once
 #include <EngineCore/Actor.h>
+#include "EnumClass.h"
 
 // Ό³Έν :
 class ABackGroundMap : public AActor
@@ -17,7 +18,7 @@ public:
 
 	UImageRenderer* GetMapRenderer() const
 	{
-		return BackGroundRenderer;
+		return BackGroundMapRenderer;
 	}
 
 protected:
@@ -25,6 +26,6 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 private:
-	UImageRenderer* BackGroundRenderer = nullptr;
+	UImageRenderer* BackGroundMapRenderer = nullptr;
 };
 
