@@ -25,6 +25,11 @@ void U1_4StageLevel::BeginPlay()
 	FVector ColMapImageFVector = ColMap->GetColMapRenderer()->GetImage()->GetScale();
 	ColMap->GetColMapRenderer()->SetTransform({ { ColMapImageFVector.ihX(), ColMapImageFVector.ihY()}, {ColMapImageFVector} });
 
+	Mario = SpawnActor< APlayerMario>(static_cast<int>(EActorType::Player));
+	Mario->SetActorLocation({ UInGameValue::MarioInitXPos, UInGameValue::MarioInitYPos });
+
+	//AUI* PlayerUI = SpawnActor<AUI>(static_cast<int>(EActorType::UI));
+	//PlayerUI->SetActorLocation({ UInGameValue::UIXScaleValue / 2 * UInGameValue::WindowSizeMulValue, UInGameValue::UIYScaleValue / 2 * UInGameValue::WindowSizeMulValue });
 
 }
 
