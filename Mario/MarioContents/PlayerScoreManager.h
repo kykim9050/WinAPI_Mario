@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <string>
+#include <EngineBase/EngineDebug.h>
 
 // 설명 :
 class UPlayerScoreManager
@@ -38,6 +39,32 @@ public:
 		return PlayerScore;
 	}
 
+	void SetPlayerLife(int _Life)
+	{
+		PlayerLife = _Life;
+	}
+
+	int GetPlayerLife() const
+	{
+		return PlayerLife;
+	}
+
+	void SetStageInfo(const std::vector<std::string>& _StageInfo)
+	{
+		if (2 == _StageInfo.size())
+		{
+			StageInfo = _StageInfo;
+		}
+		else
+		{
+			MsgBoxAssert("스테이지 정보가 올바르지 않습니다.");
+		}
+	}
+
+	const std::vector<std::string> GetStageInfo() const
+	{
+		return StageInfo;
+	}
 
 protected:
 
