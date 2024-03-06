@@ -104,6 +104,9 @@
     <ClInclude Include="CollisionMap.h">
       <Filter>Object\Map</Filter>
     </ClInclude>
+    <ClInclude Include="IntroLevel.h">
+      <Filter>Level</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp" />
@@ -205,6 +208,9 @@
     </ClCompile>
     <ClCompile Include="CollisionMap.cpp">
       <Filter>Object\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="IntroLevel.cpp">
+      <Filter>Level</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
