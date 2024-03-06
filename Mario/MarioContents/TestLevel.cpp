@@ -32,7 +32,6 @@ void UTestLevel::BeginPlay()
 
 
 	Mario->SetActorLocation({ UInGameValue::MarioInitXPos, UInGameValue::MarioInitYPos });
-	//PlayerUI->SetActorLocation({ UInGameValue::UIXScaleValue / 2 * UInGameValue::WindowSizeMulValue, UInGameValue::UIYScaleValue / 2 * UInGameValue::WindowSizeMulValue });
 
 
 	Map->GetMapRenderer()->SetImage("1_1Stage_Map.png");

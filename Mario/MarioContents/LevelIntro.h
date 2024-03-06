@@ -20,6 +20,8 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
+	void NumberToAnimation(int _PrintNumber, int _AnimatingNum, const std::vector<UImageRenderer*>& _Renderer);
+
 private:
 	UImageRenderer* UIRenderer = nullptr;
 
@@ -27,7 +29,10 @@ private:
 	int IntroLife = 0;
 	int IntroAmountOfCoins = 0;
 	std::vector<std::string> IntroStageInfo = std::vector<std::string>();
-	
+	std::vector<UImageRenderer*> ScoreRenderer = std::vector<UImageRenderer*>();
+	std::vector<UImageRenderer*> CoinCountRenderer = std::vector<UImageRenderer*>();
+	std::vector<UImageRenderer*> StageInfoRenderer = std::vector<UImageRenderer*>();
+
 	float RenderingTime = 2.0f;
 	bool IsPlaying = true;
 
