@@ -110,4 +110,4 @@ const int UInGameValue::UITtimeRendInitXPos = 624/*240*//*252*/;
 const int UInGameValue::UIScoreRendInitXPos = 72/*-312*//*-300*/;
 const int UInGameValue::UIRendInitYPos = 72/*24*/;
 const int UInGameValue::UISpacingBetRends = 24;
-const int UInGameValue::UIStageInfoRendInitXPos = 456/*72*//*84*/;
+const int UInGameValue::UIStageInfoRendInitXPos = 459/*72*//*84*/;
