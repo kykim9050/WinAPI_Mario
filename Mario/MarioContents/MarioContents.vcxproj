@@ -170,6 +170,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="1_4StageLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BackGroundMap.h">
       <SubType>
       </SubType>
@@ -302,6 +306,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="1_4StageLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BackGroundMap.cpp">
       <SubType>
       </SubType>

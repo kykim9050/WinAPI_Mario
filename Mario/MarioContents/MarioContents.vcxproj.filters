@@ -101,6 +101,9 @@
     <ClInclude Include="MainPlayer.h">
       <Filter>Object</Filter>
     </ClInclude>
+    <ClInclude Include="1_4StageLevel.h">
+      <Filter>Level\Stage1-4</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp" />
@@ -200,6 +203,9 @@
     <ClCompile Include="MainPlayer.cpp">
       <Filter>Object</Filter>
     </ClCompile>
+    <ClCompile Include="1_4StageLevel.cpp">
+      <Filter>Level\Stage1-4</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ContentsHelper">
@@ -249,6 +255,9 @@
     </Filter>
     <Filter Include="Object\Structure">
       <UniqueIdentifier>{5c00217e-be7b-4558-9c63-4a8e20a6360a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\Stage1-4">
+      <UniqueIdentifier>{5b8625dd-e71b-475d-8df6-a3be225c404e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
