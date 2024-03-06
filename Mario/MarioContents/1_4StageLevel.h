@@ -1,7 +1,10 @@
 #pragma once
+#include "CreateLevel.h"
 
+
+class ABackGroundMap;
 // Ό³Έν :
-class U1_4StageLevel
+class U1_4StageLevel : public UCreateLevel
 {
 public:
 	// constrcuter destructer
@@ -15,8 +18,12 @@ public:
 	U1_4StageLevel& operator=(U1_4StageLevel&& _Other) noexcept = delete;
 
 protected:
+	void BeginPlay() override;
+	void Tick(float _DeltaTime) override;
 
 private:
+	ABackGroundMap* Map = nullptr;
+
 
 };
 

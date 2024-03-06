@@ -15,11 +15,16 @@ public:
 	ABackGroundMap& operator=(const ABackGroundMap& _Other) = delete;
 	ABackGroundMap& operator=(ABackGroundMap&& _Other) noexcept = delete;
 
+	UImageRenderer* GetMapRenderer() const
+	{
+		return BackGroundRenderer;
+	}
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
 private:
-
+	UImageRenderer* BackGroundRenderer = nullptr;
 };
 
