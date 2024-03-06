@@ -20,7 +20,7 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
-	virtual void CollisionCheck() {}
+	virtual void CollisionCheck() {};
 
 private:
 

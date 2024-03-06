@@ -48,6 +48,9 @@ protected:
 		return CoinBlock;
 	}
 
+	void LevelStart(ULevel* _PrevLevel) override;
+	void LevelEnd(ULevel* _NextLevel) override;
+
 	ABackGroundMap* Map = nullptr;
 	UCollisionMap* ColMap = nullptr;
 	APlayerMario* Mario = nullptr;

@@ -70,18 +70,18 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
-	virtual void IdleStart() {}
-	virtual void MoveStart() {}
-	virtual void JumpStart() {}
-	virtual void GetHitStart() {}
+	virtual void IdleStart() {};
+	virtual void MoveStart() {};
+	virtual void JumpStart() {};
+	virtual void GetHitStart() {};
 
-	virtual void Idle(float _DeltaTime) {}
-	virtual void Move(float _DeltaTime) {}
-	virtual void Jump(float _DeltaTime) {}
-	virtual void GetHit(float _DeltaTime) {}
+	virtual void Idle(float _DeltaTime) {};
+	virtual void Move(float _DeltaTime) {};
+	virtual void Jump(float _DeltaTime) {};
+	virtual void GetHit(float _DeltaTime) {};
 
-	virtual void StateChange(EActorState _ActorState) {}
-	virtual void StateUpdate(float _DeltaTime) {}
+	virtual void StateChange(EActorState _ActorState) {};
+	virtual void StateUpdate(float _DeltaTime) {};
 	void SetActorState(const EActorState _State)
 	{
 		ActorState = _State;
@@ -93,20 +93,20 @@ protected:
 	
 	
 	virtual void CollisionUpdate(float _DeltaTime);
-	virtual void CollisionStateChange(ECollisionState _CollisionState) {}
-	virtual void CollisionCheck() {}
+	virtual void CollisionStateChange(ECollisionState _CollisionState) {};
+	virtual void CollisionCheck() {};
 	void SetCollisionState(ECollisionState _CollisionState)
 	{
 		ActorCollisionState = _CollisionState;
 	}
 
-	virtual void ResultMovementUpdate(float _DeltaTime) {}
-	virtual void AddHorizonVelocityVector(const FVector& _DirDelta) {}
-	virtual void ApplyMovement(float _DeltaTime) {}
-	virtual void CalHorizonVelocityVector(float _DeltaTime) {}
-	virtual void CalJumpVelocityVector(float _DeltaTime) {}
+	virtual void ResultMovementUpdate(float _DeltaTime) {};
+	virtual void AddHorizonVelocityVector(const FVector& _DirDelta) {};
+	virtual void ApplyMovement(float _DeltaTime) {};
+	virtual void CalHorizonVelocityVector(float _DeltaTime) {};
+	virtual void CalJumpVelocityVector(float _DeltaTime) {};
 
-	virtual void CalGravityVelocityVector(float _DeltaTime) {}
+	virtual void CalGravityVelocityVector(float _DeltaTime) {};
 	void CalTotalVelocityVector(float _DeltaTime);
 
 	

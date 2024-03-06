@@ -23,18 +23,18 @@ public:
 	void StateUpdate(float _DeltaTime);
 	void StateChange(EActorState _ActorState);
 
-	virtual void CollisionCheck() {}
+	virtual void CollisionCheck() {};
 	virtual void CollisionStateChange(ECollisionState _CollisionState);
 
 	virtual void FirstInit(float _DeltaTime);
-	virtual void Idle(float _DeltaTime) {}
-	virtual void Move(float _DeltaTime) {}
-	virtual void Appear(float _DeltaTime) {}
+	virtual void Idle(float _DeltaTime) {};
+	virtual void Move(float _DeltaTime) {};
+	virtual void Appear(float _DeltaTime) {};
 
 
-	virtual void IdleStart() {}
-	virtual void AppearStart() {}
-	virtual void MoveStart() {}
+	virtual void IdleStart() {};
+	virtual void AppearStart() {};
+	virtual void MoveStart() {};
 	virtual void ReleaseStart();
 	
 
