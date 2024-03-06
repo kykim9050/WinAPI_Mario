@@ -3,6 +3,7 @@
 
 
 class ABackGroundMap;
+class UCollisionMap;
 // Ό³Έν :
 class U1_4StageLevel : public UCreateLevel
 {
@@ -23,7 +24,7 @@ protected:
 
 private:
 	ABackGroundMap* Map = nullptr;
-
+	UCollisionMap* ColMap = nullptr;
 
 };
 

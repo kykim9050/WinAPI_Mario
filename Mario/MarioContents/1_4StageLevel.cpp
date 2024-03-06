@@ -20,7 +20,10 @@ void U1_4StageLevel::BeginPlay()
 	FVector MapImageFVector = Map->GetMapRenderer()->GetImage()->GetScale();
 	Map->GetMapRenderer()->SetTransform({ { MapImageFVector.ihX(), MapImageFVector.ihY()}, {MapImageFVector} });
 
-
+	ColMap = SpawnActor<UCollisionMap>(static_cast<int>(EActorType::Map));
+	ColMap->GetColMapRenderer()->SetImage("1_4Stage_CollisionMap.png");
+	FVector ColMapImageFVector = ColMap->GetColMapRenderer()->GetImage()->GetScale();
+	ColMap->GetColMapRenderer()->SetTransform({ { ColMapImageFVector.ihX(), ColMapImageFVector.ihY()}, {ColMapImageFVector} });
 
 
 }
