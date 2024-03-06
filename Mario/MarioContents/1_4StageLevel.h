@@ -1,11 +1,6 @@
 #pragma once
 #include "CreateLevel.h"
 
-
-class ABackGroundMap;
-class UCollisionMap;
-class APlayerMario;
-class AUI;
 // Ό³Έν :
 class U1_4StageLevel : public UCreateLevel
 {
@@ -25,9 +20,5 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 private:
-	ABackGroundMap* Map = nullptr;
-	UCollisionMap* ColMap = nullptr;
-	APlayerMario* Mario = nullptr;
-	AUI* PlayerUI = nullptr;
 };
 
