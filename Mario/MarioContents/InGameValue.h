@@ -233,6 +233,8 @@ public:
 	static const int UIRendInitYPos;
 	static const int UISpacingBetRends;
 	static const int UIStageInfoRendInitXPos;
+	static const int UIStageInfoCRendInitXPos;
+	static const int UIStageInfoCRendInitYPos;
 
 protected:
 

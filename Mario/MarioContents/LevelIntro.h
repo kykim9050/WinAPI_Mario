@@ -32,6 +32,7 @@ private:
 	std::vector<UImageRenderer*> ScoreRenderer = std::vector<UImageRenderer*>();
 	std::vector<UImageRenderer*> CoinCountRenderer = std::vector<UImageRenderer*>();
 	std::vector<UImageRenderer*> StageInfoRenderer = std::vector<UImageRenderer*>();
+	std::vector<UImageRenderer*> StageInfoCenterRenderer = std::vector<UImageRenderer*>();
 
 	float RenderingTime = 2.0f;
 	bool IsPlaying = true;

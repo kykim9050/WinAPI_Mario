@@ -106,8 +106,10 @@ const int UInGameValue::ScoreRendererSize = 6;
 const int UInGameValue::CoinCountRendererSize = 2;
 const int UInGameValue::StageInfoRendererSize = 2;
 
-const int UInGameValue::UITtimeRendInitXPos = 624/*240*//*252*/;
-const int UInGameValue::UIScoreRendInitXPos = 72/*-312*//*-300*/;
-const int UInGameValue::UIRendInitYPos = 72/*24*/;
+const int UInGameValue::UITtimeRendInitXPos = 624;
+const int UInGameValue::UIScoreRendInitXPos = 72;
+const int UInGameValue::UIRendInitYPos = 72;
 const int UInGameValue::UISpacingBetRends = 24;
-const int UInGameValue::UIStageInfoRendInitXPos = 459/*72*//*84*/;
+const int UInGameValue::UIStageInfoRendInitXPos = 459;
+const int UInGameValue::UIStageInfoCRendInitXPos = 408;
+const int UInGameValue::UIStageInfoCRendInitYPos = 240;
