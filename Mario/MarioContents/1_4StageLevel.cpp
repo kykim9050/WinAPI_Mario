@@ -27,8 +27,6 @@ void U1_4StageLevel::BeginPlay()
 
 	Mario->SetActorLocation({ UInGameValue::MarioInitXPos, UInGameValue::MarioInitYPos });
 
-	PlayerUI->SetActorLocation({ UInGameValue::UIXScaleValue / 2 * UInGameValue::WindowSizeMulValue, UInGameValue::UIYScaleValue / 2 * UInGameValue::WindowSizeMulValue });
-
 }
 
 void U1_4StageLevel::Tick(float _DeltaTime)
