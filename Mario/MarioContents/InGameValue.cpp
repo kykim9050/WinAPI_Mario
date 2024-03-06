@@ -21,7 +21,7 @@ const int UInGameValue::UICoinImageXValue = 3;
 const int UInGameValue::UICoinImageYValue = 1;
 
 
-const int UInGameValue::MarioInitXPos = 80;
+const int UInGameValue::MarioInitXPos = 140;
 const int UInGameValue::MarioInitYPos = 400;
 
 const Color8Bit UInGameValue::CollisionColor = Color8Bit(0, 0, 255, 0);
@@ -35,8 +35,8 @@ const int UInGameValue::UIYScaleValue = 32;
 const int UInGameValue::GoombaImageXValue = 3;
 const int UInGameValue::GoombaImageYValue = 1;
 
-const int UInGameValue::PlayerCollisionScaleX = 40;
-const int UInGameValue::PlayerCollisionScaleY = 48;
+const int UInGameValue::PlayerCollisionScaleX = 32;
+const int UInGameValue::PlayerCollisionScaleY = 40;
 
 const int UInGameValue::GoombaBodyCollisionScaleX = 32;
 const int UInGameValue::GoombaBodyCollisionScaleY = 32;

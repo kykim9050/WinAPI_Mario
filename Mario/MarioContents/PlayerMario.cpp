@@ -716,10 +716,7 @@ void APlayerMario::ReachingEndFlag(float _DeltaTime)
 
 		HorizonVelocityVector = FVector::Right * 150.0f;
 
-		CalGravityVelocityVector(_DeltaTime);
-		GroundUp();
-		CalTotalVelocityVector(_DeltaTime);
-		ApplyMovement(_DeltaTime);
+		ResultMovementUpdate(_DeltaTime);
 		break;
 	}
 	default:
@@ -918,10 +915,10 @@ void APlayerMario::CalHorizonVelocityVector(float _DeltaTime)
 		switch (ActorDir)
 		{
 		case EActorDir::Right:
-			HorizonVelocityVector = FVector::Right * _DeltaTime * HorizonAccVector;
+			AddActorLocation(FVector::Right);
 			break;
 		case EActorDir::Left:
-			HorizonVelocityVector = FVector::Left * _DeltaTime * HorizonAccVector;
+			AddActorLocation(FVector::Left);
 			break;
 		default:
 			break;
