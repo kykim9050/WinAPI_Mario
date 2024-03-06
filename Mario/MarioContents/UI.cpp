@@ -2,6 +2,7 @@
 #include "EnumClass.h"
 #include "InGameValue.h"
 #include "PlayerMario.h"
+#include "PlayerScoreManager.h"
 
 
 AUI::AUI()
@@ -207,6 +208,8 @@ void AUI::ScoreCheck()
 
 	PlayerScore = Player->GetScore();
 	PlayerCoin = Player->GetCoinCount();
+	UPlayerScoreManager::GetInst().SetAmountOfCoins(PlayerCoin);
+	UEngineDebug::OutPutDebugText(std::to_string(UPlayerScoreManager::GetInst().GetAmountOfCoins()));
 }
 
 void AUI::ScoreRenderUpdate()
