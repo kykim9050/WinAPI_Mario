@@ -17,9 +17,6 @@
     <ClInclude Include="PlayerMario.h">
       <Filter>Object\Player</Filter>
     </ClInclude>
-    <ClInclude Include="BackGroundMap.h">
-      <Filter>Level\Stage1-1\Actor</Filter>
-    </ClInclude>
     <ClInclude Include="EndingLevel.h">
       <Filter>Level\Ending</Filter>
     </ClInclude>
@@ -34,9 +31,6 @@
     </ClInclude>
     <ClInclude Include="EnumClass.h">
       <Filter>ContentsHelper</Filter>
-    </ClInclude>
-    <ClInclude Include="CollisionMap.h">
-      <Filter>Level\Stage1-1\Actor</Filter>
     </ClInclude>
     <ClInclude Include="ContentsFunction.h">
       <Filter>ContentsHelper</Filter>
@@ -104,6 +98,12 @@
     <ClInclude Include="1_4StageLevel.h">
       <Filter>Level\Stage1-4</Filter>
     </ClInclude>
+    <ClInclude Include="BackGroundMap.h">
+      <Filter>Object\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionMap.h">
+      <Filter>Object\Map</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp" />
@@ -122,9 +122,6 @@
     <ClCompile Include="PlayerMario.cpp">
       <Filter>Object\Player</Filter>
     </ClCompile>
-    <ClCompile Include="BackGroundMap.cpp">
-      <Filter>Level\Stage1-1\Actor</Filter>
-    </ClCompile>
     <ClCompile Include="EndingLevel.cpp">
       <Filter>Level\Ending</Filter>
     </ClCompile>
@@ -136,9 +133,6 @@
     </ClCompile>
     <ClCompile Include="InGameValue.cpp">
       <Filter>ContentsHelper</Filter>
-    </ClCompile>
-    <ClCompile Include="CollisionMap.cpp">
-      <Filter>Level\Stage1-1\Actor</Filter>
     </ClCompile>
     <ClCompile Include="ContentsFunction.cpp">
       <Filter>ContentsHelper</Filter>
@@ -206,6 +200,12 @@
     <ClCompile Include="1_4StageLevel.cpp">
       <Filter>Level\Stage1-4</Filter>
     </ClCompile>
+    <ClCompile Include="BackGroundMap.cpp">
+      <Filter>Object\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionMap.cpp">
+      <Filter>Object\Map</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ContentsHelper">
@@ -232,9 +232,6 @@
     <Filter Include="Level\Stage1-1">
       <UniqueIdentifier>{c44e7e1c-7d68-496d-b02f-fd49445bbe07}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Level\Stage1-1\Actor">
-      <UniqueIdentifier>{ba34b179-ef07-4e81-b013-93d5f5f33181}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Object\Player">
       <UniqueIdentifier>{4f380fdc-c820-4e41-88eb-56a5f726ff9b}</UniqueIdentifier>
     </Filter>
@@ -258,6 +255,9 @@
     </Filter>
     <Filter Include="Level\Stage1-4">
       <UniqueIdentifier>{5b8625dd-e71b-475d-8df6-a3be225c404e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Map">
+      <UniqueIdentifier>{451a53b3-4f3d-401a-8077-c8ee335d0b72}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

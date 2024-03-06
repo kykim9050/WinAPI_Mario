@@ -1,6 +1,7 @@
 ﻿#include "ContentsCore.h"
 #include "TitleLevel.h"
 #include "1_1StageLevel.h"
+#include "1_4StageLevel.h"
 #include "EndingLevel.h"
 #include "TestLevel.h"
 #include <EngineBase/EngineDirectory.h>
@@ -70,8 +71,12 @@ void UContentsCore::BeginPlay()
 	//CreateLevel<U1_1StageLevel>("1_1StageLevel");
 	//ChangeLevel("1_1StageLevel");
 
-	CreateLevel<UTestLevel>("1-1");
-	ChangeLevel("1-1");
+	/*CreateLevel<UTestLevel>("1-1");
+	ChangeLevel("1-1");*/
+
+	CreateLevel<U1_4StageLevel>("1-4");
+	ChangeLevel("1-4");
+
 
 }
 
