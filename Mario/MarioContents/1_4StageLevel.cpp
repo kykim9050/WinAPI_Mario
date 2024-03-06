@@ -14,7 +14,7 @@ U1_4StageLevel::~U1_4StageLevel()
 
 void U1_4StageLevel::BeginPlay()
 {
-	UCreateLevel::BeginPlay();
+	UStageLevel::BeginPlay();
 
 	Map->GetMapRenderer()->SetImage("1_4Stage_Map.png");
 	FVector MapImageFVector = Map->GetMapRenderer()->GetImage()->GetScale();
@@ -32,6 +32,6 @@ void U1_4StageLevel::BeginPlay()
 
 void U1_4StageLevel::Tick(float _DeltaTime)
 {
-	UCreateLevel::Tick(_DeltaTime);
+	UStageLevel::Tick(_DeltaTime);
 }
 

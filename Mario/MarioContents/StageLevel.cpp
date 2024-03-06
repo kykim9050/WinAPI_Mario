@@ -1,18 +1,18 @@
-#include "CreateLevel.h"
+#include "StageLevel.h"
 #include "PlayerMario.h"
 #include "BackGroundMap.h"
 #include "CollisionMap.h"
 #include "UI.h"
 
-UCreateLevel::UCreateLevel()
+UStageLevel::UStageLevel()
 {
 }
 
-UCreateLevel::~UCreateLevel()
+UStageLevel::~UStageLevel()
 {
 }
 
-void UCreateLevel::BeginPlay()
+void UStageLevel::BeginPlay()
 {
 	UDebugLevel::BeginPlay();
 
@@ -22,7 +22,7 @@ void UCreateLevel::BeginPlay()
 	PlayerUI = SpawnActor<AUI>(static_cast<int>(EActorType::UI));
 }
 
-void UCreateLevel::Tick(float _DeltaTime)
+void UStageLevel::Tick(float _DeltaTime)
 {
 	UDebugLevel::Tick(_DeltaTime);
 }

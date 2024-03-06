@@ -214,7 +214,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="CreateLevel.h">
+    <ClInclude Include="StageLevel.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -350,7 +350,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="CreateLevel.cpp">
+    <ClCompile Include="StageLevel.cpp">
       <SubType>
       </SubType>
     </ClCompile>

@@ -1,8 +1,8 @@
 #pragma once
-#include "CreateLevel.h"
+#include "StageLevel.h"
 
 // Ό³Έν :
-class U1_4StageLevel : public UCreateLevel
+class U1_4StageLevel : public UStageLevel
 {
 public:
 	// constrcuter destructer
