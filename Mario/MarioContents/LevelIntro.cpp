@@ -25,8 +25,6 @@ void ALevelIntro::BeginPlay()
 	FVector UIScale = UIRenderer->GetImage()->GetScale();
 	UIRenderer->SetTransform({ {UIScale.ihX() * UInGameValue::WindowSizeMulValue, UIScale.ihY() * UInGameValue::WindowSizeMulValue}, {UIScale.iX() * UInGameValue::WindowSizeMulValue, UIScale.iY() * UInGameValue::WindowSizeMulValue}});
 	//UIRenderer->CameraEffectOff();
-
-	
 }
 
 void ALevelIntro::Tick(float _DeltaTime)
