@@ -26,15 +26,20 @@ void U1_1StageLevel::BeginPlay()
 {
 	UCreateLevel::BeginPlay();
 
-	ABackGroundMap* Map = SpawnActor< ABackGroundMap>(static_cast<int>(EActorType::Map));
-	UCollisionMap* CollisionMap = SpawnActor< UCollisionMap>(static_cast<int>(EActorType::Map));
-	APlayerMario* Mario = SpawnActor< APlayerMario>(static_cast<int>(EActorType::Player));
-	AUI* PlayerUI = SpawnActor<AUI>(static_cast<int>(EActorType::UI));
-	AEndFlag* EndFlag = SpawnActor<AEndFlag>(static_cast<int>(EActorType::Structure));
-	ACastle* EndPointCastle = SpawnActor<ACastle>(static_cast<int>(EActorType::Structure));
-
 	Mario->SetActorLocation({ UInGameValue::MarioInitXPos, UInGameValue::MarioInitYPos });
 	PlayerUI->SetActorLocation({ UInGameValue::UIXScaleValue / 2 * UInGameValue::WindowSizeMulValue, UInGameValue::UIYScaleValue / 2 * UInGameValue::WindowSizeMulValue });
+
+	Map->GetMapRenderer()->SetImage("1_1Stage_Map.png");
+	FVector MapImageFVector = Map->GetMapRenderer()->GetImage()->GetScale();
+	Map->GetMapRenderer()->SetTransform({ { MapImageFVector.ihX(), MapImageFVector.ihY()}, {MapImageFVector} });
+
+	ColMap->GetColMapRenderer()->SetImage("1_1Stage_CollisionMap.png");
+	FVector ColMapImageFVector = ColMap->GetColMapRenderer()->GetImage()->GetScale();
+	ColMap->GetColMapRenderer()->SetTransform({ { ColMapImageFVector.ihX(), ColMapImageFVector.ihY()}, {ColMapImageFVector} });
+
+
+	AEndFlag* EndFlag = SpawnActor<AEndFlag>(static_cast<int>(EActorType::Structure));
+	ACastle* EndPointCastle = SpawnActor<ACastle>(static_cast<int>(EActorType::Structure));
 	EndPointCastle->SetActorLocation({ UInGameValue::EndPointCastleXPos, UInGameValue::EndPointCastleYPos });
 	EndFlag->SetActorLocation({ UInGameValue::EndFlagXPos, UInGameValue::EndFlagYPos });
 	
