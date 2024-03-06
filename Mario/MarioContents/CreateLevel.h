@@ -2,6 +2,11 @@
 #include "DebugLevel.h"
 #include "CoinBlock.h"
 
+
+class ABackGroundMap;
+class UCollisionMap;
+class APlayerMario;
+class AUI;
 // Ό³Έν :
 class UCreateLevel : public UDebugLevel
 {
@@ -43,7 +48,12 @@ protected:
 		return CoinBlock;
 	}
 
-private:
+	ABackGroundMap* Map = nullptr;
+	UCollisionMap* ColMap = nullptr;
+	APlayerMario* Mario = nullptr;
+	AUI* PlayerUI = nullptr;
 
+
+private:
 };
 
