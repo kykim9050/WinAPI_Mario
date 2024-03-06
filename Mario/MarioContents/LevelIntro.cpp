@@ -1,4 +1,7 @@
 ﻿#include "LevelIntro.h"
+#include "PlayerScoreManager.h"
+#include "EnumClass.h"
+#include "InGameValue.h"
 
 ALevelIntro::ALevelIntro()
 {
@@ -11,6 +14,18 @@ ALevelIntro::~ALevelIntro()
 void ALevelIntro::BeginPlay()
 {
 	AActor::BeginPlay();
+
+	IntroLife = UPlayerScoreManager::GetInst().GetPlayerLife();
+	IntroAmountOfCoins = UPlayerScoreManager::GetInst().GetAmountOfCoins();
+	IntroScore = UPlayerScoreManager::GetInst().GetPlayerScore();
+	IntroStageInfo = UPlayerScoreManager::GetInst().GetStageInfo();
+
+	UIRenderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::UI));
+	UIRenderer->SetImage("LevelIntro.png");
+	FVector UIScale = UIRenderer->GetImage()->GetScale();
+	UIRenderer->SetTransform({ {UIScale.ihX() * UInGameValue::WindowSizeMulValue, UIScale.ihY() * UInGameValue::WindowSizeMulValue}, {UIScale.iX() * UInGameValue::WindowSizeMulValue, UIScale.iY() * UInGameValue::WindowSizeMulValue}});
+	//UIRenderer->CameraEffectOff();
+
 }
 
 void ALevelIntro::Tick(float _DeltaTime)
