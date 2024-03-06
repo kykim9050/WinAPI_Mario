@@ -953,6 +953,7 @@ void APlayerMario::ResultMovementUpdate(float _DeltaTime)
 	CalHorizonVelocityVector(_DeltaTime);
 	CalGravityVelocityVector(_DeltaTime);
 	GroundUp();
+	CeilingCheck();
 	CalJumpVelocityVector(_DeltaTime);
 	CalTotalVelocityVector(_DeltaTime);
 	ApplyMovement(_DeltaTime);
@@ -974,6 +975,18 @@ void APlayerMario::GroundUp()
 			break;
 		}
 	}
+}
+
+void APlayerMario::CeilingCheck()
+{
+	Color8Bit Color = UContentsFunction::GetCollisionMapImg()->GetColor(GetActorLocation().iX(), GetActorLocation().iY() - BodyCollision->GetTransform().GetScale().ihY(), UInGameValue::CollisionColor);
+
+	if (UInGameValue::CollisionColor == Color)
+	{
+		SetJumpZero();
+		SetGravityRatio(1.0f);
+	}
+
 }
 
 void APlayerMario::CalGravityVelocityVector(float _DeltaTime)
