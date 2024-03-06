@@ -167,6 +167,9 @@ void AUI::TimeRenderUpdate()
 		NumberToAnimation(TimeCount, 3, TimeRenderer);
 
 		TimeChange = false;
+
+		UEngineDebug::OutPutDebugText(std::to_string(UPlayerScoreManager::GetInst().GetPlayerScore()));
+		UEngineDebug::OutPutDebugText(std::to_string(UPlayerScoreManager::GetInst().GetAmountOfCoins()));
 	}
 }
 
@@ -209,7 +212,7 @@ void AUI::ScoreCheck()
 	PlayerScore = Player->GetScore();
 	PlayerCoin = Player->GetCoinCount();
 	UPlayerScoreManager::GetInst().SetAmountOfCoins(PlayerCoin);
-	UEngineDebug::OutPutDebugText(std::to_string(UPlayerScoreManager::GetInst().GetAmountOfCoins()));
+	UPlayerScoreManager::GetInst().SetPlayerScore(PlayerScore);
 }
 
 void AUI::ScoreRenderUpdate()

@@ -218,6 +218,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="LevelIntro.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="PlayerScoreManager.h">
       <SubType>
       </SubType>
@@ -359,6 +363,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="IntroLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="LevelIntro.cpp">
       <SubType>
       </SubType>
     </ClCompile>

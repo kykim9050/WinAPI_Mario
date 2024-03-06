@@ -110,6 +110,9 @@
     <ClInclude Include="PlayerScoreManager.h">
       <Filter>ContentsHelper</Filter>
     </ClInclude>
+    <ClInclude Include="LevelIntro.h">
+      <Filter>Object\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp" />
@@ -217,6 +220,9 @@
     </ClCompile>
     <ClCompile Include="PlayerScoreManager.cpp">
       <Filter>ContentsHelper</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelIntro.cpp">
+      <Filter>Object\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
