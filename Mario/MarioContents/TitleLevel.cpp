@@ -25,11 +25,11 @@ void UTitleLevel::Tick(float _DeltaTime)
 
 	if (UEngineInput::IsDown(VK_RETURN))
 	{
-		GEngine->ChangeLevel("1_1StageLevel");
+		GEngine->ChangeLevel("IntroLevel");
 	}
 
-	if (UEngineInput::IsDown(VK_SPACE))
-	{
-		GEngine->ChangeLevel("EndingLevel");
-	}
+	//if (UEngineInput::IsDown(VK_SPACE))
+	//{
+	//	GEngine->ChangeLevel("EndingLevel");
+	//}
 }
