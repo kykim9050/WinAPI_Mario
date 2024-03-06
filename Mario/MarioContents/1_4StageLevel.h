@@ -4,6 +4,7 @@
 
 class ABackGroundMap;
 class UCollisionMap;
+class APlayerMario;
 // Ό³Έν :
 class U1_4StageLevel : public UCreateLevel
 {
@@ -25,6 +26,6 @@ protected:
 private:
 	ABackGroundMap* Map = nullptr;
 	UCollisionMap* ColMap = nullptr;
-
+	APlayerMario* Mario = nullptr;
 };
 
