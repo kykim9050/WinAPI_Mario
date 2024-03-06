@@ -1,7 +1,12 @@
 #pragma once
 #include <EngineCore/Level.h>
+#include "EnumClass.h"
+#include "InGameValue.h"
 
 // Ό³Έν :
+
+class ABackGroundMap;
+
 class UIntroLevel : public ULevel
 {
 public:
@@ -21,7 +26,9 @@ protected:
 	void LevelStart(ULevel* _PrevLevel) override;
 	void LevelEnd(ULevel* _NextLevel) override;
 
+
 private:
+	ABackGroundMap* Map = nullptr;
 
 };
 
