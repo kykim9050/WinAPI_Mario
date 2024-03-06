@@ -28,8 +28,6 @@ void UTestLevel::BeginPlay()
 {
 	UStageLevel::BeginPlay();
 
-	ALevelIntro* LevelInfo = SpawnActor<ALevelIntro>(static_cast<int>(EActorType::UI));
-
 
 	Mario->SetActorLocation({ UInGameValue::MarioInitXPos, UInGameValue::MarioInitYPos });
 	PlayerUI->SetActorLocation({ UInGameValue::UIXScaleValue / 2 * UInGameValue::WindowSizeMulValue, UInGameValue::UIYScaleValue / 2 * UInGameValue::WindowSizeMulValue });

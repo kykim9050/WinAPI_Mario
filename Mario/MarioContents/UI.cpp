@@ -168,9 +168,6 @@ void AUI::TimeRenderUpdate()
 		NumberToAnimation(TimeCount, 3, TimeRenderer);
 
 		TimeChange = false;
-
-		UEngineDebug::OutPutDebugText(std::to_string(UPlayerScoreManager::GetInst().GetPlayerScore()));
-		UEngineDebug::OutPutDebugText(std::to_string(UPlayerScoreManager::GetInst().GetAmountOfCoins()));
 	}
 }
 

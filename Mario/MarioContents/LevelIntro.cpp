@@ -20,16 +20,29 @@ void ALevelIntro::BeginPlay()
 	IntroScore = UPlayerScoreManager::GetInst().GetPlayerScore();
 	IntroStageInfo = UPlayerScoreManager::GetInst().GetStageInfo();
 
-	UIRenderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::UI));
+	UIRenderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::IntroUI));
 	UIRenderer->SetImage("LevelIntro.png");
 	FVector UIScale = UIRenderer->GetImage()->GetScale();
 	UIRenderer->SetTransform({ {UIScale.ihX() * UInGameValue::WindowSizeMulValue, UIScale.ihY() * UInGameValue::WindowSizeMulValue}, {UIScale.iX() * UInGameValue::WindowSizeMulValue, UIScale.iY() * UInGameValue::WindowSizeMulValue}});
 	//UIRenderer->CameraEffectOff();
 
+	
 }
 
 void ALevelIntro::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
+
+	if (IsPlaying)
+	{
+		RenderingTime -= _DeltaTime;
+	}
+
+	if (0.0f >= RenderingTime)
+	{
+		IsPlaying = false;
+		RenderingTime = 2.0f;
+		UIRenderer->ActiveOff();
+	}
 }
 
