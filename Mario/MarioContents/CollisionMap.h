@@ -18,16 +18,21 @@ public:
 	UCollisionMap& operator=(const UCollisionMap& _Other) = delete;
 	UCollisionMap& operator=(UCollisionMap&& _Other) noexcept = delete;
 	
+	static UImageRenderer* GetColMapRenderer()
+	{
+		return CollisionMapRenderer;
+	}
 
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
+	
 
 private:
+	static UImageRenderer* CollisionMapRenderer;
 	static UWindowImage* GetCollisionMapImg()
 	{
 		return CollisionMapRenderer->GetImage();
 	}
-	static UImageRenderer* CollisionMapRenderer;
 };
 
