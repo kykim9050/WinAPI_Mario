@@ -27,19 +27,19 @@ protected:
 	void StateUpdate(float _DeltaTime);
 	void StateChange(EActorState _ActorState);
 	void CollisionStateChange(ECollisionState _CollisionState);
-	virtual void CollisionCheck() {}
+	virtual void CollisionCheck() {};
 
-	virtual void IdleStart() { }
+	virtual void IdleStart() {};
 	virtual void MoveStart();
-	virtual void FixedStart() { }
-	virtual void DebrisStart() {	}
-	virtual void GetHitStart() { }
+	virtual void FixedStart() {};
+	virtual void DebrisStart() {};
+	virtual void GetHitStart() {};
 
 	void Idle(float _DeltaTime);
 	virtual void Move(float _DeltaTime);
 	void Fixed(float _DeltaTime);
-	virtual void Debris(float _DeltaTime) { }
-	virtual void Wait(float _DeltaTime) {	}
+	virtual void Debris(float _DeltaTime) {};
+	virtual void Wait(float _DeltaTime) {};
 	void ResultMovementUpdate(float _DeltaTime);
 
 	FVector InitPos = FVector::Zero;

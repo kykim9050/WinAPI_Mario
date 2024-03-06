@@ -27,4 +27,12 @@ void UStageLevel::Tick(float _DeltaTime)
 	UDebugLevel::Tick(_DeltaTime);
 }
 
+void UStageLevel::LevelStart(ULevel* _PrevLevel)
+{
+	UDebugLevel::LevelStart(_PrevLevel);
+}
 
+void UStageLevel::LevelEnd(ULevel* _NextLevel)
+{
+	UDebugLevel::LevelEnd(_NextLevel);
+}
