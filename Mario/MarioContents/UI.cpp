@@ -115,6 +115,7 @@ void AUI::BeginPlay()
 
 	std::vector<std::string> StageInfo = std::vector<std::string>();
 	GetLevelStageInfo(StageInfo);
+	UPlayerScoreManager::GetInst().SetStageInfo(StageInfo);
 
 	for (int i = 0; i < UInGameValue::StageInfoRendererSize; i++)
 	{
