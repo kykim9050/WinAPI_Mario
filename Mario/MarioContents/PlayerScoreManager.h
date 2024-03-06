@@ -28,6 +28,17 @@ public:
 		return AmountOfCoins;
 	}
 
+	void SetPlayerScore(int _Score)
+	{
+		PlayerScore = _Score;
+	}
+
+	int GetPlayerScore() const
+	{
+		return PlayerScore;
+	}
+
+
 protected:
 
 private:
