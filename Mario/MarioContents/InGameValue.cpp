@@ -35,8 +35,8 @@ const int UInGameValue::UIYScaleValue = 32;
 const int UInGameValue::GoombaImageXValue = 3;
 const int UInGameValue::GoombaImageYValue = 1;
 
-const int UInGameValue::PlayerCollisionScaleX = 32;
-const int UInGameValue::PlayerCollisionScaleY = 32;
+const int UInGameValue::PlayerCollisionScaleX = 40;
+const int UInGameValue::PlayerCollisionScaleY = 48;
 
 const int UInGameValue::GoombaBodyCollisionScaleX = 32;
 const int UInGameValue::GoombaBodyCollisionScaleY = 32;

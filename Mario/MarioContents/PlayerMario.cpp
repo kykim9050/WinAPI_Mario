@@ -715,7 +715,11 @@ void APlayerMario::ReachingEndFlag(float _DeltaTime)
 		}
 
 		HorizonVelocityVector = FVector::Right * 150.0f;
-		ResultMovementUpdate(_DeltaTime);
+
+		CalGravityVelocityVector(_DeltaTime);
+		GroundUp();
+		CalTotalVelocityVector(_DeltaTime);
+		ApplyMovement(_DeltaTime);
 		break;
 	}
 	default:
@@ -908,7 +912,7 @@ void APlayerMario::CalHorizonVelocityVector(float _DeltaTime)
 	{
 		HorizonVelocityVector = FVector::Zero;
 	}
-
+	
 	if (PlayerBackColor == UInGameValue::CollisionColor || BackPos.X <= GetWorld()->GetCameraPos().X)
 	{
 		switch (ActorDir)
