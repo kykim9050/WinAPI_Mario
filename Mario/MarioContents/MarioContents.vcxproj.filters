@@ -107,6 +107,9 @@
     <ClInclude Include="IntroLevel.h">
       <Filter>Level</Filter>
     </ClInclude>
+    <ClInclude Include="PlayerScoreManager.h">
+      <Filter>ContentsHelper</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp" />
@@ -211,6 +214,9 @@
     </ClCompile>
     <ClCompile Include="IntroLevel.cpp">
       <Filter>Level</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerScoreManager.cpp">
+      <Filter>ContentsHelper</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

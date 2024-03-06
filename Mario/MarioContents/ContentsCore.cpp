@@ -9,7 +9,7 @@
 #include <EngineBase/EngineFile.h>
 #include <EngineCore/EngineResourcesManager.h>
 #include "InGameValue.h"
-
+#include "PlayerScoreManager.h"
 
 
 
@@ -62,8 +62,6 @@ void UContentsCore::BeginPlay()
 	UEngineResourcesManager::GetInst().CuttingImage("FireBall.png", UInGameValue::FireBallImageXValue, UInGameValue::FireBallImageYValue);
 	UEngineResourcesManager::GetInst().CuttingImage("Numbers.png", UInGameValue::NumberImageXValue, UInGameValue::NumberImageYValue);
 	UEngineResourcesManager::GetInst().CuttingImage("UICoin.png", UInGameValue::UICoinImageXValue, UInGameValue::UICoinImageYValue);
-
-
 
 
 
