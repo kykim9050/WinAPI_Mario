@@ -1,5 +1,7 @@
+#include <EngineCore/EngineCore.h>
 #include "TestLevel.h"
 #include "1_1StageLevel.h"
+#include "1_4StageLevel.h"
 #include "BackGroundMap.h"
 #include "PlayerMario.h"
 #include "CollisionMap.h"
@@ -73,4 +75,10 @@ void UTestLevel::BeginPlay()
 void UTestLevel::Tick(float _DeltaTime)
 {
 	UStageLevel::Tick(_DeltaTime);
+
+	if (UEngineInput::IsDown(VK_RETURN))
+	{
+		GEngine->CreateLevel<U1_4StageLevel>("1-4");
+		GEngine->ChangeLevel("1-4");
+	}
 }
