@@ -84,6 +84,7 @@ enum class EActorType
 	None,
 	Map,
 	UI,
+	Intro,
 	Player,
 	Monster,
 	Structure,

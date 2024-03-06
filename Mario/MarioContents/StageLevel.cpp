@@ -23,7 +23,9 @@ void UStageLevel::BeginPlay()
 	Mario = SpawnActor< APlayerMario>(static_cast<int>(EActorType::Player));
 	PlayerUI = SpawnActor<AUI>(static_cast<int>(EActorType::UI));
 
-	ALevelIntro* LevelInfo = SpawnActor<ALevelIntro>(static_cast<int>(EActorType::UI));
+	SetTimeScale(EActorType::UI, 0.0f);
+
+	ALevelIntro* LevelInfo = SpawnActor<ALevelIntro>(static_cast<int>(EActorType::Intro));
 }
 
 void UStageLevel::Tick(float _DeltaTime)

@@ -41,6 +41,7 @@ void ALevelIntro::Tick(float _DeltaTime)
 		IsPlaying = false;
 		RenderingTime = 2.0f;
 		UIRenderer->ActiveOff();
+		GetWorld()->SetTimeScale(EActorType::UI, 1.0f);
 	}
 }
 
