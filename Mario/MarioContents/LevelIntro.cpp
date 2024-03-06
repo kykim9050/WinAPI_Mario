@@ -24,7 +24,6 @@ void ALevelIntro::BeginPlay()
 	UIRenderer->SetImage("LevelIntro.png");
 	FVector UIScale = UIRenderer->GetImage()->GetScale();
 	UIRenderer->SetTransform({ {UIScale.ihX() * UInGameValue::WindowSizeMulValue, UIScale.ihY() * UInGameValue::WindowSizeMulValue}, {UIScale.iX() * UInGameValue::WindowSizeMulValue, UIScale.iY() * UInGameValue::WindowSizeMulValue}});
-	//UIRenderer->CameraEffectOff();
 }
 
 void ALevelIntro::Tick(float _DeltaTime)
@@ -42,6 +41,7 @@ void ALevelIntro::Tick(float _DeltaTime)
 		RenderingTime = 2.0f;
 		UIRenderer->ActiveOff();
 		GetWorld()->SetTimeScale(EActorType::UI, 1.0f);
+		GetWorld()->SetTimeScale(EActorType::Player, 1.0f);
 	}
 }
 

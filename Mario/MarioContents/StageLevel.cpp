@@ -24,6 +24,7 @@ void UStageLevel::BeginPlay()
 	PlayerUI = SpawnActor<AUI>(static_cast<int>(EActorType::UI));
 
 	SetTimeScale(EActorType::UI, 0.0f);
+	SetTimeScale(EActorType::Player, 0.0f);
 
 	ALevelIntro* LevelInfo = SpawnActor<ALevelIntro>(static_cast<int>(EActorType::Intro));
 }
