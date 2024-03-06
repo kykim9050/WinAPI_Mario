@@ -25,7 +25,7 @@ UTestLevel::~UTestLevel()
 
 void UTestLevel::BeginPlay()
 {
-	UCreateLevel::BeginPlay();
+	UStageLevel::BeginPlay();
 
 	Mario->SetActorLocation({ UInGameValue::MarioInitXPos, UInGameValue::MarioInitYPos });
 	PlayerUI->SetActorLocation({ UInGameValue::UIXScaleValue / 2 * UInGameValue::WindowSizeMulValue, UInGameValue::UIYScaleValue / 2 * UInGameValue::WindowSizeMulValue });
@@ -70,5 +70,5 @@ void UTestLevel::BeginPlay()
 
 void UTestLevel::Tick(float _DeltaTime)
 {
-	UCreateLevel::Tick(_DeltaTime);
+	UStageLevel::Tick(_DeltaTime);
 }

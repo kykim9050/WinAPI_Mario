@@ -1,5 +1,4 @@
 ﻿#include "1_1StageLevel.h"
-#include "BackGroundMap.h"
 #include "PlayerMario.h"
 #include "CollisionMap.h"
 #include "InGameValue.h"
@@ -13,6 +12,8 @@
 #include "ItemUnit.h"
 #include "EndFlag.h"
 #include "Castle.h"
+#include "BackGroundMap.h"
+
 
 U1_1StageLevel::U1_1StageLevel()
 {
@@ -24,7 +25,7 @@ U1_1StageLevel::~U1_1StageLevel()
 
 void U1_1StageLevel::BeginPlay()
 {
-	UCreateLevel::BeginPlay();
+	UStageLevel::BeginPlay();
 
 	Mario->SetActorLocation({ UInGameValue::MarioInitXPos, UInGameValue::MarioInitYPos });
 	PlayerUI->SetActorLocation({ UInGameValue::UIXScaleValue / 2 * UInGameValue::WindowSizeMulValue, UInGameValue::UIYScaleValue / 2 * UInGameValue::WindowSizeMulValue });
@@ -184,5 +185,5 @@ void U1_1StageLevel::BeginPlay()
 
 void U1_1StageLevel::Tick(float _DeltaTime)
 {
-	UCreateLevel::Tick(_DeltaTime);
+	UStageLevel::Tick(_DeltaTime);
 }

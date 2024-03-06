@@ -8,18 +8,18 @@ class UCollisionMap;
 class APlayerMario;
 class AUI;
 // Ό³Έν :
-class UCreateLevel : public UDebugLevel
+class UStageLevel : public UDebugLevel
 {
 public:
 	// constrcuter destructer
-	UCreateLevel();
-	~UCreateLevel();
+	UStageLevel();
+	~UStageLevel();
 
 	// delete Function
-	UCreateLevel(const UCreateLevel& _Other) = delete;
-	UCreateLevel(UCreateLevel&& _Other) noexcept = delete;
-	UCreateLevel& operator=(const UCreateLevel& _Other) = delete;
-	UCreateLevel& operator=(UCreateLevel&& _Other) noexcept = delete;
+	UStageLevel(const UStageLevel& _Other) = delete;
+	UStageLevel(UStageLevel&& _Other) noexcept = delete;
+	UStageLevel& operator=(const UStageLevel& _Other) = delete;
+	UStageLevel& operator=(UStageLevel&& _Other) noexcept = delete;
 
 protected:
 	void BeginPlay() override;
