@@ -165,6 +165,7 @@ public:
 	void GetCoin()
 	{
 		CoinCount += 1;
+		UPlayerScoreManager::GetInst().AddAmountOfCoins(1);
 	}
 
 	int GetCoinCount()

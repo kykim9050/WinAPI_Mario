@@ -24,6 +24,11 @@ public:
 		AmountOfCoins = _Amount;
 	}
 
+	void AddAmountOfCoins(int _Amount)
+	{
+		AmountOfCoins += _Amount;
+	}
+
 	int GetAmountOfCoins() const
 	{
 		return AmountOfCoins;
@@ -32,6 +37,11 @@ public:
 	void SetPlayerScore(int _Score)
 	{
 		PlayerScore = _Score;
+	}
+
+	void AddPlayerScore(int _Score)
+	{
+		PlayerScore += _Score;
 	}
 
 	int GetPlayerScore() const

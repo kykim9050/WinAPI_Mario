@@ -206,17 +206,12 @@ void AUI::ScoreCheck()
 	{
 		MsgBoxAssert("플레이어가 존재하지 않습니다.");
 	}
-
-	PlayerScore = Player->GetScore();
-	PlayerCoin = Player->GetCoinCount();
-	UPlayerScoreManager::GetInst().SetAmountOfCoins(PlayerCoin);
-	UPlayerScoreManager::GetInst().SetPlayerScore(PlayerScore);
 }
 
 void AUI::ScoreRenderUpdate()
 {
-	NumberToAnimation(PlayerScore, 6, ScoreRenderer);
-	NumberToAnimation(PlayerCoin, 2, CoinCountRenderer);
+	NumberToAnimation(UPlayerScoreManager::GetInst().GetPlayerScore(), 6, ScoreRenderer);
+	NumberToAnimation(UPlayerScoreManager::GetInst().GetAmountOfCoins(), 2, CoinCountRenderer);
 }
 
 

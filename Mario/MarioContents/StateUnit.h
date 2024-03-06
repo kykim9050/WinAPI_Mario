@@ -3,6 +3,7 @@
 #include "EnumClass.h"
 #include "ContentsFunction.h"
 #include "InGameValue.h"
+#include "PlayerScoreManager.h"
 
 // Ό³Έν :
 class UStateUnit : public AActor
@@ -114,6 +115,7 @@ protected:
 	void AddScore(const int _Score)
 	{
 		Score += _Score;
+		UPlayerScoreManager::GetInst().AddPlayerScore(_Score);
 	}
 
 	void SetScore(int _Value)
