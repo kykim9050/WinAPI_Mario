@@ -1,8 +1,9 @@
 ﻿#include "1_4StageLevel.h"
+#include "EndingLevel.h"
 #include "BackGroundMap.h"
 #include "CollisionMap.h"
 #include "UI.h"
-
+#include <EngineCore/EngineCore.h>
 
 U1_4StageLevel::U1_4StageLevel()
 {
@@ -33,5 +34,11 @@ void U1_4StageLevel::BeginPlay()
 void U1_4StageLevel::Tick(float _DeltaTime)
 {
 	UStageLevel::Tick(_DeltaTime);
+
+	if (UEngineInput::IsDown(VK_RETURN))
+	{
+		GEngine->CreateLevel<UEndingLevel>("Ending");
+		GEngine->ChangeLevel("Ending");
+	}
 }
 
