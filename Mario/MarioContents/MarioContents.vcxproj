@@ -214,10 +214,6 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="IntroLevel.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="LevelIntro.h">
       <SubType>
       </SubType>
@@ -359,10 +355,6 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="ContentsFunction.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="IntroLevel.cpp">
       <SubType>
       </SubType>
     </ClCompile>
