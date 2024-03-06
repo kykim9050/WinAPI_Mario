@@ -1,6 +1,7 @@
 ﻿#include "1_4StageLevel.h"
 #include "BackGroundMap.h"
 #include "CollisionMap.h"
+#include "UI.h"
 
 
 U1_4StageLevel::U1_4StageLevel()
@@ -28,8 +29,8 @@ void U1_4StageLevel::BeginPlay()
 	Mario = SpawnActor< APlayerMario>(static_cast<int>(EActorType::Player));
 	Mario->SetActorLocation({ UInGameValue::MarioInitXPos, UInGameValue::MarioInitYPos });
 
-	//AUI* PlayerUI = SpawnActor<AUI>(static_cast<int>(EActorType::UI));
-	//PlayerUI->SetActorLocation({ UInGameValue::UIXScaleValue / 2 * UInGameValue::WindowSizeMulValue, UInGameValue::UIYScaleValue / 2 * UInGameValue::WindowSizeMulValue });
+	PlayerUI = SpawnActor<AUI>(static_cast<int>(EActorType::UI));
+	PlayerUI->SetActorLocation({ UInGameValue::UIXScaleValue / 2 * UInGameValue::WindowSizeMulValue, UInGameValue::UIYScaleValue / 2 * UInGameValue::WindowSizeMulValue });
 
 }
 
