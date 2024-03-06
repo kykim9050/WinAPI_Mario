@@ -20,7 +20,7 @@ void AUI::BeginPlay()
 	PlayerUIRenderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::UI));
 	PlayerUIRenderer->SetImage("UIBar.png");
 	FVector UIScale = PlayerUIRenderer->GetImage()->GetScale();
-	PlayerUIRenderer->SetTransform({ {0,0}, {UIScale.iX() * UInGameValue::WindowSizeMulValue, UIScale.iY() * UInGameValue::WindowSizeMulValue} });
+	PlayerUIRenderer->SetTransform({ {UIScale.ihX()* UInGameValue::WindowSizeMulValue, UIScale.ihY() * UInGameValue::WindowSizeMulValue}, {UIScale.iX() * UInGameValue::WindowSizeMulValue, UIScale.iY() * UInGameValue::WindowSizeMulValue}});
 	PlayerUIRenderer->CameraEffectOff();
 
 	UICoinRenderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::UIComponent));
