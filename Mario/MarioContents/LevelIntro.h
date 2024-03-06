@@ -29,6 +29,7 @@ private:
 	std::vector<std::string> IntroStageInfo = std::vector<std::string>();
 	
 	float RenderingTime = 2.0f;
+	bool IsPlaying = true;
 
 };
 

@@ -34,6 +34,8 @@ enum class EStageRenderOrder
 	Mario,
 	UI,
 	UIComponent,
+	IntroUI,
+	IntroUIComponent,
 };
 
 /// <summary>
