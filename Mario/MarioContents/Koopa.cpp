@@ -25,13 +25,19 @@ void AKoopa::BeginPlay()
 	BodyCollision->SetPosition({ 0, -(BodyCollision->GetTransform().GetScale().ihY()) });
 	BodyCollision->SetColType(ECollisionType::Rect);
 
-	SetActorState(EActorState::Idle);
+	SetActorState(EActorState::FirstInit);
 
 }
 
 void AKoopa::Tick(float _DeltaTime)
 {
 	AMonsterUnit::Tick(_DeltaTime);
+}
+
+void AKoopa::FirstInit(float _Deltatime)
+{
+	InitPos = GetActorLocation();
+	StateChange(EActorState::Idle);
 }
 
 void AKoopa::MoveStart()
@@ -64,8 +70,18 @@ void AKoopa::Move(float _DeltaTime)
 		return;
 	}
 
-	/*HorizonVelocityVector = ActorMoveDir * 50.0f;*/
 	ResultMovementUpdate(_DeltaTime);
+
+	//if (GetActorLocation().Y <= InitPos.Y - static_cast<float>(UInGameValue::PiranhaPlantBodyCollisionScaleY))
+	//{
+	//	SetActorLocation({ InitPos.X, InitPos.Y - static_cast<float>(UInGameValue::PiranhaPlantBodyCollisionScaleY) });
+	//	StateChange(EActorState::Idle);
+	//}
+	//else if (GetActorLocation().Y >= InitPos.Y + static_cast<float>(UInGameValue::PiranhaPlantBodyCollisionScaleY))
+	//{
+	//	SetActorLocation({ InitPos.X, InitPos.Y + static_cast<float>(UInGameValue::PiranhaPlantBodyCollisionScaleY) });
+	//	StateChange(EActorState::Idle);
+	//}
 }
 
 void AKoopa::Idle(float _DeltaTime)
@@ -74,4 +90,9 @@ void AKoopa::Idle(float _DeltaTime)
 	{
 		StateChange(EActorState::Move);
 	}
+}
+
+void AKoopa::CollisionCheck()
+{
+	
 }
