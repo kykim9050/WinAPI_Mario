@@ -24,7 +24,7 @@ void AKoopa::BeginPlay()
 	BodyCollision->SetPosition({ 0, -(BodyCollision->GetTransform().GetScale().ihY()) });
 	BodyCollision->SetColType(ECollisionType::Rect);
 
-	StateChange(EActorState::Move);
+	SetActorState(EActorState::Idle);
 
 }
 
@@ -64,4 +64,12 @@ void AKoopa::Move(float _DeltaTime)
 
 	CalTotalVelocityVector(_DeltaTime);
 	AddActorLocation(TotalVelocityVector * _DeltaTime);
+}
+
+void AKoopa::Idle(float _DeltaTime)
+{
+	if (GetActorLocation().iX() - GetPlayer()->GetActorLocation().iX() < 100.0f)
+	{
+		StateChange(EActorState::Move);
+	}
 }

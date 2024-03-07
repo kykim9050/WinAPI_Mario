@@ -21,6 +21,7 @@ protected:
 
 	void MoveStart() override;
 	void Move(float _DeltaTime) override;
+	void Idle(float _DeltaTime) override;
 
 private:
 
