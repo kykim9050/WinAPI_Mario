@@ -61,7 +61,10 @@ void UContentsCore::BeginPlay()
 	UEngineResourcesManager::GetInst().CuttingImage("FireBall.png", UInGameValue::FireBallImageXValue, UInGameValue::FireBallImageYValue);
 	UEngineResourcesManager::GetInst().CuttingImage("Numbers.png", UInGameValue::NumberImageXValue, UInGameValue::NumberImageYValue);
 	UEngineResourcesManager::GetInst().CuttingImage("UICoin.png", UInGameValue::UICoinImageXValue, UInGameValue::UICoinImageYValue);
-
+	UEngineResourcesManager::GetInst().CuttingImage("Koopa_Left.png", UInGameValue::KoopaImgXValue, UInGameValue::KoopaImgYValue);
+	UEngineResourcesManager::GetInst().CuttingImage("Koopa_Right.png", UInGameValue::KoopaImgXValue, UInGameValue::KoopaImgYValue);
+	UEngineResourcesManager::GetInst().CuttingImage("KoopaFire_Left.png", UInGameValue::KoopaFireImgXValue, UInGameValue::KoopaFireImgYValue);
+	UEngineResourcesManager::GetInst().CuttingImage("KoopaFire_Right.png", UInGameValue::KoopaFireImgXValue, UInGameValue::KoopaFireImgYValue);
 
 
 	//CreateLevel<UTitleLevel>("TitleLevel");

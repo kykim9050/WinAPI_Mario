@@ -236,6 +236,18 @@ public:
 	static const int UIStageInfoCRendInitXPos;
 	static const int UIStageInfoCRendInitYPos;
 
+	/// <summary>
+	/// Koopa.png 의 열, 행 수
+	/// </summary>
+	static const int KoopaImgXValue;
+	static const int KoopaImgYValue;
+
+	/// <summary>
+	/// KoopaFire.png 의 열, 행 수
+	/// </summary>
+	static const int KoopaFireImgXValue;
+	static const int KoopaFireImgYValue;
+
 protected:
 
 private:
