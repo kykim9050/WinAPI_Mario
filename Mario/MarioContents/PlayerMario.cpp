@@ -312,6 +312,7 @@ void APlayerMario::DeadStart()
 
 void APlayerMario::JumpStart()
 {
+	AddActorLocation(FVector::Up * 4);
 	SetGravityRatio(0.0f);
 	IsOnTheBlock = false;
 	DirCheck();
