@@ -16,6 +16,10 @@ void AMonsterUnit::BeginPlay()
 void AMonsterUnit::Tick(float _DeltaTime)
 {
 	UStateUnit::Tick(_DeltaTime);
+
+	//StateUpdate(_DeltaTime);
+
+	//CollisionUpdate(_DeltaTime);
 }
 
 void AMonsterUnit::CalHorizonVelocityVector(float _DeltaTime)
