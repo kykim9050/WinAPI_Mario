@@ -63,6 +63,8 @@ void UTestLevel::BeginPlay()
 	AKoopaTroopa* MonsterTroopa1 = SpawnActor<AKoopaTroopa>(static_cast<int>(EActorType::Monster));
 	MonsterTroopa1->SetActorLocation({ 700, 580 });
 
+	APiranhaPlant* MonsterPiranha1 = SpawnActor<APiranhaPlant>(static_cast<int>(EActorType::Monster));
+	MonsterPiranha1->SetActorLocation({ 500, 300 });
 
 
 	EndPointCastle->SetActorLocation({ UInGameValue::EndPointCastleXPos, UInGameValue::EndPointCastleYPos });
