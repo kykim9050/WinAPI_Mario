@@ -110,6 +110,9 @@
     <ClInclude Include="LevelIntro.h">
       <Filter>Object\UI</Filter>
     </ClInclude>
+    <ClInclude Include="Koopa.h">
+      <Filter>Object\Monster</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp" />
@@ -217,6 +220,9 @@
     </ClCompile>
     <ClCompile Include="LevelIntro.cpp">
       <Filter>Object\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Koopa.cpp">
+      <Filter>Object\Monster</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
