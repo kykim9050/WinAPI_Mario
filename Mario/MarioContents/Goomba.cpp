@@ -40,26 +40,6 @@ void AGoomba::Tick(float _DeltaTime)
 	AMonsterUnit::Tick(_DeltaTime);
 }
 
-//void AGoomba::StateUpdate(float _DeltaTime)
-//{
-//	switch (ActorState)
-//	{
-//	case EActorState::Idle:
-//		Idle(_DeltaTime);
-//		break;
-//	case EActorState::Move:
-//		Move(_DeltaTime);
-//		break;
-//	case EActorState::GetMonsterHit:
-//		GetMonsterHit(_DeltaTime);
-//		break;
-//	case EActorState::GetHit:
-//	default:
-//		break;
-//	}
-//
-//}
-
 
 void AGoomba::CollisionCheck()
 {
@@ -199,28 +179,6 @@ void AGoomba::GetHitFromPlayerStart()
 	Destroy(1.0f);
 }
 
-//void AGoomba::StateChange(EActorState _ActorState)
-//{
-//	if (ActorState != _ActorState)
-//	{
-//		switch (_ActorState)
-//		{
-//		case EActorState::GetHit:
-//			GetHitFromPlayerStart();
-//			break;
-//		case EActorState::GetMonsterHit:
-//			GetHitFromMonsterStart();
-//			break;
-//		case EActorState::Dead:
-//			Destroy();
-//			return;
-//		default:
-//			break;
-//		}
-//	}
-//
-//	SetActorState(_ActorState);
-//}
 
 void AGoomba::CalHorizonVelocityVector(float _DeltaTime)
 {

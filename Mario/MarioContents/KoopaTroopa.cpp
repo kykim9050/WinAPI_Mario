@@ -43,30 +43,6 @@ void AKoopaTroopa::Tick(float _DeltaTime)
 	AMonsterUnit::Tick(_DeltaTime);
 }
 
-//void AKoopaTroopa::StateUpdate(float _DeltaTime)
-//{
-//	switch (ActorState)
-//	{
-//	case EActorState::Idle:
-//		Idle(_DeltaTime);
-//		break;
-//	case EActorState::Move:
-//		Move(_DeltaTime);
-//		break;
-//	case EActorState::GetFirstHit:
-//		GetFirstHit(_DeltaTime);
-//		break;
-//	case EActorState::GetSecondHit:
-//		GetSecondHit(_DeltaTime);
-//		break;
-//	case EActorState::GetMonsterHit:
-//		GetMonsterHit(_DeltaTime);
-//		break;
-//	default:
-//		break;
-//	}
-//
-//}
 
 void AKoopaTroopa::Idle(float _DeltaTime)
 {
@@ -138,38 +114,6 @@ void AKoopaTroopa::ResultMovementUpdate(float _DeltaTime)
 	AddActorLocation(TotalVelocityVector * _DeltaTime);
 }
 
-
-
-
-//void AKoopaTroopa::StateChange(EActorState _ActorState)
-//{
-//	if (ActorState != _ActorState)
-//	{
-//		switch (_ActorState)
-//		{
-//		case EActorState::Move:
-//			MoveStart();
-//			break;
-//		case EActorState::GetFirstHit:
-//			GetFirstHitStart();
-//			break;
-//		case EActorState::GetSecondHit:
-//			GetSecondHitStart();
-//			break;
-//		case EActorState::GetMonsterHit:
-//			GetHitFromMonsterStart();
-//			break;
-//		case EActorState::Dead:
-//			Destroy();
-//			return;
-//		default:
-//			break;
-//		}
-//	}
-//
-//	SetActorState(_ActorState);
-//}
-
 void AKoopaTroopa::IdleStart()
 {
 
@@ -227,15 +171,6 @@ void AKoopaTroopa::SetDirAfterCollision(const FVector _MyFVector, const FVector 
 	ActorDir = EActorDir::None;
 	return;
 }
-
-
-
-
-
-//void AKoopaTroopa::CollisionUpdate(float _DeltaTime)
-//{
-//	CollisionCheck();
-//}
 
 void AKoopaTroopa::CollisionCheck()
 {
