@@ -42,11 +42,27 @@ void AKoopa::MoveStart()
 
 void AKoopa::Move(float _DeltaTime)
 {
-	//CalHorizonVelocityVector(_DeltaTime);
-	//HorizonVelocityVector = ActorMoveDir * 50.0f;
 
+	ResultMovementUpdate(_DeltaTime);
+}
 
-	//ResultMovementUpdate(_DeltaTime);
+void AKoopa::Idle(float _DeltaTime)
+{
+	if (GetActorLocation().iX() - GetPlayer()->GetActorLocation().iX() < 100.0f)
+	{
+		StateChange(EActorState::Move);
+	}
+}
+
+void AKoopa::ResultMovementUpdate(float _DeltaTime)
+{
+	CalGravityVelocityVector(_DeltaTime);
+	CalTotalVelocityVector(_DeltaTime);
+	AddActorLocation(TotalVelocityVector * _DeltaTime);
+}
+
+void AKoopa::CalGravityVelocityVector(float _DeltaTime)
+{
 	std::vector<UCollision*> Result = std::vector<UCollision*>();
 	Color8Bit Color = UContentsFunction::GetCollisionMapImg()->GetColor(GetActorLocation().iX(), GetActorLocation().iY(), UInGameValue::CollisionColor);
 
@@ -57,19 +73,8 @@ void AKoopa::Move(float _DeltaTime)
 	}
 	else
 	{
-		SetGravityRatio(1.0f);
+		SetGravityRatio(0.5f);
 	}
 
 	GravityVelocityVector += GravityAccVector * _DeltaTime * GravityRatio;
-
-	CalTotalVelocityVector(_DeltaTime);
-	AddActorLocation(TotalVelocityVector * _DeltaTime);
-}
-
-void AKoopa::Idle(float _DeltaTime)
-{
-	if (GetActorLocation().iX() - GetPlayer()->GetActorLocation().iX() < 100.0f)
-	{
-		StateChange(EActorState::Move);
-	}
 }
