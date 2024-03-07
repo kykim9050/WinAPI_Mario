@@ -44,7 +44,7 @@ void AKoopa::MoveStart()
 {
 	AMonsterUnit::MoveStart();
 
-	HorizonVelocityVector = ActorMoveDir * 50.0f;
+	HorizonVelocityVector = ActorMoveDir * 500.0f;
 
 	if (EActorDir::Left == ActorDir)
 	{
@@ -72,21 +72,23 @@ void AKoopa::Move(float _DeltaTime)
 
 	ResultMovementUpdate(_DeltaTime);
 
-	//if (GetActorLocation().Y <= InitPos.Y - static_cast<float>(UInGameValue::PiranhaPlantBodyCollisionScaleY))
-	//{
-	//	SetActorLocation({ InitPos.X, InitPos.Y - static_cast<float>(UInGameValue::PiranhaPlantBodyCollisionScaleY) });
-	//	StateChange(EActorState::Idle);
-	//}
-	//else if (GetActorLocation().Y >= InitPos.Y + static_cast<float>(UInGameValue::PiranhaPlantBodyCollisionScaleY))
-	//{
-	//	SetActorLocation({ InitPos.X, InitPos.Y + static_cast<float>(UInGameValue::PiranhaPlantBodyCollisionScaleY) });
-	//	StateChange(EActorState::Idle);
-	//}
+	if (GetActorLocation().iX() <= InitPos.iX() - 300)
+	{
+		ActorMoveDir = FVector::Right;
+		AddActorLocation(FVector::Right * 4);
+		StateChange(EActorState::Idle);
+	}
+	else if (GetActorLocation().iX() >= InitPos.iX() + 100)
+	{
+		ActorMoveDir = FVector::Left;
+		AddActorLocation(FVector::Left * 4);
+		StateChange(EActorState::Idle);
+	}
 }
 
 void AKoopa::Idle(float _DeltaTime)
 {
-	if (GetActorLocation().iX() - GetPlayer()->GetActorLocation().iX() < 100.0f)
+	if (GetActorLocation().iX() - GetPlayer()->GetActorLocation().iX() < 1000.0f)
 	{
 		StateChange(EActorState::Move);
 	}
