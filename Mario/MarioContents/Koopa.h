@@ -20,8 +20,11 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 	void MoveStart() override;
-	void Move(float _DeltaTime) override;
 	void Idle(float _DeltaTime) override;
+	void Move(float _DeltaTime) override;
+	void ResultMovementUpdate(float _DeltaTime) override;
+	void CalGravityVelocityVector(float _DeltaTime) override;
+
 
 private:
 
