@@ -119,3 +119,6 @@ const int UInGameValue::KoopaImgYValue = 1;
 
 const int UInGameValue::KoopaFireImgXValue = 2;
 const int UInGameValue::KoopaFireImgYValue = 1;
+
+const int UInGameValue::KoopaBodyCollisionScaleX = 32 * UInGameValue::WindowSizeMulValue ;
+const int UInGameValue::KoopaBodyCollisionScaleY = 32 * UInGameValue::WindowSizeMulValue;
