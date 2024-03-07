@@ -46,8 +46,15 @@ void UTestLevel::BeginPlay()
 	AKoopa* BossMonsterKoopa = SpawnActor<AKoopa>(static_cast<int>(EActorType::Monster));
 	BossMonsterKoopa->SetActorLocation({ 6300, 360 });
 
-	ABridgeBlock* BridgeBlock = SpawnActor<ABridgeBlock>(static_cast<int>(EActorType::Block));
-	BridgeBlock->SetActorLocation({ 6300, 500 });
+
+	std::list<ABridgeBlock*> BridgeBlocks = std::list<ABridgeBlock*>();
+	for (int i = 0; i < 13; i++)
+	{
+		ABridgeBlock* BridgeBlock = SpawnActor<ABridgeBlock>(static_cast<int>(EActorType::Block));
+		BridgeBlock->SetActorLocation({ 6168 + 48 * i,  504 });
+		BridgeBlocks.push_front(BridgeBlock);
+	}
+
 }
 
 void UTestLevel::Tick(float _DeltaTime)
