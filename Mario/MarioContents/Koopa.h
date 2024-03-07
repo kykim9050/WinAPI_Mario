@@ -20,11 +20,13 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 	void MoveStart() override;
+	void FirstInit(float _Deltatime) override;
 	void Idle(float _DeltaTime) override;
 	void Move(float _DeltaTime) override;
 
+	void CollisionCheck() override;
 
 private:
-
+	FVector InitPos = FVector::Zero;
 };
 
