@@ -40,25 +40,25 @@ void AGoomba::Tick(float _DeltaTime)
 	AMonsterUnit::Tick(_DeltaTime);
 }
 
-void AGoomba::StateUpdate(float _DeltaTime)
-{
-	switch (ActorState)
-	{
-	case EActorState::Idle:
-		Idle(_DeltaTime);
-		break;
-	case EActorState::Move:
-		Move(_DeltaTime);
-		break;
-	case EActorState::GetMonsterHit:
-		GetMonsterHit(_DeltaTime);
-		break;
-	case EActorState::GetHit:
-	default:
-		break;
-	}
-
-}
+//void AGoomba::StateUpdate(float _DeltaTime)
+//{
+//	switch (ActorState)
+//	{
+//	case EActorState::Idle:
+//		Idle(_DeltaTime);
+//		break;
+//	case EActorState::Move:
+//		Move(_DeltaTime);
+//		break;
+//	case EActorState::GetMonsterHit:
+//		GetMonsterHit(_DeltaTime);
+//		break;
+//	case EActorState::GetHit:
+//	default:
+//		break;
+//	}
+//
+//}
 
 
 void AGoomba::CollisionCheck()

@@ -19,7 +19,7 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
-	void StateUpdate(float _DeltaTime) override;
+	//void StateUpdate(float _DeltaTime) override;
 	void StateChange(EActorState _ActorState) override;
 
 	//void CollisionUpdate(float _DeltaTime);
