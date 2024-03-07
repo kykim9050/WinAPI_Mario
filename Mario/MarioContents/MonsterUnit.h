@@ -23,6 +23,7 @@ protected:
 
 	void StateUpdate(float _DeltaTime) override;
 	void StateChange(EActorState _ActorState) override;
+	void CollisionStateChange(ECollisionState _CollisionState) override;
 	//void CollisionUpdate(float _DeltaTime);
 
 
@@ -40,6 +41,8 @@ protected:
 	virtual void GetHitFromPlayerStart() {};
 	virtual void GetHitFromMonsterStart() {};
 
+	virtual void GetHitStart() {};
+	virtual void GetMonsterHitStart() {};
 
 	void CalHorizonVelocityVector(float _DeltaTime) override;
 

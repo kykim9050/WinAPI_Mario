@@ -233,28 +233,6 @@ void AKoopaTroopa::CollisionCheck()
 	CollisionStateChange(ECollisionState::None);
 }
 
-void AKoopaTroopa::CollisionStateChange(ECollisionState _CollisionState)
-{
-	if (ActorCollisionState != _CollisionState)
-	{
-		switch (_CollisionState)
-		{
-		case ECollisionState::Hit:
-			//HitStart();
-			break;
-		case ECollisionState::GetHit:
-			GetHitStart();
-			break;
-		case ECollisionState::GetMonsterHit:
-			GetMonsterHitStart();
-			break;
-		default:
-			break;
-		}
-	}
-
-	SetCollisionState(_CollisionState);
-}
 
 void AKoopaTroopa::GetHitStart()
 {
@@ -292,10 +270,3 @@ void AKoopaTroopa::GetMonsterHitStart()
 	JumpVelocityVector = FVector::Up * 300.0f;
 	StateChange(EActorState::GetMonsterHit);
 }
-
-
-
-
-
-
-

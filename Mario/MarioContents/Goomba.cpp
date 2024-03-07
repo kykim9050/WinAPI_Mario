@@ -133,29 +133,6 @@ void AGoomba::ResultMovementUpdate(float _DeltaTime)
 }
 
 
-void AGoomba::CollisionStateChange(ECollisionState _CollisionState)
-{
-	if (ActorCollisionState != _CollisionState)
-	{
-		switch (_CollisionState)
-		{
-		case ECollisionState::Hit:
-			//HitStart();
-			break;
-		case ECollisionState::GetHit:
-			GetHitStart();
-			break;
-		case ECollisionState::GetMonsterHit:
-			GetMonsterHitStart();
-			break;
-		default:
-			break;
-		}
-	}
-
-	SetCollisionState(_CollisionState);
-}
-
 void AGoomba::GetHitStart()
 {
 	StateChange(EActorState::GetHit);

@@ -19,11 +19,10 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
-	//void CollisionUpdate(float _DeltaTime);
 	void CollisionCheck() override;
 
-	void IdleStart();
-	void MoveStart();
+	void IdleStart() override;
+	void MoveStart() override;
 
 	void FirstInit(float _Deltatime);
 	void Idle(float _DeltaTime) override;
