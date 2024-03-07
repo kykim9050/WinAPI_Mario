@@ -22,10 +22,10 @@ void AKoopa::BeginPlay()
 	Renderer->ChangeAnimation("Koopa_LeftMove");
 
 
-	//BodyCollision = CreateCollision(ECollisionOrder::Monster);
-	//BodyCollision->SetTransform({ { 0,0 }, { UInGameValue::KoopaTroopaBodyCollisionScaleX, UInGameValue::KoopaTroopaBodyCollisionScaleY} });
-	//BodyCollision->SetPosition({ 0, -(BodyCollision->GetTransform().GetScale().ihY()) });
-	//BodyCollision->SetColType(ECollisionType::Rect);
+	BodyCollision = CreateCollision(ECollisionOrder::Monster);
+	BodyCollision->SetTransform({ { 0,0 }, { UInGameValue::KoopaBodyCollisionScaleX, UInGameValue::KoopaBodyCollisionScaleY} });
+	BodyCollision->SetPosition({ 0, -(BodyCollision->GetTransform().GetScale().ihY()) });
+	BodyCollision->SetColType(ECollisionType::Rect);
 
 	//SetActorState(EActorState::Idle);
 

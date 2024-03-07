@@ -248,6 +248,12 @@ public:
 	static const int KoopaFireImgXValue;
 	static const int KoopaFireImgYValue;
 
+	/// <summary>
+	/// KoopaÀÇ BodyCollision Scale °ª
+	/// </summary>
+	static const int KoopaBodyCollisionScaleX;
+	static const int KoopaBodyCollisionScaleY;
+
 protected:
 
 private:
