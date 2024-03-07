@@ -54,24 +54,24 @@ void APiranhaPlant::Tick(float _DeltaTime)
 //	}
 //}
 
-void APiranhaPlant::StateChange(EActorState _ActorState)
-{
-	if (ActorState != _ActorState)
-	{
-		switch (_ActorState)
-		{
-		case EActorState::Idle:
-			IdleStart();
-			break;
-		case EActorState::Move:
-			MoveStart();
-			break;
-		default:
-			break;
-		}
-	}
-	SetActorState(_ActorState);
-}
+//void APiranhaPlant::StateChange(EActorState _ActorState)
+//{
+//	if (ActorState != _ActorState)
+//	{
+//		switch (_ActorState)
+//		{
+//		case EActorState::Idle:
+//			IdleStart();
+//			break;
+//		case EActorState::Move:
+//			MoveStart();
+//			break;
+//		default:
+//			break;
+//		}
+//	}
+//	SetActorState(_ActorState);
+//}
 
 //
 //void APiranhaPlant::CollisionUpdate(float _DeltaTime)

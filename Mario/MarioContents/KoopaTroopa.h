@@ -26,7 +26,7 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 	//void StateUpdate(float _DeltaTime) override;
-	void StateChange(EActorState _ActorState) override;
+	//void StateChange(EActorState _ActorState) override;
 
 	void Idle(float _DeltaTime) override;
 	void Move(float _DeltaTime) override;

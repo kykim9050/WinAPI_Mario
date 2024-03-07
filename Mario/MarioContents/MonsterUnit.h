@@ -22,7 +22,9 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 	void StateUpdate(float _DeltaTime) override;
+	void StateChange(EActorState _ActorState) override;
 	//void CollisionUpdate(float _DeltaTime);
+
 
 	virtual void FirstInit(float _DeltaTime) {};
 	virtual void Idle(float _DeltaTime) {};
@@ -30,6 +32,14 @@ protected:
 	virtual void GetFirstHit(float _DeltaTime) {};
 	virtual void GetSecondHit(float _DeltaTime) {};
 	virtual void GetMonsterHit(float _DeltaTime) {};
+
+	virtual void IdleStart() {};
+	virtual void MoveStart() {};
+	virtual void GetFirstHitStart() {};
+	virtual void GetSecondHitStart() {};
+	virtual void GetHitFromPlayerStart() {};
+	virtual void GetHitFromMonsterStart() {};
+
 
 	void CalHorizonVelocityVector(float _DeltaTime) override;
 

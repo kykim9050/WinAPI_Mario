@@ -91,3 +91,38 @@ void AMonsterUnit::StateUpdate(float _DeltaTime)
 	}
 
 }
+
+void AMonsterUnit::StateChange(EActorState _ActorState)
+{
+	if (ActorState != _ActorState)
+	{
+		switch (_ActorState)
+		{
+		case EActorState::Idle:
+			IdleStart();
+			break;
+		case EActorState::Move:
+			MoveStart();
+			break;
+		case EActorState::GetFirstHit:
+			GetFirstHitStart();
+			break;
+		case EActorState::GetSecondHit:
+			GetSecondHitStart();
+			break;
+		case EActorState::GetHit:
+			GetHitFromPlayerStart();
+			break;
+		case EActorState::GetMonsterHit:
+			GetHitFromMonsterStart();
+			break;
+		case EActorState::Dead:
+			Destroy();
+			return;
+		default:
+			break;
+		}
+	}
+
+	SetActorState(_ActorState);
+}
