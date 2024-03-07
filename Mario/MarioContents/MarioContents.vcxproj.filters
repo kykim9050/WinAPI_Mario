@@ -116,6 +116,9 @@
     <ClInclude Include="BridgeBlock.h">
       <Filter>Object\Block</Filter>
     </ClInclude>
+    <ClInclude Include="CastleBridge.h">
+      <Filter>Object\Structure</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp" />
@@ -229,6 +232,9 @@
     </ClCompile>
     <ClCompile Include="BridgeBlock.cpp">
       <Filter>Object\Block</Filter>
+    </ClCompile>
+    <ClCompile Include="CastleBridge.cpp">
+      <Filter>Object\Structure</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

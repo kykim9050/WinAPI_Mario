@@ -19,6 +19,7 @@
 #include "LevelIntro.h"
 #include "Koopa.h"
 #include "BridgeBlock.h"
+#include "CastleBridge.h"
 
 UTestLevel::UTestLevel()
 {
@@ -46,14 +47,18 @@ void UTestLevel::BeginPlay()
 	AKoopa* BossMonsterKoopa = SpawnActor<AKoopa>(static_cast<int>(EActorType::Monster));
 	BossMonsterKoopa->SetActorLocation({ 6300, 360 });
 
+	ACastleBridge* CastleBridge = SpawnActor<ACastleBridge>(static_cast<int>(EActorType::Structure));
 
-	std::list<ABridgeBlock*> BridgeBlocks = std::list<ABridgeBlock*>();
+
+	/*std::list<ABridgeBlock*> BridgeBlocks = std::list<ABridgeBlock*>();
 	for (int i = 0; i < 13; i++)
 	{
 		ABridgeBlock* BridgeBlock = SpawnActor<ABridgeBlock>(static_cast<int>(EActorType::Block));
 		BridgeBlock->SetActorLocation({ 6168 + 48 * i,  504 });
 		BridgeBlocks.push_front(BridgeBlock);
-	}
+	}*/
+
+	
 
 }
 

@@ -254,6 +254,20 @@ public:
 	static const int KoopaBodyCollisionScaleX;
 	static const int KoopaBodyCollisionScaleY;
 
+	/// <summary>
+	/// 1-4 castle의 bridgeblock의 필요 갯수
+	/// </summary>
+	static const int BridgeBlockAmount;
+
+	/// <summary>
+	/// 1-4 castle의 bridge의 초기 위치
+	/// </summary>
+	static const int BridgeStartXPos;
+	static const int BridgeStartYPos;
+	// 1-4 castle의 bridge 사이의 간격
+	static const int BTBDistance;
+
+
 protected:
 
 private:
