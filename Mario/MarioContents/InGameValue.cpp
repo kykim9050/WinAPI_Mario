@@ -120,5 +120,12 @@ const int UInGameValue::KoopaImgYValue = 1;
 const int UInGameValue::KoopaFireImgXValue = 2;
 const int UInGameValue::KoopaFireImgYValue = 1;
 
-const int UInGameValue::KoopaBodyCollisionScaleX = 32 * UInGameValue::WindowSizeMulValue ;
+const int UInGameValue::KoopaBodyCollisionScaleX = 32 * UInGameValue::WindowSizeMulValue;
 const int UInGameValue::KoopaBodyCollisionScaleY = 32 * UInGameValue::WindowSizeMulValue;
+
+const int UInGameValue::BridgeBlockAmount = 13;
+
+const int UInGameValue::BridgeStartXPos = 2056 * UInGameValue::WindowSizeMulValue;
+const int UInGameValue::BridgeStartYPos = 168 * UInGameValue::WindowSizeMulValue;
+
+const int UInGameValue::BTBDistance = 16 * UInGameValue::WindowSizeMulValue;
