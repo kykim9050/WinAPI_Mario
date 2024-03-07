@@ -33,8 +33,8 @@ void UTestLevel::BeginPlay()
 {
 	UStageLevel::BeginPlay();
 
-	//Mario->SetActorLocation({ UInGameValue::MarioInitXPos, UInGameValue::MarioInitYPos });
-	Mario->SetActorLocation({ 6000, 400 });
+	Mario->SetActorLocation({ UInGameValue::MarioInitXPos, UInGameValue::MarioInitYPos });
+	//Mario->SetActorLocation({ 6000, 400 });
 
 	Map->GetMapRenderer()->SetImage("1_4Stage_Map.png");
 	FVector MapImageFVector = Map->GetMapRenderer()->GetImage()->GetScale();
@@ -45,8 +45,8 @@ void UTestLevel::BeginPlay()
 	ColMap->GetColMapRenderer()->SetTransform({ { ColMapImageFVector.ihX(), ColMapImageFVector.ihY()}, {ColMapImageFVector} });
 
 	AKoopa* BossMonsterKoopa = SpawnActor<AKoopa>(static_cast<int>(EActorType::Monster));
-	BossMonsterKoopa->SetActorLocation({ 6300, 360 });
-	//BossMonsterKoopa->SetActorLocation({ 500, 400 });
+	//BossMonsterKoopa->SetActorLocation({ 6300, 360 });
+	BossMonsterKoopa->SetActorLocation({ 500, 400 });
 
 	ACastleBridge* CastleBridge = SpawnActor<ACastleBridge>(static_cast<int>(EActorType::Structure));
 	

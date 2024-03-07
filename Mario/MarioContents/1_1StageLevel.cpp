@@ -28,7 +28,6 @@ void U1_1StageLevel::BeginPlay()
 	UStageLevel::BeginPlay();
 
 	Mario->SetActorLocation({ UInGameValue::MarioInitXPos, UInGameValue::MarioInitYPos });
-	PlayerUI->SetActorLocation({ UInGameValue::UIXScaleValue / 2 * UInGameValue::WindowSizeMulValue, UInGameValue::UIYScaleValue / 2 * UInGameValue::WindowSizeMulValue });
 
 	Map->GetMapRenderer()->SetImage("1_1Stage_Map.png");
 	FVector MapImageFVector = Map->GetMapRenderer()->GetImage()->GetScale();
@@ -162,12 +161,13 @@ void U1_1StageLevel::BeginPlay()
 	AKoopaTroopa* MonsterTroopa1 = SpawnActor<AKoopaTroopa>(static_cast<int>(EActorType::Monster));
 	
 	int MonsterInitHeight = 580;
+	int MonsterHighHeight = 200;
 
 	MonsterGoomba1->SetActorLocation({ 1180, MonsterInitHeight });
 	MonsterGoomba2->SetActorLocation({ 2444, MonsterInitHeight });
 	MonsterGoomba3->SetActorLocation({ 2600, MonsterInitHeight });
-	MonsterGoomba4->SetActorLocation({ 3948, MonsterInitHeight });
-	MonsterGoomba5->SetActorLocation({ 4074, MonsterInitHeight });
+	MonsterGoomba4->SetActorLocation({ 3948, MonsterHighHeight });
+	MonsterGoomba5->SetActorLocation({ 4074, MonsterHighHeight });
 	MonsterGoomba6->SetActorLocation({ 4800, MonsterInitHeight });
 	MonsterGoomba7->SetActorLocation({ 4864, MonsterInitHeight });
 	MonsterGoomba8->SetActorLocation({ 5500, MonsterInitHeight });
