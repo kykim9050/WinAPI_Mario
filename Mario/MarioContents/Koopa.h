@@ -19,6 +19,9 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
+	void MoveStart() override;
+	void Move(float _DeltaTime) override;
+
 private:
 
 };
