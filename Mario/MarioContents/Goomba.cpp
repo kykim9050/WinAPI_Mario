@@ -199,28 +199,28 @@ void AGoomba::GetHitFromPlayerStart()
 	Destroy(1.0f);
 }
 
-void AGoomba::StateChange(EActorState _ActorState)
-{
-	if (ActorState != _ActorState)
-	{
-		switch (_ActorState)
-		{
-		case EActorState::GetHit:
-			GetHitFromPlayerStart();
-			break;
-		case EActorState::GetMonsterHit:
-			GetHitFromMonsterStart();
-			break;
-		case EActorState::Dead:
-			Destroy();
-			return;
-		default:
-			break;
-		}
-	}
-
-	SetActorState(_ActorState);
-}
+//void AGoomba::StateChange(EActorState _ActorState)
+//{
+//	if (ActorState != _ActorState)
+//	{
+//		switch (_ActorState)
+//		{
+//		case EActorState::GetHit:
+//			GetHitFromPlayerStart();
+//			break;
+//		case EActorState::GetMonsterHit:
+//			GetHitFromMonsterStart();
+//			break;
+//		case EActorState::Dead:
+//			Destroy();
+//			return;
+//		default:
+//			break;
+//		}
+//	}
+//
+//	SetActorState(_ActorState);
+//}
 
 void AGoomba::CalHorizonVelocityVector(float _DeltaTime)
 {

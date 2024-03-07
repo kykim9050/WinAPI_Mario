@@ -141,34 +141,34 @@ void AKoopaTroopa::ResultMovementUpdate(float _DeltaTime)
 
 
 
-void AKoopaTroopa::StateChange(EActorState _ActorState)
-{
-	if (ActorState != _ActorState)
-	{
-		switch (_ActorState)
-		{
-		case EActorState::Move:
-			MoveStart();
-			break;
-		case EActorState::GetFirstHit:
-			GetFirstHitStart();
-			break;
-		case EActorState::GetSecondHit:
-			GetSecondHitStart();
-			break;
-		case EActorState::GetMonsterHit:
-			GetHitFromMonsterStart();
-			break;
-		case EActorState::Dead:
-			Destroy();
-			return;
-		default:
-			break;
-		}
-	}
-
-	SetActorState(_ActorState);
-}
+//void AKoopaTroopa::StateChange(EActorState _ActorState)
+//{
+//	if (ActorState != _ActorState)
+//	{
+//		switch (_ActorState)
+//		{
+//		case EActorState::Move:
+//			MoveStart();
+//			break;
+//		case EActorState::GetFirstHit:
+//			GetFirstHitStart();
+//			break;
+//		case EActorState::GetSecondHit:
+//			GetSecondHitStart();
+//			break;
+//		case EActorState::GetMonsterHit:
+//			GetHitFromMonsterStart();
+//			break;
+//		case EActorState::Dead:
+//			Destroy();
+//			return;
+//		default:
+//			break;
+//		}
+//	}
+//
+//	SetActorState(_ActorState);
+//}
 
 void AKoopaTroopa::IdleStart()
 {
