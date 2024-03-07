@@ -36,23 +36,23 @@ void APiranhaPlant::Tick(float _DeltaTime)
 	AMonsterUnit::Tick(_DeltaTime);
 }
 
-void APiranhaPlant::StateUpdate(float _DeltaTime)
-{
-	switch (ActorState)
-	{
-	case EActorState::FirstInit:
-		FirstInit(_DeltaTime);
-		break;
-	case EActorState::Idle:
-		Idle(_DeltaTime);
-		break;
-	case EActorState::Move:
-		Move(_DeltaTime);
-		break;
-	default:
-		break;
-	}
-}
+//void APiranhaPlant::StateUpdate(float _DeltaTime)
+//{
+//	switch (ActorState)
+//	{
+//	case EActorState::FirstInit:
+//		FirstInit(_DeltaTime);
+//		break;
+//	case EActorState::Idle:
+//		Idle(_DeltaTime);
+//		break;
+//	case EActorState::Move:
+//		Move(_DeltaTime);
+//		break;
+//	default:
+//		break;
+//	}
+//}
 
 void APiranhaPlant::StateChange(EActorState _ActorState)
 {

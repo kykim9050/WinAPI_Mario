@@ -43,30 +43,30 @@ void AKoopaTroopa::Tick(float _DeltaTime)
 	AMonsterUnit::Tick(_DeltaTime);
 }
 
-void AKoopaTroopa::StateUpdate(float _DeltaTime)
-{
-	switch (ActorState)
-	{
-	case EActorState::Idle:
-		Idle(_DeltaTime);
-		break;
-	case EActorState::Move:
-		Move(_DeltaTime);
-		break;
-	case EActorState::GetFirstHit:
-		GetFirstHit(_DeltaTime);
-		break;
-	case EActorState::GetSecondHit:
-		GetSecondHit(_DeltaTime);
-		break;
-	case EActorState::GetMonsterHit:
-		GetMonsterHit(_DeltaTime);
-		break;
-	default:
-		break;
-	}
-
-}
+//void AKoopaTroopa::StateUpdate(float _DeltaTime)
+//{
+//	switch (ActorState)
+//	{
+//	case EActorState::Idle:
+//		Idle(_DeltaTime);
+//		break;
+//	case EActorState::Move:
+//		Move(_DeltaTime);
+//		break;
+//	case EActorState::GetFirstHit:
+//		GetFirstHit(_DeltaTime);
+//		break;
+//	case EActorState::GetSecondHit:
+//		GetSecondHit(_DeltaTime);
+//		break;
+//	case EActorState::GetMonsterHit:
+//		GetMonsterHit(_DeltaTime);
+//		break;
+//	default:
+//		break;
+//	}
+//
+//}
 
 void AKoopaTroopa::Idle(float _DeltaTime)
 {

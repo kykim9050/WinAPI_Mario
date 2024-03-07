@@ -19,10 +19,17 @@ public:
 
 protected:
 	void BeginPlay() override;
-	virtual void Tick(float _DeltaTime);
+	void Tick(float _DeltaTime) override;
 
-	//void StateUpdate(float _DeltaTime);
+	void StateUpdate(float _DeltaTime) override;
 	//void CollisionUpdate(float _DeltaTime);
+
+	virtual void FirstInit(float _DeltaTime) {};
+	virtual void Idle(float _DeltaTime) {};
+	virtual void Move(float _DeltaTime) {};
+	virtual void GetFirstHit(float _DeltaTime) {};
+	virtual void GetSecondHit(float _DeltaTime) {};
+	virtual void GetMonsterHit(float _DeltaTime) {};
 
 	void CalHorizonVelocityVector(float _DeltaTime) override;
 

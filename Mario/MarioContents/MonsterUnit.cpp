@@ -62,3 +62,32 @@ void AMonsterUnit::CalHorizonVelocityVector(float _DeltaTime)
 		}
 	}
 }
+
+void AMonsterUnit::StateUpdate(float _DeltaTime)
+{
+	switch (ActorState)
+	{
+	case EActorState::FirstInit:
+		FirstInit(_DeltaTime);
+		break;
+	case EActorState::Idle:
+		Idle(_DeltaTime);
+		break;
+	case EActorState::Move:
+		Move(_DeltaTime);
+		break;
+	case EActorState::GetFirstHit:
+		GetFirstHit(_DeltaTime);
+		break;
+	case EActorState::GetSecondHit:
+		GetSecondHit(_DeltaTime);
+		break;
+	case EActorState::GetMonsterHit:
+		GetMonsterHit(_DeltaTime);
+		break;
+	case EActorState::GetHit:
+	default:
+		break;
+	}
+
+}
