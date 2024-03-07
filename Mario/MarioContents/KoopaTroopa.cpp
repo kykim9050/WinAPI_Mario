@@ -101,24 +101,6 @@ void AKoopaTroopa::CalHorizonVelocityVector(float _DeltaTime)
 	AMonsterUnit::CalHorizonVelocityVector(_DeltaTime);
 }
 
-//void AKoopaTroopa::ResultMovementUpdate(float _DeltaTime)
-//{
-//	Color8Bit Color = UContentsFunction::GetCollisionMapImg()->GetColor(GetActorLocation().iX(), GetActorLocation().iY(), UInGameValue::CollisionColor);
-//
-//	if (UInGameValue::CollisionColor == Color)
-//	{
-//		GravityVelocityVector = FVector::Zero;
-//	}
-//
-//	CalTotalVelocityVector(_DeltaTime);
-//	AddActorLocation(TotalVelocityVector * _DeltaTime);
-//}
-
-//void AKoopaTroopa::IdleStart()
-//{
-//
-//}
-
 void AKoopaTroopa::MoveStart()
 {
 	if(EActorDir::Left == ActorDir)
