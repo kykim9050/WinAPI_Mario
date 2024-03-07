@@ -4,6 +4,7 @@
 #include "CollisionMap.h"
 #include "UI.h"
 #include <EngineCore/EngineCore.h>
+#include "Koopa.h"
 
 U1_4StageLevel::U1_4StageLevel()
 {
@@ -26,6 +27,9 @@ void U1_4StageLevel::BeginPlay()
 	ColMap->GetColMapRenderer()->SetTransform({ { ColMapImageFVector.ihX(), ColMapImageFVector.ihY()}, {ColMapImageFVector} });
 
 	Mario->SetActorLocation({ UInGameValue::MarioInitXPos, UInGameValue::MarioInitYPos });
+
+	AKoopa* BossMonsterKoopa = SpawnActor<AKoopa>(static_cast<int>(EActorType::Monster));
+	BossMonsterKoopa->SetActorLocation({ 300, 300 });
 
 }
 
