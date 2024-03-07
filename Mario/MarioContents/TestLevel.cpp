@@ -18,6 +18,7 @@
 #include "Castle.h"
 #include "LevelIntro.h"
 #include "Koopa.h"
+#include "BridgeBlock.h"
 
 UTestLevel::UTestLevel()
 {
@@ -43,7 +44,10 @@ void UTestLevel::BeginPlay()
 	ColMap->GetColMapRenderer()->SetTransform({ { ColMapImageFVector.ihX(), ColMapImageFVector.ihY()}, {ColMapImageFVector} });
 
 	AKoopa* BossMonsterKoopa = SpawnActor<AKoopa>(static_cast<int>(EActorType::Monster));
-	BossMonsterKoopa->SetActorLocation({ 6600, 360 });
+	BossMonsterKoopa->SetActorLocation({ 6300, 360 });
+
+	ABridgeBlock* BridgeBlock = SpawnActor<ABridgeBlock>(static_cast<int>(EActorType::Block));
+	BridgeBlock->SetActorLocation({ 6300, 500 });
 }
 
 void UTestLevel::Tick(float _DeltaTime)
