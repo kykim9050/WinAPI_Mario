@@ -113,3 +113,9 @@ const int UInGameValue::UISpacingBetRends = 24;
 const int UInGameValue::UIStageInfoRendInitXPos = 459;
 const int UInGameValue::UIStageInfoCRendInitXPos = 408;
 const int UInGameValue::UIStageInfoCRendInitYPos = 240;
+
+const int UInGameValue::KoopaImgXValue = 4;
+const int UInGameValue::KoopaImgYValue = 1;
+
+const int UInGameValue::KoopaFireImgXValue = 2;
+const int UInGameValue::KoopaFireImgYValue = 1;
