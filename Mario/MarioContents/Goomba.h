@@ -26,18 +26,17 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 	void GetHitStart() override;
-	void GetHitFromPlayerStart();
+	void GetHitFromPlayerStart() override;
 
 	void Idle(float _DeltaTime) override;
 	void Move(float _DeltaTime) override;
-	void GetMonsterHit(float _DeltaTime);
+	void GetMonsterHit(float _DeltaTime) override;
 	void CalHorizonVelocityVector(float _DeltaTime) override;
 	void ResultMovementUpdate(float _DeltaTime) override;
 
 	void CollisionCheck() override;
-	void CollisionStateChange(ECollisionState _CollisionState) override;
-	void GetMonsterHitStart();
-	void GetHitFromMonsterStart();
+	void GetMonsterHitStart() override;
+	void GetHitFromMonsterStart() override;
 
 
 private:

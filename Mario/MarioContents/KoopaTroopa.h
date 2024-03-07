@@ -27,23 +27,21 @@ protected:
 
 	void Idle(float _DeltaTime) override;
 	void Move(float _DeltaTime) override;
-	void GetFirstHit(float _DeltaTime);
-	void GetSecondHit(float _DeltaTime);
-	void GetMonsterHit(float _DeltaTime);
+	void GetFirstHit(float _DeltaTime) override;
+	void GetSecondHit(float _DeltaTime) override;
+	void GetMonsterHit(float _DeltaTime) override;
 	void CalHorizonVelocityVector(float _DeltaTime);
 	void ResultMovementUpdate(float _DeltaTime) override;
 
-	//void CollisionUpdate(float _DeltaTime) override;
-	void CollisionStateChange(ECollisionState _CollisionState) override;
 	void CollisionCheck() override;
 
-	void IdleStart();
-	void MoveStart();
-	void GetFirstHitStart();
-	void GetSecondHitStart();
-	void GetHitFromMonsterStart();
+	void IdleStart() override;
+	void MoveStart() override;
+	void GetFirstHitStart() override;
+	void GetSecondHitStart() override;
+	void GetHitFromMonsterStart() override;
 	void GetHitStart() override;
-	void GetMonsterHitStart();
+	void GetMonsterHitStart() override;
 
 	void SetDirAfterCollision(const FVector _MyFVector, const FVector _OtherFVector);
 

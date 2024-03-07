@@ -126,3 +126,23 @@ void AMonsterUnit::StateChange(EActorState _ActorState)
 
 	SetActorState(_ActorState);
 }
+
+void AMonsterUnit::CollisionStateChange(ECollisionState _CollisionState)
+{
+	if (ActorCollisionState != _CollisionState)
+	{
+		switch (_CollisionState)
+		{
+		case ECollisionState::GetHit:
+			GetHitStart();
+			break;
+		case ECollisionState::GetMonsterHit:
+			GetMonsterHitStart();
+			break;
+		default:
+			break;
+		}
+	}
+
+	SetCollisionState(_CollisionState);
+}
