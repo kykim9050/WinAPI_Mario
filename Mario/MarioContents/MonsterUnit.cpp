@@ -146,3 +146,28 @@ void AMonsterUnit::CollisionStateChange(ECollisionState _CollisionState)
 
 	SetCollisionState(_CollisionState);
 }
+
+void AMonsterUnit::CalGravityVelocityVector(float _DeltaTime)
+{
+	std::vector<UCollision*> Result = std::vector<UCollision*>();
+	Color8Bit Color = UContentsFunction::GetCollisionMapImg()->GetColor(GetActorLocation().iX(), GetActorLocation().iY(), UInGameValue::CollisionColor);
+
+	if (UInGameValue::CollisionColor == Color || true == BodyCollision->CollisionCheck(ECollisionOrder::BlockTop, Result))
+	{
+		GravityVelocityVector = FVector::Zero;
+		SetGravityRatio(0.0f);
+	}
+	else
+	{
+		SetGravityRatio(0.5f);
+	}
+
+	GravityVelocityVector += GravityAccVector * _DeltaTime * GravityRatio;
+}
+
+void AMonsterUnit::ResultMovementUpdate(float _DeltaTime)
+{
+	CalGravityVelocityVector(_DeltaTime);
+	CalTotalVelocityVector(_DeltaTime);
+	AddActorLocation(TotalVelocityVector * _DeltaTime);
+}

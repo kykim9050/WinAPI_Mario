@@ -119,18 +119,18 @@ void AGoomba::GetMonsterHit(float _DeltaTime)
 	}
 }
 
-void AGoomba::ResultMovementUpdate(float _DeltaTime)
-{
-	Color8Bit Color = UContentsFunction::GetCollisionMapImg()->GetColor(GetActorLocation().iX(), GetActorLocation().iY(), UInGameValue::CollisionColor);
-
-	if (UInGameValue::CollisionColor == Color)
-	{
-		GravityVelocityVector = FVector::Zero;
-	}
-
-	CalTotalVelocityVector(_DeltaTime);
-	AddActorLocation(TotalVelocityVector * _DeltaTime);
-}
+//void AGoomba::ResultMovementUpdate(float _DeltaTime)
+//{
+//	Color8Bit Color = UContentsFunction::GetCollisionMapImg()->GetColor(GetActorLocation().iX(), GetActorLocation().iY(), UInGameValue::CollisionColor);
+//
+//	if (UInGameValue::CollisionColor == Color)
+//	{
+//		GravityVelocityVector = FVector::Zero;
+//	}
+//
+//	CalTotalVelocityVector(_DeltaTime);
+//	AddActorLocation(TotalVelocityVector * _DeltaTime);
+//}
 
 
 void AGoomba::GetHitStart()

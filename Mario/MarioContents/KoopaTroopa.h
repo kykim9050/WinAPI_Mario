@@ -31,11 +31,11 @@ protected:
 	void GetSecondHit(float _DeltaTime) override;
 	void GetMonsterHit(float _DeltaTime) override;
 	void CalHorizonVelocityVector(float _DeltaTime);
-	void ResultMovementUpdate(float _DeltaTime) override;
+	//void ResultMovementUpdate(float _DeltaTime) override;
 
 	void CollisionCheck() override;
 
-	void IdleStart() override;
+	//void IdleStart() override;
 	void MoveStart() override;
 	void GetFirstHitStart() override;
 	void GetSecondHitStart() override;
