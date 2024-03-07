@@ -2,6 +2,7 @@
 
 AKoopa::AKoopa()
 {
+	HorizonVelocityVector = ActorMoveDir * 50.0f;
 }
 
 AKoopa::~AKoopa()
@@ -37,12 +38,33 @@ void AKoopa::MoveStart()
 {
 	AMonsterUnit::MoveStart();
 
-	Renderer->ChangeAnimation("Koopa_LeftMove");
+	HorizonVelocityVector = ActorMoveDir * 50.0f;
+
+	if (EActorDir::Left == ActorDir)
+	{
+		Renderer->ChangeAnimation("Koopa_LeftMove");
+		return;
+	}
+
+	if (EActorDir::Right == ActorDir)
+	{
+		Renderer->ChangeAnimation("Koopa_RightMove");
+		return;
+	}
 }
 
 void AKoopa::Move(float _DeltaTime)
 {
+	EActorDir CurDir = ActorDir;
+	CalHorizonVelocityVector(_DeltaTime);
 
+	if (ActorDir != CurDir)
+	{
+		StateChange(EActorState::Idle);
+		return;
+	}
+
+	/*HorizonVelocityVector = ActorMoveDir * 50.0f;*/
 	ResultMovementUpdate(_DeltaTime);
 }
 
