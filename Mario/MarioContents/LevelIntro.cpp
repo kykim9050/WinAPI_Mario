@@ -132,6 +132,7 @@ void ALevelIntro::Tick(float _DeltaTime)
 		AllRenderersActiveOff();
 		GetWorld()->SetTimeScale(EActorType::UI, 1.0f);
 		GetWorld()->SetTimeScale(EActorType::Player, 1.0f);
+		GetWorld()->SetTimeScale(EActorType::Monster, 1.0f);
 	}
 }
 
