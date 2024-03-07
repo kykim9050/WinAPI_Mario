@@ -113,6 +113,9 @@
     <ClInclude Include="Koopa.h">
       <Filter>Object\Monster</Filter>
     </ClInclude>
+    <ClInclude Include="CastleBridge.h">
+      <Filter>Object\Block</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp" />
@@ -223,6 +226,9 @@
     </ClCompile>
     <ClCompile Include="Koopa.cpp">
       <Filter>Object\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="CastleBridge.cpp">
+      <Filter>Object\Block</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
