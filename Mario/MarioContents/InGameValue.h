@@ -273,6 +273,12 @@ public:
 	static const int KoopaMoveDeadline_F;
 	static const int KoopaMoveDeadline_R;
 
+	/// <summary>
+	/// Koopa가 발사하는 Bullet의 Collsion Scale
+	/// </summary>
+	static const int KoopaBulletXColScale;
+	static const int KoopaBulletYColScale;
+
 protected:
 
 private:

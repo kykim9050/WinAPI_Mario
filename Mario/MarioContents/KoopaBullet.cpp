@@ -21,6 +21,10 @@ void AKoopaBullet::BeginPlay()
 	Renderer->CreateAnimation("Firing_Left", "KoopaFire_Left.png", 0, 1, 0.1f, true);
 	Renderer->CreateAnimation("Firing_Right", "KoopaFire_Right.png", 0, 1, 0.1f, true);
 	Renderer->ChangeAnimation("Firing_Left");
+
+	BodyCollision = CreateCollision(ECollisionOrder::MonsterBullet);
+	BodyCollision->SetTransform({ { 0,0 }, { UInGameValue::KoopaBulletXColScale, UInGameValue::KoopaBulletYColScale } });
+	BodyCollision->SetColType(ECollisionType::Rect);
 }
 
 void AKoopaBullet::Tick(float _DeltaTime)
