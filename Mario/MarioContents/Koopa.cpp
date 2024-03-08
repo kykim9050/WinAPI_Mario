@@ -64,15 +64,7 @@ void AKoopa::MoveStart()
 
 void AKoopa::Move(float _DeltaTime)
 {
-	EActorDir CurDir = ActorDir;
-	ActorDir = DirCheckAndSet();
-
-	if (ActorDir != CurDir)
-	{
-		StateChange(EActorState::Idle);
-		return;
-	}
-
+	ChangeAnimationInPlayerDir();
 	ResultMovementUpdate(_DeltaTime);
 
 	if (GetActorLocation().iX() <= InitPos.iX() - UInGameValue::KoopaMoveDeadline_F)
@@ -117,4 +109,25 @@ EActorDir AKoopa::DirCheckAndSet()
 	}
 
 	return Dir;
+}
+
+void AKoopa::ChangeAnimationInPlayerDir()
+{
+	EActorDir CurDir = ActorDir;
+	ActorDir = DirCheckAndSet();
+
+	if (ActorDir != CurDir)
+	{
+		if (EActorDir::Left == ActorDir)
+		{
+			Renderer->ChangeAnimation("Koopa_LeftMove");
+			return;
+		}
+
+		if (EActorDir::Right == ActorDir)
+		{
+			Renderer->ChangeAnimation("Koopa_RightMove");
+			return;
+		}
+	}
 }
