@@ -76,6 +76,9 @@ void AMonsterUnit::StateUpdate(float _DeltaTime)
 	case EActorState::Move:
 		Move(_DeltaTime);
 		break;
+	case EActorState::Jump:
+		Jump(_DeltaTime);
+		break;
 	case EActorState::GetFirstHit:
 		GetFirstHit(_DeltaTime);
 		break;
@@ -103,6 +106,9 @@ void AMonsterUnit::StateChange(EActorState _ActorState)
 			break;
 		case EActorState::Move:
 			MoveStart();
+			break;
+		case EActorState::Jump:
+			JumpStart();
 			break;
 		case EActorState::GetFirstHit:
 			GetFirstHitStart();
