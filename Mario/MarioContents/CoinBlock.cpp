@@ -72,6 +72,12 @@ void ACoinBlock::IdleStart()
 	default:
 		break;
 	}
+
+	if (nullptr == Item)
+	{
+		MsgBoxAssert("Item이 생성되지 않았습니다.");
+	}
+
 	Item->SetActorLocation({ InitPos.X, InitPos.Y});
 
 }
