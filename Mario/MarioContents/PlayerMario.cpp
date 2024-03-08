@@ -241,6 +241,12 @@ void APlayerMario::CollisionStateCheck()
 		return;
 	}
 
+	if (true == BodyCollision->CollisionCheck(ECollisionOrder::MonsterBullet, Result))
+	{
+		StateChange(EActorState::GetHit);
+		return;
+	}
+
 	if (true == AteMushroom)
 	{
 		AteMushroom = false;
