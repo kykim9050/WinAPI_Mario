@@ -106,6 +106,7 @@ enum class EMarioType
 enum class ECollisionOrder
 {
 	PlayerBullet,
+	MonsterBullet,
 	Monster,
 	Player,
 	AttackableMonster,

@@ -132,3 +132,6 @@ const int UInGameValue::BTBDistance = 16 * UInGameValue::WindowSizeMulValue;
 
 const int UInGameValue::KoopaMoveDeadline_F = 300;
 const int UInGameValue::KoopaMoveDeadline_R = 100;
+
+const int UInGameValue::KoopaBulletXColScale = 64;
+const int UInGameValue::KoopaBulletYColScale = 16;
