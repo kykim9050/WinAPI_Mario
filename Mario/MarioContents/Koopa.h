@@ -23,7 +23,7 @@ protected:
 	void FirstInit(float _Deltatime) override;
 	void Idle(float _DeltaTime) override;
 	void Move(float _DeltaTime) override;
-	void PlayerDirCheck();
+	EActorDir DirCheckAndSet();
 
 	void CollisionCheck() override;
 
