@@ -50,8 +50,6 @@ void UTestLevel::BeginPlay()
 	BossMonsterKoopa->SetActorLocation({ 6600, 450 });
 	//BossMonsterKoopa->SetActorLocation({ 500, 400 });
 
-	AKoopaBullet* TestBullet = SpawnActor<AKoopaBullet>(static_cast<int>(EActorType::Bullet));
-	TestBullet->SetActorLocation({ 200, 600 });
 
 	ACastleBridge* CastleBridge = SpawnActor<ACastleBridge>(static_cast<int>(EActorType::Structure));
 	
