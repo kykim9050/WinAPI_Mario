@@ -159,7 +159,13 @@ void AKoopa::Jump(float _DeltaTime)
 
 void AKoopa::CollisionCheck()
 {
-	
+	std::vector<UCollision*> Result = std::vector<UCollision*>();
+
+	if (true == BodyCollision->CollisionCheck(ECollisionOrder::Player, Result))
+	{
+		GetPlayer()->StateChange(EActorState::GetHit);
+		return;
+	}
 }
 
 EActorDir AKoopa::DirCheckAndSet()
