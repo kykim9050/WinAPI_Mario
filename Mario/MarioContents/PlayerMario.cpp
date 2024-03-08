@@ -259,7 +259,7 @@ void APlayerMario::CollisionStateCheck()
 		BlockBottomHit = false;
 	}
 
-	if (false == IsOnTheBlock && true == BodyCollision->CollisionCheck(ECollisionOrder::BlockTop, Result))
+	if (false == IsOnTheBlock && true == BodyCollision->CollisionCheck(ECollisionOrder::BlockTop, Result) && static_cast<int>(ECollisionOrder::Player) == BodyCollision->GetOrder())
 	{
 		IsOnTheBlock = true;
 		SetGravityZero();

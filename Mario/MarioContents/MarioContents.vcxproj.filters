@@ -92,9 +92,6 @@
     <ClInclude Include="Castle.h">
       <Filter>Object\Structure</Filter>
     </ClInclude>
-    <ClInclude Include="MainPlayer.h">
-      <Filter>Object</Filter>
-    </ClInclude>
     <ClInclude Include="1_4StageLevel.h">
       <Filter>Level\Stage1-4</Filter>
     </ClInclude>
@@ -118,6 +115,9 @@
     </ClInclude>
     <ClInclude Include="CastleBridge.h">
       <Filter>Object\Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="MainPlayer.h">
+      <Filter>Object\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -209,9 +209,6 @@
     <ClCompile Include="Castle.cpp">
       <Filter>Object\Structure</Filter>
     </ClCompile>
-    <ClCompile Include="MainPlayer.cpp">
-      <Filter>Object</Filter>
-    </ClCompile>
     <ClCompile Include="1_4StageLevel.cpp">
       <Filter>Level\Stage1-4</Filter>
     </ClCompile>
@@ -235,6 +232,9 @@
     </ClCompile>
     <ClCompile Include="CastleBridge.cpp">
       <Filter>Object\Structure</Filter>
+    </ClCompile>
+    <ClCompile Include="MainPlayer.cpp">
+      <Filter>Object\Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
