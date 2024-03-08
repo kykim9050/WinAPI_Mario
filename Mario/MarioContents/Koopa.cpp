@@ -19,6 +19,9 @@ void AKoopa::BeginPlay()
 	Renderer->SetTransform({ {0,0}, {KoopaScale.iX() / UInGameValue::KoopaImgXValue * UInGameValue::WindowSizeMulValue, KoopaScale.iY() / UInGameValue::KoopaImgYValue * UInGameValue::WindowSizeMulValue} });
 	Renderer->CreateAnimation("Koopa_LeftMove", "Koopa_Left.png", 0, 1, 0.3f, true);
 	Renderer->CreateAnimation("Koopa_RightMove", "Koopa_Right.png", 0, 1, 0.3f, true);
+	Renderer->CreateAnimation("Koopa_RightFire", "Koopa_Right.png", 2, 2, 0.1f, true);
+	Renderer->CreateAnimation("Koopa_LeftFire", "Koopa_Left.png", 2, 2, 0.1f, true);
+
 
 	BodyCollision = CreateCollision(ECollisionOrder::Monster);
 	BodyCollision->SetTransform({ { 0,0 }, { UInGameValue::KoopaBodyCollisionScaleX, UInGameValue::KoopaBodyCollisionScaleY} });
@@ -79,15 +82,56 @@ void AKoopa::JumpStart()
 	}
 }
 
-void AKoopa::Move(float _DeltaTime)
+void AKoopa::FireStart()
 {
-	MoveTime -= _DeltaTime;
+	HorizonVelocityVector = FVector::Zero;
+
+	if (EActorDir::Left == ActorDir)
+	{
+		Renderer->ChangeAnimation("Koopa_LeftFire");
+		return;
+	}
+
+	if (EActorDir::Right == ActorDir)
+	{
+		Renderer->ChangeAnimation("Koopa_RightFire");
+		return;
+	}
+}
+
+void AKoopa::Fire(float _DeltaTime)
+{
+	FiringTime -= _DeltaTime;
 
 	ChangeAnimationInPlayerDir();
 	ResultMovementUpdate(_DeltaTime);
 
 	CheckScopeOfActivity();
 
+	if (0.0f >= FiringTime)
+	{
+		FiringTime = 0.5f + FiringTime;
+		StateChange(EActorState::Move);
+		return;
+	}
+}
+
+void AKoopa::Move(float _DeltaTime)
+{
+	MoveTime -= _DeltaTime;
+	FireDelayTime -= _DeltaTime;
+
+	ChangeAnimationInPlayerDir();
+	ResultMovementUpdate(_DeltaTime);
+
+	CheckScopeOfActivity();
+
+	if (0.0f >= FireDelayTime)
+	{
+		FireDelayTime = 3.0f + FireDelayTime;
+		StateChange(EActorState::Fire);
+		return;
+	}
 
 	if (0.0f >= MoveTime)
 	{

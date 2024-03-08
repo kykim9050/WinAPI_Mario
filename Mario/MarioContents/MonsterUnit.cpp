@@ -88,6 +88,9 @@ void AMonsterUnit::StateUpdate(float _DeltaTime)
 	case EActorState::GetMonsterHit:
 		GetMonsterHit(_DeltaTime);
 		break;
+	case EActorState::Fire:
+		Fire(_DeltaTime);
+		break;
 	case EActorState::GetHit:
 	default:
 		break;
@@ -121,6 +124,9 @@ void AMonsterUnit::StateChange(EActorState _ActorState)
 			break;
 		case EActorState::GetMonsterHit:
 			GetHitFromMonsterStart();
+			break;
+		case EActorState::Fire:
+			FireStart();
 			break;
 		case EActorState::Dead:
 			Destroy();

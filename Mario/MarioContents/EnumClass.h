@@ -67,6 +67,7 @@ enum class EActorState
 	Wait,
 	ReachingEndFlag,
 	ReachStageEnd,
+	Fire,
 };
 
 enum class EActorDir

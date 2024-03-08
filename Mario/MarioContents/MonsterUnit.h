@@ -30,12 +30,14 @@ protected:
 	virtual void FirstInit(float _DeltaTime) {};
 	virtual void Idle(float _DeltaTime) {};
 	virtual void Move(float _DeltaTime) {};
+	virtual void Fire(float _DeltaTime) {};
 	virtual void GetFirstHit(float _DeltaTime) {};
 	virtual void GetSecondHit(float _DeltaTime) {};
 	virtual void GetMonsterHit(float _DeltaTime) {};
 
 	virtual void IdleStart() {};
 	virtual void MoveStart() {};
+	virtual void FireStart() {};
 	virtual void GetFirstHitStart() {};
 	virtual void GetSecondHitStart() {};
 	virtual void GetHitFromPlayerStart() {};
