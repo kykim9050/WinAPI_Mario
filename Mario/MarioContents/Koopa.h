@@ -25,8 +25,11 @@ protected:
 	void Idle(float _DeltaTime) override;
 	void Move(float _DeltaTime) override;
 	void Jump(float _DeltaTime) override;
+
 	EActorDir DirCheckAndSet();
 	void ChangeAnimationInPlayerDir();
+	
+	void CheckScopeOfActivity();
 
 	void CollisionCheck() override;
 

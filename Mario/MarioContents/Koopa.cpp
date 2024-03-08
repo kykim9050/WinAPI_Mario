@@ -84,18 +84,9 @@ void AKoopa::Move(float _DeltaTime)
 	ChangeAnimationInPlayerDir();
 	ResultMovementUpdate(_DeltaTime);
 
-	if (GetActorLocation().iX() <= InitPos.iX() - UInGameValue::KoopaMoveDeadline_F)
-	{
-		ActorMoveDir = FVector::Right;
-		AddActorLocation(FVector::Right * 4);
-		StateChange(EActorState::Idle);
-	}
-	else if (GetActorLocation().iX() >= InitPos.iX() + UInGameValue::KoopaMoveDeadline_R)
-	{
-		ActorMoveDir = FVector::Left;
-		AddActorLocation(FVector::Left * 4);
-		StateChange(EActorState::Idle);
-	}
+	CheckScopeOfActivity();
+
+
 }
 
 void AKoopa::Jump(float _DeltaTime)
@@ -103,18 +94,7 @@ void AKoopa::Jump(float _DeltaTime)
 	ChangeAnimationInPlayerDir();
 	ResultMovementUpdate(_DeltaTime);
 
-	if (GetActorLocation().iX() <= InitPos.iX() - UInGameValue::KoopaMoveDeadline_F)
-	{
-		ActorMoveDir = FVector::Right;
-		AddActorLocation(FVector::Right * 4);
-		StateChange(EActorState::Idle);
-	}
-	else if (GetActorLocation().iX() >= InitPos.iX() + UInGameValue::KoopaMoveDeadline_R)
-	{
-		ActorMoveDir = FVector::Left;
-		AddActorLocation(FVector::Left * 4);
-		StateChange(EActorState::Idle);
-	}
+	CheckScopeOfActivity();
 }
 
 void AKoopa::Idle(float _DeltaTime)
@@ -166,5 +146,21 @@ void AKoopa::ChangeAnimationInPlayerDir()
 			Renderer->ChangeAnimation("Koopa_RightMove");
 			return;
 		}
+	}
+}
+
+void AKoopa::CheckScopeOfActivity()
+{
+	if (GetActorLocation().iX() <= InitPos.iX() - UInGameValue::KoopaMoveDeadline_F)
+	{
+		ActorMoveDir = FVector::Right;
+		HorizonVelocityVector = ActorMoveDir * 100.0f;
+		AddActorLocation(FVector::Right * 4);
+	}
+	else if (GetActorLocation().iX() >= InitPos.iX() + UInGameValue::KoopaMoveDeadline_R)
+	{
+		ActorMoveDir = FVector::Left;
+		HorizonVelocityVector = ActorMoveDir * 100.0f;
+		AddActorLocation(FVector::Left * 4);
 	}
 }
