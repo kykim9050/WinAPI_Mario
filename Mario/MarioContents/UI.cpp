@@ -2,7 +2,7 @@
 #include "EnumClass.h"
 #include "InGameValue.h"
 #include "PlayerMario.h"
-#include "PlayerScoreManager.h"
+#include "PlayerInfoManager.h"
 
 
 AUI::AUI()
@@ -115,7 +115,7 @@ void AUI::BeginPlay()
 
 	std::vector<std::string> StageInfo = std::vector<std::string>();
 	GetLevelStageInfo(StageInfo);
-	UPlayerScoreManager::GetInst().SetStageInfo(StageInfo);
+	UPlayerInfoManager::GetInst().SetStageInfo(StageInfo);
 
 	for (int i = 0; i < UInGameValue::StageInfoRendererSize; i++)
 	{
@@ -210,8 +210,8 @@ void AUI::ScoreCheck()
 
 void AUI::ScoreRenderUpdate()
 {
-	NumberToAnimation(UPlayerScoreManager::GetInst().GetPlayerScore(), 6, ScoreRenderer);
-	NumberToAnimation(UPlayerScoreManager::GetInst().GetAmountOfCoins(), 2, CoinCountRenderer);
+	NumberToAnimation(UPlayerInfoManager::GetInst().GetPlayerScore(), 6, ScoreRenderer);
+	NumberToAnimation(UPlayerInfoManager::GetInst().GetAmountOfCoins(), 2, CoinCountRenderer);
 }
 
 

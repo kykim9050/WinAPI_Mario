@@ -1,5 +1,5 @@
 ﻿#include "LevelIntro.h"
-#include "PlayerScoreManager.h"
+#include "PlayerInfoManager.h"
 #include "EnumClass.h"
 #include "InGameValue.h"
 
@@ -15,10 +15,10 @@ void ALevelIntro::BeginPlay()
 {
 	AActor::BeginPlay();
 
-	IntroLife = UPlayerScoreManager::GetInst().GetPlayerLife();
-	IntroAmountOfCoins = UPlayerScoreManager::GetInst().GetAmountOfCoins();
-	IntroScore = UPlayerScoreManager::GetInst().GetPlayerScore();
-	IntroStageInfo = UPlayerScoreManager::GetInst().GetStageInfo();
+	IntroLife = UPlayerInfoManager::GetInst().GetPlayerLife();
+	IntroAmountOfCoins = UPlayerInfoManager::GetInst().GetAmountOfCoins();
+	IntroScore = UPlayerInfoManager::GetInst().GetPlayerScore();
+	IntroStageInfo = UPlayerInfoManager::GetInst().GetStageInfo();
 
 	UIRenderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::IntroUI));
 	UIRenderer->SetImage("LevelIntro.png");
