@@ -20,7 +20,6 @@ void AKoopaBullet::BeginPlay()
 	Renderer->SetTransform({ {0,0}, {KoopaFireScale.iX() / UInGameValue::KoopaFireImgXValue * UInGameValue::WindowSizeMulValue, KoopaFireScale.iY() / UInGameValue::KoopaFireImgYValue * UInGameValue::WindowSizeMulValue} });
 	Renderer->CreateAnimation("Firing_Left", "KoopaFire_Left.png", 0, 1, 0.1f, true);
 	Renderer->CreateAnimation("Firing_Right", "KoopaFire_Right.png", 0, 1, 0.1f, true);
-	Renderer->ChangeAnimation("Firing_Left");
 
 	BodyCollision = CreateCollision(ECollisionOrder::MonsterBullet);
 	BodyCollision->SetTransform({ { 0,0 }, { UInGameValue::KoopaBulletXColScale, UInGameValue::KoopaBulletYColScale } });
@@ -55,7 +54,16 @@ void AKoopaBullet::MoveStart()
 	Renderer->ActiveOn();
 	BodyCollision->ActiveOn();
 
-	HorizonVelocityVector = FVector::Left * 200.0f;
+	if (FVector::Right.iX() == GetBulletDir().iX())
+	{
+		Renderer->ChangeAnimation("Firing_Right");
+	}
+	else if (FVector::Left.iX() == GetBulletDir().iX())
+	{
+		Renderer->ChangeAnimation("Firing_Left");
+	}
+
+	HorizonVelocityVector = GetBulletDir() * 200.0f;
 }
 
 void AKoopaBullet::Move(float _DeltaTime)

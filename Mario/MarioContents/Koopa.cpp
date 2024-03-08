@@ -96,12 +96,14 @@ void AKoopa::FireStart()
 	{
 		BulletInitPosVal = FVector::Left;
 		Renderer->ChangeAnimation("Koopa_LeftFire");
+		NewBullet->SetBulletDir(FVector::Left);
 		break;
 	}
 	case EActorDir::Right:
 	{
 		BulletInitPosVal = FVector::Right;
 		Renderer->ChangeAnimation("Koopa_RightFire");
+		NewBullet->SetBulletDir(FVector::Right);
 		break;
 	}
 	default:
