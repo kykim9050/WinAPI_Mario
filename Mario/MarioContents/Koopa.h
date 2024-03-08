@@ -22,7 +22,6 @@ protected:
 	void MoveStart() override;
 	void JumpStart() override;
 	void FirstInit(float _Deltatime) override;
-	void Idle(float _DeltaTime) override;
 	void Move(float _DeltaTime) override;
 	void Jump(float _DeltaTime) override;
 
@@ -35,5 +34,8 @@ protected:
 
 private:
 	FVector InitPos = FVector::Zero;
+	float MoveTime = 1.0f;
+	float KoopaSpeed = 50.0f;
+	float KoopaJump = 400.0f;
 };
 

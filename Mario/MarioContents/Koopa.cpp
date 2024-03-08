@@ -46,7 +46,7 @@ void AKoopa::FirstInit(float _Deltatime)
 void AKoopa::MoveStart()
 {
 	JumpVelocityVector = FVector::Zero;
-	HorizonVelocityVector = ActorMoveDir * 100.0f;
+	HorizonVelocityVector = ActorMoveDir * KoopaSpeed;
 
 	if (EActorDir::Left == ActorDir)
 	{
@@ -63,8 +63,8 @@ void AKoopa::MoveStart()
 
 void AKoopa::JumpStart()
 {
-	JumpVelocityVector = FVector::Up * 500.0f;
-	HorizonVelocityVector = ActorMoveDir * 100.0f;
+	JumpVelocityVector = FVector::Up * KoopaJump;
+	HorizonVelocityVector = ActorMoveDir * KoopaSpeed;
 
 	if (EActorDir::Left == ActorDir)
 	{
@@ -81,12 +81,20 @@ void AKoopa::JumpStart()
 
 void AKoopa::Move(float _DeltaTime)
 {
+	MoveTime -= _DeltaTime;
+
 	ChangeAnimationInPlayerDir();
 	ResultMovementUpdate(_DeltaTime);
 
 	CheckScopeOfActivity();
 
 
+	if (0.0f >= MoveTime)
+	{
+		MoveTime = 1.0f + MoveTime;
+		StateChange(EActorState::Jump);
+		return;
+	}
 }
 
 void AKoopa::Jump(float _DeltaTime)
@@ -95,12 +103,14 @@ void AKoopa::Jump(float _DeltaTime)
 	ResultMovementUpdate(_DeltaTime);
 
 	CheckScopeOfActivity();
-}
 
-void AKoopa::Idle(float _DeltaTime)
-{
-	//StateChange(EActorState::Move);
-	StateChange(EActorState::Jump);
+	std::vector<UCollision*> Result = std::vector<UCollision*>();
+
+	if (true == BodyCollision->CollisionCheck(ECollisionOrder::BlockTop, Result))
+	{
+		StateChange(EActorState::Move);
+		return;
+	}
 }
 
 void AKoopa::CollisionCheck()
@@ -154,13 +164,13 @@ void AKoopa::CheckScopeOfActivity()
 	if (GetActorLocation().iX() <= InitPos.iX() - UInGameValue::KoopaMoveDeadline_F)
 	{
 		ActorMoveDir = FVector::Right;
-		HorizonVelocityVector = ActorMoveDir * 100.0f;
+		HorizonVelocityVector = ActorMoveDir * KoopaSpeed;
 		AddActorLocation(FVector::Right * 4);
 	}
 	else if (GetActorLocation().iX() >= InitPos.iX() + UInGameValue::KoopaMoveDeadline_R)
 	{
 		ActorMoveDir = FVector::Left;
-		HorizonVelocityVector = ActorMoveDir * 100.0f;
+		HorizonVelocityVector = ActorMoveDir * KoopaSpeed;
 		AddActorLocation(FVector::Left * 4);
 	}
 }
