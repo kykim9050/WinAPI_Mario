@@ -67,6 +67,7 @@ void UContentsCore::BeginPlay()
 	UEngineResourcesManager::GetInst().CuttingImage("KoopaFire_Right.png", UInGameValue::KoopaFireImgXValue, UInGameValue::KoopaFireImgYValue);
 
 
+
 	//CreateLevel<UTitleLevel>("TitleLevel");
 	//CreateLevel<UIntroLevel>("IntroLevel");
 	//CreateLevel<UEndingLevel>("EndingLevel");
