@@ -43,7 +43,7 @@ private:
 
 	FVector InitPos = FVector::Zero;
 	float MoveTime = 1.0f;
-	float FireDelayTime = 3.0f;
+	float FireDelayTime = 3.5f;
 	float FiringTime = 0.5f;
 
 	float KoopaSpeed = 50.0f;

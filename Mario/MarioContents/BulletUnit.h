@@ -38,7 +38,7 @@ protected:
 	}
 
 private:
-	
+	FVector ActorMoveDir = FVector::Left;
 	bool BulletMoveStart = false;
 };
 
