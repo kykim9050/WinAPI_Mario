@@ -86,22 +86,32 @@ void AKoopa::JumpStart()
 void AKoopa::FireStart()
 {
 	HorizonVelocityVector = FVector::Zero;
+	FVector BulletInitPosVal = FVector::Zero;
 
 	NewBullet = GetWorld()->SpawnActor<AKoopaBullet>(static_cast<int>(EActorType::Bullet));
-	NewBullet->SetActorLocation({ GetActorLocation().X - BodyCollision->GetTransform().GetScale().ihX() - static_cast<int>(UInGameValue::KoopaBulletXColScale / 2), GetActorLocation().Y - BodyCollision->GetTransform().GetScale().ihY() });
-	Bullets.push_back(NewBullet);
-
+	
 	switch (ActorDir)
 	{
 	case EActorDir::Left:
+	{
+		BulletInitPosVal = FVector::Left;
 		Renderer->ChangeAnimation("Koopa_LeftFire");
 		break;
+	}
 	case EActorDir::Right:
+	{
+		BulletInitPosVal = FVector::Right;
 		Renderer->ChangeAnimation("Koopa_RightFire");
 		break;
+	}
 	default:
 		break;
 	}
+
+	NewBullet->SetActorLocation({ GetActorLocation().iX() + BulletInitPosVal.iX() * (BodyCollision->GetTransform().GetScale().ihX() + static_cast<int>(UInGameValue::KoopaBulletXColScale / 2))
+		,GetActorLocation().iY() - BodyCollision->GetTransform().GetScale().ihY()});
+	Bullets.push_back(NewBullet);
+
 }
 
 void AKoopa::Fire(float _DeltaTime)
