@@ -87,9 +87,9 @@ void AKoopa::FireStart()
 {
 	HorizonVelocityVector = FVector::Zero;
 
-	AKoopaBullet* Bullet = GetWorld()->SpawnActor<AKoopaBullet>(static_cast<int>(EActorType::Bullet));
-	Bullet->SetActorLocation({ GetActorLocation().X - BodyCollision->GetTransform().GetScale().ihX() - static_cast<int>(UInGameValue::KoopaBulletXColScale / 2), GetActorLocation().Y - BodyCollision->GetTransform().GetScale().ihY() });
-	Bullets.push_back(Bullet);
+	NewBullet = GetWorld()->SpawnActor<AKoopaBullet>(static_cast<int>(EActorType::Bullet));
+	NewBullet->SetActorLocation({ GetActorLocation().X - BodyCollision->GetTransform().GetScale().ihX() - static_cast<int>(UInGameValue::KoopaBulletXColScale / 2), GetActorLocation().Y - BodyCollision->GetTransform().GetScale().ihY() });
+	Bullets.push_back(NewBullet);
 
 
 	if (EActorDir::Left == ActorDir)
@@ -116,6 +116,7 @@ void AKoopa::Fire(float _DeltaTime)
 
 	if (0.0f >= FiringTime)
 	{
+		NewBullet->ThrowBullet();
 		FiringTime = 0.5f + FiringTime;
 		StateChange(EActorState::Move);
 		return;

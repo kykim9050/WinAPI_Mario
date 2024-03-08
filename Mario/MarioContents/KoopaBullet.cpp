@@ -25,6 +25,9 @@ void AKoopaBullet::BeginPlay()
 	BodyCollision = CreateCollision(ECollisionOrder::MonsterBullet);
 	BodyCollision->SetTransform({ { 0,0 }, { UInGameValue::KoopaBulletXColScale, UInGameValue::KoopaBulletYColScale } });
 	BodyCollision->SetColType(ECollisionType::Rect);
+
+	Renderer->ActiveOff();
+	BodyCollision->ActiveOff();
 }
 
 void AKoopaBullet::Tick(float _DeltaTime)

@@ -39,6 +39,7 @@ protected:
 
 private:
 	std::list<AKoopaBullet*> Bullets = std::list<AKoopaBullet*>();
+	AKoopaBullet* NewBullet = nullptr;
 
 	FVector InitPos = FVector::Zero;
 	float MoveTime = 1.0f;
