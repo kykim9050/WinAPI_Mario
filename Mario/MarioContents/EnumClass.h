@@ -32,6 +32,7 @@ enum class EStageRenderOrder
 	Block,
 	Monster,
 	Mario,
+	Bullet,
 	UI,
 	UIComponent,
 	IntroUI,
@@ -91,6 +92,7 @@ enum class EActorType
 	Structure,
 	Block,
 	Item,
+	Bullet,
 };
 
 enum class EMarioType

@@ -119,6 +119,9 @@
     <ClInclude Include="MainPlayer.h">
       <Filter>Object\Player</Filter>
     </ClInclude>
+    <ClInclude Include="BulletUnit.h">
+      <Filter>Object\Bullet</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp" />
@@ -236,6 +239,9 @@
     <ClCompile Include="MainPlayer.cpp">
       <Filter>Object\Player</Filter>
     </ClCompile>
+    <ClCompile Include="BulletUnit.cpp">
+      <Filter>Object\Bullet</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ContentsHelper">
@@ -288,6 +294,9 @@
     </Filter>
     <Filter Include="Object\Map">
       <UniqueIdentifier>{451a53b3-4f3d-401a-8077-c8ee335d0b72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Bullet">
+      <UniqueIdentifier>{20e62313-eeaa-4a1e-a49d-54966ac98643}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

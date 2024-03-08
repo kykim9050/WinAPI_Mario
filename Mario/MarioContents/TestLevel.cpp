@@ -20,6 +20,8 @@
 #include "Koopa.h"
 #include "BridgeBlock.h"
 #include "CastleBridge.h"
+#include "BulletUnit.h"
+
 
 UTestLevel::UTestLevel()
 {
@@ -47,6 +49,9 @@ void UTestLevel::BeginPlay()
 	AKoopa* BossMonsterKoopa = SpawnActor<AKoopa>(static_cast<int>(EActorType::Monster));
 	BossMonsterKoopa->SetActorLocation({ 6600, 450 });
 	//BossMonsterKoopa->SetActorLocation({ 500, 400 });
+
+	ABulletUnit* TestBullet = SpawnActor<ABulletUnit>(static_cast<int>(EActorType::Bullet));
+	TestBullet->SetActorLocation({ 200, 600 });
 
 	ACastleBridge* CastleBridge = SpawnActor<ACastleBridge>(static_cast<int>(EActorType::Structure));
 	
