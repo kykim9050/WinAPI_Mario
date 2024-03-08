@@ -16,10 +16,26 @@ public:
 	ABulletUnit& operator=(ABulletUnit&& _Other) noexcept = delete;
 
 protected:
+	
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
-private:
+	void StateUpdate(float _DeltaTime) override;
+	void StateChange(EActorState _ActorState) override;
 
+	virtual void FirstInit(float _DeltaTime) {};
+
+	void ThrowBullet()
+	{
+		BulletMoveStart = true;
+	}
+
+	bool IsBulletFire() const
+	{
+		return BulletMoveStart;
+	}
+
+private:
+	bool BulletMoveStart = false;
 };
 
