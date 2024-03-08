@@ -64,6 +64,7 @@ void AKoopaBullet::MoveStart()
 	}
 
 	HorizonVelocityVector = GetBulletDir() * 200.0f;
+	Destroy(10.0f);
 }
 
 void AKoopaBullet::Move(float _DeltaTime)

@@ -36,6 +36,8 @@ void AKoopa::BeginPlay()
 void AKoopa::Tick(float _DeltaTime)
 {
 	AMonsterUnit::Tick(_DeltaTime);
+
+	BulletListReleaseUpdate();
 }
 
 void AKoopa::FirstInit(float _Deltatime)
@@ -113,7 +115,6 @@ void AKoopa::FireStart()
 	NewBullet->SetActorLocation({ GetActorLocation().iX() + BulletInitPosVal.iX() * (BodyCollision->GetTransform().GetScale().ihX() + static_cast<int>(UInGameValue::KoopaBulletXColScale / 2))
 		,GetActorLocation().iY() - BodyCollision->GetTransform().GetScale().ihY()});
 	Bullets.push_back(NewBullet);
-
 }
 
 void AKoopa::Fire(float _DeltaTime)
@@ -240,5 +241,30 @@ void AKoopa::CheckScopeOfActivity()
 		ActorMoveDir = FVector::Left;
 		HorizonVelocityVector = ActorMoveDir * KoopaSpeed;
 		AddActorLocation(FVector::Left * 4);
+	}
+}
+
+void AKoopa::BulletListReleaseUpdate()
+{
+	std::list<AKoopaBullet*>::iterator StartIter = Bullets.begin();
+	std::list<AKoopaBullet*>::iterator EndIter = Bullets.end();
+
+	for (; StartIter != EndIter; )
+	{
+		AKoopaBullet* Bullet = *StartIter;
+
+		if (nullptr == Bullet)
+		{
+			MsgBoxAssert("KoopaBullet이 nullptr 입니다.");
+			return;
+		}
+
+		if (false == Bullet->IsDestroy())
+		{
+			++StartIter;
+			continue;
+		}
+
+		StartIter = Bullets.erase(StartIter);
 	}
 }
