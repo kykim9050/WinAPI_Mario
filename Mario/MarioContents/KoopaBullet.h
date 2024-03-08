@@ -1,9 +1,12 @@
 #pragma once
 #include "BulletUnit.h"
 
+
+class AKoopa;
 // Ό³Έν :
 class AKoopaBullet : public ABulletUnit
 {
+	friend AKoopa;
 public:
 	// constrcuter destructer
 	AKoopaBullet();
@@ -20,6 +23,12 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 private:
+	void ThrowBullet()
+	{
+		BulletMoveStart = true;
+	}
+
+	bool BulletMoveStart = false;
 
 };
 
