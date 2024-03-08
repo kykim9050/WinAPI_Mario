@@ -51,9 +51,17 @@ void AKoopaBullet::FirstInit(float _DeltaTime)
 void AKoopaBullet::MoveStart()
 {
 	ABulletUnit::MoveStart();
+
+	Renderer->ActiveOn();
+	BodyCollision->ActiveOn();
+
+	HorizonVelocityVector = FVector::Left * 200.0f;
 }
 
 void AKoopaBullet::Move(float _DeltaTime)
 {
 	ABulletUnit::Move(_DeltaTime);
+
+	CalTotalVelocityVector(_DeltaTime);
+	AddActorLocation(TotalVelocityVector * _DeltaTime);
 }
