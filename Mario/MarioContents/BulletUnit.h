@@ -23,7 +23,9 @@ protected:
 	void StateUpdate(float _DeltaTime) override;
 	void StateChange(EActorState _ActorState) override;
 
+	virtual void MoveStart() {};
 	virtual void FirstInit(float _DeltaTime) {};
+	virtual void Move(float _DeltaTime) {};
 
 	void ThrowBullet()
 	{
@@ -36,6 +38,7 @@ protected:
 	}
 
 private:
+	
 	bool BulletMoveStart = false;
 };
 

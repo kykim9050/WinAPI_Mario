@@ -25,9 +25,9 @@ void ABulletUnit::StateUpdate(float _DeltaTime)
 	case EActorState::FirstInit:
 		FirstInit(_DeltaTime);
 		break;
-	//case EActorState::Move:
-	//	Move(_DeltaTime);
-	//	break;
+	case EActorState::Move:
+		Move(_DeltaTime);
+		break;
 	default:
 		break;
 	}
@@ -35,17 +35,17 @@ void ABulletUnit::StateUpdate(float _DeltaTime)
 
 void ABulletUnit::StateChange(EActorState _ActorState)
 {
-	//if (ActorState != _ActorState)
-	//{
-	//	switch (_ActorState)
-	//	{
-	//	//case EActorState::Move:
-	//	//	MoveStart();
-	//	//	break;
-	//	default:
-	//		break;
-	//	}
-	//}
+	if (ActorState != _ActorState)
+	{
+		switch (_ActorState)
+		{
+		case EActorState::Move:
+			MoveStart();
+			break;
+		default:
+			break;
+		}
+	}
 
 	SetActorState(_ActorState);
 }
