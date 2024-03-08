@@ -45,7 +45,7 @@ void UTestLevel::BeginPlay()
 	ColMap->GetColMapRenderer()->SetTransform({ { ColMapImageFVector.ihX(), ColMapImageFVector.ihY()}, {ColMapImageFVector} });
 
 	AKoopa* BossMonsterKoopa = SpawnActor<AKoopa>(static_cast<int>(EActorType::Monster));
-	BossMonsterKoopa->SetActorLocation({ 6600, 360 });
+	BossMonsterKoopa->SetActorLocation({ 6600, 450 });
 	//BossMonsterKoopa->SetActorLocation({ 500, 400 });
 
 	ACastleBridge* CastleBridge = SpawnActor<ACastleBridge>(static_cast<int>(EActorType::Structure));
