@@ -267,6 +267,11 @@ public:
 	// 1-4 castle의 bridge 사이의 간격
 	static const int BTBDistance;
 
+	/// <summary>
+	/// 1-4 Stage에서 Koopa의 X축 기준 앞, 뒤 활동 범위
+	/// </summary>
+	static const int KoopaMoveDeadline_F;
+	static const int KoopaMoveDeadline_R;
 
 protected:
 

@@ -129,3 +129,6 @@ const int UInGameValue::BridgeStartXPos = 2056 * UInGameValue::WindowSizeMulValu
 const int UInGameValue::BridgeStartYPos = 168 * UInGameValue::WindowSizeMulValue;
 
 const int UInGameValue::BTBDistance = 16 * UInGameValue::WindowSizeMulValue;
+
+const int UInGameValue::KoopaMoveDeadline_F = 300;
+const int UInGameValue::KoopaMoveDeadline_R = 100;
