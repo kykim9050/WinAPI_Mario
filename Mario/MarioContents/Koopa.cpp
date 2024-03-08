@@ -91,17 +91,16 @@ void AKoopa::FireStart()
 	NewBullet->SetActorLocation({ GetActorLocation().X - BodyCollision->GetTransform().GetScale().ihX() - static_cast<int>(UInGameValue::KoopaBulletXColScale / 2), GetActorLocation().Y - BodyCollision->GetTransform().GetScale().ihY() });
 	Bullets.push_back(NewBullet);
 
-
-	if (EActorDir::Left == ActorDir)
+	switch (ActorDir)
 	{
+	case EActorDir::Left:
 		Renderer->ChangeAnimation("Koopa_LeftFire");
-		return;
-	}
-
-	if (EActorDir::Right == ActorDir)
-	{
+		break;
+	case EActorDir::Right:
 		Renderer->ChangeAnimation("Koopa_RightFire");
-		return;
+		break;
+	default:
+		break;
 	}
 }
 
