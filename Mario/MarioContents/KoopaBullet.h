@@ -22,13 +22,9 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
-private:
-	void ThrowBullet()
-	{
-		BulletMoveStart = true;
-	}
+	void FirstInit(float _DeltaTime);
 
-	bool BulletMoveStart = false;
+private:
 
 };
 

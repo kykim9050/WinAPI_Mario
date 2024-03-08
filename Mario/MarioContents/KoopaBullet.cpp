@@ -28,6 +28,8 @@ void AKoopaBullet::BeginPlay()
 
 	Renderer->ActiveOff();
 	BodyCollision->ActiveOff();
+
+	SetActorState(EActorState::FirstInit);
 }
 
 void AKoopaBullet::Tick(float _DeltaTime)
@@ -35,4 +37,11 @@ void AKoopaBullet::Tick(float _DeltaTime)
 	ABulletUnit::Tick(_DeltaTime);
 }
 
-
+void AKoopaBullet::FirstInit(float _DeltaTime)
+{
+	if (IsBulletFire())
+	{
+		StateChange(EActorState::Move);
+		return;
+	}
+}
