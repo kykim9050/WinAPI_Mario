@@ -62,7 +62,7 @@ void UTestLevel::Tick(float _DeltaTime)
 
 	//if (UEngineInput::IsDown(VK_RETURN))
 	//{
-	//	GEngine->CreateLevel<U1_4StageLevel>("1-4");
-	//	GEngine->ChangeLevel("1-4");
+	//	GEngine->CreateLevel<U1_1StageLevel>("1-1");
+	//	GEngine->ChangeLevel("1-1");
 	//}
 }

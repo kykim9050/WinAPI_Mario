@@ -101,7 +101,7 @@
     <ClInclude Include="CollisionMap.h">
       <Filter>Object\Map</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerScoreManager.h">
+    <ClInclude Include="PlayerInfoManager.h">
       <Filter>ContentsHelper</Filter>
     </ClInclude>
     <ClInclude Include="LevelIntro.h">
@@ -224,7 +224,7 @@
     <ClCompile Include="CollisionMap.cpp">
       <Filter>Object\Map</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerScoreManager.cpp">
+    <ClCompile Include="PlayerInfoManager.cpp">
       <Filter>ContentsHelper</Filter>
     </ClCompile>
     <ClCompile Include="LevelIntro.cpp">

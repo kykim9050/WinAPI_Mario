@@ -238,7 +238,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="PlayerScoreManager.h">
+    <ClInclude Include="PlayerInfoManager.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -402,7 +402,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="PlayerScoreManager.cpp">
+    <ClCompile Include="PlayerInfoManager.cpp">
       <SubType>
       </SubType>
     </ClCompile>

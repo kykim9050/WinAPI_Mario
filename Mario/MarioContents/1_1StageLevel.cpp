@@ -13,7 +13,8 @@
 #include "EndFlag.h"
 #include "Castle.h"
 #include "BackGroundMap.h"
-
+#include <EngineCore/EngineCore.h>
+#include "1_4StageLevel.h"
 
 U1_1StageLevel::U1_1StageLevel()
 {
@@ -186,4 +187,10 @@ void U1_1StageLevel::BeginPlay()
 void U1_1StageLevel::Tick(float _DeltaTime)
 {
 	UStageLevel::Tick(_DeltaTime);
+
+	//if (UEngineInput::IsDown(VK_RETURN))
+	//{
+	//	GEngine->CreateLevel<U1_4StageLevel>("1-4");
+	//	GEngine->ChangeLevel("1-4");
+	//}
 }

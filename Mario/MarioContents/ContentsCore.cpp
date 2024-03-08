@@ -8,7 +8,7 @@
 #include <EngineBase/EngineFile.h>
 #include <EngineCore/EngineResourcesManager.h>
 #include "InGameValue.h"
-#include "PlayerScoreManager.h"
+#include "PlayerInfoManager.h"
 
 
 

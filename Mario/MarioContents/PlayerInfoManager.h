@@ -4,18 +4,18 @@
 #include <EngineBase/EngineDebug.h>
 
 // Ό³Έν :
-class UPlayerScoreManager
+class UPlayerInfoManager
 {
 public:
 	// delete Function
-	UPlayerScoreManager(const UPlayerScoreManager& _Other) = delete;
-	UPlayerScoreManager(UPlayerScoreManager&& _Other) noexcept = delete;
-	UPlayerScoreManager& operator=(const UPlayerScoreManager& _Other) = delete;
-	UPlayerScoreManager& operator=(UPlayerScoreManager&& _Other) noexcept = delete;
+	UPlayerInfoManager(const UPlayerInfoManager& _Other) = delete;
+	UPlayerInfoManager(UPlayerInfoManager&& _Other) noexcept = delete;
+	UPlayerInfoManager& operator=(const UPlayerInfoManager& _Other) = delete;
+	UPlayerInfoManager& operator=(UPlayerInfoManager&& _Other) noexcept = delete;
 
-	static UPlayerScoreManager& GetInst()
+	static UPlayerInfoManager& GetInst()
 	{
-		static UPlayerScoreManager Inst = UPlayerScoreManager();
+		static UPlayerInfoManager Inst = UPlayerInfoManager();
 		return Inst;
 	}
 
@@ -85,7 +85,7 @@ private:
 	static std::vector<std::string> StageInfo;
 
 	// constrcuter destructer
-	UPlayerScoreManager();
-	~UPlayerScoreManager();
+	UPlayerInfoManager();
+	~UPlayerInfoManager();
 };
 
