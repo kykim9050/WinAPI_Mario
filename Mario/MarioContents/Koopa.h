@@ -1,6 +1,8 @@
 #pragma once
 #include "MonsterUnit.h"
 
+
+class AKoopaBullet;
 // Ό³Έν :
 class AKoopa : public AMonsterUnit
 {
@@ -36,6 +38,8 @@ protected:
 	void CollisionCheck() override;
 
 private:
+	std::list<AKoopaBullet*> Bullets = std::list<AKoopaBullet*>();
+
 	FVector InitPos = FVector::Zero;
 	float MoveTime = 1.0f;
 	float FireDelayTime = 3.0f;

@@ -1,4 +1,5 @@
 ﻿#include "Koopa.h"
+#include "KoopaBullet.h"
 
 AKoopa::AKoopa()
 {
@@ -85,6 +86,11 @@ void AKoopa::JumpStart()
 void AKoopa::FireStart()
 {
 	HorizonVelocityVector = FVector::Zero;
+
+	AKoopaBullet* Bullet = GetWorld()->SpawnActor<AKoopaBullet>(static_cast<int>(EActorType::Bullet));
+	Bullet->SetActorLocation({ GetActorLocation().X - BodyCollision->GetTransform().GetScale().ihX() - static_cast<int>(UInGameValue::KoopaBulletXColScale / 2), GetActorLocation().Y - BodyCollision->GetTransform().GetScale().ihY() });
+	Bullets.push_back(Bullet);
+
 
 	if (EActorDir::Left == ActorDir)
 	{
