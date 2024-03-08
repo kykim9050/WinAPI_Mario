@@ -37,6 +37,16 @@ protected:
 		return BulletMoveStart;
 	}
 
+	void SetBulletDir(FVector _Dir)
+	{
+		ActorMoveDir = _Dir;
+	}
+
+	FVector GetBulletDir() const
+	{
+		return ActorMoveDir;
+	}
+
 private:
 	FVector ActorMoveDir = FVector::Left;
 	bool BulletMoveStart = false;
