@@ -37,7 +37,10 @@ void AKoopa::Tick(float _DeltaTime)
 void AKoopa::FirstInit(float _Deltatime)
 {
 	InitPos = GetActorLocation();
-	StateChange(EActorState::Idle);
+	if (GetActorLocation().iX() - GetPlayer()->GetActorLocation().iX() < UInGameValue::ResultMainWindowXScale)
+	{
+		StateChange(EActorState::Move);
+	}
 }
 
 void AKoopa::MoveStart()
@@ -80,10 +83,7 @@ void AKoopa::Move(float _DeltaTime)
 
 void AKoopa::Idle(float _DeltaTime)
 {
-	if (GetActorLocation().iX() - GetPlayer()->GetActorLocation().iX() < UInGameValue::ResultMainWindowXScale)
-	{
-		StateChange(EActorState::Move);
-	}
+	StateChange(EActorState::Move);
 }
 
 void AKoopa::CollisionCheck()
