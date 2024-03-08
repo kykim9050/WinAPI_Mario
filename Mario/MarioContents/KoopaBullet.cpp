@@ -39,9 +39,21 @@ void AKoopaBullet::Tick(float _DeltaTime)
 
 void AKoopaBullet::FirstInit(float _DeltaTime)
 {
+	ABulletUnit::FirstInit(_DeltaTime);
+
 	if (IsBulletFire())
 	{
 		StateChange(EActorState::Move);
 		return;
 	}
+}
+
+void AKoopaBullet::MoveStart()
+{
+	ABulletUnit::MoveStart();
+}
+
+void AKoopaBullet::Move(float _DeltaTime)
+{
+	ABulletUnit::Move(_DeltaTime);
 }
