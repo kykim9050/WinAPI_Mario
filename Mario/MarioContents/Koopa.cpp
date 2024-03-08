@@ -44,7 +44,7 @@ void AKoopa::MoveStart()
 {
 	AMonsterUnit::MoveStart();
 
-	HorizonVelocityVector = ActorMoveDir * 500.0f;
+	HorizonVelocityVector = ActorMoveDir * 100.0f;
 
 	if (EActorDir::Left == ActorDir)
 	{
@@ -64,13 +64,13 @@ void AKoopa::Move(float _DeltaTime)
 	PlayerDirCheck();
 	ResultMovementUpdate(_DeltaTime);
 
-	if (GetActorLocation().iX() <= InitPos.iX() - 300)
+	if (GetActorLocation().iX() <= InitPos.iX() - UInGameValue::KoopaMoveDeadline_F)
 	{
 		ActorMoveDir = FVector::Right;
 		AddActorLocation(FVector::Right * 4);
 		StateChange(EActorState::Idle);
 	}
-	else if (GetActorLocation().iX() >= InitPos.iX() + 100)
+	else if (GetActorLocation().iX() >= InitPos.iX() + UInGameValue::KoopaMoveDeadline_R)
 	{
 		ActorMoveDir = FVector::Left;
 		AddActorLocation(FVector::Left * 4);
@@ -80,7 +80,7 @@ void AKoopa::Move(float _DeltaTime)
 
 void AKoopa::Idle(float _DeltaTime)
 {
-	if (GetActorLocation().iX() - GetPlayer()->GetActorLocation().iX() < 1000.0f)
+	if (GetActorLocation().iX() - GetPlayer()->GetActorLocation().iX() < UInGameValue::ResultMainWindowXScale)
 	{
 		StateChange(EActorState::Move);
 	}
@@ -97,16 +97,14 @@ void AKoopa::PlayerDirCheck()
 
 	FVector PlayerPos = GetPlayer()->GetActorLocation();
 	FVector KoopaPos = GetActorLocation();
-
 	FVector KoopaDirOriginVec = PlayerPos - KoopaPos;
-	FVector NorDirVec = KoopaDirOriginVec.Normalize2DReturn();
-	float NorXDirVec = NorDirVec.X;
 
-	if (NorXDirVec <= 0.0f)
+
+	if (KoopaDirOriginVec.X <= 0.0f)
 	{
 		ActorDir = EActorDir::Left;
 	}
-	else if (NorXDirVec > 0.0f)
+	else if (KoopaDirOriginVec.X > 0.0f)
 	{
 		ActorDir = EActorDir::Right;
 	}
