@@ -61,15 +61,7 @@ void AKoopa::MoveStart()
 
 void AKoopa::Move(float _DeltaTime)
 {
-	EActorDir CurDir = ActorDir;
-	CalHorizonVelocityVector(_DeltaTime);
-
-	if (ActorDir != CurDir)
-	{
-		StateChange(EActorState::Idle);
-		return;
-	}
-
+	PlayerDirCheck();
 	ResultMovementUpdate(_DeltaTime);
 
 	if (GetActorLocation().iX() <= InitPos.iX() - 300)
@@ -97,4 +89,31 @@ void AKoopa::Idle(float _DeltaTime)
 void AKoopa::CollisionCheck()
 {
 	
+}
+
+void AKoopa::PlayerDirCheck()
+{
+	EActorDir CurDir = ActorDir;
+
+	FVector PlayerPos = GetPlayer()->GetActorLocation();
+	FVector KoopaPos = GetActorLocation();
+
+	FVector KoopaDirOriginVec = PlayerPos - KoopaPos;
+	FVector NorDirVec = KoopaDirOriginVec.Normalize2DReturn();
+	float NorXDirVec = NorDirVec.X;
+
+	if (NorXDirVec <= 0.0f)
+	{
+		ActorDir = EActorDir::Left;
+	}
+	else if (NorXDirVec > 0.0f)
+	{
+		ActorDir = EActorDir::Right;
+	}
+
+	if (ActorDir != CurDir)
+	{
+		StateChange(EActorState::Idle);
+		return;
+	}
 }
