@@ -302,6 +302,11 @@ public:
 	static const int CastleItemsImgXValue;
 	static const int CastleItemsImgYValue;
 
+	/// <summary>
+	/// CastleEndFlag ÀÇ Scale °ª
+	/// </summary>
+	static const int CastleEndFlagXScale;
+	static const int CastleEndFlagYScale;
 
 protected:
 
