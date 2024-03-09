@@ -33,8 +33,10 @@ protected:
 
 	void CollisionCheck() override;
 
+	void FallDown(float _DeltaTime) override;
+	void FallDownStart() override;
+
 private:
-	//FVector BridgePos = FVector();
 	std::list<ABridgeBlock*> BridgeBlocks = std::list<ABridgeBlock*>();
 
 	UImageRenderer* BridgeChainRenderer = nullptr;

@@ -22,6 +22,12 @@ protected:
 
 	virtual void CollisionCheck() {};
 
+	void StateChange(EActorState _ActorState) override;
+	void StateUpdate(float _DeltaTime) override;
+
+	virtual void FallDown(float _DeltaTime) {};
+	virtual void FallDownStart() {};
+
 private:
 
 };
