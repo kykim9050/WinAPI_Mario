@@ -23,7 +23,7 @@ void AKoopa::BeginPlay()
 	Renderer->CreateAnimation("Koopa_RightMove", "Koopa_Right.png", 0, 1, 0.3f, true);
 	Renderer->CreateAnimation("Koopa_RightFire", "Koopa_Right.png", 2, 2, 0.1f, true);
 	Renderer->CreateAnimation("Koopa_LeftFire", "Koopa_Left.png", 2, 2, 0.1f, true);
-
+	Renderer->CreateAnimation("Koopa_DeadMotion", "Koopa_Right.png", 0, 1, 0.05f, true);
 
 	BodyCollision = CreateCollision(ECollisionOrder::Monster);
 	BodyCollision->SetTransform({ { 0,0 }, { UInGameValue::KoopaBodyCollisionScaleX, UInGameValue::KoopaBodyCollisionScaleY} });
@@ -125,7 +125,12 @@ void AKoopa::FireStart()
 
 void AKoopa::FallDownStart()
 {
-	int a = 0;
+	// 죽는 발 동동 애니메이션 실행
+	SetGravityZero();
+	SetJumpZero();
+	SetSpeedZero();
+
+	Renderer->ChangeAnimation("Koopa_DeadMotion");
 }
 
 
