@@ -43,3 +43,15 @@ void ACastleBridge::Tick(float _DeltaTime)
 {
 	AStructureUnit::Tick(_DeltaTime);
 }
+
+void ACastleBridge::CollisionCheck()
+{
+	std::vector<UCollision*> Result = std::vector<UCollision*>();
+
+	if (nullptr != BridgeFlagCollision && true == BridgeFlagCollision->CollisionCheck(ECollisionOrder::Player, Result))
+	{
+		BridgeFlagCollision->ActiveOff();
+		//GetPlayer()->ReachToStageEnd();
+		return;
+	}
+}
