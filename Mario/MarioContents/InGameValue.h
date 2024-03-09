@@ -268,7 +268,7 @@ public:
 	static const int BTBDistance;
 
 	/// <summary>
-	/// 1-4 Stage에서 Koopa의 X축 기준 앞, 뒤 활동 범위
+	/// 1-4 Stage에서 Koopa의 X축 기준 앞, 뒤 이동 제한 오프셋
 	/// </summary>
 	static const int KoopaMoveDeadline_F;
 	static const int KoopaMoveDeadline_R;
@@ -278,6 +278,18 @@ public:
 	/// </summary>
 	static const int KoopaBulletXColScale;
 	static const int KoopaBulletYColScale;
+
+	/// <summary>
+	/// Stage1-4 보스방 Moving Board의 X축 기준 앞, 뒤 이동 제한 오프셋
+	/// </summary>
+	static const int MovingBoardDeadline_F;
+	static const int MovingBoardDeadline_R;
+
+	/// <summary>
+	/// Stage1-4 보스방 Moving Board의 초기 위치 좌표
+	/// </summary>
+	static const int MovingBoardInitXPos;
+	static const int MovingBoardInitYPos;
 
 protected:
 

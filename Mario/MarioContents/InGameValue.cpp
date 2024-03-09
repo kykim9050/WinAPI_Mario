@@ -135,3 +135,9 @@ const int UInGameValue::KoopaMoveDeadline_R = 100;
 
 const int UInGameValue::KoopaBulletXColScale = 64;
 const int UInGameValue::KoopaBulletYColScale = 16;
+
+const int UInGameValue::MovingBoardDeadline_F = 300;
+const int UInGameValue::MovingBoardDeadline_R = 0;
+
+const int UInGameValue::MovingBoardInitXPos = 2224 * UInGameValue::WindowSizeMulValue;
+const int UInGameValue::MovingBoardInitYPos = 101 * UInGameValue::WindowSizeMulValue;
