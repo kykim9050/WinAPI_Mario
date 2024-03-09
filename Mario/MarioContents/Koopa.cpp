@@ -1,5 +1,6 @@
 ﻿#include "Koopa.h"
 #include "KoopaBullet.h"
+#include "CastleBridge.h"
 
 AKoopa::AKoopa()
 {
@@ -183,6 +184,12 @@ void AKoopa::Jump(float _DeltaTime)
 
 void AKoopa::CollisionCheck()
 {
+	if (true == ACastleBridge::PlayerIsTagBridgeFlag())
+	{
+		int a = 0;
+		return;
+	}
+
 	std::vector<UCollision*> Result = std::vector<UCollision*>();
 
 	if (true == BodyCollision->CollisionCheck(ECollisionOrder::Player, Result))

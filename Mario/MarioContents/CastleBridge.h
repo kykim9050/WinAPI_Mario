@@ -22,6 +22,11 @@ public:
 		return BridgeBlocks;
 	}
 
+	static const bool PlayerIsTagBridgeFlag()
+	{
+		return IsTagBridgeFlag;
+	}
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -35,5 +40,12 @@ private:
 	UImageRenderer* BridgeChainRenderer = nullptr;
 	UImageRenderer* BridgeFlagRenderer = nullptr;
 	UCollision* BridgeFlagCollision = nullptr;
+
+	static bool IsTagBridgeFlag;
+	static void TagBridgeFlag()
+	{
+		IsTagBridgeFlag = true;
+	}
+
 };
 

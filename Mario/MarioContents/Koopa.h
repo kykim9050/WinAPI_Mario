@@ -50,5 +50,6 @@ private:
 	float KoopaJump = 400.0f;
 
 	void BulletListReleaseUpdate();
+
 };
 
