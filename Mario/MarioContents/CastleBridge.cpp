@@ -86,7 +86,7 @@ void ACastleBridge::FallDown(float _DeltaTime)
 
 			BridgeChainRenderer->ActiveOff();
 			EndStep = 1;
-			DelayTime = 0.2f + DelayTime;
+			DelayTime = 0.1f + DelayTime;
 			break;
 		}
 
@@ -102,14 +102,14 @@ void ACastleBridge::FallDown(float _DeltaTime)
 
 		if (StartIter == EndIter)
 		{
-			DelayTime = 0.2f + DelayTime;
+			DelayTime = 0.1f + DelayTime;
 			EndStep = 2;
 			break;
 		}
 
 		if (0.0f >= DelayTime)
 		{
-			DelayTime = 0.3f + DelayTime;
+			DelayTime = 0.5f + DelayTime;
 			ABridgeBlock* Block = *StartIter;
 
 			if (nullptr == Block)
@@ -118,8 +118,8 @@ void ACastleBridge::FallDown(float _DeltaTime)
 				return;
 			}
 
-			Block->GetRenderer()->ActiveOff();
-			Block->GetBodyCollision()->ActiveOff();
+			Block->Destroy();
+			Block = nullptr;
 			StartIter = BridgeBlocks.erase(StartIter);
 			break;
 		}
