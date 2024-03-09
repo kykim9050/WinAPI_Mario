@@ -32,6 +32,12 @@ void AGoomba::BeginPlay()
 	BodyCollision->SetPosition({ 0, -(BodyCollision->GetTransform().GetScale().ihY()) });
 	BodyCollision->SetColType(ECollisionType::Rect);
 
+
+	FootCollision = CreateCollision(ECollisionOrder::Monster);
+	FootCollision->SetTransform({ { 0,0 }, {UInGameValue::GoombaBodyCollisionScaleX, UInGameValue::FootCollisionScaleY} });
+	FootCollision->SetPosition({ 0, -(static_cast<int>(UInGameValue::FootCollisionScaleY / 2)) });
+	FootCollision->SetColType(ECollisionType::Rect);
+
 	SetActorState(EActorState::Idle);
 }
 
