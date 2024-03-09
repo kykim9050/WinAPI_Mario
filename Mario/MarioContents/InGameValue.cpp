@@ -143,3 +143,6 @@ const int UInGameValue::MovingBoardInitXPos = 2224 * UInGameValue::WindowSizeMul
 const int UInGameValue::MovingBoardInitYPos = 101 * UInGameValue::WindowSizeMulValue;
 
 const int UInGameValue::FootCollisionScaleY = 4;
+
+const int UInGameValue::CastleItemsImgXValue = 5;
+const int UInGameValue::CastleItemsImgYValue = 3;

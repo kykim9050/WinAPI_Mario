@@ -55,7 +55,8 @@ void UTestLevel::BeginPlay()
 
 
 	ACastleBridge* CastleBridge = SpawnActor<ACastleBridge>(static_cast<int>(EActorType::Structure));
-	
+	CastleBridge->SetActorLocation({ UInGameValue::BridgeStartXPos, UInGameValue::BridgeStartYPos });
+
 
 }
 

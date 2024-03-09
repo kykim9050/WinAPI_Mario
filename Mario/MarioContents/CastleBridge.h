@@ -30,5 +30,8 @@ private:
 	//FVector BridgePos = FVector();
 	std::list<ABridgeBlock*> BridgeBlocks = std::list<ABridgeBlock*>();
 
+	UImageRenderer* BridgeChainRenderer = nullptr;
+	UImageRenderer* BridgeFlagRenderer = nullptr;
+	UCollision* BridgeFlagCollision = nullptr;
 };
 

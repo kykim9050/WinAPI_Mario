@@ -65,18 +65,18 @@ void UContentsCore::BeginPlay()
 	UEngineResourcesManager::GetInst().CuttingImage("Koopa_Right.png", UInGameValue::KoopaImgXValue, UInGameValue::KoopaImgYValue);
 	UEngineResourcesManager::GetInst().CuttingImage("KoopaFire_Left.png", UInGameValue::KoopaFireImgXValue, UInGameValue::KoopaFireImgYValue);
 	UEngineResourcesManager::GetInst().CuttingImage("KoopaFire_Right.png", UInGameValue::KoopaFireImgXValue, UInGameValue::KoopaFireImgYValue);
-
-
+	UEngineResourcesManager::GetInst().CuttingImage("CastleItems.png", UInGameValue::CastleItemsImgXValue, UInGameValue::CastleItemsImgYValue);
+	
 
 	//CreateLevel<UTitleLevel>("TitleLevel");
 	//CreateLevel<UIntroLevel>("IntroLevel");
 	//CreateLevel<UEndingLevel>("EndingLevel");
 	
-	CreateLevel<U1_1StageLevel>("1-1");
-	ChangeLevel("1-1");
+	//CreateLevel<U1_1StageLevel>("1-1");
+	//ChangeLevel("1-1");
 
-	//CreateLevel<UTestLevel>("1-4");
-	//ChangeLevel("1-4");
+	CreateLevel<UTestLevel>("1-4");
+	ChangeLevel("1-4");
 
 	//CreateLevel<U1_4StageLevel>("1-4");
 	//ChangeLevel("1-4");
