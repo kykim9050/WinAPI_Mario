@@ -24,10 +24,44 @@ void AFootBoard::BeginPlay()
 	BodyCollision->SetTransform({ { 0,0 }, { FootBoardScale.iX() * UInGameValue::WindowSizeMulValue, FootBoardScale.iY() * UInGameValue::WindowSizeMulValue } });
 	BodyCollision->SetColType(ECollisionType::Rect);
 
-	//SetActorState(EActorState::Idle);
+	SetActorState(EActorState::Move);
 }
 
 void AFootBoard::Tick(float _DeltaTime)
 {
 	UStateUnit::Tick(_DeltaTime);
+}
+
+void AFootBoard::StateUpdate(float _DeltaTime)
+{
+	switch (ActorState)
+	{
+	case EActorState::Move:
+		Move(_DeltaTime);
+		break;
+	default:
+		break;
+	}
+}
+
+void AFootBoard::StateChange(EActorState _ActorState)
+{
+	if (ActorState != _ActorState)
+	{
+		switch (_ActorState)
+		{
+		case EActorState::Move:
+			MoveStart();
+			break;
+		default:
+			break;
+		}
+	}
+
+	SetActorState(_ActorState);
+}
+
+void AFootBoard::Move(float _DeltaTime)
+{
+
 }
