@@ -25,7 +25,7 @@ void AFootBoard::BeginPlay()
 	BodyCollision->SetTransform({ { 0,0 }, { FootBoardScale.iX() * UInGameValue::WindowSizeMulValue, FootBoardScale.iY() * UInGameValue::WindowSizeMulValue } });
 	BodyCollision->SetColType(ECollisionType::Rect);
 
-	StateChange(EActorState::Idle);
+	SetActorState(EActorState::Idle);
 }
 
 void AFootBoard::Tick(float _DeltaTime)
@@ -68,12 +68,6 @@ void AFootBoard::StateChange(EActorState _ActorState)
 	SetActorState(_ActorState);
 }
 
-
-void AFootBoard::IdleStart()
-{
-	InitPos = GetActorLocation();
-}
-
 void AFootBoard::MoveStart()
 {
 	HorizonVelocityVector = ActorMoveDir * MoveSpeed;
@@ -81,6 +75,7 @@ void AFootBoard::MoveStart()
 
 void AFootBoard::Idle(float _DeltaTime)
 {
+	InitPos = GetActorLocation();
 	if (GetActorLocation().iX() - GetPlayer()->GetActorLocation().iX() < UInGameValue::ResultMainWindowXScale)
 	{
 		StateChange(EActorState::Move);
@@ -92,13 +87,13 @@ void AFootBoard::Move(float _DeltaTime)
 	CalTotalVelocityVector(_DeltaTime);
 	AddActorLocation(TotalVelocityVector * _DeltaTime);
 
-	if (GetActorLocation().iX() <= /*InitPos.iX()*/ /*- 200*/ 100)
+	if (GetActorLocation().iX() <= InitPos.iX() - UInGameValue::KoopaMoveDeadline_F)
 	{
 		ActorMoveDir = FVector::Right;
 		HorizonVelocityVector = ActorMoveDir * MoveSpeed;
 		AddActorLocation(FVector::Right * 1);
 	}
-	else if (GetActorLocation().iX() >= /*InitPos.iX()*/ + 500)
+	else if (GetActorLocation().iX() >= InitPos.iX() + UInGameValue::KoopaMoveDeadline_R)
 	{
 		ActorMoveDir = FVector::Left;
 		HorizonVelocityVector = ActorMoveDir * MoveSpeed;
