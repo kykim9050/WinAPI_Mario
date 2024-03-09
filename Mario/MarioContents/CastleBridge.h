@@ -27,6 +27,11 @@ public:
 		return IsTagBridgeFlag;
 	}
 
+	static const bool IsBridgeDissapear()
+	{
+		return BridgeDissapear;
+	}
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -39,6 +44,8 @@ protected:
 private:
 	std::list<ABridgeBlock*> BridgeBlocks = std::list<ABridgeBlock*>();
 
+	
+
 	UImageRenderer* BridgeChainRenderer = nullptr;
 	UImageRenderer* BridgeFlagRenderer = nullptr;
 	UCollision* BridgeFlagCollision = nullptr;
@@ -49,5 +56,10 @@ private:
 		IsTagBridgeFlag = true;
 	}
 
+	static bool BridgeDissapear;
+	static void SetBridgeDissapear()
+	{
+		BridgeDissapear = true;
+	}
 };
 
