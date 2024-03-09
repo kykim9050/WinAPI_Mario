@@ -141,3 +141,5 @@ const int UInGameValue::MovingBoardDeadline_R = 0;
 
 const int UInGameValue::MovingBoardInitXPos = 2224 * UInGameValue::WindowSizeMulValue;
 const int UInGameValue::MovingBoardInitYPos = 101 * UInGameValue::WindowSizeMulValue;
+
+const int UInGameValue::FootCollisionScaleY = 4;
