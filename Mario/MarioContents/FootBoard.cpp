@@ -1,4 +1,5 @@
 ﻿#include "FootBoard.h"
+#include "PlayerMario.h"
 
 AFootBoard::AFootBoard()
 {
@@ -24,7 +25,7 @@ void AFootBoard::BeginPlay()
 	BodyCollision->SetTransform({ { 0,0 }, { FootBoardScale.iX() * UInGameValue::WindowSizeMulValue, FootBoardScale.iY() * UInGameValue::WindowSizeMulValue } });
 	BodyCollision->SetColType(ECollisionType::Rect);
 
-	StateChange(EActorState::Move);
+	StateChange(EActorState::Idle);
 }
 
 void AFootBoard::Tick(float _DeltaTime)
@@ -36,6 +37,9 @@ void AFootBoard::StateUpdate(float _DeltaTime)
 {
 	switch (ActorState)
 	{
+	case EActorState::Idle:
+		Idle(_DeltaTime);
+		break;
 	case EActorState::Move:
 		Move(_DeltaTime);
 		break;
@@ -50,6 +54,9 @@ void AFootBoard::StateChange(EActorState _ActorState)
 	{
 		switch (_ActorState)
 		{
+		case EActorState::Idle:
+			IdleStart();
+			break;
 		case EActorState::Move:
 			MoveStart();
 			break;
@@ -61,9 +68,23 @@ void AFootBoard::StateChange(EActorState _ActorState)
 	SetActorState(_ActorState);
 }
 
+
+void AFootBoard::IdleStart()
+{
+	InitPos = GetActorLocation();
+}
+
 void AFootBoard::MoveStart()
 {
 	HorizonVelocityVector = ActorMoveDir * MoveSpeed;
+}
+
+void AFootBoard::Idle(float _DeltaTime)
+{
+	if (GetActorLocation().iX() - GetPlayer()->GetActorLocation().iX() < UInGameValue::ResultMainWindowXScale)
+	{
+		StateChange(EActorState::Move);
+	}
 }
 
 void AFootBoard::Move(float _DeltaTime)
