@@ -296,6 +296,13 @@ public:
 	/// </summary>
 	static const int FootCollisionScaleY;
 
+	/// <summary>
+	/// CastleItems.png 의 열 , 행 수
+	/// </summary>
+	static const int CastleItemsImgXValue;
+	static const int CastleItemsImgYValue;
+
+
 protected:
 
 private:
