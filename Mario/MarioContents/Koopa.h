@@ -24,11 +24,13 @@ protected:
 	void MoveStart() override;
 	void JumpStart() override;
 	void FireStart() override;
-	
+	void FallDownStart() override;
+
 	void FirstInit(float _Deltatime) override;
 	void Move(float _DeltaTime) override;
 	void Jump(float _DeltaTime) override;
 	void Fire(float _DeltaTime) override;
+	void FallDown(float _DeltaTime) override;
 
 	EActorDir DirCheckAndSet();
 	void ChangeAnimationInPlayerDir();
@@ -50,6 +52,7 @@ private:
 	float KoopaJump = 400.0f;
 
 	void BulletListReleaseUpdate();
+	bool Dying = false;
 
 };
 

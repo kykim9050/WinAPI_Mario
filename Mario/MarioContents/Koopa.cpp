@@ -123,6 +123,18 @@ void AKoopa::FireStart()
 	Bullets.push_back(NewBullet);
 }
 
+void AKoopa::FallDownStart()
+{
+	int a = 0;
+}
+
+
+void AKoopa::FallDown(float _DeltaTime)
+{
+	int a = 0;
+}
+
+
 void AKoopa::Fire(float _DeltaTime)
 {
 	FiringTime -= _DeltaTime;
@@ -186,7 +198,13 @@ void AKoopa::CollisionCheck()
 {
 	if (true == ACastleBridge::PlayerIsTagBridgeFlag())
 	{
-		int a = 0;
+		if (true == Dying)
+		{
+			return;
+		}
+
+		Dying = true;
+		StateChange(EActorState::FallDown);
 		return;
 	}
 

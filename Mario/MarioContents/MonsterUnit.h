@@ -34,6 +34,7 @@ protected:
 	virtual void GetFirstHit(float _DeltaTime) {};
 	virtual void GetSecondHit(float _DeltaTime) {};
 	virtual void GetMonsterHit(float _DeltaTime) {};
+	virtual void FallDown(float _DeltaTime) {};
 
 	virtual void IdleStart() {};
 	virtual void MoveStart() {};
@@ -42,6 +43,7 @@ protected:
 	virtual void GetSecondHitStart() {};
 	virtual void GetHitFromPlayerStart() {};
 	virtual void GetHitFromMonsterStart() {};
+	virtual void FallDownStart() {};
 
 	virtual void GetHitStart() {};
 	virtual void GetMonsterHitStart() {};
