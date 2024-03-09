@@ -86,7 +86,7 @@ void ACastleBridge::FallDown(float _DeltaTime)
 
 			BridgeChainRenderer->ActiveOff();
 			EndStep = 1;
-			DelayTime = 0.3f + DelayTime;
+			DelayTime = 0.2f + DelayTime;
 			break;
 		}
 
@@ -94,16 +94,47 @@ void ACastleBridge::FallDown(float _DeltaTime)
 	}
 	case 1:
 	{
-		
+		// 끝에 Bridge 블럭부터 하나씩 사라진다. 0.2초간격	
+		DelayTime -= _DeltaTime;
+
+		std::list<ABridgeBlock*>::iterator StartIter = BridgeBlocks.begin();
+		std::list<ABridgeBlock*>::iterator EndIter = BridgeBlocks.end();
+
+		if (StartIter == EndIter)
+		{
+			DelayTime = 0.2f + DelayTime;
+			EndStep = 2;
+			break;
+		}
+
+		if (0.0f >= DelayTime)
+		{
+			DelayTime = 0.3f + DelayTime;
+			ABridgeBlock* Block = *StartIter;
+
+			if (nullptr == Block)
+			{
+				MsgBoxAssert("제거할 대상 Block이 nullptr 입니다.");
+				return;
+			}
+
+			Block->GetRenderer()->ActiveOff();
+			Block->GetBodyCollision()->ActiveOff();
+			StartIter = BridgeBlocks.erase(StartIter);
+			break;
+		}
+		break;
+	}
+	case 2:
+	{
+
 		break;
 	}
 	default:
 		break;
 	}
 
-	// 1단계 0.5초뒤에 체인부터 사라지고
-
-	// 끝에 Bridge 블럭부터 하나씩 사라진다. 0.2초간격
+	
 
 	//switch (EndStep)
 	//{
