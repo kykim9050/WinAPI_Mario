@@ -19,3 +19,33 @@ void AStructureUnit::Tick(float _DeltaTime)
 
 	CollisionCheck();
 }
+
+void AStructureUnit::StateUpdate(float _DeltaTime)
+{
+	switch (ActorState)
+	{
+	case EActorState::FallDown:
+		FallDown(_DeltaTime);
+		break;
+	default:
+		break;
+	}
+
+}
+
+void AStructureUnit::StateChange(EActorState _ActorState)
+{
+	if (ActorState != _ActorState)
+	{
+		switch (_ActorState)
+		{
+		case EActorState::FallDown:
+			FallDownStart();
+			break;
+		default:
+			break;
+		}
+	}
+
+	SetActorState(_ActorState);
+}

@@ -54,8 +54,123 @@ void ACastleBridge::CollisionCheck()
 	{
 		BridgeFlagCollision->ActiveOff();
 		BridgeFlagRenderer->ActiveOff();
-		GetWorld()->SetOtherTimeScale(EActorType::Monster, 0.0f);
+
+		GetWorld()->SetOtherTimeScale(EActorType::Structure, 0.0f);
+		GetWorld()->SetTimeScale(EActorType::Monster, 1.0f);
+		//GetWorld()->SetTimeScale(EActorType::Block, 1.0f);
+
+		StateChange(EActorState::FallDown);
 		TagBridgeFlag();
 		return;
 	}
+}
+
+void ACastleBridge::FallDown(float _DeltaTime)
+{
+	static int EndStep = 0;
+	static float DelayTime = 0.5f;
+
+	switch (EndStep)
+	{
+	case 0:
+	{
+		DelayTime -= _DeltaTime;
+
+		if (0.0f >= DelayTime)
+		{
+			if (nullptr == BridgeChainRenderer)
+			{
+				MsgBoxAssert("BridgeChainRenderer가 nullptr 입니다.");
+				break;
+			}
+
+			BridgeChainRenderer->ActiveOff();
+			EndStep = 1;
+			DelayTime = 0.3f + DelayTime;
+			break;
+		}
+
+		break;
+	}
+	case 1:
+	{
+		
+		break;
+	}
+	default:
+		break;
+	}
+
+	// 1단계 0.5초뒤에 체인부터 사라지고
+
+	// 끝에 Bridge 블럭부터 하나씩 사라진다. 0.2초간격
+
+	//switch (EndStep)
+	//{
+	//case 0:	// 첫 번째 단계 : 깃대를 잡고 내려감
+	//{
+	//	DelayTime -= _DeltaTime;
+
+	//	if (0.0f >= DelayTime)
+	//	{
+	//		// 지정 시간이 지나면 Player 반대편으로 도는 애니메이션 취하기
+	//		SetActorLocation({ GetActorLocation().X + BodyCollision->GetTransform().GetScale().X + static_cast<float>(UInGameValue::EndFlagCollisionXScale), GetActorLocation().Y });
+	//		Renderer->ChangeAnimation(ChangeAnimationName("StopClimbDownAndTurnRight", true));
+	//		DelayTime = 1.0f;
+	//		EndStep = 1;
+	//		break;
+	//	}
+
+	//	Color8Bit Color = UContentsFunction::GetCollisionMapImg()->GetColor(GetActorLocation().iX(), GetActorLocation().iY(), UInGameValue::CollisionColor);
+
+	//	if (UInGameValue::CollisionColor == Color)
+	//	{
+	//		// Player 아래에 충돌체 만나면 내려가기 멈추고 시간이 다될때까지 대기
+	//		Renderer->ChangeAnimation(ChangeAnimationName("StopClimbDown", true));
+	//		break;
+	//	}
+
+	//	AddActorLocation(FVector::Down * 400.0f * _DeltaTime);
+	//	break;
+	//}
+	//case 1:	// 도는 애니메이션 취하고 일정 시간 동안 대기하는 기능
+	//{
+	//	DelayTime -= _DeltaTime;
+
+	//	if (0.0f >= DelayTime)
+	//	{
+	//		// 깃발을 잡고 내려간 후에 걸어서 성문 입구로 걸어가기 시작 (자동 - 조작 안먹힘)
+	//		Renderer->ChangeAnimation(ChangeAnimationName("Move_Right", true));
+	//		SetJumpZero();
+	//		DelayTime = 0.0f;
+	//		EndStep = 2;
+	//		break;
+	//	}
+
+	//	break;
+	//}
+	//case 2: // 성문에 충돌할때까지 계속해서 오른쪽으로 걷기
+	//{
+	//	if (IsReachingCastleGate)
+	//	{
+	//		// Stage종료
+	//		StateChange(EActorState::ReachStageEnd);
+	//		EndStep = -1;
+	//		IsReachingCastleGate = false;
+	//	}
+
+	//	HorizonVelocityVector = FVector::Right * 150.0f;
+
+	//	ResultMovementUpdate(_DeltaTime);
+	//	break;
+	//}
+	//default:
+	//	break;
+	//}
+}
+
+void ACastleBridge::FallDownStart()
+{
+	BridgeFlagRenderer->Destroy();
+	BridgeFlagCollision->Destroy();
 }
