@@ -291,6 +291,11 @@ public:
 	static const int MovingBoardInitXPos;
 	static const int MovingBoardInitYPos;
 
+	/// <summary>
+	/// Player나 Monster의 FootCollision의 y Scale 값
+	/// </summary>
+	static const int FootCollisionScaleY;
+
 protected:
 
 private:

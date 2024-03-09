@@ -51,6 +51,7 @@ protected:
 	void ResultMovementUpdate(float _DeltaTime) override;
 
 	FVector ActorMoveDir = FVector::Left;
+	UCollision* FootCollision = nullptr;
 
 private:
 

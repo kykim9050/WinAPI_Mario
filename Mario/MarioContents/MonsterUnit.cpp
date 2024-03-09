@@ -160,7 +160,7 @@ void AMonsterUnit::CalGravityVelocityVector(float _DeltaTime)
 	std::vector<UCollision*> Result = std::vector<UCollision*>();
 	Color8Bit Color = UContentsFunction::GetCollisionMapImg()->GetColor(GetActorLocation().iX(), GetActorLocation().iY(), UInGameValue::CollisionColor);
 
-	if (UInGameValue::CollisionColor == Color || true == BodyCollision->CollisionCheck(ECollisionOrder::BlockTop, Result))
+	if (UInGameValue::CollisionColor == Color || true == FootCollision->CollisionCheck(ECollisionOrder::BlockTop, Result))
 	{
 		GravityVelocityVector = FVector::Zero;
 		SetGravityRatio(0.0f);

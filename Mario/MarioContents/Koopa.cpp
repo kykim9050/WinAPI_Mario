@@ -29,6 +29,11 @@ void AKoopa::BeginPlay()
 	BodyCollision->SetPosition({ 0, -(BodyCollision->GetTransform().GetScale().ihY()) });
 	BodyCollision->SetColType(ECollisionType::Rect);
 
+	FootCollision = CreateCollision(ECollisionOrder::Monster);
+	FootCollision->SetTransform({ { 0,0 }, { UInGameValue::KoopaBodyCollisionScaleX, UInGameValue::FootCollisionScaleY} });
+	FootCollision->SetPosition({ 0, -(static_cast<int>(UInGameValue::FootCollisionScaleY / 2))});
+	FootCollision->SetColType(ECollisionType::Rect);
+
 	SetActorState(EActorState::FirstInit);
 
 }
@@ -169,7 +174,7 @@ void AKoopa::Jump(float _DeltaTime)
 
 	std::vector<UCollision*> Result = std::vector<UCollision*>();
 
-	if (true == BodyCollision->CollisionCheck(ECollisionOrder::BlockTop, Result))
+	if (true == FootCollision->CollisionCheck(ECollisionOrder::BlockTop, Result))
 	{
 		StateChange(EActorState::Move);
 		return;
