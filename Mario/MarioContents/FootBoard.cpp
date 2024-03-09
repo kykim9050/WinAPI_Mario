@@ -87,13 +87,13 @@ void AFootBoard::Move(float _DeltaTime)
 	CalTotalVelocityVector(_DeltaTime);
 	AddActorLocation(TotalVelocityVector * _DeltaTime);
 
-	if (GetActorLocation().iX() <= InitPos.iX() - UInGameValue::KoopaMoveDeadline_F)
+	if (GetActorLocation().iX() <= InitPos.iX() - UInGameValue::MovingBoardDeadline_F)
 	{
 		ActorMoveDir = FVector::Right;
 		HorizonVelocityVector = ActorMoveDir * MoveSpeed;
 		AddActorLocation(FVector::Right * 1);
 	}
-	else if (GetActorLocation().iX() >= InitPos.iX() + UInGameValue::KoopaMoveDeadline_R)
+	else if (GetActorLocation().iX() >= InitPos.iX() + UInGameValue::MovingBoardDeadline_R)
 	{
 		ActorMoveDir = FVector::Left;
 		HorizonVelocityVector = ActorMoveDir * MoveSpeed;

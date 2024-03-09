@@ -51,7 +51,7 @@ void UTestLevel::BeginPlay()
 	//BossMonsterKoopa->SetActorLocation({ 500, 400 });
 
 	AFootBoard* FootBoard = SpawnActor<AFootBoard>(static_cast<int>(EActorType::Block));
-	FootBoard->SetActorLocation({ 6500, 300 });
+	FootBoard->SetActorLocation({ UInGameValue::MovingBoardInitXPos, UInGameValue::MovingBoardInitYPos});
 
 
 	ACastleBridge* CastleBridge = SpawnActor<ACastleBridge>(static_cast<int>(EActorType::Structure));
