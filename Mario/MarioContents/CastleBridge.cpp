@@ -1,6 +1,8 @@
 ﻿#include "CastleBridge.h"
 #include "BridgeBlock.h"
 
+bool ACastleBridge::IsTagBridgeFlag = false;
+
 ACastleBridge::ACastleBridge()
 {
 
@@ -52,7 +54,7 @@ void ACastleBridge::CollisionCheck()
 	{
 		BridgeFlagCollision->ActiveOff();
 		GetWorld()->SetOtherTimeScale(EActorType::Monster, 0.0f);
-		//GetPlayer()->ReachToStageEnd();
+		TagBridgeFlag();
 		return;
 	}
 }
