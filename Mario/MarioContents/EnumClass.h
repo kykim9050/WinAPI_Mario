@@ -53,6 +53,7 @@ enum class EActorState
 	ReverseMove,
 	Jump,
 	CollisionJump,
+	FallDown,
 	Dead,
 	OnTheBlock,
 	GetHit,
