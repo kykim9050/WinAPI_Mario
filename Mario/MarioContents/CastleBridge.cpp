@@ -53,6 +53,7 @@ void ACastleBridge::CollisionCheck()
 	if (nullptr != BridgeFlagCollision && true == BridgeFlagCollision->CollisionCheck(ECollisionOrder::Player, Result))
 	{
 		BridgeFlagCollision->ActiveOff();
+		BridgeFlagRenderer->ActiveOff();
 		GetWorld()->SetOtherTimeScale(EActorType::Monster, 0.0f);
 		TagBridgeFlag();
 		return;
