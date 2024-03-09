@@ -22,9 +22,13 @@ protected:
 	void StateUpdate(float _DeltaTime);
 	void StateChange(EActorState _ActorState);
 
+	void MoveStart() override;
 	void Move(float _DeltaTime) override;
 
 private:
 	FVector InitPos = FVector::Zero;
+
+	float MoveSpeed = 100.0f;
+	FVector ActorMoveDir = FVector::Left;
 };
 
