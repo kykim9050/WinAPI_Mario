@@ -2,6 +2,7 @@
 #include "BridgeBlock.h"
 
 bool ACastleBridge::IsTagBridgeFlag = false;
+bool ACastleBridge::BridgeDissapear = false;
 
 ACastleBridge::ACastleBridge()
 {
@@ -49,6 +50,11 @@ void ACastleBridge::Tick(float _DeltaTime)
 void ACastleBridge::CollisionCheck()
 {
 	std::vector<UCollision*> Result = std::vector<UCollision*>();
+
+	if (nullptr == BridgeFlagCollision)
+	{
+		return;
+	}
 
 	if (nullptr != BridgeFlagCollision && true == BridgeFlagCollision->CollisionCheck(ECollisionOrder::Player, Result))
 	{
@@ -127,7 +133,7 @@ void ACastleBridge::FallDown(float _DeltaTime)
 	}
 	case 2:
 	{
-
+		SetBridgeDissapear();
 		break;
 	}
 	default:

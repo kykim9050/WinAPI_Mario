@@ -136,7 +136,10 @@ void AKoopa::FallDownStart()
 
 void AKoopa::FallDown(float _DeltaTime)
 {
-	int a = 0;
+	if (true == ACastleBridge::IsBridgeDissapear())
+	{
+		int a = 0;
+	}
 }
 
 
