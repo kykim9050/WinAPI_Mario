@@ -23,7 +23,6 @@ protected:
 	void StateUpdate(float _DeltaTime);
 	void StateChange(EActorState _ActorState);
 
-	void IdleStart() override;
 	void MoveStart() override;
 	void Idle(float _Deltatime) override;
 	void Move(float _DeltaTime) override;
