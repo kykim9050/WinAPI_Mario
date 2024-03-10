@@ -32,19 +32,19 @@ void U1_4StageLevel::BeginPlay()
 	ColMap->GetColMapRenderer()->SetTransform({ { ColMapImageFVector.ihX(), ColMapImageFVector.ihY()}, {ColMapImageFVector} });
 
 	AKoopa* BossMonsterKoopa = SpawnActor<AKoopa>(static_cast<int>(EActorType::Monster));
-	BossMonsterKoopa->SetActorLocation({ 6600, 450 });
+	BossMonsterKoopa->SetActorLocation(UInGameValue::KoopaInitPos);
 
 	AFootBoard* FootBoard = SpawnActor<AFootBoard>(static_cast<int>(EActorType::Block));
 	FootBoard->SetActorLocation({ UInGameValue::MovingBoardInitXPos, UInGameValue::MovingBoardInitYPos });
+
 
 	ACastleBridge* CastleBridge = SpawnActor<ACastleBridge>(static_cast<int>(EActorType::Structure));
 	CastleBridge->SetActorLocation({ UInGameValue::BridgeStartXPos, UInGameValue::BridgeStartYPos });
 
 	APrincess* Princess = SpawnActor<APrincess>(static_cast<int>(EActorType::Player));
-	Princess->SetActorLocation({ 2440 * 3, 197 * 3 });
 
 	USignalCollision* BossRoomStartLine = SpawnActor<USignalCollision>(static_cast<int>(EActorType::Structure));
-	BossRoomStartLine->SetActorLocation({ 2130 * 3, 130 * 3 });
+	BossRoomStartLine->SetActorLocation(UInGameValue::BossRoomStartLineInitPos);
 
 }
 
