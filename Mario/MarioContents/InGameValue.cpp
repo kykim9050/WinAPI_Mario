@@ -151,3 +151,7 @@ const int UInGameValue::CastleEndFlagXScale = 16 * UInGameValue::WindowSizeMulVa
 const int UInGameValue::CastleEndFlagYScale = 16 * UInGameValue::WindowSizeMulValue;
 
 const FVector UInGameValue::PrincessInitPos = {2440 * UInGameValue::WindowSizeMulValue, 197 * UInGameValue::WindowSizeMulValue };
+
+const FVector UInGameValue::KoopaInitPos = { 2200 * UInGameValue::WindowSizeMulValue, 150 * UInGameValue::WindowSizeMulValue };
+
+const FVector UInGameValue::BossRoomStartLineInitPos = { 2130 * UInGameValue::WindowSizeMulValue, 130 * UInGameValue::WindowSizeMulValue };
