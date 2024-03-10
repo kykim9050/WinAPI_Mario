@@ -2,6 +2,8 @@
 #include "PlayerMario.h"
 #include "ContentsFunction.h"
 
+bool APrincess::PrintMsg = false;
+
 APrincess::APrincess()
 {
 }
@@ -28,6 +30,11 @@ void APrincess::BeginPlay()
 void APrincess::Tick(float _DeltaTime)
 {
 	UStateUnit::Tick(_DeltaTime);
+
+	if (true == IsCanPrintMsg())
+	{
+		int a = 0;
+	}
 }
 
 void APrincess::CollisionCheck()
@@ -49,3 +56,4 @@ void APrincess::CollisionCheck()
 		return;
 	}
 }
+

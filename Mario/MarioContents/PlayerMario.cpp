@@ -5,6 +5,7 @@
 #include <cmath>
 #include <EngineCore/EngineDebug.h>
 #include "Koopa.h"
+#include "Princess.h"
 
 
 APlayerMario* APlayerMario::MainPlayer = nullptr;
@@ -796,7 +797,7 @@ void APlayerMario::BossStageClear(float _DeltaTime)
 		if (GetWorld()->GetCameraPos().X >= UContentsFunction::GetCollisionMapImg()->GetScale().X - UInGameValue::ResultMainWindowXScale)
 		{
 			EndStep = 3;
-			//APrincess::PrintEndingMsg();
+			APrincess::PrintEndingMsg();
 			return;
 		}
 		// 카메라위치가 맵 끝까지 갈때까지 기다리기
@@ -1016,10 +1017,10 @@ void APlayerMario::CalHorizonVelocityVector(float _DeltaTime)
 		switch (ActorDir)
 		{
 		case EActorDir::Right:
-			AddActorLocation(FVector::Right);
+			AddActorLocation(FVector::Right * 2);
 			break;
 		case EActorDir::Left:
-			AddActorLocation(FVector::Left);
+			AddActorLocation(FVector::Left * 2);
 			break;
 		default:
 			break;
