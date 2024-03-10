@@ -24,6 +24,7 @@ protected:
 	void StateUpdate(float _DeltaTime) override;
 	void StateChange(EActorState _ActorState) override;
 	void CollisionStateChange(ECollisionState _CollisionState) override;
+	void DeadCollisionCheck() override;
 
 
 	virtual void FirstInit(float _DeltaTime) {};
@@ -55,6 +56,6 @@ protected:
 	UCollision* FootCollision = nullptr;
 
 private:
-
+	bool MonsterDead = false;
 };
 

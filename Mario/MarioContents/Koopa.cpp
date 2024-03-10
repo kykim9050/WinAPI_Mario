@@ -211,6 +211,8 @@ void AKoopa::Jump(float _DeltaTime)
 
 void AKoopa::CollisionCheck()
 {
+
+
 	if (true == ACastleBridge::PlayerIsTagBridgeFlag())
 	{
 		if (true == Dying)

@@ -25,8 +25,8 @@ void UStateUnit::Tick(float _DeltaTime)
 void UStateUnit::CollisionUpdate(float _DeltaTime)
 {
 	CollisionCheck();
+	DeadCollisionCheck();
 }
-
 
 
 void UStateUnit::CalTotalVelocityVector(float _DeltaTime)
