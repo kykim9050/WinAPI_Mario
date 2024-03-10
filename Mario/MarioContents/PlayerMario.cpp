@@ -761,7 +761,7 @@ void APlayerMario::BossStageClear(float _DeltaTime)
 		{
 			DelayTime = 0.5f + DelayTime;
 			EndStep = 1;
-			HorizonVelocityVector = FVector::Right * 100.0f;
+			SetJumpZero();
 			Renderer->ChangeAnimation(ChangeAnimationName("Move_Right", true));
 			break;
 		}
@@ -770,7 +770,8 @@ void APlayerMario::BossStageClear(float _DeltaTime)
 	}
 	case 1:
 	{
-
+		HorizonVelocityVector = FVector::Right * 100.0f;
+		ResultMovementUpdate(_DeltaTime);
 		break;
 	}
 	case 2:
