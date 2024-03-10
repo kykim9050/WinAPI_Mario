@@ -769,7 +769,7 @@ void APlayerMario::BossStageClear(float _DeltaTime)
 			DelayTime = 0.5f + DelayTime;
 			EndStep = 1;
 			SetJumpZero();
-			//CameraMoveOnO();
+			CameraMoveOn();
 			Renderer->ChangeAnimation(ChangeAnimationName("Move_Right", true));
 			break;
 		}
@@ -786,13 +786,16 @@ void APlayerMario::BossStageClear(float _DeltaTime)
 			break;
 		}
 
-		HorizonVelocityVector = FVector::Right * 100.0f;
+		HorizonVelocityVector = FVector::Right * 150.0f;
+		CameraPosUpdate(HorizonVelocityVector * _DeltaTime, true);
 		ResultMovementUpdate(_DeltaTime);
 		break;
 	}
 	case 2:
 	{
 		// 카메라위치가 맵 끝까지 갈때까지 기다리기
+		HorizonVelocityVector = FVector::Right * 150.0f;
+		CameraPosUpdate(HorizonVelocityVector * _DeltaTime, true);
 		break;
 	}
 	default:
@@ -925,7 +928,7 @@ bool APlayerMario::IsReverseMove()
 
 
 
-void APlayerMario::CameraPosUpdate(FVector _MovePos)
+void APlayerMario::CameraPosUpdate(FVector _MovePos, bool _ExceptCheckRange)
 {
 	FVector CameraPos = GetWorld()->GetCameraPos();
 
@@ -935,15 +938,23 @@ void APlayerMario::CameraPosUpdate(FVector _MovePos)
 		return;
 	}
 
-	float CheckRange = CameraPos.X + 2.0f * static_cast<float>(UInGameValue::ResultMainWindowXScale) / 5.0f;
 
-	if (GetActorLocation().X >= CheckRange)
+	if (false == _ExceptCheckRange)
 	{
-		if (0 >= _MovePos.X)
-		{
-			_MovePos.X = 0.0f;
-		}
+		float CheckRange = CameraPos.X + 2.0f * static_cast<float>(UInGameValue::ResultMainWindowXScale) / 5.0f;
 
+		if (GetActorLocation().X >= CheckRange)
+		{
+			if (0 >= _MovePos.X)
+			{
+				_MovePos.X = 0.0f;
+			}
+			GetWorld()->AddCameraPos(_MovePos);
+			return;
+		}
+	}
+	else if (true == _ExceptCheckRange)
+	{
 		GetWorld()->AddCameraPos(_MovePos);
 	}
 }
