@@ -23,8 +23,8 @@ void APrincess::BeginPlay()
 	MessageHideRenderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::BackGrundStructure));
 	MessageHideRenderer->SetImage("Mario_Ending_BackGround_Message_Hide.png");
 
-	FVector MessageHideScale = MessageHideRenderer->GetImage()->GetScale();
-	MessageHideRenderer->SetTransform({ { UContentsFunction::CollisionMapSize().iX() - MessageHideScale.ihX(), UContentsFunction::CollisionMapSize().ihY()},{MessageHideScale}});
+	MessageHideScale = MessageHideRenderer->GetImage()->GetScale();
+	MessageHideRenderer->SetTransform({ { UContentsFunction::CollisionMapSize().iX() - MessageHideScale.ihX(), 384},{MessageHideScale}});
 }
 
 void APrincess::Tick(float _DeltaTime)
@@ -33,7 +33,43 @@ void APrincess::Tick(float _DeltaTime)
 
 	if (true == IsCanPrintMsg())
 	{
-		int a = 0;
+		static int MsgStep = 0;
+		static float DelayTime = 3.0f;
+
+
+		switch (MsgStep)
+		{
+		case 0:
+		{
+			MessageHideRenderer->SetTransform({ {UContentsFunction::CollisionMapSize().iX() - MessageHideScale.ihX(), 384 + 32},{MessageHideScale.iX(), MessageHideScale.iY() - (2 * 32)} });
+			++MsgStep;
+			break;
+		}
+		case 1:
+		case 2:
+		case 3:
+		case 4:
+		{
+			DelayTime -= _DeltaTime;
+
+			if (0.0f >= DelayTime)
+			{
+				++MsgStep;
+				DelayTime = 1.0f + DelayTime;
+				MessageHideRenderer->SetTransform({ {UContentsFunction::CollisionMapSize().iX() - MessageHideScale.ihX(), 384 + 32 * MsgStep},{MessageHideScale.iX(), MessageHideScale.iY() - (2 * 32 * MsgStep)} });
+				break;
+			}
+			break;
+		}
+		case 5:
+		{
+			// 엔딩레벨로 넘어갈 수 있게 Level에게 키 활성화 해주는 기능 구현
+			break;
+		}
+		default:
+			break;
+		}
+
 	}
 }
 

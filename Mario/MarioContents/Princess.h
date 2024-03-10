@@ -30,6 +30,7 @@ protected:
 
 private:
 	UImageRenderer* MessageHideRenderer = nullptr;
+	FVector MessageHideScale = FVector::Zero;
 
 	static bool PrintMsg;
 	bool IsCanPrintMsg() const
