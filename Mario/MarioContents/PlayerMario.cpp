@@ -770,13 +770,21 @@ void APlayerMario::BossStageClear(float _DeltaTime)
 	}
 	case 1:
 	{
+		if (true == IsMeetThePrincess())
+		{
+			EndStep = 2;
+			SetSpeedZero();
+			Renderer->ChangeAnimation(ChangeAnimationName("Idle_Right", true));
+			break;
+		}
+
 		HorizonVelocityVector = FVector::Right * 100.0f;
 		ResultMovementUpdate(_DeltaTime);
 		break;
 	}
 	case 2:
 	{
-
+		// 카메라위치가 맵 끝까지 갈때까지 기다리기
 		break;
 	}
 	default:
