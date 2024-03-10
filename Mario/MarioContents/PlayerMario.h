@@ -115,7 +115,7 @@ public:
 
 	
 
-	void CameraPosUpdate(FVector _MovePos);
+	void CameraPosUpdate(FVector _MovePos, bool _ExceptCheckRange = false);
 
 	bool IsReverseMove();
 
