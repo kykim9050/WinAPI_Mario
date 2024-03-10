@@ -71,6 +71,7 @@ enum class EActorState
 	ReachStageEnd,
 	BossStageClear,
 	Fire,
+	Speak,
 };
 
 enum class EActorDir
