@@ -165,7 +165,7 @@ void AMonsterUnit::DeadCollisionCheck()
 {
 	UStateUnit::DeadCollisionCheck();
 	
-	if (true == MonsterDead)
+	if (true == IsMonsterDead())
 	{
 		return;
 	}
@@ -174,8 +174,8 @@ void AMonsterUnit::DeadCollisionCheck()
 
 	if (Color8Bit::YellowA == Color)
 	{
-		MonsterDead = true;
-		Destroy(2.0f);
+		SetMonsterDead();
+		Destroy(1.0f);
 	}
 }
 

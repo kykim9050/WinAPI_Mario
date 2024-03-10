@@ -17,6 +17,11 @@ public:
 	AKoopa& operator=(const AKoopa& _Other) = delete;
 	AKoopa& operator=(AKoopa&& _Other) noexcept = delete;
 
+	static const bool GetKoopaIsDead()
+	{
+		return KoopaIsDead;
+	}
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -39,6 +44,8 @@ protected:
 
 	void CollisionCheck() override;
 
+	void DeadCollisionCheck() override;
+
 private:
 	std::list<AKoopaBullet*> Bullets = std::list<AKoopaBullet*>();
 	AKoopaBullet* NewBullet = nullptr;
@@ -55,5 +62,10 @@ private:
 	bool Dying = false;
 	bool FallingDown = false;
 
+	static bool KoopaIsDead;
+	void SetKoopaIsDead()
+	{
+		KoopaIsDead = true;
+	}
 };
 

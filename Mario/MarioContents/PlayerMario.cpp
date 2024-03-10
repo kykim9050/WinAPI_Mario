@@ -4,6 +4,8 @@
 #include <EngineBase/EngineDebug.h>
 #include <cmath>
 #include <EngineCore/EngineDebug.h>
+#include "Koopa.h"
+
 
 APlayerMario* APlayerMario::MainPlayer = nullptr;
 
@@ -94,6 +96,11 @@ void APlayerMario::BeginPlay()
 void APlayerMario::Tick(float _DeltaTime)
 {
 	UStateUnit::Tick(_DeltaTime);
+
+	if (true == AKoopa::GetKoopaIsDead())
+	{
+		int a = 0;
+	}
 
 	UEngineDebug::DebugTextPrint("X Pos : " +std::to_string(GetActorLocation().X) + " , Y Pos : " + std::to_string(GetActorLocation().Y), 20.0f);
 }
