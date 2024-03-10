@@ -17,6 +17,11 @@ public:
 	APrincess& operator=(const APrincess& _Other) = delete;
 	APrincess& operator=(APrincess&& _Other) noexcept = delete;
 
+	static void PrintEndingMsg()
+	{
+		PrintMsg = true;
+	}
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -25,5 +30,11 @@ protected:
 
 private:
 	UImageRenderer* MessageHideRenderer = nullptr;
+
+	static bool PrintMsg;
+	bool IsCanPrintMsg() const
+	{
+		return PrintMsg;
+	}
 };
 
