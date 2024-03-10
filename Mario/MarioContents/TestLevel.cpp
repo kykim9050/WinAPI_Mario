@@ -63,7 +63,7 @@ void UTestLevel::BeginPlay()
 	Princess->SetActorLocation({ 2440 * 3, 197 * 3 });
 
 	USignalCollision* BossRoomStartLine = SpawnActor<USignalCollision>(static_cast<int>(EActorType::Structure));
-	BossRoomStartLine->SetActorLocation({ 2120 * 3, 130 * 3 });
+	BossRoomStartLine->SetActorLocation({ 2130 * 3, 130 * 3 });
 
 }
 
