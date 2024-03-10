@@ -38,7 +38,7 @@ void ACastleBridge::BeginPlay()
 	BridgeFlagRenderer->ChangeAnimation("BridgeFlag");
 
 	BridgeFlagCollision = CreateCollision(ECollisionOrder::CastleEndFlag);
-	BridgeFlagCollision->SetTransform({ { UInGameValue::BTBDistance * UInGameValue::BridgeBlockAmount, -(UInGameValue::BTBDistance * 2)}, {UInGameValue::CastleEndFlagXScale, UInGameValue::CastleEndFlagYScale } });
+	BridgeFlagCollision->SetTransform({ { UInGameValue::BTBDistance * UInGameValue::BridgeBlockAmount, -(UInGameValue::BTBDistance * 2)}, {static_cast<int>(UInGameValue::CastleEndFlagXScale / 2), UInGameValue::CastleEndFlagYScale } });
 	BridgeFlagCollision->SetColType(ECollisionType::Rect);
 }
 

@@ -1,8 +1,9 @@
 #pragma once
 #include "StateUnit.h"
+#include "MainPlayer.h"
 
 // Ό³Έν :
-class APrincess : public UStateUnit
+class APrincess : public UStateUnit , public UMainPlayer
 {
 public:
 	// constrcuter destructer
@@ -18,6 +19,8 @@ public:
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
+
+	void CollisionCheck() override;
 
 private:
 

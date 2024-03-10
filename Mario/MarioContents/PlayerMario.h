@@ -157,6 +157,16 @@ public:
 		IsReachingCastleGate = true;
 	}
 
+	void MeetThePrincess()
+	{
+		MeetPrincess = true;
+	}
+
+	bool IsMeetThePrincess() const
+	{
+		return MeetPrincess;
+	}
+
 	EMarioType GetPlayerType() const
 	{
 		return MarioType;
@@ -231,6 +241,7 @@ private:
 	bool BlockBottomHit = false;
 	bool IsReachingStageEnd = false;
 	bool IsReachingCastleGate = false;
+	bool MeetPrincess = false;
 
 	EActorState PrevActorState = EActorState::None;
 
