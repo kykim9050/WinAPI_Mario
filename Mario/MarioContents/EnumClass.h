@@ -69,6 +69,7 @@ enum class EActorState
 	Wait,
 	ReachingEndFlag,
 	ReachStageEnd,
+	BossStageClear,
 	Fire,
 };
 

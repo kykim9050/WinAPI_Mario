@@ -97,9 +97,10 @@ void APlayerMario::Tick(float _DeltaTime)
 {
 	UStateUnit::Tick(_DeltaTime);
 
-	if (true == AKoopa::GetKoopaIsDead())
+	if (false == GetClearBossStage() && true == AKoopa::GetKoopaIsDead())
 	{
-		int a = 0;
+		SetClearBossStage();
+		StateChange(EActorState::BossStageClear);
 	}
 
 	UEngineDebug::DebugTextPrint("X Pos : " +std::to_string(GetActorLocation().X) + " , Y Pos : " + std::to_string(GetActorLocation().Y), 20.0f);
@@ -158,6 +159,9 @@ void APlayerMario::StateChange(EActorState _PlayerState)
 			break;
 		case EActorState::ReachStageEnd:
 			ReachStageEndStart();
+			break;
+		case EActorState::BossStageClear:
+			BossStageClearStart();
 			break;
 		default:
 			break;
@@ -225,6 +229,9 @@ void APlayerMario::StateUpdate(float _DeltaTime)
 		break;
 	case EActorState::ReachingEndFlag:
 		ReachingEndFlag(_DeltaTime);
+		break;
+	case EActorState::BossStageClear:
+		BossStageClear(_DeltaTime);
 		break;
 	default:
 		break;
@@ -739,6 +746,45 @@ void APlayerMario::ReachingEndFlag(float _DeltaTime)
 
 }
 
+void APlayerMario::BossStageClear(float _DeltaTime)
+{
+	static int EndStep = 0;
+	static float DelayTime = 0.5f;
+
+	switch (EndStep)
+	{
+	case 0:
+	{
+		DelayTime -= _DeltaTime;
+
+		if (0.0f >= DelayTime)
+		{
+			DelayTime = 0.5f + DelayTime;
+			EndStep = 1;
+			HorizonVelocityVector = FVector::Right * 100.0f;
+			Renderer->ChangeAnimation(ChangeAnimationName("Move_Right", true));
+			break;
+		}
+
+		break;
+	}
+	case 1:
+	{
+
+		break;
+	}
+	case 2:
+	{
+
+		break;
+	}
+	default:
+		break;
+	}
+
+}
+
+
 
 void APlayerMario::GetHitStart()
 {
@@ -794,6 +840,10 @@ void APlayerMario::ReachStageEndStart()
 	TotalVelocityVector = FVector::Zero;
 }
 
+void APlayerMario::BossStageClearStart()
+{
+	GetWorld()->SetTimeScale(EActorType::Player, 1.0f);
+}
 
 void APlayerMario::BlockBotHitStart()
 {
