@@ -38,7 +38,7 @@ const int UInGameValue::GoombaImageYValue = 1;
 const int UInGameValue::PlayerCollisionScaleX = 32;
 const int UInGameValue::PlayerCollisionScaleY = 40;
 
-const FVector UInGameValue::BigMarioColScale = FVector(32, 64);
+const FVector UInGameValue::BigMarioColScale = FVector(32, 72);
 
 const int UInGameValue::GoombaBodyCollisionScaleX = 32;
 const int UInGameValue::GoombaBodyCollisionScaleY = 32;
@@ -152,11 +152,11 @@ const int UInGameValue::CastleItemsImgYValue = 3;
 const int UInGameValue::CastleEndFlagXScale = 16 * UInGameValue::WindowSizeMulValue;
 const int UInGameValue::CastleEndFlagYScale = 16 * UInGameValue::WindowSizeMulValue;
 
-const FVector UInGameValue::PrincessInitPos = {2440 * UInGameValue::WindowSizeMulValue, 197 * UInGameValue::WindowSizeMulValue };
+const FVector UInGameValue::PrincessInitPos = FVector(2440 * UInGameValue::WindowSizeMulValue, 197 * UInGameValue::WindowSizeMulValue );
 
-const FVector UInGameValue::KoopaInitPos = { 2200 * UInGameValue::WindowSizeMulValue, 150 * UInGameValue::WindowSizeMulValue };
+const FVector UInGameValue::KoopaInitPos = FVector( 2200 * UInGameValue::WindowSizeMulValue, 150 * UInGameValue::WindowSizeMulValue );
 
-const FVector UInGameValue::BossRoomStartLineInitPos = { 2130 * UInGameValue::WindowSizeMulValue, 130 * UInGameValue::WindowSizeMulValue };
+const FVector UInGameValue::BossRoomStartLineInitPos = FVector( 2130 * UInGameValue::WindowSizeMulValue, 130 * UInGameValue::WindowSizeMulValue );
 
 const int UInGameValue::MsgHideImgInitYpos = 384;
 
