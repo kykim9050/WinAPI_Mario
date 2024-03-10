@@ -1,10 +1,13 @@
 ﻿#include "1_4StageLevel.h"
-#include "EndingLevel.h"
 #include "BackGroundMap.h"
 #include "CollisionMap.h"
 #include "UI.h"
 #include <EngineCore/EngineCore.h>
 #include "Koopa.h"
+#include "FootBoard.h"
+#include "CastleBridge.h"
+#include "Princess.h"
+#include "SignalCollision.h"
 
 U1_4StageLevel::U1_4StageLevel()
 {
@@ -18,6 +21,8 @@ void U1_4StageLevel::BeginPlay()
 {
 	UStageLevel::BeginPlay();
 
+	Mario->SetActorLocation({ UInGameValue::MarioInitXPos, UInGameValue::MarioInitYPos });
+
 	Map->GetMapRenderer()->SetImage("1_4Stage_Map.png");
 	FVector MapImageFVector = Map->GetMapRenderer()->GetImage()->GetScale();
 	Map->GetMapRenderer()->SetTransform({ { MapImageFVector.ihX(), MapImageFVector.ihY()}, {MapImageFVector} });
@@ -26,21 +31,25 @@ void U1_4StageLevel::BeginPlay()
 	FVector ColMapImageFVector = ColMap->GetColMapRenderer()->GetImage()->GetScale();
 	ColMap->GetColMapRenderer()->SetTransform({ { ColMapImageFVector.ihX(), ColMapImageFVector.ihY()}, {ColMapImageFVector} });
 
-	Mario->SetActorLocation({ UInGameValue::MarioInitXPos, UInGameValue::MarioInitYPos });
-
 	AKoopa* BossMonsterKoopa = SpawnActor<AKoopa>(static_cast<int>(EActorType::Monster));
-	BossMonsterKoopa->SetActorLocation({ 300, 300 });
+	BossMonsterKoopa->SetActorLocation({ 6600, 450 });
+
+	AFootBoard* FootBoard = SpawnActor<AFootBoard>(static_cast<int>(EActorType::Block));
+	FootBoard->SetActorLocation({ UInGameValue::MovingBoardInitXPos, UInGameValue::MovingBoardInitYPos });
+
+	ACastleBridge* CastleBridge = SpawnActor<ACastleBridge>(static_cast<int>(EActorType::Structure));
+	CastleBridge->SetActorLocation({ UInGameValue::BridgeStartXPos, UInGameValue::BridgeStartYPos });
+
+	APrincess* Princess = SpawnActor<APrincess>(static_cast<int>(EActorType::Player));
+	Princess->SetActorLocation({ 2440 * 3, 197 * 3 });
+
+	USignalCollision* BossRoomStartLine = SpawnActor<USignalCollision>(static_cast<int>(EActorType::Structure));
+	BossRoomStartLine->SetActorLocation({ 2130 * 3, 130 * 3 });
 
 }
 
 void U1_4StageLevel::Tick(float _DeltaTime)
 {
 	UStageLevel::Tick(_DeltaTime);
-
-	if (UEngineInput::IsDown(VK_RETURN))
-	{
-		GEngine->CreateLevel<UEndingLevel>("Ending");
-		GEngine->ChangeLevel("Ending");
-	}
 }
 

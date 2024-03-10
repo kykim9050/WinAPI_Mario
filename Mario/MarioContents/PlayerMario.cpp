@@ -793,6 +793,12 @@ void APlayerMario::BossStageClear(float _DeltaTime)
 	}
 	case 2:
 	{
+		if (GetWorld()->GetCameraPos().X >= UContentsFunction::GetCollisionMapImg()->GetScale().X - UInGameValue::ResultMainWindowXScale)
+		{
+			EndStep = 3;
+			//APrincess::PrintEndingMsg();
+			return;
+		}
 		// 카메라위치가 맵 끝까지 갈때까지 기다리기
 		HorizonVelocityVector = FVector::Right * 150.0f;
 		CameraPosUpdate(HorizonVelocityVector * _DeltaTime, true);
