@@ -323,6 +323,16 @@ public:
 	/// </summary>
 	static const FVector BossRoomStartLineInitPos;
 
+	/// <summary>
+	/// Ending 메세지를 가리고 있는 이미지의 초기 Y좌표 값
+	/// </summary>
+	static const int MsgHideImgInitYpos;
+
+	/// <summary>
+	/// Ending 메세지 사이 간격
+	/// </summary>
+	static const int MessageHInterval;
+
 protected:
 
 private:
