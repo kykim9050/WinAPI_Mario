@@ -131,6 +131,9 @@
     <ClInclude Include="Princess.h">
       <Filter>Object\Player</Filter>
     </ClInclude>
+    <ClInclude Include="SignalCollision.h">
+      <Filter>Object\Structure</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp" />
@@ -259,6 +262,9 @@
     </ClCompile>
     <ClCompile Include="Princess.cpp">
       <Filter>Object\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="SignalCollision.cpp">
+      <Filter>Object\Structure</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

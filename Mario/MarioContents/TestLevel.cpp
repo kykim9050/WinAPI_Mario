@@ -23,7 +23,7 @@
 #include "KoopaBullet.h"
 #include "FootBoard.h"
 #include "Princess.h"
-
+#include "SignalCollision.h"
 
 UTestLevel::UTestLevel()
 {
@@ -61,6 +61,9 @@ void UTestLevel::BeginPlay()
 
 	APrincess* Princess = SpawnActor<APrincess>(static_cast<int>(EActorType::Player));
 	Princess->SetActorLocation({ 2440 * 3, 197 * 3 });
+
+	USignalCollision* BossRoomStartLine = SpawnActor<USignalCollision>(static_cast<int>(EActorType::Structure));
+	BossRoomStartLine->SetActorLocation({ 2120 * 3, 130 * 3 });
 
 }
 
