@@ -790,7 +790,10 @@ void APlayerMario::BossStageClear(float _DeltaTime)
 
 		HorizonVelocityVector = FVector::Right * 150.0f;
 		CameraPosUpdate(HorizonVelocityVector * _DeltaTime, true);
-		ResultMovementUpdate(_DeltaTime);
+		CalGravityVelocityVector(_DeltaTime);
+		GroundUp();
+		CalTotalVelocityVector(_DeltaTime);
+		ApplyMovement(_DeltaTime);
 		break;
 	}
 	case 2:
