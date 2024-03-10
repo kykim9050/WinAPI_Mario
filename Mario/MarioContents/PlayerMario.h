@@ -268,5 +268,14 @@ private:
 		return InTheBossRoom;
 	}
 
+	bool CameraMovePause = false;
+	void SetCameraMovePause()
+	{
+		CameraMovePause = true;
+	}
+	bool IsCameraMovePause() const
+	{
+		return CameraMovePause;
+	}
 };
 

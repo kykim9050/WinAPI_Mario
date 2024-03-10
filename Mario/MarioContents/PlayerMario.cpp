@@ -263,6 +263,11 @@ void APlayerMario::CollisionStateCheck()
 		return;
 	}
 
+	if (true == IsReachToBossRoom())
+	{
+		SetCameraMovePause();
+	}
+
 	if (true == AteMushroom)
 	{
 		AteMushroom = false;
@@ -951,7 +956,10 @@ void APlayerMario::ApplyMovement(float _DeltaTime)
 {
 	AddActorLocation(TotalVelocityVector * _DeltaTime);
 	// 플레이어가 윈도우 화면 2/5 지점에 왔을 때 카메라 이동
-	CameraPosUpdate(GetActorLocation(), HorizonVelocityVector * _DeltaTime);
+	if (false == IsCameraMovePause())
+	{
+		CameraPosUpdate(GetActorLocation(), HorizonVelocityVector * _DeltaTime);
+	}
 
 }
 
