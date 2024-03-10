@@ -15,6 +15,7 @@ bool APlayerMario::InTheBossRoom = false;
 APlayerMario::APlayerMario()
 {
 	ActorDir = EActorDir::Right;
+	MarioType = UPlayerInfoManager::GetInst().GetPlayerType();
 	Life = 3;
 }
 
@@ -92,8 +93,7 @@ void APlayerMario::BeginPlay()
 	BodyCollision->SetPosition({0, -(BodyCollision->GetTransform().GetScale().ihY())});
 	BodyCollision->SetColType(ECollisionType::Rect);
 
-	MarioType = EMarioType::Small;
-	ActorState = EActorState::Idle;
+	StateChange(EActorState::Idle);
 }
 
 void APlayerMario::Tick(float _DeltaTime)
@@ -821,6 +821,7 @@ void APlayerMario::GetHitStart()
 	Renderer->SetAlpha(0.7f);
 
 	MarioType = EMarioType::Small;
+	UPlayerInfoManager::GetInst().SetPlayerType(MarioType);
 
 	BodyCollision->SetScale({ UInGameValue::PlayerCollisionScaleX, UInGameValue::PlayerCollisionScaleY });
 	BodyCollision->SetPosition({ 0, -(BodyCollision->GetTransform().GetScale().ihY()) });
@@ -837,6 +838,8 @@ void APlayerMario::MarioGrowUpStart()
 	Renderer->ChangeAnimation(ChangeAnimationName("GrowUp", false, true));
 
 	MarioType = EMarioType::Big;
+	UPlayerInfoManager::GetInst().SetPlayerType(MarioType);
+
 	BodyCollision->SetTransform({ { 0,-40 }, {32, 64} });
 	GetWorld()->SetOtherTimeScale(EActorType::Player, 0.0f);
 	PrevActorState = ActorState;
@@ -849,6 +852,8 @@ void APlayerMario::ChangingFireMarioStart()
 	Renderer->ChangeAnimation(ChangeAnimationName("ChangingFireMario", false, true));
 
 	MarioType = EMarioType::Fire;
+	UPlayerInfoManager::GetInst().SetPlayerType(MarioType);
+
 	BodyCollision->SetTransform({ { 0,-40 }, {32, 64} });
 	GetWorld()->SetOtherTimeScale(EActorType::Player, 0.0f);
 	PrevActorState = ActorState;

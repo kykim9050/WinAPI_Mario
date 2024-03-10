@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include <EngineBase/EngineDebug.h>
+#include "EnumClass.h"
 
 // Ό³Έν :
 class UPlayerInfoManager
@@ -76,6 +77,19 @@ public:
 		return StageInfo;
 	}
 
+	void SetPlayerType(EMarioType _Type)
+	{
+		PlayerType = _Type;
+	}
+
+	EMarioType GetPlayerType() const
+	{
+		return PlayerType;
+	}
+
+	
+	
+
 protected:
 
 private:
@@ -83,6 +97,7 @@ private:
 	static int AmountOfCoins;
 	static int PlayerScore;
 	static std::vector<std::string> StageInfo;
+	static EMarioType PlayerType;
 
 	// constrcuter destructer
 	UPlayerInfoManager();
