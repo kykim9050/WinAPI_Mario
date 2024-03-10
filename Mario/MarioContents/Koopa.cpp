@@ -2,6 +2,8 @@
 #include "KoopaBullet.h"
 #include "CastleBridge.h"
 
+bool AKoopa::KoopaIsDead = false;
+
 AKoopa::AKoopa()
 {
 	HorizonVelocityVector = ActorMoveDir * 50.0f;
@@ -233,6 +235,17 @@ void AKoopa::CollisionCheck()
 		return;
 	}
 }
+
+void AKoopa::DeadCollisionCheck()
+{
+	AMonsterUnit::DeadCollisionCheck();
+
+	if (true == IsMonsterDead())
+	{
+		SetKoopaIsDead();
+	}
+}
+
 
 EActorDir AKoopa::DirCheckAndSet()
 {

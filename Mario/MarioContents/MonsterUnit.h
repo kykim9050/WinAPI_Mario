@@ -55,7 +55,16 @@ protected:
 	FVector ActorMoveDir = FVector::Left;
 	UCollision* FootCollision = nullptr;
 
+	bool IsMonsterDead() const
+	{
+		return MonsterDead;
+	}
+
 private:
 	bool MonsterDead = false;
+	void SetMonsterDead()
+	{
+		MonsterDead = true;
+	}
 };
 
