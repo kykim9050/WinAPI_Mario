@@ -161,12 +161,30 @@ void AMonsterUnit::CollisionStateChange(ECollisionState _CollisionState)
 	SetCollisionState(_CollisionState);
 }
 
+void AMonsterUnit::DeadCollisionCheck()
+{
+	UStateUnit::DeadCollisionCheck();
+	
+	if (true == MonsterDead)
+	{
+		return;
+	}
+
+	Color8Bit Color = UContentsFunction::GetCollisionMapImg()->GetColor(GetActorLocation().iX(), GetActorLocation().iY(), UInGameValue::CollisionColor);
+
+	if (Color8Bit::YellowA == Color)
+	{
+		MonsterDead = true;
+		Destroy(2.0f);
+	}
+}
+
 void AMonsterUnit::CalGravityVelocityVector(float _DeltaTime)
 {
 	std::vector<UCollision*> Result = std::vector<UCollision*>();
 	Color8Bit Color = UContentsFunction::GetCollisionMapImg()->GetColor(GetActorLocation().iX(), GetActorLocation().iY(), UInGameValue::CollisionColor);
 
-	if (UInGameValue::CollisionColor == Color || true == FootCollision->CollisionCheck(ECollisionOrder::BlockTop, Result))
+	if (false == MonsterDead && UInGameValue::CollisionColor == Color || true == FootCollision->CollisionCheck(ECollisionOrder::BlockTop, Result))
 	{
 		GravityVelocityVector = FVector::Zero;
 		SetGravityRatio(0.0f);

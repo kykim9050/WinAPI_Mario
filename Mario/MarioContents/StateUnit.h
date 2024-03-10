@@ -96,6 +96,7 @@ protected:
 	virtual void CollisionUpdate(float _DeltaTime);
 	virtual void CollisionStateChange(ECollisionState _CollisionState) {};
 	virtual void CollisionCheck() {};
+	virtual void DeadCollisionCheck() {};
 	void SetCollisionState(ECollisionState _CollisionState)
 	{
 		ActorCollisionState = _CollisionState;
