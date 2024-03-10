@@ -155,3 +155,7 @@ const FVector UInGameValue::PrincessInitPos = {2440 * UInGameValue::WindowSizeMu
 const FVector UInGameValue::KoopaInitPos = { 2200 * UInGameValue::WindowSizeMulValue, 150 * UInGameValue::WindowSizeMulValue };
 
 const FVector UInGameValue::BossRoomStartLineInitPos = { 2130 * UInGameValue::WindowSizeMulValue, 130 * UInGameValue::WindowSizeMulValue };
+
+const int UInGameValue::MsgHideImgInitYpos = 384;
+
+const int UInGameValue::MessageHInterval = 64;
