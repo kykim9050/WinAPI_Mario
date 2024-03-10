@@ -14,4 +14,9 @@ UWindowImage* UContentsFunction::GetCollisionMapImg()
 	return UCollisionMap::GetCollisionMapImg();
 }
 
+FVector UContentsFunction::CollisionMapSize()
+{
+	return UCollisionMap::CollisionMapSize();
+}
+
 

@@ -34,5 +34,10 @@ private:
 	{
 		return CollisionMapRenderer->GetImage();
 	}
+
+	static FVector CollisionMapSize()
+	{
+		return CollisionMapRenderer->GetImage()->GetScale();
+	}
 };
 
