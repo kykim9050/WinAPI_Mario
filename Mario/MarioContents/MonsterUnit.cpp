@@ -157,7 +157,7 @@ void AMonsterUnit::CollisionStateChange(ECollisionState _CollisionState)
 			break;
 		}
 	}
-
+	
 	SetCollisionState(_CollisionState);
 }
 

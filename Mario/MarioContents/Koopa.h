@@ -53,6 +53,7 @@ private:
 
 	void BulletListReleaseUpdate();
 	bool Dying = false;
+	bool FallingDown = false;
 
 };
 
