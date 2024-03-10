@@ -115,7 +115,7 @@ public:
 
 	
 
-	void CameraPosUpdate(FVector _Player, FVector _MovePos);
+	void CameraPosUpdate(FVector _MovePos);
 
 	bool IsReverseMove();
 
@@ -269,9 +269,13 @@ private:
 	}
 
 	bool CameraMovePause = false;
-	void SetCameraMovePause()
+	void CameraMoveOff()
 	{
 		CameraMovePause = true;
+	}
+	void CameraMoveOn()
+	{
+		CameraMovePause = false;
 	}
 	bool IsCameraMovePause() const
 	{
