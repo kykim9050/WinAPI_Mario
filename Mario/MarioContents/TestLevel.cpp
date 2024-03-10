@@ -22,6 +22,8 @@
 #include "CastleBridge.h"
 #include "KoopaBullet.h"
 #include "FootBoard.h"
+#include "Princess.h"
+
 
 UTestLevel::UTestLevel()
 {
@@ -57,6 +59,8 @@ void UTestLevel::BeginPlay()
 	ACastleBridge* CastleBridge = SpawnActor<ACastleBridge>(static_cast<int>(EActorType::Structure));
 	CastleBridge->SetActorLocation({ UInGameValue::BridgeStartXPos, UInGameValue::BridgeStartYPos });
 
+	APrincess* Princess = SpawnActor<APrincess>(static_cast<int>(EActorType::Player));
+	Princess->SetActorLocation({ 2440 * 3, 197 * 3 });
 
 }
 
