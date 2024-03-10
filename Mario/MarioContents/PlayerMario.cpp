@@ -8,6 +8,8 @@
 
 
 APlayerMario* APlayerMario::MainPlayer = nullptr;
+bool APlayerMario::InTheBossRoom = false;
+
 
 APlayerMario::APlayerMario()
 {

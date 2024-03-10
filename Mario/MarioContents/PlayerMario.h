@@ -183,6 +183,11 @@ public:
 		return CoinCount;
 	}
 
+	static void ReachToBossRoom()
+	{
+		InTheBossRoom = true;
+	}
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -256,5 +261,12 @@ private:
 	{
 		return ClearBossStage;
 	}
+
+	static bool InTheBossRoom;
+	bool IsReachToBossRoom() const
+	{
+		return InTheBossRoom;
+	}
+
 };
 
