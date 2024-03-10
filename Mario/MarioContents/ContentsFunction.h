@@ -6,6 +6,7 @@ class UContentsFunction
 {
 public:
 	static UWindowImage* GetCollisionMapImg();
+	static FVector CollisionMapSize();
 
 protected:
 

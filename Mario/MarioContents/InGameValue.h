@@ -1,5 +1,5 @@
 #pragma once
-
+#include <EngineBase/EngineMath.h>
 
 // 설명 :
 
@@ -307,6 +307,11 @@ public:
 	/// </summary>
 	static const int CastleEndFlagXScale;
 	static const int CastleEndFlagYScale;
+
+	/// <summary>
+	/// 피치공주의 초기 위치 값
+	/// </summary>
+	static const FVector PrincessInitPos;
 
 protected:
 

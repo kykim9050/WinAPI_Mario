@@ -1,5 +1,6 @@
 #include "Princess.h"
 #include "PlayerMario.h"
+#include "ContentsFunction.h"
 
 APrincess::APrincess()
 {
@@ -14,14 +15,14 @@ void APrincess::BeginPlay()
 	UStateUnit::BeginPlay();
 
 	BodyCollision = CreateCollision(ECollisionOrder::Player);
-	BodyCollision->SetTransform({ { 2440 * 3, 197 * 3 }, { UInGameValue::PlayerCollisionScaleX, UInGameValue::PlayerCollisionScaleY } });
+	BodyCollision->SetTransform({ { UInGameValue::PrincessInitPos.iX(), UInGameValue::PrincessInitPos.iY() }, { UInGameValue::PlayerCollisionScaleX, UInGameValue::PlayerCollisionScaleY } });
 	BodyCollision->SetColType(ECollisionType::Rect);
 
-	MessageHideRenderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::UIComponent));
+	MessageHideRenderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::BackGrundStructure));
 	MessageHideRenderer->SetImage("Mario_Ending_BackGround_Message_Hide.png");
 
 	FVector MessageHideScale = MessageHideRenderer->GetImage()->GetScale();
-	MessageHideRenderer->SetTransform({ { 7680 - MessageHideScale.ihX(), static_cast<int>(720/2)},{MessageHideScale}});
+	MessageHideRenderer->SetTransform({ { UContentsFunction::CollisionMapSize().iX() - MessageHideScale.ihX(), UContentsFunction::CollisionMapSize().ihY()},{MessageHideScale}});
 }
 
 void APrincess::Tick(float _DeltaTime)
