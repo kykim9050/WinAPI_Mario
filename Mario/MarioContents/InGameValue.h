@@ -313,6 +313,16 @@ public:
 	/// </summary>
 	static const FVector PrincessInitPos;
 
+	/// <summary>
+	/// Koopa의 초기 위치 값
+	/// </summary>
+	static const FVector KoopaInitPos;
+
+	/// <summary>
+	/// Boss 방에서 카메라 이동 정지를 위한 기점이 되는 Line의 위치 값
+	/// </summary>
+	static const FVector BossRoomStartLineInitPos;
+
 protected:
 
 private:

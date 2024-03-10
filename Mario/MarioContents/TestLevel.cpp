@@ -49,7 +49,7 @@ void UTestLevel::BeginPlay()
 	ColMap->GetColMapRenderer()->SetTransform({ { ColMapImageFVector.ihX(), ColMapImageFVector.ihY()}, {ColMapImageFVector} });
 
 	AKoopa* BossMonsterKoopa = SpawnActor<AKoopa>(static_cast<int>(EActorType::Monster));
-	BossMonsterKoopa->SetActorLocation({ 6600, 450 });
+	BossMonsterKoopa->SetActorLocation(UInGameValue::KoopaInitPos);
 	//BossMonsterKoopa->SetActorLocation({ 500, 400 });
 
 	AFootBoard* FootBoard = SpawnActor<AFootBoard>(static_cast<int>(EActorType::Block));
@@ -62,7 +62,7 @@ void UTestLevel::BeginPlay()
 	APrincess* Princess = SpawnActor<APrincess>(static_cast<int>(EActorType::Player));
 
 	USignalCollision* BossRoomStartLine = SpawnActor<USignalCollision>(static_cast<int>(EActorType::Structure));
-	BossRoomStartLine->SetActorLocation({ 2130 * 3, 130 * 3 });
+	BossRoomStartLine->SetActorLocation(UInGameValue::BossRoomStartLineInitPos);
 
 }
 
