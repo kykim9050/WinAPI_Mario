@@ -38,6 +38,8 @@ const int UInGameValue::GoombaImageYValue = 1;
 const int UInGameValue::PlayerCollisionScaleX = 32;
 const int UInGameValue::PlayerCollisionScaleY = 40;
 
+const FVector UInGameValue::BigMarioColScale = FVector(32, 64);
+
 const int UInGameValue::GoombaBodyCollisionScaleX = 32;
 const int UInGameValue::GoombaBodyCollisionScaleY = 32;
 
