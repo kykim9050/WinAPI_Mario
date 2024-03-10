@@ -2,6 +2,7 @@
 #include "StateUnit.h"
 #include "MainPlayer.h"
 
+class UImageRenderer;
 // Ό³Έν :
 class APrincess : public UStateUnit , public UMainPlayer
 {
@@ -23,6 +24,6 @@ protected:
 	void CollisionCheck() override;
 
 private:
-
+	UImageRenderer* MessageHideRenderer = nullptr;
 };
 
