@@ -89,7 +89,7 @@ void APlayerMario::BeginPlay()
 
 
 	BodyCollision = CreateCollision(ECollisionOrder::Player);
-	BodyCollision->SetScale({ UInGameValue::PlayerCollisionScaleX, UInGameValue::PlayerCollisionScaleY });
+	BodyCollision->SetScale({ UPlayerInfoManager::GetInst().GetPlayerColSize().iX(), UPlayerInfoManager::GetInst().GetPlayerColSize().iY()});
 	BodyCollision->SetPosition({0, -(BodyCollision->GetTransform().GetScale().ihY())});
 	BodyCollision->SetColType(ECollisionType::Rect);
 
@@ -824,6 +824,7 @@ void APlayerMario::GetHitStart()
 	UPlayerInfoManager::GetInst().SetPlayerType(MarioType);
 
 	BodyCollision->SetScale({ UInGameValue::PlayerCollisionScaleX, UInGameValue::PlayerCollisionScaleY });
+	UPlayerInfoManager::GetInst().SetPlayerColSize({ UInGameValue::PlayerCollisionScaleX, UInGameValue::PlayerCollisionScaleY });
 	BodyCollision->SetPosition({ 0, -(BodyCollision->GetTransform().GetScale().ihY()) });
 
 	GetWorld()->SetOtherTimeScale(EActorType::Player, 0.0f);
@@ -840,7 +841,10 @@ void APlayerMario::MarioGrowUpStart()
 	MarioType = EMarioType::Big;
 	UPlayerInfoManager::GetInst().SetPlayerType(MarioType);
 
-	BodyCollision->SetTransform({ { 0,-40 }, {32, 64} });
+	BodyCollision->SetScale(UInGameValue::BigMarioColScale);
+	UPlayerInfoManager::GetInst().SetPlayerColSize(UInGameValue::BigMarioColScale);
+	BodyCollision->SetPosition({ 0, -(BodyCollision->GetTransform().GetScale().ihY()) });
+
 	GetWorld()->SetOtherTimeScale(EActorType::Player, 0.0f);
 	PrevActorState = ActorState;
 
@@ -854,7 +858,10 @@ void APlayerMario::ChangingFireMarioStart()
 	MarioType = EMarioType::Fire;
 	UPlayerInfoManager::GetInst().SetPlayerType(MarioType);
 
-	BodyCollision->SetTransform({ { 0,-40 }, {32, 64} });
+	BodyCollision->SetScale(UInGameValue::BigMarioColScale);
+	UPlayerInfoManager::GetInst().SetPlayerColSize(UInGameValue::BigMarioColScale);
+	BodyCollision->SetPosition({ 0, -(BodyCollision->GetTransform().GetScale().ihY()) });
+
 	GetWorld()->SetOtherTimeScale(EActorType::Player, 0.0f);
 	PrevActorState = ActorState;
 }

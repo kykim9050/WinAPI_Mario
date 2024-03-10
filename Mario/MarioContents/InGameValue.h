@@ -80,6 +80,11 @@ public:
 	static const int PlayerCollisionScaleY;
 
 	/// <summary>
+	/// Player의 BigSize 상태일때의 Collision 값
+	/// </summary>
+	static const FVector BigMarioColScale;
+
+	/// <summary>
 	/// Goomba 의 body Collosion scale 값
 	/// </summary>
 	static const int GoombaBodyCollisionScaleX;
@@ -332,6 +337,8 @@ public:
 	/// Ending 메세지 사이 간격
 	/// </summary>
 	static const int MessageHInterval;
+
+
 
 protected:
 

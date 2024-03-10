@@ -3,6 +3,7 @@
 #include <string>
 #include <EngineBase/EngineDebug.h>
 #include "EnumClass.h"
+#include <EngineBase/EngineMath.h>
 
 // Ό³Έν :
 class UPlayerInfoManager
@@ -87,6 +88,16 @@ public:
 		return PlayerType;
 	}
 
+	void SetPlayerColSize(FVector _ColSize)
+	{
+		PlayerColSize = _ColSize;
+	}
+
+	FVector GetPlayerColSize() const
+	{
+		return PlayerColSize;
+	}
+
 	
 	
 
@@ -98,6 +109,7 @@ private:
 	static int PlayerScore;
 	static std::vector<std::string> StageInfo;
 	static EMarioType PlayerType;
+	static FVector PlayerColSize;
 
 	// constrcuter destructer
 	UPlayerInfoManager();
