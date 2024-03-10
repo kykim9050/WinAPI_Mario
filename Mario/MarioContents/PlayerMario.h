@@ -191,7 +191,9 @@ protected:
 	void MarioGrowUpStart();
 	void ReachingEndFlagStart();
 	void ReachingEndFlag(float _DeltaTime);
+	void BossStageClear(float _DeltaTime);
 	void ReachStageEndStart();
+	void BossStageClearStart();
 
 	void CeilingCheck();
 
@@ -233,5 +235,15 @@ private:
 	EActorState PrevActorState = EActorState::None;
 
 	int CoinCount = 0;
+
+	bool ClearBossStage = false;
+	void SetClearBossStage()
+	{
+		ClearBossStage = true;
+	}
+	bool GetClearBossStage() const
+	{
+		return ClearBossStage;
+	}
 };
 
