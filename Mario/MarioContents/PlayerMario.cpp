@@ -380,7 +380,7 @@ void APlayerMario::ReverseMoveStart()
 
 void APlayerMario::ReverseMove(float _DeltaTime)
 {
-	if (UEngineInput::IsDown('Z'))
+	if (UEngineInput::IsDown(VK_SPACE))
 	{
 		StateChange(EActorState::Jump);
 		return;
@@ -427,7 +427,7 @@ void APlayerMario::Move(float _DeltaTime)
 		return;
 	}
 
-	if (UEngineInput::IsDown('Z'))
+	if (UEngineInput::IsDown(VK_SPACE))
 	{
 		StateChange(EActorState::Jump);
 		return;
@@ -493,7 +493,7 @@ void APlayerMario::CollisionJump(float _DeltaTime)
 void APlayerMario::Jump(float _DeltaTime)
 {
 	
-	if (UEngineInput::IsUp('Z') || 0.3f < UEngineInput::GetPressTime('Z'))
+	if (UEngineInput::IsUp(VK_SPACE) || 0.3f < UEngineInput::GetPressTime(VK_SPACE))
 	{
 		SetGravityRatio(1.0f);
 	}
@@ -612,7 +612,7 @@ void APlayerMario::Idle(float _DeltaTime)
 		return;
 	}
 
-	if (UEngineInput::IsDown('Z'))
+	if (UEngineInput::IsDown(VK_SPACE))
 	{
 		StateChange(EActorState::Jump);
 		return;
@@ -682,6 +682,7 @@ void APlayerMario::Dead(float _DeltaTime)
 
 		AddActorLocation(TotalVelocityVector * _DeltaTime);
 	}
+
 }
 
 void APlayerMario::ReachingEndFlag(float _DeltaTime)
