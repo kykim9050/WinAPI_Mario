@@ -265,7 +265,7 @@ void APlayerMario::CollisionStateCheck()
 
 	if (true == IsReachToBossRoom())
 	{
-		SetCameraMovePause();
+		CameraMoveOff();
 	}
 
 	if (true == AteMushroom)
@@ -769,6 +769,7 @@ void APlayerMario::BossStageClear(float _DeltaTime)
 			DelayTime = 0.5f + DelayTime;
 			EndStep = 1;
 			SetJumpZero();
+			//CameraMoveOnO();
 			Renderer->ChangeAnimation(ChangeAnimationName("Move_Right", true));
 			break;
 		}
@@ -924,7 +925,7 @@ bool APlayerMario::IsReverseMove()
 
 
 
-void APlayerMario::CameraPosUpdate(FVector _Player, FVector _MovePos)
+void APlayerMario::CameraPosUpdate(FVector _MovePos)
 {
 	FVector CameraPos = GetWorld()->GetCameraPos();
 
@@ -936,7 +937,7 @@ void APlayerMario::CameraPosUpdate(FVector _Player, FVector _MovePos)
 
 	float CheckRange = CameraPos.X + 2.0f * static_cast<float>(UInGameValue::ResultMainWindowXScale) / 5.0f;
 
-	if (_Player.X >= CheckRange)
+	if (GetActorLocation().X >= CheckRange)
 	{
 		if (0 >= _MovePos.X)
 		{
@@ -958,7 +959,7 @@ void APlayerMario::ApplyMovement(float _DeltaTime)
 	// 플레이어가 윈도우 화면 2/5 지점에 왔을 때 카메라 이동
 	if (false == IsCameraMovePause())
 	{
-		CameraPosUpdate(GetActorLocation(), HorizonVelocityVector * _DeltaTime);
+		CameraPosUpdate(HorizonVelocityVector * _DeltaTime);
 	}
 
 }
