@@ -25,6 +25,7 @@
 #include "Princess.h"
 #include "SignalCollision.h"
 #include "RotatingFire.h"
+#include "ChangingLevel.h"
 
 UTestLevel::UTestLevel()
 {
@@ -73,9 +74,9 @@ void UTestLevel::Tick(float _DeltaTime)
 {
 	UStageLevel::Tick(_DeltaTime);
 
-	//if (UEngineInput::IsDown(VK_RETURN))
-	//{
-	//	GEngine->CreateLevel<U1_1StageLevel>("1-1");
-	//	GEngine->ChangeLevel("1-1");
-	//}
+	if (UEngineInput::IsDown(VK_RETURN))
+	{
+		GEngine->CreateLevel<UChangingLevel>("Changing");
+		GEngine->ChangeLevel("Changing");
+	}
 }

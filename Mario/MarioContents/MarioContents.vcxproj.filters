@@ -140,6 +140,9 @@
     <ClInclude Include="RotatingFire.h">
       <Filter>Object\MovingObject</Filter>
     </ClInclude>
+    <ClInclude Include="ChangingLevel.h">
+      <Filter>Level\ChangingLevel</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp" />
@@ -278,6 +281,9 @@
     <ClCompile Include="RotatingFire.cpp">
       <Filter>Object\MovingObject</Filter>
     </ClCompile>
+    <ClCompile Include="ChangingLevel.cpp">
+      <Filter>Level\ChangingLevel</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ContentsHelper">
@@ -336,6 +342,9 @@
     </Filter>
     <Filter Include="Object\MovingObject">
       <UniqueIdentifier>{17e5c9fd-5397-47db-bd55-acad1037ba89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\ChangingLevel">
+      <UniqueIdentifier>{10531638-f302-4384-8250-a83f737c01a8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
