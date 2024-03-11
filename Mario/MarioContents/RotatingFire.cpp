@@ -13,7 +13,7 @@ void ARotatingFire::AFireObstacle::CreateFireObstacle()
 	ObstacleRenderer->ChangeAnimation("Fire_Rotating");
 
 	ObstacleCol = CreateCollision(ECollisionOrder::AttackableTrap);
-	ObstacleCol->SetTransform({ {0,0}, {8 * UInGameValue::WindowSizeMulValue, 8 * UInGameValue::WindowSizeMulValue} });
+	ObstacleCol->SetTransform({ {0,0}, {UInGameValue::FireBallDia, UInGameValue::FireBallDia} });
 	ObstacleCol->SetColType(ECollisionType::CirCle);
 }
 
@@ -29,20 +29,31 @@ void ARotatingFire::BeginPlay()
 {
 	AMovingObjectUnit::BeginPlay();
 
-	for (int i = 0; i < 6; i++)
+	for (int i = 0; i < ObstacleNum; i++)
 	{
 		AFireObstacle* obstacle = GetWorld()->SpawnActor<AFireObstacle>(static_cast<int>(EActorType::AttackableTrap));
 		obstacle->CreateFireObstacle();
-		// 위치 지정은 BeginPlay 실행하고 난 뒤에 해야겠다 FirstInit에서
-		obstacle->SetActorLocation({ 500 , 500 + 24 * i});
 		RotatingFire.push_back(obstacle);
 	}
 
+	SetActorState(EActorState::FirstInit);
 }
 
 void ARotatingFire::Tick(float _DeltaTime)
 {
 	AMovingObjectUnit::Tick(_DeltaTime);
+}
+
+void ARotatingFire::FirstInit()
+{
+	InitPos = GetActorLocation();
+
+	for (int i = 0; i < ObstacleNum; i++)
+	{
+		RotatingFire[i]->SetActorLocation({ InitPos.iX() , InitPos.iY() + UInGameValue::FireBallDia * i});
+	}
+
+	StateChange(EActorState::Idle);
 }
 
 

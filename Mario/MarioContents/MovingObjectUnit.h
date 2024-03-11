@@ -26,6 +26,7 @@ protected:
 	virtual void MoveStart() {};
 	virtual void Idle(float _Deltatime) {};
 	virtual void Move(float _DeltaTime) {};
+	virtual void FirstInit() {};
 
 	FVector InitPos = FVector::Zero;
 
