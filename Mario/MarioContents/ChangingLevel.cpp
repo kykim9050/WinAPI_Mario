@@ -19,11 +19,8 @@ void UChangingLevel::Tick(float _DeltaTime)
 {
 	ULevel::Tick(_DeltaTime);
 
-	static bool Value = true;
-	
-	if (true == Value)
+	if (Case[0] == GetName())
 	{
-		Value = false;
 		GEngine->CreateLevel<UTestLevel>("1-4");
 		GEngine->ChangeLevel("1-4");
 	}
@@ -32,6 +29,8 @@ void UChangingLevel::Tick(float _DeltaTime)
 void UChangingLevel::LevelStart(ULevel* _PrevLevel)
 {
 	ULevel::LevelStart(_PrevLevel);
+	Case.push_back("PlayerDead");
+
 }
 
 void UChangingLevel::LevelEnd(ULevel* _NextLevel)

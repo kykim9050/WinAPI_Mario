@@ -291,5 +291,8 @@ private:
 	{
 		return CameraMovePause;
 	}
+
+	int DeadStep = 0;
+	float DeadDelayTime = 0.5f;
 };
 

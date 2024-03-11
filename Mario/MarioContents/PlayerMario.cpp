@@ -6,6 +6,8 @@
 #include <EngineCore/EngineDebug.h>
 #include "Koopa.h"
 #include "Princess.h"
+#include <EngineCore/EngineCore.h>
+#include "ChangingLevel.h"
 
 
 APlayerMario* APlayerMario::MainPlayer = nullptr;
@@ -336,7 +338,7 @@ void APlayerMario::DeadStart()
 	BodyCollision->SetOrder(static_cast<int>(ECollisionOrder::Invincible));
 
 	Renderer->ChangeAnimation("SmallMario_Dead");
-	UPlayerInfoManager::GetInst().SetPlayerLife(--Life);
+	UPlayerInfoManager::GetInst().AddPlayerLife(-1);
 
 	SetGravityZero();
 	JumpVelocityVector = FVector::Up * 500.0f;
@@ -673,21 +675,17 @@ void APlayerMario::Changing(float _DeltaTime)
 
 void APlayerMario::Dead(float _DeltaTime)
 {
-	static int DeadStep = 0;
-	static float DelayTime = 0.5f;
-
-
 	switch (DeadStep)
 	{
 	case 0:
 	{
-		DelayTime -= _DeltaTime;
+		DeadDelayTime -= _DeltaTime;
 
 
-		if (0.0f >= DelayTime)
+		if (0.0f >= DeadDelayTime)
 		{
 			++DeadStep;
-			DelayTime = 4.0f + DelayTime;
+			DeadDelayTime = 4.0f + DeadDelayTime;
 			break;
 		}
 		
@@ -695,12 +693,13 @@ void APlayerMario::Dead(float _DeltaTime)
 	}
 	case 1:
 	{
-		DelayTime -= _DeltaTime;
+		DeadDelayTime -= _DeltaTime;
 
 
-		if (0.0f >= DelayTime)
+		if (0.0f >= DeadDelayTime)
 		{
 			++DeadStep;
+			DeadDelayTime = 0.5f;
 			break;
 		}
 
@@ -713,7 +712,10 @@ void APlayerMario::Dead(float _DeltaTime)
 	}
 	case 2:
 	{
-		int a = 0;
+		++DeadStep;
+
+		GEngine->CreateLevel<UChangingLevel>("PlayerDead");
+		GEngine->ChangeLevel("PlayerDead");
 		break;
 	}
 	default:
