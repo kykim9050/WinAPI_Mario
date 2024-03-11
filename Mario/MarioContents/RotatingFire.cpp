@@ -1,5 +1,6 @@
 ﻿#include "RotatingFire.h"
 #include "PlayerMario.h"
+#include <EngineBase/EngineMath.h>
 
 
 void ARotatingFire::AFireObstacle::CreateFireObstacle()
@@ -10,7 +11,7 @@ void ARotatingFire::AFireObstacle::CreateFireObstacle()
 	FVector FireObstacleScale = ObstacleRenderer->GetImage()->GetScale();
 
 	ObstacleRenderer->SetTransform({ {0,0}, {FireObstacleScale.iX() / UInGameValue::FireBallImageXValue * UInGameValue::WindowSizeMulValue, FireObstacleScale.iY() / UInGameValue::FireBallImageYValue * UInGameValue::WindowSizeMulValue} });
-	ObstacleRenderer->CreateAnimation("Fire_Rotating", "FireBall.png", 0, 3, 0.3f, true);
+	ObstacleRenderer->CreateAnimation("Fire_Rotating", "FireBall.png", 0, 3, 0.1f, true);
 	ObstacleRenderer->ChangeAnimation("Fire_Rotating");
 
 	ObstacleCol = CreateCollision(ECollisionOrder::AttackableTrap);
@@ -51,7 +52,7 @@ void ARotatingFire::FirstInit()
 
 	for (int i = 0; i < ObstacleNum; i++)
 	{
-		RotatingFire[i]->SetActorLocation({ InitPos.iX() , InitPos.iY() + UInGameValue::FireBallDia * i});
+		RotatingFire[i]->SetActorLocation({ InitPos.iX() + UInGameValue::FireBallDia * i, InitPos.iY()});
 	}
 
 	StateChange(EActorState::Idle);
@@ -67,5 +68,13 @@ void ARotatingFire::Idle(float _DeltaTime)
 
 void ARotatingFire::Rotating(float _DeltaTime)
 {
-	int a = 0;
+	Angle += _DeltaTime * RotatingSpeed;
+
+	for (int i = 0; i < ObstacleNum; i++)
+	{
+		FVector RotVector = FVector::Right * (static_cast<float>(UInGameValue::FireBallDia) * i);
+
+		RotatingFire[i]->SetActorLocation(GetActorLocation() + FVector::VectorRotationZToDeg(RotVector, Angle));
+	}
+	
 }

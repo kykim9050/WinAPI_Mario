@@ -47,5 +47,7 @@ protected:
 private:
 	std::vector<AFireObstacle*> RotatingFire = std::vector<AFireObstacle*>();
 	int ObstacleNum = 6;
+	float Angle = 0.0f;
+	float RotatingSpeed = 120.0f;
 };
 
