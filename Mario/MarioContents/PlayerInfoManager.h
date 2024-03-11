@@ -56,6 +56,11 @@ public:
 		PlayerLife = _Life;
 	}
 
+	void AddPlayerLife(int _Value)
+	{
+		PlayerLife += _Value;
+	}
+
 	int GetPlayerLife() const
 	{
 		return PlayerLife;
