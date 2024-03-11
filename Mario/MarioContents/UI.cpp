@@ -133,16 +133,19 @@ void AUI::Tick(float _DeltaTime)
 	if (false == TimeCountPause)
 	{
 		TimeCheck(_DeltaTime);
+		TimeRenderUpdate();
+		ScoreCheck();
+		ScoreRenderUpdate();
 	}
 
-	/*if (true = )
+	CheckConvertTimeToScore();
+	if (true == ConvertTimeToScore)
 	{
-		TimeToScoreConvertStart()
-	}*/
 
-	TimeRenderUpdate();
-	ScoreCheck();
-	ScoreRenderUpdate();
+		TimeRenderUpdate();
+		ScoreRenderUpdate();
+	}
+
 }
 
 void AUI::TimeCheck(float _DeltaTime)
@@ -250,5 +253,13 @@ void AUI::CheckTimeStop()
 	if (true == APlayerMario::GetIsReachingStageEnd())
 	{
 		TimeCountPause = true;
+	}
+}
+
+void AUI::CheckConvertTimeToScore()
+{
+	if (true == APlayerMario::GetReachStageEnd())
+	{
+		ConvertTimeToScore = true;
 	}
 }
