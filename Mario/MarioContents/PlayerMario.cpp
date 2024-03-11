@@ -262,8 +262,7 @@ void APlayerMario::CollisionStateCheck()
 	}
 
 	if (true == BodyCollision->CollisionCheck(ECollisionOrder::MonsterBullet, Result)
-		|| true == BodyCollision->CollisionCheck(ECollisionOrder::AttackableTrap, Result)
-		&& false == IsInvincible)
+		|| true == BodyCollision->CollisionCheck(ECollisionOrder::AttackableTrap, Result))
 	{
 		StateChange(EActorState::GetHit);
 		return;
@@ -860,6 +859,7 @@ void APlayerMario::GetHitStart()
 	DirCheck();
 	Renderer->ChangeAnimation(ChangeAnimationName("SizeDown"));
 
+	BodyCollision->ActiveOff();
 	Renderer->SetAlpha(0.7f);
 
 	MarioType = EMarioType::Small;
@@ -1215,7 +1215,7 @@ void APlayerMario::Invincible(float _DeltaTime)
 	if (0.0f >= InvincibleTime)
 	{
 		Renderer->SetAlpha(1.0f);
-		//BodyCollision->ActiveOn();
+		BodyCollision->ActiveOn();
 		BodyCollision->SetOrder(static_cast<int>(ECollisionOrder::Player));
 		InvincibleTime = 2.0f;
 		IsInvincible = false;
