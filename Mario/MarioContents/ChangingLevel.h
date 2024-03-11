@@ -1,5 +1,7 @@
 #pragma once
 #include <EngineCore/Level.h>
+#include <vector>
+#include <string>
 
 // Ό³Έν :
 class UChangingLevel : public ULevel
@@ -22,6 +24,6 @@ protected:
 	void LevelEnd(ULevel* _NextLevel) override;
 
 private:
-
+	std::vector<std::string> Case = std::vector<std::string>();
 };
 
