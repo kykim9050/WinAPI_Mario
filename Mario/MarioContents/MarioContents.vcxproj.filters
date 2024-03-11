@@ -137,6 +137,9 @@
     <ClInclude Include="MovingObjectUnit.h">
       <Filter>Object\MovingObject</Filter>
     </ClInclude>
+    <ClInclude Include="RotatingFire.h">
+      <Filter>Object\MovingObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp" />
@@ -270,6 +273,9 @@
       <Filter>Object\Structure</Filter>
     </ClCompile>
     <ClCompile Include="MovingObjectUnit.cpp">
+      <Filter>Object\MovingObject</Filter>
+    </ClCompile>
+    <ClCompile Include="RotatingFire.cpp">
       <Filter>Object\MovingObject</Filter>
     </ClCompile>
   </ItemGroup>
