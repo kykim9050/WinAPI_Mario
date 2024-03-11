@@ -1,6 +1,7 @@
 ﻿#include "FootBoard.h"
 #include "PlayerMario.h"
 
+
 AFootBoard::AFootBoard()
 {
 }
@@ -11,7 +12,7 @@ AFootBoard::~AFootBoard()
 
 void AFootBoard::BeginPlay()
 {
-	UStateUnit::BeginPlay();
+	AMovingObjectUnit::BeginPlay();
 
 	Renderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::BackGrundStructure));
 	Renderer->SetImage("FootBoard.png");
@@ -30,42 +31,7 @@ void AFootBoard::BeginPlay()
 
 void AFootBoard::Tick(float _DeltaTime)
 {
-	UStateUnit::Tick(_DeltaTime);
-}
-
-void AFootBoard::StateUpdate(float _DeltaTime)
-{
-	switch (ActorState)
-	{
-	case EActorState::Idle:
-		Idle(_DeltaTime);
-		break;
-	case EActorState::Move:
-		Move(_DeltaTime);
-		break;
-	default:
-		break;
-	}
-}
-
-void AFootBoard::StateChange(EActorState _ActorState)
-{
-	if (ActorState != _ActorState)
-	{
-		switch (_ActorState)
-		{
-		case EActorState::Idle:
-			IdleStart();
-			break;
-		case EActorState::Move:
-			MoveStart();
-			break;
-		default:
-			break;
-		}
-	}
-
-	SetActorState(_ActorState);
+	AMovingObjectUnit::Tick(_DeltaTime);
 }
 
 void AFootBoard::MoveStart()

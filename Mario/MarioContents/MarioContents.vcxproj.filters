@@ -134,6 +134,9 @@
     <ClInclude Include="SignalCollision.h">
       <Filter>Object\Structure</Filter>
     </ClInclude>
+    <ClInclude Include="MovingObjectUnit.h">
+      <Filter>Object\MovingObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp" />
@@ -265,6 +268,9 @@
     </ClCompile>
     <ClCompile Include="SignalCollision.cpp">
       <Filter>Object\Structure</Filter>
+    </ClCompile>
+    <ClCompile Include="MovingObjectUnit.cpp">
+      <Filter>Object\MovingObject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
