@@ -103,8 +103,15 @@ public:
 		return PlayerColSize;
 	}
 
-	
-	
+	void SetPrevStageLevel(std::string_view _StageLevel)
+	{
+		PrevStageLevel = _StageLevel;
+	}
+
+	std::string GetPrevStageLevel() const
+	{
+		return PrevStageLevel;
+	}
 
 protected:
 
@@ -115,6 +122,7 @@ private:
 	static std::vector<std::string> StageInfo;
 	static EMarioType PlayerType;
 	static FVector PlayerColSize;
+	static std::string PrevStageLevel;
 
 	// constrcuter destructer
 	UPlayerInfoManager();
