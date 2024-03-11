@@ -40,8 +40,10 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
+	void FirstInit() override;
+
 private:
 	std::vector<AFireObstacle*> RotatingFire = std::vector<AFireObstacle*>();
-
+	int ObstacleNum = 6;
 };
 

@@ -338,7 +338,10 @@ public:
 	/// </summary>
 	static const int MessageHInterval;
 
-
+	/// <summary>
+	/// FIreBall ÀÇ Áö¸§
+	/// </summary>
+	static const int FireBallDia;
 
 protected:
 

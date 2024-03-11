@@ -28,6 +28,9 @@ void AMovingObjectUnit::StateUpdate(float _DeltaTime)
 	case EActorState::Move:
 		Move(_DeltaTime);
 		break;
+	case EActorState::FirstInit:
+		FirstInit();
+		break;
 	default:
 		break;
 	}
