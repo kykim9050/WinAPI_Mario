@@ -25,7 +25,7 @@ void AKoopa::BeginPlay()
 	Renderer->CreateAnimation("Koopa_RightMove", "Koopa_Right.png", 0, 1, 0.2f, true);
 	Renderer->CreateAnimation("Koopa_RightFire", "Koopa_Right.png", 2, 2, 0.1f, false);
 	Renderer->CreateAnimation("Koopa_LeftFire", "Koopa_Left.png", 2, 2, 0.1f, false);
-	Renderer->CreateAnimation("Koopa_DeadMotion", "Koopa_Right.png", 0, 1, 0.1f, true);
+	Renderer->CreateAnimation("Koopa_DeadMotion", "Koopa_Right.png", 0, 1, 0.05f, true);
 	Renderer->CreateAnimation("Koopa_FallDown", "Koopa_Right.png", 0, 0, 0.1f, false);
 
 	BodyCollision = CreateCollision(ECollisionOrder::Monster);
@@ -52,9 +52,9 @@ void AKoopa::Tick(float _DeltaTime)
 void AKoopa::FirstInit(float _Deltatime)
 {
 	InitPos = GetActorLocation();
-	if (GetActorLocation().iX() - GetPlayer()->GetActorLocation().iX() < UInGameValue::ResultMainWindowXScale)
+	if (GetActorLocation().iX() - GetPlayer()->GetActorLocation().iX() < 4 * UInGameValue::ResultMainWindowXScale)
 	{
-		StateChange(EActorState::Move);
+		StateChange(EActorState::Fire);
 	}
 }
 
