@@ -673,19 +673,53 @@ void APlayerMario::Changing(float _DeltaTime)
 
 void APlayerMario::Dead(float _DeltaTime)
 {
+	static int DeadStep = 0;
 	static float DelayTime = 0.5f;
 
-	DelayTime -= _DeltaTime;
 
-	if (0.0f >= DelayTime)
+	switch (DeadStep)
 	{
-		GravityVelocityVector += GravityAccVector * _DeltaTime;
+	case 0:
+	{
+		DelayTime -= _DeltaTime;
 
+
+		if (0.0f >= DelayTime)
+		{
+			++DeadStep;
+			DelayTime = 4.0f + DelayTime;
+			break;
+		}
+		
+		break;
+	}
+	case 1:
+	{
+		DelayTime -= _DeltaTime;
+
+
+		if (0.0f >= DelayTime)
+		{
+			++DeadStep;
+			break;
+		}
+
+		GravityVelocityVector += GravityAccVector * _DeltaTime;
 		TotalVelocityVector = FVector::Zero;
 		TotalVelocityVector = TotalVelocityVector + GravityVelocityVector + JumpVelocityVector;
 
 		AddActorLocation(TotalVelocityVector * _DeltaTime);
+		break;
 	}
+	case 2:
+	{
+		int a = 0;
+		break;
+	}
+	default:
+		break;
+	}
+	
 
 }
 

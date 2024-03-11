@@ -29,9 +29,4 @@ void UTitleLevel::Tick(float _DeltaTime)
 		GEngine->CreateLevel<UTestLevel>("1-1");
 		GEngine->ChangeLevel("1-1");
 	}
-
-	//if (UEngineInput::IsDown(VK_SPACE))
-	//{
-	//	GEngine->ChangeLevel("EndingLevel");
-	//}
 }
