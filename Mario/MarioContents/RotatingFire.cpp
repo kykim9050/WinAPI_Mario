@@ -1,4 +1,5 @@
 ﻿#include "RotatingFire.h"
+#include "PlayerMario.h"
 
 
 void ARotatingFire::AFireObstacle::CreateFireObstacle()
@@ -56,4 +57,15 @@ void ARotatingFire::FirstInit()
 	StateChange(EActorState::Idle);
 }
 
+void ARotatingFire::Idle(float _DeltaTime)
+{
+	if (GetActorLocation().iX() - GetPlayer()->GetActorLocation().iX() < UInGameValue::ResultMainWindowXScale)
+	{
+		StateChange(EActorState::Rotating);
+	}
+}
 
+void ARotatingFire::Rotating(float _DeltaTime)
+{
+	int a = 0;
+}

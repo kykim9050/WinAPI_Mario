@@ -22,14 +22,17 @@ void AMovingObjectUnit::StateUpdate(float _DeltaTime)
 {
 	switch (ActorState)
 	{
+	case EActorState::FirstInit:
+		FirstInit();
+		break;
 	case EActorState::Idle:
 		Idle(_DeltaTime);
 		break;
 	case EActorState::Move:
 		Move(_DeltaTime);
 		break;
-	case EActorState::FirstInit:
-		FirstInit();
+	case EActorState::Rotating:
+		Rotating(_DeltaTime);
 		break;
 	default:
 		break;
@@ -47,6 +50,9 @@ void AMovingObjectUnit::StateChange(EActorState _ActorState)
 			break;
 		case EActorState::Move:
 			MoveStart();
+			break;
+		case EActorState::Rotating:
+			RotatingStart();
 			break;
 		default:
 			break;

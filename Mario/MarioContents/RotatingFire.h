@@ -41,6 +41,8 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 	void FirstInit() override;
+	void Idle(float _DeltaTime) override;
+	void Rotating(float _DeltaTime) override;
 
 private:
 	std::vector<AFireObstacle*> RotatingFire = std::vector<AFireObstacle*>();

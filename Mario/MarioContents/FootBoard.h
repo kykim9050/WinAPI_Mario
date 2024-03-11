@@ -21,6 +21,7 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 	void MoveStart() override;
+	void FirstInit() override;
 	void Idle(float _Deltatime) override;
 	void Move(float _DeltaTime) override;
 

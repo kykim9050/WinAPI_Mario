@@ -24,9 +24,11 @@ protected:
 	virtual void StateChange(EActorState _ActorState);
 
 	virtual void MoveStart() {};
+	virtual void RotatingStart() {};
 	virtual void Idle(float _Deltatime) {};
 	virtual void Move(float _DeltaTime) {};
 	virtual void FirstInit() {};
+	virtual void Rotating(float _DeltaTime) {};
 
 	FVector InitPos = FVector::Zero;
 
