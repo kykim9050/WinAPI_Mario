@@ -19,17 +19,25 @@ void UChangingLevel::Tick(float _DeltaTime)
 {
 	ULevel::Tick(_DeltaTime);
 
-	if (Case[0] == GetName())
-	{
-		GEngine->CreateLevel<UTestLevel>("1-4");
-		GEngine->ChangeLevel("1-4");
-	}
+	//if (Case[0] == GetName())
+	//{
+	//	GEngine->CreateLevel<UTestLevel>("1-4");
+	//	GEngine->ChangeLevel("1-4");
+	//}
+
+	std::string LevelName = GetName();
+
+	//if ()
+	//{
+
+	//}
+
 }
 
 void UChangingLevel::LevelStart(ULevel* _PrevLevel)
 {
 	ULevel::LevelStart(_PrevLevel);
-	Case.push_back("PlayerDead");
+	//Case.push_back("PlayerDead");
 
 }
 
