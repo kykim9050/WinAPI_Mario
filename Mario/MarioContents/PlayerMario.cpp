@@ -727,10 +727,9 @@ void APlayerMario::Dead(float _DeltaTime)
 
 void APlayerMario::ReachingEndFlag(float _DeltaTime)
 {
-	static int EndStep = 0;
 	static float DelayTime = 2.0f;
 
-	switch (EndStep)
+	switch (ReachingEndStep)
 	{
 	case 0:	// 첫 번째 단계 : 깃대를 잡고 내려감
 	{
@@ -742,7 +741,7 @@ void APlayerMario::ReachingEndFlag(float _DeltaTime)
 			SetActorLocation({ GetActorLocation().X + BodyCollision->GetTransform().GetScale().X + static_cast<float>(UInGameValue::EndFlagCollisionXScale), GetActorLocation().Y });
 			Renderer->ChangeAnimation(ChangeAnimationName("StopClimbDownAndTurnRight", true));
 			DelayTime = 1.0f;
-			EndStep = 1;
+			ReachingEndStep = 1;
 			break;
 		}
 
@@ -767,8 +766,8 @@ void APlayerMario::ReachingEndFlag(float _DeltaTime)
 			// 깃발을 잡고 내려간 후에 걸어서 성문 입구로 걸어가기 시작 (자동 - 조작 안먹힘)
 			Renderer->ChangeAnimation(ChangeAnimationName("Move_Right", true));
 			SetJumpZero();
-			DelayTime = 0.0f;
-			EndStep = 2;
+			DelayTime = 2.0f;
+			ReachingEndStep = 2;
 			break;
 		}
 
@@ -780,7 +779,7 @@ void APlayerMario::ReachingEndFlag(float _DeltaTime)
 		{
 			// Stage종료
 			StateChange(EActorState::ReachStageEnd);
-			EndStep = -1;
+			ReachingEndStep = -1;
 			IsReachingCastleGate = false;
 		}
 
@@ -797,10 +796,9 @@ void APlayerMario::ReachingEndFlag(float _DeltaTime)
 
 void APlayerMario::BossStageClear(float _DeltaTime)
 {
-	static int EndStep = 0;
 	static float DelayTime = 0.5f;
 
-	switch (EndStep)
+	switch (BossStageClearStep)
 	{
 	case 0:
 	{
@@ -808,8 +806,8 @@ void APlayerMario::BossStageClear(float _DeltaTime)
 
 		if (0.0f >= DelayTime)
 		{
-			DelayTime = 0.5f + DelayTime;
-			EndStep = 1;
+			DelayTime = 0.5f;
+			BossStageClearStep = 1;
 			SetJumpZero();
 			CameraMoveOn();
 			Renderer->ChangeAnimation(ChangeAnimationName("Move_Right", true));
@@ -822,7 +820,7 @@ void APlayerMario::BossStageClear(float _DeltaTime)
 	{
 		if (true == IsMeetThePrincess())
 		{
-			EndStep = 2;
+			BossStageClearStep = 2;
 			SetSpeedZero();
 			Renderer->ChangeAnimation(ChangeAnimationName("Idle_Right", true));
 			break;
@@ -840,7 +838,7 @@ void APlayerMario::BossStageClear(float _DeltaTime)
 	{
 		if (GetWorld()->GetCameraPos().X >= UContentsFunction::GetCollisionMapImg()->GetScale().X - UInGameValue::ResultMainWindowXScale)
 		{
-			EndStep = 3;
+			BossStageClearStep = 3;
 			APrincess::PrintEndingMsg();
 			return;
 		}

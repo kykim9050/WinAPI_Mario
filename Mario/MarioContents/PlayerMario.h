@@ -293,6 +293,8 @@ private:
 	}
 
 	int DeadStep = 0;
+	int ReachingEndStep = 0;
+	int BossStageClearStep = 0;
 	float DeadDelayTime = 0.5f;
 };
 
