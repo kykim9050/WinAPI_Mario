@@ -128,6 +128,11 @@ void AUI::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
 
+	if (true == APlayerMario::GetIsReachingStageEnd())
+	{
+		int a = 0;
+	}
+
 	TimeCheck(_DeltaTime);
 	TimeRenderUpdate();
 	ScoreCheck();
@@ -141,7 +146,7 @@ void AUI::TimeCheck(float _DeltaTime)
 
 	if (0 >= TimeCount)
 	{
-		UEngineDebug::OutPutDebugText("Time Out");
+		TimeCount = 0;
 
 		// 타임아웃으로 게임 종료 화면 실행
 		return;

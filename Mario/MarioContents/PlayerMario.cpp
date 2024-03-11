@@ -9,6 +9,7 @@
 
 
 APlayerMario* APlayerMario::MainPlayer = nullptr;
+bool APlayerMario::IsReachingStageEnd = false;
 bool APlayerMario::InTheBossRoom = false;
 
 
