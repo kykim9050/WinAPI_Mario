@@ -151,6 +151,11 @@ public:
 	{
 		IsReachingStageEnd = true;
 	}
+	
+	static bool GetIsReachingStageEnd()
+	{
+		return IsReachingStageEnd;
+	}
 
 	void ReachToCastleGate()
 	{
@@ -240,11 +245,11 @@ private:
 	void GroundUp();
 
 	bool IsOnTheBlock = false;
+	static bool IsReachingStageEnd;
 	bool AteMushroom = false;
 	bool AteFireFlower = false;
 	bool IsInvincible = false;
 	bool BlockBottomHit = false;
-	bool IsReachingStageEnd = false;
 	bool IsReachingCastleGate = false;
 	bool MeetPrincess = false;
 
