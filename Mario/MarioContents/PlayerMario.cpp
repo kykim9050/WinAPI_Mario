@@ -333,7 +333,7 @@ void APlayerMario::CollisionJumpStart()
 
 void APlayerMario::DeadStart()
 {
-	//BodyCollision->ActiveOff();
+	BodyCollision->ActiveOff();
 	IsInvincible = true;
 	BodyCollision->SetOrder(static_cast<int>(ECollisionOrder::Invincible));
 
@@ -714,7 +714,6 @@ void APlayerMario::Dead(float _DeltaTime)
 	{
 		++DeadStep;
 		UPlayerInfoManager::GetInst().SetPrevStageLevel(GetWorld()->GetName());
-		UEngineDebug::OutPutDebugText(UPlayerInfoManager::GetInst().GetPrevStageLevel());
 		GEngine->CreateLevel<UChangingLevel>("PlayerDead");
 		GEngine->ChangeLevel("PlayerDead");
 		break;
