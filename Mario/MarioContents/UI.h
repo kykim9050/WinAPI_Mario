@@ -29,6 +29,8 @@ protected:
 	void ScoreRenderUpdate();
 	void GetLevelStageInfo(std::vector<std::string>& _StageInfo);
 
+	void CheckTimeStop();
+
 private:
 	UImageRenderer* PlayerUIRenderer = nullptr;
 	UImageRenderer* UICoinRenderer = nullptr;

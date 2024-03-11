@@ -128,15 +128,18 @@ void AUI::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
 
-	if (true == APlayerMario::GetIsReachingStageEnd())
-	{
-		TimeCountPause = true;
-	}
 
+	CheckTimeStop();
 	if (false == TimeCountPause)
 	{
 		TimeCheck(_DeltaTime);
 	}
+
+	/*if (true = )
+	{
+		TimeToScoreConvertStart()
+	}*/
+
 	TimeRenderUpdate();
 	ScoreCheck();
 	ScoreRenderUpdate();
@@ -208,12 +211,7 @@ void AUI::NumberToAnimation(int _PrintNumber, int _AnimatingNum, const std::vect
 
 void AUI::ScoreCheck()
 {
-	APlayerMario* Player = APlayerMario::GetMainPlayer();
 
-	if (nullptr == Player)
-	{
-		MsgBoxAssert("플레이어가 존재하지 않습니다.");
-	}
 }
 
 void AUI::ScoreRenderUpdate()
@@ -244,5 +242,13 @@ void AUI::GetLevelStageInfo(std::vector<std::string>& _StageInfo)
 	while (std::getline(StringStream, StrTemp, '-'))
 	{
 		_StageInfo.push_back(StrTemp);
+	}
+}
+
+void AUI::CheckTimeStop()
+{
+	if (true == APlayerMario::GetIsReachingStageEnd())
+	{
+		TimeCountPause = true;
 	}
 }
