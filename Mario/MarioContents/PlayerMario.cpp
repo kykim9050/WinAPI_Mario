@@ -292,8 +292,10 @@ void APlayerMario::CollisionStateCheck()
 
 	if (true == BlockBottomHit)
 	{
-		CollisionStateChange(ECollisionState::BlockBotHit);
+		//CollisionStateChange(ECollisionState::BlockBotHit);
 		BlockBottomHit = false;
+		SetJumpZero();
+		SetGravityRatio(1.0f);
 	}
 
 	if (false == IsOnTheBlock && true == FootCollision->CollisionCheck(ECollisionOrder::BlockTop, Result) && static_cast<int>(ECollisionOrder::PlayerFootCollision) == FootCollision->GetOrder())
@@ -310,7 +312,8 @@ void APlayerMario::CollisionStateCheck()
 
 	if (true == BodyCollision->CollisionCheck(ECollisionOrder::BlockSide, Result))
 	{
-		CollisionStateChange(ECollisionState::BlockSideHit);
+		//CollisionStateChange(ECollisionState::BlockSideHit);
+		SetSpeedZero();
 	}
 
 	
