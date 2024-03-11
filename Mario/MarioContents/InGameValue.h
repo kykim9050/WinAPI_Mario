@@ -230,6 +230,11 @@ public:
 	static const int StageInfoRendererSize;
 	
 	/// <summary>
+	/// LevelIntro의 LifeRenderer의 size
+	/// </summary>
+	static const int LifeRendererSize;
+
+	/// <summary>
 	/// UI 창에서 출력되는 정보들 관련 수치
 	/// UI Actor의 좌표를 원점으로 상대적인 위치에 대한 것
 	/// </summary>
@@ -240,6 +245,8 @@ public:
 	static const int UIStageInfoRendInitXPos;
 	static const int UIStageInfoCRendInitXPos;
 	static const int UIStageInfoCRendInitYPos;
+	static const int LifeRendInitXPos;
+	static const int LifeRendInitYPos;
 
 	/// <summary>
 	/// Koopa.png 의 열, 행 수
@@ -342,6 +349,7 @@ public:
 	/// FIreBall 의 지름
 	/// </summary>
 	static const int FireBallDia;
+
 
 protected:
 

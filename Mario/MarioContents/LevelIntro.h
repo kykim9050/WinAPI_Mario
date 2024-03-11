@@ -29,6 +29,7 @@ private:
 	int IntroLife = 0;
 	int IntroAmountOfCoins = 0;
 	std::vector<std::string> IntroStageInfo = std::vector<std::string>();
+	std::vector<UImageRenderer*> LifeRenderer = std::vector<UImageRenderer*>();
 	std::vector<UImageRenderer*> ScoreRenderer = std::vector<UImageRenderer*>();
 	std::vector<UImageRenderer*> CoinCountRenderer = std::vector<UImageRenderer*>();
 	std::vector<UImageRenderer*> StageInfoRenderer = std::vector<UImageRenderer*>();
