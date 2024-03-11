@@ -42,5 +42,6 @@ private:
 	bool TimeChange = false;
 	int PlayerScore = 0;
 	int PlayerCoin = 0;
+	bool TimeCountPause = false;
 };
 
