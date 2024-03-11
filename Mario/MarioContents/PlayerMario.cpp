@@ -259,7 +259,8 @@ void APlayerMario::CollisionStateCheck()
 	}
 
 	if (true == BodyCollision->CollisionCheck(ECollisionOrder::MonsterBullet, Result)
-		|| true == BodyCollision->CollisionCheck(ECollisionOrder::AttackableTrap, Result))
+		|| true == BodyCollision->CollisionCheck(ECollisionOrder::AttackableTrap, Result)
+		&& false == IsInvincible)
 	{
 		StateChange(EActorState::GetHit);
 		return;
@@ -329,8 +330,9 @@ void APlayerMario::CollisionJumpStart()
 
 void APlayerMario::DeadStart()
 {
-	BodyCollision->ActiveOff();
-	//BodyCollision->SetOrder(static_cast<int>(ECollisionOrder::Invincible));
+	//BodyCollision->ActiveOff();
+	IsInvincible = true;
+	BodyCollision->SetOrder(static_cast<int>(ECollisionOrder::Invincible));
 
 	Renderer->ChangeAnimation("SmallMario_Dead");
 	--Life;
