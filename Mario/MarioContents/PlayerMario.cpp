@@ -296,14 +296,14 @@ void APlayerMario::CollisionStateCheck()
 		BlockBottomHit = false;
 	}
 
-	if (false == IsOnTheBlock && true == BodyCollision->CollisionCheck(ECollisionOrder::BlockTop, Result) && static_cast<int>(ECollisionOrder::Player) == BodyCollision->GetOrder())
+	if (false == IsOnTheBlock && true == FootCollision->CollisionCheck(ECollisionOrder::BlockTop, Result) && static_cast<int>(ECollisionOrder::PlayerFootCollision) == FootCollision->GetOrder())
 	{
 		IsOnTheBlock = true;
 		SetGravityZero();
 		SetJumpZero();
 		StateChange(EActorState::Idle);
 	}
-	else if(true == IsOnTheBlock && true == BodyCollision->CollisionCheck(ECollisionOrder::BlockTop, Result))
+	else if(true == IsOnTheBlock && true == FootCollision->CollisionCheck(ECollisionOrder::BlockTop, Result))
 	{
 		IsOnTheBlock = true;
 	}
@@ -1128,7 +1128,7 @@ void APlayerMario::GroundUp()
 		std::vector<UCollision*> Result = std::vector<UCollision*>();
 		Color8Bit Color = UContentsFunction::GetCollisionMapImg()->GetColor(GetActorLocation().iX(), GetActorLocation().iY(), UInGameValue::CollisionColor);
 		
-		if (UInGameValue::CollisionColor == Color || true == BodyCollision->CollisionCheck(ECollisionOrder::BlockTop, Result))
+		if (UInGameValue::CollisionColor == Color || true == FootCollision->CollisionCheck(ECollisionOrder::BlockTop, Result))
 		{
 			AddActorLocation(FVector::Up);
 		}
@@ -1158,7 +1158,7 @@ void APlayerMario::CalGravityVelocityVector(float _DeltaTime)
 	std::vector<UCollision*> Result = std::vector<UCollision*>();
 	Color8Bit Color = UContentsFunction::GetCollisionMapImg()->GetColor(GetActorLocation().iX(), GetActorLocation().iY(), UInGameValue::CollisionColor);
 
-	if (UInGameValue::CollisionColor == Color || true == BodyCollision->CollisionCheck(ECollisionOrder::BlockTop, Result))
+	if (UInGameValue::CollisionColor == Color || true == FootCollision->CollisionCheck(ECollisionOrder::BlockTop, Result))
 	{
 		GravityVelocityVector = FVector::Zero;
 	}
