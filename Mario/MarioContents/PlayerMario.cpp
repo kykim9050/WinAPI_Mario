@@ -336,7 +336,7 @@ void APlayerMario::DeadStart()
 	BodyCollision->SetOrder(static_cast<int>(ECollisionOrder::Invincible));
 
 	Renderer->ChangeAnimation("SmallMario_Dead");
-	--Life;
+	UPlayerInfoManager::GetInst().SetPlayerLife(--Life);
 
 	SetGravityZero();
 	JumpVelocityVector = FVector::Up * 500.0f;
