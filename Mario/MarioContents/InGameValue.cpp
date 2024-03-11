@@ -94,7 +94,7 @@ const int UInGameValue::EndFlagYPos = 124 * UInGameValue::WindowSizeMulValue;
 const int UInGameValue::EndFlagCollisionXScale = 2 * UInGameValue::WindowSizeMulValue;
 const int UInGameValue::EndFlagCollisionYScale = 400 * UInGameValue::WindowSizeMulValue;
 
-const int UInGameValue::EndPointCastleXPos = 3272 * UInGameValue::WindowSizeMulValue;
+const int UInGameValue::EndPointCastleXPos = 3274 * UInGameValue::WindowSizeMulValue;
 const int UInGameValue::EndPointCastleYPos = 168 * UInGameValue::WindowSizeMulValue;
 
 const int UInGameValue::CastleGateCollisionXScale = 4 * UInGameValue::WindowSizeMulValue;
@@ -107,6 +107,7 @@ const int UInGameValue::TimeRendererSize = 3;
 const int UInGameValue::ScoreRendererSize = 6;
 const int UInGameValue::CoinCountRendererSize = 2;
 const int UInGameValue::StageInfoRendererSize = 2;
+const int UInGameValue::LifeRendererSize = 1;
 
 const int UInGameValue::UITtimeRendInitXPos = 624;
 const int UInGameValue::UIScoreRendInitXPos = 72;
@@ -115,6 +116,9 @@ const int UInGameValue::UISpacingBetRends = 24;
 const int UInGameValue::UIStageInfoRendInitXPos = 459;
 const int UInGameValue::UIStageInfoCRendInitXPos = 408;
 const int UInGameValue::UIStageInfoCRendInitYPos = 240;
+const int UInGameValue::LifeRendInitXPos = 144;
+const int UInGameValue::LifeRendInitYPos = 112;
+
 
 const int UInGameValue::KoopaImgXValue = 4;
 const int UInGameValue::KoopaImgYValue = 1;
