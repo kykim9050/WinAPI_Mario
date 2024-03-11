@@ -141,7 +141,7 @@ void AUI::Tick(float _DeltaTime)
 	CheckConvertTimeToScore();
 	if (true == ConvertTimeToScore)
 	{
-
+		CalTimeToScore(_DeltaTime);
 		TimeRenderUpdate();
 		ScoreRenderUpdate();
 	}
@@ -261,5 +261,25 @@ void AUI::CheckConvertTimeToScore()
 	if (true == APlayerMario::GetReachStageEnd())
 	{
 		ConvertTimeToScore = true;
+	}
+}
+
+void AUI::CalTimeToScore(float _DeltaTime)
+{
+	TTSConvertInterval -= _DeltaTime;
+
+	if (0 >= TimeCount)
+	{
+		TimeCount = 0;
+		ConvertTimeToScore = false;
+		return;
+	}
+
+	if (0.0f >= TTSConvertInterval)
+	{
+		--TimeCount;
+		TTSConvertInterval = 0.01f + TTSConvertInterval;
+		TimeChange = true;
+		return;
 	}
 }
