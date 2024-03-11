@@ -133,19 +133,16 @@ void AUI::Tick(float _DeltaTime)
 	if (false == TimeCountPause)
 	{
 		TimeCheck(_DeltaTime);
-		TimeRenderUpdate();
-		ScoreCheck();
-		ScoreRenderUpdate();
 	}
 
 	CheckConvertTimeToScore();
 	if (true == ConvertTimeToScore)
 	{
 		CalTimeToScore(_DeltaTime);
-		TimeRenderUpdate();
-		ScoreRenderUpdate();
 	}
 
+	TimeRenderUpdate();
+	ScoreRenderUpdate();
 }
 
 void AUI::TimeCheck(float _DeltaTime)
@@ -209,11 +206,6 @@ void AUI::NumberToAnimation(int _PrintNumber, int _AnimatingNum, const std::vect
 		PrintNumber = PrintNumber % MaxDigit;
 		MaxDigit /= 10;
 	}
-
-}
-
-void AUI::ScoreCheck()
-{
 
 }
 
