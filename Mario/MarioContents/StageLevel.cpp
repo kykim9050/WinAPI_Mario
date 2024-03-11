@@ -5,6 +5,7 @@
 #include "UI.h"
 #include "LevelIntro.h"
 #include "Windows.h"
+#include <EngineCore/EngineCore.h>
 
 UStageLevel::UStageLevel()
 {
@@ -43,4 +44,7 @@ void UStageLevel::LevelStart(ULevel* _PrevLevel)
 void UStageLevel::LevelEnd(ULevel* _NextLevel)
 {
 	UDebugLevel::LevelEnd(_NextLevel);
+
+	std::string LevelName = GetName();
+	GEngine->DestroyLevel(LevelName);
 }
