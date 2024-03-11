@@ -19,26 +19,29 @@ public:
 	ARotatingFire& operator=(const ARotatingFire& _Other) = delete;
 	ARotatingFire& operator=(ARotatingFire&& _Other) noexcept = delete;
 
+	class AFireObstacle : public AActor
+	{
+		friend ARotatingFire;
+	public:
+		AFireObstacle() {}
+		~AFireObstacle() {}
+
+
+	protected:
+
+	private:
+		UImageRenderer* ObstacleRenderer = nullptr;
+		UCollision* ObstacleCol = nullptr;
+		
+		void CreateFireObstacle();
+	};
 
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
 private:
-	class AFireObstacle
-	{
-		friend ARotatingFire;
-	public:
-		AFireObstacle();
-		~AFireObstacle();
-	protected:
-
-	private:
-		UCollision* ObstacleCol = nullptr;
-		UImageRenderer* ObstacleRenderer = nullptr;
-	};
-
-
+	std::vector<AFireObstacle*> RotatingFire = std::vector<AFireObstacle*>();
 
 };
 

@@ -30,6 +30,7 @@ enum class EStageRenderOrder
 	BackGrundStructure,
 	Item,
 	Block,
+	AttackableTrap,
 	Monster,
 	Mario,
 	Bullet,
@@ -96,6 +97,7 @@ enum class EActorType
 	Block,
 	Item,
 	Bullet,
+	AttackableTrap,
 };
 
 enum class EMarioType
