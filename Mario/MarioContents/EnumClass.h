@@ -115,6 +115,7 @@ enum class ECollisionOrder
 	MonsterBullet,
 	Monster,
 	Player,
+	PlayerFootCollision,
 	AttackableMonster,
 	BlockSide,
 	BlockBot,
