@@ -121,7 +121,7 @@ void AUI::BeginPlay()
 	{
 		StageInfoRenderer[i]->ChangeAnimation(StageInfo[i]);
 	}
-	
+
 }
 
 void AUI::Tick(float _DeltaTime)
@@ -258,7 +258,7 @@ void AUI::CheckTimeStop()
 
 void AUI::CheckConvertTimeToScore()
 {
-	if (true == APlayerMario::GetReachStageEnd())
+	if (true == APlayerMario::GetIsReachingCastleGate())
 	{
 		ConvertTimeToScore = true;
 	}
@@ -278,6 +278,7 @@ void AUI::CalTimeToScore(float _DeltaTime)
 	if (0.0f >= TTSConvertInterval)
 	{
 		--TimeCount;
+		UPlayerInfoManager::GetInst().AddPlayerScore(50);
 		TTSConvertInterval = 0.01f + TTSConvertInterval;
 		TimeChange = true;
 		return;

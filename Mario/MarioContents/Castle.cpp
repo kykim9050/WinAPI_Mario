@@ -38,7 +38,7 @@ void ACastle::CollisionCheck()
 
 	if (nullptr != BodyCollision && true == BodyCollision->CollisionCheck(ECollisionOrder::Player, Result))
 	{
-		//BodyCollision->ActiveOff();
+		BodyCollision->ActiveOff();
 		GetPlayer()->ReachToCastleGate();
 		return;
 	}
