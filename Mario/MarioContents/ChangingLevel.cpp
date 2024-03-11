@@ -1,6 +1,9 @@
 ﻿#include "ChangingLevel.h"
 #include <EngineCore/EngineCore.h>
 #include "TestLevel.h"
+#include "PlayerInfoManager.h"
+#include "1_1StageLevel.h"
+#include "1_4StageLevel.h"
 
 UChangingLevel::UChangingLevel()
 {
@@ -19,26 +22,35 @@ void UChangingLevel::Tick(float _DeltaTime)
 {
 	ULevel::Tick(_DeltaTime);
 
-	//if (Case[0] == GetName())
-	//{
-	//	GEngine->CreateLevel<UTestLevel>("1-4");
-	//	GEngine->ChangeLevel("1-4");
-	//}
-
 	std::string LevelName = GetName();
+	std::string UpperLevelName = UEngineString::ToUpper(LevelName);
 
-	//if ()
-	//{
 
-	//}
+	if ("PLAYERDEAD" == UpperLevelName)
+	{
+		std::string StageLevel = UPlayerInfoManager::GetInst().GetPrevStageLevel();
+		
+		if ("1-1" == StageLevel)
+		{
+			GEngine->CreateLevel<U1_1StageLevel>("1-1");
+			GEngine->ChangeLevel("1-1");
+			return;
+		}
+		else if ("1-4" == StageLevel)
+		{
+			GEngine->CreateLevel<U1_4StageLevel>("1-4");
+			GEngine->ChangeLevel("1-4");
+			return;
+		}
+	}
+
+
 
 }
 
 void UChangingLevel::LevelStart(ULevel* _PrevLevel)
 {
 	ULevel::LevelStart(_PrevLevel);
-	//Case.push_back("PlayerDead");
-
 }
 
 void UChangingLevel::LevelEnd(ULevel* _NextLevel)
