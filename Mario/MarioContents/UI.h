@@ -30,6 +30,7 @@ protected:
 	void GetLevelStageInfo(std::vector<std::string>& _StageInfo);
 
 	void CheckTimeStop();
+	void CheckConvertTimeToScore();
 
 private:
 	UImageRenderer* PlayerUIRenderer = nullptr;
@@ -45,5 +46,6 @@ private:
 	int PlayerScore = 0;
 	int PlayerCoin = 0;
 	bool TimeCountPause = false;
+	bool ConvertTimeToScore = false;
 };
 

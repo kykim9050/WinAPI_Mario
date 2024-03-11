@@ -157,6 +157,11 @@ public:
 		return IsReachingStageEnd;
 	}
 
+	static bool GetReachStageEnd()
+	{
+		return ReachStageEnd;
+	}
+
 	void ReachToCastleGate()
 	{
 		IsReachingCastleGate = true;
@@ -246,6 +251,7 @@ private:
 
 	bool IsOnTheBlock = false;
 	static bool IsReachingStageEnd;
+	static bool ReachStageEnd;
 	bool AteMushroom = false;
 	bool AteFireFlower = false;
 	bool IsInvincible = false;
@@ -285,6 +291,11 @@ private:
 	bool IsCameraMovePause() const
 	{
 		return CameraMovePause;
+	}
+
+	void SetReachStageEnd()
+	{
+		ReachStageEnd = true;
 	}
 };
 
