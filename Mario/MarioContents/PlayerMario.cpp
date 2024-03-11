@@ -96,6 +96,11 @@ void APlayerMario::BeginPlay()
 	BodyCollision->SetPosition({0, -(BodyCollision->GetTransform().GetScale().ihY())});
 	BodyCollision->SetColType(ECollisionType::Rect);
 
+	FootCollision = CreateCollision(ECollisionOrder::PlayerFootCollision);
+	FootCollision->SetTransform({ { 0,0 }, {UPlayerInfoManager::GetInst().GetPlayerColSize().iX(), UInGameValue::FootCollisionScaleY} });
+	FootCollision->SetPosition({ 0, -(static_cast<int>(UInGameValue::FootCollisionScaleY / 2)) });
+	FootCollision->SetColType(ECollisionType::Rect);
+
 	StateChange(EActorState::Idle);
 }
 
