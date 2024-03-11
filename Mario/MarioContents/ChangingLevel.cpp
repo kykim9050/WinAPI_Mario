@@ -28,6 +28,12 @@ void UChangingLevel::Tick(float _DeltaTime)
 
 	if ("PLAYERDEAD" == UpperLevelName)
 	{
+		if (0 == UPlayerInfoManager::GetInst().GetPlayerLife())
+		{
+			MsgBoxAssert("아직 목숨 0일때 그림이 없으니 일단 터뜨리기");
+			return;
+		}
+
 		std::string StageLevel = UPlayerInfoManager::GetInst().GetPrevStageLevel();
 		
 		if ("1-1" == StageLevel)
