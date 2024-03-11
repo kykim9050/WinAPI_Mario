@@ -130,10 +130,13 @@ void AUI::Tick(float _DeltaTime)
 
 	if (true == APlayerMario::GetIsReachingStageEnd())
 	{
-		int a = 0;
+		TimeCountPause = true;
 	}
 
-	TimeCheck(_DeltaTime);
+	if (false == TimeCountPause)
+	{
+		TimeCheck(_DeltaTime);
+	}
 	TimeRenderUpdate();
 	ScoreCheck();
 	ScoreRenderUpdate();
