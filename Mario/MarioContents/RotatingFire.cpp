@@ -11,6 +11,10 @@ void ARotatingFire::AFireObstacle::CreateFireObstacle()
 	ObstacleRenderer->SetTransform({ {0,0}, {FireObstacleScale.iX() / UInGameValue::FireBallImageXValue * UInGameValue::WindowSizeMulValue, FireObstacleScale.iY() / UInGameValue::FireBallImageYValue * UInGameValue::WindowSizeMulValue} });
 	ObstacleRenderer->CreateAnimation("Fire_Rotating", "FireBall.png", 0, 3, 0.3f, true);
 	ObstacleRenderer->ChangeAnimation("Fire_Rotating");
+
+	ObstacleCol = CreateCollision(ECollisionOrder::AttackableTrap);
+	ObstacleCol->SetTransform({ {0,0}, {8 * UInGameValue::WindowSizeMulValue, 8 * UInGameValue::WindowSizeMulValue} });
+	ObstacleCol->SetColType(ECollisionType::CirCle);
 }
 
 ARotatingFire::ARotatingFire()

@@ -126,6 +126,7 @@ enum class ECollisionOrder
 	CastleGate,
 	CastleEndFlag,
 	SignalCol,
+	AttackableTrap,
 };
 
 enum class ECollisionState
