@@ -157,14 +157,14 @@ public:
 		return IsReachingStageEnd;
 	}
 
-	static bool GetReachStageEnd()
-	{
-		return ReachStageEnd;
-	}
-
 	void ReachToCastleGate()
 	{
 		IsReachingCastleGate = true;
+	}
+
+	static bool GetIsReachingCastleGate()
+	{
+		return IsReachingCastleGate;
 	}
 
 	void MeetThePrincess()
@@ -251,12 +251,11 @@ private:
 
 	bool IsOnTheBlock = false;
 	static bool IsReachingStageEnd;
-	static bool ReachStageEnd;
+	static bool IsReachingCastleGate;
 	bool AteMushroom = false;
 	bool AteFireFlower = false;
 	bool IsInvincible = false;
 	bool BlockBottomHit = false;
-	bool IsReachingCastleGate = false;
 	bool MeetPrincess = false;
 
 	EActorState PrevActorState = EActorState::None;
@@ -291,11 +290,6 @@ private:
 	bool IsCameraMovePause() const
 	{
 		return CameraMovePause;
-	}
-
-	void SetReachStageEnd()
-	{
-		ReachStageEnd = true;
 	}
 };
 

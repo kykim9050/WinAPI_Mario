@@ -11,7 +11,7 @@
 APlayerMario* APlayerMario::MainPlayer = nullptr;
 bool APlayerMario::IsReachingStageEnd = false;
 bool APlayerMario::InTheBossRoom = false;
-bool APlayerMario::ReachStageEnd = false;;
+bool APlayerMario::IsReachingCastleGate = false;
 
 APlayerMario::APlayerMario()
 {
@@ -881,7 +881,6 @@ void APlayerMario::ReachingEndFlagStart()
 
 void APlayerMario::ReachStageEndStart()
 {
-	SetReachStageEnd();
 	DirCheck();
 	Renderer->ChangeAnimation(ChangeAnimationName("Idle"));
 	Renderer->ActiveOff();
