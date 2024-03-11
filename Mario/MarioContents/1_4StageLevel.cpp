@@ -8,6 +8,7 @@
 #include "CastleBridge.h"
 #include "Princess.h"
 #include "SignalCollision.h"
+#include "RotatingFire.h"
 
 U1_4StageLevel::U1_4StageLevel()
 {
@@ -45,6 +46,23 @@ void U1_4StageLevel::BeginPlay()
 
 	USignalCollision* BossRoomStartLine = SpawnActor<USignalCollision>(static_cast<int>(EActorType::Structure));
 	BossRoomStartLine->SetActorLocation(UInGameValue::BossRoomStartLineInitPos);
+
+	ARotatingFire* Trap1 = SpawnActor<ARotatingFire>(static_cast<int>(EActorType::AttackableTrap));
+	ARotatingFire* Trap2 = SpawnActor<ARotatingFire>(static_cast<int>(EActorType::AttackableTrap));
+	ARotatingFire* Trap3 = SpawnActor<ARotatingFire>(static_cast<int>(EActorType::AttackableTrap));
+	ARotatingFire* Trap4 = SpawnActor<ARotatingFire>(static_cast<int>(EActorType::AttackableTrap));
+	ARotatingFire* Trap5 = SpawnActor<ARotatingFire>(static_cast<int>(EActorType::AttackableTrap));
+	ARotatingFire* Trap6 = SpawnActor<ARotatingFire>(static_cast<int>(EActorType::AttackableTrap));
+	ARotatingFire* Trap7 = SpawnActor<ARotatingFire>(static_cast<int>(EActorType::AttackableTrap));
+	
+	Trap1->SetActorLocation({ 1464, 504 });
+	Trap2->SetActorLocation({ 2376, 312 });
+	Trap3->SetActorLocation({ 2904, 312 });
+	Trap4->SetActorLocation({ 3240, 312 });
+	Trap5->SetActorLocation({ 3672, 456 });
+	Trap6->SetActorLocation({ 4056, 456 });
+	Trap7->SetActorLocation({ 4248, 216 });
+	
 
 }
 
