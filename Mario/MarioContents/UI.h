@@ -25,7 +25,6 @@ protected:
 	void TimeRenderUpdate();
 
 	void NumberToAnimation(int _PrintNumber, int _AnimatingNum, const std::vector<UImageRenderer*>& _Renderer);
-	void ScoreCheck();
 	void ScoreRenderUpdate();
 	void GetLevelStageInfo(std::vector<std::string>& _StageInfo);
 
