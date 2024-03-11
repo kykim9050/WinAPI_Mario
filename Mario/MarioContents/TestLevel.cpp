@@ -24,6 +24,7 @@
 #include "FootBoard.h"
 #include "Princess.h"
 #include "SignalCollision.h"
+#include "RotatingFire.h"
 
 UTestLevel::UTestLevel()
 {
@@ -64,6 +65,8 @@ void UTestLevel::BeginPlay()
 	USignalCollision* BossRoomStartLine = SpawnActor<USignalCollision>(static_cast<int>(EActorType::Structure));
 	BossRoomStartLine->SetActorLocation(UInGameValue::BossRoomStartLineInitPos);
 
+	ARotatingFire* Trap = SpawnActor<ARotatingFire>(static_cast<int>(EActorType::AttackableTrap));
+	Trap->SetActorLocation({ 300, 300 });
 }
 
 void UTestLevel::Tick(float _DeltaTime)
