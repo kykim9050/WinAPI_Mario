@@ -26,7 +26,7 @@ void AFootBoard::BeginPlay()
 	BodyCollision->SetTransform({ { 0,0 }, { FootBoardScale.iX() * UInGameValue::WindowSizeMulValue, FootBoardScale.iY() * UInGameValue::WindowSizeMulValue } });
 	BodyCollision->SetColType(ECollisionType::Rect);
 
-	SetActorState(EActorState::Idle);
+	SetActorState(EActorState::FirstInit);
 }
 
 void AFootBoard::Tick(float _DeltaTime)
@@ -39,9 +39,14 @@ void AFootBoard::MoveStart()
 	HorizonVelocityVector = ActorMoveDir * MoveSpeed;
 }
 
-void AFootBoard::Idle(float _DeltaTime)
+void AFootBoard::FirstInit()
 {
 	InitPos = GetActorLocation();
+	StateChange(EActorState::Idle);
+}
+
+void AFootBoard::Idle(float _DeltaTime)
+{
 	if (GetActorLocation().iX() - GetPlayer()->GetActorLocation().iX() < UInGameValue::ResultMainWindowXScale)
 	{
 		StateChange(EActorState::Move);
