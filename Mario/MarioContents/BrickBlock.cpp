@@ -45,11 +45,14 @@ void ABrickBlock::CollisionCheck()
 	{
 		const FTransform& PlayerColTrans = GetPlayer()->GetBodyCollision()->GetActorBaseTransform();
 		const FTransform& BlockColTrans = BodyCollision->GetActorBaseTransform();
+		float PlayerTop = GetPlayer()->GetBodyCollision()->GetActorBaseTransform().Top();
+		float BlockBotColTop = BodyCollision->GetActorBaseTransform().Top();
+		float OffsetYValue = BodyCollision->GetActorBaseTransform().GetScale().hY();
 
-
-		if (PlayerColTrans.GetPosition().X < BlockColTrans.Right() && PlayerColTrans.GetPosition().X > BlockColTrans.Left() && PlayerColTrans.GetPosition().Y < BlockColTrans.Bottom())
+		if (PlayerColTrans.GetPosition().X < BlockColTrans.Right()
+			&& PlayerColTrans.GetPosition().X > BlockColTrans.Left()
+			&& PlayerTop < BlockBotColTop + OffsetYValue + OffsetYValue / 2)
 		{
-			//UEngineDebug::OutPutDebugText("Occur Block Bot Collision");
 			GetPlayer()->HitBlockBottom();
 
 			CollisionStateChange(ECollisionState::GetHit);
