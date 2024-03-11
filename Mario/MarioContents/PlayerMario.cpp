@@ -341,6 +341,7 @@ void APlayerMario::CollisionJumpStart()
 void APlayerMario::DeadStart()
 {
 	BodyCollision->ActiveOff();
+	FootCollision->ActiveOff();
 	IsInvincible = true;
 	BodyCollision->SetOrder(static_cast<int>(ECollisionOrder::Invincible));
 
