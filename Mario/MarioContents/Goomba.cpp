@@ -1,6 +1,6 @@
 ﻿#include "Goomba.h"
 #include "PlayerMario.h"
-#include "TextUnit.h"
+
 
 AGoomba::AGoomba()
 {
@@ -146,16 +146,7 @@ void AGoomba::GetHitFromMonsterStart()
 void AGoomba::GetHitFromPlayerStart()
 {
 	Renderer->ChangeAnimation("Goomba_Dead");
-	// 스코어 랜더러 관련 클래스 생성
-	Score = GetWorld()->SpawnActor<ATextUnit>(static_cast<int>(EActorType::ScoreImg));
-	// 스코어 랜더러가 시작될 위치 지정
-	Score->SetLocation({ GetActorLocation().iX(), GetActorLocation().iY() - BodyCollision->GetTransform().GetScale().iY() });
-	// 스코어 랜더러에서 출력하고자 하는 점수 출력
- 	Score->SetScoreAnimation(GetScore());
-	// 생성과 동시에 삭제될 시간 지정
-	Score->Destroy(0.5f);
-	Score = nullptr;
-
+	ScoreImgOperator({ GetActorLocation().iX(), GetActorLocation().iY() - BodyCollision->GetTransform().GetScale().iY() }, GetScore());
 	Destroy(1.0f);
 }
 

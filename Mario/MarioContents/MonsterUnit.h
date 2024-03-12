@@ -47,6 +47,7 @@ protected:
 	virtual void FallDownStart() {};
 	virtual void GetHitStart() {};
 	virtual void GetMonsterHitStart() {};
+	void ScoreImgOperator(FVector _InitPos, int _Score, float _DestoryTime = 0.5f);
 
 	bool IsMonsterDead() const
 	{
