@@ -31,6 +31,7 @@ enum class EStageRenderOrder
 	Item,
 	Block,
 	AttackableTrap,
+	Score,
 	Monster,
 	Mario,
 	Bullet,

@@ -168,3 +168,6 @@ const int UInGameValue::MsgHideImgInitYpos = 384;
 const int UInGameValue::MessageHInterval = 64;
 
 const int UInGameValue::FireBallDia = 8 * UInGameValue::WindowSizeMulValue;
+
+const int UInGameValue::ScoreImgXValue = 5;
+const int UInGameValue::ScoreImgYValue = 3;
