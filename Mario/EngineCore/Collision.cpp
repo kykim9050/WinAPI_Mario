@@ -31,7 +31,7 @@ void UCollision::BeginPlay()
 	USceneComponent::BeginPlay();
 }
 
-bool UCollision::CollisionCheck(int _Order, std::vector<UCollision*>& _Result)
+bool UCollision::CollisionCheck(int _Order, std::vector<UCollision*>& _Result, FVector _NextPos)
 {
 	if (false == IsActive())
 	{
@@ -40,14 +40,14 @@ bool UCollision::CollisionCheck(int _Order, std::vector<UCollision*>& _Result)
 
 	_Result.clear();
 
-	// 본인과 특정 콜리전과 충돌해야 한다.
+	// 나랑 특정개수의 콜리전이랑 충돌해야 한다.
 	AActor* Owner = GetOwner();
 	ULevel* Level = Owner->GetWorld();
 
 	std::list<UCollision*>& Collisions = Level->Collisions[_Order];
 
 	FTransform ThisTransform = GetActorBaseTransform();
-
+	ThisTransform.AddPosition(_NextPos);
 	for (UCollision* _OtherCollision : Collisions)
 	{
 		if (this == _OtherCollision) {
