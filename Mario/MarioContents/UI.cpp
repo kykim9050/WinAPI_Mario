@@ -4,6 +4,7 @@
 #include "PlayerMario.h"
 #include "PlayerInfoManager.h"
 
+bool AUI::CalTimeToScoreEnd = false;
 
 AUI::AUI()
 {
@@ -266,6 +267,7 @@ void AUI::CalTimeToScore(float _DeltaTime)
 	{
 		TimeCount = 0;
 		ConvertTimeToScore = false;
+		SetCalTimeToScoreEnd();
 		return;
 	}
 

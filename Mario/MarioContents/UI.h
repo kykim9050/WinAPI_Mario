@@ -17,6 +17,11 @@ public:
 	AUI& operator=(const AUI& _Other) = delete;
 	AUI& operator=(AUI&& _Other) noexcept = delete;
 
+	static bool IsCalTimeToScoreEnd()
+	{
+		return CalTimeToScoreEnd;
+	}
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -48,5 +53,12 @@ private:
 	int PlayerCoin = 0;
 	bool TimeCountPause = false;
 	bool ConvertTimeToScore = false;
+
+	static bool CalTimeToScoreEnd;
+	void SetCalTimeToScoreEnd()
+	{
+		CalTimeToScoreEnd = true;
+	}
+
 };
 

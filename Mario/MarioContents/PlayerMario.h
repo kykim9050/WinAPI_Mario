@@ -102,7 +102,6 @@ public:
 	/// 4. 장애물에 위치 확인 후 이동 제한
 	/// </summary>
 	void Move(float _DeltaTime) override;
-
 	void Jump(float _DeltaTime) override;
 
 	void CollisionJump(float _DeltaTime);
@@ -217,6 +216,7 @@ protected:
 	void ReachingEndFlagStart();
 	void ReachingEndFlag(float _DeltaTime);
 	void BossStageClear(float _DeltaTime);
+	void ReachStageEnd(float _DeltaTime);
 	void ReachStageEndStart();
 	void BossStageClearStart();
 
