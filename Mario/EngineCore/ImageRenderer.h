@@ -49,6 +49,8 @@ public:
 	
 	void SetImage(std::string_view _Name, int _InfoIndex = 0);
 
+	bool IsAnimation(std::string_view _Name);
+
 	void SetImageIndex(int _InfoIndex)
 	{
 		InfoIndex = _InfoIndex;
