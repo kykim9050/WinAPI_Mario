@@ -75,13 +75,18 @@ void AMushroom::CollisionCheck()
 {
 	std::vector<UCollision*> Result = std::vector<UCollision*>();
 
-
 	if (true == BodyCollision->CollisionCheck(ECollisionOrder::Player, Result))
 	{
 		GetPlayer()->EattingMushroom();
-		GiveScore(GetPlayer());
-
 		CollisionStateChange(ECollisionState::GetHit);
 		return;
 	}
+}
+
+void AMushroom::GetHitStart()
+{
+	AItemUnit::GetHitStart();
+
+	ScoreImgOperator(GetActorLocation(), GetScore());
+	GiveScore(GetPlayer());
 }

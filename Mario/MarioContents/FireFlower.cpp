@@ -64,14 +64,19 @@ void AFireFlower::CollisionCheck()
 {
 	std::vector<UCollision*> Result = std::vector<UCollision*>();
 
-
 	if (true == BodyCollision->CollisionCheck(ECollisionOrder::Player, Result))
 	{
 		GetPlayer()->EattingFireFlower();
-		GiveScore(GetPlayer());
-
 		CollisionStateChange(ECollisionState::GetHit);
 		return;
 	}
+}
+
+void AFireFlower::GetHitStart()
+{
+	AItemUnit::GetHitStart();
+
+	ScoreImgOperator(GetActorLocation(), GetScore());
+	GiveScore(GetPlayer());
 }
 

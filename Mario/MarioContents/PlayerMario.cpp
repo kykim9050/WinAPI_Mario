@@ -917,6 +917,7 @@ void APlayerMario::MarioGrowUpStart()
 	BodyCollision->SetPosition({ 0, -(BodyCollision->GetTransform().GetScale().ihY()) });
 
 	GetWorld()->SetOtherTimeScale(EActorType::Player, 0.0f);
+	GetWorld()->SetTimeScale(EActorType::ScoreImg, 1.0f);
 	PrevActorState = ActorState;
 
 }
@@ -934,6 +935,7 @@ void APlayerMario::ChangingFireMarioStart()
 	BodyCollision->SetPosition({ 0, -(BodyCollision->GetTransform().GetScale().ihY()) });
 
 	GetWorld()->SetOtherTimeScale(EActorType::Player, 0.0f);
+	GetWorld()->SetTimeScale(EActorType::ScoreImg, 1.0f);
 	PrevActorState = ActorState;
 }
 
