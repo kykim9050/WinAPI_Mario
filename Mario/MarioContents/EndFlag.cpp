@@ -1,5 +1,6 @@
 #include "EndFlag.h"
 #include "PlayerMario.h"
+#include "TextUnit.h"
 
 AEndFlag::AEndFlag()
 {
@@ -61,5 +62,10 @@ void AEndFlag::ReachingEndFlag(float _DeltaTime)
 
 void AEndFlag::ReachingEndFlagStart()
 {
-
+	// 스코어 랜더러 관련 클래스 생성
+	Score = GetWorld()->SpawnActor<ATextUnit>(static_cast<int>(EActorType::ScoreImg));
+	// 스코어 랜더러가 시작될 위치 지정
+	Score->SetLocation({ GetActorLocation().iX() + 24, BodyCollision->GetTransform().iBottom() - 76});
+	// 스코어 랜더러에서 출력하고자 하는 점수 출력
+	Score->SetScoreAnimation(500);
 }
