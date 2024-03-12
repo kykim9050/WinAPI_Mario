@@ -42,6 +42,19 @@ void AEndFlag::CollisionCheck()
 
 	if (nullptr != BodyCollision && true == BodyCollision->CollisionCheck(ECollisionOrder::Player, Result))
 	{
+		if (GetPlayer()->GetActorLocation().Y < GetActorLocation().Y - 150.0f)
+		{
+			SetScore(5000);
+		}
+		else if (GetPlayer()->GetActorLocation().Y < GetActorLocation().Y)
+		{
+			SetScore(2000);
+		}
+		else
+		{
+			SetScore(400);
+		}
+
 		BodyCollision->ActiveOff();
 		GetPlayer()->ReachToStageEnd();
 		StateChange(EActorState::ReachingEndFlag);
@@ -55,6 +68,7 @@ void AEndFlag::ReachingEndFlag(float _DeltaTime)
 	{
 		StateChange(EActorState::Idle);
 		Score->StopRising();
+		GiveScore(GetPlayer(), GetScore());
 		return;
 	}
 
@@ -66,8 +80,8 @@ void AEndFlag::ReachingEndFlagStart()
 	// 스코어 랜더러 관련 클래스 생성
 	Score = GetWorld()->SpawnActor<ATextUnit>(static_cast<int>(EActorType::ScoreImg));
 	// 스코어 랜더러가 시작될 위치 지정
-	Score->SetLocation({ GetActorLocation().iX() + 30, BodyCollision->GetTransform().iBottom() - 76});
+	Score->SetLocation({ GetActorLocation().iX() + 36, BodyCollision->GetTransform().iBottom() - 76});
 	// 스코어 랜더러에서 출력하고자 하는 점수 출력
-	Score->SetScoreAnimation(500);
+	Score->SetScoreAnimation(GetScore());
 	Score->SetSpeed(400.0f);
 }
