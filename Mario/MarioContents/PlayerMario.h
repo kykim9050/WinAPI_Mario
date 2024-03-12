@@ -103,19 +103,11 @@ public:
 	/// </summary>
 	void Move(float _DeltaTime) override;
 	void Jump(float _DeltaTime) override;
-
 	void CollisionJump(float _DeltaTime);
-
 	void ReverseMove(float _DeltaTime);
-
 	void Changing(float _DeltaTime);
-
 	void Dead(float _DeltaTime);
-
-	
-
 	void CameraPosUpdate(FVector _MovePos, bool _ExceptCheckRange = false);
-
 	bool IsReverseMove();
 
 	static APlayerMario* GetMainPlayer()
@@ -123,14 +115,27 @@ public:
 		return MainPlayer;
 	}
 
+	static bool GetIsReachingCastleGate()
+	{
+		return IsReachingCastleGate;
+	}
+
+	static bool GetIsReachingStageEnd()
+	{
+		return IsReachingStageEnd;
+	}
+
+	static void ReachToBossRoom()
+	{
+		InTheBossRoom = true;
+	}
+
 	void CollisionUpdate(float _DeltaTime) override;
 	void CollisionStateCheck();
 	void CollisionStateChange(ECollisionState _CollisionState) override;
-
 	void GetHit(float _DeltaTime) override;
-
 	void GetHitStart() override;
-
+	
 	void EattingMushroom()
 	{
 		AteMushroom = true;
@@ -150,20 +155,10 @@ public:
 	{
 		IsReachingStageEnd = true;
 	}
-	
-	static bool GetIsReachingStageEnd()
-	{
-		return IsReachingStageEnd;
-	}
 
 	void ReachToCastleGate()
 	{
 		IsReachingCastleGate = true;
-	}
-
-	static bool GetIsReachingCastleGate()
-	{
-		return IsReachingCastleGate;
 	}
 
 	void MeetThePrincess()
@@ -192,10 +187,6 @@ public:
 		return CoinCount;
 	}
 
-	static void ReachToBossRoom()
-	{
-		InTheBossRoom = true;
-	}
 
 protected:
 	void BeginPlay() override;
@@ -218,48 +209,6 @@ protected:
 	void CeilingCheck();
 
 private:
-	UCollision* FootCollision = nullptr;
-
-	EMarioType MarioType = EMarioType::None;
-
-	// 수평 방향 속도 크기에 영향을 끼치는 가속도 관련 벡터
-	FVector HorizonAccVector = FVector::Right * 700.0f;
-	// 수평 방향 최고 제한 속도의 크기
-	float HorizonMaxSpeed = 350.0f;
-
-	FVector InitJumpVelocityVector = FVector::Up * 500.0f;
-	FVector CollisionJumpVelocityVector = FVector::Up * 500.0f;
-
-	// FreeMove 작동 시 속도
-	float PFreeMoveVelocity = 3000.0f;
-	
-	static APlayerMario* MainPlayer;
-	void SetMainPlayer(APlayerMario* _MainPlayer)
-	{
-		MainPlayer = _MainPlayer;
-	}
-
-	void AddHorizonVelocityVector(const FVector& _DirDelta) override;
-	void ResultMovementUpdate(float _DeltaTime) override;
-	void ApplyMovement(float _DeltaTime) override;
-	void CalHorizonVelocityVector(float _DeltaTime) override;
-	void CalJumpVelocityVector(float _DeltaTime) override;
-	void GroundUp();
-
-	bool IsOnTheBlock = false;
-	static bool IsReachingStageEnd;
-	static bool IsReachingCastleGate;
-	bool AteMushroom = false;
-	bool AteFireFlower = false;
-	bool IsInvincible = false;
-	bool BlockBottomHit = false;
-	bool MeetPrincess = false;
-
-	EActorState PrevActorState = EActorState::None;
-
-	int CoinCount = 0;
-
-	bool ClearBossStage = false;
 	void SetClearBossStage()
 	{
 		ClearBossStage = true;
@@ -268,14 +217,10 @@ private:
 	{
 		return ClearBossStage;
 	}
-
-	static bool InTheBossRoom;
 	bool IsReachToBossRoom() const
 	{
 		return InTheBossRoom;
 	}
-
-	bool CameraMovePause = false;
 	void CameraMoveOff()
 	{
 		CameraMovePause = true;
@@ -288,10 +233,47 @@ private:
 	{
 		return CameraMovePause;
 	}
+	void SetMainPlayer(APlayerMario* _MainPlayer)
+	{
+		MainPlayer = _MainPlayer;
+	}
 
+	void AddHorizonVelocityVector(const FVector& _DirDelta) override;
+	void ResultMovementUpdate(float _DeltaTime) override;
+	void ApplyMovement(float _DeltaTime) override;
+	void CalHorizonVelocityVector(float _DeltaTime) override;
+	void CalJumpVelocityVector(float _DeltaTime) override;
+	void GroundUp();
+
+	UCollision* FootCollision = nullptr;
+
+	EMarioType MarioType = EMarioType::None;
+	EActorState PrevActorState = EActorState::None;
+	FVector HorizonAccVector = FVector::Right * 700.0f;
+	FVector InitJumpVelocityVector = FVector::Up * 500.0f;
+	FVector CollisionJumpVelocityVector = FVector::Up * 400.0f;
+	float HorizonMaxSpeed = 350.0f;
+	float PFreeMoveVelocity = 3000.0f;
+
+	bool IsOnTheBlock = false;
+	static bool IsReachingStageEnd;
+	static bool IsReachingCastleGate;
+	bool AteMushroom = false;
+	bool AteFireFlower = false;
+	bool IsInvincible = false;
+	bool BlockBottomHit = false;
+	bool MeetPrincess = false;
+
+	static APlayerMario* MainPlayer;
+	static bool InTheBossRoom;
+
+	int CoinCount = 0;
+	bool ClearBossStage = false;
+	bool CameraMovePause = false;
 	int DeadStep = 0;
 	int ReachingEndStep = 0;
 	int BossStageClearStep = 0;
 	float DeadDelayTime = 0.5f;
+
 };
 
