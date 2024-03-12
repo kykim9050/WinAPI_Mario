@@ -50,6 +50,18 @@ void UChangingLevel::Tick(float _DeltaTime)
 		}
 	}
 
+	if ("NEXTLEVEL" == UpperLevelName)
+	{
+		std::string PrevStage = UPlayerInfoManager::GetInst().GetPrevStageLevel();
+
+		if ("1-1" == PrevStage)
+		{
+			GEngine->CreateLevel<U1_4StageLevel>("1-4");
+			GEngine->ChangeLevel("1-4");
+			return;
+		}
+	}
+
 
 
 }
