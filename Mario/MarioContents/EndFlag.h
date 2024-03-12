@@ -18,8 +18,11 @@ public:
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
-
 	void CollisionCheck() override;
+
+	void ReachingEndFlag(float _DeltaTime) override;
+	void ReachingEndFlagStart() override;
+
 
 private:
 	UImageRenderer* FlagRenderer = nullptr;

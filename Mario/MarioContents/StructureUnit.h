@@ -19,14 +19,15 @@ public:
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
-
-	virtual void CollisionCheck() {};
-
 	void StateChange(EActorState _ActorState) override;
 	void StateUpdate(float _DeltaTime) override;
 
+	virtual void CollisionCheck() {};
 	virtual void FallDown(float _DeltaTime) {};
+	virtual void ReachingEndFlag(float _DeltaTime) {};
 	virtual void FallDownStart() {};
+	virtual void ReachingEndFlagStart() {};
+
 
 private:
 
