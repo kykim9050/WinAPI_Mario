@@ -18,15 +18,12 @@ public:
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
-
 	void MoveStart() override;
-
 	void FirstInit(float _DeltaTime) override;
 	void Appear(float _DeltaTime) override;
 	void Move(float _DeltaTime) override;
-
 	void CollisionCheck() override;
-
+	void GetHitStart() override;
 
 private:
 
