@@ -310,7 +310,6 @@ void APlayerMario::CollisionStateCheck()
 
 	if (true == BlockBottomHit)
 	{
-		//CollisionStateChange(ECollisionState::BlockBotHit);
 		BlockBottomHit = false;
 		SetJumpZero();
 		SetGravityRatio(1.0f);
@@ -330,7 +329,6 @@ void APlayerMario::CollisionStateCheck()
 
 	if (true == BodyCollision->CollisionCheck(ECollisionOrder::BlockSide, Result))
 	{
-		//CollisionStateChange(ECollisionState::BlockSideHit);
 		SetSpeedZero();
 	}
 
@@ -981,7 +979,6 @@ void APlayerMario::BlockBotHitStart()
 
 void APlayerMario::InvincibleStart()
 {
-	//BodyCollision->ActiveOff();
 	BodyCollision->SetOrder(static_cast<int>(ECollisionOrder::Invincible));
 	IsInvincible = true;
 	CollisionStateChange(ECollisionState::None);
