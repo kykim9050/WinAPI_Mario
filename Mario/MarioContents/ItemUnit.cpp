@@ -1,4 +1,5 @@
 #include "ItemUnit.h"
+#include "TextUnit.h"
 
 AItemUnit::AItemUnit()
 {
@@ -105,4 +106,23 @@ void AItemUnit::ReleaseStart()
 void AItemUnit::FirstInit(float _DeltaTime)
 {
 	InitPos = GetActorLocation();
+}
+
+void AItemUnit::ScoreImgOperator(FVector _InitPos, int _Score, float _DestoryTime)
+{
+	if (nullptr != Score)
+	{
+		MsgBoxAssert("이미 Score 가 있습니다. 혹은 정리되지 않았는지 확인하십시오.");
+		return;
+	}
+
+	// 스코어 랜더러 관련 클래스 생성
+	Score = GetWorld()->SpawnActor<ATextUnit>(static_cast<int>(EActorType::ScoreImg));
+	// 스코어 랜더러가 시작될 위치 지정
+	Score->SetLocation(_InitPos);
+	// 스코어 랜더러에서 출력하고자 하는 점수 출력
+	Score->SetScoreAnimation(_Score);
+	// 생성과 동시에 삭제될 시간 지정
+	Score->Destroy(_DestoryTime);
+	Score = nullptr;
 }
