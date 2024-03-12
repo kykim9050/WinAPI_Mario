@@ -3,9 +3,10 @@
 #include "InGameValue.h"
 #include "StateUnit.h"
 #include "MainPlayer.h"
+#include "TextUnit.h"
 
 class UImageRenderer;
-
+class ATextUnit;
 // Ό³Έν :
 class AItemUnit : public UStateUnit , public UMainPlayer
 {
@@ -25,28 +26,25 @@ public:
 
 	virtual void CollisionCheck() {};
 	virtual void CollisionStateChange(ECollisionState _CollisionState);
-
 	virtual void FirstInit(float _DeltaTime);
 	virtual void Idle(float _DeltaTime) {};
 	virtual void Move(float _DeltaTime) {};
 	virtual void Appear(float _DeltaTime) {};
-
-
 	virtual void IdleStart() {};
 	virtual void AppearStart() {};
 	virtual void MoveStart() {};
 	virtual void ReleaseStart();
-	
-
 	virtual void GetHitStart();
 
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
+	void ScoreImgOperator(FVector _InitPos, int _Score, float _DestoryTime = 0.5f);
 
 	FVector InitPos = FVector::Zero;
-private:
+	ATextUnit* Score = nullptr;
 
+private:
 
 };
 

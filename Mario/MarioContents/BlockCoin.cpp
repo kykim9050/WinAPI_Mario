@@ -1,5 +1,6 @@
 ﻿#include "BlockCoin.h"
 #include "PlayerMario.h"
+#include "TextUnit.h"
 
 ABlockCoin::ABlockCoin()
 {
@@ -75,6 +76,7 @@ void ABlockCoin::ReleaseStart()
 {
 	AItemUnit::ReleaseStart();
 	// 랜더링만 Destroy
-	// 액터 자체를 Destory하면 BlockUnit에서 사용할 수가 없음
+	// 액터 자체를 Destory하면 BlockUnit에서 사용할 수가 없음	
 	Renderer->ActiveOff();
+	ScoreImgOperator(GetActorLocation(), GetScore());
 }
