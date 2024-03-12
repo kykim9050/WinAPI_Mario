@@ -153,7 +153,9 @@ void AGoomba::GetHitFromPlayerStart()
 	// 스코어 랜더러에서 출력하고자 하는 점수 출력
  	Score->SetScoreAnimation(GetScore());
 	// 생성과 동시에 삭제될 시간 지정
-	Score->Destroy(1.0f);
+	Score->Destroy(0.5f);
+	Score = nullptr;
+
 	Destroy(1.0f);
 }
 
