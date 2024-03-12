@@ -122,6 +122,8 @@ void AUI::BeginPlay()
 		StageInfoRenderer[i]->ChangeAnimation(StageInfo[i]);
 	}
 
+	NumberToAnimation(TimeCount, 3, TimeRenderer);
+
 }
 
 void AUI::Tick(float _DeltaTime)
