@@ -8,7 +8,7 @@
 #include "Princess.h"
 #include <EngineCore/EngineCore.h>
 #include "ChangingLevel.h"
-
+#include "UI.h"
 
 APlayerMario* APlayerMario::MainPlayer = nullptr;
 bool APlayerMario::IsReachingStageEnd = false;
@@ -243,6 +243,9 @@ void APlayerMario::StateUpdate(float _DeltaTime)
 		break;
 	case EActorState::BossStageClear:
 		BossStageClear(_DeltaTime);
+		break;
+	case EActorState::ReachStageEnd:
+		ReachStageEnd(_DeltaTime);
 		break;
 	default:
 		break;
@@ -861,6 +864,13 @@ void APlayerMario::BossStageClear(float _DeltaTime)
 
 }
 
+void APlayerMario::ReachStageEnd(float _DeltaTime)
+{
+	if (true == AUI::IsCalTimeToScoreEnd())
+	{
+		int a = 0;
+	}
+}
 
 
 void APlayerMario::GetHitStart()
