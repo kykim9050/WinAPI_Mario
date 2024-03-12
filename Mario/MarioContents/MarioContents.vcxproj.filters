@@ -143,6 +143,9 @@
     <ClInclude Include="ChangingLevel.h">
       <Filter>Level\ChangingLevel</Filter>
     </ClInclude>
+    <ClInclude Include="TextUnit.h">
+      <Filter>Object\Text</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp" />
@@ -284,6 +287,9 @@
     <ClCompile Include="ChangingLevel.cpp">
       <Filter>Level\ChangingLevel</Filter>
     </ClCompile>
+    <ClCompile Include="TextUnit.cpp">
+      <Filter>Object\Text</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ContentsHelper">
@@ -345,6 +351,9 @@
     </Filter>
     <Filter Include="Level\ChangingLevel">
       <UniqueIdentifier>{10531638-f302-4384-8250-a83f737c01a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Text">
+      <UniqueIdentifier>{936104d2-b5e8-4ac0-b329-210a3fb401c7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
