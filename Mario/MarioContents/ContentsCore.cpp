@@ -69,14 +69,11 @@ void UContentsCore::BeginPlay()
 	UEngineResourcesManager::GetInst().CuttingImage("Score.png", UInGameValue::ScoreImgXValue, UInGameValue::ScoreImgYValue);
 	
 
-	//CreateLevel<U1_1StageLevel>("1-1");
-	//ChangeLevel("1-1");
+	CreateLevel<UTestLevel>("1-1");
+	ChangeLevel("1-1");
 
-	//CreateLevel<UTestLevel>("1-4");
-	//ChangeLevel("1-4");
-
-	CreateLevel<UTitleLevel>("TitleLevel");
-	ChangeLevel("TitleLevel");
+	//CreateLevel<UTitleLevel>("TitleLevel");
+	//ChangeLevel("TitleLevel");
 
 }
 

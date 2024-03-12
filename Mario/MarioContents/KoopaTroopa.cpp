@@ -125,17 +125,19 @@ void AKoopaTroopa::MoveStart()
 void AKoopaTroopa::GetFirstHitStart()
 {
 	Renderer->ChangeAnimation("KoopaTroopa_OneHit");
+	ScoreImgOperator({ GetActorLocation().iX(), GetActorLocation().iY() - BodyCollision->GetTransform().GetScale().iY() }, GetScore());
 }
 
 void AKoopaTroopa::GetSecondHitStart()
 {
 	SetDirAfterCollision(GetActorLocation(), APlayerMario::GetMainPlayer()->GetActorLocation());
 	Renderer->ChangeAnimation("KoopaTroopa_TwoHit");
+	ScoreImgOperator({ GetActorLocation().iX(), GetActorLocation().iY() - BodyCollision->GetTransform().GetScale().iY() }, 500);
 }
 
 void AKoopaTroopa::GetHitFromMonsterStart()
 {
-
+	ScoreImgOperator({ GetActorLocation().iX(), GetActorLocation().iY() - BodyCollision->GetTransform().GetScale().iY() }, 500);
 }
 
 void AKoopaTroopa::SetDirAfterCollision(const FVector _MyFVector, const FVector _OtherFVector)

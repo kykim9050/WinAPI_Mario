@@ -42,32 +42,22 @@ void UTestLevel::BeginPlay()
 	Mario->SetActorLocation({ UInGameValue::MarioInitXPos, UInGameValue::MarioInitYPos });
 	//Mario->SetActorLocation({ 6000, 400 });
 
-	Map->GetMapRenderer()->SetImage("1_4Stage_Map.png");
+	Map->GetMapRenderer()->SetImage("1_1Stage_Map.png");
 	FVector MapImageFVector = Map->GetMapRenderer()->GetImage()->GetScale();
 	Map->GetMapRenderer()->SetTransform({ { MapImageFVector.ihX(), MapImageFVector.ihY()}, {MapImageFVector} });
 
-	ColMap->GetColMapRenderer()->SetImage("1_4Stage_CollisionMap.png");
+	ColMap->GetColMapRenderer()->SetImage("1_1Stage_CollisionMap.png");
 	FVector ColMapImageFVector = ColMap->GetColMapRenderer()->GetImage()->GetScale();
 	ColMap->GetColMapRenderer()->SetTransform({ { ColMapImageFVector.ihX(), ColMapImageFVector.ihY()}, {ColMapImageFVector} });
 
-	AKoopa* BossMonsterKoopa = SpawnActor<AKoopa>(static_cast<int>(EActorType::Monster));
-	BossMonsterKoopa->SetActorLocation(UInGameValue::KoopaInitPos);
-	//BossMonsterKoopa->SetActorLocation({ 500, 400 });
-
-	AFootBoard* FootBoard = SpawnActor<AFootBoard>(static_cast<int>(EActorType::Block));
-	FootBoard->SetActorLocation({ UInGameValue::MovingBoardInitXPos, UInGameValue::MovingBoardInitYPos});
-
-
-	ACastleBridge* CastleBridge = SpawnActor<ACastleBridge>(static_cast<int>(EActorType::Structure));
-	CastleBridge->SetActorLocation({ UInGameValue::BridgeStartXPos, UInGameValue::BridgeStartYPos });
-
-	APrincess* Princess = SpawnActor<APrincess>(static_cast<int>(EActorType::Player));
-
-	USignalCollision* BossRoomStartLine = SpawnActor<USignalCollision>(static_cast<int>(EActorType::Structure));
-	BossRoomStartLine->SetActorLocation(UInGameValue::BossRoomStartLineInitPos);
-
-	ARotatingFire* Trap = SpawnActor<ARotatingFire>(static_cast<int>(EActorType::AttackableTrap));
-	Trap->SetActorLocation({ 300, 300 });
+	AKoopaTroopa* MonsterTroopa1 = SpawnActor<AKoopaTroopa>(static_cast<int>(EActorType::Monster));
+	AKoopaTroopa* MonsterTroopa2 = SpawnActor<AKoopaTroopa>(static_cast<int>(EActorType::Monster));
+	AKoopaTroopa* MonsterTroopa3 = SpawnActor<AKoopaTroopa>(static_cast<int>(EActorType::Monster));
+	AKoopaTroopa* MonsterTroopa4 = SpawnActor<AKoopaTroopa>(static_cast<int>(EActorType::Monster));
+	MonsterTroopa1->SetActorLocation({ 500, 580 });
+	MonsterTroopa2->SetActorLocation({ 800, 580 });
+	MonsterTroopa3->SetActorLocation({ 900, 580 });
+	MonsterTroopa4->SetActorLocation({ 1000, 580 });
 }
 
 void UTestLevel::Tick(float _DeltaTime)
