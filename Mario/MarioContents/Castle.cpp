@@ -15,10 +15,11 @@ void ACastle::BeginPlay()
 
 	Renderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::BackGrundStructure));
 	Renderer->SetImage("MiniCastle.png");
-
 	FVector CastleScale = Renderer->GetImage()->GetScale();
-
 	Renderer->SetTransform({ {0,0}, {CastleScale.iX() * UInGameValue::WindowSizeMulValue, CastleScale.iY() * UInGameValue::WindowSizeMulValue} });
+
+	FlagRenderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::BackGrundSubStructure));
+	FlagRenderer->SetImage("flags.png");
 
 	BodyCollision = CreateCollision(ECollisionOrder::CastleGate);
 	BodyCollision->SetTransform({ { 16,0 }, { UInGameValue::CastleGateCollisionXScale, UInGameValue::CastleGateCollisionYScale} });
