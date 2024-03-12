@@ -49,6 +49,16 @@ public:
 		HorizonVelocityVector = FVector::Zero;
 	}
 
+	void GiveScore(UStateUnit* _Other, int _Score)
+	{
+		if (nullptr == _Other)
+		{
+			MsgBoxAssert("대상 오브젝트가 존재하지 않습니다.");
+		}
+
+		_Other->AddScore(_Score);
+	}
+
 	void GiveScore(UStateUnit* _Other)
 	{
 		if (nullptr == _Other)

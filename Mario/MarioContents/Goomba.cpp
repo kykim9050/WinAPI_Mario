@@ -65,12 +65,8 @@ void AGoomba::CollisionCheck()
 		if (PlayerBottom < MonsterBottom - OffsetYValue)
 		{
 			BodyCollision->Destroy();
-
 			GetPlayer()->StateChange(EActorState::CollisionJump);
-			GiveScore(GetPlayer());
-
 			CollisionStateChange(ECollisionState::GetHit);
-
 			return;
 		}
 
@@ -81,12 +77,8 @@ void AGoomba::CollisionCheck()
 
 	if (true == BodyCollision->CollisionCheck(ECollisionOrder::AttackableMonster, Result))
 	{
-		--Life;
-
 		// GetHit시 Collision 삭제후
 		BodyCollision->Destroy();
-		GiveScore(GetPlayer());
-
 		// 몬스터의 상태를 GetHit로 변환
 		CollisionStateChange(ECollisionState::GetMonsterHit);
 
@@ -97,7 +89,6 @@ void AGoomba::CollisionCheck()
 
 void AGoomba::Idle(float _DeltaTime)
 {
-
 	if (GetActorLocation().iX() - GetPlayer()->GetActorLocation().iX() < UInGameValue::ResultMainWindowXScale)
 	{
 		SetActorState(EActorState::Move);
@@ -140,12 +131,14 @@ void AGoomba::GetMonsterHitStart()
 
 void AGoomba::GetHitFromMonsterStart()
 {
-
+	GiveScore(GetPlayer(), 500);
+	ScoreImgOperator({ GetActorLocation().iX(), GetActorLocation().iY() - BodyCollision->GetTransform().GetScale().iY() }, 500);
 }
 
 void AGoomba::GetHitFromPlayerStart()
 {
 	Renderer->ChangeAnimation("Goomba_Dead");
+	GiveScore(GetPlayer());
 	ScoreImgOperator({ GetActorLocation().iX(), GetActorLocation().iY() - BodyCollision->GetTransform().GetScale().iY() }, GetScore());
 	Destroy(1.0f);
 }
