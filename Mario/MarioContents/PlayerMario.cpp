@@ -875,7 +875,9 @@ void APlayerMario::ReachStageEnd(float _DeltaTime)
 		if (0.0f >= DelayTime)
 		{
 			DelayTime = 3.0f;
-			int a = 0;
+			UPlayerInfoManager::GetInst().SetPrevStageLevel(GetWorld()->GetName());
+			GEngine->CreateLevel<UChangingLevel>("NextLevel");
+			GEngine->ChangeLevel("NextLevel");
 		}
 	}
 }
