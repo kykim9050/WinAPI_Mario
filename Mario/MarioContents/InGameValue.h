@@ -351,6 +351,11 @@ public:
 	/// </summary>
 	static const int FireBallDia;
 
+	/// <summary>
+	/// Score.png의 행, 열 수
+	/// </summary>
+	static const int ScoreImgXValue;
+	static const int ScoreImgYValue;
 
 protected:
 

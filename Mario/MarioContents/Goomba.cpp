@@ -38,6 +38,14 @@ void AGoomba::BeginPlay()
 	FootCollision->SetPosition({ 0, -(static_cast<int>(UInGameValue::FootCollisionScaleY / 2)) });
 	FootCollision->SetColType(ECollisionType::Rect);
 
+
+	ScoreRenderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::Score));
+	ScoreRenderer->SetImage("Score.png");
+	FVector ScoreScale = ScoreRenderer->GetImage()->GetScale();
+	ScoreRenderer->SetTransform({ {0, BodyCollision->GetTransform().iTop()}, {ScoreScale.iX() / UInGameValue::ScoreImgXValue * UInGameValue::WindowSizeMulValue, ScoreScale.iY() / UInGameValue::ScoreImgYValue * UInGameValue::WindowSizeMulValue}});
+	ScoreRenderer->CreateAnimation("100", "Score.png", 0, 0, 0.1f, false);
+	ScoreRenderer->ActiveOff();
+
 	SetActorState(EActorState::Idle);
 }
 
@@ -129,7 +137,6 @@ void AGoomba::GetMonsterHit(float _DeltaTime)
 void AGoomba::GetHitStart()
 {
 	StateChange(EActorState::GetHit);
-	--Life;
 }
 
 void AGoomba::GetMonsterHitStart()
@@ -146,6 +153,7 @@ void AGoomba::GetHitFromMonsterStart()
 void AGoomba::GetHitFromPlayerStart()
 {
 	Renderer->ChangeAnimation("Goomba_Dead");
+	ScoreRenderer->ActiveOn();
 	Destroy(1.0f);
 }
 
