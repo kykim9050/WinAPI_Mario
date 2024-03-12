@@ -866,9 +866,17 @@ void APlayerMario::BossStageClear(float _DeltaTime)
 
 void APlayerMario::ReachStageEnd(float _DeltaTime)
 {
+	static float DelayTime = 3.0f;
+
 	if (true == AUI::IsCalTimeToScoreEnd())
 	{
-		int a = 0;
+		DelayTime -= _DeltaTime;
+
+		if (0.0f >= DelayTime)
+		{
+			DelayTime = 3.0f;
+			int a = 0;
+		}
 	}
 }
 
