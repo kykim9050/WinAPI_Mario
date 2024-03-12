@@ -240,6 +240,7 @@ public:
 	/// </summary>
 	static const int UITtimeRendInitXPos;
 	static const int UIScoreRendInitXPos;
+	static const int UICoinRendInitXPos;
 	static const int UIRendInitYPos;
 	static const int UISpacingBetRends;
 	static const int UIStageInfoRendInitXPos;

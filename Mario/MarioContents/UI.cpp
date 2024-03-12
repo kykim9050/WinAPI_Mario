@@ -26,7 +26,7 @@ void AUI::BeginPlay()
 	UICoinRenderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::UIComponent));
 	UICoinRenderer->SetImage("UICoin.png");
 	FVector UICoinScale = UICoinRenderer->GetImage()->GetScale();
-	UICoinRenderer->SetTransform({ {UInGameValue::UIScoreRendInitXPos + UInGameValue::UISpacingBetRends * 8 ,UInGameValue::UIRendInitYPos}, {UICoinScale.iX() / UInGameValue::UICoinImageXValue * UInGameValue::WindowSizeMulValue, UICoinScale.iY() / UInGameValue::UICoinImageYValue * UInGameValue::WindowSizeMulValue} });
+	UICoinRenderer->SetTransform({ {UInGameValue::UICoinRendInitXPos + UInGameValue::UISpacingBetRends * 8 ,UInGameValue::UIRendInitYPos}, {UICoinScale.iX() / UInGameValue::UICoinImageXValue * UInGameValue::WindowSizeMulValue, UICoinScale.iY() / UInGameValue::UICoinImageYValue * UInGameValue::WindowSizeMulValue} });
 	UICoinRenderer->CameraEffectOff();
 	UICoinRenderer->CreateAnimation("Twinkle", "UICoin.png", { 0,1,2,1,0,0 }, 0.15f, true);
 	UICoinRenderer->ChangeAnimation("Twinkle");

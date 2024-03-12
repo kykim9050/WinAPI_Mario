@@ -118,6 +118,7 @@ const int UInGameValue::UIStageInfoCRendInitXPos = 408;
 const int UInGameValue::UIStageInfoCRendInitYPos = 240;
 const int UInGameValue::LifeRendInitXPos = 144;
 const int UInGameValue::LifeRendInitYPos = 112;
+const int UInGameValue::UICoinRendInitXPos = 76;
 
 
 const int UInGameValue::KoopaImgXValue = 4;
