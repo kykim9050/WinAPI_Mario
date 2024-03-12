@@ -17,6 +17,8 @@ void AStructureUnit::Tick(float _DeltaTime)
 {
 	UStateUnit::Tick(_DeltaTime);
 
+	StateUpdate(_DeltaTime);
+
 	CollisionCheck();
 }
 
@@ -26,6 +28,9 @@ void AStructureUnit::StateUpdate(float _DeltaTime)
 	{
 	case EActorState::FallDown:
 		FallDown(_DeltaTime);
+		break;
+	case EActorState::ReachingEndFlag:
+		ReachingEndFlag(_DeltaTime);
 		break;
 	default:
 		break;
@@ -41,6 +46,9 @@ void AStructureUnit::StateChange(EActorState _ActorState)
 		{
 		case EActorState::FallDown:
 			FallDownStart();
+			break;
+		case EActorState::ReachingEndFlag:
+			ReachingEndFlagStart();
 			break;
 		default:
 			break;
