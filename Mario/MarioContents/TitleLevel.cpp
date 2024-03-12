@@ -2,7 +2,7 @@
 #include <EngineCore\EngineCore.h>
 #include "TitleBackGround.h"
 #include "TitleCoin.h"
-#include "TestLevel.h"
+#include "1_1StageLevel.h"
 
 UTitleLevel::UTitleLevel()
 {
@@ -26,7 +26,7 @@ void UTitleLevel::Tick(float _DeltaTime)
 
 	if (UEngineInput::IsDown(VK_RETURN))
 	{
-		GEngine->CreateLevel<UTestLevel>("1-1");
+		GEngine->CreateLevel<U1_1StageLevel>("1-1");
 		GEngine->ChangeLevel("1-1");
 	}
 }
