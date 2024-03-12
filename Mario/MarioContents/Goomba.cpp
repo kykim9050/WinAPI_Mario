@@ -131,8 +131,8 @@ void AGoomba::GetMonsterHitStart()
 
 void AGoomba::GetHitFromMonsterStart()
 {
-	GiveScore(GetPlayer(), 500);
-	ScoreImgOperator({ GetActorLocation().iX(), GetActorLocation().iY() - BodyCollision->GetTransform().GetScale().iY() }, 500);
+	GiveScore(GetPlayer(), GetMonsterHitScore());
+	ScoreImgOperator({ GetActorLocation().iX(), GetActorLocation().iY() - BodyCollision->GetTransform().GetScale().iY() }, GetMonsterHitScore());
 }
 
 void AGoomba::GetHitFromPlayerStart()
