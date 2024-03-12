@@ -3,6 +3,7 @@
 #include "PlayerMario.h"
 #include "MainPlayer.h"
 
+class  ATextUnit;
 // Ό³Έν :
 class AMonsterUnit : public UStateUnit, public UMainPlayer
 {
@@ -20,12 +21,13 @@ public:
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
-
 	void StateUpdate(float _DeltaTime) override;
 	void StateChange(EActorState _ActorState) override;
 	void CollisionStateChange(ECollisionState _CollisionState) override;
 	void DeadCollisionCheck() override;
-
+	void CalGravityVelocityVector(float _DeltaTime) override;
+	void CalHorizonVelocityVector(float _DeltaTime) override;
+	void ResultMovementUpdate(float _DeltaTime) override;
 
 	virtual void FirstInit(float _DeltaTime) {};
 	virtual void Idle(float _DeltaTime) {};
@@ -35,7 +37,6 @@ protected:
 	virtual void GetSecondHit(float _DeltaTime) {};
 	virtual void GetMonsterHit(float _DeltaTime) {};
 	virtual void FallDown(float _DeltaTime) {};
-
 	virtual void IdleStart() {};
 	virtual void MoveStart() {};
 	virtual void FireStart() {};
@@ -44,27 +45,24 @@ protected:
 	virtual void GetHitFromPlayerStart() {};
 	virtual void GetHitFromMonsterStart() {};
 	virtual void FallDownStart() {};
-
 	virtual void GetHitStart() {};
 	virtual void GetMonsterHitStart() {};
-
-	void CalGravityVelocityVector(float _DeltaTime) override;
-	void CalHorizonVelocityVector(float _DeltaTime) override;
-	void ResultMovementUpdate(float _DeltaTime) override;
-
-	FVector ActorMoveDir = FVector::Left;
-	UCollision* FootCollision = nullptr;
 
 	bool IsMonsterDead() const
 	{
 		return MonsterDead;
 	}
 
+	FVector ActorMoveDir = FVector::Left;
+	UCollision* FootCollision = nullptr;
+	ATextUnit* Score = nullptr;
+
 private:
-	bool MonsterDead = false;
 	void SetMonsterDead()
 	{
 		MonsterDead = true;
 	}
+
+	bool MonsterDead = false;
 };
 

@@ -136,7 +136,6 @@ protected:
 	FVector JumpVelocityVector = FVector::Zero;
 
 	UImageRenderer* Renderer = nullptr;
-	UImageRenderer* ScoreRenderer = nullptr;
 	UCollision* BodyCollision = nullptr;
 	std::string CurAnimationName = "None";
 
