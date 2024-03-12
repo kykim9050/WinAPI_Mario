@@ -200,17 +200,13 @@ public:
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
+	void CalGravityVelocityVector(float _DeltaTime) override;
 
 	void BlockBotHitStart();
 	void InvincibleStart();
 	void Invincible(float _DeltaTime);
-	
 	void BlockSideHitStart();
-
-	void CalGravityVelocityVector(float _DeltaTime) override;
-
 	void CollisionAction(float _DeltaTime);
-
 	void ChangingFireMarioStart();
 	void MarioGrowUpStart();
 	void ReachingEndFlagStart();
@@ -219,7 +215,6 @@ protected:
 	void ReachStageEnd(float _DeltaTime);
 	void ReachStageEndStart();
 	void BossStageClearStart();
-
 	void CeilingCheck();
 
 private:
