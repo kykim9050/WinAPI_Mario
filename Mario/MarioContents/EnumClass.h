@@ -100,6 +100,7 @@ enum class EActorType
 	Item,
 	Bullet,
 	AttackableTrap,
+	ScoreImg,
 };
 
 enum class EMarioType
