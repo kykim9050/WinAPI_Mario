@@ -68,21 +68,14 @@ void UContentsCore::BeginPlay()
 	UEngineResourcesManager::GetInst().CuttingImage("CastleItems.png", UInGameValue::CastleItemsImgXValue, UInGameValue::CastleItemsImgYValue);
 	
 
-	//CreateLevel<UTitleLevel>("TitleLevel");
-	//CreateLevel<UIntroLevel>("IntroLevel");
-	//CreateLevel<UEndingLevel>("EndingLevel");
-	
-	CreateLevel<U1_1StageLevel>("1-1");
-	ChangeLevel("1-1");
+	//CreateLevel<U1_1StageLevel>("1-1");
+	//ChangeLevel("1-1");
 
 	//CreateLevel<UTestLevel>("1-4");
 	//ChangeLevel("1-4");
 
-	//CreateLevel<U1_4StageLevel>("1-4");
-	//ChangeLevel("1-4");
-
-	//CreateLevel<UTitleLevel>("TitleLevel");
-	//ChangeLevel("TitleLevel");
+	CreateLevel<UTitleLevel>("TitleLevel");
+	ChangeLevel("TitleLevel");
 
 }
 
