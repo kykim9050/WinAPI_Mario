@@ -53,5 +53,8 @@ void ATextUnit::SetLocation(FVector _InitPos)
 
 void ATextUnit::MoveUpdate(float _Deltatime, float _Speed)
 {
-	AddActorLocation(FVector::Up * _Deltatime * _Speed);
+	if (true == IsRising())
+	{
+		AddActorLocation(FVector::Up * _Deltatime * _Speed);
+	}
 }

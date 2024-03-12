@@ -54,6 +54,7 @@ void AEndFlag::ReachingEndFlag(float _DeltaTime)
 	if (Renderer->GetTransform().iBottom() - 76 <= FlagRenderer->GetPosition().iY())
 	{
 		StateChange(EActorState::Idle);
+		Score->StopRising();
 		return;
 	}
 
@@ -65,8 +66,8 @@ void AEndFlag::ReachingEndFlagStart()
 	// 스코어 랜더러 관련 클래스 생성
 	Score = GetWorld()->SpawnActor<ATextUnit>(static_cast<int>(EActorType::ScoreImg));
 	// 스코어 랜더러가 시작될 위치 지정
-	Score->SetLocation({ GetActorLocation().iX() + 24, BodyCollision->GetTransform().iBottom() - 76});
+	Score->SetLocation({ GetActorLocation().iX() + 30, BodyCollision->GetTransform().iBottom() - 76});
 	// 스코어 랜더러에서 출력하고자 하는 점수 출력
 	Score->SetScoreAnimation(500);
-	Score->SetSpeed(300.0f);
+	Score->SetSpeed(400.0f);
 }

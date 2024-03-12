@@ -21,6 +21,10 @@ public:
 	{
 		RisingSpeed = _Speed;
 	}
+	void StopRising()
+	{
+		Rising = false;
+	}
 
 protected:
 	void BeginPlay() override;
@@ -32,8 +36,13 @@ private:
 	{
 		return RisingSpeed;
 	}
+	bool IsRising() const
+	{
+		return Rising;
+	}
 
 	UImageRenderer* TextRenderer = nullptr;
 	float RisingSpeed = 200.0f;
+	bool Rising = true;
 };
 
