@@ -33,8 +33,6 @@ void AEndFlag::BeginPlay()
 void AEndFlag::Tick(float _DeltaTime)
 {
 	AStructureUnit::Tick(_DeltaTime);
-
-		//FlagRenderer->AddPosition({ FVector::Down * _DeltaTime * 500.0f });
 }
 
 void AEndFlag::CollisionCheck()
@@ -52,10 +50,16 @@ void AEndFlag::CollisionCheck()
 
 void AEndFlag::ReachingEndFlag(float _DeltaTime)
 {
-	int a = 0;
+	if (Renderer->GetTransform().iBottom() - 76 <= FlagRenderer->GetPosition().iY())
+	{
+		StateChange(EActorState::Idle);
+		return;
+	}
+
+	FlagRenderer->AddPosition({ FVector::Down * _DeltaTime * 200.0f });
 }
 
 void AEndFlag::ReachingEndFlagStart()
 {
-	int a = 0;
+
 }
