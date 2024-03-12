@@ -292,11 +292,19 @@ void APlayerMario::CollisionStateCheck()
 	{
 		AteFireFlower = false;
 		
-		if (EMarioType::Fire == MarioType)
+		switch (MarioType)
 		{
-			return;
+		case EMarioType::Small:
+			StateChange(EActorState::MarioGrowUp);
+			break;
+		case EMarioType::Big:
+			StateChange(EActorState::FireMario);
+			break;
+		case EMarioType::Fire:
+		default:
+			break;
 		}
-		StateChange(EActorState::FireMario);
+		
 		return;
 	}
 
