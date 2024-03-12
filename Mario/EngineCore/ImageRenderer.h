@@ -7,6 +7,7 @@ enum class EImageSortType
 {
 	Center,
 	Left,
+	Right,
 };
 
 class UAnimationInfo
