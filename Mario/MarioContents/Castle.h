@@ -23,6 +23,6 @@ protected:
 
 
 private:
-
+	UImageRenderer* FlagRenderer = nullptr;
 };
 

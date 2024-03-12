@@ -356,6 +356,12 @@ public:
 	/// </summary>
 	static const int ScoreImgXValue;
 	static const int ScoreImgYValue;
+		
+	/// <summary>
+	/// flags.png 의 행, 열 수
+	/// </summary>
+	static const int flagsImgXValue;
+	static const int flagsImgYValue;
 
 protected:
 

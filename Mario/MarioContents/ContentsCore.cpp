@@ -67,6 +67,7 @@ void UContentsCore::BeginPlay()
 	UEngineResourcesManager::GetInst().CuttingImage("KoopaFire_Right.png", UInGameValue::KoopaFireImgXValue, UInGameValue::KoopaFireImgYValue);
 	UEngineResourcesManager::GetInst().CuttingImage("CastleItems.png", UInGameValue::CastleItemsImgXValue, UInGameValue::CastleItemsImgYValue);
 	UEngineResourcesManager::GetInst().CuttingImage("Score.png", UInGameValue::ScoreImgXValue, UInGameValue::ScoreImgYValue);
+	UEngineResourcesManager::GetInst().CuttingImage("flags.png", UInGameValue::flagsImgXValue, UInGameValue::flagsImgYValue);
 	
 
 	//CreateLevel<UTestLevel>("1-1");

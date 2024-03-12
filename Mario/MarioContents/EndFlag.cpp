@@ -15,12 +15,16 @@ void AEndFlag::BeginPlay()
 
 	Renderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::BackGrundStructure));
 	Renderer->SetImage("EndFlag.png");
-
 	FVector EndFlagScale = Renderer->GetImage()->GetScale();
-
 	Renderer->SetTransform({ {0,0}, {EndFlagScale.iX() * UInGameValue::WindowSizeMulValue, EndFlagScale.iY() * UInGameValue::WindowSizeMulValue} });
 
-	
+	FlagRenderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::BackGrundSubStructure));
+	FlagRenderer->SetImage("flags.png");
+	FVector FlagScale = FlagRenderer->GetImage()->GetScale();
+	FlagRenderer->SetTransform({ {ActorBaseFlagXPos, ActorBaseFlagYPos}, {FlagScale.iX() / UInGameValue::flagsImgXValue * UInGameValue::WindowSizeMulValue, FlagScale.iY() * UInGameValue::flagsImgYValue * UInGameValue::WindowSizeMulValue} });
+	FlagRenderer->CreateAnimation("Flag", "flags.png", 0, 0, 0.1f, false);
+	FlagRenderer->ChangeAnimation("Flag");
+
 	BodyCollision = CreateCollision(ECollisionOrder::EndFlagLine);
 	BodyCollision->SetTransform({ { 0,0 }, { UInGameValue::EndFlagCollisionXScale, UInGameValue::EndFlagCollisionYScale} });
 	BodyCollision->SetColType(ECollisionType::Rect);

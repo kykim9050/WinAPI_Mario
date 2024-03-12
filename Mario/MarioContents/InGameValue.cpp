@@ -171,3 +171,6 @@ const int UInGameValue::FireBallDia = 8 * UInGameValue::WindowSizeMulValue;
 
 const int UInGameValue::ScoreImgXValue = 5;
 const int UInGameValue::ScoreImgYValue = 3;
+
+const int UInGameValue::flagsImgXValue = 5;
+const int UInGameValue::flagsImgYValue = 1;

@@ -22,6 +22,8 @@ protected:
 	void CollisionCheck() override;
 
 private:
-
+	UImageRenderer* FlagRenderer = nullptr;
+	int ActorBaseFlagXPos = -9 * UInGameValue::WindowSizeMulValue;
+	int ActorBaseFlagYPos = -67 * UInGameValue::WindowSizeMulValue;
 };
 
