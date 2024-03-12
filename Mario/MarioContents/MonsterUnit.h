@@ -57,6 +57,11 @@ protected:
 	FVector ActorMoveDir = FVector::Left;
 	UCollision* FootCollision = nullptr;
 	ATextUnit* Score = nullptr;
+	
+	int GetMonsterHitScore() const
+	{
+		return MonsterHitScore;
+	}
 
 private:
 	void SetMonsterDead()
@@ -65,5 +70,6 @@ private:
 	}
 
 	bool MonsterDead = false;
+	int MonsterHitScore = 500;
 };
 

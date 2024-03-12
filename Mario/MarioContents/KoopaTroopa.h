@@ -44,6 +44,6 @@ protected:
 	void SetDirAfterCollision(const FVector _MyFVector, const FVector _OtherFVector);
 
 private:
-
+	int SecondHitScore = 500;
 };
 

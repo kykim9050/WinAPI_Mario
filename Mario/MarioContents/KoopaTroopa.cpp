@@ -126,18 +126,21 @@ void AKoopaTroopa::GetFirstHitStart()
 {
 	Renderer->ChangeAnimation("KoopaTroopa_OneHit");
 	ScoreImgOperator({ GetActorLocation().iX(), GetActorLocation().iY() - BodyCollision->GetTransform().GetScale().iY() }, GetScore());
+	GiveScore(GetPlayer());
 }
 
 void AKoopaTroopa::GetSecondHitStart()
 {
 	SetDirAfterCollision(GetActorLocation(), APlayerMario::GetMainPlayer()->GetActorLocation());
 	Renderer->ChangeAnimation("KoopaTroopa_TwoHit");
-	ScoreImgOperator({ GetActorLocation().iX(), GetActorLocation().iY() - BodyCollision->GetTransform().GetScale().iY() }, 500);
+	ScoreImgOperator({ GetActorLocation().iX(), GetActorLocation().iY() - BodyCollision->GetTransform().GetScale().iY() }, SecondHitScore);
+	GiveScore(GetPlayer(), SecondHitScore);
 }
 
 void AKoopaTroopa::GetHitFromMonsterStart()
 {
-	ScoreImgOperator({ GetActorLocation().iX(), GetActorLocation().iY() - BodyCollision->GetTransform().GetScale().iY() }, 500);
+	ScoreImgOperator({ GetActorLocation().iX(), GetActorLocation().iY() - BodyCollision->GetTransform().GetScale().iY() }, GetMonsterHitScore());
+	GiveScore(GetPlayer(), GetMonsterHitScore());
 }
 
 void AKoopaTroopa::SetDirAfterCollision(const FVector _MyFVector, const FVector _OtherFVector)
@@ -218,15 +221,12 @@ void AKoopaTroopa::CollisionCheck()
 		return;
 	}
 
-	//UEngineDebug::OutPutDebugText(std::to_string(Life));
 	CollisionStateChange(ECollisionState::None);
 }
 
 
 void AKoopaTroopa::GetHitStart()
 {
-	//UEngineDebug::OutPutDebugText("GetHitStart");
-
 	switch (Life)
 	{
 	case 3: // Life가 3인데 플레이어한테 머리 한방 맞았을 때
@@ -239,7 +239,6 @@ void AKoopaTroopa::GetHitStart()
 	{
 		// GetSecondHit상태에서는 다른 몬스터, 플레이어 전부다 죽일 수 있음 (다른 몬스터들은 Koopatroopa의 충돌을 체크해야 함)
 		StateChange(EActorState::GetSecondHit);
-
 		// 다른 몬스터들도 죽일 수 있도록 Order를 ECollisionOrder::AttackableMonster로 변경
 		BodyCollision->SetOrder(static_cast<int>(ECollisionOrder::AttackableMonster));
 		--Life;
