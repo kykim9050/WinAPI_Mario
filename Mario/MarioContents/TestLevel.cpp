@@ -55,9 +55,16 @@ void UTestLevel::BeginPlay()
 	AKoopaTroopa* MonsterTroopa3 = SpawnActor<AKoopaTroopa>(static_cast<int>(EActorType::Monster));
 	AKoopaTroopa* MonsterTroopa4 = SpawnActor<AKoopaTroopa>(static_cast<int>(EActorType::Monster));
 	MonsterTroopa1->SetActorLocation({ 500, 580 });
-	MonsterTroopa2->SetActorLocation({ 800, 580 });
-	MonsterTroopa3->SetActorLocation({ 900, 580 });
-	MonsterTroopa4->SetActorLocation({ 1000, 580 });
+	//MonsterTroopa2->SetActorLocation({ 800, 580 });
+	//MonsterTroopa3->SetActorLocation({ 900, 580 });
+	//MonsterTroopa4->SetActorLocation({ 1000, 580 });
+
+	AGoomba* Goomba1 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
+	AGoomba* Goomba2 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
+	AGoomba* Goomba3 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
+	Goomba1->SetActorLocation({ 800, 580 });
+	Goomba2->SetActorLocation({ 900, 580 });
+	Goomba3->SetActorLocation({ 1000, 580 });
 }
 
 void UTestLevel::Tick(float _DeltaTime)
