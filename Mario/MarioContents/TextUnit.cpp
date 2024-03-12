@@ -34,6 +34,8 @@ void ATextUnit::BeginPlay()
 void ATextUnit::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
+
+	AddActorLocation(FVector::Up * _DeltaTime * 200.0f);
 }
 
 void ATextUnit::SetScoreAnimation(int _ScoreValue)
