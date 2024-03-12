@@ -27,7 +27,7 @@ void USignalCollision::CollisionCheck()
 {
 	std::vector<UCollision*> Result = std::vector<UCollision*>();
 
-	if (nullptr != BodyCollision && true == BodyCollision->CollisionCheck(ECollisionOrder::Player, Result))
+	if (nullptr != BodyCollision && true == BodyCollision->CollisionCheck(ECollisionOrder::PlayerFootCollision, Result))
 	{
 		BodyCollision->ActiveOff();
 		APlayerMario::ReachToBossRoom();
