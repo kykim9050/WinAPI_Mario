@@ -17,7 +17,7 @@ void ATextUnit::BeginPlay()
 	TextRenderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::Score));
 	TextRenderer->SetImage("Score.png");
 	FVector TextScale = TextRenderer->GetImage()->GetScale();
-	TextRenderer->SetScale({ TextScale.iX() / UInGameValue::ScoreImgXValue * UInGameValue::WindowSizeMulValue, TextScale.iY() / UInGameValue::ScoreImgYValue * UInGameValue::WindowSizeMulValue });
+	TextRenderer->SetTransform({ { 0,0 } ,{ TextScale.iX() / UInGameValue::ScoreImgXValue * UInGameValue::WindowSizeMulValue, TextScale.iY() / UInGameValue::ScoreImgYValue * UInGameValue::WindowSizeMulValue } });
 	TextRenderer->CreateAnimation("100", "Score.png", 0, 0, 0.1f, false);
 	TextRenderer->CreateAnimation("200", "Score.png", 1, 1, 0.1f, false);
 	TextRenderer->CreateAnimation("400", "Score.png", 2, 2, 0.1f, false);
@@ -36,3 +36,14 @@ void ATextUnit::Tick(float _DeltaTime)
 	AActor::Tick(_DeltaTime);
 }
 
+void ATextUnit::SetScoreAnimation(int _ScoreValue)
+{
+	std::string ScoreStr = std::to_string(_ScoreValue);
+
+	TextRenderer->ChangeAnimation(ScoreStr);
+}
+
+void ATextUnit::SetLocation(FVector _InitPos)
+{
+	TextRenderer->SetPosition(_InitPos);
+}

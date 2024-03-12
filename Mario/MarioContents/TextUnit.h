@@ -15,9 +15,13 @@ public:
 	ATextUnit& operator=(const ATextUnit& _Other) = delete;
 	ATextUnit& operator=(ATextUnit&& _Other) noexcept = delete;
 
+	void SetScoreAnimation(int _ScoreValue);
+	void SetLocation(FVector _InitPos);
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
+
 
 private:
 	UImageRenderer* TextRenderer = nullptr;
