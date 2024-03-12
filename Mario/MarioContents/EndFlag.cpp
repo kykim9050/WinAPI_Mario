@@ -68,4 +68,5 @@ void AEndFlag::ReachingEndFlagStart()
 	Score->SetLocation({ GetActorLocation().iX() + 24, BodyCollision->GetTransform().iBottom() - 76});
 	// 스코어 랜더러에서 출력하고자 하는 점수 출력
 	Score->SetScoreAnimation(500);
+	Score->SetSpeed(300.0f);
 }

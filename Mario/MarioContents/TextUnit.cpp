@@ -35,7 +35,8 @@ void ATextUnit::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
 
-	AddActorLocation(FVector::Up * _DeltaTime * 200.0f);
+	MoveUpdate(_DeltaTime, GetRisingSpeed());
+	
 }
 
 void ATextUnit::SetScoreAnimation(int _ScoreValue)
@@ -48,4 +49,9 @@ void ATextUnit::SetScoreAnimation(int _ScoreValue)
 void ATextUnit::SetLocation(FVector _InitPos)
 {
 	TextRenderer->SetPosition(_InitPos);
+}
+
+void ATextUnit::MoveUpdate(float _Deltatime, float _Speed)
+{
+	AddActorLocation(FVector::Up * _Deltatime * _Speed);
 }
