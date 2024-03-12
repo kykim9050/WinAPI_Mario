@@ -1,6 +1,7 @@
 #pragma once
 #include "StructureUnit.h"
 
+class ATextUnit;
 // Ό³Έν :
 class AEndFlag : public AStructureUnit
 {
@@ -28,5 +29,7 @@ private:
 	UImageRenderer* FlagRenderer = nullptr;
 	int ActorBaseFlagXPos = -9 * UInGameValue::WindowSizeMulValue;
 	int ActorBaseFlagYPos = -67 * UInGameValue::WindowSizeMulValue;
+	ATextUnit* Score = nullptr;
+
 };
 
