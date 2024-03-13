@@ -785,7 +785,7 @@ void APlayerMario::ReachingEndFlag(float _DeltaTime)
 			// 지정 시간이 지나면 Player 반대편으로 도는 애니메이션 취하기
 			SetActorLocation({ GetActorLocation().X + BodyCollision->GetTransform().GetScale().X + static_cast<float>(UInGameValue::EndFlagCollisionXScale), GetActorLocation().Y });
 			Renderer->ChangeAnimation(ChangeAnimationName("StopClimbDownAndTurnRight", true));
-			DelayTime = 1.0f;
+			DelayTime = 0.5f;
 			ReachingEndStep = 1;
 			break;
 		}
@@ -808,6 +808,8 @@ void APlayerMario::ReachingEndFlag(float _DeltaTime)
 		
 		if (0.0f >= DelayTime)
 		{
+			USoundManager::GetInst().EffectSoundPlay("StageClear.wav");
+
 			// 깃발을 잡고 내려간 후에 걸어서 성문 입구로 걸어가기 시작 (자동 - 조작 안먹힘)
 			Renderer->ChangeAnimation(ChangeAnimationName("Move_Right", true));
 			SetJumpZero();
