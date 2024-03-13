@@ -2,6 +2,11 @@
 #include <string>
 #include <EnginePlatform/EngineSound.h>
 
+//enum class EEffectSound
+//{
+//
+//};
+
 // Ό³Έν :
 class USoundManager
 {
@@ -20,6 +25,7 @@ public:
 
 	void BGMSoundPlay(const std::string_view _StageInfo);
 	void BGMSoundStop();
+	void EffectSoundPlay(const std::string_view _EffectSoundName);
 
 protected:
 
@@ -28,5 +34,6 @@ private:
 	~USoundManager();
 
 	UEngineSoundPlayer StageBGM;
+	UEngineSoundPlayer EffectSound;
 };
 
