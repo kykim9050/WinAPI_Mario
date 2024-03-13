@@ -9,7 +9,7 @@
 #include <EngineCore/EngineResourcesManager.h>
 #include "InGameValue.h"
 #include "PlayerInfoManager.h"
-
+#include <EnginePlatform\EngineSound.h>
 
 
 UContentsCore::UContentsCore()
@@ -26,18 +26,15 @@ void UContentsCore::BeginPlay()
 {
 	UEngineCore::BeginPlay();
 
-
 	// 마리오용 윈도우 크기 설정
 	MainWindow.SetWindowScale({ UInGameValue::MainWindowXScale * UInGameValue::WindowSizeMulValue, UInGameValue::MainWindowYScale * UInGameValue::WindowSizeMulValue });
 
-
 	UEngineDirectory ResourcesDir = UEngineDirectory();
-
 	ResourcesDir.MoveToSearchChild("Resources");
 
-	std::list<UEngineFile> ResourcesList = ResourcesDir.AllFile({ ".png" }, true);
 
-	for (UEngineFile& CurFIle : ResourcesList)
+	std::list<UEngineFile> ImageList = ResourcesDir.AllFile({ ".png" }, true);
+	for (UEngineFile& CurFIle : ImageList)
 	{
 		UEngineResourcesManager::GetInst().LoadImg(CurFIle.GetFullPath());
 	}
@@ -69,6 +66,14 @@ void UContentsCore::BeginPlay()
 	UEngineResourcesManager::GetInst().CuttingImage("Score.png", UInGameValue::ScoreImgXValue, UInGameValue::ScoreImgYValue);
 	UEngineResourcesManager::GetInst().CuttingImage("flags.png", UInGameValue::flagsImgXValue, UInGameValue::flagsImgYValue);
 	
+
+	std::list<UEngineFile> SoundList = ResourcesDir.AllFile({ ".wav", ".mp3" }, true);
+	for (UEngineFile& File : SoundList)
+	{
+		UEngineSound::Load(File.GetFullPath());
+	}
+
+
 
 	//CreateLevel<UTestLevel>("1-1");
 	//ChangeLevel("1-1");
