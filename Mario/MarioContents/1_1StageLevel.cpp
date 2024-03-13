@@ -38,7 +38,6 @@ void U1_1StageLevel::BeginPlay()
 	FVector ColMapImageFVector = ColMap->GetColMapRenderer()->GetImage()->GetScale();
 	ColMap->GetColMapRenderer()->SetTransform({ { ColMapImageFVector.ihX(), ColMapImageFVector.ihY()}, {ColMapImageFVector} });
 
-
 	AEndFlag* EndFlag = SpawnActor<AEndFlag>(static_cast<int>(EActorType::Structure));
 	ACastle* EndPointCastle = SpawnActor<ACastle>(static_cast<int>(EActorType::Structure));
 	EndPointCastle->SetActorLocation({ UInGameValue::EndPointCastleXPos, UInGameValue::EndPointCastleYPos });
@@ -182,6 +181,8 @@ void U1_1StageLevel::BeginPlay()
 
 	MonsterTroopa1->SetActorLocation({ 5140, MonsterInitHeight });
 
+	BGMPlayer = UEngineSound::SoundPlay("1_1StageLevel.mp3");
+	//BGMPlayer.Off();
 }
 
 void U1_1StageLevel::Tick(float _DeltaTime)
