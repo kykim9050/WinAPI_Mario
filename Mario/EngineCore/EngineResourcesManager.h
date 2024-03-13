@@ -28,6 +28,8 @@ public:
 
 	void UnloadImg(std::string_view _Name);
 
+	bool IsImage(std::string_view _Name);
+
 	UWindowImage* FindImg(std::string_view _Name);
 
 	UWindowImage* LoadFolder(std::string_view _Path);
