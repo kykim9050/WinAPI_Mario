@@ -853,6 +853,8 @@ void APlayerMario::BossStageClear(float _DeltaTime)
 
 		if (0.0f >= DelayTime)
 		{
+			USoundManager::GetInst().EffectSoundPlay("ClearBoss.wav");
+
 			DelayTime = 0.5f;
 			BossStageClearStep = 1;
 			SetJumpZero();
