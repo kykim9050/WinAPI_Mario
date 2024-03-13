@@ -88,6 +88,7 @@ void ACastleBridge::FallDown(float _DeltaTime)
 				MsgBoxAssert("BridgeChainRenderer가 nullptr 입니다.");
 				break;
 			}
+			USoundManager::GetInst().EffectSoundPlay("KoopaFall.mp3");
 
 			BridgeChainRenderer->Destroy();
 			BridgeChainRenderer = nullptr;
@@ -133,6 +134,8 @@ void ACastleBridge::FallDown(float _DeltaTime)
 	}
 	case 2:
 	{
+		USoundManager::GetInst().BGMSoundStop();
+
 		EndStep = 3;
 		SetBridgeDissapear();
 		break;
