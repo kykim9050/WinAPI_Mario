@@ -36,6 +36,7 @@ protected:
 	void CheckTimeStop();
 	void CheckConvertTimeToScore();
 	void CalTimeToScore(float _DeltaTime);
+	void CalTimeToScoreSound(float _DeltaTime);
 
 private:
 	UImageRenderer* PlayerUIRenderer = nullptr;
@@ -48,6 +49,7 @@ private:
 	int TimeCount = 400;
 	float TimeInterval = 1.0f;
 	float TTSConvertInterval = 0.01f;
+	float TTSConvertSoundInterval = 0.05f;
 	bool TimeChange = false;
 	int PlayerScore = 0;
 	int PlayerCoin = 0;
