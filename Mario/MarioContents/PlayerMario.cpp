@@ -376,6 +376,18 @@ void APlayerMario::DeadStart()
 
 void APlayerMario::JumpStart()
 {
+	switch (MarioType)
+	{
+	case EMarioType::Small:
+		USoundManager::GetInst().EffectSoundPlay("SmallMarioJump.wav");
+		break;
+	case EMarioType::Big:
+	case EMarioType::Fire:
+		USoundManager::GetInst().EffectSoundPlay("BigMarioJump.wav");
+		break;
+	default:
+		break;
+	}
 	AddActorLocation(FVector::Up * 4);
 	SetGravityRatio(0.0f);
 	IsOnTheBlock = false;
