@@ -957,6 +957,8 @@ void APlayerMario::ChangingFireMarioStart()
 
 void APlayerMario::ReachingEndFlagStart()
 {
+	USoundManager::GetInst().BGMSoundStop();
+	USoundManager::GetInst().EffectSoundPlay("FlagTouch.wav");
 	Renderer->ChangeAnimation(ChangeAnimationName("ClimbDown", true));
 }
 
