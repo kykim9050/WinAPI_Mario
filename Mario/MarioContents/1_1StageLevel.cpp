@@ -15,6 +15,7 @@
 #include "BackGroundMap.h"
 #include <EngineCore/EngineCore.h>
 #include "1_4StageLevel.h"
+#include "SoundManager.h"
 
 U1_1StageLevel::U1_1StageLevel()
 {
@@ -180,9 +181,6 @@ void U1_1StageLevel::BeginPlay()
 	MonsterGoomba15->SetActorLocation({ 8420, MonsterInitHeight });
 
 	MonsterTroopa1->SetActorLocation({ 5140, MonsterInitHeight });
-
-	BGMPlayer = UEngineSound::SoundPlay("1_1StageLevel.mp3");
-	//BGMPlayer.Off();
 }
 
 void U1_1StageLevel::Tick(float _DeltaTime)
