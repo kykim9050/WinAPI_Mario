@@ -875,7 +875,7 @@ void APlayerMario::BossStageClear(float _DeltaTime)
 			break;
 		}
 
-		HorizonVelocityVector = FVector::Right * 150.0f;
+		HorizonVelocityVector = FVector::Right * 120.0f;
 		CameraPosUpdate(HorizonVelocityVector * _DeltaTime, true);
 		CalGravityVelocityVector(_DeltaTime);
 		GroundUp();
@@ -887,12 +887,13 @@ void APlayerMario::BossStageClear(float _DeltaTime)
 	{
 		if (GetWorld()->GetCameraPos().X >= UContentsFunction::GetCollisionMapImg()->GetScale().X - UInGameValue::ResultMainWindowXScale)
 		{
+			USoundManager::GetInst().EffectSoundPlay("SavePrincess.mp3");
 			BossStageClearStep = 3;
 			APrincess::PrintEndingMsg();
 			return;
 		}
 		// 카메라위치가 맵 끝까지 갈때까지 기다리기
-		HorizonVelocityVector = FVector::Right * 150.0f;
+		HorizonVelocityVector = FVector::Right * 120.0f;
 		CameraPosUpdate(HorizonVelocityVector * _DeltaTime, true);
 		break;
 	}
