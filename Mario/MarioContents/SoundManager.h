@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <EnginePlatform/EngineSound.h>
 
 // Ό³Έν :
 class USoundManager
@@ -18,11 +19,14 @@ public:
 	}
 
 	void SoundPlay(const std::string_view _SoundFileName);
+	void SoundStop(const std::string_view _SoundFileName);
 
 protected:
 
 private:
 	USoundManager();
 	~USoundManager();
+
+	UEngineSoundPlayer Player;
 };
 

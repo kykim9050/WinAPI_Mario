@@ -55,6 +55,7 @@ void AEndFlag::CollisionCheck()
 			SetScore(400);
 		}
 
+		USoundManager::GetInst().SoundStop("1_1StageLevel.mp3");
 		BodyCollision->ActiveOff();
 		GetPlayer()->ReachToStageEnd();
 		StateChange(EActorState::ReachingEndFlag);

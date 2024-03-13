@@ -12,5 +12,10 @@ USoundManager::~USoundManager()
 
 void USoundManager::SoundPlay(const std::string_view _SoundFileName)
 {
-	UEngineSoundPlayer Player = UEngineSound::SoundPlay(_SoundFileName);
+	Player = UEngineSound::SoundPlay(_SoundFileName);
+}
+
+void USoundManager::SoundStop(const std::string_view _SoundFileName)
+{
+	Player.Off();
 }
