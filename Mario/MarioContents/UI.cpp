@@ -142,6 +142,7 @@ void AUI::Tick(float _DeltaTime)
 	if (true == ConvertTimeToScore)
 	{
 		CalTimeToScore(_DeltaTime);
+		CalTimeToScoreSound(_DeltaTime);
 	}
 
 	TimeRenderUpdate();
@@ -278,5 +279,16 @@ void AUI::CalTimeToScore(float _DeltaTime)
 		TTSConvertInterval = 0.01f + TTSConvertInterval;
 		TimeChange = true;
 		return;
+	}
+}
+
+void AUI::CalTimeToScoreSound(float _DeltaTime)
+{
+	TTSConvertSoundInterval -= _DeltaTime;
+
+	if (0.0f >= TTSConvertSoundInterval)
+	{
+		TTSConvertSoundInterval = 0.05f + TTSConvertSoundInterval;
+		USoundManager::GetInst().EffectSoundPlay("GetCoin.wav");
 	}
 }
