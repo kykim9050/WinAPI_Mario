@@ -27,13 +27,14 @@ void ACastle::BeginPlay()
 	FlagRenderer->ChangeAnimation("CastleFlag");
 
 	BodyCollision = CreateCollision(ECollisionOrder::CastleGate);
-	BodyCollision->SetTransform({ { 16,0 }, { UInGameValue::CastleGateCollisionXScale, UInGameValue::CastleGateCollisionYScale} });
+	BodyCollision->SetTransform({ { ActorBaseGateColXPos, 0 }, { UInGameValue::CastleGateCollisionXScale, UInGameValue::CastleGateCollisionYScale} });
 	BodyCollision->SetColType(ECollisionType::Rect);
 }
 
 void ACastle::Tick(float _DeltaTime)
 {
 	AStructureUnit::Tick(_DeltaTime);
+	//FlagRisingCheck();
 }
 
 void ACastle::CollisionCheck()
@@ -46,6 +47,18 @@ void ACastle::CollisionCheck()
 	{
 		BodyCollision->ActiveOff();
 		GetPlayer()->ReachToCastleGate();
+		StateChange(EActorState::Appear);
 		return;
 	}
+}
+
+void ACastle::Appear(float _DeltaTime)
+{
+	if (FlagRenderer->GetPosition().Y < FlagRisingCutline)
+	{
+		StateChange(EActorState::Idle);
+		return;
+	}
+
+	FlagRenderer->AddPosition({ FVector::Up * _DeltaTime * 50.0f });
 }

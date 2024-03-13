@@ -25,9 +25,10 @@ protected:
 	virtual void CollisionCheck() {};
 	virtual void FallDown(float _DeltaTime) {};
 	virtual void ReachingEndFlag(float _DeltaTime) {};
+	virtual void Appear(float _DeltaTime) {};
 	virtual void FallDownStart() {};
 	virtual void ReachingEndFlagStart() {};
-
+	virtual void AppearStart() {};
 
 private:
 

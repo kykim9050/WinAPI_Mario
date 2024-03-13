@@ -20,10 +20,11 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 	void CollisionCheck() override;
-
+	void Appear(float _DeltaTime) override;
 
 private:
 	UImageRenderer* FlagRenderer = nullptr;
+	int ActorBaseGateColXPos = -16;
 	int ActorBaseCastleFlagXPos = 0;
 	int ActorBaseCastleFlagYPos = -20 * UInGameValue::WindowSizeMulValue;
 	int FlagRisingCutline = -48 * UInGameValue::WindowSizeMulValue;
