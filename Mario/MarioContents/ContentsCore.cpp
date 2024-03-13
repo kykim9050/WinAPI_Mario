@@ -77,8 +77,12 @@ void UContentsCore::BeginPlay()
 	//CreateLevel<UTestLevel>("1-1");
 	//ChangeLevel("1-1");
 
-	CreateLevel<UTitleLevel>("TitleLevel");
-	ChangeLevel("TitleLevel");
+	//CreateLevel<UTitleLevel>("TitleLevel");
+	//ChangeLevel("TitleLevel");
+	
+	CreateLevel<U1_4StageLevel>("1-4");
+	ChangeLevel("1-4");
+
 
 }
 

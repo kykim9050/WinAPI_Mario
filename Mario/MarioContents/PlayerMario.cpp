@@ -1195,6 +1195,7 @@ void APlayerMario::CeilingCheck()
 
 	if (UInGameValue::CollisionColor == Color)
 	{
+		USoundManager::GetInst().EffectSoundPlay("BlockBottomHit.wav");
 		SetJumpZero();
 		SetGravityRatio(1.0f);
 	}
