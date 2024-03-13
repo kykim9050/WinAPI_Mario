@@ -1,9 +1,15 @@
 #pragma once
+#include <string>
 
 // Ό³Έν :
 class USoundManager
 {
 public:
+	// delete Function
+	USoundManager(const USoundManager& _Other) = delete;
+	USoundManager(USoundManager&& _Other) noexcept = delete;
+	USoundManager& operator=(const USoundManager& _Other) = delete;
+	USoundManager& operator=(USoundManager&& _Other) noexcept = delete;
 	
 	static USoundManager& GetInst()
 	{
@@ -11,11 +17,7 @@ public:
 		return Inst;
 	}
 
-	// delete Function
-	USoundManager(const USoundManager& _Other) = delete;
-	USoundManager(USoundManager&& _Other) noexcept = delete;
-	USoundManager& operator=(const USoundManager& _Other) = delete;
-	USoundManager& operator=(USoundManager&& _Other) noexcept = delete;
+	void SoundPlay(const std::string_view _SoundFileName);
 
 protected:
 

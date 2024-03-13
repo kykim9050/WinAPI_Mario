@@ -68,11 +68,6 @@ void UContentsCore::BeginPlay()
 	UEngineResourcesManager::GetInst().CuttingImage("flags.png", UInGameValue::flagsImgXValue, UInGameValue::flagsImgYValue);
 	
 
-	USoundManager::GetInst();
-	USoundManager::GetInst();
-	USoundManager::GetInst();
-	USoundManager::GetInst();
-
 	std::list<UEngineFile> SoundList = ResourcesDir.AllFile({ ".wav", ".mp3" }, true);
 	for (UEngineFile& File : SoundList)
 	{
