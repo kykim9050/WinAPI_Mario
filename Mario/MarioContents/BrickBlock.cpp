@@ -115,6 +115,8 @@ void ABrickBlock::DebrisStart()
 {
 	ABlockUnit::DebrisStart();
 
+	USoundManager::GetInst().EffectSoundPlay("BrickBreak.wav");
+
 	TopCollision->ActiveOff();
 	SideCollision->ActiveOff();
 	BodyCollision->ActiveOff();
