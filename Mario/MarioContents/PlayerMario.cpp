@@ -359,6 +359,9 @@ void APlayerMario::CollisionJumpStart()
 
 void APlayerMario::DeadStart()
 {
+	USoundManager::GetInst().BGMSoundStop();
+	USoundManager::GetInst().EffectSoundPlay("MarioDie.wav");
+
 	BodyCollision->ActiveOff();
 	FootCollision->ActiveOff();
 	IsInvincible = true;
