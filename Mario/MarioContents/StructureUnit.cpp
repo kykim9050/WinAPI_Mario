@@ -32,6 +32,9 @@ void AStructureUnit::StateUpdate(float _DeltaTime)
 	case EActorState::ReachingEndFlag:
 		ReachingEndFlag(_DeltaTime);
 		break;
+	case EActorState::Appear:
+		Appear(_DeltaTime);
+		break;
 	default:
 		break;
 	}
@@ -49,6 +52,9 @@ void AStructureUnit::StateChange(EActorState _ActorState)
 			break;
 		case EActorState::ReachingEndFlag:
 			ReachingEndFlagStart();
+			break;
+		case EActorState::Appear:
+			AppearStart();
 			break;
 		default:
 			break;
