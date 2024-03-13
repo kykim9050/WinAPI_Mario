@@ -131,6 +131,7 @@ void AKoopaTroopa::GetFirstHitStart()
 
 void AKoopaTroopa::GetSecondHitStart()
 {
+	USoundManager::GetInst().EffectSoundPlay("CrouchMoveAttack.wav");
 	SetDirAfterCollision(GetActorLocation(), APlayerMario::GetMainPlayer()->GetActorLocation());
 	Renderer->ChangeAnimation("KoopaTroopa_TwoHit");
 	ScoreImgOperator({ GetActorLocation().iX(), GetActorLocation().iY() - BodyCollision->GetTransform().GetScale().iY() }, SecondHitScore);
