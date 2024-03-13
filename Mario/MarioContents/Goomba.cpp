@@ -120,6 +120,7 @@ void AGoomba::GetMonsterHit(float _DeltaTime)
 
 void AGoomba::GetHitStart()
 {
+	USoundManager::GetInst().EffectSoundPlay("Stomp.wav");
 	StateChange(EActorState::GetHit);
 }
 
