@@ -737,7 +737,10 @@ void APlayerMario::Dead(float _DeltaTime)
 	case 2:
 	{
 		++DeadStep;
-		UPlayerInfoManager::GetInst().SetPrevStageLevel(GetWorld()->GetName());
+
+		std::string LevelName = GetWorld()->GetName();
+		UPlayerInfoManager::GetInst().SetPrevStageLevel(LevelName);
+		GEngine->DestroyLevel(LevelName);
 		GEngine->CreateLevel<UChangingLevel>("PlayerDead");
 		GEngine->ChangeLevel("PlayerDead");
 		break;
