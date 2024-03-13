@@ -939,7 +939,16 @@ void APlayerMario::FallDown(float _DeltaTime)
 	if (0.0f >= FallingTime)
 	{
 		FallingTime = 4.0f;
-		int a = 0;
+		SetGravityZero();
+		
+		UPlayerInfoManager::GetInst().AddPlayerLife(-1);
+		
+		std::string LevelName = GetWorld()->GetName();
+		UPlayerInfoManager::GetInst().SetPrevStageLevel(LevelName);
+		GEngine->DestroyLevel(LevelName);
+		GEngine->CreateLevel<UChangingLevel>("PlayerDead");
+		GEngine->ChangeLevel("PlayerDead");
+		return;
 	}
 
 	ResultMovementUpdate(_DeltaTime);
