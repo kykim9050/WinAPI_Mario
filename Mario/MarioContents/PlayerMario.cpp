@@ -250,6 +250,9 @@ void APlayerMario::StateUpdate(float _DeltaTime)
 	case EActorState::ReachStageEnd:
 		ReachStageEnd(_DeltaTime);
 		break;
+	case EActorState::FallDown:
+		FallDown(_DeltaTime);
+		break;
 	default:
 		break;
 	}
@@ -925,6 +928,21 @@ void APlayerMario::ReachStageEnd(float _DeltaTime)
 			GEngine->ChangeLevel("NextLevel");
 		}
 	}
+}
+
+void APlayerMario::FallDown(float _DeltaTime)
+{
+	static float FallingTime = 4.0f;
+
+	FallingTime -= _DeltaTime;
+
+	if (0.0f >= FallingTime)
+	{
+		FallingTime = 4.0f;
+		int a = 0;
+	}
+
+	ResultMovementUpdate(_DeltaTime);
 }
 
 

@@ -209,6 +209,7 @@ protected:
 	void BossStageClearStart();
 	void CeilingCheck();
 	void FallDownStart();
+	void FallDown(float _DeltaTime);
 
 private:
 	void SetPlayerFallDown()
