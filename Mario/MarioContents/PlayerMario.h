@@ -208,6 +208,7 @@ protected:
 	void ReachStageEndStart();
 	void BossStageClearStart();
 	void CeilingCheck();
+	void FallDownStart();
 
 private:
 	void SetPlayerFallDown()

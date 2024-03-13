@@ -174,6 +174,9 @@ void APlayerMario::StateChange(EActorState _PlayerState)
 		case EActorState::BossStageClear:
 			BossStageClearStart();
 			break;
+		case EActorState::FallDown:
+			FallDownStart();
+			break;
 		default:
 			break;
 		}
@@ -1005,6 +1008,12 @@ void APlayerMario::ReachStageEndStart()
 void APlayerMario::BossStageClearStart()
 {
 	GetWorld()->SetTimeScale(EActorType::Player, 1.0f);
+}
+
+void APlayerMario::FallDownStart()
+{
+	USoundManager::GetInst().BGMSoundStop();
+	USoundManager::GetInst().EffectSoundPlay("MarioDie.wav");
 }
 
 void APlayerMario::BlockBotHitStart()
