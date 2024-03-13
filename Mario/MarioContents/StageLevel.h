@@ -1,7 +1,7 @@
 #pragma once
 #include "DebugLevel.h"
 #include "CoinBlock.h"
-
+#include <EnginePlatform\EngineSound.h>
 
 class ABackGroundMap;
 class UCollisionMap;
@@ -55,7 +55,7 @@ protected:
 	UCollisionMap* ColMap = nullptr;
 	APlayerMario* Mario = nullptr;
 	AUI* PlayerUI = nullptr;
-
+	UEngineSoundPlayer BGMPlayer;
 
 private:
 };
