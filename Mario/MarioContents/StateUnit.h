@@ -4,6 +4,7 @@
 #include "ContentsFunction.h"
 #include "InGameValue.h"
 #include "PlayerInfoManager.h"
+#include "SoundManager.h"
 
 // Ό³Έν :
 class UStateUnit : public AActor
