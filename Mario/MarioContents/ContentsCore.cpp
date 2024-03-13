@@ -10,6 +10,7 @@
 #include "InGameValue.h"
 #include "PlayerInfoManager.h"
 #include <EnginePlatform\EngineSound.h>
+#include "SoundManager.h"
 
 
 UContentsCore::UContentsCore()
@@ -67,12 +68,16 @@ void UContentsCore::BeginPlay()
 	UEngineResourcesManager::GetInst().CuttingImage("flags.png", UInGameValue::flagsImgXValue, UInGameValue::flagsImgYValue);
 	
 
+	USoundManager::GetInst();
+	USoundManager::GetInst();
+	USoundManager::GetInst();
+	USoundManager::GetInst();
+
 	std::list<UEngineFile> SoundList = ResourcesDir.AllFile({ ".wav", ".mp3" }, true);
 	for (UEngineFile& File : SoundList)
 	{
 		UEngineSound::Load(File.GetFullPath());
 	}
-
 
 
 	//CreateLevel<UTestLevel>("1-1");

@@ -146,6 +146,9 @@
     <ClInclude Include="TextUnit.h">
       <Filter>Object\Text</Filter>
     </ClInclude>
+    <ClInclude Include="SoundManager.h">
+      <Filter>ContentsHelper</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp" />
@@ -289,6 +292,9 @@
     </ClCompile>
     <ClCompile Include="TextUnit.cpp">
       <Filter>Object\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundManager.cpp">
+      <Filter>ContentsHelper</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
