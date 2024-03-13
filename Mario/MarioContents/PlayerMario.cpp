@@ -312,6 +312,7 @@ void APlayerMario::CollisionStateCheck()
 
 	if (true == BlockBottomHit)
 	{
+		USoundManager::GetInst().EffectSoundPlay("BlockBottomHit.wav");
 		BlockBottomHit = false;
 		SetJumpZero();
 		SetGravityRatio(1.0f);
