@@ -66,6 +66,7 @@ void ABlockCoin::AppearStart()
 {
 	AItemUnit::AppearStart();
 
+	USoundManager::GetInst().EffectSoundPlay("GetCoin.wav");
 	GiveScore(GetPlayer());
 	GetPlayer()->GetCoin();
 	JumpVelocityVector = FVector::Up * 600.0f;
