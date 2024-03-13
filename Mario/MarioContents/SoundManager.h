@@ -18,8 +18,8 @@ public:
 		return Inst;
 	}
 
-	void SoundPlay(const std::string_view _SoundFileName);
-	void SoundStop(const std::string_view _SoundFileName);
+	void BGMSoundPlay(const std::string_view _StageInfo);
+	void BGMSoundStop();
 
 protected:
 
@@ -27,6 +27,6 @@ private:
 	USoundManager();
 	~USoundManager();
 
-	UEngineSoundPlayer Player;
+	UEngineSoundPlayer StageBGM;
 };
 
