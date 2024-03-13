@@ -42,6 +42,30 @@ void UEngineCore::CoreTick()
 	UEngineSound::Update();
 	UEngineInput::KeyCheckTick(DeltaTime);
 
+	for (size_t i = 0; i < DestroyLevelName.size(); i++)
+	{
+		std::string UpperName = UEngineString::ToUpper(DestroyLevelName[i]);
+
+		ULevel* Level = AllLevel[UpperName];
+
+		if (Level == CurLevel)
+		{
+			CurLevel = nullptr;
+		}
+
+		AllLevel.erase(DestroyLevelName[i]);
+
+		Level->End();
+
+		if (nullptr != Level)
+		{
+			delete Level;
+			Level = nullptr;
+		}
+	}
+	DestroyLevelName.clear();
+
+
 	if (nullptr != NextLevel)
 	{
 		if (nullptr != CurLevel)
@@ -57,20 +81,6 @@ void UEngineCore::CoreTick()
 		CurFrameTime = 0.0f;
 	}
 
-	for (size_t i = 0; i < DestroyLevelName.size(); i++)
-	{
-		std::string UpperName = UEngineString::ToUpper(DestroyLevelName[i]);
-
-		ULevel* Level = AllLevel[UpperName];
-		if (nullptr != Level)
-		{
-			delete Level;
-			Level = nullptr;
-		}
-
-		AllLevel.erase(DestroyLevelName[i]);
-	}
-	DestroyLevelName.clear();
 
 	if (nullptr == CurLevel)
 	{
@@ -125,10 +135,6 @@ void UEngineCore::EngineStart(HINSTANCE _hInstance)
 	UEngineWindow::WindowMessageLoop(EngineTick, EngineEnd);
 }
 
-void Exit()
-{
-
-}
 
 void UEngineCore::CoreInit(HINSTANCE _HINSTANCE)
 {
