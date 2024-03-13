@@ -51,6 +51,8 @@ void AKoopaBullet::MoveStart()
 {
 	ABulletUnit::MoveStart();
 
+	USoundManager::GetInst().EffectSoundPlay("KoopaFlame.mp3");
+
 	Renderer->ActiveOn();
 	BodyCollision->ActiveOn();
 
