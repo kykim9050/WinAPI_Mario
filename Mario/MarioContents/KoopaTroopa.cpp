@@ -141,6 +141,7 @@ void AKoopaTroopa::GetSecondHitStart()
 
 void AKoopaTroopa::GetHitFromMonsterStart()
 {
+	USoundManager::GetInst().EffectSoundPlay("CrouchMoveAttack.wav");
 	ScoreImgOperator({ GetActorLocation().iX(), GetActorLocation().iY() - BodyCollision->GetTransform().GetScale().iY() }, GetMonsterHitScore());
 	GiveScore(GetPlayer(), GetMonsterHitScore());
 }

@@ -126,6 +126,7 @@ void AGoomba::GetHitStart()
 
 void AGoomba::GetMonsterHitStart()
 {
+	USoundManager::GetInst().EffectSoundPlay("CrouchMoveAttack.wav");
 	JumpVelocityVector = FVector::Up * 300.0f;
 	StateChange(EActorState::GetMonsterHit);
 }
