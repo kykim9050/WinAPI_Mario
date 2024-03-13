@@ -951,7 +951,9 @@ void APlayerMario::FallDown(float _DeltaTime)
 		return;
 	}
 
-	ResultMovementUpdate(_DeltaTime);
+	GravityVelocityVector += GravityAccVector * _DeltaTime * GravityRatio;
+	CalTotalVelocityVector(_DeltaTime);
+	ApplyMovement(_DeltaTime);
 }
 
 
