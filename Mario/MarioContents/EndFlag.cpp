@@ -55,7 +55,6 @@ void AEndFlag::CollisionCheck()
 			SetScore(400);
 		}
 
-		USoundManager::GetInst().BGMSoundStop();
 		BodyCollision->ActiveOff();
 		GetPlayer()->ReachToStageEnd();
 		StateChange(EActorState::ReachingEndFlag);
