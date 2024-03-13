@@ -18,9 +18,11 @@ public:
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
-
 	void CollisionCheck() override;
 	void Appear(float _DeltaTime) override;
+	
+	void FlagRisingCheck();
+
 
 private:
 	UImageRenderer* FlagRenderer = nullptr;
@@ -28,5 +30,6 @@ private:
 	int ActorBaseCastleFlagXPos = 0;
 	int ActorBaseCastleFlagYPos = -20 * UInGameValue::WindowSizeMulValue;
 	int FlagRisingCutline = -48 * UInGameValue::WindowSizeMulValue;
+	bool FlagRising = false;
 };
 
