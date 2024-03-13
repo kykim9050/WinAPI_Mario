@@ -124,6 +124,7 @@ void AKoopaTroopa::MoveStart()
 
 void AKoopaTroopa::GetFirstHitStart()
 {
+	USoundManager::GetInst().EffectSoundPlay("Stomp.wav");
 	Renderer->ChangeAnimation("KoopaTroopa_OneHit");
 	ScoreImgOperator({ GetActorLocation().iX(), GetActorLocation().iY() - BodyCollision->GetTransform().GetScale().iY() }, GetScore());
 	GiveScore(GetPlayer());
