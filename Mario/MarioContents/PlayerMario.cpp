@@ -924,6 +924,8 @@ void APlayerMario::ReachStageEnd(float _DeltaTime)
 
 void APlayerMario::GetHitStart()
 {
+	USoundManager::GetInst().EffectSoundPlay("PipeTravel.wav");
+
 	DirCheck();
 	Renderer->ChangeAnimation(ChangeAnimationName("SizeDown"));
 
