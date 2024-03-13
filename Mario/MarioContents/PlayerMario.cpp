@@ -301,6 +301,8 @@ void APlayerMario::CollisionStateCheck()
 			StateChange(EActorState::FireMario);
 			break;
 		case EMarioType::Fire:
+			USoundManager::GetInst().EffectSoundPlay("GetUpgradeItem.wav");
+			break;
 		default:
 			break;
 		}
@@ -922,6 +924,8 @@ void APlayerMario::GetHitStart()
 
 void APlayerMario::MarioGrowUpStart()
 {
+	USoundManager::GetInst().EffectSoundPlay("GetUpgradeItem.wav");
+
 	DirCheck();
 	Renderer->ChangeAnimation(ChangeAnimationName("GrowUp", false, true));
 
@@ -940,6 +944,8 @@ void APlayerMario::MarioGrowUpStart()
 
 void APlayerMario::ChangingFireMarioStart()
 {
+	USoundManager::GetInst().EffectSoundPlay("GetUpgradeItem.wav");
+
 	DirCheck();
 	Renderer->ChangeAnimation(ChangeAnimationName("ChangingFireMario", false, true));
 
