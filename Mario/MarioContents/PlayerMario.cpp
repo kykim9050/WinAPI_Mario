@@ -254,6 +254,7 @@ void APlayerMario::StateUpdate(float _DeltaTime)
 
 void APlayerMario::CollisionUpdate(float _DeltaTime)
 {
+	DeadCollisionCheck();
 	CollisionStateCheck();
 	CollisionAction(_DeltaTime);
 }
@@ -261,6 +262,8 @@ void APlayerMario::CollisionUpdate(float _DeltaTime)
 void APlayerMario::CollisionStateCheck()
 {
 	std::vector<UCollision*> Result = std::vector<UCollision*>();
+
+	
 
 	if (true == IsReachingStageEnd)
 	{
@@ -1298,5 +1301,24 @@ void APlayerMario::Invincible(float _DeltaTime)
 		InvincibleTime = 2.0f;
 		IsInvincible = false;
 		CollisionStateChange(ECollisionState::None);
+	}
+}
+
+void APlayerMario::DeadCollisionCheck()
+{
+	UStateUnit::DeadCollisionCheck();
+
+	if (true == IsPlayerFallDown())
+	{
+		return;
+	}
+
+	Color8Bit Color = UContentsFunction::GetCollisionMapImg()->GetColor(GetActorLocation().iX(), GetActorLocation().iY(), UInGameValue::CollisionColor);
+
+	if (Color8Bit::YellowA == Color)
+	{
+		SetPlayerFallDown();
+		StateChange(EActorState::FallDown);
+		return;
 	}
 }

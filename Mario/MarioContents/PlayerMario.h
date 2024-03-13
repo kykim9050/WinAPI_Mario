@@ -192,6 +192,7 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 	void CalGravityVelocityVector(float _DeltaTime) override;
+	void DeadCollisionCheck() override;
 
 	void BlockBotHitStart();
 	void InvincibleStart();
@@ -209,6 +210,14 @@ protected:
 	void CeilingCheck();
 
 private:
+	void SetPlayerFallDown()
+	{
+		PlayerFallDown = true;
+	}
+	bool IsPlayerFallDown() const
+	{
+		return PlayerFallDown;
+	}
 	void SetClearBossStage()
 	{
 		ClearBossStage = true;
@@ -255,21 +264,22 @@ private:
 	float HorizonMaxSpeed = 350.0f;
 	float PFreeMoveVelocity = 3000.0f;
 
-	bool IsOnTheBlock = false;
 	static bool IsReachingStageEnd;
 	static bool IsReachingCastleGate;
+	static APlayerMario* MainPlayer;
+	static bool InTheBossRoom;
+
+	bool IsOnTheBlock = false;
 	bool AteMushroom = false;
 	bool AteFireFlower = false;
 	bool IsInvincible = false;
 	bool BlockBottomHit = false;
 	bool MeetPrincess = false;
-
-	static APlayerMario* MainPlayer;
-	static bool InTheBossRoom;
-
-	int CoinCount = 0;
 	bool ClearBossStage = false;
 	bool CameraMovePause = false;
+	bool PlayerFallDown = false;
+
+	int CoinCount = 0;
 	int DeadStep = 0;
 	int ReachingEndStep = 0;
 	int BossStageClearStep = 0;
