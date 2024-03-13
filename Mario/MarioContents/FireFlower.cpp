@@ -55,6 +55,11 @@ void AFireFlower::Appear(float _DeltaTime)
 	AddActorLocation(FVector::Up * 60.0f * _DeltaTime);
 }
 
+void AFireFlower::AppearStart()
+{
+	USoundManager::GetInst().EffectSoundPlay("UpgradeItemAppear.wav");
+}
+
 void AFireFlower::IdleStart()
 {
 	BodyCollision->ActiveOn();

@@ -21,6 +21,7 @@ protected:
 	void FirstInit(float _DeltaTime) override;
 	void Appear(float _DeltaTime) override;
 	void IdleStart() override;
+	void AppearStart() override;
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 	void GetHitStart() override;

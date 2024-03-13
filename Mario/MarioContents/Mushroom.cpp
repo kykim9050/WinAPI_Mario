@@ -46,10 +46,14 @@ void AMushroom::FirstInit(float _DeltaTime)
 }
 
 
+void AMushroom::AppearStart()
+{
+	USoundManager::GetInst().EffectSoundPlay("UpgradeItemAppear.wav");
+}
+
 void AMushroom::MoveStart()
 {
 	BodyCollision->ActiveOn();
-
 }
 
 
