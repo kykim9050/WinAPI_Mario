@@ -156,7 +156,7 @@ void ALevelIntro::Tick(float _DeltaTime)
 		GetWorld()->SetTimeScale(EActorType::UI, 1.0f);
 		GetWorld()->SetTimeScale(EActorType::Player, 1.0f);
 		GetWorld()->SetTimeScale(EActorType::Monster, 1.0f);
-		USoundManager::GetInst().SoundPlay("1_1StageLevel.mp3");
+		USoundManager::GetInst().BGMSoundPlay(GetWorld()->GetName());
 	}
 }
 
