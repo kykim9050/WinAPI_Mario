@@ -1,5 +1,6 @@
 ﻿#include "Castle.h"
 #include "PlayerMario.h"
+#include "UI.h"
 
 ACastle::ACastle()
 {
@@ -34,7 +35,7 @@ void ACastle::BeginPlay()
 void ACastle::Tick(float _DeltaTime)
 {
 	AStructureUnit::Tick(_DeltaTime);
-	//FlagRisingCheck();
+	FlagRisingCheck();
 }
 
 void ACastle::CollisionCheck()
@@ -47,7 +48,6 @@ void ACastle::CollisionCheck()
 	{
 		BodyCollision->ActiveOff();
 		GetPlayer()->ReachToCastleGate();
-		StateChange(EActorState::Appear);
 		return;
 	}
 }
@@ -61,4 +61,13 @@ void ACastle::Appear(float _DeltaTime)
 	}
 
 	FlagRenderer->AddPosition({ FVector::Up * _DeltaTime * 50.0f });
+}
+
+void ACastle::FlagRisingCheck()
+{
+	if (false == FlagRising && true == AUI::IsCalTimeToScoreEnd())
+	{
+		FlagRising = true;
+		StateChange(EActorState::Appear);
+	}
 }
