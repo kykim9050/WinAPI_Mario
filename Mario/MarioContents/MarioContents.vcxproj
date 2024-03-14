@@ -359,6 +359,14 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="TimeUpLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="TimeUpUI.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="TitleBackGround.h" />
     <ClInclude Include="TitleCoin.h">
       <SubType>
@@ -563,6 +571,14 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="TextUnit.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="TimeUpLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="TimeUpUI.cpp">
       <SubType>
       </SubType>
     </ClCompile>

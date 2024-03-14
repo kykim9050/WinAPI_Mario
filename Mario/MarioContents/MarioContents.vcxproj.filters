@@ -149,14 +149,20 @@
     <ClInclude Include="SoundManager.h">
       <Filter>ContentsHelper</Filter>
     </ClInclude>
-    <ClInclude Include="GameOverLevel.h">
-      <Filter>Level\GameOver</Filter>
-    </ClInclude>
     <ClInclude Include="UIBaseInfo.h">
       <Filter>Object\UI</Filter>
     </ClInclude>
     <ClInclude Include="GameOverUI.h">
       <Filter>Object\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeUpUI.h">
+      <Filter>Object\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverLevel.h">
+      <Filter>Level\ChangingLevel</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeUpLevel.h">
+      <Filter>Level\ChangingLevel</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -305,14 +311,20 @@
     <ClCompile Include="SoundManager.cpp">
       <Filter>ContentsHelper</Filter>
     </ClCompile>
-    <ClCompile Include="GameOverLevel.cpp">
-      <Filter>Level\GameOver</Filter>
-    </ClCompile>
     <ClCompile Include="UIBaseInfo.cpp">
       <Filter>Object\UI</Filter>
     </ClCompile>
     <ClCompile Include="GameOverUI.cpp">
       <Filter>Object\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeUpUI.cpp">
+      <Filter>Object\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOverLevel.cpp">
+      <Filter>Level\ChangingLevel</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeUpLevel.cpp">
+      <Filter>Level\ChangingLevel</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -378,9 +390,6 @@
     </Filter>
     <Filter Include="Object\Text">
       <UniqueIdentifier>{936104d2-b5e8-4ac0-b329-210a3fb401c7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Level\GameOver">
-      <UniqueIdentifier>{b5b0983d-1fbd-4aac-8fac-6731fdbbadee}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

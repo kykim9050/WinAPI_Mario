@@ -5,6 +5,7 @@
 #include "1_1StageLevel.h"
 #include "1_4StageLevel.h"
 #include "GameOverLevel.h"
+#include "TimeUpLevel.h"
 
 UChangingLevel::UChangingLevel()
 {
@@ -66,9 +67,8 @@ void UChangingLevel::Tick(float _DeltaTime)
 
 	if ("TIMEUP" == UpperLevelName)
 	{
-		int a = 0;
-		//GEngine->CreateLevel<UTimeUpLevel>("TimeUp");
-		//GEngine->ChangeLevel("TimeUp");
+		GEngine->CreateLevel<UTimeUpLevel>("TimeUpUI");
+		GEngine->ChangeLevel("TimeUpUI");
 		return;
 	}
 
