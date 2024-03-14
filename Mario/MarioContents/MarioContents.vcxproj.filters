@@ -152,6 +152,9 @@
     <ClInclude Include="GameOverLevel.h">
       <Filter>Level\GameOver</Filter>
     </ClInclude>
+    <ClInclude Include="UIBaseInfo.h">
+      <Filter>Object\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp" />
@@ -301,6 +304,9 @@
     </ClCompile>
     <ClCompile Include="GameOverLevel.cpp">
       <Filter>Level\GameOver</Filter>
+    </ClCompile>
+    <ClCompile Include="UIBaseInfo.cpp">
+      <Filter>Object\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
