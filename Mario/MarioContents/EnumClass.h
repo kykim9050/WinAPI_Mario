@@ -76,6 +76,7 @@ enum class EActorState
 	BossStageClear,
 	Fire,
 	IdleFireThrow,
+	MoveFireThrow,
 	Speak,
 };
 

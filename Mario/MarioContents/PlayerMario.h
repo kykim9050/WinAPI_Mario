@@ -218,10 +218,12 @@ protected:
 	void ReachStageEndStart();
 	void BossStageClearStart();
 	void IdleFireThrowStart();
-	void CeilingCheck();
+	void MoveFireThrowStart();
 	void FallDownStart();
+	void CeilingCheck();
 	void FallDown(float _DeltaTime);
 	void IdleFireThrow(float _DeltaTime);
+	void MoveFireThrow(float _DeltaTime);
 
 private:
 	void SetPlayerFallDown()
