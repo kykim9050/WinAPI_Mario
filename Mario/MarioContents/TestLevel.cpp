@@ -52,8 +52,12 @@ void UTestLevel::BeginPlay()
 
 	ABlockUnit* CoinBlock = SpawnCoinBlock(EActorType::Block, EItemType::Item);
 	ABlockUnit* BrickBlock1 = SpawnActor<ABrickBlock>();
+	ABlockUnit* BrickBlock2 = SpawnActor<ABrickBlock>();
+	ABlockUnit* BrickBlock3 = SpawnActor<ABrickBlock>();
 	CoinBlock->SetActorLocation({ 300, 400 });
 	BrickBlock1->SetActorLocation({ 348, 400 });
+	BrickBlock2->SetActorLocation({ 348 + 48, 400 });
+	BrickBlock3->SetActorLocation({ 348 + 48 * 2, 400 });
 
 	//AKoopaTroopa* MonsterTroopa1 = SpawnActor<AKoopaTroopa>(static_cast<int>(EActorType::Monster));
 	//AKoopaTroopa* MonsterTroopa2 = SpawnActor<AKoopaTroopa>(static_cast<int>(EActorType::Monster));
