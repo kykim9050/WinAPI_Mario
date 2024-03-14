@@ -77,6 +77,7 @@ void APlayerMario::BeginPlay()
 	Renderer->CreateAnimation("Fire_SizeDown_Left", "Mario_Left.png", { 32, 33, 34, 33, 34, 33, 34, 35 }, 0.15f, false);
 	Renderer->CreateAnimation("Fire_SizeDown_Right", "Mario_Right.png", { 32, 33, 34, 33, 34, 33, 34, 35 }, 0.15f, false);
 	Renderer->CreateAnimation("Fire_IdleThrow_Right", "FireMario_Right.png", 41, 41, 0.1f, false);
+	Renderer->CreateAnimation("Fire_IdleThrow_Left", "FireMario_Left.png", 41, 41, 0.1f, false);
 
 
 	Renderer->CreateAnimation("Small_ClimbDown", "Mario_Right.png", 7, 8, 0.3f, true);
@@ -1075,7 +1076,8 @@ void APlayerMario::FallDownStart()
 
 void APlayerMario::FireThrowStart()
 {
-	Renderer->ChangeAnimation("Fire_IdleThrow_Right");
+	DirCheck();
+	Renderer->ChangeAnimation(ChangeAnimationName("IdleThrow"));
 }
 
 void APlayerMario::BlockBotHitStart()
