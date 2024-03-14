@@ -17,15 +17,6 @@
     <ClInclude Include="PlayerMario.h">
       <Filter>Object\Player</Filter>
     </ClInclude>
-    <ClInclude Include="EndingLevel.h">
-      <Filter>Level\Ending</Filter>
-    </ClInclude>
-    <ClInclude Include="EndingBackGround.h">
-      <Filter>Level\Ending\Actor</Filter>
-    </ClInclude>
-    <ClInclude Include="EndingMessage.h">
-      <Filter>Level\Ending\Actor</Filter>
-    </ClInclude>
     <ClInclude Include="InGameValue.h">
       <Filter>ContentsHelper</Filter>
     </ClInclude>
@@ -182,15 +173,6 @@
     <ClCompile Include="PlayerMario.cpp">
       <Filter>Object\Player</Filter>
     </ClCompile>
-    <ClCompile Include="EndingLevel.cpp">
-      <Filter>Level\Ending</Filter>
-    </ClCompile>
-    <ClCompile Include="EndingBackGround.cpp">
-      <Filter>Level\Ending\Actor</Filter>
-    </ClCompile>
-    <ClCompile Include="EndingMessage.cpp">
-      <Filter>Level\Ending\Actor</Filter>
-    </ClCompile>
     <ClCompile Include="InGameValue.cpp">
       <Filter>ContentsHelper</Filter>
     </ClCompile>
@@ -342,12 +324,6 @@
     </Filter>
     <Filter Include="Level\Title\Actor">
       <UniqueIdentifier>{5bb86687-b42e-48c0-bafb-fdb5c9aae956}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Level\Ending">
-      <UniqueIdentifier>{a058ab92-c3f2-4008-be57-34523cde488a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Level\Ending\Actor">
-      <UniqueIdentifier>{6d8014be-edbd-45fe-87e8-92981e6a5f76}</UniqueIdentifier>
     </Filter>
     <Filter Include="Level\Stage1-1">
       <UniqueIdentifier>{c44e7e1c-7d68-496d-b02f-fd49445bbe07}</UniqueIdentifier>
