@@ -180,8 +180,8 @@ void APlayerMario::StateChange(EActorState _PlayerState)
 		case EActorState::FallDown:
 			FallDownStart();
 			break;
-		case EActorState::FireThrow:
-			FireThrowStart();
+		case EActorState::IdleFireThrow:
+			IdleFireThrowStart();
 			break;
 		default:
 			break;
@@ -259,8 +259,8 @@ void APlayerMario::StateUpdate(float _DeltaTime)
 	case EActorState::FallDown:
 		FallDown(_DeltaTime);
 		break;
-	case EActorState::FireThrow:
-		FireThrow(_DeltaTime);
+	case EActorState::IdleFireThrow:
+		IdleFireThrow(_DeltaTime);
 		break;
 	default:
 		break;
@@ -670,7 +670,7 @@ void APlayerMario::Idle(float _DeltaTime)
 	{
 		if (EMarioType::Fire == MarioType)
 		{
-			StateChange(EActorState::FireThrow);
+			StateChange(EActorState::IdleFireThrow);
 			return;
 		}
 	}
@@ -976,7 +976,7 @@ void APlayerMario::FallDown(float _DeltaTime)
 	ApplyMovement(_DeltaTime);
 }
 
-void APlayerMario::FireThrow(float _DeltaTime)
+void APlayerMario::IdleFireThrow(float _DeltaTime)
 {
 	if (Renderer->IsCurAnimationEnd())
 	{
@@ -1074,7 +1074,7 @@ void APlayerMario::FallDownStart()
 	USoundManager::GetInst().EffectSoundPlay("MarioDie.wav");
 }
 
-void APlayerMario::FireThrowStart()
+void APlayerMario::IdleFireThrowStart()
 {
 	DirCheck();
 	Renderer->ChangeAnimation(ChangeAnimationName("IdleThrow"));
