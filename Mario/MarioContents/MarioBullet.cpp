@@ -20,15 +20,10 @@ void AMarioBullet::BeginPlay()
 	Renderer->CreateAnimation("FireBallDestroy", "FireBall.png", 4, 6, 0.1f, false);
 	Renderer->ChangeAnimation("FiringBullet");
 
-	//Renderer->CreateAnimation("Firing_Right", "KoopaFire_Right.png", 0, 1, 0.1f, true);
-
-	//BodyCollision = CreateCollision(ECollisionOrder::MonsterBullet);
-	//BodyCollision->SetTransform({ { 0,0 }, { UInGameValue::KoopaBulletXColScale, UInGameValue::KoopaBulletYColScale } });
-	//BodyCollision->SetColType(ECollisionType::Rect);
-
-	//Renderer->ActiveOff();
-	//BodyCollision->ActiveOff();
-
+	BodyCollision = CreateCollision(ECollisionOrder::PlayerBullet);
+	BodyCollision->SetTransform({ {0,0}, {UInGameValue::FireBallDia, UInGameValue::FireBallDia} });
+	BodyCollision->SetColType(ECollisionType::CirCle);
+	
 	//SetActorState(EActorState::FirstInit);
 }
 
