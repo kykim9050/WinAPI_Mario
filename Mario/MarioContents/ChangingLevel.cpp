@@ -4,6 +4,7 @@
 #include "PlayerInfoManager.h"
 #include "1_1StageLevel.h"
 #include "1_4StageLevel.h"
+#include "GameOverLevel.h"
 
 UChangingLevel::UChangingLevel()
 {
@@ -30,7 +31,8 @@ void UChangingLevel::Tick(float _DeltaTime)
 	{
 		if (0 == UPlayerInfoManager::GetInst().GetPlayerLife())
 		{
-			MsgBoxAssert("아직 목숨 0일때 그림이 없으니 일단 터뜨리기");
+			GEngine->CreateLevel<UGameOverLevel>("GameOver");
+			GEngine->ChangeLevel("GameOver");
 			return;
 		}
 
