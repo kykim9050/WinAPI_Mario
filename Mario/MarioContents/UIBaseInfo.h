@@ -22,7 +22,12 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
+	int IntroScore = 0;
+	int IntroAmountOfCoins = 0;
 	std::vector<UImageRenderer*> ScoreRenderer = std::vector<UImageRenderer*>();
+	std::vector<UImageRenderer*> CoinCountRenderer = std::vector<UImageRenderer*>();
+
+
 
 private:
 
