@@ -1,9 +1,9 @@
 #pragma once
 #include <EngineCore/Actor.h>
-
+#include "UIBaseInfo.h"
 
 // Ό³Έν :
-class ALevelIntro : public AActor
+class ALevelIntro : public AUIBaseInfo
 {
 public:
 	// constrcuter destructer
@@ -30,7 +30,6 @@ private:
 	int IntroAmountOfCoins = 0;
 	std::vector<std::string> IntroStageInfo = std::vector<std::string>();
 	std::vector<UImageRenderer*> LifeRenderer = std::vector<UImageRenderer*>();
-	std::vector<UImageRenderer*> ScoreRenderer = std::vector<UImageRenderer*>();
 	std::vector<UImageRenderer*> CoinCountRenderer = std::vector<UImageRenderer*>();
 	std::vector<UImageRenderer*> StageInfoRenderer = std::vector<UImageRenderer*>();
 	std::vector<UImageRenderer*> StageInfoCenterRenderer = std::vector<UImageRenderer*>();
