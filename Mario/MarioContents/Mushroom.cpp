@@ -62,7 +62,7 @@ void AMushroom::Appear(float _DeltaTime)
 {
 	if (GetActorLocation().Y < InitPos.Y - (UInGameValue::BlockCollisionScaleY / 2) - (UInGameValue::MushroomCollisionScaleY / 2))
 	{
-		SetActorLocation({GetActorLocation().X, GetActorLocation().Y });
+		SetActorLocation({ GetActorLocation().X, GetActorLocation().Y });
 		StateChange(EActorState::Move);
 	}
 
@@ -71,6 +71,14 @@ void AMushroom::Appear(float _DeltaTime)
 
 void AMushroom::Move(float _DeltaTime)
 {
+	if (GetActorLocation().X + GetBodyCollision()->GetTransform().GetScale().hX() < GetWorld()->GetCameraPos().X)
+	{
+		Renderer->ActiveOff();
+		BodyCollision->ActiveOff();
+		StateChange(EActorState::Idle);
+		return;
+	}
+
 	ResultMovementUpdate(_DeltaTime);
 }
 
@@ -104,7 +112,6 @@ void AMushroom::CalHorizonVelocityVector(float _DeltaTime)
 	default:
 		break;
 	}
-	UEngineDebug::OutPutDebugText(std::to_string(CheckPos.X));
 
 	Color8Bit Color = UContentsFunction::GetCollisionMapImg()->GetColor(CheckPos.iX(), CheckPos.iY(), UInGameValue::CollisionColor);
 
