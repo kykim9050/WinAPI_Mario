@@ -80,24 +80,20 @@ void AMushroom::CalGravityVelocityVector(float _DeltaTime)
 {
 	std::vector<UCollision*> Result = std::vector<UCollision*>();
 
-	Color8Bit Color = UContentsFunction::GetCollisionMapImg()->GetColor(GetActorLocation().iX(), GetActorLocation().iY(), UInGameValue::CollisionColor);
+	Color8Bit Color = UContentsFunction::GetCollisionMapImg()->GetColor(GetActorLocation().iX(), GetActorLocation().iY() + GetBodyCollision()->GetTransform().GetScale().ihY(), UInGameValue::CollisionColor);
 
 	if (UInGameValue::CollisionColor == Color || true == GetBodyCollision()->CollisionCheck(ECollisionOrder::BlockTop, Result))
 	{
 		GravityVelocityVector = FVector::Zero;
-		SetGravityRatio(0.0f);
-	}
-	else
-	{
-		SetGravityRatio(0.5f);
+		return;
 	}
 
-	GravityVelocityVector += FVector::Down * 500.0f * _DeltaTime;
+	GravityVelocityVector += FVector::Down * 1000.0f * _DeltaTime;
 }
 
 void AMushroom::CalHorizonVelocityVector(float _DeltaTime)
 {
-	HorizonVelocityVector = FVector::Right * 100.0f;
+	HorizonVelocityVector = FVector::Right * 200.0f;
 }
 
 //void AMonsterUnit::ResultMovementUpdate(float _DeltaTime)
