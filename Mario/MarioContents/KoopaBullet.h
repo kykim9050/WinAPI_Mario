@@ -22,8 +22,6 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
-	void FirstInit(float _DeltaTime);
-
 	void MoveStart() override;
 	void Move(float _DeltaTime) override;
 
