@@ -1,7 +1,6 @@
 #pragma once
 #include <EngineCore/Actor.h>
-#include "InGameValue.h"
-#include "EnumClass.h"
+
 
 
 // Ό³Έν :
@@ -24,10 +23,10 @@ protected:
 
 	int IntroScore = 0;
 	int IntroAmountOfCoins = 0;
+	std::vector<std::string> IntroStageInfo = std::vector<std::string>();
 	std::vector<UImageRenderer*> ScoreRenderer = std::vector<UImageRenderer*>();
 	std::vector<UImageRenderer*> CoinCountRenderer = std::vector<UImageRenderer*>();
-
-
+	std::vector<UImageRenderer*> StageInfoRenderer = std::vector<UImageRenderer*>();
 
 private:
 

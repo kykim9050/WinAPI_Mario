@@ -24,17 +24,12 @@ protected:
 
 private:
 	UImageRenderer* UIRenderer = nullptr;
-
 	
 	int IntroLife = 0;
-	
-	std::vector<std::string> IntroStageInfo = std::vector<std::string>();
 	std::vector<UImageRenderer*> LifeRenderer = std::vector<UImageRenderer*>();
-	std::vector<UImageRenderer*> StageInfoRenderer = std::vector<UImageRenderer*>();
 	std::vector<UImageRenderer*> StageInfoCenterRenderer = std::vector<UImageRenderer*>();
 
 	float RenderingTime = 2.0f;
 	bool IsPlaying = true;
-
 };
 
