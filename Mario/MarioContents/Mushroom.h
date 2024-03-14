@@ -27,8 +27,10 @@ protected:
 	void GetHitStart() override;
 	void CalGravityVelocityVector(float _DeltaTime) override;
 	void CalHorizonVelocityVector(float _DeltaTime) override;
+	void ResultMovementUpdate(float _DeltaTime) override;
 
 private:
-
+	float GravityVel = 1000.0f;
+	float MushroomSpeed = 200.0f;
 };
 
