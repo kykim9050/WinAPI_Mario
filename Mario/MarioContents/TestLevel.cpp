@@ -26,6 +26,7 @@
 #include "SignalCollision.h"
 #include "RotatingFire.h"
 #include "ChangingLevel.h"
+#include "MarioBullet.h"
 
 UTestLevel::UTestLevel()
 {
@@ -58,6 +59,10 @@ void UTestLevel::BeginPlay()
 	BrickBlock1->SetActorLocation({ 348, 400 });
 	BrickBlock2->SetActorLocation({ 348 + 48, 400 });
 	BrickBlock3->SetActorLocation({ 348 + 48 * 2, 400 });
+
+	AMarioBullet* PlayerBullet = SpawnActor<AMarioBullet>();
+	PlayerBullet->SetActorLocation({ 200, 200 });
+
 
 	//AKoopaTroopa* MonsterTroopa1 = SpawnActor<AKoopaTroopa>(static_cast<int>(EActorType::Monster));
 	//AKoopaTroopa* MonsterTroopa2 = SpawnActor<AKoopaTroopa>(static_cast<int>(EActorType::Monster));
