@@ -20,8 +20,6 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
-	void NumberToAnimation(int _PrintNumber, int _AnimatingNum, const std::vector<UImageRenderer*>& _Renderer);
-
 private:
 	UImageRenderer* UIRenderer = nullptr;
 	
