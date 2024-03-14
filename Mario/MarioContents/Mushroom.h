@@ -32,5 +32,6 @@ protected:
 private:
 	float GravityVel = 1000.0f;
 	float MushroomSpeed = 200.0f;
+	FVector MoveDir = FVector::Right;
 };
 
