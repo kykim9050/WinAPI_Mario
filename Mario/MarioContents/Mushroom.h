@@ -25,6 +25,8 @@ protected:
 	void Move(float _DeltaTime) override;
 	void CollisionCheck() override;
 	void GetHitStart() override;
+	void CalGravityVelocityVector(float _DeltaTime) override;
+	void CalHorizonVelocityVector(float _DeltaTime) override;
 
 private:
 
