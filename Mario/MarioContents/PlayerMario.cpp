@@ -945,6 +945,8 @@ void APlayerMario::FallDown(float _DeltaTime)
 		
 		std::string LevelName = GetWorld()->GetName();
 		UPlayerInfoManager::GetInst().SetPrevStageLevel(LevelName);
+		UPlayerInfoManager::GetInst().SetPlayerType(EMarioType::Small);
+		UPlayerInfoManager::GetInst().SetPlayerColSize({ UInGameValue::PlayerCollisionScaleX, UInGameValue::PlayerCollisionScaleY });
 		GEngine->DestroyLevel(LevelName);
 		GEngine->CreateLevel<UChangingLevel>("PlayerDead");
 		GEngine->ChangeLevel("PlayerDead");
