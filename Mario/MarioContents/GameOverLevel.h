@@ -1,6 +1,7 @@
 #pragma once
 #include <EngineCore/Level.h>
 
+class AGameOverUI;
 // Ό³Έν :
 class UGameOverLevel : public ULevel
 {
@@ -20,6 +21,6 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 private:
-
+	AGameOverUI* GameOverUI = nullptr;
 };
 
