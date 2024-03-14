@@ -3,6 +3,8 @@
 #include "InGameValue.h"
 #include "PlayerMario.h"
 #include "PlayerInfoManager.h"
+#include <EngineCore/EngineCore.h>
+#include "ChangingLevel.h"
 
 bool AUI::CalTimeToScoreEnd = false;
 
@@ -158,6 +160,14 @@ void AUI::TimeCheck(float _DeltaTime)
 	{
 		TimeCount = 0;
 
+		USoundManager::GetInst().BGMSoundStop();
+		USoundManager::GetInst().EffectSoundPlay("MarioDie.wav");
+
+		std::string LevelName = GetWorld()->GetName();
+		UPlayerInfoManager::GetInst().SetPrevStageLevel(LevelName);
+		GEngine->DestroyLevel(LevelName);
+		GEngine->CreateLevel<UChangingLevel>("TimeUp");
+		GEngine->ChangeLevel("TimeUp");
 		// 타임아웃으로 게임 종료 화면 실행
 		return;
 	}
