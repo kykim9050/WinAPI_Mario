@@ -70,10 +70,7 @@ void AMushroom::Appear(float _DeltaTime)
 
 void AMushroom::Move(float _DeltaTime)
 {
-	CalHorizonVelocityVector(_DeltaTime);
-	CalGravityVelocityVector(_DeltaTime);
-	CalTotalVelocityVector(_DeltaTime);
-	AddActorLocation(TotalVelocityVector * _DeltaTime);
+	ResultMovementUpdate(_DeltaTime);
 }
 
 void AMushroom::CalGravityVelocityVector(float _DeltaTime)
@@ -88,20 +85,21 @@ void AMushroom::CalGravityVelocityVector(float _DeltaTime)
 		return;
 	}
 
-	GravityVelocityVector += FVector::Down * 1000.0f * _DeltaTime;
+	GravityVelocityVector += FVector::Down * GravityVel * _DeltaTime;
 }
 
 void AMushroom::CalHorizonVelocityVector(float _DeltaTime)
 {
-	HorizonVelocityVector = FVector::Right * 200.0f;
+	HorizonVelocityVector = FVector::Right * MushroomSpeed;
 }
 
-//void AMonsterUnit::ResultMovementUpdate(float _DeltaTime)
-//{
-//	CalGravityVelocityVector(_DeltaTime);
-//	CalTotalVelocityVector(_DeltaTime);
-//	AddActorLocation(TotalVelocityVector * _DeltaTime);
-//}
+void AMushroom::ResultMovementUpdate(float _DeltaTime)
+{
+	CalHorizonVelocityVector(_DeltaTime);
+	CalGravityVelocityVector(_DeltaTime);
+	CalTotalVelocityVector(_DeltaTime);
+	AddActorLocation(TotalVelocityVector * _DeltaTime);
+}
 
 
 
