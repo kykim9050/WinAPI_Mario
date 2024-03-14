@@ -1,4 +1,7 @@
 ﻿#include "UIBaseInfo.h"
+#include "InGameValue.h"
+#include "EnumClass.h"
+#include "PlayerInfoManager.h"
 
 AUIBaseInfo::AUIBaseInfo()
 {
@@ -11,6 +14,10 @@ AUIBaseInfo::~AUIBaseInfo()
 void AUIBaseInfo::BeginPlay()
 {
 	AActor::BeginPlay();
+
+	IntroAmountOfCoins = UPlayerInfoManager::GetInst().GetAmountOfCoins();
+	IntroScore = UPlayerInfoManager::GetInst().GetPlayerScore();
+	IntroStageInfo = UPlayerInfoManager::GetInst().GetStageInfo();
 
 	for (int i = 0; i < UInGameValue::ScoreRendererSize; i++)
 	{
@@ -51,6 +58,27 @@ void AUIBaseInfo::BeginPlay()
 		CoinCountRenderer[i]->CreateAnimation("8", "Numbers.png", 8, 8, false);
 		CoinCountRenderer[i]->CreateAnimation("9", "Numbers.png", 9, 9, false);
 	}
+
+	for (int i = 0; i < UInGameValue::StageInfoRendererSize; i++)
+	{
+		UImageRenderer* Renderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::IntroUIComponent));
+		StageInfoRenderer.push_back(Renderer);
+		StageInfoRenderer[i]->SetImage("Numbers.png");
+		FVector UINumberScale = StageInfoRenderer[i]->GetImage()->GetScale();
+		StageInfoRenderer[i]->SetTransform({ {UInGameValue::UIStageInfoRendInitXPos + UInGameValue::UISpacingBetRends * (i * 2), UInGameValue::UIRendInitYPos}, {UINumberScale.iX() / UInGameValue::NumberImageXValue * UInGameValue::WindowSizeMulValue , UINumberScale.iY() / UInGameValue::NumberImageYValue * UInGameValue::WindowSizeMulValue} });
+		StageInfoRenderer[i]->CameraEffectOff();
+		StageInfoRenderer[i]->CreateAnimation("0", "Numbers.png", 0, 0, false);
+		StageInfoRenderer[i]->CreateAnimation("1", "Numbers.png", 1, 1, false);
+		StageInfoRenderer[i]->CreateAnimation("2", "Numbers.png", 2, 2, false);
+		StageInfoRenderer[i]->CreateAnimation("3", "Numbers.png", 3, 3, false);
+		StageInfoRenderer[i]->CreateAnimation("4", "Numbers.png", 4, 4, false);
+		StageInfoRenderer[i]->CreateAnimation("5", "Numbers.png", 5, 5, false);
+		StageInfoRenderer[i]->CreateAnimation("6", "Numbers.png", 6, 6, false);
+		StageInfoRenderer[i]->CreateAnimation("7", "Numbers.png", 7, 7, false);
+		StageInfoRenderer[i]->CreateAnimation("8", "Numbers.png", 8, 8, false);
+		StageInfoRenderer[i]->CreateAnimation("9", "Numbers.png", 9, 9, false);
+	}
+
 }
 
 void AUIBaseInfo::Tick(float _DeltaTime)
