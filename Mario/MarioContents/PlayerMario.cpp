@@ -76,6 +76,8 @@ void APlayerMario::BeginPlay()
 	Renderer->CreateAnimation("Fire_ReverseMove_Left", "FireMario_Left.png", 18, 18, 0.1f, true);
 	Renderer->CreateAnimation("Fire_SizeDown_Left", "Mario_Left.png", { 32, 33, 34, 33, 34, 33, 34, 35 }, 0.15f, false);
 	Renderer->CreateAnimation("Fire_SizeDown_Right", "Mario_Right.png", { 32, 33, 34, 33, 34, 33, 34, 35 }, 0.15f, false);
+	Renderer->CreateAnimation("Fire_IdleThrow_Right", "FireMario_Right.png", 41, 41, 0.1f, false);
+
 
 	Renderer->CreateAnimation("Small_ClimbDown", "Mario_Right.png", 7, 8, 0.3f, true);
 	Renderer->CreateAnimation("Big_ClimbDown", "Mario_Right.png", 21, 22, 0.3f, true);
@@ -177,6 +179,9 @@ void APlayerMario::StateChange(EActorState _PlayerState)
 		case EActorState::FallDown:
 			FallDownStart();
 			break;
+		case EActorState::FireThrow:
+			FireThrowStart();
+			break;
 		default:
 			break;
 		}
@@ -252,6 +257,9 @@ void APlayerMario::StateUpdate(float _DeltaTime)
 		break;
 	case EActorState::FallDown:
 		FallDown(_DeltaTime);
+		break;
+	case EActorState::FireThrow:
+		FireThrow(_DeltaTime);
 		break;
 	default:
 		break;
@@ -657,6 +665,15 @@ void APlayerMario::CameraMove(float _DeltaTime)
 
 void APlayerMario::Idle(float _DeltaTime)
 {
+	if (UEngineInput::IsDown('X'))
+	{
+		if (EMarioType::Fire == MarioType)
+		{
+			StateChange(EActorState::FireThrow);
+			return;
+		}
+	}
+
 	if (UEngineInput::IsDown('1'))
 	{
 		StateChange(EActorState::FreeMove);
@@ -958,6 +975,15 @@ void APlayerMario::FallDown(float _DeltaTime)
 	ApplyMovement(_DeltaTime);
 }
 
+void APlayerMario::FireThrow(float _DeltaTime)
+{
+	if (Renderer->IsCurAnimationEnd())
+	{
+		StateChange(EActorState::Idle);
+		return;
+	}
+}
+
 
 void APlayerMario::GetHitStart()
 {
@@ -1045,6 +1071,11 @@ void APlayerMario::FallDownStart()
 {
 	USoundManager::GetInst().BGMSoundStop();
 	USoundManager::GetInst().EffectSoundPlay("MarioDie.wav");
+}
+
+void APlayerMario::FireThrowStart()
+{
+	Renderer->ChangeAnimation("Fire_IdleThrow_Right");
 }
 
 void APlayerMario::BlockBotHitStart()
