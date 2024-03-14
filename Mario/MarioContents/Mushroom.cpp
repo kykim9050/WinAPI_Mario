@@ -4,6 +4,7 @@
 AMushroom::AMushroom()
 {
 	SetScore(1000);
+	ActorDir = EActorDir::Right;
 }
 
 AMushroom::~AMushroom()
@@ -90,7 +91,45 @@ void AMushroom::CalGravityVelocityVector(float _DeltaTime)
 
 void AMushroom::CalHorizonVelocityVector(float _DeltaTime)
 {
-	HorizonVelocityVector = FVector::Right * MushroomSpeed;
+	FVector CheckPos = GetActorLocation();
+
+	switch (ActorDir)
+	{
+	case EActorDir::Right:
+		CheckPos.X += GetBodyCollision()->GetTransform().iRight();
+		break;
+	case EActorDir::Left:
+		CheckPos.X -= GetBodyCollision()->GetTransform().iLeft();
+		break;
+	default:
+		break;
+	}
+	UEngineDebug::OutPutDebugText(std::to_string(CheckPos.X));
+
+	Color8Bit Color = UContentsFunction::GetCollisionMapImg()->GetColor(CheckPos.iX(), CheckPos.iY(), UInGameValue::CollisionColor);
+
+	if (Color == UInGameValue::CollisionColor)
+	{
+		switch (ActorDir)
+		{
+		case EActorDir::Right:
+		{
+			ActorDir = EActorDir::Left;
+			MoveDir = FVector::Left;
+			break;
+		}
+		case EActorDir::Left:
+		{
+			ActorDir = EActorDir::Right;
+			MoveDir = FVector::Right;
+			break;
+		}
+		default:
+			break;
+		}
+	}
+
+	HorizonVelocityVector = MoveDir * MushroomSpeed;
 }
 
 void AMushroom::ResultMovementUpdate(float _DeltaTime)
