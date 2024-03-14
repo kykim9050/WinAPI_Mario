@@ -64,6 +64,13 @@ void UChangingLevel::Tick(float _DeltaTime)
 		}
 	}
 
+	if ("TIMEUP" == UpperLevelName)
+	{
+		int a = 0;
+		//GEngine->CreateLevel<UTimeUpLevel>("TimeUp");
+		//GEngine->ChangeLevel("TimeUp");
+		return;
+	}
 
 
 }
