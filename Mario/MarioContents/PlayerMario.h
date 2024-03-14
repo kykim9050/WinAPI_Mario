@@ -207,9 +207,11 @@ protected:
 	void ReachStageEnd(float _DeltaTime);
 	void ReachStageEndStart();
 	void BossStageClearStart();
+	void FireThrowStart();
 	void CeilingCheck();
 	void FallDownStart();
 	void FallDown(float _DeltaTime);
+	void FireThrow(float _DeltaTime);
 
 private:
 	void SetPlayerFallDown()
