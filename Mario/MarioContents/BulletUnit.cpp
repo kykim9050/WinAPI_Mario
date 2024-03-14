@@ -16,6 +16,8 @@ void ABulletUnit::BeginPlay()
 void ABulletUnit::Tick(float _DeltaTime)
 {
 	UStateUnit::Tick(_DeltaTime);
+
+
 }
 
 void ABulletUnit::StateUpdate(float _DeltaTime)

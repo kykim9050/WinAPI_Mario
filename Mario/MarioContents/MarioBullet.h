@@ -18,8 +18,11 @@ public:
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
+	void Move(float _DeltaTime) override;
+	void CalGravityVelocityVector(float _DeltaTime) override;
+	void MoveStart() override;
 
 private:
-
+	float GravityVel = 500.0f;
 };
 

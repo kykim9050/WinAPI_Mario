@@ -63,7 +63,6 @@ void UTestLevel::BeginPlay()
 	AMarioBullet* PlayerBullet = SpawnActor<AMarioBullet>();
 	PlayerBullet->SetActorLocation({ 200, 200 });
 
-
 	//AKoopaTroopa* MonsterTroopa1 = SpawnActor<AKoopaTroopa>(static_cast<int>(EActorType::Monster));
 	//AKoopaTroopa* MonsterTroopa2 = SpawnActor<AKoopaTroopa>(static_cast<int>(EActorType::Monster));
 	//AKoopaTroopa* MonsterTroopa3 = SpawnActor<AKoopaTroopa>(static_cast<int>(EActorType::Monster));
