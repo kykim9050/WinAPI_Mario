@@ -6,6 +6,7 @@ class ABackGroundMap;
 class UCollisionMap;
 class APlayerMario;
 class AUI;
+class ALevelIntro;
 // Ό³Έν :
 class UStageLevel : public UDebugLevel
 {
@@ -54,6 +55,7 @@ protected:
 	UCollisionMap* ColMap = nullptr;
 	APlayerMario* Mario = nullptr;
 	AUI* PlayerUI = nullptr;
+	ALevelIntro* LevelInfo = nullptr;
 
 private:
 };

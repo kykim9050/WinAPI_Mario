@@ -60,7 +60,7 @@ void AMushroom::MoveStart()
 
 void AMushroom::Appear(float _DeltaTime)
 {
-	if (GetActorLocation().Y < InitPos.Y - (UInGameValue::BlockCollisionScaleY / 2) - (UInGameValue::MushroomCollisionScaleY / 2))
+	if (GetActorLocation().Y < InitPos.Y - (static_cast<float>(UInGameValue::BlockCollisionScaleY) / 2.0f) - (static_cast<float>(UInGameValue::MushroomCollisionScaleY) / 2.0f))
 	{
 		SetActorLocation({ GetActorLocation().X, GetActorLocation().Y });
 		StateChange(EActorState::Move);
