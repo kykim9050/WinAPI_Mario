@@ -254,6 +254,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="MarioBullet.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="MovingObjectUnit.h">
       <SubType>
       </SubType>
@@ -455,6 +459,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="LevelIntro.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="MarioBullet.cpp">
       <SubType>
       </SubType>
     </ClCompile>
