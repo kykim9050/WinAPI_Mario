@@ -21,8 +21,11 @@ const int UInGameValue::UICoinImageXValue = 3;
 const int UInGameValue::UICoinImageYValue = 1;
 
 
-const int UInGameValue::MarioInitXPos = 140;
-const int UInGameValue::MarioInitYPos = 400;
+const int UInGameValue::Stage1_1MarioInitXPos = 140;
+const int UInGameValue::Stage1_1MarioInitYPos = 630;
+const int UInGameValue::Stage1_4MarioInitXPos = 80;
+const int UInGameValue::Stage1_4MarioInitYPos = 400;
+
 
 const Color8Bit UInGameValue::CollisionColor = Color8Bit(0, 0, 255, 0);
 
