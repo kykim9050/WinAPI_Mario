@@ -57,12 +57,20 @@ void UChangingLevel::Tick(float _DeltaTime)
 	{
 		std::string PrevStage = UPlayerInfoManager::GetInst().GetPrevStageLevel();
 
+		if ("0-0" == PrevStage)
+		{
+			GEngine->CreateLevel<U1_1StageLevel>("1-1");
+			GEngine->ChangeLevel("1-1");
+			return;
+		}
+
 		if ("1-1" == PrevStage)
 		{
 			GEngine->CreateLevel<U1_4StageLevel>("1-4");
 			GEngine->ChangeLevel("1-4");
 			return;
 		}
+
 	}
 
 	if ("TIMEUP" == UpperLevelName)
