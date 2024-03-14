@@ -76,8 +76,15 @@ void APlayerMario::BeginPlay()
 	Renderer->CreateAnimation("Fire_ReverseMove_Left", "FireMario_Left.png", 18, 18, 0.1f, true);
 	Renderer->CreateAnimation("Fire_SizeDown_Left", "Mario_Left.png", { 32, 33, 34, 33, 34, 33, 34, 35 }, 0.15f, false);
 	Renderer->CreateAnimation("Fire_SizeDown_Right", "Mario_Right.png", { 32, 33, 34, 33, 34, 33, 34, 35 }, 0.15f, false);
-	Renderer->CreateAnimation("Fire_IdleThrow_Right", "FireMario_Right.png", 41, 41, 0.1f, false);
-	Renderer->CreateAnimation("Fire_IdleThrow_Left", "FireMario_Left.png", 41, 41, 0.1f, false);
+	Renderer->CreateAnimation("Fire_IdleFireThrow_Right", "FireMario_Right.png", 41, 41, 0.05f, false);
+	Renderer->CreateAnimation("Fire_IdleFireThrow_Left", "FireMario_Left.png", 41, 41, 0.05f, false);
+	Renderer->CreateAnimation("Fire_MoveFireThrow1_Right", "FireMario_Right.png", 36, 36, 0.05f, false);
+	Renderer->CreateAnimation("Fire_MoveFireThrow2_Right", "FireMario_Right.png", 37, 37, 0.05f, false);
+	Renderer->CreateAnimation("Fire_MoveFireThrow3_Right", "FireMario_Right.png", 38, 38, 0.05f, false);
+	Renderer->CreateAnimation("Fire_MoveFireThrow1_Left", "FireMario_Left.png", 36, 36, 0.05f, false);
+	Renderer->CreateAnimation("Fire_MoveFireThrow2_Left", "FireMario_Left.png", 37, 37, 0.05f, false);
+	Renderer->CreateAnimation("Fire_MoveFireThrow3_Left", "FireMario_Left.png", 38, 38, 0.05f, false);
+
 
 
 	Renderer->CreateAnimation("Small_ClimbDown", "Mario_Right.png", 7, 8, 0.3f, true);
@@ -183,6 +190,9 @@ void APlayerMario::StateChange(EActorState _PlayerState)
 		case EActorState::IdleFireThrow:
 			IdleFireThrowStart();
 			break;
+		case EActorState::MoveFireThrow:
+			MoveFireThrowStart();
+			break;
 		default:
 			break;
 		}
@@ -261,6 +271,9 @@ void APlayerMario::StateUpdate(float _DeltaTime)
 		break;
 	case EActorState::IdleFireThrow:
 		IdleFireThrow(_DeltaTime);
+		break;
+	case EActorState::MoveFireThrow:
+		MoveFireThrow(_DeltaTime);
 		break;
 	default:
 		break;
@@ -487,6 +500,15 @@ void APlayerMario::ReverseMove(float _DeltaTime)
 // X축 이동만을 담당하는 함수
 void APlayerMario::Move(float _DeltaTime)
 {
+	if (UEngineInput::IsDown('X'))
+	{
+		if (EMarioType::Fire == MarioType)
+		{
+			StateChange(EActorState::MoveFireThrow);
+			return;
+		}
+	}
+
 	if (HorizonVelocityVector.X < 3.0f && HorizonVelocityVector.X > -3.0f && (UEngineInput::IsFree(VK_LEFT) && UEngineInput::IsFree(VK_RIGHT)))
 	{
 		StateChange(EActorState::Idle);
@@ -674,7 +696,7 @@ void APlayerMario::Idle(float _DeltaTime)
 			return;
 		}
 	}
-
+	
 	if (UEngineInput::IsDown('1'))
 	{
 		StateChange(EActorState::FreeMove);
@@ -985,6 +1007,39 @@ void APlayerMario::IdleFireThrow(float _DeltaTime)
 	}
 }
 
+void APlayerMario::MoveFireThrow(float _DeltaTime)
+{
+	if (Renderer->IsCurAnimationEnd())
+	{
+		StateChange(EActorState::Move);
+		return;
+	}
+
+	if (UEngineInput::IsDown(VK_SPACE))
+	{
+		StateChange(EActorState::Jump);
+		return;
+	}
+
+
+	if (UEngineInput::IsPress(VK_LEFT))
+	{
+		AddHorizonVelocityVector(FVector::Left * _DeltaTime);
+	}
+	if (UEngineInput::IsPress(VK_RIGHT))
+	{
+		AddHorizonVelocityVector(FVector::Right * _DeltaTime);
+	}
+
+	ResultMovementUpdate(_DeltaTime);
+
+	if (true == IsReverseMove())
+	{
+		StateChange(EActorState::ReverseMove);
+		return;
+	}
+}
+
 
 void APlayerMario::GetHitStart()
 {
@@ -1077,7 +1132,29 @@ void APlayerMario::FallDownStart()
 void APlayerMario::IdleFireThrowStart()
 {
 	DirCheck();
-	Renderer->ChangeAnimation(ChangeAnimationName("IdleThrow"));
+	Renderer->ChangeAnimation(ChangeAnimationName("IdleFireThrow"));
+}
+
+void APlayerMario::MoveFireThrowStart()
+{
+	DirCheck();
+
+	int MoveAniFrame = Renderer->GetCurAnimationFrame();
+
+	switch (MoveAniFrame)
+	{
+	case 0:
+		Renderer->ChangeAnimation(ChangeAnimationName("MoveFireThrow2"));
+		break;
+	case 1:
+		Renderer->ChangeAnimation(ChangeAnimationName("MoveFireThrow3"));
+		break;
+	case 2:
+		Renderer->ChangeAnimation(ChangeAnimationName("MoveFireThrow1"));
+		break;
+	default:
+		break;
+	}
 }
 
 void APlayerMario::BlockBotHitStart()
