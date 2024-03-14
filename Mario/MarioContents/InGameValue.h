@@ -47,8 +47,12 @@ public:
 	/// <summary>
 	/// 스테이지에서 마리오 초기 위치
 	/// </summary>
-	static const int MarioInitXPos;
-	static const int MarioInitYPos;
+	static const int Stage1_1MarioInitXPos;
+	static const int Stage1_1MarioInitYPos;
+	static const int Stage1_4MarioInitXPos;
+	static const int Stage1_4MarioInitYPos;
+
+
 
 	/// <summary>
 	/// 스테이지에서 CollisionMap에서 벽, 바닥 색

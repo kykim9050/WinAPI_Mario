@@ -29,7 +29,7 @@ void U1_1StageLevel::BeginPlay()
 {
 	UStageLevel::BeginPlay();
 
-	Mario->SetActorLocation({ UInGameValue::MarioInitXPos, UInGameValue::MarioInitYPos });
+	Mario->SetActorLocation({ UInGameValue::Stage1_1MarioInitXPos, UInGameValue::Stage1_1MarioInitYPos });
 
 	Map->GetMapRenderer()->SetImage("1_1Stage_Map.png");
 	FVector MapImageFVector = Map->GetMapRenderer()->GetImage()->GetScale();

@@ -39,7 +39,7 @@ void UTestLevel::BeginPlay()
 {
 	UStageLevel::BeginPlay();
 
-	Mario->SetActorLocation({ UInGameValue::MarioInitXPos, UInGameValue::MarioInitYPos });
+	Mario->SetActorLocation({ UInGameValue::Stage1_4MarioInitXPos, UInGameValue::Stage1_4MarioInitYPos });
 	//Mario->SetActorLocation({ 6000, 400 });
 
 	Map->GetMapRenderer()->SetImage("1_1Stage_Map.png");
