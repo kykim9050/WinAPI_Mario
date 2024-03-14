@@ -162,6 +162,7 @@ void AUI::TimeCheck(float _DeltaTime)
 
 		USoundManager::GetInst().BGMSoundStop();
 		USoundManager::GetInst().EffectSoundPlay("MarioDie.wav");
+		UPlayerInfoManager::GetInst().AddPlayerLife(-1);
 
 		std::string LevelName = GetWorld()->GetName();
 		UPlayerInfoManager::GetInst().SetPrevStageLevel(LevelName);
