@@ -74,8 +74,12 @@ void UContentsCore::BeginPlay()
 		UEngineSound::Load(File.GetFullPath());
 	}
 
-	CreateLevel<UTestLevel>("1-1");
-	ChangeLevel("1-1");
+	//CreateLevel<UTestLevel>("1-1");
+	//ChangeLevel("1-1");
+
+	CreateLevel<U1_4StageLevel>("1-4");
+	ChangeLevel("1-4");
+
 
 	//CreateLevel<UTitleLevel>("0-0");
 	//ChangeLevel("0-0");

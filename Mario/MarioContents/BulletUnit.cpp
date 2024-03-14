@@ -49,3 +49,12 @@ void ABulletUnit::StateChange(EActorState _ActorState)
 
 	SetActorState(_ActorState);
 }
+
+void ABulletUnit::FirstInit(float _DeltaTime)
+{
+	if (IsBulletFire())
+	{
+		StateChange(EActorState::Move);
+		return;
+	}
+}
