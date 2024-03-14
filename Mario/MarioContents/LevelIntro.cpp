@@ -18,7 +18,6 @@ void ALevelIntro::BeginPlay()
 
 	IntroLife = UPlayerInfoManager::GetInst().GetPlayerLife();
 
-	UIRenderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::IntroUI));
 	UIRenderer->SetImage("LevelIntro.png");
 	FVector UIScale = UIRenderer->GetImage()->GetScale();
 	UIRenderer->SetTransform({ {UIScale.ihX() * UInGameValue::WindowSizeMulValue, UIScale.ihY() * UInGameValue::WindowSizeMulValue}, {UIScale.iX() * UInGameValue::WindowSizeMulValue, UIScale.iY() * UInGameValue::WindowSizeMulValue}});
