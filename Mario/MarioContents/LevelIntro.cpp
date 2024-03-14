@@ -97,30 +97,3 @@ void ALevelIntro::Tick(float _DeltaTime)
 		USoundManager::GetInst().BGMSoundPlay(GetWorld()->GetName());
 	}
 }
-
-void ALevelIntro::NumberToAnimation(int _PrintNumber, int _AnimatingNum, const std::vector<UImageRenderer*>& _Renderer)
-{
-	if (_Renderer.empty())
-	{
-		MsgBoxAssert("입력받은 자료 내부가 비어있습니다.");
-	}
-
-	int MaxDigit = 1;
-
-	for (int i = 0; i < _AnimatingNum - 1; i++)
-	{
-		MaxDigit *= 10;
-	}
-
-	int PrintNumber = _PrintNumber;
-	int ToStringValue = 0;
-
-	for (int i = 0; i < _AnimatingNum; i++)
-	{
-		ToStringValue = PrintNumber / MaxDigit;
-		_Renderer[i]->ChangeAnimation(std::to_string(ToStringValue));
-		PrintNumber = PrintNumber % MaxDigit;
-		MaxDigit /= 10;
-	}
-
-}
