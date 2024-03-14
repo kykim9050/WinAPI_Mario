@@ -1037,6 +1037,8 @@ void APlayerMario::IdleFireThrow(float _DeltaTime)
 		StateChange(EActorState::Idle);
 		return;
 	}
+
+	ResultMovementUpdate(_DeltaTime);
 }
 
 void APlayerMario::MoveFireThrow(float _DeltaTime)
