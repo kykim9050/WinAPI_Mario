@@ -189,6 +189,16 @@ public:
 
 
 protected:
+	EActorState GetPrevActorState() const
+	{
+		return PrevActorState;
+	}
+
+	void SetPrevActorState(EActorState _State)
+	{
+		PrevActorState = _State;
+	}
+
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 	void CalGravityVelocityVector(float _DeltaTime) override;
@@ -207,11 +217,11 @@ protected:
 	void ReachStageEnd(float _DeltaTime);
 	void ReachStageEndStart();
 	void BossStageClearStart();
-	void FireThrowStart();
+	void IdleFireThrowStart();
 	void CeilingCheck();
 	void FallDownStart();
 	void FallDown(float _DeltaTime);
-	void FireThrow(float _DeltaTime);
+	void IdleFireThrow(float _DeltaTime);
 
 private:
 	void SetPlayerFallDown()
