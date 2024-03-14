@@ -46,8 +46,7 @@ private:
 	std::vector<UImageRenderer*> CoinCountRenderer = std::vector<UImageRenderer*>();
 	std::vector<UImageRenderer*> StageInfoRenderer = std::vector<UImageRenderer*>();
 
-	int TimeCount = 2;
-	//int TimeCount = 400;
+	int TimeCount = 400;
 	float TimeInterval = 1.0f;
 	float TTSConvertInterval = 0.01f;
 	float TTSConvertSoundInterval = 0.05f;
