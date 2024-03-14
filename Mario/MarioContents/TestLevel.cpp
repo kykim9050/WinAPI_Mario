@@ -50,21 +50,26 @@ void UTestLevel::BeginPlay()
 	FVector ColMapImageFVector = ColMap->GetColMapRenderer()->GetImage()->GetScale();
 	ColMap->GetColMapRenderer()->SetTransform({ { ColMapImageFVector.ihX(), ColMapImageFVector.ihY()}, {ColMapImageFVector} });
 
-	AKoopaTroopa* MonsterTroopa1 = SpawnActor<AKoopaTroopa>(static_cast<int>(EActorType::Monster));
-	AKoopaTroopa* MonsterTroopa2 = SpawnActor<AKoopaTroopa>(static_cast<int>(EActorType::Monster));
-	AKoopaTroopa* MonsterTroopa3 = SpawnActor<AKoopaTroopa>(static_cast<int>(EActorType::Monster));
-	AKoopaTroopa* MonsterTroopa4 = SpawnActor<AKoopaTroopa>(static_cast<int>(EActorType::Monster));
-	MonsterTroopa1->SetActorLocation({ 500, 580 });
-	MonsterTroopa2->SetActorLocation({ 850, 580 });
-	MonsterTroopa3->SetActorLocation({ 950, 580 });
-	MonsterTroopa4->SetActorLocation({ 1050, 580 });
+	ABlockUnit* CoinBlock = SpawnCoinBlock(EActorType::Block, EItemType::Item);
+	ABlockUnit* BrickBlock1 = SpawnActor<ABrickBlock>();
+	CoinBlock->SetActorLocation({ 300, 400 });
+	BrickBlock1->SetActorLocation({ 348, 400 });
 
-	AGoomba* Goomba1 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
-	AGoomba* Goomba2 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
-	AGoomba* Goomba3 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
-	Goomba1->SetActorLocation({ 800, 580 });
-	Goomba2->SetActorLocation({ 900, 580 });
-	Goomba3->SetActorLocation({ 1000, 580 });
+	//AKoopaTroopa* MonsterTroopa1 = SpawnActor<AKoopaTroopa>(static_cast<int>(EActorType::Monster));
+	//AKoopaTroopa* MonsterTroopa2 = SpawnActor<AKoopaTroopa>(static_cast<int>(EActorType::Monster));
+	//AKoopaTroopa* MonsterTroopa3 = SpawnActor<AKoopaTroopa>(static_cast<int>(EActorType::Monster));
+	//AKoopaTroopa* MonsterTroopa4 = SpawnActor<AKoopaTroopa>(static_cast<int>(EActorType::Monster));
+	//MonsterTroopa1->SetActorLocation({ 500, 580 });
+	//MonsterTroopa2->SetActorLocation({ 850, 580 });
+	//MonsterTroopa3->SetActorLocation({ 950, 580 });
+	//MonsterTroopa4->SetActorLocation({ 1050, 580 });
+
+	//AGoomba* Goomba1 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
+	//AGoomba* Goomba2 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
+	//AGoomba* Goomba3 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
+	//Goomba1->SetActorLocation({ 800, 580 });
+	//Goomba2->SetActorLocation({ 900, 580 });
+	//Goomba3->SetActorLocation({ 1000, 580 });
 }
 
 void UTestLevel::Tick(float _DeltaTime)

@@ -70,8 +70,42 @@ void AMushroom::Appear(float _DeltaTime)
 
 void AMushroom::Move(float _DeltaTime)
 {
-	AddActorLocation(FVector::Right * 100.0f * _DeltaTime);
+	CalHorizonVelocityVector(_DeltaTime);
+	CalGravityVelocityVector(_DeltaTime);
+	CalTotalVelocityVector(_DeltaTime);
+	AddActorLocation(TotalVelocityVector * _DeltaTime);
 }
+
+void AMushroom::CalGravityVelocityVector(float _DeltaTime)
+{
+	std::vector<UCollision*> Result = std::vector<UCollision*>();
+
+	Color8Bit Color = UContentsFunction::GetCollisionMapImg()->GetColor(GetActorLocation().iX(), GetActorLocation().iY(), UInGameValue::CollisionColor);
+
+	if (UInGameValue::CollisionColor == Color || true == GetBodyCollision()->CollisionCheck(ECollisionOrder::BlockTop, Result))
+	{
+		GravityVelocityVector = FVector::Zero;
+		SetGravityRatio(0.0f);
+	}
+	else
+	{
+		SetGravityRatio(0.5f);
+	}
+
+	GravityVelocityVector += FVector::Down * 500.0f * _DeltaTime;
+}
+
+void AMushroom::CalHorizonVelocityVector(float _DeltaTime)
+{
+	HorizonVelocityVector = FVector::Right * 100.0f;
+}
+
+//void AMonsterUnit::ResultMovementUpdate(float _DeltaTime)
+//{
+//	CalGravityVelocityVector(_DeltaTime);
+//	CalTotalVelocityVector(_DeltaTime);
+//	AddActorLocation(TotalVelocityVector * _DeltaTime);
+//}
 
 
 
