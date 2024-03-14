@@ -66,7 +66,7 @@ void AMushroom::Appear(float _DeltaTime)
 		StateChange(EActorState::Move);
 	}
 
-	AddActorLocation(FVector::Up * 60.0f * _DeltaTime);
+	AddActorLocation(FVector::Up * RisingSpeed * _DeltaTime);
 }
 
 void AMushroom::Move(float _DeltaTime)
