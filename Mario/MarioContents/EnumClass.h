@@ -78,6 +78,7 @@ enum class EActorState
 	IdleFireThrow,
 	MoveFireThrow,
 	ReverseMoveFireThrow,
+	JumpFireThrow,
 	Speak,
 };
 

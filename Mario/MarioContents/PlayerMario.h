@@ -221,11 +221,13 @@ protected:
 	void MoveFireThrowStart();
 	void ReverseMoveFireThrowStart();
 	void FallDownStart();
+	void JumpFireThrowStart();
 	void CeilingCheck();
 	void FallDown(float _DeltaTime);
 	void IdleFireThrow(float _DeltaTime);
 	void MoveFireThrow(float _DeltaTime);
 	void ReverseMoveFireThrow(float _DeltaTime);
+	void JumpFireThrow(float _DeltaTime);
 
 private:
 	void SetPlayerFallDown()

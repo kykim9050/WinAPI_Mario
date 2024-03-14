@@ -86,6 +86,8 @@ void APlayerMario::BeginPlay()
 	Renderer->CreateAnimation("Fire_MoveFireThrow3_Left", "FireMario_Left.png", 38, 38, 0.05f, false);
 	Renderer->CreateAnimation("Fire_ReverseMoveFireThrow_Right", "FireMario_Right.png", 39, 39, 0.05f, false);
 	Renderer->CreateAnimation("Fire_ReverseMoveFireThrow_Left", "FireMario_Left.png", 39, 39, 0.05f, false);
+	Renderer->CreateAnimation("Fire_JumpFireThrow_Right", "FireMario_Right.png", 40, 40, 0.05f, false);
+	Renderer->CreateAnimation("Fire_JumpFireThrow_Left", "FireMario_Left.png", 40, 40, 0.05f, false);
 
 
 	Renderer->CreateAnimation("Small_ClimbDown", "Mario_Right.png", 7, 8, 0.3f, true);
@@ -197,6 +199,9 @@ void APlayerMario::StateChange(EActorState _PlayerState)
 		case EActorState::ReverseMoveFireThrow:
 			ReverseMoveFireThrowStart();
 			break;
+		case EActorState::JumpFireThrow:
+			JumpFireThrowStart();
+			break;
 		default:
 			break;
 		}
@@ -281,6 +286,9 @@ void APlayerMario::StateUpdate(float _DeltaTime)
 		break;
 	case EActorState::ReverseMoveFireThrow:
 		ReverseMoveFireThrow(_DeltaTime);
+		break;
+	case EActorState::JumpFireThrow:
+		JumpFireThrow(_DeltaTime);
 		break;
 	default:
 		break;
@@ -596,6 +604,14 @@ void APlayerMario::CollisionJump(float _DeltaTime)
 
 void APlayerMario::Jump(float _DeltaTime)
 {
+	if (UEngineInput::IsDown('X'))
+	{
+		if (EMarioType::Fire == MarioType)
+		{
+			StateChange(EActorState::JumpFireThrow);
+			return;
+		}
+	}
 	
 	if (UEngineInput::IsUp(VK_SPACE) || 0.3f < UEngineInput::GetPressTime(VK_SPACE))
 	{
@@ -1102,6 +1118,56 @@ void APlayerMario::ReverseMoveFireThrow(float _DeltaTime)
 
 }
 
+void APlayerMario::JumpFireThrow(float _DeltaTime)
+{
+	if (Renderer->IsCurAnimationEnd())
+	{
+		Renderer->ChangeAnimation(ChangeAnimationName("Jump"));
+		SetActorState(EActorState::Jump);
+		return;
+	}
+
+	if (UEngineInput::IsUp(VK_SPACE) || 0.3f < UEngineInput::GetPressTime(VK_SPACE))
+	{
+		SetGravityRatio(1.0f);
+	}
+
+	if (UEngineInput::IsPress(VK_LEFT))
+	{
+		AddHorizonVelocityVector(FVector::Left * _DeltaTime * 0.5);
+	}
+
+	if (UEngineInput::IsPress(VK_RIGHT))
+	{
+		AddHorizonVelocityVector(FVector::Right * _DeltaTime * 0.5);
+	}
+
+	ResultMovementUpdate(_DeltaTime);
+
+
+
+	Color8Bit Color = UContentsFunction::GetCollisionMapImg()->GetColor(GetActorLocation().iX(), GetActorLocation().iY(), UInGameValue::CollisionColor);
+
+	if (UInGameValue::CollisionColor == Color)
+	{
+		JumpVelocityVector = FVector::Zero;
+		if (true == UEngineInput::IsPress(VK_LEFT) || true == UEngineInput::IsPress(VK_RIGHT))
+		{
+			if (true == IsReverseMove())
+			{
+				StateChange(EActorState::ReverseMove);
+				return;
+			}
+
+			StateChange(EActorState::Move);
+			return;
+		}
+
+		StateChange(EActorState::Idle);
+		return;
+	}
+}
+
 
 void APlayerMario::GetHitStart()
 {
@@ -1223,6 +1289,12 @@ void APlayerMario::ReverseMoveFireThrowStart()
 {
 	DirCheck();
 	Renderer->ChangeAnimation(ChangeAnimationName("ReverseMoveFireThrow"));
+}
+
+void APlayerMario::JumpFireThrowStart()
+{
+	DirCheck();
+	Renderer->ChangeAnimation(ChangeAnimationName("JumpFireThrow"));
 }
 
 void APlayerMario::BlockBotHitStart()
