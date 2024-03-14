@@ -84,7 +84,8 @@ void APlayerMario::BeginPlay()
 	Renderer->CreateAnimation("Fire_MoveFireThrow1_Left", "FireMario_Left.png", 36, 36, 0.05f, false);
 	Renderer->CreateAnimation("Fire_MoveFireThrow2_Left", "FireMario_Left.png", 37, 37, 0.05f, false);
 	Renderer->CreateAnimation("Fire_MoveFireThrow3_Left", "FireMario_Left.png", 38, 38, 0.05f, false);
-
+	Renderer->CreateAnimation("Fire_ReverseMoveFireThrow_Right", "FireMario_Right.png", 39, 39, 0.05f, false);
+	Renderer->CreateAnimation("Fire_ReverseMoveFireThrow_Left", "FireMario_Left.png", 39, 39, 0.05f, false);
 
 
 	Renderer->CreateAnimation("Small_ClimbDown", "Mario_Right.png", 7, 8, 0.3f, true);
@@ -193,6 +194,9 @@ void APlayerMario::StateChange(EActorState _PlayerState)
 		case EActorState::MoveFireThrow:
 			MoveFireThrowStart();
 			break;
+		case EActorState::ReverseMoveFireThrow:
+			ReverseMoveFireThrowStart();
+			break;
 		default:
 			break;
 		}
@@ -274,6 +278,9 @@ void APlayerMario::StateUpdate(float _DeltaTime)
 		break;
 	case EActorState::MoveFireThrow:
 		MoveFireThrow(_DeltaTime);
+		break;
+	case EActorState::ReverseMoveFireThrow:
+		ReverseMoveFireThrow(_DeltaTime);
 		break;
 	default:
 		break;
@@ -459,6 +466,15 @@ void APlayerMario::ReverseMoveStart()
 
 void APlayerMario::ReverseMove(float _DeltaTime)
 {
+	if (UEngineInput::IsDown('X'))
+	{
+		if (EMarioType::Fire == MarioType)
+		{
+			StateChange(EActorState::ReverseMoveFireThrow);
+			return;
+		}
+	}
+
 	if (UEngineInput::IsDown(VK_SPACE))
 	{
 		StateChange(EActorState::Jump);
@@ -1040,6 +1056,52 @@ void APlayerMario::MoveFireThrow(float _DeltaTime)
 	}
 }
 
+void APlayerMario::ReverseMoveFireThrow(float _DeltaTime)
+{
+	if (Renderer->IsCurAnimationEnd())
+	{
+		StateChange(EActorState::ReverseMove);
+		return;
+	}
+
+	if (UEngineInput::IsDown(VK_SPACE))
+	{
+		StateChange(EActorState::Jump);
+		return;
+	}
+
+	if (UEngineInput::IsPress(VK_LEFT))
+	{
+		if (HorizonVelocityVector.X < 0.0f)
+		{
+			StateChange(EActorState::Move);
+			return;
+		}
+
+		AddHorizonVelocityVector(FVector::Left * _DeltaTime);
+
+	}
+
+	if (UEngineInput::IsPress(VK_RIGHT))
+	{
+		if (HorizonVelocityVector.X > 0.0f)
+		{
+			StateChange(EActorState::Move);
+			return;
+		}
+		AddHorizonVelocityVector(FVector::Right * _DeltaTime);
+	}
+
+	if ((UEngineInput::IsFree(VK_LEFT) && UEngineInput::IsFree(VK_RIGHT)))
+	{
+		StateChange(EActorState::Idle);
+		return;
+	}
+
+	ResultMovementUpdate(_DeltaTime);
+
+}
+
 
 void APlayerMario::GetHitStart()
 {
@@ -1155,6 +1217,12 @@ void APlayerMario::MoveFireThrowStart()
 	default:
 		break;
 	}
+}
+
+void APlayerMario::ReverseMoveFireThrowStart()
+{
+	DirCheck();
+	Renderer->ChangeAnimation(ChangeAnimationName("ReverseMoveFireThrow"));
 }
 
 void APlayerMario::BlockBotHitStart()
