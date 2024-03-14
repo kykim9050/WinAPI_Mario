@@ -22,6 +22,8 @@ protected:
 	void Tick(float _DeltaTime) override;
 	void NumberToAnimation(int _PrintNumber, int _AnimatingNum, const std::vector<UImageRenderer*>& _Renderer);
 
+
+	UImageRenderer* UIRenderer = nullptr;
 	int IntroScore = 0;
 	int IntroAmountOfCoins = 0;
 	std::vector<std::string> IntroStageInfo = std::vector<std::string>();

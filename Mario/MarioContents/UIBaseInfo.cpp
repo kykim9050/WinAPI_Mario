@@ -19,6 +19,8 @@ void AUIBaseInfo::BeginPlay()
 	IntroScore = UPlayerInfoManager::GetInst().GetPlayerScore();
 	IntroStageInfo = UPlayerInfoManager::GetInst().GetStageInfo();
 
+	UIRenderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::IntroUI));
+
 	for (int i = 0; i < UInGameValue::ScoreRendererSize; i++)
 	{
 		UImageRenderer* Renderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::IntroUIComponent));

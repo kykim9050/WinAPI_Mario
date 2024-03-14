@@ -21,8 +21,6 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 private:
-	UImageRenderer* UIRenderer = nullptr;
-	
 	int IntroLife = 0;
 	std::vector<UImageRenderer*> LifeRenderer = std::vector<UImageRenderer*>();
 	std::vector<UImageRenderer*> StageInfoCenterRenderer = std::vector<UImageRenderer*>();
