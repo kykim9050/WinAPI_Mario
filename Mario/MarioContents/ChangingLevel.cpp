@@ -83,7 +83,7 @@ void UChangingLevel::Tick(float _DeltaTime)
 
 	if ("RESTART" == UpperLevelName)
 	{
-
+		UPlayerInfoManager::GetInst().ReSetInfo();
 		GEngine->CreateLevel<UTitleLevel>("0-0");
 		GEngine->ChangeLevel("0-0");
 		return;

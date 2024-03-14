@@ -113,6 +113,8 @@ public:
 		return PrevStageLevel;
 	}
 
+	void ReSetInfo();
+
 protected:
 
 private:
