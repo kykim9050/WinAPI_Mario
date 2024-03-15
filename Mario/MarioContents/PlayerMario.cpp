@@ -235,6 +235,7 @@ void APlayerMario::CollisionStateChange(ECollisionState _CollisionState)
 void APlayerMario::StateUpdate(float _DeltaTime)
 {
 	BulletListReleaseUpdate();
+	BulletReloadUpdate(_DeltaTime);
 
 	switch (ActorState)
 	{
@@ -479,7 +480,7 @@ void APlayerMario::ReverseMove(float _DeltaTime)
 {
 	if (UEngineInput::IsDown('X'))
 	{
-		if (EMarioType::Fire == MarioType)
+		if (true == CanUseBullet && EMarioType::Fire == MarioType)
 		{
 			StateChange(EActorState::ReverseMoveFireThrow);
 			return;
@@ -529,7 +530,7 @@ void APlayerMario::Move(float _DeltaTime)
 {
 	if (UEngineInput::IsDown('X'))
 	{
-		if (EMarioType::Fire == MarioType)
+		if (true == CanUseBullet && EMarioType::Fire == MarioType)
 		{
 			StateChange(EActorState::MoveFireThrow);
 			return;
@@ -609,7 +610,7 @@ void APlayerMario::Jump(float _DeltaTime)
 {
 	if (UEngineInput::IsDown('X'))
 	{
-		if (EMarioType::Fire == MarioType)
+		if (true == CanUseBullet && EMarioType::Fire == MarioType)
 		{
 			StateChange(EActorState::JumpFireThrow);
 			return;
@@ -725,7 +726,7 @@ void APlayerMario::Idle(float _DeltaTime)
 {
 	if (UEngineInput::IsDown('X'))
 	{
-		if (EMarioType::Fire == MarioType)
+		if (true == CanUseBullet && EMarioType::Fire == MarioType)
 		{
 			StateChange(EActorState::IdleFireThrow);
 			return;
@@ -1650,6 +1651,8 @@ void APlayerMario::BulletFire()
 	NewFireBall->StateChange(EActorState::FallDown);
 
 	Bullets.push_back(NewFireBall);
+
+	++ThrowBulletNum;
 }
 
 void APlayerMario::BulletListReleaseUpdate()
@@ -1674,5 +1677,23 @@ void APlayerMario::BulletListReleaseUpdate()
 		}
 
 		StartIter = Bullets.erase(StartIter);
+	}
+}
+
+void APlayerMario::BulletReloadUpdate(float _DeltaTime)
+{
+	if (2 <= ThrowBulletNum)
+	{
+		CanUseBullet = false;
+
+		if (0.0f >= BulletReloadTime)
+		{
+			BulletReloadTime = 0.3f + BulletReloadTime;
+			ThrowBulletNum = 0;
+			CanUseBullet = true;
+			return;
+		}
+
+		BulletReloadTime -= _DeltaTime;
 	}
 }

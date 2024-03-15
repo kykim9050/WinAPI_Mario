@@ -277,6 +277,7 @@ private:
 	void GroundUp();
 	void BulletFire();
 	void BulletListReleaseUpdate();
+	void BulletReloadUpdate(float _DeltaTime);
 
 	UCollision* FootCollision = nullptr;
 	AMarioBullet* NewFireBall = nullptr;
@@ -304,13 +305,15 @@ private:
 	bool ClearBossStage = false;
 	bool CameraMovePause = false;
 	bool PlayerFallDown = false;
+	bool CanUseBullet = true;
 
+	int ThrowBulletNum = 0;
 	int CoinCount = 0;
 	int DeadStep = 0;
 	int ReachingEndStep = 0;
 	int BossStageClearStep = 0;
 	float DeadDelayTime = 0.5f;
-
+	float BulletReloadTime = 0.3f;
 	
 
 };
