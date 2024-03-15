@@ -52,8 +52,24 @@ UEngineWindow::~UEngineWindow()
 
 }
 
-void UEngineWindow::Open(std::string_view _Title /*= "Title"*/)
+void UEngineWindow::Open(std::string_view _Title /*= "Title"*/, std::string_view _IconPath /*= ""*/)
 {
+	HICON hIcon = nullptr;
+	if ("" != _IconPath)
+	{
+		hIcon = (HICON)LoadImage( 
+			NULL,             
+			_IconPath.data(), 
+			IMAGE_ICON,       
+			0,                
+			0,                
+			LR_LOADFROMFILE | 
+			LR_DEFAULTSIZE |  
+			LR_SHARED         
+		);
+
+	}
+
 	WNDCLASSEXA wcex;
 
 	wcex.cbSize = sizeof(WNDCLASSEX);
@@ -63,7 +79,7 @@ void UEngineWindow::Open(std::string_view _Title /*= "Title"*/)
 	wcex.cbClsExtra = 0;
 	wcex.cbWndExtra = 0;
 	wcex.hInstance = hInstance;
-	wcex.hIcon = nullptr;
+	wcex.hIcon = hIcon;
 	wcex.hCursor = LoadCursor(nullptr, IDC_ARROW);
 	wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
 	wcex.lpszMenuName = nullptr;
@@ -72,14 +88,12 @@ void UEngineWindow::Open(std::string_view _Title /*= "Title"*/)
 
 	RegisterClassExA(&wcex);
 
-
 	int Style = WS_OVERLAPPED |
 		WS_CAPTION |
 		WS_SYSMENU |
 		WS_THICKFRAME |
 		WS_MINIMIZEBOX |
 		WS_MAXIMIZEBOX;
-
 
 	hWnd = CreateWindowA("DefaultWindow", _Title.data(), Style,
 		CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
@@ -101,7 +115,6 @@ void UEngineWindow::Open(std::string_view _Title /*= "Title"*/)
 
 	ShowWindow(hWnd, SW_SHOW);
 	UpdateWindow(hWnd);
-
 }
 
 unsigned __int64 UEngineWindow::WindowMessageLoop(void(*_Update)(), void(*_End)())
@@ -187,4 +200,9 @@ void UEngineWindow::ScreenUpdate()
 	CopyTrans.SetScale({ Scale.iX(), Scale.iY() });
 
 	WindowImage->BitCopy(BackBufferImage, CopyTrans);
+}
+
+void UEngineWindow::SetWindowSmallIcon()
+{
+
 }

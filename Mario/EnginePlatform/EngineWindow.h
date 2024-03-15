@@ -18,7 +18,7 @@ public:
 	UEngineWindow& operator=(const UEngineWindow& _Other) = delete;
 	UEngineWindow& operator=(UEngineWindow&& _Other) noexcept = delete;
 
-	void Open(std::string_view _Title = "Title");
+	void Open(std::string_view _Title = "Title", std::string_view _IconPath = "");
 
 	static void Init(HINSTANCE _hInst);
 	static unsigned __int64 WindowMessageLoop(void(*_Update)(), void(*_End)());
@@ -54,6 +54,8 @@ public:
 	{
 		SetWindowTextA(hWnd, _Text.data());
 	}
+
+	void SetWindowSmallIcon();
 
 	/// <summary>
 	/// 윈도우 창을 기준으로 마우스의 좌표를 받아오는 함수
