@@ -56,6 +56,11 @@ void AMarioBullet::FallDownStart()
 	HorizonVelocityVector = FVector::Right * 500.0f;
 }
 
+void AMarioBullet::ExplosionStart()
+{
+	int a = 0;
+}
+
 void AMarioBullet::FallDown(float _DeltaTime)
 {
 	if (true == FallDownGroundCheck())
@@ -66,6 +71,11 @@ void AMarioBullet::FallDown(float _DeltaTime)
 	CalHorizonVelocityVector(_DeltaTime);
 	CalTotalVelocityVector(_DeltaTime);
 	AddActorLocation(TotalVelocityVector * _DeltaTime);
+}
+
+void AMarioBullet::Explosion(float _DeltaTime)
+{
+	int a = 0;
 }
 
 void AMarioBullet::CalGravityVelocityVector(float _DeltaTime)
@@ -103,7 +113,8 @@ void AMarioBullet::CalHorizonVelocityVector(float _DeltaTime)
 		|| RightPos.X >= GetWorld()->GetCameraPos().X + static_cast<float>(UInGameValue::ResultMainWindowXScale)
 		|| LeftPos.X <= GetWorld()->GetCameraPos().X)
 	{
-		int a = 0;
+		StateChange(EActorState::Explosion);
+		return;
 	}
 }
 
@@ -122,3 +133,4 @@ bool AMarioBullet::FallDownGroundCheck()
 
 	return false;
 }
+

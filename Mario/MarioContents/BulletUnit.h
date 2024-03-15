@@ -25,9 +25,11 @@ protected:
 
 	virtual void MoveStart() {};
 	virtual void FallDownStart() {};
+	virtual void ExplosionStart() {};
 	virtual void FirstInit(float _DeltaTime);
 	virtual void Move(float _DeltaTime) {};
 	virtual void FallDown(float _DeltaTime) {};
+	virtual void Explosion(float _DeltaTime) {};
 
 	void ThrowBullet()
 	{

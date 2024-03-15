@@ -80,6 +80,7 @@ enum class EActorState
 	ReverseMoveFireThrow,
 	JumpFireThrow,
 	Speak,
+	Explosion,
 };
 
 enum class EActorDir

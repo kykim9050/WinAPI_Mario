@@ -19,11 +19,14 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 	void FallDownStart() override;
+	void ExplosionStart() override;
 	void Move(float _DeltaTime) override;
 	void FallDown(float _DeltaTime) override;
+	void Explosion(float _DeltaTime) override;
 	void CalJumpVelocityVector(float _DeltaTime) override;
 	void CalGravityVelocityVector(float _DeltaTime) override;
 	void CalHorizonVelocityVector(float _DeltaTime) override;
+
 
 	bool FallDownGroundCheck();
 
