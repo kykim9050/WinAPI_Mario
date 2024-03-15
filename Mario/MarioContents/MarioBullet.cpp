@@ -58,17 +58,17 @@ void AMarioBullet::CalGravityVelocityVector(float _DeltaTime)
 {
 	std::vector<UCollision*> Result = std::vector<UCollision*>();
 
-	Color8Bit Color = UContentsFunction::GetCollisionMapImg()->GetColor(GetActorLocation().iX(), GetActorLocation().iY(), UInGameValue::CollisionColor);
+	Color8Bit Color = UContentsFunction::GetCollisionMapImg()->GetColor(GetActorLocation().iX(), GetActorLocation().iY() + GetBodyCollision()->GetTransform().GetScale().ihY(), UInGameValue::CollisionColor);
 
 	if (UInGameValue::CollisionColor == Color || true == GetBodyCollision()->CollisionCheck(ECollisionOrder::BlockTop, Result))
 	{
 		GravityVelocityVector = FVector::Zero;
 	}
 
-	GravityVelocityVector += FVector::Down * GravityVel * _DeltaTime;
+	GravityVelocityVector += FVector::Down * GravityAccVel * _DeltaTime;
 }
 
 void AMarioBullet::CalJumpVelocityVector(float _DeltaTime)
 {
-	JumpVelocityVector = FVector::Up * 500.0f;
+	JumpVelocityVector = FVector::Up * JumpPowerVel;
 }

@@ -24,6 +24,7 @@ protected:
 	void CalGravityVelocityVector(float _DeltaTime) override;
 
 private:
-	float GravityVel = 1000.0f;
+	float GravityAccVel = 2000.0f;
+	float JumpPowerVel = 500.0f;
 };
 
