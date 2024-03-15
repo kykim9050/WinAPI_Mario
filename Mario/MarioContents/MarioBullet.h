@@ -19,7 +19,7 @@ public:
 
 	void KillMonster()
 	{
-		int a = 0;
+		MonsterKill = true;
 	}
 
 protected:
@@ -40,10 +40,16 @@ protected:
 	void SetDir(EActorDir _OtherDir);
 	FVector GetMoveDir();
 
+	bool IsKillMonster() const
+	{
+		return MonsterKill;
+	}
+
 private:
 	float FallDownGravityVel = 500.0f;
 	float GravityAccVel = 2000.0f;
 	float JumpPowerVel = 400.0f;
 	float SpeedVel = 700.0f;
+	bool MonsterKill = false;
 };
 
