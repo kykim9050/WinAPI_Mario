@@ -9,6 +9,7 @@
 #include <EngineCore/EngineCore.h>
 #include "ChangingLevel.h"
 #include "UI.h"
+#include "MarioBullet.h"
 
 APlayerMario* APlayerMario::MainPlayer = nullptr;
 bool APlayerMario::IsReachingStageEnd = false;
@@ -1263,6 +1264,9 @@ void APlayerMario::IdleFireThrowStart()
 {
 	DirCheck();
 	Renderer->ChangeAnimation(ChangeAnimationName("IdleFireThrow"));
+	NewFireBall = GetWorld()->SpawnActor<AMarioBullet>(EActorType::Bullet);
+	NewFireBall->SetActorLocation(GetActorLocation());
+	NewFireBall->StateChange(EActorState::FallDown);
 }
 
 void APlayerMario::MoveFireThrowStart()

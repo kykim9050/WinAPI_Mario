@@ -31,12 +31,6 @@ void AMarioBullet::BeginPlay()
 void AMarioBullet::Tick(float _DeltaTime)
 {
 	ABulletUnit::Tick(_DeltaTime);
-
-	if (true == UEngineInput::IsDown('P'))
-	{
-		StateChange(EActorState::FallDown);
-		return;
-	}
 }
 
 void AMarioBullet::Move(float _DeltaTime)
