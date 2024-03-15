@@ -26,9 +26,8 @@ protected:
 	void Explosion(float _DeltaTime) override;
 	void CalJumpVelocityVector(float _DeltaTime) override;
 	void CalGravityVelocityVector(float _DeltaTime) override;
-	void CalHorizonVelocityVector(float _DeltaTime) override;
 
-
+	bool WallCollisionCheck();
 	bool FallDownGroundCheck();
 
 private:

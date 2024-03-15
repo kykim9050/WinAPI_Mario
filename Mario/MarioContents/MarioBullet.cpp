@@ -43,7 +43,11 @@ void AMarioBullet::Move(float _DeltaTime)
 {
 	ABulletUnit::Move(_DeltaTime);
 
-	CalHorizonVelocityVector(_DeltaTime);
+	if (true == WallCollisionCheck())
+	{
+		return;
+	}
+
 	CalJumpVelocityVector(_DeltaTime);
 	CalGravityVelocityVector(_DeltaTime);
 	CalTotalVelocityVector(_DeltaTime);
@@ -73,7 +77,11 @@ void AMarioBullet::FallDown(float _DeltaTime)
 		return;
 	}
 
-	CalHorizonVelocityVector(_DeltaTime);
+	if (true == WallCollisionCheck())
+	{
+		return;
+	}
+
 	CalTotalVelocityVector(_DeltaTime);
 	AddActorLocation(TotalVelocityVector * _DeltaTime);
 }
@@ -106,7 +114,7 @@ void AMarioBullet::CalJumpVelocityVector(float _DeltaTime)
 	JumpVelocityVector = FVector::Up * JumpPowerVel;
 }
 
-void AMarioBullet::CalHorizonVelocityVector(float _DeltaTime)
+bool AMarioBullet::WallCollisionCheck()
 {
 	FVector RightPos = GetActorLocation();
 	FVector LeftPos = GetActorLocation();
@@ -123,8 +131,10 @@ void AMarioBullet::CalHorizonVelocityVector(float _DeltaTime)
 		|| LeftPos.X <= GetWorld()->GetCameraPos().X)
 	{
 		StateChange(EActorState::Explosion);
-		return;
+		return true;
 	}
+
+	return false;
 }
 
 bool AMarioBullet::FallDownGroundCheck()
