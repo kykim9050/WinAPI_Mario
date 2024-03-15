@@ -1642,5 +1642,6 @@ void APlayerMario::BulletFire()
 
 	NewFireBall = GetWorld()->SpawnActor<AMarioBullet>(EActorType::Bullet);
 	NewFireBall->SetActorLocation(BulletInitPos);
+	NewFireBall->SetDir(BulletDir);
 	NewFireBall->StateChange(EActorState::FallDown);
 }
