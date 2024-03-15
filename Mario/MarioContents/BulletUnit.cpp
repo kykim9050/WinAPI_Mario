@@ -56,6 +56,9 @@ void ABulletUnit::StateChange(EActorState _ActorState)
 		case EActorState::Explosion:
 			ExplosionStart();
 			break;
+		case EActorState::Release:
+			ReleaseStart();
+			break;
 		default:
 			break;
 		}
