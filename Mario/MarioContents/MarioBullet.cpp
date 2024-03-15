@@ -63,8 +63,6 @@ void AMarioBullet::FallDownStart()
 
 void AMarioBullet::ExplosionStart()
 {
-	USoundManager::GetInst().EffectSoundPlay("BlockBottomHit.wav");
-
 	Renderer->ChangeAnimation("FireBallDestroy");
 	BodyCollision->ActiveOff();
 }
@@ -131,6 +129,7 @@ bool AMarioBullet::WallCollisionCheck()
 	if (RightColor == UInGameValue::CollisionColor
 		|| LeftColor == UInGameValue::CollisionColor)
 	{
+		USoundManager::GetInst().EffectSoundPlay("BlockBottomHit.wav");
 		StateChange(EActorState::Explosion);
 		return true;
 	}
@@ -197,15 +196,11 @@ FVector AMarioBullet::GetMoveDir()
 
 bool AMarioBullet::MonsterCollisionCheck()
 {
+	if (true == IsKillMonster())
+	{
+		StateChange(EActorState::Explosion);
+		return true;
+	}
 
-	//std::vector<UCollision*> Result = std::vector<UCollision*>();
-
-	//if (true == GetBodyCollision()->CollisionCheck(ECollisionOrder::Monster, Result))
-	//{
-	//	StateChange(EActorState::Explosion);
-	//	return true;
-	//}
-
-	//return false;
 	return false;
 }
