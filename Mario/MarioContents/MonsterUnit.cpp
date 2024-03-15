@@ -92,11 +92,13 @@ void AMonsterUnit::StateUpdate(float _DeltaTime)
 	case EActorState::Fire:
 		Fire(_DeltaTime);
 		break;
+	case EActorState::GetBlockHit:
+		GetBlockHit(_DeltaTime);
+		return;
 	case EActorState::GetHit:
 	default:
 		break;
 	}
-
 }
 
 void AMonsterUnit::StateChange(EActorState _ActorState)
@@ -132,6 +134,9 @@ void AMonsterUnit::StateChange(EActorState _ActorState)
 		case EActorState::FallDown:
 			FallDownStart();
 			break;
+		case EActorState::GetBlockHit:
+			GetBlockHitStart();
+			return;
 		case EActorState::Dead:
 			Destroy();
 			return;

@@ -64,6 +64,7 @@ enum class EActorState
 	GetFirstHit,
 	GetSecondHit,
 	GetMonsterHit,
+	GetBlockHit,
 	Appear,
 	Fixed,
 	Debris,

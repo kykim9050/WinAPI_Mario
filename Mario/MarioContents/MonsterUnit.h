@@ -33,6 +33,7 @@ protected:
 	virtual void Idle(float _DeltaTime) {};
 	virtual void Move(float _DeltaTime) {};
 	virtual void Fire(float _DeltaTime) {};
+	virtual void GetBlockHit(float _DeltaTime) {};
 	virtual void GetFirstHit(float _DeltaTime) {};
 	virtual void GetSecondHit(float _DeltaTime) {};
 	virtual void GetMonsterHit(float _DeltaTime) {};
@@ -47,6 +48,8 @@ protected:
 	virtual void FallDownStart() {};
 	virtual void GetHitStart() {};
 	virtual void GetMonsterHitStart() {};
+	virtual void GetBlockHitStart() {};
+
 
 	void ScoreImgOperator(FVector _InitPos, int _Score, float _DestoryTime = 0.5f);
 	bool PlayerBulletHitCheck();

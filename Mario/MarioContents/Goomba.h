@@ -43,5 +43,10 @@ protected:
 
 private:
 	bool BlockHit = false;
+
+	bool IsBlockHit() const
+	{
+		return BlockHit;
+	}
 };
 
