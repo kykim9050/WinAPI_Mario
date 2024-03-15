@@ -239,8 +239,8 @@ bool AMonsterUnit::PlayerBulletHitCheck()
 			return false;
 		}
 
-		PlayerBullet->KillMonster();
 		BodyCollision->Destroy();
+		PlayerBullet->KillMonster();
 		CollisionStateChange(ECollisionState::GetMonsterHit);
 		return true;
 	}
