@@ -224,6 +224,11 @@ void AKoopaTroopa::CollisionCheck()
 		return;
 	}
 
+	if (true == PlayerBulletHitCheck())
+	{
+		return;
+	}
+
 	CollisionStateChange(ECollisionState::None);
 }
 
