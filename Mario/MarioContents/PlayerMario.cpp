@@ -1287,18 +1287,21 @@ void APlayerMario::MoveFireThrowStart()
 	default:
 		break;
 	}
+	BulletFire();
 }
 
 void APlayerMario::ReverseMoveFireThrowStart()
 {
 	DirCheck();
 	Renderer->ChangeAnimation(ChangeAnimationName("ReverseMoveFireThrow"));
+	BulletFire();
 }
 
 void APlayerMario::JumpFireThrowStart()
 {
 	DirCheck();
 	Renderer->ChangeAnimation(ChangeAnimationName("JumpFireThrow"));
+	BulletFire();
 }
 
 void APlayerMario::BlockBotHitStart()
