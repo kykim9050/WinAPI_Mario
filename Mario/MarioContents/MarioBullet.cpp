@@ -43,6 +43,7 @@ void AMarioBullet::Move(float _DeltaTime)
 {
 	ABulletUnit::Move(_DeltaTime);
 
+	CalHorizonVelocityVector(_DeltaTime);
 	CalJumpVelocityVector(_DeltaTime);
 	CalGravityVelocityVector(_DeltaTime);
 	CalTotalVelocityVector(_DeltaTime);
@@ -57,11 +58,12 @@ void AMarioBullet::FallDownStart()
 
 void AMarioBullet::FallDown(float _DeltaTime)
 {
-	if (true == FallDownGrundCheck())
+	if (true == FallDownGroundCheck())
 	{
 		return;
 	}
 
+	CalHorizonVelocityVector(_DeltaTime);
 	CalTotalVelocityVector(_DeltaTime);
 	AddActorLocation(TotalVelocityVector * _DeltaTime);
 }
@@ -85,7 +87,27 @@ void AMarioBullet::CalJumpVelocityVector(float _DeltaTime)
 	JumpVelocityVector = FVector::Up * JumpPowerVel;
 }
 
-bool AMarioBullet::FallDownGrundCheck()
+void AMarioBullet::CalHorizonVelocityVector(float _DeltaTime)
+{
+	FVector RightPos = GetActorLocation();
+	FVector LeftPos = GetActorLocation();
+
+	RightPos.X += GetBodyCollision()->GetTransform().GetRadius();
+	LeftPos.X -= GetBodyCollision()->GetTransform().GetRadius();
+
+	Color8Bit RightColor = UContentsFunction::GetCollisionMapImg()->GetColor(RightPos.iX(), RightPos.iY(), UInGameValue::CollisionColor);
+	Color8Bit LeftColor = UContentsFunction::GetCollisionMapImg()->GetColor(LeftPos.iX(), LeftPos.iY(), UInGameValue::CollisionColor);
+
+	if (RightColor == UInGameValue::CollisionColor
+		|| LeftColor == UInGameValue::CollisionColor
+		|| RightPos.X >= GetWorld()->GetCameraPos().X + static_cast<float>(UInGameValue::ResultMainWindowXScale)
+		|| LeftPos.X <= GetWorld()->GetCameraPos().X)
+	{
+		int a = 0;
+	}
+}
+
+bool AMarioBullet::FallDownGroundCheck()
 {
 	std::vector<UCollision*> Result = std::vector<UCollision*>();
 
