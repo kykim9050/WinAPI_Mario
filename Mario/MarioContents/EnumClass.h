@@ -122,6 +122,7 @@ enum class ECollisionOrder
 	PlayerBullet,
 	MonsterBullet,
 	Monster,
+	MonsterFootCollision,
 	Player,
 	PlayerFootCollision,
 	AttackableMonster,

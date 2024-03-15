@@ -1,4 +1,5 @@
 #include "BlockUnit.h"
+#include "MonsterUnit.h"
 
 
 ABlockUnit::ABlockUnit()
@@ -120,6 +121,21 @@ void ABlockUnit::StateChange(EActorState _ActorState)
 
 void ABlockUnit::MoveStart()
 {
+	std::vector<UCollision*> Result = std::vector<UCollision*>();
+
+	if (true == TopCollision->CollisionCheck(ECollisionOrder::MonsterFootCollision, Result))
+	{
+		AMonsterUnit* Monster = dynamic_cast<AMonsterUnit*>(Result[0]->GetOwner());
+
+		if (nullptr == Monster)
+		{
+			MsgBoxAssert("Monster°¡ ¾Æ´Õ´Ï´Ù.");
+			return;
+		}
+
+		int a = 0;
+	}
+
 	JumpVelocityVector = FVector::Up * 200.0f;
 }
 
