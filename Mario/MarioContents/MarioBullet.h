@@ -35,9 +35,9 @@ protected:
 	FVector GetMoveDir();
 
 private:
-	float FallDownGravityVel = 1000.0f;
+	float FallDownGravityVel = 500.0f;
 	float GravityAccVel = 2000.0f;
 	float JumpPowerVel = 400.0f;
-	float SpeedVel = 500.0f;
+	float SpeedVel = 700.0f;
 };
 
