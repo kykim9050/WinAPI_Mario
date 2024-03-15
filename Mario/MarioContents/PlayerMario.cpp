@@ -1264,9 +1264,7 @@ void APlayerMario::IdleFireThrowStart()
 {
 	DirCheck();
 	Renderer->ChangeAnimation(ChangeAnimationName("IdleFireThrow"));
-	NewFireBall = GetWorld()->SpawnActor<AMarioBullet>(EActorType::Bullet);
-	NewFireBall->SetActorLocation(GetActorLocation());
-	NewFireBall->StateChange(EActorState::FallDown);
+	BulletFire();
 }
 
 void APlayerMario::MoveFireThrowStart()
@@ -1617,4 +1615,11 @@ void APlayerMario::DeadCollisionCheck()
 		StateChange(EActorState::FallDown);
 		return;
 	}
+}
+
+void APlayerMario::BulletFire()
+{
+	NewFireBall = GetWorld()->SpawnActor<AMarioBullet>(EActorType::Bullet);
+	NewFireBall->SetActorLocation(GetActorLocation());
+	NewFireBall->StateChange(EActorState::FallDown);
 }
