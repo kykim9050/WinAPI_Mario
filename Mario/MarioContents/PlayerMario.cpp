@@ -1622,7 +1622,25 @@ void APlayerMario::DeadCollisionCheck()
 
 void APlayerMario::BulletFire()
 {
+	EActorDir BulletDir = ActorDir;
+	FVector BulletInitPos = FVector();
+
+	switch (ActorDir)
+	{
+	case EActorDir::Left:
+		BulletDir = EActorDir::Left;
+		BulletInitPos.X = GetBodyCollision()->GetActorBaseTransform().Left();
+		break;
+	case EActorDir::Right:
+		BulletDir = EActorDir::Right;
+		BulletInitPos.X = GetBodyCollision()->GetActorBaseTransform().Right();
+		break;
+	default:
+		break;
+	}
+	BulletInitPos.Y = GetBodyCollision()->GetActorBaseTransform().Top();
+
 	NewFireBall = GetWorld()->SpawnActor<AMarioBullet>(EActorType::Bullet);
-	NewFireBall->SetActorLocation(GetActorLocation());
+	NewFireBall->SetActorLocation(BulletInitPos);
 	NewFireBall->StateChange(EActorState::FallDown);
 }
