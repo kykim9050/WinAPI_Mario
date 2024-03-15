@@ -777,26 +777,22 @@ void APlayerMario::GetHit(float _DeltaTime)
 
 void APlayerMario::Changing(float _DeltaTime)
 {
-	static float DelayTime = 1.0f;
-
-	DelayTime -= _DeltaTime;
-	
-	if (0.0f >= DelayTime)
+	if (true == Renderer->IsCurAnimationEnd())
 	{
 		GetWorld()->SetAllTimeScale(1.0f);
-		DelayTime = 1.0f;
 
 		switch (PrevActorState)
 		{
 		case EActorState::Jump:
 		case EActorState::CollisionJump:
+			DirCheck();
+			Renderer->ChangeAnimation(ChangeAnimationName("Jump"));
 			SetActorState(PrevActorState);
 			break;
 		default:
 			StateChange(PrevActorState);
 			break;
 		}
-		
 	}
 }
 
