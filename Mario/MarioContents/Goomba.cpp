@@ -35,7 +35,7 @@ void AGoomba::BeginPlay()
 	BodyCollision->SetColType(ECollisionType::Rect);
 
 
-	FootCollision = CreateCollision(ECollisionOrder::Monster);
+	FootCollision = CreateCollision(ECollisionOrder::MonsterFootCollision);
 	FootCollision->SetTransform({ { 0,0 }, {UInGameValue::GoombaBodyCollisionScaleX, UInGameValue::FootCollisionScaleY} });
 	FootCollision->SetPosition({ 0, -(static_cast<int>(UInGameValue::FootCollisionScaleY / 2)) });
 	FootCollision->SetColType(ECollisionType::Rect);
