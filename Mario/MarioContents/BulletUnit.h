@@ -24,8 +24,10 @@ protected:
 	void StateChange(EActorState _ActorState) override;
 
 	virtual void MoveStart() {};
+	virtual void FallDownStart() {};
 	virtual void FirstInit(float _DeltaTime);
 	virtual void Move(float _DeltaTime) {};
+	virtual void FallDown(float _DeltaTime) {};
 
 	void ThrowBullet()
 	{
