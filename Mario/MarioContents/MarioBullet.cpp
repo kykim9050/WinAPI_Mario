@@ -18,7 +18,7 @@ void AMarioBullet::BeginPlay()
 	FVector FireBallScale = Renderer->GetImage()->GetScale();
 	Renderer->SetTransform({ {0,0}, {FireBallScale.iX() / UInGameValue::FireBallImageXValue * UInGameValue::WindowSizeMulValue, FireBallScale.iY() / UInGameValue::FireBallImageYValue * UInGameValue::WindowSizeMulValue} });
 	Renderer->CreateAnimation("FiringBullet", "FireBall.png", 0, 3, 0.1f, true);
-	Renderer->CreateAnimation("FireBallDestroy", "FireBall.png", 4, 6, 0.1f, false);
+	Renderer->CreateAnimation("FireBallDestroy", "FireBall.png", 4, 6, 0.05f, false);
 	Renderer->ChangeAnimation("FiringBullet");
 
 	BodyCollision = CreateCollision(ECollisionOrder::PlayerBullet);
@@ -58,7 +58,7 @@ void AMarioBullet::FallDownStart()
 
 void AMarioBullet::ExplosionStart()
 {
-	int a = 0;
+	Renderer->ChangeAnimation("FireBallDestroy");
 }
 
 void AMarioBullet::FallDown(float _DeltaTime)
@@ -75,7 +75,10 @@ void AMarioBullet::FallDown(float _DeltaTime)
 
 void AMarioBullet::Explosion(float _DeltaTime)
 {
-	int a = 0;
+	if (Renderer->IsCurAnimationEnd())
+	{
+		int a = 0;
+	}
 }
 
 void AMarioBullet::CalGravityVelocityVector(float _DeltaTime)
