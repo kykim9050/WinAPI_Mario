@@ -117,6 +117,8 @@ void AMarioBullet::CalJumpVelocityVector(float _DeltaTime)
 
 bool AMarioBullet::WallCollisionCheck()
 {
+	std::vector<UCollision*> Result = std::vector<UCollision*>();
+
 	FVector RightPos = GetActorLocation();
 	FVector LeftPos = GetActorLocation();
 
@@ -127,7 +129,8 @@ bool AMarioBullet::WallCollisionCheck()
 	Color8Bit LeftColor = UContentsFunction::GetCollisionMapImg()->GetColor(LeftPos.iX(), LeftPos.iY(), UInGameValue::CollisionColor);
 
 	if (RightColor == UInGameValue::CollisionColor
-		|| LeftColor == UInGameValue::CollisionColor)
+		|| LeftColor == UInGameValue::CollisionColor
+		|| true == GetBodyCollision()->CollisionCheck(ECollisionOrder::BlockSide, Result))
 	{
 		USoundManager::GetInst().EffectSoundPlay("BlockBottomHit.wav");
 		StateChange(EActorState::Explosion);
