@@ -126,11 +126,16 @@ bool AMarioBullet::WallCollisionCheck()
 	Color8Bit LeftColor = UContentsFunction::GetCollisionMapImg()->GetColor(LeftPos.iX(), LeftPos.iY(), UInGameValue::CollisionColor);
 
 	if (RightColor == UInGameValue::CollisionColor
-		|| LeftColor == UInGameValue::CollisionColor
-		|| RightPos.X >= GetWorld()->GetCameraPos().X + static_cast<float>(UInGameValue::ResultMainWindowXScale)
-		|| LeftPos.X <= GetWorld()->GetCameraPos().X)
+		|| LeftColor == UInGameValue::CollisionColor)
 	{
 		StateChange(EActorState::Explosion);
+		return true;
+	}
+
+	if (RightPos.X >= GetWorld()->GetCameraPos().X + static_cast<float>(UInGameValue::ResultMainWindowXScale)
+		|| LeftPos.X <= GetWorld()->GetCameraPos().X)
+	{
+		StateChange(EActorState::Release);
 		return true;
 	}
 
