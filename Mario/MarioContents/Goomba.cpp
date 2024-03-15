@@ -72,7 +72,7 @@ void AGoomba::CollisionCheck()
 		}
 
 		// 몬스터를 밟지 않고 충돌했을 경우 (플레이어 사망)
-		GetPlayer()->StateChange(EActorState::GetHit);
+ 		GetPlayer()->StateChange(EActorState::GetHit);
 		return;
 	}
 

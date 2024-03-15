@@ -276,9 +276,11 @@ private:
 	void CalJumpVelocityVector(float _DeltaTime) override;
 	void GroundUp();
 	void BulletFire();
+	void BulletListReleaseUpdate();
 
 	UCollision* FootCollision = nullptr;
 	AMarioBullet* NewFireBall = nullptr;
+	std::list<AMarioBullet*> Bullets = std::list<AMarioBullet*>();
 
 	EMarioType MarioType = EMarioType::None;
 	EActorState PrevActorState = EActorState::None;
@@ -308,6 +310,8 @@ private:
 	int ReachingEndStep = 0;
 	int BossStageClearStep = 0;
 	float DeadDelayTime = 0.5f;
+
+	
 
 };
 

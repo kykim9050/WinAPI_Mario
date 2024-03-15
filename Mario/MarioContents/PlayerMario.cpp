@@ -234,6 +234,8 @@ void APlayerMario::CollisionStateChange(ECollisionState _CollisionState)
 
 void APlayerMario::StateUpdate(float _DeltaTime)
 {
+	BulletListReleaseUpdate();
+
 	switch (ActorState)
 	{
 	case EActorState::Idle:
@@ -1646,4 +1648,31 @@ void APlayerMario::BulletFire()
 	NewFireBall->SetActorLocation(BulletInitPos);
 	NewFireBall->SetDir(BulletDir);
 	NewFireBall->StateChange(EActorState::FallDown);
+
+	Bullets.push_back(NewFireBall);
+}
+
+void APlayerMario::BulletListReleaseUpdate()
+{
+	std::list<AMarioBullet*>::iterator StartIter = Bullets.begin();
+	std::list<AMarioBullet*>::iterator EndIter = Bullets.end();
+
+	for (; StartIter != EndIter; )
+	{
+		AMarioBullet* Bullet = *StartIter;
+
+		if (nullptr == Bullet)
+		{
+			MsgBoxAssert("MarioBullet이 nullptr 입니다.");
+			return;
+		}
+
+		if (false == Bullet->IsDestroy())
+		{
+			++StartIter;
+			continue;
+		}
+
+		StartIter = Bullets.erase(StartIter);
+	}
 }
