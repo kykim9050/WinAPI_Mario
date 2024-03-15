@@ -60,7 +60,7 @@ public:
 		_Other->AddScore(_Score);
 	}
 
-	void GiveScore(UStateUnit* _Other)
+	void GiveScore(UStateUnit* _Other) const
 	{
 		if (nullptr == _Other)
 		{

@@ -46,7 +46,7 @@ void AFireFlower::FirstInit(float _DeltaTime)
 
 void AFireFlower::Appear(float _DeltaTime)
 {
-	if (GetActorLocation().Y < InitPos.Y - (UInGameValue::BlockCollisionScaleY / 2) - (UInGameValue::FireFlowerCollisionScaleY / 2))
+	if (GetActorLocation().iY() < InitPos.iY() - (UInGameValue::BlockCollisionScaleY / 2) - (UInGameValue::FireFlowerCollisionScaleY / 2))
 	{
 		SetActorLocation({ GetActorLocation().X, GetActorLocation().Y });
 		StateChange(EActorState::Idle);
