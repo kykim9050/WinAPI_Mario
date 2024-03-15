@@ -1,5 +1,6 @@
 ﻿#include "MonsterUnit.h"
 #include "TextUnit.h"
+#include "MarioBullet.h"
 
 AMonsterUnit::AMonsterUnit()
 {
@@ -222,4 +223,26 @@ void AMonsterUnit::ScoreImgOperator(FVector _InitPos, int _Score, float _Destory
 	// 생성과 동시에 삭제될 시간 지정
 	Score->Destroy(_DestoryTime);
 	Score = nullptr;
+}
+
+bool AMonsterUnit::PlayerBulletHitCheck()
+{
+	std::vector<UCollision*> Result = std::vector<UCollision*>();
+
+	if (true == BodyCollision->CollisionCheck(ECollisionOrder::PlayerBullet, Result))
+	{
+		AMarioBullet* PlayerBullet = dynamic_cast<AMarioBullet*>(Result[0]->GetOwner());
+
+		if (nullptr == PlayerBullet)
+		{
+			MsgBoxAssert("해당 변수의 본래 자료형이 아닙니다.");
+			return false;
+		}
+
+		PlayerBullet->KillMonster();
+		BodyCollision->Destroy();
+		CollisionStateChange(ECollisionState::GetMonsterHit);
+		return true;
+	}
+	return false;
 }
