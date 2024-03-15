@@ -267,6 +267,7 @@ private:
 	{
 		MainPlayer = _MainPlayer;
 	}
+	
 
 	void AddHorizonVelocityVector(const FVector& _DirDelta) override;
 	void ResultMovementUpdate(float _DeltaTime) override;
@@ -274,6 +275,7 @@ private:
 	void CalHorizonVelocityVector(float _DeltaTime) override;
 	void CalJumpVelocityVector(float _DeltaTime) override;
 	void GroundUp();
+	void BulletFire();
 
 	UCollision* FootCollision = nullptr;
 	AMarioBullet* NewFireBall = nullptr;
