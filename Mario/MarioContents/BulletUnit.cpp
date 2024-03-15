@@ -30,6 +30,9 @@ void ABulletUnit::StateUpdate(float _DeltaTime)
 	case EActorState::Move:
 		Move(_DeltaTime);
 		break;
+	case EActorState::FallDown:
+		FallDown(_DeltaTime);
+		break;
 	default:
 		break;
 	}
@@ -43,6 +46,9 @@ void ABulletUnit::StateChange(EActorState _ActorState)
 		{
 		case EActorState::Move:
 			MoveStart();
+			break;
+		case EActorState::FallDown:
+			FallDownStart();
 			break;
 		default:
 			break;
