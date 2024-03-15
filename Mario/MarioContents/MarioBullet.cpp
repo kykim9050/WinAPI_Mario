@@ -57,7 +57,7 @@ void AMarioBullet::Move(float _DeltaTime)
 void AMarioBullet::FallDownStart()
 {
 	GravityVelocityVector = FVector::Down * FallDownGravityVel;
-	HorizonVelocityVector = FVector::Right * 500.0f;
+	HorizonVelocityVector = FVector::Right * SpeedVel;
 }
 
 void AMarioBullet::ExplosionStart()
