@@ -33,6 +33,9 @@ void ABulletUnit::StateUpdate(float _DeltaTime)
 	case EActorState::FallDown:
 		FallDown(_DeltaTime);
 		break;
+	case EActorState::Explosion:
+		Explosion(_DeltaTime);
+		break;
 	default:
 		break;
 	}
@@ -49,6 +52,9 @@ void ABulletUnit::StateChange(EActorState _ActorState)
 			break;
 		case EActorState::FallDown:
 			FallDownStart();
+			break;
+		case EActorState::Explosion:
+			ExplosionStart();
 			break;
 		default:
 			break;
