@@ -35,15 +35,16 @@ protected:
 	virtual void DebrisStart() {};
 	virtual void GetHitStart() {};
 
-	void Idle(float _DeltaTime);
-	virtual void Move(float _DeltaTime);
-	void Fixed(float _DeltaTime);
+	virtual void Idle(float _DeltaTime) {};
+	virtual void Fixed(float _DeltaTime) {};
 	virtual void Debris(float _DeltaTime) {};
 	virtual void Wait(float _DeltaTime) {};
+	virtual void Move(float _DeltaTime);
+
 	void ResultMovementUpdate(float _DeltaTime);
+	void OnTheBlockMonsterCheck();
 
 	FVector InitPos = FVector::Zero;
-
 	UCollision* SideCollision = nullptr;
 	UCollision* TopCollision = nullptr;
 
