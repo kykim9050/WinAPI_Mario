@@ -55,14 +55,15 @@ void UTestLevel::BeginPlay()
 	ABlockUnit* BrickBlock1 = SpawnActor<ABrickBlock>();
 	ABlockUnit* BrickBlock2 = SpawnActor<ABrickBlock>();
 	ABlockUnit* BrickBlock3 = SpawnActor<ABrickBlock>();
-	CoinBlock->SetActorLocation({ 300, 400 });
-	BrickBlock1->SetActorLocation({ 348, 400 });
-	BrickBlock2->SetActorLocation({ 348 + 48, 400 });
-	BrickBlock3->SetActorLocation({ 348 + 48 * 2, 400 });
+	CoinBlock->SetActorLocation({ 300, 500 });
+	BrickBlock1->SetActorLocation({ 348, 500 });
+	BrickBlock2->SetActorLocation({ 348 + 48, 500 });
+	BrickBlock3->SetActorLocation({ 348 + 48 * 2, 500 });
 
-	AMarioBullet* PlayerBullet = SpawnActor<AMarioBullet>();
-	PlayerBullet->SetActorLocation({ 200, 400 });
 
+
+	//AMarioBullet* PlayerBullet = SpawnActor<AMarioBullet>();
+	//PlayerBullet->SetActorLocation({ 200, 400 });
 	//AKoopaTroopa* MonsterTroopa1 = SpawnActor<AKoopaTroopa>(static_cast<int>(EActorType::Monster));
 	//AKoopaTroopa* MonsterTroopa2 = SpawnActor<AKoopaTroopa>(static_cast<int>(EActorType::Monster));
 	//AKoopaTroopa* MonsterTroopa3 = SpawnActor<AKoopaTroopa>(static_cast<int>(EActorType::Monster));
@@ -72,12 +73,12 @@ void UTestLevel::BeginPlay()
 	//MonsterTroopa3->SetActorLocation({ 950, 580 });
 	//MonsterTroopa4->SetActorLocation({ 1050, 580 });
 
-	//AGoomba* Goomba1 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
-	//AGoomba* Goomba2 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
-	//AGoomba* Goomba3 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
-	//Goomba1->SetActorLocation({ 800, 580 });
-	//Goomba2->SetActorLocation({ 900, 580 });
-	//Goomba3->SetActorLocation({ 1000, 580 });
+	AActor* Goomba1 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
+	AActor* Goomba2 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
+	AActor* Goomba3 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
+	Goomba1->SetActorLocation({ 800, 580 });
+	Goomba2->SetActorLocation({ 900, 580 });
+	Goomba3->SetActorLocation({ 1000, 580 });
 }
 
 void UTestLevel::Tick(float _DeltaTime)

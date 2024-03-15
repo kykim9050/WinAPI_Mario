@@ -17,6 +17,11 @@ public:
 	AMarioBullet& operator=(const AMarioBullet& _Other) = delete;
 	AMarioBullet& operator=(AMarioBullet&& _Other) noexcept = delete;
 
+	void KillMonster()
+	{
+		int a = 0;
+	}
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -31,6 +36,7 @@ protected:
 
 	bool WallCollisionCheck();
 	bool FallDownGroundCheck();	
+	bool MonsterCollisionCheck();
 	void SetDir(EActorDir _OtherDir);
 	FVector GetMoveDir();
 

@@ -43,6 +43,11 @@ void AMarioBullet::Move(float _DeltaTime)
 	{
 		return;
 	}
+	
+	if (true == MonsterCollisionCheck())
+	{
+		return;
+	}
 
 	CalJumpVelocityVector(_DeltaTime);
 	CalGravityVelocityVector(_DeltaTime);
@@ -186,4 +191,19 @@ FVector AMarioBullet::GetMoveDir()
 	}
 
 	return MoveDirVec;
+}
+
+bool AMarioBullet::MonsterCollisionCheck()
+{
+
+	//std::vector<UCollision*> Result = std::vector<UCollision*>();
+
+	//if (true == GetBodyCollision()->CollisionCheck(ECollisionOrder::Monster, Result))
+	//{
+	//	StateChange(EActorState::Explosion);
+	//	return true;
+	//}
+
+	//return false;
+	return false;
 }
