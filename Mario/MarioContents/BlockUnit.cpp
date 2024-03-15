@@ -1,5 +1,5 @@
 #include "BlockUnit.h"
-#include "MonsterUnit.h"
+#include "Goomba.h"
 
 
 ABlockUnit::ABlockUnit()
@@ -125,15 +125,15 @@ void ABlockUnit::MoveStart()
 
 	if (true == TopCollision->CollisionCheck(ECollisionOrder::MonsterFootCollision, Result))
 	{
-		AMonsterUnit* Monster = dynamic_cast<AMonsterUnit*>(Result[0]->GetOwner());
+		AGoomba* Monster = dynamic_cast<AGoomba*>(Result[0]->GetOwner());
 
 		if (nullptr == Monster)
 		{
-			MsgBoxAssert("Monster가 아닙니다.");
+			MsgBoxAssert("충돌 대상이 Monster가 아닙니다.");
 			return;
 		}
 
-		int a = 0;
+		Monster->SetBlockHit();
 	}
 
 	JumpVelocityVector = FVector::Up * 200.0f;
