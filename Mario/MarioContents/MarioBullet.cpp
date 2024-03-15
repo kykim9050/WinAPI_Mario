@@ -13,6 +13,8 @@ void AMarioBullet::BeginPlay()
 {
 	ABulletUnit::BeginPlay();
 
+	ActorDir = EActorDir::None;
+
 	Renderer = CreateImageRenderer(static_cast<int>(EStageRenderOrder::Bullet));
 	Renderer->SetImage("FireBall.png");
 	FVector FireBallScale = Renderer->GetImage()->GetScale();
@@ -151,4 +153,3 @@ bool AMarioBullet::FallDownGroundCheck()
 
 	return false;
 }
-
