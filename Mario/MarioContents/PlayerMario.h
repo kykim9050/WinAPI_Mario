@@ -5,6 +5,7 @@
 #include "InGameValue.h"
 
 
+class AMarioBullet;
 // Ό³Έν :
 class APlayerMario : public UStateUnit
 {
@@ -275,6 +276,7 @@ private:
 	void GroundUp();
 
 	UCollision* FootCollision = nullptr;
+	AMarioBullet* NewFireBall = nullptr;
 
 	EMarioType MarioType = EMarioType::None;
 	EActorState PrevActorState = EActorState::None;

@@ -1,9 +1,11 @@
 #pragma once
 #include "BulletUnit.h"
 
+class APlayerMario;
 // Ό³Έν :
 class AMarioBullet : public ABulletUnit
 {
+	friend APlayerMario;
 public:
 	// constrcuter destructer
 	AMarioBullet();
