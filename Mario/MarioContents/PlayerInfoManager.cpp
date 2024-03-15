@@ -8,7 +8,8 @@ int UPlayerInfoManager::PlayerScore = 0;
 std::vector<std::string> UPlayerInfoManager::StageInfo = std::vector<std::string>({ "1", "1" });
 //EMarioType UPlayerInfoManager::PlayerType = EMarioType::Small;
 EMarioType UPlayerInfoManager::PlayerType = EMarioType::Fire;
-FVector UPlayerInfoManager::PlayerColSize = FVector{ UInGameValue::PlayerCollisionScaleX, UInGameValue::PlayerCollisionScaleY };
+//FVector UPlayerInfoManager::PlayerColSize = FVector{ UInGameValue::PlayerCollisionScaleX, UInGameValue::PlayerCollisionScaleY };
+FVector UPlayerInfoManager::PlayerColSize = FVector{ UInGameValue::BigMarioColScale };
 std::string UPlayerInfoManager::PrevStageLevel = "";
 
 UPlayerInfoManager::UPlayerInfoManager()
