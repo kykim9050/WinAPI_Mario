@@ -121,6 +121,18 @@ void ABlockUnit::StateChange(EActorState _ActorState)
 
 void ABlockUnit::MoveStart()
 {
+	OnTheBlockMonsterCheck();
+
+	JumpVelocityVector = FVector::Up * 200.0f;
+}
+
+void ABlockUnit::Move(float _DeltaTime)
+{
+	ResultMovementUpdate(_DeltaTime);
+}
+
+void ABlockUnit::OnTheBlockMonsterCheck()
+{
 	std::vector<UCollision*> Result = std::vector<UCollision*>();
 
 	if (true == TopCollision->CollisionCheck(ECollisionOrder::MonsterFootCollision, Result))
@@ -135,21 +147,4 @@ void ABlockUnit::MoveStart()
 
 		Monster->SetBlockHit();
 	}
-
-	JumpVelocityVector = FVector::Up * 200.0f;
-}
-
-void ABlockUnit::Idle(float _DeltaTime)
-{
-
-}
-
-void ABlockUnit::Move(float _DeltaTime)
-{
-	ResultMovementUpdate(_DeltaTime);
-}
-
-void ABlockUnit::Fixed(float _DeltaTime)
-{
-
 }
