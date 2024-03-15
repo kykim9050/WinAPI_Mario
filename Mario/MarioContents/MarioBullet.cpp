@@ -59,6 +59,11 @@ void AMarioBullet::FallDownStart()
 void AMarioBullet::ExplosionStart()
 {
 	Renderer->ChangeAnimation("FireBallDestroy");
+	BodyCollision->ActiveOff();
+}
+void AMarioBullet::ReleaseStart()
+{
+	Destroy();
 }
 
 void AMarioBullet::FallDown(float _DeltaTime)
@@ -77,7 +82,8 @@ void AMarioBullet::Explosion(float _DeltaTime)
 {
 	if (Renderer->IsCurAnimationEnd())
 	{
-		int a = 0;
+		StateChange(EActorState::Release);
+		return;
 	}
 }
 

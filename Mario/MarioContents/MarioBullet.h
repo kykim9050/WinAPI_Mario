@@ -20,6 +20,7 @@ protected:
 	void Tick(float _DeltaTime) override;
 	void FallDownStart() override;
 	void ExplosionStart() override;
+	void ReleaseStart() override;
 	void Move(float _DeltaTime) override;
 	void FallDown(float _DeltaTime) override;
 	void Explosion(float _DeltaTime) override;

@@ -30,6 +30,7 @@ protected:
 	virtual void Move(float _DeltaTime) {};
 	virtual void FallDown(float _DeltaTime) {};
 	virtual void Explosion(float _DeltaTime) {};
+	virtual void ReleaseStart() {};
 
 	void ThrowBullet()
 	{
