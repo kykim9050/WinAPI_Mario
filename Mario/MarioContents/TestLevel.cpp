@@ -61,7 +61,7 @@ void UTestLevel::BeginPlay()
 	BrickBlock3->SetActorLocation({ 348 + 48 * 2, 400 });
 
 	AMarioBullet* PlayerBullet = SpawnActor<AMarioBullet>();
-	PlayerBullet->SetActorLocation({ 200, 200 });
+	PlayerBullet->SetActorLocation({ 200, 400 });
 
 	//AKoopaTroopa* MonsterTroopa1 = SpawnActor<AKoopaTroopa>(static_cast<int>(EActorType::Monster));
 	//AKoopaTroopa* MonsterTroopa2 = SpawnActor<AKoopaTroopa>(static_cast<int>(EActorType::Monster));
