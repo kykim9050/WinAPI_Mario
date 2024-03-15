@@ -30,22 +30,9 @@ protected:
 	void CalGravityVelocityVector(float _DeltaTime) override;
 
 	bool WallCollisionCheck();
-	bool FallDownGroundCheck();
-	
-	void SetDir(EActorDir _OtherDir)
-	{
-		switch (_OtherDir)
-		{
-		case EActorDir::Left:
-			ActorDir = EActorDir::Left;
-			break;
-		case EActorDir::Right:
-			ActorDir = EActorDir::Right;
-			break;
-		default:
-			break;
-		}
-	}
+	bool FallDownGroundCheck();	
+	void SetDir(EActorDir _OtherDir);
+	FVector GetMoveDir();
 
 private:
 	float FallDownGravityVel = 1000.0f;
