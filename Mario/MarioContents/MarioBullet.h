@@ -23,8 +23,9 @@ protected:
 	void FallDown(float _DeltaTime) override;
 	void CalJumpVelocityVector(float _DeltaTime) override;
 	void CalGravityVelocityVector(float _DeltaTime) override;
+	void CalHorizonVelocityVector(float _DeltaTime) override;
 
-	bool FallDownGrundCheck();
+	bool FallDownGroundCheck();
 
 private:
 	float FallDownGravityVel = 1000.0f;
