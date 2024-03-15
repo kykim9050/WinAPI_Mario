@@ -68,6 +68,8 @@ public:
 		WindowLive = false;
 	}
 
+	void CursorOff();
+
 protected:
 
 private:

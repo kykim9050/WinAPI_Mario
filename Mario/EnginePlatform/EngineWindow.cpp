@@ -206,3 +206,8 @@ void UEngineWindow::SetWindowSmallIcon()
 {
 
 }
+
+void UEngineWindow::CursorOff()
+{
+	ShowCursor(FALSE);
+}
