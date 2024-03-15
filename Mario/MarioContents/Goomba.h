@@ -19,7 +19,10 @@ public:
 	AGoomba& operator=(const AGoomba& _Other) = delete;
 	AGoomba& operator=(AGoomba&& _Other) noexcept = delete;
 
-	
+	void SetBlockHit()
+	{
+		BlockHit = true;
+	}
 
 protected:
 	void BeginPlay() override;
@@ -39,6 +42,6 @@ protected:
 
 
 private:
-	
+	bool BlockHit = false;
 };
 
