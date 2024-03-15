@@ -29,6 +29,6 @@ protected:
 private:
 	float FallDownGravityVel = 1000.0f;
 	float GravityAccVel = 2000.0f;
-	float JumpPowerVel = 500.0f;
+	float JumpPowerVel = 400.0f;
 };
 
