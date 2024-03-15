@@ -63,6 +63,8 @@ void AMarioBullet::FallDownStart()
 
 void AMarioBullet::ExplosionStart()
 {
+	USoundManager::GetInst().EffectSoundPlay("BlockBottomHit.wav");
+
 	Renderer->ChangeAnimation("FireBallDestroy");
 	BodyCollision->ActiveOff();
 }

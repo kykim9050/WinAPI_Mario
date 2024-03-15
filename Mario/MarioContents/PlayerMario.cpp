@@ -1622,6 +1622,8 @@ void APlayerMario::DeadCollisionCheck()
 
 void APlayerMario::BulletFire()
 {
+	USoundManager::GetInst().EffectSoundPlay("FireBall.wav");
+
 	EActorDir BulletDir = ActorDir;
 	FVector BulletInitPos = FVector();
 
