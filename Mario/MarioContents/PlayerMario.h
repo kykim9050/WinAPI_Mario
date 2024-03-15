@@ -22,6 +22,94 @@ public:
 	APlayerMario& operator=(const APlayerMario& _Other) = delete;
 	APlayerMario& operator=(APlayerMario&& _Other) noexcept = delete;
 
+	/// <summary>
+	/// Actor의 상태가 변경될 때 실행되는 함수
+	/// 각 상태가 시작되기 전에 실행되어야 할 함수를 호출해준다.
+	/// </summary>
+	/// <param name="_PlayerState"></param>
+	void StateChange(EActorState _PlayerState) override;
+
+	void HitBlockBottom()
+	{
+		BlockBottomHit = true;
+	}
+
+	void GetCoin()
+	{
+		CoinCount += 1;
+		UPlayerInfoManager::GetInst().AddAmountOfCoins(1);
+	}
+
+	EMarioType GetPlayerType() const
+	{
+		return MarioType;
+	}
+
+	void ReachToCastleGate()
+	{
+		IsReachingCastleGate = true;
+	}
+
+	static APlayerMario* GetMainPlayer()
+	{
+		return MainPlayer;
+	}
+
+	void EattingFireFlower()
+	{
+		AteFireFlower = true;
+	}
+
+	void ReachToStageEnd()
+	{
+		IsReachingStageEnd = true;
+	}
+
+	void EattingMushroom()
+	{
+		AteMushroom = true;
+	}
+
+	void MeetThePrincess()
+	{
+		MeetPrincess = true;
+	}
+
+	static void ReachToBossRoom()
+	{
+		InTheBossRoom = true;
+	}
+
+protected:
+	
+
+private:
+	static bool GetIsReachingCastleGate()
+	{
+		return IsReachingCastleGate;
+	}
+
+	static bool GetIsReachingStageEnd()
+	{
+		return IsReachingStageEnd;
+	}
+
+	void CollisionUpdate(float _DeltaTime) override;
+	void CollisionStateCheck();
+	void CollisionStateChange(ECollisionState _CollisionState) override;
+	void GetHit(float _DeltaTime) override;
+	void GetHitStart() override;
+
+	bool IsMeetThePrincess() const
+	{
+		return MeetPrincess;
+	}
+
+	int GetCoinCount() const
+	{
+		return CoinCount;
+	}
+
 	void ReverseMoveCheck();
 
 	/// <summary>
@@ -60,13 +148,6 @@ public:
 
 
 	/// <summary>
-	/// Actor의 상태가 변경될 때 실행되는 함수
-	/// 각 상태가 시작되기 전에 실행되어야 할 함수를 호출해준다.
-	/// </summary>
-	/// <param name="_PlayerState"></param>
-	void StateChange(EActorState _PlayerState) override;
-
-	/// <summary>
 	/// Actor의 방향(좌,우)을 확인하고 맴버 변수값으로 지정하는 함수
 	/// 기존 방향과 같으면 true, 기존 방향과 다르면 false
 	/// </summary>
@@ -103,6 +184,7 @@ public:
 	/// 4. 장애물에 위치 확인 후 이동 제한
 	/// </summary>
 	void Move(float _DeltaTime) override;
+
 	void Jump(float _DeltaTime) override;
 	void CollisionJump(float _DeltaTime);
 	void ReverseMove(float _DeltaTime);
@@ -111,85 +193,6 @@ public:
 	void CameraPosUpdate(FVector _MovePos, bool _ExceptCheckRange = false);
 	bool IsReverseMove();
 
-	static APlayerMario* GetMainPlayer()
-	{
-		return MainPlayer;
-	}
-
-	static bool GetIsReachingCastleGate()
-	{
-		return IsReachingCastleGate;
-	}
-
-	static bool GetIsReachingStageEnd()
-	{
-		return IsReachingStageEnd;
-	}
-
-	static void ReachToBossRoom()
-	{
-		InTheBossRoom = true;
-	}
-
-	void CollisionUpdate(float _DeltaTime) override;
-	void CollisionStateCheck();
-	void CollisionStateChange(ECollisionState _CollisionState) override;
-	void GetHit(float _DeltaTime) override;
-	void GetHitStart() override;
-	
-	void EattingMushroom()
-	{
-		AteMushroom = true;
-	}
-
-	void EattingFireFlower()
-	{
-		AteFireFlower = true;
-	}
-
-	void HitBlockBottom()
-	{
-		BlockBottomHit = true;
-	}
-
-	void ReachToStageEnd()
-	{
-		IsReachingStageEnd = true;
-	}
-
-	void ReachToCastleGate()
-	{
-		IsReachingCastleGate = true;
-	}
-
-	void MeetThePrincess()
-	{
-		MeetPrincess = true;
-	}
-
-	bool IsMeetThePrincess() const
-	{
-		return MeetPrincess;
-	}
-
-	EMarioType GetPlayerType() const
-	{
-		return MarioType;
-	}
-
-	void GetCoin()
-	{
-		CoinCount += 1;
-		UPlayerInfoManager::GetInst().AddAmountOfCoins(1);
-	}
-
-	int GetCoinCount()
-	{
-		return CoinCount;
-	}
-
-
-protected:
 	EActorState GetPrevActorState() const
 	{
 		return PrevActorState;
@@ -230,7 +233,6 @@ protected:
 	void ReverseMoveFireThrow(float _DeltaTime);
 	void JumpFireThrow(float _DeltaTime);
 
-private:
 	void SetPlayerFallDown()
 	{
 		PlayerFallDown = true;
