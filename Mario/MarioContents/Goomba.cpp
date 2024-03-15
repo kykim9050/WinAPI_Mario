@@ -1,6 +1,6 @@
 ﻿#include "Goomba.h"
 #include "PlayerMario.h"
-#include "MarioBullet.h"
+
 
 
 AGoomba::AGoomba()
@@ -86,19 +86,8 @@ void AGoomba::CollisionCheck()
 		return;
 	}
 
-	if (true == BodyCollision->CollisionCheck(ECollisionOrder::PlayerBullet, Result))
+	if (true == PlayerBulletHitCheck())
 	{
-		AMarioBullet* PlayerBullet = dynamic_cast<AMarioBullet*>(Result[0]->GetOwner());
-
-		if (nullptr == PlayerBullet)
-		{
-			MsgBoxAssert("해당 변수의 본래 자료형이 아닙니다.");
-			return;
-		}
-
-		PlayerBullet->KillMonster();
-		BodyCollision->Destroy();
-		CollisionStateChange(ECollisionState::GetMonsterHit);
 		return;
 	}
 }
