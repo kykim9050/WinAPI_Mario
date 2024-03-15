@@ -163,3 +163,14 @@ void AGoomba::CalHorizonVelocityVector(float _DeltaTime)
 {
 	AMonsterUnit::CalHorizonVelocityVector(_DeltaTime);
 }
+
+void AGoomba::GetBlockHitStart()
+{
+	USoundManager::GetInst().EffectSoundPlay("CrouchMoveAttack.wav");
+
+	BodyCollision->ActiveOff();
+	FootCollision->ActiveOff();
+	
+	JumpVelocityVector = FVector::Up * 300.0f;
+	StateChange(EActorState::GetMonsterHit);
+}
