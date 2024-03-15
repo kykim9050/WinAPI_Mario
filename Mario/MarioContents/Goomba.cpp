@@ -90,6 +90,13 @@ void AGoomba::CollisionCheck()
 	{
 		return;
 	}
+
+	if (true == IsBlockHit())
+	{
+		BlockHit = false;
+		StateChange(EActorState::GetBlockHit);
+		return;
+	}
 }
 
 
