@@ -53,7 +53,7 @@ void AMarioBullet::Move(float _DeltaTime)
 void AMarioBullet::FallDownStart()
 {
 	GravityVelocityVector = FVector::Down * FallDownGravityVel;
-	HorizonVelocityVector = FVector::Right * SpeedVel;
+	HorizonVelocityVector = GetMoveDir() * SpeedVel;
 }
 
 void AMarioBullet::ExplosionStart()
@@ -152,4 +152,38 @@ bool AMarioBullet::FallDownGroundCheck()
 	}
 
 	return false;
+}
+
+void AMarioBullet::SetDir(EActorDir _OtherDir)
+{
+	switch (_OtherDir)
+	{
+	case EActorDir::Left:
+		ActorDir = EActorDir::Left;
+		break;
+	case EActorDir::Right:
+		ActorDir = EActorDir::Right;
+		break;
+	default:
+		break;
+	}
+}
+
+FVector AMarioBullet::GetMoveDir()
+{
+	FVector MoveDirVec = FVector();
+
+	switch (ActorDir)
+	{
+	case EActorDir::Left:
+		MoveDirVec = FVector::Left;
+		break;
+	case EActorDir::Right:
+		MoveDirVec = FVector::Right;
+		break;
+	default:
+		break;
+	}
+
+	return MoveDirVec;
 }
