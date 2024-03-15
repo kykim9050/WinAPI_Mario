@@ -30,16 +30,14 @@ protected:
 
 	void GetHitStart() override;
 	void GetHitFromPlayerStart() override;
-
 	void Idle(float _DeltaTime) override;
 	void Move(float _DeltaTime) override;
 	void GetMonsterHit(float _DeltaTime) override;
 	void CalHorizonVelocityVector(float _DeltaTime) override;
-
 	void CollisionCheck() override;
 	void GetMonsterHitStart() override;
 	void GetHitFromMonsterStart() override;
-
+	void GetBlockHitStart() override;
 
 private:
 	bool BlockHit = false;
