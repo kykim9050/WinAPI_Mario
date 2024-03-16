@@ -41,6 +41,33 @@ void UDebugLevel::Tick(float _DeltaTime)
 		}
 	}
 
+	if (true == UEngineInput::IsDown('3'))
+	{
+		APlayerMario* Player = APlayerMario::GetMainPlayer();
+
+		if (nullptr == Player)
+		{
+			UEngineDebug::OutPutDebugText("Player가 없습니다.");
+			return;
+		}
+
+		Player->StateChange(EActorState::MarioGrowUp);
+	}
+
+	if (true == UEngineInput::IsDown('4'))
+	{
+		APlayerMario* Player = APlayerMario::GetMainPlayer();
+
+		if (nullptr == Player)
+		{
+			UEngineDebug::OutPutDebugText("Player가 없습니다.");
+			return;
+		}
+
+		Player->StateChange(EActorState::FireMario);
+	}
+
+
 	if (true == UEngineInput::IsDown(VK_F4))
 	{
 		if (false == GetTimeStop())
