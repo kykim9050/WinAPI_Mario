@@ -40,5 +40,21 @@ void UDebugLevel::Tick(float _DeltaTime)
 			Player->GetRenderer()->SetAlpha(1.0f);
 		}
 	}
+
+	if (true == UEngineInput::IsDown(VK_F4))
+	{
+		if (false == GetTimeStop())
+		{
+			TimeStopOnOff();
+			SetAllTimeScale(0.0f);
+			SetTimeScale(EActorType::Player, 1.0f);
+			return;
+		}
+		else {
+			TimeStopOnOff();
+			SetAllTimeScale(1.0f);
+			return;
+		}
+	}
 }
 
