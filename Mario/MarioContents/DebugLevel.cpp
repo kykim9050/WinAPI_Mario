@@ -67,6 +67,24 @@ void UDebugLevel::Tick(float _DeltaTime)
 		Player->StateChange(EActorState::FireMario);
 	}
 
+	if (true == UEngineInput::IsDown('5'))
+	{
+		APlayerMario* Player = APlayerMario::GetMainPlayer();
+
+		if (nullptr == Player)
+		{
+			UEngineDebug::OutPutDebugText("Player가 없습니다.");
+			return;
+		}
+
+		if (EMarioType::Small == Player->GetMarioType())
+		{
+			return;
+		}
+
+		Player->StateChange(EActorState::GetHit);
+	}
+
 
 	if (true == UEngineInput::IsDown(VK_F4))
 	{

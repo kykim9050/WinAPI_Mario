@@ -80,6 +80,11 @@ public:
 		InTheBossRoom = true;
 	}
 
+	EMarioType GetMarioType() const
+	{
+		return MarioType;
+	}
+
 protected:
 	
 
