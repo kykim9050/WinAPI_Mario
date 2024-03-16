@@ -20,6 +20,21 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 private:
+	bool TimeStop = false;
 
+	bool GetTimeStop() const
+	{
+		return TimeStop;
+	}
+	void TimeStopOnOff()
+	{
+		if (true == GetTimeStop())
+		{
+			TimeStop = false;
+			return;
+		}
+
+		TimeStop = true;
+	}
 };
 
