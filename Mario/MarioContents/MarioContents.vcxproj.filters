@@ -158,6 +158,9 @@
     <ClInclude Include="MarioBullet.h">
       <Filter>Object\Bullet</Filter>
     </ClInclude>
+    <ClInclude Include="Pipe.h">
+      <Filter>Object\Structure</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp" />
@@ -313,6 +316,9 @@
     </ClCompile>
     <ClCompile Include="MarioBullet.cpp">
       <Filter>Object\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Pipe.cpp">
+      <Filter>Object\Structure</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
