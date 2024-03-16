@@ -27,6 +27,7 @@
 #include "RotatingFire.h"
 #include "ChangingLevel.h"
 #include "MarioBullet.h"
+#include "Pipe.h"
 
 UTestLevel::UTestLevel()
 {
@@ -60,12 +61,10 @@ void UTestLevel::BeginPlay()
 	BrickBlock2->SetActorLocation({ 348 + 48, 500 });
 	BrickBlock3->SetActorLocation({ 348 + 48 * 2, 500 });
 
-	AActor* Goomba1 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
-	//AActor* Goomba2 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
-	//AActor* Goomba3 = SpawnActor<AGoomba>(static_cast<int>(EActorType::Monster));
-	Goomba1->SetActorLocation({ 348 + 48 * 2, 300 });
-	//Goomba2->SetActorLocation({ 900, 580 });
-	//Goomba3->SetActorLocation({ 1000, 580 });
+
+	AActor* Pipe1 = SpawnActor<APipe>(static_cast<int>(EActorType::Structure));
+	Pipe1->SetActorLocation({ 300,300 });
+
 }
 
 void UTestLevel::Tick(float _DeltaTime)

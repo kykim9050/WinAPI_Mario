@@ -34,6 +34,7 @@ enum class EStageRenderOrder
 	AttackableTrap,
 	Score,
 	Monster,
+	MonsterHideStructure,
 	Mario,
 	Bullet,
 	UI,
