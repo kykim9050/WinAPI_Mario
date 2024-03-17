@@ -16,6 +16,7 @@
 #include <EngineCore/EngineCore.h>
 #include "1_4StageLevel.h"
 #include "SoundManager.h"
+#include "Pipe.h"
 
 U1_1StageLevel::U1_1StageLevel()
 {
@@ -88,6 +89,9 @@ void U1_1StageLevel::BeginPlay()
 	ACoinBlock* CoinBlock11 = SpawnCoinBlock(EActorType::Block, EItemType::Coin);
 	ACoinBlock* CoinBlock12 = SpawnCoinBlock(EActorType::Block, EItemType::Coin);
 	ACoinBlock* CoinBlock13 = SpawnCoinBlock(EActorType::Block, EItemType::Item);
+
+	AActor* Pipe1 = SpawnActor<APipe>(static_cast<int>(EActorType::Structure));
+	AActor* PiranhaFlower = SpawnActor<APiranhaPlant>(static_cast<int>(EActorType::Monster));
 
 	int StandardYPos = 456;
 	int SecondYPos = 264;
@@ -181,6 +185,9 @@ void U1_1StageLevel::BeginPlay()
 	MonsterGoomba15->SetActorLocation({ 8420, MonsterInitHeight });
 
 	MonsterTroopa1->SetActorLocation({ 5140, MonsterInitHeight });
+
+	Pipe1->SetActorLocation({ 2784, 528 });
+	PiranhaFlower->SetActorLocation({ 2784, 504 });
 }
 
 void U1_1StageLevel::Tick(float _DeltaTime)
