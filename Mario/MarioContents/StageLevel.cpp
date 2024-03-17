@@ -6,6 +6,7 @@
 #include "LevelIntro.h"
 #include "Windows.h"
 #include <EngineCore/EngineCore.h>
+#include "Manual.h"
 
 UStageLevel::UStageLevel()
 {
@@ -29,6 +30,7 @@ void UStageLevel::BeginPlay()
 	SetTimeScale(EActorType::Monster, 0.0f);
 
 	LevelInfo = SpawnActor<ALevelIntro>(static_cast<int>(EActorType::Intro));
+	Manual = SpawnActor<AManual>(static_cast<int>(EActorType::Manual));
 }
 
 void UStageLevel::Tick(float _DeltaTime)
