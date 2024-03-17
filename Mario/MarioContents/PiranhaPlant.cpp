@@ -47,6 +47,10 @@ void APiranhaPlant::CollisionCheck()
 		return;
 	}
 
+	if (true == PlayerBulletHitCheck())
+	{
+		return;
+	}
 }
 
 
@@ -103,4 +107,19 @@ void APiranhaPlant::ResultMovementUpdate(float _DeltaTime)
 {
 	CalTotalVelocityVector(_DeltaTime);
 	AddActorLocation(TotalVelocityVector * _DeltaTime);
+}
+
+void APiranhaPlant::GetMonsterHitStart()
+{
+	USoundManager::GetInst().EffectSoundPlay("CrouchMoveAttack.wav");
+	GiveScore(GetPlayer(), GetMonsterHitScore());
+	ScoreImgOperator({ GetActorLocation().iX(), GetActorLocation().iY() - BodyCollision->GetTransform().GetScale().iY() }, GetMonsterHitScore());
+	BodyCollision->ActiveOff();
+	Renderer->ActiveOff();
+	StateChange(EActorState::GetMonsterHit);
+}
+
+void APiranhaPlant::GetMonsterHit(float _DeltaTime)
+{
+	StateChange(EActorState::Dead);
 }

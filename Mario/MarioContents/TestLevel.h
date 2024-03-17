@@ -20,6 +20,6 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 private:
-
+	std::map<EActorType, std::list<AActor*>> StageActors = std::map<EActorType, std::list<AActor*>>();
 };
 
