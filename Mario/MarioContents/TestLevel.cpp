@@ -63,9 +63,9 @@ void UTestLevel::BeginPlay()
 
 
 	AActor* Pipe1 = SpawnActor<APipe>(static_cast<int>(EActorType::Structure));
-	Pipe1->SetActorLocation({ 928 * 3, 176 * 3 });
+	Pipe1->SetActorLocation({ 2784, 528 });
 	AActor* PiranhaFlower = SpawnActor<APiranhaPlant>(static_cast<int>(EActorType::Monster));
-	PiranhaFlower->SetActorLocation({ 928 * 3, 176 * 3 - 24});
+	PiranhaFlower->SetActorLocation({ 2784, 504});
 
 }
 
