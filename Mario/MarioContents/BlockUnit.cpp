@@ -148,3 +148,24 @@ void ABlockUnit::OnTheBlockMonsterCheck()
 		Monster->SetBlockHit();
 	}
 }
+
+bool ABlockUnit::PlayerSideColCheck()
+{
+	std::vector<UCollision*> Result = std::vector<UCollision*>();
+
+	if (true == SideCollision->CollisionCheck(ECollisionOrder::Player, Result))
+	{
+		APlayerMario* Player = dynamic_cast<APlayerMario*>(Result[0]->GetOwner());
+
+		if (nullptr == Player)
+		{
+			MsgBoxAssert("충돌 대상이 Player가 아닙니다.");
+			return false;
+		}
+
+		Player->SetLeftSideBlockHit();
+		return true;
+	}
+
+	return false;
+}
