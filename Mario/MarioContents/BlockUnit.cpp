@@ -163,8 +163,19 @@ bool ABlockUnit::PlayerSideColCheck()
 			return false;
 		}
 
-		Player->SetLeftSideBlockHit();
-		return true;
+		float BlockXPos = GetActorLocation().X;
+		float PlayerXPos = Player->GetActorLocation().X;
+
+		if (PlayerXPos < BlockXPos)
+		{
+			Player->SetLeftSideBlockHit();
+			return true;
+		}
+		else if (PlayerXPos > BlockXPos)
+		{
+			Player->SetRightSideBlockHit();
+			return true;
+		}
 	}
 
 	return false;

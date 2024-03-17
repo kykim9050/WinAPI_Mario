@@ -90,6 +90,11 @@ public:
 		LeftSideBlockHit = true;
 	}
 
+	void SetRightSideBlockHit()
+	{
+		RightSideBlockHit = true;
+	}
+
 protected:
 	
 
@@ -283,6 +288,10 @@ private:
 	{
 		return LeftSideBlockHit;
 	}
+	bool GetRightSideBlockHit() const
+	{
+		return RightSideBlockHit;
+	}
 	
 
 	void AddHorizonVelocityVector(const FVector& _DirDelta) override;
@@ -323,6 +332,7 @@ private:
 	bool PlayerFallDown = false;
 	bool CanUseBullet = true;
 	bool LeftSideBlockHit = false;
+	bool RightSideBlockHit = false;
 
 	int ThrowBulletNum = 0;
 	int CoinCount = 0;
