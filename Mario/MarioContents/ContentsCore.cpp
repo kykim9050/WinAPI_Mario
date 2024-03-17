@@ -29,6 +29,7 @@ void UContentsCore::BeginPlay()
 
 	// 마리오용 윈도우 크기 설정
 	MainWindow.SetWindowScale({ UInGameValue::MainWindowXScale * UInGameValue::WindowSizeMulValue, UInGameValue::MainWindowYScale * UInGameValue::WindowSizeMulValue });
+	MainWindow.SetWindowTitle("SuperMario Bros");
 
 	UEngineDirectory ResourcesDir = UEngineDirectory();
 	ResourcesDir.MoveToSearchChild("Resources");
