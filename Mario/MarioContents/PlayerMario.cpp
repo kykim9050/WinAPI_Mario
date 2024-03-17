@@ -380,11 +380,15 @@ void APlayerMario::CollisionStateCheck()
 		IsOnTheBlock = true;
 	}
 
-	if (true == BodyCollision->CollisionCheck(ECollisionOrder::BlockSide, Result))
+	/*if (true == BodyCollision->CollisionCheck(ECollisionOrder::BlockSide, Result))
 	{
 		SetSpeedZero();
+	}*/
+	if (true == GetLeftSideBlockHit())
+	{
+		LeftSideBlockHit = false;
+		AddActorLocation(FVector::Left);
 	}
-
 	
 
 }

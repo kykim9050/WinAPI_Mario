@@ -85,6 +85,11 @@ public:
 		return MarioType;
 	}
 
+	void SetLeftSideBlockHit()
+	{
+		LeftSideBlockHit = true;
+	}
+
 protected:
 	
 
@@ -274,6 +279,10 @@ private:
 	{
 		MainPlayer = _MainPlayer;
 	}
+	bool GetLeftSideBlockHit() const
+	{
+		return LeftSideBlockHit;
+	}
 	
 
 	void AddHorizonVelocityVector(const FVector& _DirDelta) override;
@@ -313,6 +322,7 @@ private:
 	bool CameraMovePause = false;
 	bool PlayerFallDown = false;
 	bool CanUseBullet = true;
+	bool LeftSideBlockHit = false;
 
 	int ThrowBulletNum = 0;
 	int CoinCount = 0;

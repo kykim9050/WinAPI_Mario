@@ -43,6 +43,7 @@ protected:
 
 	void ResultMovementUpdate(float _DeltaTime);
 	void OnTheBlockMonsterCheck();
+	bool PlayerSideColCheck();
 
 	FVector InitPos = FVector::Zero;
 	UCollision* SideCollision = nullptr;
