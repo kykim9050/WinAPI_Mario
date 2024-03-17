@@ -41,6 +41,7 @@ enum class EStageRenderOrder
 	UIComponent,
 	IntroUI,
 	IntroUIComponent,
+	Manual,
 };
 
 /// <summary>
@@ -109,6 +110,7 @@ enum class EActorType
 	Bullet,
 	AttackableTrap,
 	ScoreImg,
+	Manual,
 };
 
 enum class EMarioType

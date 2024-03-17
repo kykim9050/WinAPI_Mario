@@ -4,6 +4,7 @@
 #include "TitleCoin.h"
 #include "1_1StageLevel.h"
 #include "ChangingLevel.h"
+#include "Manual.h"
 
 UTitleLevel::UTitleLevel()
 {
@@ -19,6 +20,7 @@ void UTitleLevel::BeginPlay()
 
 	ATitleBackGround* Background = SpawnActor< ATitleBackGround>(static_cast<int>(EActorType::Map));
 	ATitleCoin* Coin = SpawnActor<ATitleCoin>(static_cast<int>(EActorType::Item));
+	AManual* Manual = SpawnActor<AManual>(static_cast<int>(EActorType::Manual));
 }
 
 void UTitleLevel::Tick(float _DeltaTime)

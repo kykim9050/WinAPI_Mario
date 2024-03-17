@@ -161,6 +161,9 @@
     <ClInclude Include="Pipe.h">
       <Filter>Object\Structure</Filter>
     </ClInclude>
+    <ClInclude Include="Manual.h">
+      <Filter>ContentsHelper</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp" />
@@ -319,6 +322,9 @@
     </ClCompile>
     <ClCompile Include="Pipe.cpp">
       <Filter>Object\Structure</Filter>
+    </ClCompile>
+    <ClCompile Include="Manual.cpp">
+      <Filter>ContentsHelper</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
