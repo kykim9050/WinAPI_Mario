@@ -50,8 +50,6 @@ void APiranhaPlant::CollisionCheck()
 }
 
 
-
-
 void APiranhaPlant::IdleStart()
 {
 	JumpVelocityVector = FVector::Zero;
@@ -76,8 +74,9 @@ void APiranhaPlant::Idle(float _DeltaTime)
 	
 	if (0.0f >= IdleDelayTime)
 	{
-		StateChange(EActorState::Move);
 		IdleDelayTime = 1.0f;
+		StateChange(EActorState::Move);
+		return;
 	}
 }
 
@@ -89,11 +88,13 @@ void APiranhaPlant::Move(float _DeltaTime)
 	{
 		SetActorLocation({ InitPos.X, InitPos.Y - static_cast<float>(UInGameValue::PiranhaPlantBodyCollisionScaleY) });
 		StateChange(EActorState::Idle);
+		return;
 	}
 	else if (GetActorLocation().Y >= InitPos.Y + static_cast<float>(UInGameValue::PiranhaPlantBodyCollisionScaleY))
 	{
 		SetActorLocation({ InitPos.X, InitPos.Y + static_cast<float>(UInGameValue::PiranhaPlantBodyCollisionScaleY) });
 		StateChange(EActorState::Idle);
+		return;
 	}
 
 }
