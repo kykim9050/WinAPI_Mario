@@ -60,6 +60,11 @@ void ABrickBlock::CollisionCheck()
 		}
 	}
 
+	if (true == PlayerSideColCheck())
+	{
+		return;
+	}
+
 	CollisionStateChange(ECollisionState::None);
 }
 
