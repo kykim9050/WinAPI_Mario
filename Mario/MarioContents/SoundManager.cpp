@@ -36,3 +36,8 @@ void USoundManager::EffectSoundPlay(const std::string_view _EffectSoundName)
 {
 	EffectSound = UEngineSound::SoundPlay(_EffectSoundName);
 }
+
+void USoundManager::BGMSoundReplay()
+{
+	StageBGM.On();
+}
