@@ -90,12 +90,14 @@ void UDebugLevel::Tick(float _DeltaTime)
 	{
 		if (false == GetTimeStop())
 		{
+			USoundManager::GetInst().BGMSoundStop();
 			TimeStopOnOff();
 			SetAllTimeScale(0.0f);
 			SetTimeScale(EActorType::Player, 1.0f);
 			return;
 		}
 		else {
+			USoundManager::GetInst().BGMSoundReplay();
 			TimeStopOnOff();
 			SetAllTimeScale(1.0f);
 			return;

@@ -26,6 +26,7 @@ public:
 	void BGMSoundPlay(const std::string_view _StageInfo);
 	void BGMSoundStop();
 	void EffectSoundPlay(const std::string_view _EffectSoundName);
+	void BGMSoundReplay();
 
 protected:
 
