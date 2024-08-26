@@ -1,9 +1,13 @@
 #pragma once
 #include <vector>
 #include <string>
+
 #include <EngineBase/EngineDebug.h>
-#include "EnumClass.h"
 #include <EngineBase/EngineMath.h>
+
+#include "EnumClass.h"
+#include "InGameValue.h"
+
 
 // Ό³Έν :
 class UPlayerInfoManager
@@ -118,13 +122,13 @@ public:
 protected:
 
 private:
-	static int PlayerLife;
-	static int AmountOfCoins;
-	static int PlayerScore;
-	static std::vector<std::string> StageInfo;
-	static EMarioType PlayerType;
-	static FVector PlayerColSize;
-	static std::string PrevStageLevel;
+	int PlayerLife = 3;
+	int AmountOfCoins = 0;
+	int PlayerScore = 0;
+	std::vector<std::string> StageInfo = std::vector<std::string>({ "1", "1" });
+	EMarioType PlayerType = EMarioType::Small;
+	FVector PlayerColSize = FVector{ UInGameValue::PlayerCollisionScaleX, UInGameValue::PlayerCollisionScaleY };
+	std::string PrevStageLevel = "";
 
 	// constrcuter destructer
 	UPlayerInfoManager();
