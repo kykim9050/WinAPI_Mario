@@ -83,7 +83,9 @@ private:
 	std::string WindowIconPath;
 
 	bool EngineInit = false;
+
 	std::map<std::string, ULevel*> AllLevel;
+
 	ULevel* CurLevel = nullptr;
 	ULevel* NextLevel = nullptr;
 	std::vector<std::string> DestroyLevelName;

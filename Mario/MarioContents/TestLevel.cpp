@@ -25,7 +25,7 @@
 #include "Princess.h"
 #include "SignalCollision.h"
 #include "RotatingFire.h"
-#include "ChangingLevel.h"
+#include "LoadingLevel.h"
 #include "MarioBullet.h"
 #include "Pipe.h"
 
@@ -75,7 +75,7 @@ void UTestLevel::Tick(float _DeltaTime)
 
 	if (UEngineInput::IsDown(VK_RETURN))
 	{
-		GEngine->CreateLevel<UChangingLevel>("Changing");
+		GEngine->CreateLevel<ULoadingLevel>("Changing");
 		GEngine->ChangeLevel("Changing");
 	}
 }

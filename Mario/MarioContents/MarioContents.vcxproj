@@ -206,7 +206,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="ChangingLevel.h">
+    <ClInclude Include="LoadingLevel.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -422,7 +422,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="ChangingLevel.cpp">
+    <ClCompile Include="LoadingLevel.cpp">
       <SubType>
       </SubType>
     </ClCompile>

@@ -131,8 +131,8 @@
     <ClInclude Include="RotatingFire.h">
       <Filter>Object\MovingObject</Filter>
     </ClInclude>
-    <ClInclude Include="ChangingLevel.h">
-      <Filter>Level\ChangingLevel</Filter>
+    <ClInclude Include="LoadingLevel.h">
+      <Filter>Level\Loading</Filter>
     </ClInclude>
     <ClInclude Include="TextUnit.h">
       <Filter>Object\Text</Filter>
@@ -150,10 +150,10 @@
       <Filter>Object\UI</Filter>
     </ClInclude>
     <ClInclude Include="GameOverLevel.h">
-      <Filter>Level\ChangingLevel</Filter>
+      <Filter>Level\Loading</Filter>
     </ClInclude>
     <ClInclude Include="TimeUpLevel.h">
-      <Filter>Level\ChangingLevel</Filter>
+      <Filter>Level\Loading</Filter>
     </ClInclude>
     <ClInclude Include="MarioBullet.h">
       <Filter>Object\Bullet</Filter>
@@ -293,8 +293,8 @@
     <ClCompile Include="RotatingFire.cpp">
       <Filter>Object\MovingObject</Filter>
     </ClCompile>
-    <ClCompile Include="ChangingLevel.cpp">
-      <Filter>Level\ChangingLevel</Filter>
+    <ClCompile Include="LoadingLevel.cpp">
+      <Filter>Level\Loading</Filter>
     </ClCompile>
     <ClCompile Include="TextUnit.cpp">
       <Filter>Object\Text</Filter>
@@ -312,10 +312,10 @@
       <Filter>Object\UI</Filter>
     </ClCompile>
     <ClCompile Include="GameOverLevel.cpp">
-      <Filter>Level\ChangingLevel</Filter>
+      <Filter>Level\Loading</Filter>
     </ClCompile>
     <ClCompile Include="TimeUpLevel.cpp">
-      <Filter>Level\ChangingLevel</Filter>
+      <Filter>Level\Loading</Filter>
     </ClCompile>
     <ClCompile Include="MarioBullet.cpp">
       <Filter>Object\Bullet</Filter>
@@ -373,9 +373,6 @@
     <Filter Include="Object\MovingObject">
       <UniqueIdentifier>{17e5c9fd-5397-47db-bd55-acad1037ba89}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Level\ChangingLevel">
-      <UniqueIdentifier>{10531638-f302-4384-8250-a83f737c01a8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Object\Text">
       <UniqueIdentifier>{936104d2-b5e8-4ac0-b329-210a3fb401c7}</UniqueIdentifier>
     </Filter>
@@ -384,6 +381,9 @@
     </Filter>
     <Filter Include="Level\TitleLevel\Actor">
       <UniqueIdentifier>{5bb86687-b42e-48c0-bafb-fdb5c9aae956}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\Loading">
+      <UniqueIdentifier>{10531638-f302-4384-8250-a83f737c01a8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -4,7 +4,7 @@
 #include "PlayerMario.h"
 #include "PlayerInfoManager.h"
 #include <EngineCore/EngineCore.h>
-#include "ChangingLevel.h"
+#include "LoadingLevel.h"
 
 bool AUI::CalTimeToScoreEnd = false;
 
@@ -167,7 +167,7 @@ void AUI::TimeCheck(float _DeltaTime)
 		std::string LevelName = GetWorld()->GetName();
 		UPlayerInfoManager::GetInst().SetPrevStageLevel(LevelName);
 		GEngine->DestroyLevel(LevelName);
-		GEngine->CreateLevel<UChangingLevel>("TimeUp");
+		GEngine->CreateLevel<ULoadingLevel>("TimeUp");
 		GEngine->ChangeLevel("TimeUp");
 		// 타임아웃으로 게임 종료 화면 실행
 		return;

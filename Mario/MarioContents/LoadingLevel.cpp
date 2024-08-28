@@ -1,4 +1,4 @@
-﻿#include "ChangingLevel.h"
+﻿#include "LoadingLevel.h"
 #include <EngineCore/EngineCore.h>
 #include "TestLevel.h"
 #include "PlayerInfoManager.h"
@@ -8,20 +8,20 @@
 #include "TimeUpLevel.h"
 #include "TitleLevel.h"
 
-UChangingLevel::UChangingLevel()
+ULoadingLevel::ULoadingLevel()
 {
 }
 
-UChangingLevel::~UChangingLevel()
+ULoadingLevel::~ULoadingLevel()
 {
 }
 
-void UChangingLevel::BeginPlay()
+void ULoadingLevel::BeginPlay()
 {
 	ULevel::BeginPlay();
 }
 
-void UChangingLevel::Tick(float _DeltaTime)
+void ULoadingLevel::Tick(float _DeltaTime)
 {
 	ULevel::Tick(_DeltaTime);
 
@@ -90,12 +90,12 @@ void UChangingLevel::Tick(float _DeltaTime)
 	}
 }
 
-void UChangingLevel::LevelStart(ULevel* _PrevLevel)
+void ULoadingLevel::LevelStart(ULevel* _PrevLevel)
 {
 	ULevel::LevelStart(_PrevLevel);
 }
 
-void UChangingLevel::LevelEnd(ULevel* _NextLevel)
+void ULoadingLevel::LevelEnd(ULevel* _NextLevel)
 {
 	ULevel::LevelEnd(_NextLevel);
 	std::string LevelName = GetName();

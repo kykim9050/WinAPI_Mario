@@ -2,7 +2,7 @@
 #include "TimeUpUI.h"
 #include "EnumClass.h"
 #include <EngineCore/EngineCore.h>
-#include "ChangingLevel.h"
+#include "LoadingLevel.h"
 
 UTimeUpLevel::UTimeUpLevel()
 {
@@ -38,7 +38,7 @@ void UTimeUpLevel::ReturnToStage(float _DeltaTime)
 
 		std::string LevelName = GetName();
 		GEngine->DestroyLevel(LevelName);
-		GEngine->CreateLevel<UChangingLevel>("PlayerDead");
+		GEngine->CreateLevel<ULoadingLevel>("PlayerDead");
 		GEngine->ChangeLevel("PlayerDead");
 		return;
 	}

@@ -7,7 +7,7 @@
 #include "Koopa.h"
 #include "Princess.h"
 #include <EngineCore/EngineCore.h>
-#include "ChangingLevel.h"
+#include "LoadingLevel.h"
 #include "UI.h"
 #include "MarioBullet.h"
 
@@ -846,7 +846,7 @@ void APlayerMario::Dead(float _DeltaTime)
 		std::string LevelName = GetWorld()->GetName();
 		UPlayerInfoManager::GetInst().SetPrevStageLevel(LevelName);
 		GEngine->DestroyLevel(LevelName);
-		GEngine->CreateLevel<UChangingLevel>("PlayerDead");
+		GEngine->CreateLevel<ULoadingLevel>("PlayerDead");
 		GEngine->ChangeLevel("PlayerDead");
 		break;
 	}
@@ -1002,7 +1002,7 @@ void APlayerMario::ReachStageEnd(float _DeltaTime)
 		{
 			DelayTime = 3.0f;
 			UPlayerInfoManager::GetInst().SetPrevStageLevel(GetWorld()->GetName());
-			GEngine->CreateLevel<UChangingLevel>("NextLevel");
+			GEngine->CreateLevel<ULoadingLevel>("NextLevel");
 			GEngine->ChangeLevel("NextLevel");
 		}
 	}
@@ -1026,7 +1026,7 @@ void APlayerMario::FallDown(float _DeltaTime)
 		UPlayerInfoManager::GetInst().SetPlayerType(EMarioType::Small);
 		UPlayerInfoManager::GetInst().SetPlayerColSize({ UInGameValue::PlayerCollisionScaleX, UInGameValue::PlayerCollisionScaleY });
 		GEngine->DestroyLevel(LevelName);
-		GEngine->CreateLevel<UChangingLevel>("PlayerDead");
+		GEngine->CreateLevel<ULoadingLevel>("PlayerDead");
 		GEngine->ChangeLevel("PlayerDead");
 		return;
 	}

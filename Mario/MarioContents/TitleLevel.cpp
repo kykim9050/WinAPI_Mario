@@ -3,7 +3,7 @@
 #include "TitleBackGround.h"
 #include "TitleCoin.h"
 #include "1_1StageLevel.h"
-#include "ChangingLevel.h"
+#include "LoadingLevel.h"
 #include "Manual.h"
 
 UTitleLevel::UTitleLevel()
@@ -32,7 +32,7 @@ void UTitleLevel::Tick(float _DeltaTime)
 		std::string LevelName = GetName();
 		GEngine->DestroyLevel(LevelName);
 		UPlayerInfoManager::GetInst().SetPrevStageLevel(LevelName);
-		GEngine->CreateLevel<UChangingLevel>("NextLevel");
+		GEngine->CreateLevel<ULoadingLevel>("NextLevel");
 		GEngine->ChangeLevel("NextLevel");
 	}
 }
