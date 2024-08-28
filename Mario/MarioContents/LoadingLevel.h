@@ -4,18 +4,18 @@
 #include <string>
 
 // Ό³Έν :
-class UChangingLevel : public ULevel
+class ULoadingLevel : public ULevel
 {
 public:
 	// constrcuter destructer
-	UChangingLevel();
-	~UChangingLevel();
+	ULoadingLevel();
+	~ULoadingLevel();
 
 	// delete Function
-	UChangingLevel(const UChangingLevel& _Other) = delete;
-	UChangingLevel(UChangingLevel&& _Other) noexcept = delete;
-	UChangingLevel& operator=(const UChangingLevel& _Other) = delete;
-	UChangingLevel& operator=(UChangingLevel&& _Other) noexcept = delete;
+	ULoadingLevel(const ULoadingLevel& _Other) = delete;
+	ULoadingLevel(ULoadingLevel&& _Other) noexcept = delete;
+	ULoadingLevel& operator=(const ULoadingLevel& _Other) = delete;
+	ULoadingLevel& operator=(ULoadingLevel&& _Other) noexcept = delete;
 
 protected:
 	void BeginPlay() override;

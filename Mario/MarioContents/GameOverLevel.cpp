@@ -5,7 +5,7 @@
 #include <EnginePlatform/EngineInput.h>
 #include <EngineCore/EngineCore.h>
 #include "PlayerInfoManager.h"
-#include "ChangingLevel.h"
+#include "LoadingLevel.h"
 
 UGameOverLevel::UGameOverLevel()
 {
@@ -31,7 +31,7 @@ void UGameOverLevel::Tick(float _DeltaTime)
 	{
 		std::string LevelName = GetName();
 		GEngine->DestroyLevel(LevelName);
-		GEngine->CreateLevel<UChangingLevel>("ReStart");
+		GEngine->CreateLevel<ULoadingLevel>("ReStart");
 		GEngine->ChangeLevel("ReStart");
 	}
 }
